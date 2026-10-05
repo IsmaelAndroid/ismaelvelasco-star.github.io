@@ -22,6 +22,7 @@ nav:
         - 'section2/u01/index.md'
         - '1.1.-Introducción a la confección de interfaces': 'section2/u01/teoria/DI-U1.1.-IntroduccionConfeccionInterfaces.md'
         - 'Práctica 1: Nuestra app en todas las plataformas': 'section2/u01/practica/DI-U1.-Practica001.md'
+        - 'Práctica 2: Botones línea a línea + matriz de fallos': 'section2/u01/practica/DI-U1.-Practica002.md'
         - 'Ejercicios U1 (de menor a mayor)': 'section2/u01/ejercicios/DI-U1.-Ejercicios.md'
         - 'Solucionario U1 (con enunciados)': 'section2/u01/ejercicios/DI-U1.-Solucionario.md'
     - 'UD 2 - Clases y componentes':

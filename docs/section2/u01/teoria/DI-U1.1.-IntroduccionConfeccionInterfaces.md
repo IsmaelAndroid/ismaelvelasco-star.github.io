@@ -460,7 +460,122 @@ Código 3. Dos botones en una fila.
 └─────────────────────────┘
 ```
 
-## 11. Resumen y resolución del caso práctico de la unidad
+## 11. El caso práctico 2, línea a línea
+
+En el caso práctico anterior hemos **escrito** la interfaz; ahora vamos a **leerla como la lee el compilador**. Este es el código completo (idéntico al del caso práctico 2, solo que con un nombre de función más descriptivo — el nombre de un composable siempre debe decir qué pinta):
+
+```kotlin
+@Composable
+fun BotonesAceptarCancelar() {
+    Row(
+        modifier = Modifier.fillMaxSize(),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Button(onClick = { }) {
+            Text("Aceptar")
+        }
+        Button(onClick = { }) {
+            Text("Cancelar")
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun BotonesPreview() {
+    BotonesAceptarCancelar()
+}
+```
+
+Parece poco código, pero contiene **los cuatro pilares de cualquier interfaz Compose**: un contenedor (`Row`), un modificador de tamaño (`fillMaxSize`), dos sistemas de alineación (`Arrangement`/`Alignment`) y el patrón de contenido anidado (`Button { Text }`).
+
+### 11.1. Los imports: el mapa de la biblioteca
+
+```kotlin
+import androidx.compose.foundation.layout.Row
+```
+
+En Compose **todo es una función con nombre completo**. `Row` no existe "de serie" en Kotlin: vive en la biblioteca `androidx.compose.foundation.layout`, en el archivo `Row.kt`. El import le dice al compilador: *cuando escriba `Row`, me refiero a esa*.
+
+Si lo quitas, el compilador no dirá "falta un import" — dirá `Unresolved reference: Row`: *referencia sin resolver*, no tengo ni idea de qué es eso que has escrito. Es el error más frecuente del principiante y el más fácil de arreglar: **Alt+Enter** sobre la palabra roja → *Import*.
+
+### 11.2. `@Composable`: el carné de la función
+
+```kotlin
+@Composable
+fun BotonesAceptarCancelar() {
+```
+
+Una anotación (`@`) es metadata: información *sobre* la función. `@Composable` declara: **esta función participa en la composición** — puede llamar a otras funciones composable y puede ser llamada desde composables o desde `setContent`.
+
+Sin la anotación, la función es Kotlin normal y corriente... y en cuanto intentes usar `Row` dentro, el compilador corta el paso con dos mensajes y una idea: *para llamar a composables hay que ser composable*. Es la regla de entrada del club.
+
+### 11.3. `Row`: un contenedor con doble eje
+
+`Row` es un **contenedor de fila**: apila a sus hijos en **horizontal**, de izquierda a derecha (su hermano `Column` lo hace en vertical). Al llamarlo le pasamos tres parámetros con nombre:
+
+- **`modifier = Modifier.fillMaxSize()`** — el "tamaño" del contenedor. `Modifier` es una cadena de instrucciones de tamaño/posición/comportamiento que se pasan **al crear** el componente, nunca después. `fillMaxSize()` significa "ocupa todo el espacio disponible". Sin él, el `Row` se encoge a lo estrictamente necesario para contener sus hijos.
+- **`horizontalArrangement = Arrangement.Center`** — **cómo se reparten los hijos en el eje X** (el principal del `Row`). `Arrangement` es la familia de opciones: `Start`, `Center`, `End`, `SpaceBetween`, `SpaceAround`, `SpaceEvenly`...
+- **`verticalAlignment = Alignment.CenterVertically`** — **dónde se alinean los hijos en el eje Y** (el perpendicular). Fíjate en la asimetría del API: en el eje principal se *arregla el reparto* (`Arrangement`); en el perpendicular, *la alineación* (`Alignment`).
+
+> **Regla mnemotécnica:** en un `Row`, X es *arrangement* e Y es *alignment*. En un `Column`, al revés.
+
+Los tres parámetros son **opcionales**: si los quitas, el código compila y los botones quedan arriba a la izquierda (valores por defecto `Start`/`Top`). Es la familia de errores más traicionera: **no hay mensaje de error, hay que usar el ojo** (y el `@Preview`).
+
+### 11.4. `Button { Text }`: el patrón slot
+
+Aquí hay dos cosas que conviene ver separadas:
+
+1. **`onClick = { }` es un parámetro obligatorio.** Es una *lambda*: el bloque de código que se ejecuta al pulsar. Aquí está vacío (el botón no hace nada todavía), pero el parámetro existe y hay que pasarlo.
+2. **`Text("Aceptar")` va DENTRO de las llaves del botón.** Es el patrón *slot* de Compose: `Button` no recibe el texto como `String`, recibe **otro componible** como contenido. Ese bloque final tras los parámetros es la *trailing lambda* de `content`. Por eso `Button("Aceptar")` no compila: el primer parámetro posicional de `Button` no es un texto.
+
+### 11.5. `@Preview`: el bucle de retroalimentación instantáneo
+
+`@Preview` (de `ui-tooling-preview`) le dice al IDE: **renderiza esta función sin ejecutar la app**. Es el bucle de retroalimentación más rápido que existe: código → previsualización casi en el mismo segundo, sin emulador.
+
+- `showBackground = true` le pone un fondo blanco (por defecto la interfaz se ve "flotando" sobre el panel).
+- La función de preview **también es `@Composable`** y su cuerpo es una sola línea: llamar a la función real. **Nunca lógica en la preview** — solo decorarla con datos de prueba si hace falta.
+
+Quitar `@Preview` no rompe nada: la app compila y funciona igual. Solo pierdes la vista previa del IDE.
+
+## 12. Matriz de fallos: 15 maneras de romper la interfaz
+
+Todas las variantes de esta tabla se han compilado de verdad, rompiendo **una sola cosa cada vez**. Tapa la columna del resultado e intenta predecir qué pasará antes de leerlo.
+
+| # | Qué rompo | ¿Compila? | Qué pasa / mensaje del compilador |
+|---|-----------|-----------|-----------------------------------|
+| 01 | Quitar `@Composable` de la función principal | ❌ | `Functions which invoke @Composable functions must be marked with the @Composable annotation` + `@Composable invocations can only happen from the context of a @Composable function` |
+| 02 | Quitar `@Preview` (y su import) | ✅ | Compila y la app funciona. Solo pierdes la vista previa del IDE |
+| 03 | Quitar `import ...layout.Row` | ❌ | `Unresolved reference: Row` (+ errores en cascada) |
+| 04 | Quitar `import ...layout.fillMaxSize` | ❌ | `Unresolved reference: fillMaxSize` |
+| 05 | Quitar `import ...layout.Arrangement` | ❌ | `Unresolved reference: Arrangement` |
+| 06 | Quitar `import ...ui.Alignment` | ❌ | `Unresolved reference: Alignment` |
+| 07 | Quitar `modifier = Modifier.fillMaxSize()` | ✅ | El `Row` se encoge: botones **arriba a la izquierda** |
+| 08 | `Arrangement.Center` → `Arrangement.SpaceBetween` | ✅ | Botones pegados a los **extremos** con el hueco en medio |
+| 09 | Quitar `horizontalArrangement` | ✅ | Botones a la **izquierda** (Start por defecto) |
+| 10 | Quitar `verticalAlignment` | ✅ | Botones **arriba** (Top por defecto) |
+| 11 | `Button(onClick = { })` → `Button()` | ❌ | `No value passed for parameter 'onClick'` |
+| 12 | `onClick = { println("click") }` | ✅ | El botón ya "hace" algo (visible en Logcat) |
+| 13 | `Text("Aceptar")` → `Text()` | ❌ | `No value passed for parameter 'text'` |
+| 14 | Quitar el `Text` de dentro del `Button` | ❌ | `No value passed for parameter 'content'` |
+| 15 | `@Preview(showBackground = true)` → `@Preview` | ✅ | Preview sin fondo: la interfaz se ve "flotando" |
+
+### 12.1. Las tres familias de errores
+
+Cuando alguien pierde media hora con un error de Compose, casi siempre es de una de estas tres familias:
+
+1. **Familia A — Anotación** (01): *quién puede llamar a quién*. El compilador nos recuerda la regla del club `@Composable`.
+2. **Familia B — Import** (03-06): `Unresolved reference` = "no sé qué es eso". Se arregla con **Alt+Enter → Import**.
+3. **Familia C — Parámetro obligatorio** (11, 13, 14): `No value passed for parameter 'X'`. El API de Compose obliga a dar ciertos valores (`onClick`, `text`, `content`).
+
+Y aparte, la **familia silenciosa** (07-10): código que compila y se ve mal. Contra ella solo hay dos defensas: el `@Preview` y la costumbre de leer el resultado con ojos críticos. Recuérdalo: **que compile no significa que esté bien**.
+
+### 12.2. Para practicar
+
+Elige un número de la matriz **sin mirar el resultado**, predice en voz alta qué pasará (¿error? ¿dónde? ¿qué mensaje exacto?) y luego provoca el fallo en el proyecto y comprueba la predicción. Si quieres ir más allá: inventa una variante nueva y clasifícala en una de las tres familias.
+
+## 13. Resumen y resolución del caso práctico de la unidad
 
 En este tema hemos visto que la librería **Jetpack Compose** contiene todas las funciones necesarias para programar todo tipo de componentes visuales como botones, textos, campos de edición o casillas de verificación, entre muchos otros. Para lograr una interfaz básica, será necesario hacer uso de al menos una **función composable** que describa la pantalla y poder añadirle objetos que sirvan para interactuar entre el usuario y la aplicación.
 
