@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Práctica de atributos: todos los parámetros de Row y Column, atributos de Button, código dentro del onClick y un contenedor tipo etiqueta (Card). Con solución comentada y diagramas del resultado esperado en el emulador.">
+        <meta name="description" content="Primera práctica de la trilogía de contenedores: Column con todos sus atributos, botones personalizados y un contador con estado. Sesión de 1 hora.">
       
       
         <meta name="author" content="Ismael Velasco">
@@ -18,7 +18,7 @@
         <link rel="prev" href="../../teoria/DI-U1.1.-IntroduccionConfeccionInterfaces/">
       
       
-        <link rel="next" href="../../ejercicios/DI-U1.-Ejercicios/">
+        <link rel="next" href="../DI-U1.-Practica004/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>UD 1 - P3: Contenedores y atributos (Row, Column, Button, Card) - Aula 2º DAM - Ismael Velasco</title>
+        <title>UD 1 - P3: Column, botones y contador (1 h) - Aula 2º DAM - Ismael Velasco</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#practica-3-contenedores-y-sus-atributos" class="md-skip">
+        <a href="#practica-3-column-botones-y-contador-1-h" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              UD 1 - P3: Contenedores y atributos (Row, Column, Button, Card)
+              UD 1 - P3: Column, botones y contador (1 h)
             
           </span>
         </div>
@@ -963,7 +963,7 @@
   <span class="md-ellipsis">
     
   
-    Práctica 3: Contenedores y atributos (Row, Column, Button, Card)
+    Práctica 3: Column, botones y contador (1 h)
   
 
     
@@ -983,7 +983,7 @@
   <span class="md-ellipsis">
     
   
-    Práctica 3: Contenedores y atributos (Row, Column, Button, Card)
+    Práctica 3: Column, botones y contador (1 h)
   
 
     
@@ -1009,10 +1009,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-la-chuleta-atributos-de-cada-contenedor" class="md-nav__link">
+  <a href="#1-la-chuleta-column" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. La chuleta: atributos de cada contenedor
+        1. La chuleta: Column
       
     </span>
   </a>
@@ -1032,10 +1032,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ejercicio-1-la-column-maestra" class="md-nav__link">
+  <a href="#ejercicio-1-la-column-maestra-15-min" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 1 — La Column maestra
+        Ejercicio 1 — La Column maestra (15 min)
       
     </span>
   </a>
@@ -1043,10 +1043,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejercicio-2-el-laboratorio-de-arrangement" class="md-nav__link">
+  <a href="#ejercicio-2-botones-con-personalidad-20-min" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 2 — El laboratorio de Arrangement
+        Ejercicio 2 — Botones con personalidad (20 min)
       
     </span>
   </a>
@@ -1054,10 +1054,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejercicio-3-botones-con-personalidad" class="md-nav__link">
+  <a href="#ejercicio-3-el-contador-visible-15-min" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 3 — Botones con personalidad
+        Ejercicio 3 — El contador visible (15 min)
       
     </span>
   </a>
@@ -1065,21 +1065,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejercicio-4-el-contador-visible-estado-card" class="md-nav__link">
+  <a href="#ejercicio-4-comprobacion-visual-10-min" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 4 — El contador visible (estado + Card)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#que-es-ese-remember-mutableintstateof" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ¿Qué es ese remember { mutableIntStateOf }?
+        Ejercicio 4 — Comprobación visual (10 min)
       
     </span>
   </a>
@@ -1092,38 +1081,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-diagramas-como-debe-quedar-en-el-emulador" class="md-nav__link">
+  <a href="#3-diagrama-como-debe-quedar-en-el-emulador" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Diagramas: cómo debe quedar en el emulador
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Diagramas: cómo debe quedar en el emulador">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ejercicio-5-imagen-que-aparece-y-desaparece" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicio 5 — Imagen que aparece y desaparece
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-diagramas-del-ejercicio-5-imagen" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Diagramas del ejercicio 5 (imagen)
+        3. Diagrama: cómo debe quedar en el emulador
       
     </span>
   </a>
@@ -1131,38 +1092,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-solucion" class="md-nav__link">
+  <a href="#4-entrega" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Solución
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Solución">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion-del-ejercicio-5-practicaimagenkt-verificada-compilando" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución del ejercicio 5 (PracticaImagen.kt) — verificada compilando
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-entrega" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. Entrega
+        4. Entrega
       
     </span>
   </a>
@@ -1173,6 +1106,96 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DI-U1.-Practica004/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 4: Row y Card (1 h)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DI-U1.-Practica005/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 5: Imágenes y recursos (1 h)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ejercicios/DI-U1.-SolucionarioPracticas/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario de prácticas (P3-P5)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1492,10 +1515,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-la-chuleta-atributos-de-cada-contenedor" class="md-nav__link">
+  <a href="#1-la-chuleta-column" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. La chuleta: atributos de cada contenedor
+        1. La chuleta: Column
       
     </span>
   </a>
@@ -1515,10 +1538,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ejercicio-1-la-column-maestra" class="md-nav__link">
+  <a href="#ejercicio-1-la-column-maestra-15-min" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 1 — La Column maestra
+        Ejercicio 1 — La Column maestra (15 min)
       
     </span>
   </a>
@@ -1526,10 +1549,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejercicio-2-el-laboratorio-de-arrangement" class="md-nav__link">
+  <a href="#ejercicio-2-botones-con-personalidad-20-min" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 2 — El laboratorio de Arrangement
+        Ejercicio 2 — Botones con personalidad (20 min)
       
     </span>
   </a>
@@ -1537,10 +1560,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejercicio-3-botones-con-personalidad" class="md-nav__link">
+  <a href="#ejercicio-3-el-contador-visible-15-min" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 3 — Botones con personalidad
+        Ejercicio 3 — El contador visible (15 min)
       
     </span>
   </a>
@@ -1548,21 +1571,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejercicio-4-el-contador-visible-estado-card" class="md-nav__link">
+  <a href="#ejercicio-4-comprobacion-visual-10-min" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 4 — El contador visible (estado + Card)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#que-es-ese-remember-mutableintstateof" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ¿Qué es ese remember { mutableIntStateOf }?
+        Ejercicio 4 — Comprobación visual (10 min)
       
     </span>
   </a>
@@ -1575,38 +1587,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-diagramas-como-debe-quedar-en-el-emulador" class="md-nav__link">
+  <a href="#3-diagrama-como-debe-quedar-en-el-emulador" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Diagramas: cómo debe quedar en el emulador
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Diagramas: cómo debe quedar en el emulador">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ejercicio-5-imagen-que-aparece-y-desaparece" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ejercicio 5 — Imagen que aparece y desaparece
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-diagramas-del-ejercicio-5-imagen" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Diagramas del ejercicio 5 (imagen)
+        3. Diagrama: cómo debe quedar en el emulador
       
     </span>
   </a>
@@ -1614,38 +1598,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-solucion" class="md-nav__link">
+  <a href="#4-entrega" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Solución
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Solución">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#solucion-del-ejercicio-5-practicaimagenkt-verificada-compilando" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solución del ejercicio 5 (PracticaImagen.kt) — verificada compilando
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-entrega" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. Entrega
+        4. Entrega
       
     </span>
   </a>
@@ -1672,523 +1628,113 @@
   
 
 
-<h1 id="practica-3-contenedores-y-sus-atributos">Práctica 3: Contenedores y sus atributos</h1>
-<p>En las prácticas anteriores aprendiste a <strong>leer</strong> el código y a <strong>romperlo</strong> a propósito. Ahora toca <strong>construir</strong>: vas a montar una pantalla donde cada atributo de <code>Row</code> y <code>Column</code> hace algo visible, los botones tienen personalidad propia (colores, padding, estado) y —por primera vez— <strong>el <code>onClick</code> ejecuta código de verdad</strong>: un contador que cambia la pantalla al pulsar.</p>
-<p><strong>Duración estimada:</strong> 2 horas de aula.</p>
-<p><strong>Punto de partida:</strong> proyecto de la práctica anterior con <code>@Preview</code> funcionando.</p>
-<h3 id="1-la-chuleta-atributos-de-cada-contenedor">1. La chuleta: atributos de cada contenedor</h3>
-<p>Antes de escribir código, ten claro el mapa. <code>Row</code> y <code>Column</code> son gemelos espejados: lo que en uno es el eje principal, en el otro es el perpendicular.</p>
+<h1 id="practica-3-column-botones-y-contador-1-h">Práctica 3: Column, botones y contador (1 h)</h1>
+<p>Primera práctica de una trilogía de tres sesiones de 1 hora: <strong>Column</strong> hoy, <strong>Row</strong> en la P4 y <strong>recursos/imágenes</strong> en la P5. Todo con la misma app como hilo conductor: un contador de pulsaciones.</p>
+<p><strong>Lo que vas a tocar:</strong> los tres atributos de <code>Column</code>, los atributos de <code>Button</code> (colores, padding, <code>enabled</code>) y tu primer <strong>estado</strong> (<code>remember</code>): una variable que al cambiar re-dibuja la pantalla sola.</p>
+<h3 id="1-la-chuleta-column">1. La chuleta: Column</h3>
 <table>
 <thead>
 <tr>
 <th>Atributo</th>
-<th>En <code>Row</code> controla...</th>
-<th>En <code>Column</code> controla...</th>
+<th>Qué controla</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>modifier</code></td>
-<td>tamaño, márgenes, fondo... (igual en ambos)</td>
-<td>ídem</td>
+<td>tamaño, márgenes, fondo...</td>
 </tr>
 <tr>
-<td><code>Arrangement.*</code></td>
-<td><strong>eje X</strong> (horizontal, el principal)</td>
-<td><strong>eje Y</strong> (vertical, el principal)</td>
+<td><code>verticalArrangement = Arrangement.X</code></td>
+<td><strong>eje Y</strong> (el principal de una Column): cómo se reparten los hijos de arriba a abajo</td>
 </tr>
 <tr>
-<td><code>Alignment.*</code></td>
-<td><strong>eje Y</strong> (el perpendicular)</td>
-<td><strong>eje X</strong> (el perpendicular)</td>
+<td><code>horizontalAlignment = Alignment.X</code></td>
+<td><strong>eje X</strong> (el perpendicular): dónde se alinean los hijos</td>
 </tr>
 </tbody>
 </table>
-<p>Valores de <code>Arrangement</code> (reparto del espacio en el eje principal):</p>
-<table>
-<thead>
-<tr>
-<th>Valor</th>
-<th>Qué hace</th>
-<th>Se reconoce porque...</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Start</code> / <code>Top</code></td>
-<td>pega los hijos al principio</td>
-<td>es el valor por defecto</td>
-</tr>
-<tr>
-<td><code>Center</code></td>
-<td>los centra</td>
-<td>hueco igual antes y después del grupo</td>
-</tr>
-<tr>
-<td><code>End</code> / <code>Bottom</code></td>
-<td>los pega al final</td>
-<td>hueco todo al principio</td>
-</tr>
-<tr>
-<td><code>SpaceBetween</code></td>
-<td>primero y último a los extremos, resto repartido</td>
-<td>el clásico navbar</td>
-</tr>
-<tr>
-<td><code>SpaceAround</code></td>
-<td>hueco alrededor de CADA hijo (los extremos tienen medio hueco)</td>
-<td>los del medio tienen doble hueco</td>
-</tr>
-<tr>
-<td><code>SpaceEvenly</code></td>
-<td>hueco EXACTO entre todos, incluidos extremos</td>
-<td>todo simétrico</td>
-</tr>
-<tr>
-<td><code>spacedBy(X.dp)</code></td>
-<td>solo separación fija entre hijos, sin centrar</td>
-<td>práctico para listas</td>
-</tr>
-</tbody>
-</table>
-<p>Valores de <code>Alignment</code> (alineación en el perpendicular): <code>Top</code>, <code>CenterVertically</code>, <code>Bottom</code> (en <code>Row</code>) / <code>Start</code>, <code>CenterHorizontally</code>, <code>End</code> (en <code>Column</code>).</p>
+<p>Valores de <code>Arrangement</code> (reparto en el eje principal): <code>Top</code> (por defecto), <code>Center</code>, <code>Bottom</code>, <code>SpaceBetween</code>, <code>SpaceAround</code>, <code>SpaceEvenly</code>, <code>spacedBy(X.dp)</code>.</p>
+<p>Valores de <code>Alignment</code> para el perpendicular de una Column: <code>Start</code>, <code>CenterHorizontally</code>, <code>End</code>.</p>
 <h3 id="2-enunciados">2. Enunciados</h3>
-<h4 id="ejercicio-1-la-column-maestra">Ejercicio 1 — La Column maestra</h4>
-<p>Crea un composable <code>PracticaContenedores()</code> con una <code>Column</code> que:</p>
+<h4 id="ejercicio-1-la-column-maestra-15-min">Ejercicio 1 — La Column maestra (15 min)</h4>
+<p>Crea un composable <code>PracticaContador()</code> con una <code>Column</code> que:</p>
 <ol>
-<li>Ocupe toda la pantalla Y deje 16dp de margen con los bordes (un solo <code>modifier</code> encadenando dos instrucciones).</li>
-<li>Reparta a sus hijos verticalmente con <code>Arrangement.spacedBy(12.dp)</code>.</li>
+<li>Ocupe toda la pantalla y deje <strong>16dp de margen</strong> con los bordes (un solo <code>modifier</code> encadenando <code>fillMaxSize()</code> y <code>padding(16.dp)</code>).</li>
+<li>Separe a sus hijos verticalmente con <code>Arrangement.spacedBy(12.dp)</code>.</li>
 <li>Centre a sus hijos horizontalmente con <code>Alignment.CenterHorizontally</code>.</li>
 </ol>
-<p>Dentro mete: un <code>Text</code> de título con <code>fontSize = 22.sp</code> y un <code>Text</code> pequeño de 14.sp.</p>
-<h4 id="ejercicio-2-el-laboratorio-de-arrangement">Ejercicio 2 — El laboratorio de Arrangement</h4>
-<p>Debajo, añade una <code>Row</code> que ocupe todo el ancho (<code>fillMaxWidth</code>) con tres <code>Text</code>: <code>"izq"</code>, <code>"centro"</code>, <code>"der"</code>. Ponle <code>horizontalArrangement = Arrangement.SpaceBetween</code> y añade encima un <code>Text</code> que diga qué configuración se está mostrando.</p>
-<blockquote>
-<p><strong>Para el experimentation:</strong> cambia <code>SpaceBetween</code> por <code>SpaceAround</code>, <code>SpaceEvenly</code> y <code>Center</code> (uno cada vez) y haz captura de cada uno. ¿Sabrías reconocer cada modo con la pantalla delante sin mirar el código?</p>
-</blockquote>
-<h4 id="ejercicio-3-botones-con-personalidad">Ejercicio 3 — Botones con personalidad</h4>
-<p>Añade otra <code>Row</code> (esta con <code>SpaceEvenly</code>) con DOS botones:</p>
-<p><strong>Botón ACEPTAR:</strong>
-- <code>onClick</code> que <strong>sume 1</strong> a una variable <code>pulsaciones</code> (estado con <code>remember { mutableIntStateOf(0) }</code> — se explica abajo)
+<p>Dentro mete: un <code>Text</code> de título <code>"Contador de pulsaciones"</code> con <code>fontSize = 22.sp</code>.</p>
+<h4 id="ejercicio-2-botones-con-personalidad-20-min">Ejercicio 2 — Botones con personalidad (20 min)</h4>
+<p>Añade dos botones DENTRO de la Column (saldrán apilados en vertical, ya los pondremos en fila en la P4):</p>
+<p><strong>Botón SUMAR:</strong>
+- <code>onClick</code> que sume 1 a una variable <code>pulsaciones</code>
 - <code>colors</code> con <code>ButtonDefaults.buttonColors(containerColor = Color(0xFF2E7D32))</code> (verde)
-- <code>contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 12.dp, bottom = 12.dp)</code>
-- <code>Text("ACEPTAR")</code> dentro</p>
-<p><strong>Botón Reset:</strong>
-- <code>onClick</code> que ponga el contador a <strong>0</strong>
-- <code>enabled = pulsaciones &gt; 0</code> — el botón se pone GRIS y no responde cuando el contador ya está a cero
+- <code>contentPadding = PaddingValues(start = 24.dp, end = 24.dp, top = 12.dp, bottom = 12.dp)</code></p>
+<p><strong>Botón REINICIAR:</strong>
+- <code>onClick</code> que ponga el contador a 0
+- <code>enabled = pulsaciones &gt; 0</code> — se ve GRIS y no responde si el contador ya está a cero
 - <code>colors</code> rojo: <code>Color(0xFFB3261E)</code></p>
-<h4 id="ejercicio-4-el-contador-visible-estado-card">Ejercicio 4 — El contador visible (estado + Card)</h4>
+<h4 id="ejercicio-3-el-contador-visible-15-min">Ejercicio 3 — El contador visible (15 min)</h4>
 <ol>
 <li>Declara el estado arriba del todo del composable:
    <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">var</span><span class="w"> </span><span class="nv">pulsaciones</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableIntStateOf</span><span class="p">(</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div></li>
-<li>Añade una <strong><code>Card</code></strong> (el contenedor "etiqueta": un panel con fondo propio, esquinas redondeadas y sombra) entre el título y los botones:</li>
-<li><code>modifier = Modifier.fillMaxWidth()</code></li>
-<li><code>colors</code> con <code>CardDefaults.cardColors(containerColor = Color(0xFF1F4E79))</code></li>
-<li><code>elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)</code> (la sombra que la "levanta")</li>
-<li>Dentro, un <code>Text</code> blanco que muestre <code>"Has pulsado Aceptar $pulsaciones veces"</code> (con <code>modifier = Modifier.padding(12.dp)</code> y <code>color = Color.White</code>)</li>
-<li>Pulsa ACEPTAR 3 veces → el texto de la Card debe cambiar SOLO. Eso es <strong>recomposición</strong>: al cambiar el estado, Compose vuelve a ejecutar el composable que lo lee.</li>
+<li>Añade un <code>Text</code> grande (<code>fontSize = 48.sp</code>) entre el título y los botones que muestre el valor: <code>Text("$pulsaciones")</code>.</li>
+<li>Pulsa SUMAR 3 veces → el número cambia SOLO. Eso es <strong>recomposición</strong>: al cambiar el estado, Compose vuelve a ejecutar el composable que lo lee.</li>
 </ol>
-<h4 id="que-es-ese-remember-mutableintstateof">¿Qué es ese <code>remember { mutableIntStateOf }</code>?</h4>
-<p>Es la forma que tiene Compose de decir: <em>"recuerda este valor entre recomposiciones, y cuando cambie, re-dibuja quien lo esté usando"</em>. Lo veréis en detalle en la siguiente unidad; hoy lo usáis como receta: declarar → modificar dentro de un <code>onClick</code> → leerlo en un <code>Text</code>. El <code>$pulsaciones</code> dentro de un String es interpolación: incrusta el valor actual en el texto.</p>
-<h3 id="3-diagramas-como-debe-quedar-en-el-emulador">3. Diagramas: cómo debe quedar en el emulador</h3>
-<p><strong>Al arrancar (contador a 0, Reset desactivado en gris):</strong></p>
+<h4 id="ejercicio-4-comprobacion-visual-10-min">Ejercicio 4 — Comprobación visual (10 min)</h4>
+<p>Sin tocar más código, responde en un comentario del archivo (<code>//</code>):</p>
+<ol>
+<li>¿Qué pasa si quitas el <code>horizontalAlignment</code> de la Column? ¿Compila? ¿Cómo se ve?</li>
+<li>¿Qué pasa si cambias <code>spacedBy(12.dp)</code> por <code>Arrangement.Center</code>? ¿Dónde queda el grupo de hijos?</li>
+<li>¿Por qué REINICIAR está gris al arrancar y se activa con la primera pulsación?</li>
+</ol>
+<h3 id="3-diagrama-como-debe-quedar-en-el-emulador">3. Diagrama: cómo debe quedar en el emulador</h3>
+<p><strong>Al arrancar (contador a 0):</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>┌─────────────────────────────┐
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│                             │
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│ Práctica de contenedores    │  ← Text 22sp, centrado (CenterHorizontally)
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│  Contador de pulsaciones    │  ← Text 22sp, centrado
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│                             │
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│ ┌─────────────────────────┐ │
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│ │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│ │  ← CARD azul marino (0xFF1F4E79),
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│ │▓ Has pulsado Aceptar   ▓│ │     sombra elevation 6dp,
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│ │▓ 0 veces               ▓│ │     texto blanco
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│ └─────────────────────────┘ │
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│                             │  ← 12dp de separación (spacedBy)
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│      Prueba los botones:    │
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│                             │
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│   [ ACEPTAR ]  [ Reset ]    │  ← Row SpaceEvenly: mismo hueco
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>│        verde       gris     │     entre y alrededor de ambos.
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>│                             │     Reset GRIS: enabled = false
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>│                             │     porque pulsaciones == 0
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>│ — Arrangement.SpaceBetween —│
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>│ izq         centro        der│ ← Row SpaceBetween: izq pegado a la
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>│                             │    izquierda, der a la derecha,
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>│  (margen de 16dp en todo    │    centro en medio
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>│   el borde de la pantalla)  │
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>└─────────────────────────────┘
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│             0               │  ← Text 48sp (el estado)
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│                             │
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│        [ SUMAR ]            │  ← verde, contentPadding
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│                             │     ancho (24dp laterales)
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│        [ REINICIAR ]        │  ← GRIS: enabled = false
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│                             │     porque pulsaciones == 0
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│                             │
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│  (margen de 16dp en todo    │
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│   el borde de la pantalla)  │
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>└─────────────────────────────┘
 </code></pre></div>
-<p><strong>Tras pulsar ACEPTAR 3 veces:</strong></p>
+<p><strong>Tras pulsar SUMAR 3 veces:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>┌─────────────────────────────┐
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>│                             │
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>│ Práctica de contenedores    │
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>│  Contador de pulsaciones    │
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│                             │
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>│ ┌─────────────────────────┐ │
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>│ │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│ │
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>│ │▓ Has pulsado Aceptar   ▓│ │  ← SOLO cambia este texto:
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>│ │▓ 3 veces               ▓│ │     recomposición al cambiar
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>│ └─────────────────────────┘ │     el estado
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>│             3               │  ← SOLO cambia este número
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>│                             │
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>│        [ SUMAR ]            │
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>│                             │
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>│        [ REINICIAR ]        │  ← AHORA rojo y clicable
 <a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>│                             │
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>│      Prueba los botones:    │
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>│                             │
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>│   [ ACEPTAR ]  [ Reset ]    │  ← Reset AHORA rojo y activo
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>│        verde       rojo     │     (enabled = pulsaciones &gt; 0)
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>│                             │
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>│ — Arrangement.SpaceBetween —│
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>│ izq         centro        der│
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>│                             │
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>└─────────────────────────────┘
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>└─────────────────────────────┘
 </code></pre></div>
-<p><strong>Checklist visual antes de entregar:</strong></p>
+<p><strong>Checklist antes de terminar la hora:</strong></p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> El título está centrado horizontalmente (si sale a la izquierda, te falta el <code>Alignment</code> de la Column)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> La Card es azul marino con texto blanco y "flota" (sombra)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Los dos botones caben en la misma línea con hueco igual entre ellos (<code>SpaceEvenly</code>)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Reset arranca GRIS y se activa al primer clic en ACEPTAR</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> El texto de la Card se actualiza al instante al pulsar (recomposición)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> izq/centro/der están pegados a sus extremos (<code>SpaceBetween</code>)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> El título y el número están centrados horizontalmente</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> SUMAR es verde con aire interior ancho; REINICIAR arranca gris</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> El número cambia al instante al pulsar (recomposición)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Los tres comentarios del ejercicio 4 están escritos en el archivo</li>
 </ul>
-<h4 id="ejercicio-5-imagen-que-aparece-y-desaparece">Ejercicio 5 — Imagen que aparece y desaparece</h4>
-<p>Los ejercicios anteriores solo movían texto y color. Ahora toca un <strong>recurso real</strong>: una imagen que el usuario puede mostrar y ocultar a placer. Primera vez que salimos del código: la imagen vive en una carpeta del proyecto, no en un String.</p>
-<p><strong>Paso 1 — Crear el recurso.</strong> Consigue cualquier PNG pequeño (un logo, un meme, lo que sea) y cópialo en:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>app/src/main/res/drawable/demo_botones.png
-</code></pre></div>
-<p>En Android Studio: clic derecho sobre <code>res</code> → <strong>New → Android Resource File</strong>, o simplemente arrastra el PNG a la carpeta <code>drawable</code> desde el explorador. <strong>Reglas del nombre:</strong> solo minúsculas, números y guión bajo (<code>demo_botones</code> ✅ / <code>demo-botones</code> ❌ / <code>DemoBotones</code> ❌).</p>
-<p><strong>Paso 2 — El estado.</strong> Una variable booleana decide si la imagen está en pantalla:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">var</span><span class="w"> </span><span class="nv">imagenVisible</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
-</code></pre></div>
-<p><strong>Paso 3 — Composición condicional.</strong> En Kotlin, un <code>if</code> dentro de un composable decide qué se dibuja:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">imagenVisible</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">Image</span><span class="p">(</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">        </span><span class="n">painter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">painterResource</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">drawable</span><span class="p">.</span><span class="na">demo_botones</span><span class="p">),</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">        </span><span class="n">contentDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Demo de botones"</span><span class="p">,</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">size</span><span class="p">(</span><span class="m">240.</span><span class="n">dp</span><span class="p">)</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="p">)</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="n">Text</span><span class="p">(</span><span class="s">"(imagen oculta)"</span><span class="p">)</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="p">}</span>
-</code></pre></div>
-<p><strong>Paso 4 — Los botones que la controlan:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">imagenVisible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">})</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"Mostrar"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">imagenVisible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"Ocultar"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">imagenVisible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">imagenVisible</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">imagenVisible</span><span class="p">)</span><span class="w"> </span><span class="s">"Ocultar"</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s">"Mostrar"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
-</code></pre></div>
-<p>Fíjate en el tercero: <code>!imagenVisible</code> invierte el valor (el "toggle"), y su etiqueta cambia sola porque el <code>Text</code> también se recomposición. <strong>Un solo botón que sirve para las dos cosas.</strong></p>
+<h3 id="4-entrega">4. Entrega</h3>
+<ul>
+<li>Captura del emulador al arrancar (0, REINICIAR gris) y tras 3 pulsaciones (3, REINICIAR rojo).</li>
+<li>El código de tu <code>PracticaContador.kt</code> con los comentarios del ejercicio 4.</li>
+</ul>
 <blockquote>
-<p><strong>Nota:</strong> <code>R.drawable.demo_botones</code> es la forma de referirse al recurso: <code>R</code> es una clase autogenerada que Android rellena con TODOS los recursos del proyecto (imágenes, strings, colores...). Si acabas de copiar el PNG y <code>R</code> sale en rojo, haz <strong>Build → Clean Project</strong> o simplemente compila: se regenera solo.</p>
+<p>La solución está en el <a href="/di/unidad1/solucionario-practicas/">solucionario de prácticas</a> — pélea antes con los diagramas de arriba.</p>
 </blockquote>
-<h3 id="4-diagramas-del-ejercicio-5-imagen">4. Diagramas del ejercicio 5 (imagen)</h3>
-<p><strong>Al arrancar (imagen visible):</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>┌─────────────────────────────┐
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>│                             │
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>│  Ejercicio 5: imagen oculta │
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>│                             │
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>│   ┌─────────────────────┐   │
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>│   │                     │   │
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>│   │  [ACEPTAR][CANCELAR]│   │  ← tu PNG (240dp),
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>│   │                     │   │     pintado por Image(
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>│   └─────────────────────┘   │     painterResource(...))
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>│                             │
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>│  [Mostrar] [Ocultar] [Ocultar]│ ← 3 botones SpaceEvenly;
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>│                             │    el 3º dice "Ocultar"
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>│                             │    porque ahora se ve
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>└─────────────────────────────┘
-</code></pre></div>
-<p><strong>Tras pulsar Ocultar:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>┌─────────────────────────────┐
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>│                             │
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>│  Ejercicio 5: imagen oculta │
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>│                             │
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>│      (imagen oculta)        │  ← el Text sustituye a la
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>│                             │     Image en el mismo sitio
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>│                             │
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>│ [Mostrar] [Ocultar] [Mostrar]│ ← el 3º botón CAMBIA su
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>│                             │    etiqueta solo: ahora
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>│                             │    diría "Mostrar"
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>└─────────────────────────────┘
-</code></pre></div>
-<p><strong>Checklist del ejercicio 5:</strong></p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> El PNG está en <code>res/drawable/</code> con nombre válido (minúsculas y guiones bajos)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Al pulsar Ocultar la imagen desaparece AL INSTANTE (recomposición)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> El botón toggle cambia su propio texto según el estado</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>contentDescription</code> está rellenado (accesibilidad)</li>
-</ul>
-<h3 id="5-solucion">5. Solución</h3>
-<div class="admonition warning">
-<p class="admonition-title">Antes de mirar</p>
-<p>Intenta montarlo tú con los diagramas de arriba. La solución está <strong>verificada compilando</strong> (<code>compileDebugKotlin EXIT:0</code>), pero el valor está en pelearte con los atributos antes de leerla.</p>
-</div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">package</span><span class="w"> </span><span class="nn">org.example.project</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.Arrangement</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.Column</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.PaddingValues</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.Row</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.fillMaxSize</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.fillMaxWidth</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.padding</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material3.Button</span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material3.ButtonDefaults</span>
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material3.Card</span>
-<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material3.CardDefaults</span>
-<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material3.Text</span>
-<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.Composable</span>
-<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.getValue</span>
-<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.mutableIntStateOf</span>
-<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.remember</span>
-<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.setValue</span>
-<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.Alignment</span>
-<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.Modifier</span>
-<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.graphics.Color</span>
-<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.unit.dp</span>
-<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.unit.sp</span>
-<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>
-<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="nd">@Composable</span>
-<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">PracticaContenedores</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="w">    </span><span class="c1">// Estado: cuantas veces se ha pulsado Aceptar.</span>
-<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="w">    </span><span class="c1">// "remember" = recuerda el valor entre recomposiciones;</span>
-<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="w">    </span><span class="c1">// cuando cambia, todo composable que lo lea se vuelve a dibujar.</span>
-<a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">pulsaciones</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableIntStateOf</span><span class="p">(</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
-<a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a>
-<a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a><span class="w">    </span><span class="c1">// ══ EJERCICIO 1: COLUMN con todos sus atributos ══</span>
-<a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a><span class="w">    </span><span class="n">Column</span><span class="p">(</span>
-<a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a><span class="w">        </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span>
-<a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a><span class="w">            </span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">()</span><span class="w">          </span><span class="c1">// ocupa toda la pantalla...</span>
-<a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a><span class="w">            </span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">),</span><span class="w">        </span><span class="c1">// ...y se lava las manos 16dp antes del borde</span>
-<a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a><span class="w">        </span><span class="n">verticalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">12.</span><span class="n">dp</span><span class="p">),</span><span class="w">        </span><span class="c1">// eje principal (Y): separacion fija entre hijos</span>
-<a id="__codelineno-9-39" name="__codelineno-9-39" href="#__codelineno-9-39"></a><span class="w">        </span><span class="n">horizontalAlignment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="na">CenterHorizontally</span><span class="w">        </span><span class="c1">// eje perpendicular (X): hijos centrados</span>
-<a id="__codelineno-9-40" name="__codelineno-9-40" href="#__codelineno-9-40"></a><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-9-41" name="__codelineno-9-41" href="#__codelineno-9-41"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">"Práctica de contenedores"</span><span class="p">,</span><span class="w"> </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">22.</span><span class="n">sp</span><span class="p">)</span>
-<a id="__codelineno-9-42" name="__codelineno-9-42" href="#__codelineno-9-42"></a>
-<a id="__codelineno-9-43" name="__codelineno-9-43" href="#__codelineno-9-43"></a><span class="w">        </span><span class="c1">// ══ EJERCICIO 4: CARD, el contenedor "etiqueta" ══</span>
-<a id="__codelineno-9-44" name="__codelineno-9-44" href="#__codelineno-9-44"></a><span class="w">        </span><span class="n">Card</span><span class="p">(</span>
-<a id="__codelineno-9-45" name="__codelineno-9-45" href="#__codelineno-9-45"></a><span class="w">            </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxWidth</span><span class="p">(),</span><span class="w">                   </span><span class="c1">// ancho completo (dentro del padding de la Column)</span>
-<a id="__codelineno-9-46" name="__codelineno-9-46" href="#__codelineno-9-46"></a><span class="w">            </span><span class="n">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CardDefaults</span><span class="p">.</span><span class="na">cardColors</span><span class="p">(</span>
-<a id="__codelineno-9-47" name="__codelineno-9-47" href="#__codelineno-9-47"></a><span class="w">                </span><span class="n">containerColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">(</span><span class="m">0</span><span class="n">xFF1F4E79</span><span class="p">)</span><span class="w">                </span><span class="c1">// azul marino</span>
-<a id="__codelineno-9-48" name="__codelineno-9-48" href="#__codelineno-9-48"></a><span class="w">            </span><span class="p">),</span>
-<a id="__codelineno-9-49" name="__codelineno-9-49" href="#__codelineno-9-49"></a><span class="w">            </span><span class="n">elevation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CardDefaults</span><span class="p">.</span><span class="na">cardElevation</span><span class="p">(</span>
-<a id="__codelineno-9-50" name="__codelineno-9-50" href="#__codelineno-9-50"></a><span class="w">                </span><span class="n">defaultElevation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6.</span><span class="n">dp</span><span class="w">                            </span><span class="c1">// sombra: la "levanta" del fondo</span>
-<a id="__codelineno-9-51" name="__codelineno-9-51" href="#__codelineno-9-51"></a><span class="w">            </span><span class="p">)</span>
-<a id="__codelineno-9-52" name="__codelineno-9-52" href="#__codelineno-9-52"></a><span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-9-53" name="__codelineno-9-53" href="#__codelineno-9-53"></a><span class="w">            </span><span class="c1">// La Card tambien usa el patron slot: dentro va lo que sea</span>
-<a id="__codelineno-9-54" name="__codelineno-9-54" href="#__codelineno-9-54"></a><span class="w">            </span><span class="n">Text</span><span class="p">(</span>
-<a id="__codelineno-9-55" name="__codelineno-9-55" href="#__codelineno-9-55"></a><span class="w">                </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Has pulsado Aceptar </span><span class="si">$</span><span class="n">pulsaciones</span><span class="s"> veces"</span><span class="p">,</span><span class="w">  </span><span class="c1">// $pulsaciones = interpolacion del estado</span>
-<a id="__codelineno-9-56" name="__codelineno-9-56" href="#__codelineno-9-56"></a><span class="w">                </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="na">White</span><span class="p">,</span>
-<a id="__codelineno-9-57" name="__codelineno-9-57" href="#__codelineno-9-57"></a><span class="w">                </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">16.</span><span class="n">sp</span><span class="p">,</span>
-<a id="__codelineno-9-58" name="__codelineno-9-58" href="#__codelineno-9-58"></a><span class="w">                </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="m">12.</span><span class="n">dp</span><span class="p">)</span><span class="w">                </span><span class="c1">// margen interno del texto</span>
-<a id="__codelineno-9-59" name="__codelineno-9-59" href="#__codelineno-9-59"></a><span class="w">            </span><span class="p">)</span>
-<a id="__codelineno-9-60" name="__codelineno-9-60" href="#__codelineno-9-60"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-9-61" name="__codelineno-9-61" href="#__codelineno-9-61"></a>
-<a id="__codelineno-9-62" name="__codelineno-9-62" href="#__codelineno-9-62"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">"Prueba los botones:"</span><span class="p">,</span><span class="w"> </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">14.</span><span class="n">sp</span><span class="p">)</span>
-<a id="__codelineno-9-63" name="__codelineno-9-63" href="#__codelineno-9-63"></a>
-<a id="__codelineno-9-64" name="__codelineno-9-64" href="#__codelineno-9-64"></a><span class="w">        </span><span class="c1">// ══ EJERCICIOS 2 y 3: ROW de botones con atributos ══</span>
-<a id="__codelineno-9-65" name="__codelineno-9-65" href="#__codelineno-9-65"></a><span class="w">        </span><span class="n">Row</span><span class="p">(</span>
-<a id="__codelineno-9-66" name="__codelineno-9-66" href="#__codelineno-9-66"></a><span class="w">            </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxWidth</span><span class="p">(),</span>
-<a id="__codelineno-9-67" name="__codelineno-9-67" href="#__codelineno-9-67"></a><span class="w">            </span><span class="n">horizontalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">SpaceEvenly</span><span class="p">,</span><span class="w">      </span><span class="c1">// eje principal (X): hueco identico entre todos</span>
-<a id="__codelineno-9-68" name="__codelineno-9-68" href="#__codelineno-9-68"></a><span class="w">            </span><span class="n">verticalAlignment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="na">CenterVertically</span><span class="w">        </span><span class="c1">// eje perpendicular (Y): misma altura</span>
-<a id="__codelineno-9-69" name="__codelineno-9-69" href="#__codelineno-9-69"></a><span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-9-70" name="__codelineno-9-70" href="#__codelineno-9-70"></a><span class="w">            </span><span class="n">Button</span><span class="p">(</span>
-<a id="__codelineno-9-71" name="__codelineno-9-71" href="#__codelineno-9-71"></a><span class="w">                </span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-9-72" name="__codelineno-9-72" href="#__codelineno-9-72"></a><span class="w">                    </span><span class="c1">// EJERCICIO 3: codigo real dentro del onClick</span>
-<a id="__codelineno-9-73" name="__codelineno-9-73" href="#__codelineno-9-73"></a><span class="w">                    </span><span class="n">pulsaciones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pulsaciones</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w">                 </span><span class="c1">// tambien vale pulsaciones++</span>
-<a id="__codelineno-9-74" name="__codelineno-9-74" href="#__codelineno-9-74"></a><span class="w">                </span><span class="p">},</span>
-<a id="__codelineno-9-75" name="__codelineno-9-75" href="#__codelineno-9-75"></a><span class="w">                </span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">                                   </span><span class="c1">// siempre clicable</span>
-<a id="__codelineno-9-76" name="__codelineno-9-76" href="#__codelineno-9-76"></a><span class="w">                </span><span class="n">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ButtonDefaults</span><span class="p">.</span><span class="na">buttonColors</span><span class="p">(</span>
-<a id="__codelineno-9-77" name="__codelineno-9-77" href="#__codelineno-9-77"></a><span class="w">                    </span><span class="n">containerColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">(</span><span class="m">0</span><span class="n">xFF2E7D32</span><span class="p">)</span><span class="w">            </span><span class="c1">// verde</span>
-<a id="__codelineno-9-78" name="__codelineno-9-78" href="#__codelineno-9-78"></a><span class="w">                </span><span class="p">),</span>
-<a id="__codelineno-9-79" name="__codelineno-9-79" href="#__codelineno-9-79"></a><span class="w">                </span><span class="n">contentPadding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PaddingValues</span><span class="p">(</span><span class="w">                   </span><span class="c1">// aire interno del boton</span>
-<a id="__codelineno-9-80" name="__codelineno-9-80" href="#__codelineno-9-80"></a><span class="w">                    </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20.</span><span class="n">dp</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20.</span><span class="n">dp</span><span class="p">,</span><span class="w"> </span><span class="n">top</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12.</span><span class="n">dp</span><span class="p">,</span><span class="w"> </span><span class="n">bottom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12.</span><span class="n">dp</span>
-<a id="__codelineno-9-81" name="__codelineno-9-81" href="#__codelineno-9-81"></a><span class="w">                </span><span class="p">)</span>
-<a id="__codelineno-9-82" name="__codelineno-9-82" href="#__codelineno-9-82"></a><span class="w">            </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-9-83" name="__codelineno-9-83" href="#__codelineno-9-83"></a><span class="w">                </span><span class="n">Text</span><span class="p">(</span><span class="s">"ACEPTAR"</span><span class="p">)</span>
-<a id="__codelineno-9-84" name="__codelineno-9-84" href="#__codelineno-9-84"></a><span class="w">            </span><span class="p">}</span>
-<a id="__codelineno-9-85" name="__codelineno-9-85" href="#__codelineno-9-85"></a><span class="w">            </span><span class="n">Button</span><span class="p">(</span>
-<a id="__codelineno-9-86" name="__codelineno-9-86" href="#__codelineno-9-86"></a><span class="w">                </span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pulsaciones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">},</span><span class="w">                    </span><span class="c1">// reinicia el contador</span>
-<a id="__codelineno-9-87" name="__codelineno-9-87" href="#__codelineno-9-87"></a><span class="w">                </span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pulsaciones</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w">                        </span><span class="c1">// GRIS e inutilizable si el contador ya esta a 0</span>
-<a id="__codelineno-9-88" name="__codelineno-9-88" href="#__codelineno-9-88"></a><span class="w">                </span><span class="n">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ButtonDefaults</span><span class="p">.</span><span class="na">buttonColors</span><span class="p">(</span>
-<a id="__codelineno-9-89" name="__codelineno-9-89" href="#__codelineno-9-89"></a><span class="w">                    </span><span class="n">containerColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">(</span><span class="m">0</span><span class="n">xFFB3261E</span><span class="p">)</span><span class="w">            </span><span class="c1">// rojo</span>
-<a id="__codelineno-9-90" name="__codelineno-9-90" href="#__codelineno-9-90"></a><span class="w">                </span><span class="p">)</span>
-<a id="__codelineno-9-91" name="__codelineno-9-91" href="#__codelineno-9-91"></a><span class="w">            </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-9-92" name="__codelineno-9-92" href="#__codelineno-9-92"></a><span class="w">                </span><span class="n">Text</span><span class="p">(</span><span class="s">"Reset"</span><span class="p">)</span>
-<a id="__codelineno-9-93" name="__codelineno-9-93" href="#__codelineno-9-93"></a><span class="w">            </span><span class="p">}</span>
-<a id="__codelineno-9-94" name="__codelineno-9-94" href="#__codelineno-9-94"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-9-95" name="__codelineno-9-95" href="#__codelineno-9-95"></a>
-<a id="__codelineno-9-96" name="__codelineno-9-96" href="#__codelineno-9-96"></a><span class="w">        </span><span class="c1">// ══ EJERCICIO 2: laboratorio de Arrangement ══</span>
-<a id="__codelineno-9-97" name="__codelineno-9-97" href="#__codelineno-9-97"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">"— Arrangement.SpaceBetween —"</span><span class="p">,</span><span class="w"> </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12.</span><span class="n">sp</span><span class="p">)</span>
-<a id="__codelineno-9-98" name="__codelineno-9-98" href="#__codelineno-9-98"></a><span class="w">        </span><span class="n">Row</span><span class="p">(</span>
-<a id="__codelineno-9-99" name="__codelineno-9-99" href="#__codelineno-9-99"></a><span class="w">            </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxWidth</span><span class="p">(),</span>
-<a id="__codelineno-9-100" name="__codelineno-9-100" href="#__codelineno-9-100"></a><span class="w">            </span><span class="n">horizontalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">SpaceBetween</span><span class="p">,</span><span class="w">     </span><span class="c1">// extremos pegados, hueco en medio</span>
-<a id="__codelineno-9-101" name="__codelineno-9-101" href="#__codelineno-9-101"></a><span class="w">            </span><span class="n">verticalAlignment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="na">CenterVertically</span>
-<a id="__codelineno-9-102" name="__codelineno-9-102" href="#__codelineno-9-102"></a><span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-9-103" name="__codelineno-9-103" href="#__codelineno-9-103"></a><span class="w">            </span><span class="n">Text</span><span class="p">(</span><span class="s">"izq"</span><span class="p">)</span>
-<a id="__codelineno-9-104" name="__codelineno-9-104" href="#__codelineno-9-104"></a><span class="w">            </span><span class="n">Text</span><span class="p">(</span><span class="s">"centro"</span><span class="p">)</span>
-<a id="__codelineno-9-105" name="__codelineno-9-105" href="#__codelineno-9-105"></a><span class="w">            </span><span class="n">Text</span><span class="p">(</span><span class="s">"der"</span><span class="p">)</span>
-<a id="__codelineno-9-106" name="__codelineno-9-106" href="#__codelineno-9-106"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-9-107" name="__codelineno-9-107" href="#__codelineno-9-107"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-9-108" name="__codelineno-9-108" href="#__codelineno-9-108"></a><span class="p">}</span>
-</code></pre></div>
-<p><strong>Notas sobre la solución:</strong></p>
-<ul>
-<li><strong>Un <code>modifier</code> puede encadenar varias instrucciones</strong>: <code>Modifier.fillMaxSize().padding(16.dp)</code> se lee de izquierda a derecha ("ocupa todo... y luego respeta 16dp por dentro"). El ORDEN importa: invertirlo cambia el resultado visible.</li>
-<li><strong><code>enabled</code> es la atributo "estado" del botón</strong>: con <code>false</code> se ve gris y no responde. Aquí lo conectamos al estado (<code>pulsaciones &gt; 0</code>), así que Compose lo re-evalúa solo en cada recomposición.</li>
-<li><strong>La <code>Card</code> también es un slot</strong>: dentro acepta cualquier composable, igual que el <code>Button</code>. Los contenedores de Compose comparten ese patrón.</li>
-<li><strong><code>0xFF1F4E79</code></strong> es color ARGB: <code>FF</code> = opacidad total, y <code>1F4E79</code> el azul. Cambia los dos últimos pares para experimentar.</li>
-</ul>
-<p><strong>Errores típicos que vas a cometer (y su familia):</strong></p>
-<table>
-<thead>
-<tr>
-<th>Si te sale</th>
-<th>Causa</th>
-<th>Familia</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Unresolved reference 'Card'</code></td>
-<td>falta <code>import androidx.compose.material3.Card</code> (Alt+Enter)</td>
-<td>B — Import</td>
-</tr>
-<tr>
-<td><code>Unresolved reference 'mutableIntStateOf'</code></td>
-<td>falta el import de <code>androidx.compose.runtime.mutableIntStateOf</code></td>
-<td>B — Import</td>
-</tr>
-<tr>
-<td><code>Unresolved reference 'dp'</code> / <code>'sp'</code></td>
-<td>faltan <code>androidx.compose.ui.unit.dp</code> y <code>.sp</code></td>
-<td>B — Import</td>
-</tr>
-<tr>
-<td><code>No value passed for parameter 'onClick'</code></td>
-<td>te olvidaste del parámetro obligatorio</td>
-<td>C — Parámetro</td>
-</tr>
-<tr>
-<td>El contador suma pero la Card no cambia</td>
-<td>el <code>Text</code> que lee <code>pulsaciones</code> no está en el composable que se recompon... revisa que el <code>by remember</code> esté DENTRO del composable</td>
-<td>Silenciosa</td>
-</tr>
-<tr>
-<td>Botones pegados en la esquina</td>
-<td>te falta el <code>Arrangement</code>/<code>Alignment</code> del Row — compila, pero se ve mal</td>
-<td>Silenciosa</td>
-</tr>
-</tbody>
-</table>
-<h4 id="solucion-del-ejercicio-5-practicaimagenkt-verificada-compilando">Solución del ejercicio 5 (PracticaImagen.kt) — verificada compilando</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">package</span><span class="w"> </span><span class="nn">org.example.project</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.Image</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.Arrangement</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.Column</span>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.Row</span>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.fillMaxSize</span>
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.fillMaxWidth</span>
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.padding</span>
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.size</span>
-<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material3.Button</span>
-<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material3.Text</span>
-<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.Composable</span>
-<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.getValue</span>
-<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.mutableStateOf</span>
-<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.remember</span>
-<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.setValue</span>
-<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.Alignment</span>
-<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.Modifier</span>
-<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.res.painterResource</span>
-<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.text.style.TextAlign</span>
-<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.unit.dp</span>
-<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.unit.sp</span>
-<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>
-<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="nd">@Composable</span>
-<a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">PracticaImagen</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="w">    </span><span class="c1">// Estado: ¿se ve la imagen ahora mismo?</span>
-<a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">imagenVisible</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
-<a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a>
-<a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a><span class="w">    </span><span class="n">Column</span><span class="p">(</span>
-<a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a><span class="w">        </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span>
-<a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a><span class="w">            </span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">()</span>
-<a id="__codelineno-10-33" name="__codelineno-10-33" href="#__codelineno-10-33"></a><span class="w">            </span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">),</span>
-<a id="__codelineno-10-34" name="__codelineno-10-34" href="#__codelineno-10-34"></a><span class="w">        </span><span class="n">verticalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">12.</span><span class="n">dp</span><span class="p">),</span>
-<a id="__codelineno-10-35" name="__codelineno-10-35" href="#__codelineno-10-35"></a><span class="w">        </span><span class="n">horizontalAlignment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="na">CenterHorizontally</span>
-<a id="__codelineno-10-36" name="__codelineno-10-36" href="#__codelineno-10-36"></a><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">"Ejercicio 5: imagen oculta"</span><span class="p">,</span><span class="w"> </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20.</span><span class="n">sp</span><span class="p">)</span>
-<a id="__codelineno-10-38" name="__codelineno-10-38" href="#__codelineno-10-38"></a>
-<a id="__codelineno-10-39" name="__codelineno-10-39" href="#__codelineno-10-39"></a><span class="w">        </span><span class="c1">// Composicion condicional: el if decide que se dibuja.</span>
-<a id="__codelineno-10-40" name="__codelineno-10-40" href="#__codelineno-10-40"></a><span class="w">        </span><span class="c1">// Al cambiar imagenVisible, Compose recompone: entra por una rama o por otra.</span>
-<a id="__codelineno-10-41" name="__codelineno-10-41" href="#__codelineno-10-41"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">imagenVisible</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-10-42" name="__codelineno-10-42" href="#__codelineno-10-42"></a><span class="w">            </span><span class="n">Image</span><span class="p">(</span>
-<a id="__codelineno-10-43" name="__codelineno-10-43" href="#__codelineno-10-43"></a><span class="w">                </span><span class="n">painter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">painterResource</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">drawable</span><span class="p">.</span><span class="na">demo_botones</span><span class="p">),</span><span class="w">  </span><span class="c1">// recurso de res/drawable</span>
-<a id="__codelineno-10-44" name="__codelineno-10-44" href="#__codelineno-10-44"></a><span class="w">                </span><span class="n">contentDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Demo de botones"</span><span class="p">,</span><span class="w">              </span><span class="c1">// accesibilidad</span>
-<a id="__codelineno-10-45" name="__codelineno-10-45" href="#__codelineno-10-45"></a><span class="w">                </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">size</span><span class="p">(</span><span class="m">240.</span><span class="n">dp</span><span class="p">)</span>
-<a id="__codelineno-10-46" name="__codelineno-10-46" href="#__codelineno-10-46"></a><span class="w">            </span><span class="p">)</span>
-<a id="__codelineno-10-47" name="__codelineno-10-47" href="#__codelineno-10-47"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-10-48" name="__codelineno-10-48" href="#__codelineno-10-48"></a><span class="w">            </span><span class="n">Text</span><span class="p">(</span>
-<a id="__codelineno-10-49" name="__codelineno-10-49" href="#__codelineno-10-49"></a><span class="w">                </span><span class="s">"(imagen oculta)"</span><span class="p">,</span>
-<a id="__codelineno-10-50" name="__codelineno-10-50" href="#__codelineno-10-50"></a><span class="w">                </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">16.</span><span class="n">sp</span><span class="p">,</span>
-<a id="__codelineno-10-51" name="__codelineno-10-51" href="#__codelineno-10-51"></a><span class="w">                </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">size</span><span class="p">(</span><span class="m">240.</span><span class="n">dp</span><span class="p">),</span><span class="w">     </span><span class="c1">// mismo tamano: ocupa el mismo sitio</span>
-<a id="__codelineno-10-52" name="__codelineno-10-52" href="#__codelineno-10-52"></a><span class="w">                </span><span class="n">textAlign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TextAlign</span><span class="p">.</span><span class="na">Center</span>
-<a id="__codelineno-10-53" name="__codelineno-10-53" href="#__codelineno-10-53"></a><span class="w">            </span><span class="p">)</span>
-<a id="__codelineno-10-54" name="__codelineno-10-54" href="#__codelineno-10-54"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-10-55" name="__codelineno-10-55" href="#__codelineno-10-55"></a>
-<a id="__codelineno-10-56" name="__codelineno-10-56" href="#__codelineno-10-56"></a><span class="w">        </span><span class="n">Row</span><span class="p">(</span>
-<a id="__codelineno-10-57" name="__codelineno-10-57" href="#__codelineno-10-57"></a><span class="w">            </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxWidth</span><span class="p">(),</span>
-<a id="__codelineno-10-58" name="__codelineno-10-58" href="#__codelineno-10-58"></a><span class="w">            </span><span class="n">horizontalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">SpaceEvenly</span><span class="p">,</span>
-<a id="__codelineno-10-59" name="__codelineno-10-59" href="#__codelineno-10-59"></a><span class="w">            </span><span class="n">verticalAlignment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="na">CenterVertically</span>
-<a id="__codelineno-10-60" name="__codelineno-10-60" href="#__codelineno-10-60"></a><span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-10-61" name="__codelineno-10-61" href="#__codelineno-10-61"></a><span class="w">            </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">imagenVisible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">   </span><span class="c1">// fuerza visible</span>
-<a id="__codelineno-10-62" name="__codelineno-10-62" href="#__codelineno-10-62"></a><span class="w">                </span><span class="n">Text</span><span class="p">(</span><span class="s">"Mostrar"</span><span class="p">)</span>
-<a id="__codelineno-10-63" name="__codelineno-10-63" href="#__codelineno-10-63"></a><span class="w">            </span><span class="p">}</span>
-<a id="__codelineno-10-64" name="__codelineno-10-64" href="#__codelineno-10-64"></a><span class="w">            </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">imagenVisible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// fuerza oculta</span>
-<a id="__codelineno-10-65" name="__codelineno-10-65" href="#__codelineno-10-65"></a><span class="w">                </span><span class="n">Text</span><span class="p">(</span><span class="s">"Ocultar"</span><span class="p">)</span>
-<a id="__codelineno-10-66" name="__codelineno-10-66" href="#__codelineno-10-66"></a><span class="w">            </span><span class="p">}</span>
-<a id="__codelineno-10-67" name="__codelineno-10-67" href="#__codelineno-10-67"></a><span class="w">            </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">imagenVisible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">imagenVisible</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// toggle: invierte</span>
-<a id="__codelineno-10-68" name="__codelineno-10-68" href="#__codelineno-10-68"></a><span class="w">                </span><span class="n">Text</span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">imagenVisible</span><span class="p">)</span><span class="w"> </span><span class="s">"Ocultar"</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s">"Mostrar"</span><span class="p">)</span><span class="w">   </span><span class="c1">// etiqueta dinamica</span>
-<a id="__codelineno-10-69" name="__codelineno-10-69" href="#__codelineno-10-69"></a><span class="w">            </span><span class="p">}</span>
-<a id="__codelineno-10-70" name="__codelineno-10-70" href="#__codelineno-10-70"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-10-71" name="__codelineno-10-71" href="#__codelineno-10-71"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-10-72" name="__codelineno-10-72" href="#__codelineno-10-72"></a><span class="p">}</span>
-</code></pre></div>
-<p><strong>Errores típicos del ejercicio 5:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Si te sale</th>
-<th>Causa</th>
-<th>Familia</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Unresolved reference 'painterResource'</code></td>
-<td>falta <code>import androidx.compose.ui.res.painterResource</code></td>
-<td>B — Import</td>
-</tr>
-<tr>
-<td><code>Unresolved reference 'R'</code> o <code>'drawable'</code></td>
-<td>el PNG se llama con mayúsculas/guiones, o acabas de copiarlo y no se ha regenerado la clase R → <strong>Build → Clean</strong> y compila</td>
-<td>B — Import (variante recurso)</td>
-</tr>
-<tr>
-<td>La imagen no se ve pero no hay error</td>
-<td>nombre del archivo ≠ nombre en <code>R.drawable.loquesea</code> (deben coincidir EXACTO, sin <code>.png</code>)</td>
-<td>Silenciosa</td>
-</tr>
-<tr>
-<td><code>No value passed for parameter 'painter'</code></td>
-<td>te faltó el primer parámetro del <code>Image</code></td>
-<td>C — Parámetro</td>
-</tr>
-</tbody>
-</table>
-<h3 id="6-entrega">6. Entrega</h3>
-<ul>
-<li>Captura del emulador al arrancar (contador a 0, Reset gris) y tras 3 pulsaciones (contador a 3, Reset rojo).</li>
-<li>Captura del laboratorio de Arrangement con <code>SpaceBetween</code> y con otros dos modos a tu elección, etiquetadas.</li>
-<li>El código de tu <code>PracticaContenedores.kt</code>.</li>
-<li>Ejercicio 5: captura con la imagen visible y oculta, y captura de la carpeta <code>res/drawable</code> con tu PNG dentro.</li>
-<li><strong>Pregunta para responder en 2 líneas:</strong> ¿por qué el texto de la Card se actualiza solo si nadie lo vuelve a pintar a mano?</li>
-</ul>
 
 
 
