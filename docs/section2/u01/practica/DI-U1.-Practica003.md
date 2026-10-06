@@ -167,7 +167,96 @@ Es la forma que tiene Compose de decir: *"recuerda este valor entre recomposicio
 - [ ] El texto de la Card se actualiza al instante al pulsar (recomposición)
 - [ ] izq/centro/der están pegados a sus extremos (`SpaceBetween`)
 
-### 4. Solución
+#### Ejercicio 5 — Imagen que aparece y desaparece
+
+Los ejercicios anteriores solo movían texto y color. Ahora toca un **recurso real**: una imagen que el usuario puede mostrar y ocultar a placer. Primera vez que salimos del código: la imagen vive en una carpeta del proyecto, no en un String.
+
+**Paso 1 — Crear el recurso.** Consigue cualquier PNG pequeño (un logo, un meme, lo que sea) y cópialo en:
+
+```text
+app/src/main/res/drawable/demo_botones.png
+```
+
+En Android Studio: clic derecho sobre `res` → **New → Android Resource File**, o simplemente arrastra el PNG a la carpeta `drawable` desde el explorador. **Reglas del nombre:** solo minúsculas, números y guión bajo (`demo_botones` ✅ / `demo-botones` ❌ / `DemoBotones` ❌).
+
+**Paso 2 — El estado.** Una variable booleana decide si la imagen está en pantalla:
+
+```kotlin
+var imagenVisible by remember { mutableStateOf(true) }
+```
+
+**Paso 3 — Composición condicional.** En Kotlin, un `if` dentro de un composable decide qué se dibuja:
+
+```kotlin
+if (imagenVisible) {
+    Image(
+        painter = painterResource(R.drawable.demo_botones),
+        contentDescription = "Demo de botones",
+        modifier = Modifier.size(240.dp)
+    )
+} else {
+    Text("(imagen oculta)")
+}
+```
+
+**Paso 4 — Los botones que la controlan:**
+
+```kotlin
+Button(onClick = { imagenVisible = true })  { Text("Mostrar") }
+Button(onClick = { imagenVisible = false }) { Text("Ocultar") }
+Button(onClick = { imagenVisible = !imagenVisible }) { Text(if (imagenVisible) "Ocultar" else "Mostrar") }
+```
+
+Fíjate en el tercero: `!imagenVisible` invierte el valor (el "toggle"), y su etiqueta cambia sola porque el `Text` también se recomposición. **Un solo botón que sirve para las dos cosas.**
+
+> **Nota:** `R.drawable.demo_botones` es la forma de referirse al recurso: `R` es una clase autogenerada que Android rellena con TODOS los recursos del proyecto (imágenes, strings, colores...). Si acabas de copiar el PNG y `R` sale en rojo, haz **Build → Clean Project** o simplemente compila: se regenera solo.
+
+### 4. Diagramas del ejercicio 5 (imagen)
+
+**Al arrancar (imagen visible):**
+
+```text
+┌─────────────────────────────┐
+│                             │
+│  Ejercicio 5: imagen oculta │
+│                             │
+│   ┌─────────────────────┐   │
+│   │                     │   │
+│   │  [ACEPTAR][CANCELAR]│   │  ← tu PNG (240dp),
+│   │                     │   │     pintado por Image(
+│   └─────────────────────┘   │     painterResource(...))
+│                             │
+│  [Mostrar] [Ocultar] [Ocultar]│ ← 3 botones SpaceEvenly;
+│                             │    el 3º dice "Ocultar"
+│                             │    porque ahora se ve
+└─────────────────────────────┘
+```
+
+**Tras pulsar Ocultar:**
+
+```text
+┌─────────────────────────────┐
+│                             │
+│  Ejercicio 5: imagen oculta │
+│                             │
+│      (imagen oculta)        │  ← el Text sustituye a la
+│                             │     Image en el mismo sitio
+│                             │
+│ [Mostrar] [Ocultar] [Mostrar]│ ← el 3º botón CAMBIA su
+│                             │    etiqueta solo: ahora
+│                             │    diría "Mostrar"
+└─────────────────────────────┘
+```
+
+**Checklist del ejercicio 5:**
+
+- [ ] El PNG está en `res/drawable/` con nombre válido (minúsculas y guiones bajos)
+- [ ] Al pulsar Ocultar la imagen desaparece AL INSTANTE (recomposición)
+- [ ] El botón toggle cambia su propio texto según el estado
+- [ ] `contentDescription` está rellenado (accesibilidad)
+
+### 5. Solución
+
 
 !!! warning "Antes de mirar"
     Intenta montarlo tú con los diagramas de arriba. La solución está **verificada compilando** (`compileDebugKotlin EXIT:0`), pero el valor está en pelearte con los atributos antes de leerla.
@@ -301,9 +390,96 @@ fun PracticaContenedores() {
 | El contador suma pero la Card no cambia | el `Text` que lee `pulsaciones` no está en el composable que se recompon... revisa que el `by remember` esté DENTRO del composable | Silenciosa |
 | Botones pegados en la esquina | te falta el `Arrangement`/`Alignment` del Row — compila, pero se ve mal | Silenciosa |
 
-### 5. Entrega
+#### Solución del ejercicio 5 (PracticaImagen.kt) — verificada compilando
+
+```kotlin
+package org.example.project
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+
+@Composable
+fun PracticaImagen() {
+    // Estado: ¿se ve la imagen ahora mismo?
+    var imagenVisible by remember { mutableStateOf(true) }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text("Ejercicio 5: imagen oculta", fontSize = 20.sp)
+
+        // Composicion condicional: el if decide que se dibuja.
+        // Al cambiar imagenVisible, Compose recompone: entra por una rama o por otra.
+        if (imagenVisible) {
+            Image(
+                painter = painterResource(R.drawable.demo_botones),  // recurso de res/drawable
+                contentDescription = "Demo de botones",              // accesibilidad
+                modifier = Modifier.size(240.dp)
+            )
+        } else {
+            Text(
+                "(imagen oculta)",
+                fontSize = 16.sp,
+                modifier = Modifier.size(240.dp),     // mismo tamano: ocupa el mismo sitio
+                textAlign = TextAlign.Center
+            )
+        }
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Button(onClick = { imagenVisible = true }) {   // fuerza visible
+                Text("Mostrar")
+            }
+            Button(onClick = { imagenVisible = false }) {  // fuerza oculta
+                Text("Ocultar")
+            }
+            Button(onClick = { imagenVisible = !imagenVisible }) {  // toggle: invierte
+                Text(if (imagenVisible) "Ocultar" else "Mostrar")   // etiqueta dinamica
+            }
+        }
+    }
+}
+```
+
+**Errores típicos del ejercicio 5:**
+
+| Si te sale | Causa | Familia |
+|---|---|---|
+| `Unresolved reference 'painterResource'` | falta `import androidx.compose.ui.res.painterResource` | B — Import |
+| `Unresolved reference 'R'` o `'drawable'` | el PNG se llama con mayúsculas/guiones, o acabas de copiarlo y no se ha regenerado la clase R → **Build → Clean** y compila | B — Import (variante recurso) |
+| La imagen no se ve pero no hay error | nombre del archivo ≠ nombre en `R.drawable.loquesea` (deben coincidir EXACTO, sin `.png`) | Silenciosa |
+| `No value passed for parameter 'painter'` | te faltó el primer parámetro del `Image` | C — Parámetro |
+
+### 6. Entrega
 
 - Captura del emulador al arrancar (contador a 0, Reset gris) y tras 3 pulsaciones (contador a 3, Reset rojo).
 - Captura del laboratorio de Arrangement con `SpaceBetween` y con otros dos modos a tu elección, etiquetadas.
 - El código de tu `PracticaContenedores.kt`.
+- Ejercicio 5: captura con la imagen visible y oculta, y captura de la carpeta `res/drawable` con tu PNG dentro.
 - **Pregunta para responder en 2 líneas:** ¿por qué el texto de la Card se actualiza solo si nadie lo vuelve a pintar a mano?
