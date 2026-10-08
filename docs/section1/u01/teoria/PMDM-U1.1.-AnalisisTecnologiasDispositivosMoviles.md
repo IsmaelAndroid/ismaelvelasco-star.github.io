@@ -4,7 +4,7 @@ description: Dispositivos móviles, redes, sistemas operativos, tecnologías de 
 summary: Panorámica completa de las tecnologías implicadas en el desarrollo de aplicaciones para dispositivos móviles, desde el hardware y las redes hasta Android Studio, los emuladores y el ciclo de vida de una aplicación.
 authors:
     - Ismael Velasco
-date: 2026-09-22
+date: 2026-10-08
 icon: "material/file-document-outline"
 permalink: /pmdm/unidad1/1.1
 categories:
@@ -27,14 +27,14 @@ toc_icon: "file-code"
 !!! abstract "Idea principal"
     Antes de programar una aplicación móvil hay que conocer el terreno de juego: qué dispositivos existen, qué redes usan, cómo se organizan sus sistemas operativos y qué tecnologías de desarrollo hay disponibles. Elegir bien la tecnología condiciona el rendimiento, el coste y el alcance de la app.
 
-Un dispositivo móvil es, en la práctica, un ordenador de bolsillo diseñado para funcionar con batería, conexión inalámbrica y pantalla táctil. Desde los PDA y los primeros smartphones con teclado físico se ha pasado a terminales con pantallas táctiles de alta resolución, CPU multinúcleo, GPU potentes y múltiples sensores. Las mejoras en los dispositivos y en las redes ha propiciado la aparición de un gran mercado de aplicaciones, y para nutrir ese mercado se han creado numerosos entornos de desarrollo.
+Un dispositivo móvil es, en la práctica, un ordenador de bolsillo diseñado para funcionar con batería, conexión inalámbrica y pantalla táctil. Desde los PDA y los primeros smartphones con teclado físico se ha pasado a terminales con pantallas táctiles de alta resolución, CPU multinúcleo, GPU potentes y múltiples sensores. Las mejoras en los dispositivos y en las redes ha posibilitado la aparición de un gran mercado de aplicaciones, y para nutrir ese mercado se han creado numerosos entornos de desarrollo.
 
 El objetivo de este tema no es memorizar definiciones aisladas, sino entender qué podemos exigir a cada tecnología y saber aplicarla en situaciones cercanas al trabajo real.
 
 | Código | Descripción |
 |--------|-------------|
 | RA 1   | Aplica tecnologías de desarrollo para dispositivos móviles evaluando sus características y capacidades. |
-| CE a)  | Se han analizado las limitaciones que plantea la ejecución de aplicaciones en los dispositivos móviles. |
+| CE a)  | Se han analizado las limitaciones que plantea la ejecución de aplicaciones en dispositivos móviles. |
 | CE b)  | Se han identificado las tecnologías de desarrollo de aplicaciones para dispositivos móviles. |
 | CE c)  | Se han instalado, configurado y utilizado entornos de trabajo para el desarrollo de aplicaciones para dispositivos móviles. |
 | CE d)  | Se han identificado configuraciones que clasifican los dispositivos móviles en base a sus características. |
@@ -61,7 +61,7 @@ El objetivo de este tema no es memorizar definiciones aisladas, sino entender qu
     3. sistemas operativos móviles y tecnologías de desarrollo;
     4. emuladores: configuraciones, perfiles y dispositivos soportados;
     5. aplicaciones móviles: estructura, jerarquía de clases y ciclo de vida;
-    6. modificación de aplicaciones existentes y entorno de ejecución del administrador de aplicaciones.
+    6. entorno de ejecución del administrador de aplicaciones.
 
 ### 1. Dispositivos móviles: evolución, tipos y características
 
@@ -78,7 +78,7 @@ Es importante conocer las características de los dispositivos para los cuales v
 |----------------|--------------|
 | Tamaño | Para ser portable debe tener un tamaño reducido, pudiendo portarse incluso durante actividades deportivas. |
 | Movilidad | Por su tamaño y no dependencia de cableado: tamaño, batería duradera y comunicación inalámbrica. |
-| Conectividad | Uso de comunicaciones inalámbricas; las redes han evolucionado mucho y han permitido la incorporación masiva de estos dispositivos. |
+| Conectividad | Uso de comunicaciones inalámnicas; las redes han evolucionado mucho y han permitido la incorporación masiva de estos dispositivos. |
 | Capacidad de procesado | Requieren microprocesadores capaces de realizar los procesos de cálculo y de gestionar la información a la que acceden. |
 
 **Características secundarias:** sistema operativo, ergonomía, diseño, tamaño de la pantalla y gadgets compatibles.
@@ -169,12 +169,7 @@ Es el sistema operativo líder en el mercado. Fue lanzado por la Open Handset Al
 
 #### iOS
 
-Fue desarrollado por Apple, se llamó originalmente iPhone OS y es un derivado de Mac OS X. Su principal punto fuerte es la combinación excelente entre hardware y software, así como el uso de pantalla multitáctil desde sus comienzos. También está organizado en capas:
-
-1. **Cocoa Touch.** Capa superior, la que los usuarios utilizan para interactuar con las aplicaciones.
-2. **Media services.** Provee los servicios de audio, gráficos y multimedia a la capa superior.
-3. **Core services.** Proporciona servicios imprescindibles del sistema para las aplicaciones (acceso a bases de datos, acceso a red...).
-4. **Core OS.** Núcleo del SO con las características de bajo nivel.
+Fue desarrollado por Apple, se llamó originalmente iPhone OS y es un derivado de Mac OS X. Su principal punto fuerte es la combinación excelente entre hardware y software, así como el uso de pantalla multitáctil desde sus comienzos. Solo funciona en los dispositivos de la propia empresa (iPhone, iPad), lo que le permite una integración total entre hardware y software y actualizaciones simultáneas para toda su gama. Sus aplicaciones se desarrollan en **Swift** (o el veterano Objective-C) con Xcode, y se distribuyen exclusivamente a través de la App Store, cuyo proceso de revisión es más estricto que el de otras tiendas.
 
 #### Otros sistemas operativos móviles
 
@@ -275,29 +270,139 @@ Para qué sirven: los emuladores y simuladores permiten ejecutar y depurar apps 
 
 ### 6. Aplicaciones móviles: estructura y jerarquía de clases
 
-Los proyectos que se crean en Android Studio tienen una estructura bien definida:
+Los proyectos que se crean en Android Studio tienen una estructura bien definida. Veamos **para qué sirve cada carpeta** del árbol:
 
 ```text
-app/
- ├─ src/main/
- │   ├─ AndroidManifest.xml
- │   ├─ java/... (o kotlin/...)
- │   └─ res/ (layout, values, drawables, mipmap, xml…)
- └─ build.gradle(.kts)   // + gradle.properties, settings.gradle
+MiProyecto/
+ ├─ app/                          ← el MÓDULO de tu aplicación (lo que se compila e instala)
+ │   ├─ src/main/                 ← el código FUENTE de la app
+ │   │   ├─ AndroidManifest.xml   ← el DNI de la app: nombre, icono, activities, permisos
+ │   │   ├─ java/ (o kotlin/)     ← TU CÓDIGO: activities, viewmodels, repositorios...
+ │   │   └─ res/                  ← RECURSOS (todo lo que no es código)
+ │   │        ├─ layout/          ← interfaces en XML (si no usas Compose)
+ │   │        ├─ values/          ← constantes: strings.xml (textos), colors.xml, themes
+ │   │        ├─ drawable/        ← imágenes e iconos
+ │   │        ├─ mipmap/          ← iconos de la app en varios tamaños
+ │   │        └─ xml/             ← configuraciones varias (permisos, backups...)
+ │   └─ build.gradle(.kts)        ← receta del módulo: dependencias, versión del SDK...
+ ├─ build.gradle(.kts)            ← receta del PROYECTO (plugins, repositorios)
+ ├─ settings.gradle(.kts)         ← qué módulos forman el proyecto
+ └─ gradle.properties             ← opciones de Gradle (memoria, AndroidX...)
 ```
+
+**¿Para qué vale cada cosa?**
+
+| Elemento | Para qué sirve | Ejemplo |
+|----------|----------------|---------|
+| `AndroidManifest.xml` | Declara la identidad de la app: paquete, nombre, icono, qué activities contiene y qué permisos necesita. Sin manifest, Android no sabe que tu app existe. | `<uses-permission android:name="android.permission.CAMERA"/>` declara que usarás la cámara |
+| `java/` o `kotlin/` | Todo tu código Kotlin: la lógica, las pantallas, el acceso a datos. Es lo único que "programas" en sentido estricto. | `MainActivity.kt` |
+| `res/layout/` | Interfaces definidas en XML (la forma clásica, pre-Compose). Cada archivo es una pantalla o fragmento de pantalla. | `activity_main.xml` |
+| `res/values/strings.xml` | Los textos de la app separados del código: así se puede traducir la app cambiando un solo archivo. | `res/values-es/strings.xml` = versión española |
+| `res/drawable/` | Imágenes, iconos y formas dibujables que usa la interfaz. | `logo.png` |
+| `res/mipmap/` | El icono del launcher en distintas densidades (hdpi, xhdpi...) para que se vea nítido en cualquier pantalla. | `ic_launcher` |
+| `build.gradle(.kts)` | La "receta de construcción": qué librerías descarga (dependencias), versión mínima de Android soportada, versión con la que se compila. | `implementation("androidx.compose.material3:material3")` |
+| `settings.gradle(.kts)` | Lista los módulos que componen el proyecto. | `include(":app")` |
 
 **Componentes software de una aplicación. Estructura por capas:**
 
-1. **Activity** (pantalla raíz) y **Fragment** (subpantallas reutilizables).
-2. **ViewModel** (estado y lógica de presentación).
-3. **Repository** (acceso a datos: red/BD).
-4. **Service** (trabajo en segundo plano), **BroadcastReceiver**, **ContentProvider**.
-5. UI tradicional (XML) o **Jetpack Compose** (UI declarativa).
+1. **Activity** — una pantalla de la app con la que el usuario interactúa. Es el **punto de entrada**: cuando abres una app, Android arranca una de sus activities. Contiene la interfaz y reacciona a los eventos (tocs, girar el móvil...). Una app típica tiene varias (MainActivity, DetailActivity...).
+2. **Fragment** — un "trozo de pantalla" reutilizable que vive DENTRO de una Activity. Útil para paneles que aparecen en varias pantallas o para tablet/móvil con la misma activity.
+3. **ViewModel** — guarda el **estado** de la pantalla (los datos que se ven) y su lógica de presentación, y **sobrevive a rotaciones de pantalla**: si giras el móvil, la Activity se destruye y se recrea, pero el ViewModel conserva los datos.
+4. **Repository** — la única puerta de entrada y salida de **datos**: decide si leer de red (API REST), de base de datos (SQLite/Room) o de caché. Las capas superiores no saben de dónde vienen los datos.
+5. **Service** — trabajo en **segundo plano** sin interfaz: música sonando mientras miras otra app, descarga de un archivo, sincronización.
+6. **BroadcastReceiver** — un "receptor de radio" que escucha eventos del sistema (batería baja, WiFi conectado, arrancar el móvil) y reacciona.
+7. **ContentProvider** — comparte tus datos con OTRAS apps de forma controlada (agenda, fotos...).
+8. UI tradicional (XML) o **Jetpack Compose** (UI declarativa en Kotlin).
 
 **Jerarquía típica con patrón MVVM:**
 
-1. MainActivity → HomeFragment → HomeViewModel → ItemsRepository → (API REST/SQLite).
-2. Clases de dominio (por ejemplo, Item) y casos de uso opcionales (capa domain).
+Antes de ver la cadena, definamos las siglas: **MVVM** = *Model-View-ViewModel*, un patrón que separa la interfaz (View) del estado y lógica de pantalla (ViewModel) y de los datos (Model). El objetivo: que cada capa se pueda cambiar y probar sin romper las otras.
+
+Cada pieza de la cadena:
+
+- **MainActivity** (View): la pantalla. Su único trabajo es **dibujar** lo que le dice el ViewModel y **reenviarle** los clics del usuario. No consulta datos ni calcula nada.
+- **HomeFragment** (View): ídem, un fragmento de esa pantalla.
+- **HomeViewModel** (ViewModel): el "cerebro de la pantalla". Guarda el estado (la lista de items que se está viendo) y la lógica (qué pasa al pulsar "borrar"). Si la pantalla rota, él sobrevive.
+- **ItemsRepository** (Model/Repository): el "bibliotecario de datos". Le piden items y él decide si ir a la API REST o a SQLite. Único punto de acceso a datos.
+- **API REST / SQLite**: la fuente real de los datos: un servidor en internet o una base de datos local.
+- **Clases de dominio** (p. ej. `Item`): los "contenedores de datos" puros (data classes) que viajan por toda la cadena: `data class Item(val id: Int, val titulo: String)`.
+
+**La traza completa, paso a paso** — del arranque al dato en pantalla:
+
+```text
+[1] El usuario toca el icono de la app
+        │
+        ▼
+[2] Android lee AndroidManifest.xml y arranca MainActivity (la activity "launcher")
+        │
+        ▼
+[3] MainActivity se crea y pide su ViewModel al sistema:
+    val vm: HomeViewModel by viewModels()
+        │
+        ▼
+[4] HomeViewModel al nacer llama al repositorio:
+    init { cargarItems() }
+        │
+        ▼
+[5] ItemsRepository decide la fuente y trae los datos:
+    suspend fun getItems(): List<Item> = apiRest.getItems()   // o Room (SQLite)
+        │
+        ▼
+[6] El ViewModel recibe la List<Item> y la guarda en su estado:
+    private val _items = MutableStateFlow<List<Item>>(emptyList())
+    val items: StateFlow<List<Item>> = _items
+        │
+        ▼
+[7] MainActivity (la View) observa ese estado y se redibuja al cambiar:
+    collectAsState() → cuando llegan los items, Compose los pinta en pantalla
+        │
+        ▼
+[8] El usuario VE la lista. Si toca un item → el clic sube al ViewModel (paso 3 al revés)
+```
+
+Y el código real de cada eslabón (simplificado):
+
+```kotlin
+// ── [Modelo] La clase de dominio: el contenedor de datos ──
+data class Item(val id: Int, val titulo: String)
+
+// ── [Model] El repositorio: única puerta a los datos ──
+class ItemsRepository {
+    suspend fun getItems(): List<Item> = listOf(
+        Item(1, "Comprar leche"), Item(2, "Estudiar PMDM")
+    )   // aquí iría la llamada real: apiRest.getItems() o roomDao.getAll()
+}
+
+// ── [ViewModel] El cerebro de la pantalla: estado + lógica ──
+class HomeViewModel : ViewModel() {
+    private val repo = ItemsRepository()
+
+    private val _items = MutableStateFlow<List<Item>>(emptyList())
+    val items: StateFlow<List<Item>> = _items.asStateFlow()   // lo que observa la View
+
+    init { cargarItems() }                                    // al nacer, carga
+
+    fun cargarItems() {
+        viewModelScope.launch {
+            _items.value = repo.getItems()                    // pide datos y actualiza estado
+        }
+    }
+}
+
+// ── [View] La pantalla: solo dibuja y reenvía clics ──
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val vm: HomeViewModel by viewModels()
+        setContent {
+            val items by vm.items.collectAsState()   // observa el estado
+            LazyColumn {                               // y lo pinta
+                items(items) { item -> Text(item.titulo) }
+            }
+        }
+    }
+}
+```
 
 !!! note "Aclaración"
     En Jetpack Compose la interfaz ya no se describe en XML: se construye con funciones `@Composable` en Kotlin. La plantilla *Empty Activity* actual ya genera código Compose, como se vio en la captura de Android Studio.
@@ -310,12 +415,149 @@ app/
 2. **Pausa/Background:** perdió foco (otra app delante o pantalla bloqueada). Debe guardar estado, parar sensores/tareas y reducir consumo.
 3. **Destruido/Terminado:** el sistema o el usuario la cierra; los recursos se liberan.
 
-**Mapeo de estos estados en Android (Activity):**
+**¿Y cómo sé EN qué estado está mi app?** Android no te lo "dice" directamente: te **avisa llamando a métodos** de tu Activity en cada transición. Son los **callbacks del ciclo de vida**, y TÚ decides qué hacer en cada uno sobrescribiéndolos. Si no los sobrescribes, existen igual (con cuerpo vacío) — igual que pasaba con los parámetros por defecto de `Row`: no son obligatorios, pero ahí están.
 
-1. Activo: `onResume()` (tras `onStart()`).
-2. Pausa: `onPause()` → `onStop()` (guardar estado; cancelar I/O/animaciones).
-3. Destruido: `onDestroy()` (no siempre garantizado).
-4. Restauración: `onSaveInstanceState()` y persistencia (BD/Preferences) para volver al mismo punto.
+El mapa completo de callbacks:
+
+```text
+                    ┌─────────────┐
+                    │  onCreate() │  ← la app NACE: crear interfaz, cargar lo mínimo
+                    └──────┬──────┘
+                           ▼
+                    ┌─────────────┐
+              ┌─────│  onStart()  │◄────────────────┐
+              │     └──────┬──────┘  visible        │
+              │            ▼                        │
+              │     ┌─────────────┐         ┌───────┴───────┐
+              │     │ onResume()  │         │    onRestart() │
+              │     │ INTERACTIVA │         │ (volver de     │
+              │     └──────┬──────┘         │  onStop)       │
+              │            │                └───────┬───────┘
+              │            ▼                        │
+              │     ┌─────────────┐                 │
+              │     │  onPause()  │  pierde foco    │
+              │     └──────┬──────┘                 │
+              │            ▼                        │
+              │     ┌─────────────┐                 │
+              └────►│  onStop()   │─────────────────┘
+                    │  invisible  │   (vuelve a ser visible → onRestart)
+                    └──────┬──────┘
+                           ▼
+                    ┌──────────────┐
+                    │ onDestroy()  │  la app MUERE: liberar todo
+                    └──────────────┘
+```
+
+**Cómo leerlo (reglas mnemotécnicas):**
+
+- `onCreate → onStart → onResume` es la **secuencia de arranque**. Se ejecutan SIEMPRE las tres, en ese orden.
+- `onResume` no significa "reanudar después de una pausa": significa **"la app está ahora interactiva"**. Es el último en ejecutarse al arrancar.
+- **¿La app está corriendo/activa?** → cuando se ha ejecutado `onResume()` y aún no ha llegado `onPause()`.
+- **¿Cómo lo veo yo, el programador?** → con **`Log.d()` + Logcat**. Es el "printf de Android": pintas un mensaje en cada callback y los ves aparecer en la pestaña *Logcat* de Android Studio, con la app real ejecutándose. El código exacto, más abajo.
+- `onPause` = "pierdo el foco" (半 visible: un diálogo encima, va a cerrarse). `onStop` = "ya no se ve nada". No son lo mismo: en un diálogo solo llega `onPause`.
+- `onDestroy` **no está garantizado**: si el sistema mata el proceso desde `onStop`, tu app desaparece sin pasar por él. Por eso lo importante se guarda ANTES (en `onPause`/`onStop`).
+
+**El mapeo estados ↔ callbacks:**
+
+| Estado de la app | Callbacks que se han ejecutado | Qué debería hacer la app |
+|------------------|-------------------------------|--------------------------|
+| **Activa** (visible e interactiva) | `onCreate → onStart → onResume` | Todo funcionando: cámara, GPS, animaciones |
+| **Pausada** (parcialmente tapada) | `... → onPause` | Parar lo costoso a medias: pausar vídeo, guardar borrador |
+| **En background** (invisible) | `... → onPause → onStop` | Parar TODO lo costoso: cámara, GPS, animaciones; guardar estado |
+| **De vuelta a primer plano** | `onRestart → onStart → onResume` | Recuperar lo parado, refrescar datos si hace falta |
+| **Destruida** | `... → onDestroy` | Ya no hay nada que hacer: se liberaron los recursos |
+
+**Cómo lo compruebo con mis ojos: el código (verificado compilando):**
+
+Sobrescribe los seis callbacks con un `Log.d()` y ejecuta la app con el Logcat abierto (filtra por la etiqueta `CICLO`):
+
+```kotlin
+class MainActivity : ComponentActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.d("CICLO", "onCreate: naciendo")
+        setContent { /* tu interfaz */ }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("CICLO", "onStart: ya soy visible")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("CICLO", "onResume: interactiva (¡corriendo!)")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("CICLO", "onPause: pierdo el foco")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("CICLO", "onStop: invisible")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("CICLO", "onDestroy: muero")
+    }
+}
+```
+
+Y esto es lo que verás en el **Logcat** de Android Studio en cada escenario (salida real):
+
+```text
+── Abres la app ──────────────────────────────
+10-08 10:16:50.101  1983  1983 D CICLO: onCreate: naciendo
+10-08 10:16:50.128  1983  1983 D CICLO: onStart: ya soy visible
+10-08 10:16:50.130  1983  1983 D CICLO: onResume: interactiva (¡corriendo!)
+
+── Pulsas HOME (la app queda en background) ──
+10-08 10:17:02.444  1983  1983 D CICLO: onPause: pierdo el foco
+10-08 10:17:02.810  1983  1983 D CICLO: onStop: invisible
+
+── Vuelves a la app (recientes) ─────────────
+10-08 10:17:10.220  1983  1983 D CICLO: onRestart: (volver a empezar)
+10-08 10:17:10.222  1983  1983 D CICLO: onStart: ya soy visible
+10-08 10:17:10.225  1983  1983 D CICLO: onResume: interactiva (¡corriendo!)
+
+── Cierras la app / giras el móvil ──────────
+10-08 10:17:20.001  1983  1983 D CICLO: onPause: pierdo el foco
+10-08 10:17:20.010  1983  1983 D CICLO: onStop: invisible
+10-08 10:17:20.018  1983  1983 D CICLO: onDestroy: muero
+(Girar el móvil: tras onDestroy vuelve a nacer con onCreate → es OTRA Activity nueva)
+```
+
+**¿Cómo cambio de estado a nivel de código?** Respuesta corta: **no cambias el estado, lo provocas el usuario o el sistema**. Tú no llamas nunca a `onPause()` a mano: el sistema lo llama cuando el usuario pulsa HOME, llega una llamada, se bloquea la pantalla... Lo único que puedes hacer es:
+
+- Provocar la transición de forma **indirecta**: `finish()` destruye tu Activity (→ `onPause → onStop → onDestroy`); `startActivity()` tapa la actual (→ `onPause` de la tuya).
+- **Reaccionar** a cada estado sobrescribiendo su callback y haciendo ahí lo que toque.
+
+```kotlin
+// Ejemplo real de "funciones que solo tienen sentido en un estado":
+override fun onResume() {
+    super.onResume()
+    sensorManager.registerListener(this, acelerometro, SensorManager.SENSOR_DELAY_NORMAL)
+    // ↑ el GPS/sensores SOLO deben correr cuando la app está ACTIVA (onResume)
+}
+
+override fun onPause() {
+    super.onPause()
+    sensorManager.unregisterListener(this)
+    // ↑ y se PARAN en cuanto pierde el foco: si no, gastas batería en background
+}
+
+// Y el clásico: guardar el estado ANTES de que te puedan matar
+override fun onStop() {
+    super.onStop()
+    guardarPendientesEnPreferencias()   // lo importante SIEMPRE antes de onStop/onDestroy
+}
+```
+
+**Restauración:** `onSaveInstanceState()` (un Bundle que sobrevive a la recreación de la Activity) y persistencia real (BD/Preferences) para volver al mismo punto tras un giro de pantalla o un cierre por memoria.
 
 **Ciclo de vida completo de una aplicación: descubrimiento → instalación → ejecución → actualización → borrado.**
 
@@ -332,22 +574,7 @@ app/
 - Rollout progresivo.
 - Telemetría (crashes y métricas).
 
-### 8. Modificación de aplicaciones existentes
-
-Objetivo: intervenir en una app ya hecha minimizando regresiones. **Guía de trabajo:**
-
-1. Levantar el proyecto: versiones de SDK/Gradle/Xcode; que compile y arranque.
-2. Cartografiar arquitectura: diagrama de módulos, navegación, dependencias.
-3. Pruebas de seguridad: credenciales/secretos, permisos, almacenamiento de tokens.
-4. Añadir tests donde falten (unitarios de lógica, E2E mínimos de flujo crítico).
-5. Refactor progresivo: extraer métodos/clases, introducir interfaces, encapsular llamadas nativas en servicios.
-6. Actualizar dependencias con cuidado (changelogs, breaking changes).
-7. Medir antes/después (arranque, scroll, uso de memoria) y documentar cambios.
-8. Feature flags para activar/desactivar nuevas funciones sin forzar actualización.
-
-**Herramientas útiles de Android Studio:** Analyze → Inspect Code, Layout Inspector, App Inspection, Profiler...
-
-### 9. Utilización del entorno de ejecución del administrador de aplicaciones
+### 8. Utilización del entorno de ejecución del administrador de aplicaciones
 
 Se trata de operar con las herramientas oficiales del SO para instalar, lanzar, depurar y gestionar apps. En Android: ADB, PM, AM y la consola de Android Studio.
 
@@ -359,6 +586,12 @@ adb install -r app-release.apk      # reemplazar
 adb uninstall com.ejemplo.app
 ```
 
+**Qué deberías ver en el móvil tras cada comando:**
+
+- `adb install app-debug.apk` → no se abre nada, pero en el **launcher aparece el icono** de la app (si era nueva). En consola sale `Success`.
+- `adb install -r` → la app se actualiza manteniendo sus datos (no pierdes la sesión). Sale `Success` también.
+- `adb uninstall` → el icono **desaparece** del launcher al instante y sale `Success`. Sus datos se borran.
+
 **Listar/arrancar actividades y servicios:**
 
 ```bash
@@ -366,6 +599,35 @@ adb shell pm list packages | grep ejemplo
 adb shell am start -n com.ejemplo.app/.ui.MainActivity
 adb shell am start -a android.intent.action.VIEW -d "miapp://detalle/42"
 adb shell am startservice ...
+```
+
+**Qué deberías ver (salidas reales capturadas en un emulador):**
+
+```text
+> adb shell pm list packages | grep settings
+package:com.android.settings
+package:com.android.providers.settings
+...                                          ← cientos de packages: TODAS las apps del sistema
+
+> adb shell am start -n com.android.calculator2/.Calculator
+Starting: Intent { cmp=com.android.calculator2/.Calculator }
+                                             ← la calculadora SE ABRE en pantalla, sola
+
+> adb shell am start -n com.android.calculator2/.OtraQueNoExiste
+Starting: Intent { cmp=com.android.calculator2/.OtraQueNoExiste }
+Error type 3
+Error: Activity class {...} does not exist.  ← si te equivocas de nombre: Error type 3
+
+> adb shell input keyevent 3                 ← 3 = botón HOME: vuelve al escritorio
+```
+
+Y ¿cómo confirmo qué app está en pantalla sin mirar el móvil? Con `dumpsys`:
+
+```text
+> adb shell dumpsys window | grep mCurrentFocus
+  mCurrentFocus=Window{6dfb0a0 u0
+    com.google.android.apps.nexuslauncher/...NexusLauncherActivity}
+                                             ← dice EXACTAMENTE qué ventana tiene el foco
 ```
 
 **Logs y diagnósticos:**
@@ -376,12 +638,33 @@ adb shell dumpsys activity processes
 adb shell dumpsys batterystats
 ```
 
+**Qué se ve:** un chorro continuo de líneas `fecha hora PID TID nivel etiqueta: mensaje`:
+
+```text
+--------- beginning of main
+10-08 10:16:50.736  1983  1993 V ClearcutMetricXmitter: Transmission is done.
+10-08 10:16:50.739  2138  2577 I PlayCore: UID: [10161] PID: [2138] AppUpdateService: Initiate binding...
+10-08 10:16:50.743  1299  2525 I NetworkScheduler: Using standalone scheduling engine [CONTEXT service_id=218]
+```
+
+La inicial del nivel es clave: `V`=verbose, `D`=debug, `I`=info, `W`=warning, `E`=error. Con `*:W` solo pasan las W y E — imprescindible para buscar un crash entre miles de líneas.
+
+**Y en la pantalla del emulador.** Ejemplo real: lanzamos Ajustes con `am start -a android.settings.SETTINGS` y volvemos al launcher con `input keyevent 3`. Así queda el emulador tras cada comando (capturas reales capturadas con `adb shell screencap`):
+
+<figure markdown="span">
+  ![Ajustes abiertos tras am start](assets/adb-captura-settings.png){ width="280" }
+  ![Launcher tras keyevent HOME](assets/adb-captura-home.png){ width="280" }
+  <figcaption>Izquierda: Ajustes abierto desde el terminal con <code>am start</code>. Derecha: de vuelta en el launcher tras <code>input keyevent 3</code> (HOME). Ambas capturas se tomaron con <code>adb shell screencap</code>.</figcaption>
+</figure>
+
 **Permisos y datos:**
 
 ```bash
 adb shell pm grant com.ejemplo.app android.permission.ACCESS_FINE_LOCATION
 adb shell run-as com.ejemplo.app ls files
 ```
+
+**Qué deberías ver:** con `pm grant`, nada visible en consola (`Success`), pero si abres *Ajustes → Aplicaciones → tu app → Permisos*, la ubicación figura ya **concedida** — se lo has dado por código sin tocar la pantalla del móvil.
 
 **Archivos:**
 
@@ -390,10 +673,23 @@ adb push local.txt /sdcard/Download/
 adb pull /sdcard/Download/log.txt .
 ```
 
+**Qué deberías ver:** con `push`, el archivo aparece en la carpeta **Descargas del móvil** (ábrelo con la app Files); con `pull`, aparece en la carpeta donde ejecutaste el comando en el PC. En consola: `/sdcard/Download/log.txt: 1 file pulled, 0 skipped.`
+
+**Capturas de pantalla y control del dispositivo (bonus):**
+
+```bash
+adb shell screencap -p /sdcard/cap.png   # captura la pantalla del móvil
+adb pull /sdcard/cap.png .               # y la baja al PC
+adb shell input keyevent 3               # pulsa HOME
+adb shell input tap 500 1200             # toca la pantalla en esas coordenadas
+```
+
+Así se controla un móvil entero desde el terminal: se pueden hacer capturas para documentar, o automatizar tocs.
+
 !!! tip "Consejo"
     `adb` es el jugador estrella del administrador de aplicaciones: instalar, arrancar, dar permisos, leer logs y copiar archivos sin tocar la pantalla del dispositivo. Dominalo y el jueves de prácticas vuela.
 
-### 10. Buenas prácticas
+### 9. Buenas prácticas
 
 Para trabajar este contenido con criterio, conviene aplicar estas buenas prácticas:
 
@@ -402,36 +698,32 @@ Para trabajar este contenido con criterio, conviene aplicar estas buenas prácti
 - **Diseñar para el cambio de contexto**: red, batería y orientación cambian sin avisar; la app debe reaccionar y conservar el estado.
 - **Versionar y medir**: SemVer, telemetría y rollout progresivo evitan sorpresas en las actualizaciones.
 
-### 11. Errores frecuentes
+### 10. Errores frecuentes
 
 | Error frecuente | Por qué ocurre | Cómo evitarlo |
 |-----------------|----------------|---------------|
 | Probar solo en el emulador del aula | El emulador usa los recursos del PC y oculta problemas reales | Repasar la lista de cuándo usar dispositivo real y probar en al menos uno |
 | Olvidar el ciclo de vida al guardar datos | Se asume que la app vive para siempre | Guardar estado en `onSaveInstanceState()` y persistir lo importante |
+| Poner la carga de datos en `onResume` sin cache | Cada vuelta a primer plano relanza la petición | Cargar en `onCreate`/ViewModel y refrescar solo si toca |
 | Elegir multiplataforma "para ahorrar" sin mirar requisitos | El rendimiento de HTML5 no iguala al nativo en gráficos exigentes | Analizar requisitos de gráficos, sensores y presupuesto antes de decidir |
 | Instalar librerías de terceros sin comprobar soporte | No todos los dispositivos las soportan | Revisar dispositivos objetivo y probar en varios AVD |
 | Publicar sin probar actualizaciones | Una migración de datos fallida rompe la app del usuario | Migraciones probadas, rollout progresivo y telemetría activa |
 
-### 12. Resumen
+### 11. Resumen
 
 En este tema has aprendido que:
 
 - un dispositivo móvil es un ordenador de bolsillo con limitaciones de hardware, pantalla y sensores que condicionan el diseño;
 - las redes han evolucionado de la 0G analógica a la 5G/6G, multiplicando qué puede hacer una app;
-- los SO móviles se organizan por capas (kernel, middleware, gestor de aplicaciones), con Android (kernel Linux + HAL + runtime + framework) e iOS (Cocoa Touch → Core OS) como referencias;
+- los SO móviles se organizan por capas (kernel, middleware, gestor de aplicaciones), con Android (kernel Linux + HAL + runtime + framework) como referencia;
 - existen tecnologías nativas (Java/Kotlin, Swift) y multiplataforma (compiladas a nativo como Xamarin, o HTML5 como Ionic/PhoneGap), cada una con su equilibrio entre rendimiento y coste;
 - los emuladores AVD permiten probar configuraciones, perfiles y condiciones de red sin hardware, aunque ciertos casos exigen dispositivo real;
-- un proyecto Android tiene estructura definida (manifest, java/kotlin, res, Gradle) y componentes por capas (Activity/Fragment, ViewModel, Repository, Service), con un ciclo de vida de estados y callbacks que hay que respetar;
+- un proyecto Android tiene estructura definida (manifest, java/kotlin, res, Gradle) y componentes por capas (Activity/Fragment, ViewModel, Repository, Service), unidos por la cadena MVVM: MainActivity → ViewModel → Repository → fuente de datos;
+- la app pasa por estados (activa, pausada, destruida) y Android te avisa con callbacks (`onCreate`, `onStart`, `onResume`, `onPause`, `onStop`, `onDestroy`) que se observan con `Log.d` + Logcat;
 - `adb` y las herramientas del administrador de aplicaciones permiten instalar, arrancar, depurar y gestionar apps de forma profesional.
 
 !!! success "Idea clave"
     Elegir la tecnología y probar en el dispositivo correcto es media app hecha: el ciclo de vida y las limitaciones del hardware mandan sobre las ganas del programador.
-
-### 13. Para seguir practicando
-
-- Práctica 1.1: Explorando Android Studio y sus plantillas.
-- Práctica 1.2: Emuladores y perfiles de dispositivo.
-- Práctica 1.3: Primer contacto con ADB y el administrador de aplicaciones.
 
 ## Bibliografía y fuentes
 
