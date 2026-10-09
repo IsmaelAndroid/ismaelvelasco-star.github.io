@@ -696,6 +696,23 @@ LazyVerticalGrid(
 
 Código 23. LazyVerticalGrid con 3 columnas: cada elemento de la lista se convierte en un botón que ocupa su celda entera. Los huecos y separaciones se controlan con Arrangement.spacedBy.
 
+Estos cuatro contenedores combinados son todo lo que necesita una pantalla real. Aquí tienes capturas reales del emulador con una app que los usa:
+
+<figure markdown>
+![Captura real del emulador: Column con Card de estado, fila de botones Aceptar/Cancelar y RadioButton — todo anidado dentro de un Column raíz.](assets/captura-contenedores.png)
+<figcaption>Fig. 11. Captura real del emulador: Column + Card + Row de botones trabajando juntos.</figcaption>
+</figure>
+
+<figure markdown>
+![Captura real del emulador: fila Aceptar/Cancelación con los dos niveles de botón relleno y outlined.](assets/captura-botones.png)
+<figcaption>Fig. 12. Captura real: la Row con dos Button (relleno y outlined) centados con spacedBy.</figcaption>
+</figure>
+
+<figure markdown>
+![Captura real del emulador: contador de pulsaciones con botón SUMAR y tres Text repartidos con SpaceBetween.](assets/captura-contador.png)
+<figcaption>Fig. 13. Captura real: Row con Arrangement.SpaceBetween repartiendo izq/centro/der, y el estado viviendo en la variable contador.</figcaption>
+</figure>
+
 ```mermaid
 flowchart TD
     A[¿Cómo ordeno mis componentes?] --> B{¿En vertical<br/>uno bajo otro?}
@@ -818,6 +835,13 @@ Código 25. Reproductor en rejilla 3×3: nueve botones colocados automáticament
 │  [⏪ ATRÁS]  [STOP]   [ADE. ⏩]│
 └──────────────────────────────┘
 ```
+
+La misma rejilla, con tarjetas de imágenes en vez de botones, es todo lo que necesita una galería — esta captura es de una app real corriendo en el emulador:
+
+<figure markdown>
+![Captura real del emulador: galería con LazyVerticalGrid, título arriba y tarjeta con imagen.](assets/captura-reproductor.png)
+<figcaption>Fig. 14. La rejilla de este caso práctico, en versión galería de imágenes: misma estructura, contenido distinto.</figcaption>
+</figure>
 
 ## 11. Resumen y resolución del caso práctico de la unidad
 

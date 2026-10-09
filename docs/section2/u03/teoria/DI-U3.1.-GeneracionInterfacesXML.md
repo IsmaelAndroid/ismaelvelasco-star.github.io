@@ -351,7 +351,12 @@ Image(
 
 ![Logo FourWaves con las cuatro ondas.](assets/fig10-logo.png)
 
-Un solo XML, todas las densidades: el drawable vectorial no tiene `@2x/@3x` como los PNG — escala sin pérdida porque es matemática, no píxeles.
+Un solo XML, todas las densidades: el drawable vectorial no tiene `@2x/@3x` como los PNG — escala sin pérdida porque es matemática, no píxeles. Y este es el resultado real, corriendo en el emulador: la app consumiendo un drawable a través de `painterResource` — con Mostrar/Ocultar gobernando la recomposición:
+
+<figure markdown>
+![Captura real del emulador: pantalla Compose mostrando un drawable con botones Mostrar/Ocultar.](assets/captura-drawable-compose.png)
+<figcaption>Fig. 7. Un drawable de `res/drawable` dentro de `Image(painterResource(...))`, en el emulador.</figcaption>
+</figure>
 
 ### 5.2. Caso práctico 2: *"Estructura de un documento XML de datos"*
 
@@ -393,7 +398,12 @@ Un solo XML, todas las densidades: el drawable vectorial no tiene `@2x/@3x` como
 </maravillas>
 ```
 
-**Desenlace.** La información queda estructurada en elementos `maravilla` repetidos con subelementos regulares — el patrón exacto que luego parsearás con `XmlPullParser` en la práctica de la unidad (y el mismo que sigue hoy cualquier feed RSS o sitemap).
+**Desenlace.** La información queda estructurada en elementos `maravilla` repetidos con subelementos regulares — el patrón exacto que luego parsearás con `XmlPullParser` en la práctica de la unidad (y el mismo que sigue hoy cualquier feed RSS o sitemap). Y aquí, el documento ya **vivo en la app**: parseado y pintado en una `LazyColumn` de `Card`s:
+
+<figure markdown>
+![Captura real del emulador: las 7 maravillas cargadas desde res/xml y mostradas como lista de tarjetas.](assets/captura-maravillas.png)
+<figcaption>Fig. 8. El XML de datos convertido en interfaz: cada `maravilla` es una Card con nombre y país.</figcaption>
+</figure>
 
 ## 6. Resumen
 
