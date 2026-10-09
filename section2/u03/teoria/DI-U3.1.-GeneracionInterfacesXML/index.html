@@ -1625,6 +1625,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#36-el-layout-editor-la-palette-que-volvio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6. El Layout Editor: la palette que volvió
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2062,6 +2073,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#36-el-layout-editor-la-palette-que-volvio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6. El Layout Editor: la palette que volvió
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2353,6 +2375,38 @@
 <p class="admonition-title">¿Y el clásico Layout Editor de vistas XML?</p>
 <p>El editor visual de layouts XML (Design/Dual) sigue existiendo para apps Views heredadas, pero no es el camino recomendado para UI nueva: para eso está Compose, que viste en las UD 1 y 2. Aquí nos quedamos con la parte de XML que sigue viva: recursos y datos.</p>
 </div>
+<h3 id="36-el-layout-editor-la-palette-que-volvio">3.6. El Layout Editor: la palette que volvió</h3>
+<p>En la UD 1 descartamos la palette de componentes porque en Compose no existe: el código es la fuente de la verdad. Pues bien: <strong>en el sistema Views XML la palette sigue ahí, y es justo la "herramienta específica" que pide el temario</strong> para generar interfaces desde XML.</p>
+<p>Abre un layout XML (o crea una <strong>Empty Views Activity</strong>) y pulsa <strong>Split</strong> o <strong>Design</strong> en la esquina superior derecha del editor. Eso es el <strong>Layout Editor</strong>:</p>
+<p><img alt="El Layout Editor de Android Studio en modo Split: a la izquierda la Palette con sus categorías (Common, Text, Buttons, Widgets, Layouts, Containers…), el Component Tree con la jerarquía de vistas y el XML resultante sincronizado." src="../assets/fig11-layout-editor.png" /></p>
+<p>Sus tres piezas, que son literalmente los criterios del RA2 del módulo:</p>
+<table>
+<thead>
+<tr>
+<th>Pieza</th>
+<th>Qué hace</th>
+<th>Criterio RA2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Palette</strong> (izquierda)</td>
+<td>Arrastras <code>Button</code>, <code>TextView</code>, <code>CheckBox</code>… al lienzo y Android Studio <strong>escribe el XML por ti</strong></td>
+<td><em>b) Se ha generado la descripción del interfaz en XML usando un editor gráfico</em></td>
+</tr>
+<tr>
+<td><strong>Component Tree</strong></td>
+<td>La jerarquía de nodos como árbol — la misma metáfora del árbol de composables de la UD 1</td>
+<td><em>c) Se ha analizado el documento XML generado</em></td>
+</tr>
+<tr>
+<td><strong>Attributes</strong> (derecha)</td>
+<td>Cambias <code>text</code>, <code>size</code>, <code>onClick</code>… visualmente y el XML se modifica al momento</td>
+<td><em>d) Se ha modificado el documento XML</em></td>
+</tr>
+</tbody>
+</table>
+<p>El flujo completo: arrastras de la palette → miras el XML que ha escrito → lo editas a mano en Code → vuelves a Design y ahí sigue tu cambio. <strong>Generar, analizar y modificar</strong>: el ciclo completo del RA2 sobre un solo documento, con la herramienta que ya tienen instalada.</p>
 <h2 id="4-eventos">4. Eventos</h2>
 <p>Una interfaz, por sí sola, no sabe cuándo el usuario quiere actuar. Los <strong>eventos</strong> son el mecanismo que convierte una interfaz estática en dinámica: pulsaciones, cambios de texto, foco, gestos.</p>
 <p>El material clásico enumeraba MouseMove, MouseDown, Click, GetFocus, LostFocus… El móvil los traduce a su vocabulario (no hay ratón ni foco de teclado igual que en escritorio):</p>
