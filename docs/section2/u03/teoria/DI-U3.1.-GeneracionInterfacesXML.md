@@ -223,6 +223,24 @@ Si el material de 2 años atrás dedicaba un apartado entero a elegir editor XML
 !!! note "¿Y el clásico Layout Editor de vistas XML?"
     El editor visual de layouts XML (Design/Dual) sigue existiendo para apps Views heredadas, pero no es el camino recomendado para UI nueva: para eso está Compose, que viste en las UD 1 y 2. Aquí nos quedamos con la parte de XML que sigue viva: recursos y datos.
 
+### 3.6. El Layout Editor: la palette que volvió
+
+En la UD 1 descartamos la palette de componentes porque en Compose no existe: el código es la fuente de la verdad. Pues bien: **en el sistema Views XML la palette sigue ahí, y es justo la "herramienta específica" que pide el temario** para generar interfaces desde XML.
+
+Abre un layout XML (o crea una **Empty Views Activity**) y pulsa **Split** o **Design** en la esquina superior derecha del editor. Eso es el **Layout Editor**:
+
+![El Layout Editor de Android Studio en modo Split: a la izquierda la Palette con sus categorías (Common, Text, Buttons, Widgets, Layouts, Containers…), el Component Tree con la jerarquía de vistas y el XML resultante sincronizado.](assets/fig11-layout-editor.png)
+
+Sus tres piezas, que son literalmente los criterios del RA2 del módulo:
+
+| Pieza | Qué hace | Criterio RA2 |
+|---|---|---|
+| **Palette** (izquierda) | Arrastras `Button`, `TextView`, `CheckBox`… al lienzo y Android Studio **escribe el XML por ti** | *b) Se ha generado la descripción del interfaz en XML usando un editor gráfico* |
+| **Component Tree** | La jerarquía de nodos como árbol — la misma metáfora del árbol de composables de la UD 1 | *c) Se ha analizado el documento XML generado* |
+| **Attributes** (derecha) | Cambias `text`, `size`, `onClick`… visualmente y el XML se modifica al momento | *d) Se ha modificado el documento XML* |
+
+El flujo completo: arrastras de la palette → miras el XML que ha escrito → lo editas a mano en Code → vuelves a Design y ahí sigue tu cambio. **Generar, analizar y modificar**: el ciclo completo del RA2 sobre un solo documento, con la herramienta que ya tienen instalada.
+
 ## 4. Eventos
 
 Una interfaz, por sí sola, no sabe cuándo el usuario quiere actuar. Los **eventos** son el mecanismo que convierte una interfaz estática en dinámica: pulsaciones, cambios de texto, foco, gestos.
