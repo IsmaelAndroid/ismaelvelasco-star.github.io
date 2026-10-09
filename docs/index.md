@@ -23,6 +23,7 @@ Material docente de los módulos del ciclo **Desarrollo de Aplicaciones Multipla
 - [UD1 PMDM: Análisis de tecnologías](section1/u01/index.md) — [teoría](section1/u01/teoria/PMDM-U1.1.-AnalisisTecnologiasDispositivosMoviles.md) · [slides](https://ismaelvelasco-star.github.io/slides/section1-pmdm/PM-U1.1.-AnalisisTecnologiasMoviles.html)
 - [UD1 DI: Introducción a la confección de interfaces](section2/u01/index.md) — [teoría](section2/u01/teoria/DI-U1.1.-IntroduccionConfeccionInterfaces.md) · [slides](https://ismaelvelasco-star.github.io/slides/section2-di/DI-U1.1.-IntroduccionConfeccionInterfaces.html)
 - [UD2 DI: Clases y componentes](section2/u02/index.md) — [teoría](section2/u01/../u02/teoria/DI-U2.1.-ClasesYComponentes.md) · [slides](https://ismaelvelasco-star.github.io/slides/section2-di/DI-U2.1.-ClasesYComponentes.html)
+- [EDES](section3/index.md) → UD1: GitHub (teoría, ejercicios y solucionario)
 
 ## Convenciones del repositorio
 

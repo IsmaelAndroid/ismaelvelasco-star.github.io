@@ -41,6 +41,13 @@ nav:
         - 'Solucionario de la práctica 3': 'section2/u03/ejercicios/DI-U3.-PracticaSolucion.md'
         - 'Ejercicios U3 (de menor a mayor)': 'section2/u03/ejercicios/DI-U3.-Ejercicios.md'
         - 'Solucionario U3 (con enunciados)': 'section2/u03/ejercicios/DI-U3.-Solucionario.md'
+  - 'Entornos de Desarrollo':
+    - 'section3/index.md'
+    - 'UD 1 - GitHub: repositorios, versiones y trabajo en equipo':
+        - 'section3/u01/index.md'
+        - '1.1.-Git y GitHub': 'section3/u01/teoria/EDES-U1.1.-GitYGitHub.md'
+        - 'Ejercicios U1 (de menor a mayor)': 'section3/u01/ejercicios/EDES-U1.-Ejercicios.md'
+        - 'Solucionario U1 (con enunciados)': 'section3/u01/ejercicios/EDES-U1.-Solucionario.md'
   - 'Acerca de': 'about.md'
 
 theme:
