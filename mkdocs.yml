@@ -34,6 +34,13 @@ nav:
         - '2.1.-Clases y componentes': 'section2/u02/teoria/DI-U2.1.-ClasesYComponentes.md'
         - 'Ejercicios U2 (práctica progresiva)': 'section2/u02/ejercicios/DI-U2.-Ejercicios.md'
         - 'Solucionario U2 (con enunciados)': 'section2/u02/ejercicios/DI-U2.-Solucionario.md'
+    - 'UD 3 - Generación de interfaces a partir de documentos XML':
+        - 'section2/u03/index.md'
+        - '3.1.-Generación de interfaces a partir de documentos XML': 'section2/u03/teoria/DI-U3.1.-GeneracionInterfacesXML.md'
+        - 'Práctica 3: XML vivo en tu app Compose': 'section2/u03/practica/DI-U3.-Practica.md'
+        - 'Solucionario de la práctica 3': 'section2/u03/ejercicios/DI-U3.-PracticaSolucion.md'
+        - 'Ejercicios U3 (de menor a mayor)': 'section2/u03/ejercicios/DI-U3.-Ejercicios.md'
+        - 'Solucionario U3 (con enunciados)': 'section2/u03/ejercicios/DI-U3.-Solucionario.md'
   - 'Acerca de': 'about.md'
 
 theme:
