@@ -3012,6 +3012,19 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 <a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="p">}</span>
 </code></pre></div>
 <p>Código 23. LazyVerticalGrid con 3 columnas: cada elemento de la lista se convierte en un botón que ocupa su celda entera. Los huecos y separaciones se controlan con Arrangement.spacedBy.</p>
+<p>Estos cuatro contenedores combinados son todo lo que necesita una pantalla real. Aquí tienes capturas reales del emulador con una app que los usa:</p>
+<figure>
+<p><img alt="Captura real del emulador: Column con Card de estado, fila de botones Aceptar/Cancelar y RadioButton — todo anidado dentro de un Column raíz." src="../assets/captura-contenedores.png" /></p>
+<figcaption>Fig. 11. Captura real del emulador: Column + Card + Row de botones trabajando juntos.</figcaption>
+</figure>
+<figure>
+<p><img alt="Captura real del emulador: fila Aceptar/Cancelación con los dos niveles de botón relleno y outlined." src="../assets/captura-botones.png" /></p>
+<figcaption>Fig. 12. Captura real: la Row con dos Button (relleno y outlined) centados con spacedBy.</figcaption>
+</figure>
+<figure>
+<p><img alt="Captura real del emulador: contador de pulsaciones con botón SUMAR y tres Text repartidos con SpaceBetween." src="../assets/captura-contador.png" /></p>
+<figcaption>Fig. 13. Captura real: Row con Arrangement.SpaceBetween repartiendo izq/centro/der, y el estado viviendo en la variable contador.</figcaption>
+</figure>
 <pre class="mermaid"><code>flowchart TD
     A[¿Cómo ordeno mis componentes?] --&gt; B{¿En vertical&lt;br/&gt;uno bajo otro?}
     B --&gt;|Sí| C[Column]
@@ -3114,6 +3127,11 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 <a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>│  [⏪ ATRÁS]  [STOP]   [ADE. ⏩]│
 <a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>└──────────────────────────────┘
 </code></pre></div>
+<p>La misma rejilla, con tarjetas de imágenes en vez de botones, es todo lo que necesita una galería — esta captura es de una app real corriendo en el emulador:</p>
+<figure>
+<p><img alt="Captura real del emulador: galería con LazyVerticalGrid, título arriba y tarjeta con imagen." src="../assets/captura-reproductor.png" /></p>
+<figcaption>Fig. 14. La rejilla de este caso práctico, en versión galería de imágenes: misma estructura, contenido distinto.</figcaption>
+</figure>
 <h2 id="11-resumen-y-resolucion-del-caso-practico-de-la-unidad">11. Resumen y resolución del caso práctico de la unidad</h2>
 <p>En este tema hemos estudiado <strong>Jetpack Compose</strong>, el kit que contiene todas las funciones necesarias para programar todo tipo de componentes visuales. Aunque el número de componentes que ofrece la librería es muy amplio, aquí se han descrito los más usuales con sus principales parámetros: Button, Text, TextField, Checkbox, RadioButton y el menú desplegable ExposedDropdownMenuBox. El abanico permite infinitas combinaciones que se adecuarán en cada caso a las especificaciones finales de la aplicación.</p>
 <p>También hemos visto que distinguir entre la <strong>pantalla principal</strong> (actividad) y las <strong>secundarias</strong> (navegación entre composables) y los <strong>diálogos modales</strong> (AlertDialog) es fundamental, no tanto por su implementación como por el uso que se les va a dar: confirmaciones críticas van en diálogo modal; flujos completos, en pantallas navegables.</p>

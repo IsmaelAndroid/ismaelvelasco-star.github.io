@@ -2519,7 +2519,11 @@
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="p">)</span>
 </code></pre></div>
 <p><img alt="Logo FourWaves con las cuatro ondas." src="../assets/fig10-logo.png" /></p>
-<p>Un solo XML, todas las densidades: el drawable vectorial no tiene <code>@2x/@3x</code> como los PNG — escala sin pérdida porque es matemática, no píxeles.</p>
+<p>Un solo XML, todas las densidades: el drawable vectorial no tiene <code>@2x/@3x</code> como los PNG — escala sin pérdida porque es matemática, no píxeles. Y este es el resultado real, corriendo en el emulador: la app consumiendo un drawable a través de <code>painterResource</code> — con Mostrar/Ocultar gobernando la recomposición:</p>
+<figure>
+<p><img alt="Captura real del emulador: pantalla Compose mostrando un drawable con botones Mostrar/Ocultar." src="../assets/captura-drawable-compose.png" /></p>
+<figcaption>Fig. 7. Un drawable de `res/drawable` dentro de `Image(painterResource(...))`, en el emulador.</figcaption>
+</figure>
 <h3 id="52-caso-practico-2-estructura-de-un-documento-xml-de-datos">5.2. Caso práctico 2: <em>"Estructura de un documento XML de datos"</em></h3>
 <p><strong>Planteamiento.</strong> Para la app de viajes TravelWithMe necesitamos almacenar las siete maravillas del mundo moderno (nombre, país).</p>
 <p><strong>Nudo.</strong> Un documento XML de datos, con elemento repetido <code>maravilla</code> y subelementos <code>nombre</code>/<code>pais</code>:</p>
@@ -2555,7 +2559,11 @@
 <a id="__codelineno-14-30" name="__codelineno-14-30" href="#__codelineno-14-30"></a><span class="w">  </span><span class="nt">&lt;/maravilla&gt;</span>
 <a id="__codelineno-14-31" name="__codelineno-14-31" href="#__codelineno-14-31"></a><span class="nt">&lt;/maravillas&gt;</span>
 </code></pre></div>
-<p><strong>Desenlace.</strong> La información queda estructurada en elementos <code>maravilla</code> repetidos con subelementos regulares — el patrón exacto que luego parsearás con <code>XmlPullParser</code> en la práctica de la unidad (y el mismo que sigue hoy cualquier feed RSS o sitemap).</p>
+<p><strong>Desenlace.</strong> La información queda estructurada en elementos <code>maravilla</code> repetidos con subelementos regulares — el patrón exacto que luego parsearás con <code>XmlPullParser</code> en la práctica de la unidad (y el mismo que sigue hoy cualquier feed RSS o sitemap). Y aquí, el documento ya <strong>vivo en la app</strong>: parseado y pintado en una <code>LazyColumn</code> de <code>Card</code>s:</p>
+<figure>
+<p><img alt="Captura real del emulador: las 7 maravillas cargadas desde res/xml y mostradas como lista de tarjetas." src="../assets/captura-maravillas.png" /></p>
+<figcaption>Fig. 8. El XML de datos convertido en interfaz: cada `maravilla` es una Card con nombre y país.</figcaption>
+</figure>
 <h2 id="6-resumen">6. Resumen</h2>
 <ul>
 <li>XML es un metalenguaje: define lenguajes (XHTML, GML, MathML, RSS, XSLT, SVG). En Android los que siguen vivos son <strong>SVG→vector drawables</strong>, <strong>strings/temas/colores</strong> y el <strong>manifest</strong>.</li>
