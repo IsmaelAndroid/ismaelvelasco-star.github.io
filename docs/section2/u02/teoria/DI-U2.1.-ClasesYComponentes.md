@@ -103,6 +103,11 @@ Column {
 
 Código 2. Insertar un elemento es escribir su llamada dentro del contenedor: la preview lo pinta al segundo. El autocompletado (Ctrl+Espacio) te guía con los parámetros.
 
+<figure markdown>
+![Códigos 1 y 2 ejecutados en el emulador: arriba el Column con el Button «Púlsame», debajo el mismo Column con el OutlinedTextField insertado.](assets/captura-codigo1-codigo2.png)
+<figcaption>Fig. 1. Los Códigos 1 y 2 compilados y en ejecución en el emulador de Android Studio: el Button del Código 1 y el OutlinedTextField del Código 2, ambos dentro de sus Column.</figcaption>
+</figure>
+
 ### 2.2. Eliminar elementos
 
 Para eliminar un elemento hay dos caminos. El rápido: hacer clic sobre él en la **preview** (o seleccionarlo en el *Component Tree*) y pulsar **Supr** — el IDE localiza su llamada y la borra completa. El manual: ir a la vista *Code*, localizar la llamada del componible y eliminarla entera (con sus llaves y parámetros). El primero es más rápido y seguro porque el IDE se asegura de borrar todo el bloque.
