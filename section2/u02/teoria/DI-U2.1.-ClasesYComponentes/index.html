@@ -2763,8 +2763,8 @@
 </code></pre></div>
 <p>Código 1. Lo que pasa al escribir un Button dentro de un Column: aparece en la preview al segundo, gana su rama en el Component Tree y al clicar sobre él (preview o árbol) el editor salta a su línea. Las dos vistas son espejos del mismo código.</p>
 <figure>
-<p><img alt="Android Studio con el Código 1 y el emulador ejecutando la app." src="../assets/captura-codigo1.png" /></p>
-<figcaption>El Código 1 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 1 funcionando en el emulador." src="../assets/captura-codigo1.png" /></p>
+<figcaption>El Código 1 en ejecución en el emulador.</figcaption>
 </figure>
 <h3 id="21-insertar-elementos">2.1. Insertar elementos</h3>
 <p>En Compose, insertar un elemento es <strong>escribir su llamada</strong> dentro del contenedor adecuado: añades <code>Button(onClick = { }) { Text("Púlsame") }</code> dentro de las llaves de un <code>Column</code> y listo — la preview lo renderiza al segundo. Dos ayudas del IDE que sustituyen a la vieja paleta: el <strong>autocompletado</strong> (escribes <code>Butt</code> + Ctrl+Espacio y te ofrece Button, ButtonDefaults, OutlinedButton... con sus parámetros visibles) y la <strong>paleta de plantillas del editor</strong> (en la vista Design, Android Studio ofrece insertar composables habituales con un clic). El elemento queda insertado <strong>dentro</strong> del contenedor donde escribas la llamada: las dos vistas son espejos del mismo código.</p>
@@ -2785,8 +2785,8 @@
 </code></pre></div>
 <p>Código 2. Insertar un elemento es escribir su llamada dentro del contenedor: la preview lo pinta al segundo. El autocompletado (Ctrl+Espacio) te guía con los parámetros.</p>
 <figure>
-<p><img alt="Android Studio con el Código 2 y el emulador ejecutando la app." src="../assets/captura-codigo2.png" /></p>
-<figcaption>El Código 2 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 2 funcionando en el emulador." src="../assets/captura-codigo2.png" /></p>
+<figcaption>El Código 2 en ejecución en el emulador.</figcaption>
 </figure>
 <figure>
 <p><img alt="Códigos 1 y 2 ejecutados en el emulador: arriba el Column con el Button «Púlsame», debajo el mismo Column con el OutlinedTextField insertado." src="../assets/captura-codigo1-codigo2.png" /></p>
@@ -2811,8 +2811,8 @@
 </code></pre></div>
 <p>Código 3. Eliminar un elemento es quitar su llamada completa del contenedor: seleccionar + Supr lo hace en un clic; a mano en Code hay que borrar la llamada entera, con sus llaves y todos sus parámetros.</p>
 <figure>
-<p><img alt="Android Studio con el Código 3 y el emulador ejecutando la app." src="../assets/captura-codigo3.png" /></p>
-<figcaption>El Código 3 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 3 funcionando en el emulador." src="../assets/captura-codigo3.png" /></p>
+<figcaption>El Código 3 en ejecución en el emulador.</figcaption>
 </figure>
 <div class="admonition tip">
 <p class="admonition-title">Regla de oro de las llaves</p>
@@ -2844,8 +2844,8 @@
 </code></pre></div>
 <p>Código 4. Estructura de una clase Kotlin: atributos en el constructor, métodos en el cuerpo. Es el equivalente Compose-friendly de la estructura clásica atributos-constructor-métodos.</p>
 <figure>
-<p><img alt="Android Studio con el Código 4 y el emulador ejecutando la app." src="../assets/captura-codigo4.png" /></p>
-<figcaption>El Código 4 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 4 funcionando en el emulador." src="../assets/captura-codigo4.png" /></p>
+<figcaption>El Código 4 en ejecución en el emulador.</figcaption>
 </figure>
 <p>Y un ejemplo directo de interfaz: una clase <code>Contacto</code> cuyos atributos alimentan una tarjeta visual. Fíjate cómo cada atributo del objeto acaba pintado en un componente de la interfaz:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">Contacto</span><span class="p">(</span>
@@ -2875,8 +2875,8 @@
 </code></pre></div>
 <p>Código 5. Los atributos de un objeto alimentando la interfaz: <code>nombre</code> y <code>telefono</code> se pintan en los Text, y <code>favorito</code> decide qué muestra el botón. Los datos viven en el objeto; la interfaz los lee para dibujarse.</p>
 <figure>
-<p><img alt="Android Studio con el Código 5 y el emulador ejecutando la app." src="../assets/captura-codigo5.png" /></p>
-<figcaption>El Código 5 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 5 funcionando en el emulador." src="../assets/captura-codigo5.png" /></p>
+<figcaption>El Código 5 en ejecución en el emulador.</figcaption>
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Por qué esto importa en Compose</p>
@@ -2901,8 +2901,8 @@
 </code></pre></div>
 <p>Código 6. Contenedores anidados: un <code>Column</code> que contiene un <code>Row</code> con dos elementos. Cada nivel de anidamiento es un "panel" que agrupa y ordena.</p>
 <figure>
-<p><img alt="Android Studio con el Código 6 y el emulador ejecutando la app." src="../assets/captura-codigo6.png" /></p>
-<figcaption>El Código 6 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 6 funcionando en el emulador." src="../assets/captura-codigo6.png" /></p>
+<figcaption>El Código 6 en ejecución en el emulador.</figcaption>
 </figure>
 <p>Gracias a los contenedores podemos tener la interfaz mucho más organizada. La combinación de contenedores constituye un <strong>sistema de capas</strong> (el "layout" del que hablaremos en el apartado 8): Column dentro de Box, Row dentro de Column, y así hasta diseñar cualquier estructura.</p>
 <pre class="mermaid"><code>flowchart TD
@@ -2933,8 +2933,8 @@
 </code></pre></div>
 <p>Código 7. Scaffold con cabecera. <code>innerPadding</code> entrega el espacio ocupado por topBar/bottomBar: si no lo aplicas, tu contenido queda tapado bajo la cabecera.</p>
 <figure>
-<p><img alt="Android Studio con el Código 7 y el emulador ejecutando la app." src="../assets/captura-codigo7.png" /></p>
-<figcaption>El Código 7 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 7 funcionando en el emulador." src="../assets/captura-codigo7.png" /></p>
+<figcaption>El Código 7 en ejecución en el emulador.</figcaption>
 </figure>
 <h2 id="5-dialogos-alertdialog">5. Diálogos: AlertDialog</h2>
 <p>Las aplicaciones que solo usan una pantalla no necesitan nada más; pero cuando la app presenta información crítica o requiere confirmación, entran los <strong>diálogos</strong>.</p>
@@ -2965,8 +2965,8 @@
 </code></pre></div>
 <p>Código 8. Diálogo modal con AlertDialog: el estado <code>mostrarDialogo</code> decide si se muestra; <code>onDismissRequest</code> lo cierra al pulsar fuera; los dos botones son composables completos.</p>
 <figure>
-<p><img alt="Android Studio con el Código 8 y el emulador ejecutando la app." src="../assets/captura-codigo8.png" /></p>
-<figcaption>El Código 8 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 8 funcionando en el emulador." src="../assets/captura-codigo8.png" /></p>
+<figcaption>El Código 8 en ejecución en el emulador.</figcaption>
 </figure>
 <div class="admonition tip">
 <p class="admonition-title">La receta del diálogo</p>
@@ -3002,8 +3002,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 9. Navegación entre dos pantallas: el NavHost las registra por ruta; el onClick del botón dispara navigate(). Requiere añadir la dependencia <code>androidx.navigation:navigation-compose</code> en Gradle (más abajo, apartado de dependencias).</p>
 <figure>
-<p><img alt="Android Studio con el Código 9 y el emulador ejecutando la app." src="../assets/captura-codigo9.png" /></p>
-<figcaption>El Código 9 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 9 funcionando en el emulador." src="../assets/captura-codigo9.png" /></p>
+<figcaption>El Código 9 en ejecución en el emulador.</figcaption>
 </figure>
 <p><strong>Los eventos en Compose</strong> funcionan así: cada componente interactivo recibe su manejador como parámetro — <code>onClick</code> para botones y filas, <code>onValueChange</code> para campos de texto, <code>onCheckedChange</code> para casillas, <code>onDismissRequest</code> para diálogos. No hay que registrar listeners ni clases auxiliares: el evento es un parámetro más de la función, una lambda entre llaves que se ejecuta cuando ocurre la acción.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">// el evento es una lambda: el código entre llaves se ejecuta al pulsar</span>
@@ -3016,8 +3016,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 10. El evento como parámetro: onClick recibe una lambda con todas las acciones que se ejecutan al pulsar. Cambiar el estado (contador) redibuja la interfaz automáticamente.</p>
 <figure>
-<p><img alt="Android Studio con el Código 10 y el emulador ejecutando la app." src="../assets/captura-codigo10.png" /></p>
-<figcaption>El Código 10 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 10 funcionando en el emulador." src="../assets/captura-codigo10.png" /></p>
+<figcaption>El Código 10 en ejecución en el emulador.</figcaption>
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Dependencia de Navigation</p>
@@ -3045,8 +3045,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 11. Button con sus propiedades más usadas. El contenido (Text) se declara dentro de las llaves del botón.</p>
 <figure>
-<p><img alt="Android Studio con el Código 11 y el emulador ejecutando la app." src="../assets/captura-codigo11.png" /></p>
-<figcaption>El Código 11 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 11 funcionando en el emulador." src="../assets/captura-codigo11.png" /></p>
+<figcaption>El Código 11 en ejecución en el emulador.</figcaption>
 </figure>
 <table>
 <thead>
@@ -3092,8 +3092,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 12. Las tres jerarquías: principal (relleno), secundaria (borde) y terciaria (solo texto). Elegir bien cuál usar es decisión de diseño, no de capricho.</p>
 <figure>
-<p><img alt="Android Studio con el Código 12 y el emulador ejecutando la app." src="../assets/captura-codigo12.png" /></p>
-<figcaption>El Código 12 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 12 funcionando en el emulador." src="../assets/captura-codigo12.png" /></p>
+<figcaption>El Código 12 en ejecución en el emulador.</figcaption>
 </figure>
 <h3 id="72-text">7.2. Text</h3>
 <figure>
@@ -3114,8 +3114,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 13. Text con estilo: la buena práctica es usar los estilos del tema (titleLarge, bodyLarge...) en lugar de tamaños sueltos, para que toda la app sea coherente.</p>
 <figure>
-<p><img alt="Android Studio con el Código 13 y el emulador ejecutando la app." src="../assets/captura-codigo13.png" /></p>
-<figcaption>El Código 13 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 13 funcionando en el emulador." src="../assets/captura-codigo13.png" /></p>
+<figcaption>El Código 13 en ejecución en el emulador.</figcaption>
 </figure>
 <table>
 <thead>
@@ -3173,8 +3173,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 14. OutlinedTextField con estado: <code>value</code> muestra el estado y <code>onValueChange</code> lo actualiza. Sin esta pareja, el campo no deja escribir.</p>
 <figure>
-<p><img alt="Android Studio con el Código 14 y el emulador ejecutando la app." src="../assets/captura-codigo14.png" /></p>
-<figcaption>El Código 14 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 14 funcionando en el emulador." src="../assets/captura-codigo14.png" /></p>
+<figcaption>El Código 14 en ejecución en el emulador.</figcaption>
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">La pareja inseparable</p>
@@ -3193,8 +3193,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 15. Campo de contraseña: PasswordVisualTransformation enmascara lo escrito y el teclado especializado. El valor real sigue estando en el estado.</p>
 <figure>
-<p><img alt="Android Studio con el Código 15 y el emulador ejecutando la app." src="../assets/captura-codigo15.png" /></p>
-<figcaption>El Código 15 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 15 funcionando en el emulador." src="../assets/captura-codigo15.png" /></p>
+<figcaption>El Código 15 en ejecución en el emulador.</figcaption>
 </figure>
 <h3 id="74-checkbox">7.4. Checkbox</h3>
 <figure>
@@ -3214,8 +3214,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 16. Checkbox con estado propio. El patrón value/onCheckedChange es el mismo de TextField: estado en pareja con el evento.</p>
 <figure>
-<p><img alt="Android Studio con el Código 16 y el emulador ejecutando la app." src="../assets/captura-codigo16.png" /></p>
-<figcaption>El Código 16 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 16 funcionando en el emulador." src="../assets/captura-codigo16.png" /></p>
+<figcaption>El Código 16 en ejecución en el emulador.</figcaption>
 </figure>
 <p><strong>La lista de la compra con checkboxes:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">frutas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="s">"Manzanas"</span><span class="p">,</span><span class="w"> </span><span class="s">"Naranjas"</span><span class="p">,</span><span class="w"> </span><span class="s">"Peras"</span><span class="p">,</span><span class="w"> </span><span class="s">"Kiwis"</span><span class="p">)</span>
@@ -3238,8 +3238,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 17. Varios checkboxes con una lista de estado (mutableStateListOf): marcar y desmarcar actualiza el contador en vivo.</p>
 <figure>
-<p><img alt="Android Studio con el Código 17 y el emulador ejecutando la app." src="../assets/captura-codigo17.png" /></p>
-<figcaption>El Código 17 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 17 funcionando en el emulador." src="../assets/captura-codigo17.png" /></p>
+<figcaption>El Código 17 en ejecución en el emulador.</figcaption>
 </figure>
 <h3 id="75-radiobutton">7.5. RadioButton</h3>
 <figure>
@@ -3265,8 +3265,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 18. RadioButtons excluyentes: como todos leen y escriben la misma variable <code>elegida</code>, marcar uno desmarca automáticamente el anterior. Es el equivalente funcional del ButtonGroup clásico, sin necesidad de crear ningún grupo: la exclusividad la da compartir el estado.</p>
 <figure>
-<p><img alt="Android Studio con el Código 18 y el emulador ejecutando la app." src="../assets/captura-codigo18.png" /></p>
-<figcaption>El Código 18 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 18 funcionando en el emulador." src="../assets/captura-codigo18.png" /></p>
+<figcaption>El Código 18 en ejecución en el emulador.</figcaption>
 </figure>
 <div class="admonition tip">
 <p class="admonition-title">CheckBox vs RadioButton en una línea</p>
@@ -3315,8 +3315,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 19. Menú desplegable completo: la caja (readOnly, no se escribe), el estado <code>expandido</code> que abre/cierra y <code>seleccion</code> que guarda la opción elegida. El índice por defecto se controla eligiendo el valor inicial del estado (equivalente al selectedIndex clásico).</p>
 <figure>
-<p><img alt="Android Studio con el Código 19 y el emulador ejecutando la app." src="../assets/captura-codigo19.png" /></p>
-<figcaption>El Código 19 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 19 funcionando en el emulador." src="../assets/captura-codigo19.png" /></p>
+<figcaption>El Código 19 en ejecución en el emulador.</figcaption>
 </figure>
 <h2 id="8-disposicion-los-layouts-de-compose">8. Disposición: los layouts de Compose</h2>
 <p>Un <strong>layout</strong> (contenedor de disposición) permite adaptar la distribución de los componentes sobre la pantalla: son los encargados de colocar los componentes en el punto deseado y con el tamaño preciso. Sin ellos, los elementos se amontonan. El uso de los contenedores nos permite modificar el tamaño y la posición de los componentes de forma automática y adaptativa (la pantalla de un móvil pequeño y una tablet reordenan solos).</p>
@@ -3338,8 +3338,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 20. Column con espaciado (equivalente del vgaphgap clásico: aquí se llama spacedBy) y alineación.</p>
 <figure>
-<p><img alt="Android Studio con el Código 20 y el emulador ejecutando la app." src="../assets/captura-codigo20.png" /></p>
-<figcaption>El Código 20 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 20 funcionando en el emulador." src="../assets/captura-codigo20.png" /></p>
+<figcaption>El Código 20 en ejecución en el emulador.</figcaption>
 </figure>
 <h3 id="82-row">8.2. Row</h3>
 <p>Coloca los elementos <strong>uno al lado de otro</strong> en horizontal:</p>
@@ -3355,8 +3355,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 21. Row centrada con un Spacer entre botones. Row es el equivalente del FlowLayout clásico: los elementos fluyen en línea.</p>
 <figure>
-<p><img alt="Android Studio con el Código 21 y el emulador ejecutando la app." src="../assets/captura-codigo21.png" /></p>
-<figcaption>El Código 21 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 21 funcionando en el emulador." src="../assets/captura-codigo21.png" /></p>
+<figcaption>El Código 21 en ejecución en el emulador.</figcaption>
 </figure>
 <div class="admonition tip">
 <p class="admonition-title">weight: repartir el espacio</p>
@@ -3374,8 +3374,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 22. Box centrando un Text sobre una Image: superposición con contentAlignment.</p>
 <figure>
-<p><img alt="Android Studio con el Código 22 y el emulador ejecutando la app." src="../assets/captura-codigo22.png" /></p>
-<figcaption>El Código 22 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 22 funcionando en el emulador." src="../assets/captura-codigo22.png" /></p>
+<figcaption>El Código 22 en ejecución en el emulador.</figcaption>
 </figure>
 <h3 id="84-lazyverticalgrid">8.4. LazyVerticalGrid</h3>
 <p>La <strong>rejilla</strong> de Compose: coloca los elementos en filas y columnas automáticas (el equivalente del GridLayout clásico, pero perezoso: solo compone lo visible, por eso lo de "Lazy"):</p>
@@ -3394,8 +3394,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 23. LazyVerticalGrid con 3 columnas: cada elemento de la lista se convierte en un botón que ocupa su celda entera. Los huecos y separaciones se controlan con Arrangement.spacedBy.</p>
 <figure>
-<p><img alt="Android Studio con el Código 23 y el emulador ejecutando la app." src="../assets/captura-codigo23.png" /></p>
-<figcaption>El Código 23 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 23 funcionando en el emulador." src="../assets/captura-codigo23.png" /></p>
+<figcaption>El Código 23 en ejecución en el emulador.</figcaption>
 </figure>
 <p>Estos cuatro contenedores combinados son todo lo que necesita una pantalla real. Aquí tienes capturas reales del emulador con una app que los usa:</p>
 <figure>
@@ -3478,8 +3478,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 24. Pantalla de login completa: dos campos con estado, botón con evento que comprueba credenciales y navega o marca error.</p>
 <figure>
-<p><img alt="Android Studio con el Código 24 y el emulador ejecutando la app." src="../assets/captura-codigo24.png" /></p>
-<figcaption>El Código 24 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 24 funcionando en el emulador." src="../assets/captura-codigo24.png" /></p>
+<figcaption>El Código 24 en ejecución en el emulador.</figcaption>
 </figure>
 <p><strong>Desenlace.</strong> Al pulsar "Inicio" con datos correctos, la app navega a la pantalla de bienvenida; si son incorrectos, los campos se marcan en rojo y aparece el mensaje de error bajo el campo. No hay que crear ni destruir ventanas manualmente: el NavHost gestiona el cambio de pantalla, y <code>popBackStack()</code> permite volver atrás desde la bienvenida.</p>
 <h2 id="10-caso-practico-2-interfaz-de-reproductor-de-musica">10. Caso práctico 2: "Interfaz de reproductor de música"</h2>
@@ -3510,8 +3510,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 25. Reproductor en rejilla 3×3: nueve botones colocados automáticamente por LazyVerticalGrid.</p>
 <figure>
-<p><img alt="Android Studio con el Código 25 y el emulador ejecutando la app." src="../assets/captura-codigo25.png" /></p>
-<figcaption>El Código 25 en el editor de Android Studio y, a la derecha, su resultado en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 25 funcionando en el emulador." src="../assets/captura-codigo25.png" /></p>
+<figcaption>El Código 25 en ejecución en el emulador.</figcaption>
 </figure>
 <p><strong>Desenlace.</strong> El resultado es una matriz de nueve botones dispuestos en tres filas y tres columnas que se adapta sola al tamaño de pantalla: si rotas el móvil o corres en una tablet, la rejilla sigue cuadrada y llena. Con seis líneas de contenedor hemos sustituido a las nueve inserciones posicionales manuales del enfoque clásico.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>┌──────────────────────────────┐
