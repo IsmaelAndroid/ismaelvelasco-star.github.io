@@ -2742,8 +2742,8 @@
 <p><strong>Primero, una verdad incómoda que conviene saber desde el primer día: en Jetpack Compose no hay paleta de arrastrar y soltar.</strong> Ese flujo de trabajo "visual" (abrir una paleta, arrastrar un botón al lienzo y que se genere código) era el del sistema clásico de Views con XML y el de los editores visuales históricos. Compose apuesta por lo contrario: <strong>primero el código</strong>. Tú escribes la llamada en Kotlin (<code>Text(</code>, <code>Button(</code>, <code>Column {</code>) y la <strong>vista Split</strong> renderiza la interfaz en vivo a tu lado, al segundo. Escribir código ya no significa "no ver nada hasta ejecutar".</p>
 <p>El flujo de trabajo es siempre el mismo: escribes el componible en la vista <em>Code</em>, y la vista <em>Split</em> te muestra el resultado renderizándose en vivo (y si te equivocas, en rojo). Las zonas del entorno que sí usaremos a diario son:</p>
 <figure>
-<p><img alt="Vista Split de Android Studio: el código Kotlin a la izquierda y la preview de Compose renderizándose en vivo a la derecha." src="../assets/vista-split.png" /></p>
-<figcaption>Fig. 1. El área de diseño de Compose es la vista Split: escribes Kotlin a la izquierda y la interfaz se renderiza en vivo a la derecha, sin ejecutar la app.</figcaption>
+<p><img alt="Vista Split de Android Studio: el código a la izquierda y la preview en vivo a la derecha" src="../assets/vista-split.png" /></p>
+<figcaption>Figura 1. Vista Split de Android Studio: el código a la izquierda y la preview en vivo a la derecha.</figcaption>
 </figure>
 <ul>
 <li><strong>Editor (Code)</strong>: donde escribes las llamadas a los composables en Kotlin. Es el corazón del desarrollo Compose: aquí se inserta, se modifica y se elimina todo.</li>
@@ -2763,8 +2763,8 @@
 </code></pre></div>
 <p>Código 1. Lo que pasa al escribir un Button dentro de un Column: aparece en la preview al segundo, gana su rama en el Component Tree y al clicar sobre él (preview o árbol) el editor salta a su línea. Las dos vistas son espejos del mismo código.</p>
 <figure>
-<p><img alt="El Código 1 funcionando en el emulador." src="../assets/captura-codigo1.png" /></p>
-<figcaption>El Código 1 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 1 en ejecución en el emulador: un Button dentro de un Column" src="../assets/captura-codigo1.png" /></p>
+<figcaption>Figura 2. El Código 1 en ejecución en el emulador: un Button dentro de un Column.</figcaption>
 </figure>
 <h3 id="21-insertar-elementos">2.1. Insertar elementos</h3>
 <p>En Compose, insertar un elemento es <strong>escribir su llamada</strong> dentro del contenedor adecuado: añades <code>Button(onClick = { }) { Text("Púlsame") }</code> dentro de las llaves de un <code>Column</code> y listo — la preview lo renderiza al segundo. Dos ayudas del IDE que sustituyen a la vieja paleta: el <strong>autocompletado</strong> (escribes <code>Butt</code> + Ctrl+Espacio y te ofrece Button, ButtonDefaults, OutlinedButton... con sus parámetros visibles) y la <strong>paleta de plantillas del editor</strong> (en la vista Design, Android Studio ofrece insertar composables habituales con un clic). El elemento queda insertado <strong>dentro</strong> del contenedor donde escribas la llamada: las dos vistas son espejos del mismo código.</p>
@@ -2785,12 +2785,12 @@
 </code></pre></div>
 <p>Código 2. Insertar un elemento es escribir su llamada dentro del contenedor: la preview lo pinta al segundo. El autocompletado (Ctrl+Espacio) te guía con los parámetros.</p>
 <figure>
-<p><img alt="El Código 2 funcionando en el emulador." src="../assets/captura-codigo2.png" /></p>
-<figcaption>El Código 2 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 2 en ejecución en el emulador: un OutlinedTextField insertado en el Column" src="../assets/captura-codigo2.png" /></p>
+<figcaption>Figura 3. El Código 2 en ejecución en el emulador: un OutlinedTextField insertado en el Column.</figcaption>
 </figure>
 <figure>
-<p><img alt="Códigos 1 y 2 ejecutados en el emulador: arriba el Column con el Button «Púlsame», debajo el mismo Column con el OutlinedTextField insertado." src="../assets/captura-codigo1-codigo2.png" /></p>
-<figcaption>Fig. 1. Los Códigos 1 y 2 compilados y en ejecución en el emulador de Android Studio: el Button del Código 1 y el OutlinedTextField del Código 2, ambos dentro de sus Column.</figcaption>
+<p><img alt="Los Códigos 1 y 2 en ejecución: insertar un elemento es escribir su llamada dentro del contenedor" src="../assets/captura-codigo1-codigo2.png" /></p>
+<figcaption>Figura 4. Los Códigos 1 y 2 en ejecución: insertar un elemento es escribir su llamada dentro del contenedor.</figcaption>
 </figure>
 <h3 id="22-eliminar-elementos">2.2. Eliminar elementos</h3>
 <p>Para eliminar un elemento hay dos caminos. El rápido: hacer clic sobre él en la <strong>preview</strong> (o seleccionarlo en el <em>Component Tree</em>) y pulsar <strong>Supr</strong> — el IDE localiza su llamada y la borra completa. El manual: ir a la vista <em>Code</em>, localizar la llamada del componible y eliminarla entera (con sus llaves y parámetros). El primero es más rápido y seguro porque el IDE se asegura de borrar todo el bloque.</p>
@@ -2811,8 +2811,8 @@
 </code></pre></div>
 <p>Código 3. Eliminar un elemento es quitar su llamada completa del contenedor: seleccionar + Supr lo hace en un clic; a mano en Code hay que borrar la llamada entera, con sus llaves y todos sus parámetros.</p>
 <figure>
-<p><img alt="El Código 3 funcionando en el emulador." src="../assets/captura-codigo3.png" /></p>
-<figcaption>El Código 3 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 3 en ejecución: eliminar es quitar la llamada completa del contenedor" src="../assets/captura-codigo3.png" /></p>
+<figcaption>Figura 5. El Código 3 en ejecución: eliminar es quitar la llamada completa del contenedor.</figcaption>
 </figure>
 <div class="admonition tip">
 <p class="admonition-title">Regla de oro de las llaves</p>
@@ -2844,8 +2844,8 @@
 </code></pre></div>
 <p>Código 4. Estructura de una clase Kotlin: atributos en el constructor, métodos en el cuerpo. Es el equivalente Compose-friendly de la estructura clásica atributos-constructor-métodos.</p>
 <figure>
-<p><img alt="El Código 4 funcionando en el emulador." src="../assets/captura-codigo4.png" /></p>
-<figcaption>El Código 4 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 4 en ejecución: la clase Circulo con sus atributos y métodos" src="../assets/captura-codigo4.png" /></p>
+<figcaption>Figura 6. El Código 4 en ejecución: la clase Circulo con sus atributos y métodos.</figcaption>
 </figure>
 <p>Y un ejemplo directo de interfaz: una clase <code>Contacto</code> cuyos atributos alimentan una tarjeta visual. Fíjate cómo cada atributo del objeto acaba pintado en un componente de la interfaz:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">Contacto</span><span class="p">(</span>
@@ -2875,8 +2875,8 @@
 </code></pre></div>
 <p>Código 5. Los atributos de un objeto alimentando la interfaz: <code>nombre</code> y <code>telefono</code> se pintan en los Text, y <code>favorito</code> decide qué muestra el botón. Los datos viven en el objeto; la interfaz los lee para dibujarse.</p>
 <figure>
-<p><img alt="El Código 5 funcionando en el emulador." src="../assets/captura-codigo5.png" /></p>
-<figcaption>El Código 5 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 5 en ejecución: los atributos de un objeto alimentan la interfaz" src="../assets/captura-codigo5.png" /></p>
+<figcaption>Figura 7. El Código 5 en ejecución: los atributos de un objeto alimentan la interfaz.</figcaption>
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Por qué esto importa en Compose</p>
@@ -2901,8 +2901,8 @@
 </code></pre></div>
 <p>Código 6. Contenedores anidados: un <code>Column</code> que contiene un <code>Row</code> con dos elementos. Cada nivel de anidamiento es un "panel" que agrupa y ordena.</p>
 <figure>
-<p><img alt="El Código 6 funcionando en el emulador." src="../assets/captura-codigo6.png" /></p>
-<figcaption>El Código 6 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 6 en ejecución: contenedores anidados, un Column con una Row dentro" src="../assets/captura-codigo6.png" /></p>
+<figcaption>Figura 8. El Código 6 en ejecución: contenedores anidados, un Column con una Row dentro.</figcaption>
 </figure>
 <p>Gracias a los contenedores podemos tener la interfaz mucho más organizada. La combinación de contenedores constituye un <strong>sistema de capas</strong> (el "layout" del que hablaremos en el apartado 8): Column dentro de Box, Row dentro de Column, y así hasta diseñar cualquier estructura.</p>
 <pre class="mermaid"><code>flowchart TD
@@ -2915,8 +2915,8 @@
     C --&gt; Btn[Button enviar]</code></pre>
 <h3 id="43-scaffold-la-pantalla-con-huecos-preparados">4.3. Scaffold: la pantalla con huecos preparados</h3>
 <figure>
-<p><img alt="Diagrama de Scaffold con topBar, content, FAB y bottomBar." src="../assets/scaffold-diagram.svg" /></p>
-<figcaption>Fig. 1. Scaffold: una pantalla completa con huecos preparados para cabecera, contenido, botón flotante y barra inferior.</figcaption>
+<p><img alt="Diagrama de Scaffold con topBar, content, FAB y bottomBar" src="../assets/scaffold-diagram.svg" /></p>
+<figcaption>Figura 9. Diagrama de Scaffold con topBar, content, FAB y bottomBar.</figcaption>
 </figure>
 <p>Cuando la pantalla crece, Compose ofrece <strong>Scaffold</strong>: un contenedor de pantalla completa que trae <strong>huecos preparados</strong> (slots) para las piezas típicas de una app: <code>topBar</code> (cabecera), <code>bottomBar</code> (barra inferior de navegación), <code>floatingActionButton</code> (el botón redondo flotante) y el <code>content</code> central. Es el esqueleto estándar de las apps Material:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nd">@OptIn</span><span class="p">(</span><span class="n">ExperimentalMaterial3Api</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
@@ -2933,14 +2933,14 @@
 </code></pre></div>
 <p>Código 7. Scaffold con cabecera. <code>innerPadding</code> entrega el espacio ocupado por topBar/bottomBar: si no lo aplicas, tu contenido queda tapado bajo la cabecera.</p>
 <figure>
-<p><img alt="El Código 7 funcionando en el emulador." src="../assets/captura-codigo7.png" /></p>
-<figcaption>El Código 7 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 7 en ejecución: Scaffold con cabecera «Mi App» y contenido" src="../assets/captura-codigo7.png" /></p>
+<figcaption>Figura 10. El Código 7 en ejecución: Scaffold con cabecera «Mi App» y contenido.</figcaption>
 </figure>
 <h2 id="5-dialogos-alertdialog">5. Diálogos: AlertDialog</h2>
 <p>Las aplicaciones que solo usan una pantalla no necesitan nada más; pero cuando la app presenta información crítica o requiere confirmación, entran los <strong>diálogos</strong>.</p>
 <figure>
-<p><img alt="Diagrama de AlertDialog modal sobre una pantalla atenuada, con botones confirmar y descartar." src="../assets/dialogo-modal.svg" /></p>
-<figcaption>Fig. 2. El diálogo modal: bloquea la pantalla de atrás (atenuada) hasta que el usuario responde.</figcaption>
+<p><img alt="Diagrama de AlertDialog modal sobre una pantalla atenuada con Aceptar/Cancelar" src="../assets/dialogo-modal.svg" /></p>
+<figcaption>Figura 11. Diagrama de AlertDialog modal sobre una pantalla atenuada con Aceptar/Cancelar.</figcaption>
 </figure>
 <p>Un <strong>diálogo modal</strong> es una ventana que aparece sobre la pantalla y <strong>no permite interactuar con nada más</strong> hasta que se cierra: la app queda a la espera de una respuesta. Por ejemplo, la selección del número de asiento en una compra de billetes, o la confirmación de borrado de un dato. Los diálogos <strong>no modales</strong> (como las <em>bottom sheets</em>, láminas que suben desde abajo) permiten seguir usando la pantalla mientras están abiertos.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">var</span><span class="w"> </span><span class="nv">mostrarDialogo</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
@@ -2965,8 +2965,8 @@
 </code></pre></div>
 <p>Código 8. Diálogo modal con AlertDialog: el estado <code>mostrarDialogo</code> decide si se muestra; <code>onDismissRequest</code> lo cierra al pulsar fuera; los dos botones son composables completos.</p>
 <figure>
-<p><img alt="El Código 8 funcionando en el emulador." src="../assets/captura-codigo8.png" /></p>
-<figcaption>El Código 8 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 8 en ejecución: el diálogo gobernado por el estado mostrarDialogo" src="../assets/captura-codigo8.png" /></p>
+<figcaption>Figura 12. El Código 8 en ejecución: el diálogo gobernado por el estado mostrarDialogo.</figcaption>
 </figure>
 <div class="admonition tip">
 <p class="admonition-title">La receta del diálogo</p>
@@ -2980,8 +2980,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 <h2 id="6-conexion-entre-pantallas-navegacion-y-eventos">6. Conexión entre pantallas. Navegación y eventos</h2>
 <p>Para crear una conexión entre dos o más pantallas, primero hay que crearlas todas (cada una es una función componible). El paso de una a otra se produce tras la ocurrencia de un <strong>evento</strong>, habitualmente la pulsación de un botón.</p>
 <figure>
-<p><img alt="Diagrama de navegación entre pantallas: Login navega a Bienvenida con navigate y vuelve con popBackStack." src="../assets/navegacion.svg" /></p>
-<figcaption>Fig. 3. La navegación: cada pantalla es un componible registrado en un NavHost; el evento onClick dispara navigate().</figcaption>
+<p><img alt="Diagrama de navegación entre pantallas: Login navega a Bienvenida con navigate y popBackStack" src="../assets/navegacion.svg" /></p>
+<figcaption>Figura 13. Diagrama de navegación entre pantallas: Login navega a Bienvenida con navigate y popBackStack.</figcaption>
 </figure>
 <p>El sistema estándar es la librería <strong>Navigation Compose</strong>: un <code>NavHost</code> registra las pantallas (cada una con su <strong>ruta</strong>, un nombre único) y el <code>NavHostController</code> (que se obtiene con <code>rememberNavController()</code>) permite saltar de una a otra:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nd">@Composable</span>
@@ -3002,8 +3002,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 9. Navegación entre dos pantallas: el NavHost las registra por ruta; el onClick del botón dispara navigate(). Requiere añadir la dependencia <code>androidx.navigation:navigation-compose</code> en Gradle (más abajo, apartado de dependencias).</p>
 <figure>
-<p><img alt="El Código 9 funcionando en el emulador." src="../assets/captura-codigo9.png" /></p>
-<figcaption>El Código 9 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 9 en ejecución: dos pantallas registradas en el NavHost" src="../assets/captura-codigo9.png" /></p>
+<figcaption>Figura 14. El Código 9 en ejecución: dos pantallas registradas en el NavHost.</figcaption>
 </figure>
 <p><strong>Los eventos en Compose</strong> funcionan así: cada componente interactivo recibe su manejador como parámetro — <code>onClick</code> para botones y filas, <code>onValueChange</code> para campos de texto, <code>onCheckedChange</code> para casillas, <code>onDismissRequest</code> para diálogos. No hay que registrar listeners ni clases auxiliares: el evento es un parámetro más de la función, una lambda entre llaves que se ejecuta cuando ocurre la acción.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">// el evento es una lambda: el código entre llaves se ejecuta al pulsar</span>
@@ -3016,8 +3016,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 10. El evento como parámetro: onClick recibe una lambda con todas las acciones que se ejecutan al pulsar. Cambiar el estado (contador) redibuja la interfaz automáticamente.</p>
 <figure>
-<p><img alt="El Código 10 funcionando en el emulador." src="../assets/captura-codigo10.png" /></p>
-<figcaption>El Código 10 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 10 en ejecución: el evento onClick con su lambda" src="../assets/captura-codigo10.png" /></p>
+<figcaption>Figura 15. El Código 10 en ejecución: el evento onClick con su lambda.</figcaption>
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Dependencia de Navigation</p>
@@ -3027,8 +3027,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 <p>Existe un amplio abanico de componentes. En este apartado se verán los que constituyen la gran parte de las interfaces. Los componentes son los elementos que se sitúan en la pantalla, directamente sobre contenedores o anidados en otros componentes. Hay que prestar especial atención a aquellas propiedades que tienen un mismo nombre, puesto que <strong>no realizan la misma acción en todos los elementos</strong> (por ejemplo, <code>enabled</code> deshabilita un botón pero en un campo de texto significa que no responde; <code>color</code> en un Text colorea letras y en un Button colorea el fondo).</p>
 <h3 id="71-button">7.1. Button</h3>
 <figure>
-<p><img alt="Botones en sus tres variantes: relleno, outlined y texto, más uno deshabilitado." src="../assets/componente-button.svg" /></p>
-<figcaption>Fig. 4. Button y sus variantes de jerarquía: principal (relleno), secundario (borde) y terciario (solo texto).</figcaption>
+<p><img alt="Button en sus tres jerarquías: relleno, outlined y texto, más uno deshabilitado" src="../assets/componente-button.svg" /></p>
+<figcaption>Figura 16. Button en sus tres jerarquías: relleno, outlined y texto, más uno deshabilitado.</figcaption>
 </figure>
 <p>El botón es el componente de acción por excelencia: dispara el evento principal de la interfaz. Su peculiaridad estructural: <strong>el texto no es un parámetro, sino un componible que va dentro de las llaves</strong> (así un botón puede contener texto, iconos o ambos).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">Button</span><span class="p">(</span>
@@ -3045,8 +3045,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 11. Button con sus propiedades más usadas. El contenido (Text) se declara dentro de las llaves del botón.</p>
 <figure>
-<p><img alt="El Código 11 funcionando en el emulador." src="../assets/captura-codigo11.png" /></p>
-<figcaption>El Código 11 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 11 en ejecución: Button con sus propiedades más usadas" src="../assets/captura-codigo11.png" /></p>
+<figcaption>Figura 17. El Código 11 en ejecución: Button con sus propiedades más usadas.</figcaption>
 </figure>
 <table>
 <thead>
@@ -3092,13 +3092,13 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 12. Las tres jerarquías: principal (relleno), secundaria (borde) y terciaria (solo texto). Elegir bien cuál usar es decisión de diseño, no de capricho.</p>
 <figure>
-<p><img alt="El Código 12 funcionando en el emulador." src="../assets/captura-codigo12.png" /></p>
-<figcaption>El Código 12 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 12 en ejecución: las tres jerarquías de botones en la app" src="../assets/captura-codigo12.png" /></p>
+<figcaption>Figura 18. El Código 12 en ejecución: las tres jerarquías de botones en la app.</figcaption>
 </figure>
 <h3 id="72-text">7.2. Text</h3>
 <figure>
-<p><img alt="Distintos estilos de Text: titular, cuerpo, etiqueta, color y peso." src="../assets/componente-text.svg" /></p>
-<figcaption>Fig. 5. Text: el mismo componente con distintos style, color y fontWeight. También admite imágenes con inlineContent.</figcaption>
+<p><img alt="Text con estilos del tema: titular, cuerpo, etiqueta, color y peso" src="../assets/componente-text.svg" /></p>
+<figcaption>Figura 19. Text con estilos del tema: titular, cuerpo, etiqueta, color y peso.</figcaption>
 </figure>
 <p>Este elemento es uno de los más sencillos de aplicar y, al mismo tiempo, de los que más utilidad reporta: muestra texto (y puede albergar iconos con <code>inlineContent</code>). Sus parámetros más usados:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">Text</span><span class="p">(</span>
@@ -3114,8 +3114,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 13. Text con estilo: la buena práctica es usar los estilos del tema (titleLarge, bodyLarge...) en lugar de tamaños sueltos, para que toda la app sea coherente.</p>
 <figure>
-<p><img alt="El Código 13 funcionando en el emulador." src="../assets/captura-codigo13.png" /></p>
-<figcaption>El Código 13 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 13 en ejecución: Text con estilos del tema" src="../assets/captura-codigo13.png" /></p>
+<figcaption>Figura 20. El Código 13 en ejecución: Text con estilos del tema.</figcaption>
 </figure>
 <table>
 <thead>
@@ -3154,8 +3154,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 <p>Tabla 2. Parámetros de Text.</p>
 <h3 id="73-textfield">7.3. TextField</h3>
 <figure>
-<p><img alt="Dos TextFields: uno relleno con etiqueta Usuario y unOutlined con etiqueta Contraseña y punto." src="../assets/componente-textfield.svg" /></p>
-<figcaption>Fig. 6. TextField en sus dos sabores: relleno (filled) y con contorno (OutlinedTextField). La etiqueta flotante sube al escribir.</figcaption>
+<p><img alt="TextField relleno y outlined con etiquetas flotantes" src="../assets/componente-textfield.svg" /></p>
+<figcaption>Figura 21. TextField relleno y outlined con etiquetas flotantes.</figcaption>
 </figure>
 <p>El campo de texto es el componente de entrada por excelencia: una caja de <strong>una línea</strong> (o varias con <code>minLines</code>) donde el usuario escribe. Su diferencia conceptual con los componentes anteriores: <strong>necesita estado</strong>. Un botón es autónomo; un campo de texto guarda información que la app debe leer después. Por eso siempre van en pareja:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kd">var</span><span class="w"> </span><span class="nv">nombre</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="s">""</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">     </span><span class="c1">// el estado guarda lo escrito</span>
@@ -3173,8 +3173,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 14. OutlinedTextField con estado: <code>value</code> muestra el estado y <code>onValueChange</code> lo actualiza. Sin esta pareja, el campo no deja escribir.</p>
 <figure>
-<p><img alt="El Código 14 funcionando en el emulador." src="../assets/captura-codigo14.png" /></p>
-<figcaption>El Código 14 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 14 en ejecución: la pareja value/onValueChange del campo" src="../assets/captura-codigo14.png" /></p>
+<figcaption>Figura 22. El Código 14 en ejecución: la pareja value/onValueChange del campo.</figcaption>
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">La pareja inseparable</p>
@@ -3193,13 +3193,13 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 15. Campo de contraseña: PasswordVisualTransformation enmascara lo escrito y el teclado especializado. El valor real sigue estando en el estado.</p>
 <figure>
-<p><img alt="El Código 15 funcionando en el emulador." src="../assets/captura-codigo15.png" /></p>
-<figcaption>El Código 15 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 15 en ejecución: campo de contraseña enmascarado" src="../assets/captura-codigo15.png" /></p>
+<figcaption>Figura 23. El Código 15 en ejecución: campo de contraseña enmascarado.</figcaption>
 </figure>
 <h3 id="74-checkbox">7.4. Checkbox</h3>
 <figure>
-<p><img alt="Tres casillas: marcada, desmarcada y deshabilitada, con sus parámetros clave." src="../assets/componente-checkbox.svg" /></p>
-<figcaption>Fig. 7. Checkbox: cada casilla es independiente y guarda su propio estado (marcada o no).</figcaption>
+<p><img alt="Checkbox marcada, desmarcada y deshabilitada con sus parámetros" src="../assets/componente-checkbox.svg" /></p>
+<figcaption>Figura 24. Checkbox marcada, desmarcada y deshabilitada con sus parámetros.</figcaption>
 </figure>
 <p>Los elementos de tipo casilla se presentan como una pequeña caja cuadrada que el usuario puede marcar o desmarcar. Son <strong>independientes</strong>: marcar una no afecta a las demás (para exclusividad usa RadioButton).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kd">var</span><span class="w"> </span><span class="nv">acepta</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
@@ -3214,8 +3214,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 16. Checkbox con estado propio. El patrón value/onCheckedChange es el mismo de TextField: estado en pareja con el evento.</p>
 <figure>
-<p><img alt="El Código 16 funcionando en el emulador." src="../assets/captura-codigo16.png" /></p>
-<figcaption>El Código 16 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 16 en ejecución: Checkbox con estado propio" src="../assets/captura-codigo16.png" /></p>
+<figcaption>Figura 25. El Código 16 en ejecución: Checkbox con estado propio.</figcaption>
 </figure>
 <p><strong>La lista de la compra con checkboxes:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">frutas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="s">"Manzanas"</span><span class="p">,</span><span class="w"> </span><span class="s">"Naranjas"</span><span class="p">,</span><span class="w"> </span><span class="s">"Peras"</span><span class="p">,</span><span class="w"> </span><span class="s">"Kiwis"</span><span class="p">)</span>
@@ -3238,13 +3238,13 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 17. Varios checkboxes con una lista de estado (mutableStateListOf): marcar y desmarcar actualiza el contador en vivo.</p>
 <figure>
-<p><img alt="El Código 17 funcionando en el emulador." src="../assets/captura-codigo17.png" /></p>
-<figcaption>El Código 17 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 17 en ejecución: varios Checkbox con una lista observable" src="../assets/captura-codigo17.png" /></p>
+<figcaption>Figura 26. El Código 17 en ejecución: varios Checkbox con una lista observable.</figcaption>
 </figure>
 <h3 id="75-radiobutton">7.5. RadioButton</h3>
 <figure>
-<p><img alt="Tres RadioButtons de forma de pago donde solo uno puede estar seleccionado, y el truco de la variable compartida." src="../assets/componente-radiobutton.svg" /></p>
-<figcaption>Fig. 8. RadioButton: exclusividad conseguida porque TODOS los botones consultan la MISMA variable de estado.</figcaption>
+<p><img alt="Tres RadioButtons excluyentes de forma de pago" src="../assets/componente-radiobutton.svg" /></p>
+<figcaption>Figura 27. Tres RadioButtons excluyentes de forma de pago.</figcaption>
 </figure>
 <p>Los RadioButton se utilizan para ofrecer varias opciones de las que <strong>solo se puede escoger una</strong>: son excluyentes entre sí. Su truco no está en el componente sino en cómo se conecta el estado: todos los botones comparan su opción con la <strong>misma variable</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">formasPago</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="s">"Tarjeta"</span><span class="p">,</span><span class="w"> </span><span class="s">"PayPal"</span><span class="p">,</span><span class="w"> </span><span class="s">"Efectivo"</span><span class="p">)</span>
@@ -3265,8 +3265,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 18. RadioButtons excluyentes: como todos leen y escriben la misma variable <code>elegida</code>, marcar uno desmarca automáticamente el anterior. Es el equivalente funcional del ButtonGroup clásico, sin necesidad de crear ningún grupo: la exclusividad la da compartir el estado.</p>
 <figure>
-<p><img alt="El Código 18 funcionando en el emulador." src="../assets/captura-codigo18.png" /></p>
-<figcaption>El Código 18 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 18 en ejecución: radios que comparten la variable elegida" src="../assets/captura-codigo18.png" /></p>
+<figcaption>Figura 28. El Código 18 en ejecución: radios que comparten la variable elegida.</figcaption>
 </figure>
 <div class="admonition tip">
 <p class="admonition-title">CheckBox vs RadioButton en una línea</p>
@@ -3277,8 +3277,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </div>
 <h3 id="76-exposeddropdownmenubox">7.6. ExposedDropdownMenuBox</h3>
 <figure>
-<p><img alt="Menú desplegable cerrado y abierto con tres opciones de ciclos formativos." src="../assets/componente-dropdown.svg" /></p>
-<figcaption>Fig. 9. El menú desplegable: una caja que al pulsarse expande la lista de opciones; la elegida queda escrita en la caja.</figcaption>
+<p><img alt="Menú desplegable de ciclos formativos, cerrado y abierto" src="../assets/componente-dropdown.svg" /></p>
+<figcaption>Figura 29. Menú desplegable de ciclos formativos, cerrado y abierto.</figcaption>
 </figure>
 <p>El menú desplegable permite elegir un valor de una lista sin ocupar espacio permanente en la interfaz. En Material 3 se construye con <code>ExposedDropdownMenuBox</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">ciclos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="s">"DAM"</span><span class="p">,</span><span class="w"> </span><span class="s">"DAW"</span><span class="p">,</span><span class="w"> </span><span class="s">"ASIR"</span><span class="p">,</span><span class="w"> </span><span class="s">"SMR"</span><span class="p">)</span>
@@ -3315,14 +3315,14 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 19. Menú desplegable completo: la caja (readOnly, no se escribe), el estado <code>expandido</code> que abre/cierra y <code>seleccion</code> que guarda la opción elegida. El índice por defecto se controla eligiendo el valor inicial del estado (equivalente al selectedIndex clásico).</p>
 <figure>
-<p><img alt="El Código 19 funcionando en el emulador." src="../assets/captura-codigo19.png" /></p>
-<figcaption>El Código 19 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 19 en ejecución: ExposedDropdownMenuBox con readOnly" src="../assets/captura-codigo19.png" /></p>
+<figcaption>Figura 30. El Código 19 en ejecución: ExposedDropdownMenuBox con readOnly.</figcaption>
 </figure>
 <h2 id="8-disposicion-los-layouts-de-compose">8. Disposición: los layouts de Compose</h2>
 <p>Un <strong>layout</strong> (contenedor de disposición) permite adaptar la distribución de los componentes sobre la pantalla: son los encargados de colocar los componentes en el punto deseado y con el tamaño preciso. Sin ellos, los elementos se amontonan. El uso de los contenedores nos permite modificar el tamaño y la posición de los componentes de forma automática y adaptativa (la pantalla de un móvil pequeño y una tablet reordenan solos).</p>
 <figure>
-<p><img alt="Cuatro contenedores: Column apilando en vertical, Row en fila, Box superponiendo y LazyVerticalGrid en rejilla." src="../assets/layouts-compose.svg" /></p>
-<figcaption>Fig. 10. Los contenedores de disposición de Compose: Column, Row, Box y LazyVerticalGrid.</figcaption>
+<p><img alt="Cuatro contenedores: Column, Row, Box y LazyVerticalGrid" src="../assets/layouts-compose.svg" /></p>
+<figcaption>Figura 31. Cuatro contenedores: Column, Row, Box y LazyVerticalGrid.</figcaption>
 </figure>
 <h3 id="81-column">8.1. Column</h3>
 <p>Apila los elementos <strong>uno debajo de otro</strong> en vertical (el más usado en formularios). Permite definir la alineación horizontal de los hijos y el <strong>espaciado</strong> entre ellos:</p>
@@ -3338,8 +3338,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 20. Column con espaciado (equivalente del vgaphgap clásico: aquí se llama spacedBy) y alineación.</p>
 <figure>
-<p><img alt="El Código 20 funcionando en el emulador." src="../assets/captura-codigo20.png" /></p>
-<figcaption>El Código 20 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 20 en ejecución: Column con espaciado" src="../assets/captura-codigo20.png" /></p>
+<figcaption>Figura 32. El Código 20 en ejecución: Column con espaciado.</figcaption>
 </figure>
 <h3 id="82-row">8.2. Row</h3>
 <p>Coloca los elementos <strong>uno al lado de otro</strong> en horizontal:</p>
@@ -3355,8 +3355,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 21. Row centrada con un Spacer entre botones. Row es el equivalente del FlowLayout clásico: los elementos fluyen en línea.</p>
 <figure>
-<p><img alt="El Código 21 funcionando en el emulador." src="../assets/captura-codigo21.png" /></p>
-<figcaption>El Código 21 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 21 en ejecución: Row centrada con un Spacer" src="../assets/captura-codigo21.png" /></p>
+<figcaption>Figura 33. El Código 21 en ejecución: Row centrada con un Spacer.</figcaption>
 </figure>
 <div class="admonition tip">
 <p class="admonition-title">weight: repartir el espacio</p>
@@ -3374,8 +3374,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 22. Box centrando un Text sobre una Image: superposición con contentAlignment.</p>
 <figure>
-<p><img alt="El Código 22 funcionando en el emulador." src="../assets/captura-codigo22.png" /></p>
-<figcaption>El Código 22 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 22 en ejecución: Box superponiendo un Text sobre una Image" src="../assets/captura-codigo22.png" /></p>
+<figcaption>Figura 34. El Código 22 en ejecución: Box superponiendo un Text sobre una Image.</figcaption>
 </figure>
 <h3 id="84-lazyverticalgrid">8.4. LazyVerticalGrid</h3>
 <p>La <strong>rejilla</strong> de Compose: coloca los elementos en filas y columnas automáticas (el equivalente del GridLayout clásico, pero perezoso: solo compone lo visible, por eso lo de "Lazy"):</p>
@@ -3394,21 +3394,21 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 23. LazyVerticalGrid con 3 columnas: cada elemento de la lista se convierte en un botón que ocupa su celda entera. Los huecos y separaciones se controlan con Arrangement.spacedBy.</p>
 <figure>
-<p><img alt="El Código 23 funcionando en el emulador." src="../assets/captura-codigo23.png" /></p>
-<figcaption>El Código 23 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 23 en ejecución: LazyVerticalGrid de 3 columnas" src="../assets/captura-codigo23.png" /></p>
+<figcaption>Figura 35. El Código 23 en ejecución: LazyVerticalGrid de 3 columnas.</figcaption>
 </figure>
 <p>Estos cuatro contenedores combinados son todo lo que necesita una pantalla real. Aquí tienes capturas reales del emulador con una app que los usa:</p>
 <figure>
-<p><img alt="Captura real del emulador: Column con Card de estado, fila de botones Aceptar/Cancelar y RadioButton — todo anidado dentro de un Column raíz." src="../assets/captura-contenedores.png" /></p>
-<figcaption>Fig. 11. Captura real del emulador: Column + Card + Row de botones trabajando juntos.</figcaption>
+<p><img alt="Contenedores en el emulador: Card, fila de botones y textos" src="../assets/captura-contenedores.png" /></p>
+<figcaption>Figura 36. Contenedores en el emulador: Card, fila de botones y textos.</figcaption>
 </figure>
 <figure>
-<p><img alt="Captura real del emulador: fila Aceptar/Cancelación con los dos niveles de botón relleno y outlined." src="../assets/captura-botones.png" /></p>
-<figcaption>Fig. 12. Captura real: la Row con dos Button (relleno y outlined) centados con spacedBy.</figcaption>
+<p><img alt="Botones en el emulador: las jerarquías Material en acción" src="../assets/captura-botones.png" /></p>
+<figcaption>Figura 37. Botones en el emulador: las jerarquías Material en acción.</figcaption>
 </figure>
 <figure>
-<p><img alt="Captura real del emulador: contador de pulsaciones con botón SUMAR y tres Text repartidos con SpaceBetween." src="../assets/captura-contador.png" /></p>
-<figcaption>Fig. 13. Captura real: Row con Arrangement.SpaceBetween repartiendo izq/centro/der, y el estado viviendo en la variable contador.</figcaption>
+<p><img alt="Contador de pulsaciones con botón SUMAR en el emulador" src="../assets/captura-contador.png" /></p>
+<figcaption>Figura 38. Contador de pulsaciones con botón SUMAR en el emulador.</figcaption>
 </figure>
 <pre class="mermaid"><code>flowchart TD
     A[¿Cómo ordeno mis componentes?] --&gt; B{¿En vertical&lt;br/&gt;uno bajo otro?}
@@ -3478,8 +3478,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 24. Pantalla de login completa: dos campos con estado, botón con evento que comprueba credenciales y navega o marca error.</p>
 <figure>
-<p><img alt="El Código 24 funcionando en el emulador." src="../assets/captura-codigo24.png" /></p>
-<figcaption>El Código 24 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 24 en ejecución: la pantalla de login completa" src="../assets/captura-codigo24.png" /></p>
+<figcaption>Figura 39. El Código 24 en ejecución: la pantalla de login completa.</figcaption>
 </figure>
 <p><strong>Desenlace.</strong> Al pulsar "Inicio" con datos correctos, la app navega a la pantalla de bienvenida; si son incorrectos, los campos se marcan en rojo y aparece el mensaje de error bajo el campo. No hay que crear ni destruir ventanas manualmente: el NavHost gestiona el cambio de pantalla, y <code>popBackStack()</code> permite volver atrás desde la bienvenida.</p>
 <h2 id="10-caso-practico-2-interfaz-de-reproductor-de-musica">10. Caso práctico 2: "Interfaz de reproductor de música"</h2>
@@ -3510,8 +3510,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>Código 25. Reproductor en rejilla 3×3: nueve botones colocados automáticamente por LazyVerticalGrid.</p>
 <figure>
-<p><img alt="El Código 25 funcionando en el emulador." src="../assets/captura-codigo25.png" /></p>
-<figcaption>El Código 25 en ejecución en el emulador.</figcaption>
+<p><img alt="El Código 25 en ejecución: el reproductor en rejilla 3×3" src="../assets/captura-codigo25.png" /></p>
+<figcaption>Figura 40. El Código 25 en ejecución: el reproductor en rejilla 3×3.</figcaption>
 </figure>
 <p><strong>Desenlace.</strong> El resultado es una matriz de nueve botones dispuestos en tres filas y tres columnas que se adapta sola al tamaño de pantalla: si rotas el móvil o corres en una tablet, la rejilla sigue cuadrada y llena. Con seis líneas de contenedor hemos sustituido a las nueve inserciones posicionales manuales del enfoque clásico.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>┌──────────────────────────────┐
@@ -3522,8 +3522,8 @@ Es la misma receta para diálogos de fecha, hora o confirmación de borrado.</li
 </code></pre></div>
 <p>La misma rejilla, con tarjetas de imágenes en vez de botones, es todo lo que necesita una galería — esta captura es de una app real corriendo en el emulador:</p>
 <figure>
-<p><img alt="Captura real del emulador: galería con LazyVerticalGrid, título arriba y tarjeta con imagen." src="../assets/captura-reproductor.png" /></p>
-<figcaption>Fig. 14. La rejilla de este caso práctico, en versión galería de imágenes: misma estructura, contenido distinto.</figcaption>
+<p><img alt="Galería con LazyVerticalGrid en el emulador" src="../assets/captura-reproductor.png" /></p>
+<figcaption>Figura 41. Galería con LazyVerticalGrid en el emulador.</figcaption>
 </figure>
 <h2 id="11-resumen-y-resolucion-del-caso-practico-de-la-unidad">11. Resumen y resolución del caso práctico de la unidad</h2>
 <p>En este tema hemos estudiado <strong>Jetpack Compose</strong>, el kit que contiene todas las funciones necesarias para programar todo tipo de componentes visuales. Aunque el número de componentes que ofrece la librería es muy amplio, aquí se han descrito los más usuales con sus principales parámetros: Button, Text, TextField, Checkbox, RadioButton y el menú desplegable ExposedDropdownMenuBox. El abanico permite infinitas combinaciones que se adecuarán en cada caso a las especificaciones finales de la aplicación.</p>
