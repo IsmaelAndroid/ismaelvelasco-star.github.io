@@ -197,12 +197,20 @@ class Circulo(
     fun crecer() { radio *= 2 }                     // método que modifica atributos
 }
 
-val c = Circulo(radio = 2.0)   // objeto (instancia)
-println(c.area())              // 12.566...
-c.crecer()                     // radio pasa a 4.0
+// escena que aparece en la captura del emulador: la misma clase,
+// con el objeto instanciado y los resultados pintados en pantalla
+@Composable
+fun EscenaClaseCirculo() {
+    val c = Circulo(radio = 2.0)   // objeto (instancia)
+    Column {
+        Text("c.area() = ${"%.3f".format(c.area())}")  // lo que println respondería: 12.566...
+        Button(onClick = { c.crecer() }) { Text("c.crecer()") }  // método interactivo
+        Text("c.radio = ${c.radio}")  // al pulsar c.crecer() se dobla
+    }
+}
 ```
 
-Código 4. Estructura de una clase Kotlin: atributos en el constructor, métodos en el cuerpo. Es el equivalente Compose-friendly de la estructura clásica atributos-constructor-métodos.
+Código 4. Estructura de una clase Kotlin: atributos en el constructor, métodos en el cuerpo, y la escena `EscenaClaseCirculo` que la pone en pantalla — exactamente el código que produce la captura de la Figura 6.
 
 <figure markdown>
 
@@ -211,8 +219,6 @@ Código 4. Estructura de una clase Kotlin: atributos en el constructor, métodos
 <figcaption>Figura 6. El Código 4 en ejecución: la clase Circulo con sus atributos y métodos.</figcaption>
 
 </figure>
-
-Nota de la captura: `println` escribe en Logcat (la consola), no en la pantalla del emulador. Para poder *ver* el ejemplo funcionando, la captura monta la misma clase `Circulo` en una `Column` mínima: el área como `Text`, el `c.radio` como `Text`, y la llamada `c.crecer()` convertida en `Button` pulsable (al pulsarla duplica el radio y los textos se actualizan). La clase es literal la del Código 4; el `Column`/`Text`/`Button` es solo el andamiaje para pasar de la consola a la pantalla.
 
 Y un ejemplo directo de interfaz: una clase `Contacto` cuyos atributos alimentan una tarjeta visual. Fíjate cómo cada atributo del objeto acaba pintado en un componente de la interfaz:
 
