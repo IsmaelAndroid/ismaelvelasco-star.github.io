@@ -212,6 +212,8 @@ Código 4. Estructura de una clase Kotlin: atributos en el constructor, métodos
 
 </figure>
 
+Nota de la captura: `println` escribe en Logcat (la consola), no en la pantalla del emulador. Para poder *ver* el ejemplo funcionando, la captura monta la misma clase `Circulo` en una `Column` mínima: el área como `Text`, el `c.radio` como `Text`, y la llamada `c.crecer()` convertida en `Button` pulsable (al pulsarla duplica el radio y los textos se actualizan). La clase es literal la del Código 4; el `Column`/`Text`/`Button` es solo el andamiaje para pasar de la consola a la pantalla.
+
 Y un ejemplo directo de interfaz: una clase `Contacto` cuyos atributos alimentan una tarjeta visual. Fíjate cómo cada atributo del objeto acaba pintado en un componente de la interfaz:
 
 ```kotlin
