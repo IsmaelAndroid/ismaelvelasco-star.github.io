@@ -2,134 +2,226 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/about/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section1/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section1/u01/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section1/u01/practica/PMDM-U1.-Practica001/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section1/u01/practica/PMDM-U1.-Practica002/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section1/u01/practica/PMDM-U1.-Practica003/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section1/u01/teoria/PMDM-U1.1.-AnalisisTecnologiasDispositivosMoviles/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/practica/DI-CL.-Practica001/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/practica/DI-CL.-Practica002/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/practica/DI-CL.-Practica003/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/practica/DI-CL.-Practica004/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/practica/DI-CL.-Practica005/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/practica/DI-CL.-Practica006/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/practica/DI-CL.-Practica007/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/practica/DI-CL.-Practica009/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/practica/DI-CL.-Practica010/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/practica/DI-CL.-Practica011/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/practica/DI-CL.-Practica012/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/solucionario/DI-CL.-Solucionario001/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/solucionario/DI-CL.-Solucionario002/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/solucionario/DI-CL.-Solucionario003/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/solucionario/DI-CL.-Solucionario004/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/solucionario/DI-CL.-Solucionario005/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/solucionario/DI-CL.-Solucionario006/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/solucionario/DI-CL.-Solucionario007/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/solucionario/DI-CL.-Solucionario009/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/solucionario/DI-CL.-Solucionario010/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/solucionario/DI-CL.-Solucionario011/</loc>
+         <lastmod>2026-10-13</lastmod>
+    </url>
+    <url>
+         <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/castillo/solucionario/DI-CL.-Solucionario012/</loc>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u01/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u01/ejercicios/DI-U1.-Ejercicios/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u01/ejercicios/DI-U1.-Solucionario/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u01/ejercicios/DI-U1.-SolucionarioPracticas/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u01/practica/DI-U1.-Practica001/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u01/practica/DI-U1.-Practica003/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u01/practica/DI-U1.-Practica004/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u01/practica/DI-U1.-Practica005/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u01/teoria/DI-U1.1.-IntroduccionConfeccionInterfaces/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u02/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u02/ejercicios/DI-U2.-Ejercicios/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u02/ejercicios/DI-U2.-Solucionario/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u02/teoria/DI-U2.1.-ClasesYComponentes/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u03/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u03/ejercicios/DI-U3.-Ejercicios/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u03/ejercicios/DI-U3.-PracticaSolucion/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u03/ejercicios/DI-U3.-Solucionario/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u03/practica/DI-U3.-Practica/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u03/teoria/DI-U3.1.-GeneracionInterfacesXML/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section3/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section3/u01/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section3/u01/ejercicios/EDES-U1.-Ejercicios/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section3/u01/ejercicios/EDES-U1.-Solucionario/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
     <url>
          <loc>https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section3/u01/teoria/EDES-U1.1.-GitYGitHub/</loc>
-         <lastmod>2026-10-12</lastmod>
+         <lastmod>2026-10-13</lastmod>
     </url>
 </urlset>
