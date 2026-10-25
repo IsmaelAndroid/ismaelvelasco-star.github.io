@@ -1,0 +1,158 @@
+Módulo Profesional: Desarrollo de interfaces.
+Equivalencia en créditos ECTS: 9.
+Código: 0488.
+Resultados de aprendizaje y Criterios de evaluación.
+1. Genera interfaces gráficos de usuario mediante editores visuales utilizando las funcionalidades del editor y adaptando el código generado.
+Criterios de evaluación:
+a) Se ha creado un interfaz gráfico utilizando los asistentes de un editor visual.
+b) Se han utilizado las funciones del editor para ubicar los componentes del interfaz.
+c) Se han modificado las propiedades de los componentes para adecuarlas a las necesidades de la aplicación.
+d) Se ha analizado el código generado por el editor visual.
+e) Se ha modificado el código generado por el editor visual.
+f) Se han asociado a los eventos las acciones correspondientes.
+g) Se ha desarrollado una aplicación que incluye el interfaz gráfico obtenido.
+2. Genera interfaces gráficos de usuario basados en XML utilizando herramientas específicas y adaptando el documento XML generado.
+Criterios de evaluación:
+a) Se han reconocido las ventajas de generar interfaces de usuario a partir de su descripción en XML.
+b) Se ha generado la descripción del interfaz en XML usando un editor gráfico.
+c) Se ha analizado el documento XML generado.
+d) Se ha modificado el documento XML.
+e) Se han asignado acciones a los eventos.
+f) Se ha generado el código correspondiente al interfaz a partir del documento XML.
+g) Se ha programado una aplicación que incluye el interfaz generado.
+3. Crea componentes visuales valorando y empleando herramientas específicas.
+Criterios de evaluación:
+a) Se han identificado las herramientas para diseño y prueba de componentes.
+b) Se han creado componentes visuales.
+c) Se han definido sus propiedades y asignado valores por defecto.
+d) Se han determinado los eventos a los que debe responder el componente y se les han asociado las acciones correspondientes.
+e) Se han realizado pruebas unitarias sobre los componentes desarrollados.
+f) Se han documentado los componentes creados.
+g) Se han empaquetado componentes.
+h) Se han programado aplicaciones cuyo interfaz gráfico utiliza los componentes creados.
+4. Diseña interfaces gráficos identificando y aplicando criterios de usabilidad.
+Criterios de evaluación:
+a) Se han creado menús que se ajustan a los estándares.
+b) Se han creado menús contextuales cuya estructura y contenido siguen los estándares establecidos.
+c) Se han distribuido las acciones en menús, barras de herramientas, botones de comando, entre otros, siguiendo un criterio coherente.
+d) Se han distribuido adecuadamente los controles en la interfaz de usuario.
+e) Se ha utilizado el tipo de control más apropiado en cada caso
+f) Se ha diseñado el aspecto de la interfaz de usuario (colores y fuentes entre otros) atendiendo a su legibilidad.
+g) Se ha verificado que los mensajes generados por la aplicación son adecuados en extensión y claridad.
+h) Se han realizado pruebas para evaluar la usabilidad de la aplicación.
+5. Crea informes evaluando y utilizando herramientas gráficas.
+Criterios de evaluación:
+a) Se ha establecido la estructura del informe.
+b) Se han generado informes básicos a partir de una fuente de datos mediante asistentes.
+c) Se han establecido filtros sobre los valores a presentar en los informes.
+d) Se han incluido valores calculados, recuentos y totales.
+e) Se han incluido gráficos generados a partir de los datos.
+f) Se han utilizado herramientas para generar el código correspondiente a los informes de una aplicación.
+g) Se ha modificado el código correspondiente a los informes.
+h) Se ha desarrollado una aplicación que incluye informes incrustados.
+6. Documenta aplicaciones seleccionando y utilizando herramientas específicas.
+Criterios de evaluación:
+a) Se han identificado sistemas de generación de ayudas.
+b) Se han generado ayudas en los formatos habituales.
+c) Se han generado ayudas sensibles al contexto.
+d) Se ha documentado la estructura de la información persistente.
+e) Se ha confeccionado el manual de usuario y la guía de referencia.
+f) Se han confeccionado los manuales de instalación, configuración y administración.
+g) Se han confeccionado tutoriales.
+7. Prepara aplicaciones para su distribución evaluando y utilizando herramientas específicas.
+Criterios de evaluación:
+a) Se han empaquetado los componentes que requiere la aplicación.
+b) Se ha personalizado el asistente de instalación
+c) Se ha empaquetado la aplicación para ser instalada de forma típica, completa o personalizada.
+d) Se han generado paquetes de instalación utilizando el entorno de desarrollo.
+e) Se han generado paquetes de instalación utilizando herramientas externas.
+f) Se han generado paquetes instalables en modo desatendido.
+g) Se ha preparado el paquete de instalación para que la aplicación pueda ser correctamente desinstalada.
+h) Se ha preparado la aplicación para ser descargada desde un servidor web y ejecutada.
+8. Evalúa el funcionamiento de aplicaciones diseñando y ejecutando pruebas.
+Criterios de evaluación:
+a) Se ha establecido una estrategia de pruebas.
+b) Se han realizado pruebas de integración de los distintos elementos.
+c) Se han realizado pruebas de regresión.
+d) Se han realizado pruebas de volumen y estrés.
+e) Se han realizado pruebas de seguridad.
+f) Se han realizado pruebas de uso de recursos por parte de la aplicación.
+g) Se ha documentado la estrategia de pruebas y los resultados obtenidos.
+Duración: 80 horas.
+Contenidos básicos.
+Confección de interfaces de usuario:
+− Librerías de componentes disponibles para diferentes sistemas operativos y lenguajes de programación; características.
+− Herramientas propietarias y libres de edición de interfaces.
+− Componentes: características y campo de aplicación.
+− Enlace de componentes a orígenes de datos.
+− Asociación de acciones a eventos.
+− Edición del código generado por la herramienta de diseño.
+− Clases, propiedades, métodos.
+− Eventos; escuchadores.
+Generación de interfaces a partir de documentos XML:
+− Lenguajes de descripción de interfaces basados en XML. Ámbito de aplicación.
+− Elementos, etiquetas, atributos y valores.
+− Herramientas libres y propietarias para la creación de interfaces de usuario multiplataforma.
+− Controles, propiedades.
+− Eventos, controladores.
+− Edición del documento XML.
+− Generación de código para diferentes plataformas.
+Creación de componentes visuales:
+− Concepto de componente; características
+− Propiedades y atributos.
+− Eventos; asociación de acciones a eventos.
+− Persistencia del componente.
+− Herramientas para desarrollo de componentes visuales.
+− Empaquetado de componentes.
+Usabilidad:
+− Usabilidad. Características, atributos.
+− Medida de usabilidad de aplicaciones; tipos de métricas.
+− Pautas de diseño de la estructura del interface de usuario; menús, ventanas, cuadros de diálogo, atajos de teclado, entre otros.
+− Pautas de diseño del aspecto del interface de usuario: colores, fuentes, iconos, distribución de los elementos.
+− Pautas de diseño de los elementos interactivos del interface de usuario: Botones de comando, listas desplegables, entre otros.
+− Pautas de diseño de la secuencia de control de la aplicación.
+Confección de informes:
+− Informes incrustados y no incrustados en la aplicación.
+− Herramientas gráficas integradas en el IDE y externas al mismo.
+− Estructura general. Secciones.
+− Filtrado de datos.
+− Numeración de líneas, recuentos y totales.
+− Librerías para generación de informes. Clases, métodos y atributos.
+− Conexión con las fuentes de datos. Ejecución de consultas.
+Documentación de aplicaciones:
+− Ficheros de ayuda. Formatos.
+− Herramientas de generación de ayudas.
+− Tablas de contenidos, índices, sistemas de búsqueda, entre otros.
+− Tipos de manuales: Manual de usuario, guía de referencia, guías rápidas, manuales de instalación, configuración y administración. Destinatarios y estructura.
+Distribución de aplicaciones:
+− Componentes de una aplicación. Empaquetado.
+− Instaladores.
+− Paquetes autoinstalables.
+− Herramientas para crear paquetes de instalación.
+− Personalización de la instalación: Logotipos, fondos, diálogos, botones, idioma, entre otros.
+− Asistentes de instalación y desinstalación.
+Realización de pruebas:
+− Objetivo, importancia y limitaciones del proceso de prueba. Estrategias.
+− Pruebas de integración: ascendentes y descendentes.
+− Pruebas de sistema: configuración, recuperación, entre otras.
+− Pruebas de uso de recursos.
+− Pruebas de seguridad.
+− Pruebas manuales y automáticas. Herramientas software para la realización de pruebas.
+Orientaciones pedagógicas.
+Este módulo profesional contiene parte de la formación necesaria para desempeñar la función de desarrollador de aplicaciones multiplataforma.
+La función de desarrollador de aplicaciones multiplataforma incluye aspectos como:
+− El desarrollo de interfaces de usuario.
+− La creación de informes.
+− La preparación de aplicaciones para su distribución.
+− La elaboración de los elementos de ayuda.
+− La evaluación del funcionamiento de aplicaciones.
+Las actividades profesionales asociadas a esta función se aplican en el desarrollo de software de gestión multiplataforma.
+La formación del módulo contribuye a alcanzar los objetivos generales e), f), g), h), k) l), m), r), s) y w) del ciclo formativo y las competencias profesionales, personales y sociales d), e), f), g), h), k), l), m), r), s), t) y w) del título.
+Las líneas de actuación en el proceso de enseñanza-aprendizaje que permiten alcanzar los objetivos del módulo están relacionados con:
+− La utilización de herramientas de diseño de interfaces de usuario.
+− La utilización de herramientas para el diseño de componentes visuales.
+− La utilización de herramientas de diseño y generación de informes.
+− La aplicación de criterios de usabilidad.
+− El diseño y ejecución de pruebas.
+− La instalación de aplicaciones.
+− El uso de herramientas de generación de ayudas, guías, tutoriales y manuales.

@@ -24,6 +24,9 @@ toc_icon: "file-code"
 
 ## 1.1. Análisis de tecnologías para dispositivos móviles
 
+<div style="background-color:#a5d6a7; border-radius:8px; padding:10px 14px; margin:14px 0;">
+<strong>🟢 Leyenda de repaso obligatorio:</strong> los textos con <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">este fondo verde</span> son imprescindibles: hay que repasarlos <strong>cada semana</strong>, porque entrarán en todas las evaluaciones del módulo.</div>
+
 !!! abstract "Idea principal"
     Antes de programar una aplicación móvil hay que conocer el terreno de juego: qué dispositivos existen, qué redes usan, cómo se organizan sus sistemas operativos y qué tecnologías de desarrollo hay disponibles. Elegir bien la tecnología condiciona el rendimiento, el coste y el alcance de la app.
 
@@ -68,9 +71,9 @@ El objetivo de este tema no es memorizar definiciones aisladas, sino entender qu
 Un **dispositivo móvil** es un aparato de pequeño tamaño, portable, con autonomía de funcionamiento suministrada por una batería, conexión permanente o semipermanente a una red de comunicaciones y con varias funciones. La función original de los dispositivos móviles era llamar por teléfono; hoy un smartphone puede hacer muchas funciones que antes realizaban aparatos y sistemas diferentes.
 
 !!! definition "Definición"
-    Dispositivo móvil: aparato de pequeño tamaño, portable, con autonomía de funcionamiento suministrada por una batería, conexión permanente o semipermanente a una red de comunicaciones y con varias funciones.
+    <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Dispositivo móvil: aparato de pequeño tamaño, portable, con autonomía de funcionamiento suministrada por una batería, conexión permanente o semipermanente a una red de comunicaciones y con varias funciones.</span>
 
-Es importante conocer las características de los dispositivos para los cuales vamos a diseñar y desarrollar las aplicaciones, porque sus limitaciones condicionan el diseño.
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Es importante conocer las características de los dispositivos para los cuales vamos a diseñar y desarrollar las aplicaciones, porque sus limitaciones condicionan el diseño.</span>
 
 **Características principales:**
 
@@ -85,11 +88,11 @@ Es importante conocer las características de los dispositivos para los cuales v
 
 **Tipos de dispositivos móviles:**
 
-- **Smartphones.** Con una función principal de teléfono móvil, pero por sus características se parece a un ordenador personal: pantalla de alta calidad, múltiple conectividad, gran capacidad de procesamiento y almacenamiento y dispositivos incorporados (cámara, sensores, GPS).
-- **Tablets.** Con tamaño intermedio entre el ordenador y el móvil. Son ligeros, autónomos y con fácil manejo (pantalla táctil).
+- **Smartphones.** <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Con una función principal de teléfono móvil, pero por sus características se parece a un ordenador personal: pantalla de alta calidad, múltiple conectividad, gran capacidad de procesamiento y almacenamiento y dispositivos incorporados (cámara, sensores, GPS).</span>
+- **Tablets.** <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Con tamaño intermedio entre el ordenador y el móvil. Son ligeros, autónomos y con fácil manejo (pantalla táctil).</span>
 - **PDAs** (Personal Digital Assistant). Dispositivos que intentan combinar prestaciones para servir de organizador personal. Su uso está en declive.
-- **eBooks.** Libro electrónico. Ligeros, con gran capacidad de almacenaje y tinta electrónica.
-- **Wearables.** El más difundido es el smartwatch o reloj inteligente.
+- **eBooks.** <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Libro electrónico. Ligeros, con gran capacidad de almacenaje y tinta electrónica.</span>
+- **Wearables.** <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El más difundido es el smartwatch o reloj inteligente.</span>
 
 <figure markdown="span">
   ![Tipos de dispositivos móviles](assets/tipos-dispositivos-moviles.png)
@@ -102,10 +105,10 @@ Es importante conocer las características de los dispositivos para los cuales v
 **Limitaciones para el desarrollo:**
 
 - La mayoría de las limitaciones están relacionadas con el **hardware**, que puede limitar la capacidad de procesamiento y almacenaje, aunque se ha mejorado mucho.
-- **Diversidad en el tamaño de la pantalla**: debemos diseñar con estilo responsive o tener en cuenta las variaciones.
+- **Diversidad en el tamaño de la pantalla**: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">debemos diseñar con estilo responsive o tener en cuenta las variaciones.</span>
 - No todos los teléfonos tendrán los mismos **sensores y GPS**.
 - No todas las herramientas y librerías de terceros son soportadas por todos los dispositivos.
-- Antes de lanzar una aplicación a explotación se debe **probar en varios dispositivos reales o emuladores**.
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Antes de lanzar una aplicación a explotación se debe **probar en varios dispositivos reales o emuladores**.</span>
 
 !!! note "Aclaración"
     Hoy hay más de 5 millones de aplicaciones repartidas entre los grandes repositorios (Play Store, App Store y otras). Las descargas anuales superaban los 40 billones en 2020 (15% juegos) y los 250 billones en 2024 (un 34% juegos): el mercado justifica el esfuerzo de conocerlo bien.
@@ -117,19 +120,19 @@ Es importante conocer las características de los dispositivos para los cuales v
 
 ### 2. Redes de comunicaciones móviles
 
-Las redes de comunicaciones móviles han ido evolucionando con el tiempo. Actualmente se está implantando la quinta generación (5G), pero ya se investiga la 6G.
+Las redes de comunicaciones móviles han ido evolucionando con el tiempo. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Actualmente se está implantando la quinta generación (5G), pero ya se investiga la 6G.</span>
 
 | Generación | Época | Tecnología | Velocidad típica | Hitos |
 |------------|-------|------------|------------------|-------|
 | 0G | Años 30-40 | Onda de radio (PTT, IMTS) | Solo voz | Walkie talkies; difusión en la II Guerra Mundial |
 | 1G | 1977 | AMPS (EE. UU.), NMT (Escandinavia) | Solo voz, analógica | Primera red celular en Chicago; equipos grandes y pesados, baja seguridad |
-| 2G | Años 90 | GSM (Europa), IS-136 (EE. UU.) | Voz + datos digitales | Tarjeta SIM, SMS; tecnología digital |
+| 2G | Años 90 | GSM (Europa), IS-136 (EE. UU.) | Voz + datos digitales | <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Tarjeta SIM, SMS; tecnología digital</span> |
 | 2.5G/2.75G | Finales 90 | GPRS, EDGE | Navegación básica | Redes de respaldo aún vigentes |
-| 3G | 2001 (Japón) | UMTS, CDMA | Hasta 2 Mbps | Convergencia voz/datos; navegación fluida; auge de BlackBerry |
+| 3G | 2001 (Japón) | UMTS, CDMA | <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Hasta 2 Mbps</span> | Convergencia voz/datos; navegación fluida; auge de BlackBerry |
 | 3.5G/3.75G | ~2005 | HSPA | Hasta 14 Mbps | Mejora de la 3G en velocidad |
 | 4G | 2010 | LTE, UMTS, WiMax | 60 Mbps bajada / 40 subida | Bandas 800/1800/2600 MHz; señal de televisión |
 | 4G+ | 2016 | LTE-A | 300 Mbps / 50 Mbps | Banda de 700 MHz |
-| 5G | 2017 (MWC Barcelona) | NR | 1-10 Gbps | Antenas mejoradas; IoT, WSN, AR/VR comunicada |
+| 5G | 2017 (MWC Barcelona) | NR | <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">1-10 Gbps</span> | Antenas mejoradas; IoT, WSN, AR/VR comunicada |
 | 6G | Investigación | Satélites | Hasta 100 Gbps | Cobertura global; frecuencias más elevadas |
 
 !!! example "Ejemplo"
@@ -141,19 +144,19 @@ Las redes de comunicaciones móviles han ido evolucionando con el tiempo. Actual
 </figure>
 
 !!! warning "Atención"
-    El contexto de red cambia constantemente (red, luz, batería, orientación), así que la app debe ser **responsiva, eficiente y resiliente**: capaz de pausar y reanudar sin perder estado.
+    El contexto de red cambia constantemente (red, luz, batería, orientación), así que <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">la app debe ser **responsiva, eficiente y resiliente**: capaz de pausar y reanudar sin perder estado.</span>
 
 ### 3. Sistemas operativos móviles
 
-Los sistemas operativos (OS) móviles, al igual que en los ordenadores personales, gestionan el conjunto de programas de bajo nivel que permiten la abstracción del hardware concreto y proporcionan servicios a las aplicaciones que se ejecutan sobre él. La mayoría de los SO móviles se organizan en un **sistema de capas**:
+Los sistemas operativos (OS) móviles, al igual que en los ordenadores personales, <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">gestionan el conjunto de programas de bajo nivel que permiten la abstracción del hardware concreto y proporcionan servicios a las aplicaciones que se ejecutan sobre él</span>. La mayoría de los SO móviles se organizan en un **sistema de capas**:
 
-1. **Kernel o núcleo.** Permite el acceso a los elementos del hardware, ofreciendo servicios a las capas superiores a través de controladores o drivers, como la gestión de procesos, gestión de la memoria o el sistema de archivos.
-2. **Middleware.** Conjunto de módulos que permite la existencia de aplicaciones. Es transparente al usuario.
-3. **Gestor de aplicaciones.** Aplicaciones nativas o multiplataforma.
+1. **Kernel o núcleo.** <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Permite el acceso a los elementos del hardware, ofreciendo servicios a las capas superiores a través de controladores o drivers, como la gestión de procesos, gestión de la memoria o el sistema de archivos.</span>
+2. **Middleware.** <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Conjunto de módulos que permite la existencia de aplicaciones. Es transparente al usuario.</span>
+3. **Gestor de aplicaciones.** <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Aplicaciones nativas o multiplataforma.</span>
 
 #### Android
 
-Es el sistema operativo líder en el mercado. Fue lanzado por la Open Handset Alliance (OHA) en 2007, a través de una agrupación de 78 compañías lideradas por Google. Sus capas, de abajo arriba:
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Es el sistema operativo líder en el mercado. Fue lanzado por la Open Handset Alliance (OHA) en 2007, a través de una agrupación de 78 compañías lideradas por Google.</span> Sus capas, de abajo arriba:
 
 1. **Kernel de Linux.**
 2. **Capa de abstracción de hardware (HAL).**
@@ -188,8 +191,8 @@ Para la programación de dispositivos móviles existen una gran cantidad de herr
 
 Supone emplear las herramientas y lenguajes propios de cada sistema operativo:
 
-- Sus principales ventajas: apps muy optimizadas, máximo rendimiento y mayor flexibilidad para el programador.
-- Su principal desventaja: si se quiere desarrollar para otras plataformas, el tiempo de desarrollo es mayor.
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Sus principales ventajas: apps muy optimizadas, máximo rendimiento y mayor flexibilidad para el programador.</span>
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Su principal desventaja: si se quiere desarrollar para otras plataformas, el tiempo de desarrollo es mayor.</span>
 
 | Plataforma | Lenguajes |
 |------------|-----------|
@@ -201,18 +204,18 @@ Supone emplear las herramientas y lenguajes propios de cada sistema operativo:
 
 Distinguimos dos tipos:
 
-- **Compilado a nativo.** Usa una plataforma intermedia, como **Xamarin**, que con un único lenguaje (C# sobre .NET) puede programar para varias plataformas. Las aplicaciones se compilan después en código nativo, lo que le da el mismo rendimiento que el desarrollo nativo.
-- **Basado en HTML5.** Utilización de herramientas basadas en HTML5 que generan aplicaciones para todas las plataformas, como **PhoneGap/Cordova** o **Ionic**. No tienen el mismo rendimiento que las aplicaciones nativas.
+- **Compilado a nativo.** <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Usa una plataforma intermedia, como **Xamarin**, que con un único lenguaje (C# sobre .NET) puede programar para varias plataformas. Las aplicaciones se compilan después en código nativo, lo que le da el mismo rendimiento que el desarrollo nativo.</span>
+- **Basado en HTML5.** <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Utilización de herramientas basadas en HTML5 que generan aplicaciones para todas las plataformas, como **PhoneGap/Cordova** o **Ionic**. No tienen el mismo rendimiento que las aplicaciones nativas.</span>
 
 #### Lenguajes y entornos destacados
 
-**Kotlin.** Fue desarrollado por JetBrains en 2016. Dentro del desarrollo nativo Android está tomando gran fuerza por encima de Java, al ser señalado por Google como lenguaje principal. Corre sobre la máquina virtual de Java. Sus ventajas: simplicidad, más seguro que Java, robusto y orientado a objetos, con acceso a gran número de librerías, sintaxis más limpia (necesita menos código) y coexistencia simultánea con Java.
+**Kotlin.** Fue desarrollado por JetBrains en 2016. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Dentro del desarrollo nativo Android está tomando gran fuerza por encima de Java, al ser señalado por Google como lenguaje principal. Corre sobre la máquina virtual de Java.</span> Sus ventajas: simplicidad, más seguro que Java, robusto y orientado a objetos, con acceso a gran número de librerías, sintaxis más limpia (necesita menos código) y coexistencia simultánea con Java.
 
 **Java.** Es el lenguaje nativo original para Android. Paralelo a Java es necesario conocer bien XML para el desarrollo de aplicaciones. Herramienta de desarrollo: Android Studio, un IDE basado en IntelliJ IDEA que se lanzó para reemplazar a Eclipse.
 
 **Ionic.** Permite desarrollar y desplegar aplicaciones híbridas que funcionan en múltiples plataformas (iOS, Android, escritorio y web como PWA) con una única base de código. Ofrece un diseño limpio, sencillo y funcional. Está construido sobre tecnologías web (HTML, CSS y JavaScript) y se puede usar con los frameworks frontend más populares: Angular, React y Vue.
 
-**Flutter.** SDK de Google para crear aplicaciones Android e iOS, para móvil, web y escritorio, desde una única base de código. Su lenguaje es **Dart** y se caracteriza por el desarrollo rápido gracias a **Hot Reload**: se pueden hacer cambios sin parar y arrancar la aplicación, reduciendo las esperas.
+**Flutter.** SDK de Google para crear aplicaciones Android e iOS, para móvil, web y escritorio, desde una única base de código. Su lenguaje es <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**Dart**</span> y se caracteriza por el desarrollo rápido gracias a <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**Hot Reload**: se pueden hacer cambios sin parar y arrancar la aplicación, reduciendo las esperas.</span>
 
 **Xamarin.** Entorno de desarrollo creado por Microsoft que permite crear aplicaciones Android e iOS en C#. Es gratuito y va integrado en Visual Studio. Pese a no desarrollar para Android en Java, permite crear una aplicación nativa que asegura una buena experiencia de usuario.
 
@@ -240,7 +243,7 @@ Los pasos del instalador (dejar las opciones por defecto) llevan hasta la pantal
 
 ### 5. Emuladores: configuraciones, perfiles y dispositivos soportados
 
-Para qué sirven: los emuladores y simuladores permiten ejecutar y depurar apps **sin dispositivo físico**, variando tamaño de pantalla, versión del SO, sensores y condiciones de red.
+Para qué sirven: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">los emuladores y simuladores permiten ejecutar y depurar apps **sin dispositivo físico**, variando tamaño de pantalla, versión del SO, sensores y condiciones de red.</span>
 
 **Configuración clave de un AVD (Android Virtual Device):**
 
@@ -261,7 +264,7 @@ Para qué sirven: los emuladores y simuladores permiten ejecutar y depurar apps 
 - Foldable: probar continuity al plegar/desplegar.
 - Wear OS/TV/Auto: emuladores específicos para relojes/TV/coche.
 
-**Cuándo usar dispositivo real:** cámara avanzada, BLE/NFC, rendimiento fino, gestos complejos y casos OEM.
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**Cuándo usar dispositivo real:** cámara avanzada, BLE/NFC, rendimiento fino, gestos complejos y casos OEM.</span>
 
 <figure markdown="span">
   ![Emulador AVD en ejecución junto al editor de layouts](assets/emulador-avd.png)
@@ -294,7 +297,7 @@ MiProyecto/
 
 | Elemento | Para qué sirve | Ejemplo |
 |----------|----------------|---------|
-| `AndroidManifest.xml` | Declara la identidad de la app: paquete, nombre, icono, qué activities contiene y qué permisos necesita. Sin manifest, Android no sabe que tu app existe. | `<uses-permission android:name="android.permission.CAMERA"/>` declara que usarás la cámara |
+| `AndroidManifest.xml` | <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Declara la identidad de app: paquete, nombre, icono, qué activities contiene y qué permisos necesita. Sin manifest, Android no sabe que tu app existe.</span> | `<uses-permission android:name="android.permission.CAMERA"/>` declara que usarás la cámara |
 | `java/` o `kotlin/` | Todo tu código Kotlin: la lógica, las pantallas, el acceso a datos. Es lo único que "programas" en sentido estricto. | `MainActivity.kt` |
 | `res/layout/` | Interfaces definidas en XML (la forma clásica, pre-Compose). Cada archivo es una pantalla o fragmento de pantalla. | `activity_main.xml` |
 | `res/values/strings.xml` | Los textos de la app separados del código: así se puede traducir la app cambiando un solo archivo. | `res/values-es/strings.xml` = versión española |
@@ -305,18 +308,152 @@ MiProyecto/
 
 **Componentes software de una aplicación. Estructura por capas:**
 
-1. **Activity** — una pantalla de la app con la que el usuario interactúa. Es el **punto de entrada**: cuando abres una app, Android arranca una de sus activities. Contiene la interfaz y reacciona a los eventos (tocs, girar el móvil...). Una app típica tiene varias (MainActivity, DetailActivity...).
-2. **Fragment** — un "trozo de pantalla" reutilizable que vive DENTRO de una Activity. Útil para paneles que aparecen en varias pantallas o para tablet/móvil con la misma activity.
-3. **ViewModel** — guarda el **estado** de la pantalla (los datos que se ven) y su lógica de presentación, y **sobrevive a rotaciones de pantalla**: si giras el móvil, la Activity se destruye y se recrea, pero el ViewModel conserva los datos.
-4. **Repository** — la única puerta de entrada y salida de **datos**: decide si leer de red (API REST), de base de datos (SQLite/Room) o de caché. Las capas superiores no saben de dónde vienen los datos.
-5. **Service** — trabajo en **segundo plano** sin interfaz: música sonando mientras miras otra app, descarga de un archivo, sincronización.
-6. **BroadcastReceiver** — un "receptor de radio" que escucha eventos del sistema (batería baja, WiFi conectado, arrancar el móvil) y reacciona.
-7. **ContentProvider** — comparte tus datos con OTRAS apps de forma controlada (agenda, fotos...).
-8. UI tradicional (XML) o **Jetpack Compose** (UI declarativa en Kotlin).
+⚠️ **Antes de nada:** la numeración de esta lista es **orden de lista, NO un diagrama de capas**. El 1 no está "abajo" y el 8 "arriba": si los colocas como pila real, el orden cambia y hay componentes que ni siquiera tienen piso propio. El diagrama de capas correcto está justo debajo de la tabla.
+
+| # | Componente | 📍 Su sitio real | Ejemplo real que puedes probar hoy |
+|---|------------|:--:|------------------------------------|
+| 1 | **Activity** — pantalla con la que interactúas; **punto de entrada** de la app; reacciona a eventos (tocs, girar el móvil...). Una app típica tiene varias | 🟩 Arriba (caparazón de la UI) | **WhatsApp**: la lista de chats es una; tocas un chat y se arranca la actividad de la conversación; botón atrás y vuelves. **Gmail**: bandeja → tocar un correo abre la actividad del mensaje |
+| 2 | **Fragment** — "trozo de pantalla" reutilizable que vive DENTRO de una Activity | 🟩 Arriba (dentro de la Activity) | **Instagram**: la pantalla principal es UNA actividad y las pestañas de abajo (Inicio / Buscar / Reels) son fragments que se intercambian sin cambiar de actividad. **Gmail en tablet**: lista a la izquierda + mensaje a la derecha = dos fragments en la misma actividad; en móvil, el mismo código muestra uno solo |
+| 3 | **ViewModel** — guarda el **estado** de la pantalla y su lógica de presentación; **sobrevive a rotaciones**: al girar, la Activity se destruye y recrea, el ViewModel conserva los datos | 🟦 Segundo piso | Prueba en directo: escribe un comentario largo en **X/Twitter** y gira el móvil → el texto NO se pierde y la lista NO se recarga. La actividad se destruyó delante de tus narices; el ViewModel siguió vivo |
+| 4 | **Repository** — única puerta de entrada y salida de **datos**: decide si lee de red (API REST), de base de datos (SQLite/Room) o de caché. Las capas superiores no saben de dónde vienen los datos | 🟨 Tercer piso | **Just Eat / Uber Eats**: el catálogo llega por API REST, tus favoritos viven en Room y sin cobertura ves el último catálogo desde caché. Los tres caminos detrás de UNA puerta. **Spotify**: playlists cacheadas que se sincronizan con red; la UI no sabe si pinta datos de ayer o de hoy |
+| 5 | **Service** — trabajo en **segundo plano** sin interfaz | 🟪 Lateral (no es piso) | **Spotify**: dale al play, cierra la app DE DAVO y la música sigue → foreground service con notificación persistente. **Play Store**: actualiza 20 apps con la tienda cerrada |
+| 6 | **BroadcastReceiver** — "receptor de radio" que escucha eventos del sistema (batería baja, WiFi, arranque) y reacciona | 🟪 Lateral (no es piso) | Música sonando y **desenchufas los auriculares** → se pausa solo (`ACTION_AUDIO_BECOMING_NOISY`). **WhatsApp**: al volver la cobertura se reconecta solo y entran los pendientes |
+| 7 | **ContentProvider** — comparte tus datos con OTRAS apps de forma controlada | 🟪 Lateral (no es piso) | Cuando **WhatsApp pide tus contactos**, lee a través del ContactsProvider de la app nativa. El **selector de fotos** de Instagram es el MediaStore: te cede solo la foto que eliges, no la galería entera |
+| 8 | **UI** — tradicional (XML) o **Jetpack Compose** (UI declarativa en Kotlin) | 🟩 Lo más de arriba: lo que ve el usuario | XML clásico: los ajustes de cualquier app bancaria española. Compose: *Now in Android* (Google, 100 % Compose), **Netflix** (migró su UI a Compose) y **Spotify**, que en 2024 usa Compose Multiplatform: el mismo código de UI en Android e iOS |
+
+Y ahora el diagrama de capas **de verdad**, de lo que ve el usuario hacia abajo:
+
+```mermaid
+flowchart TD
+    USR[👁 El usuario] --> V
+    subgraph PILA["LA PILA — de arriba abajo"]
+        V["🟩 UI (XML / Compose)<br/>hostada en Activity y Fragment"]
+        VM["🟦 ViewModel<br/>estado + lógica de pantalla"]
+        R["🟨 Repository<br/>la puerta de los datos"]
+        D["⬛ Fuentes: API REST · Room/SQLite · caché"]
+        V --> VM --> R --> D
+    end
+    subgraph LADO["🟪 PUERTAS LATERALES — no son pisos"]
+        S["Service<br/>segundo plano"]
+        B["BroadcastReceiver<br/>escucha eventos"]
+        C["ContentProvider<br/>comparte datos"]
+    end
+    S -.->|alimenta| R
+    B -.->|despierta| VM
+    C -.->|exponen el repo al exterior| R
+    style V fill:#2f855a,color:#fff
+    style VM fill:#2b6cb0,color:#fff
+    style R fill:#d69e2e,color:#000
+    style D fill:#4a5568,color:#fff
+    style S fill:#805ad5,color:#fff
+    style B fill:#805ad5,color:#fff
+    style C fill:#805ad5,color:#fff
+```
+
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El apilamiento vertical real es **UI → ViewModel → Repository → fuentes de datos**, y esa tríada es la que pregunta el tribunal cuando dice "estructura por capas".</span> <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Activity y Fragment alojan la UI (viven arriba); Service, BroadcastReceiver y ContentProvider son **puertas laterales al sistema**, no estratos: un Service puede alimentar al Repository, pero no "vive debajo de él".</span>
+
+!!! danger "Trampa de examen"
+    Si te preguntan por el orden de capas, **no contestes "1 a 8"** ni "Activity abajo y Compose arriba": eso es el orden de la lista del temario, no la arquitectura. La respuesta: pantalla arriba (UI en Activity/Fragment), debajo el ViewModel, debajo el Repository, y al fondo las fuentes de datos (red, base de datos, caché). Los componentes de sistema (Service, Receiver, Provider) van en un lateral: entran y salen de la pila según el caso.
+
 
 **Jerarquía típica con patrón MVVM:**
 
 Antes de ver la cadena, definamos las siglas: **MVVM** = *Model-View-ViewModel*, un patrón que separa la interfaz (View) del estado y lógica de pantalla (ViewModel) y de los datos (Model). El objetivo: que cada capa se pueda cambiar y probar sin romper las otras.
+
+La analogía que lo deja claro en diez segundos: **un restaurante**. La **View es el comedor**: lo único que el cliente ve (mesa, carta, presentación del plato). El **ViewModel es el camarero**: apunta lo que pide el cliente (evento que SUBE) y trae lo que se cocina (estado que BAJA); no cocina y no se sienta con el cliente. El **Model es la cocina**: género, fogones y despensa (datos: API, base de datos, ficheros); el cliente nunca entra en la cocina, y si mañana cambias los fogones, el comedor ni se entera. Regla única del patrón: **los eventos suben (clics), el estado baja (datos para pintar), y nadie habla con un vecino que no tenga al lado.**
+
+Vamos a verlo con tres ejemplos pequeños y distintos. En todos: 🟩 = View (lo que se ve), 🟦 = ViewModel (estado + lógica), 🟨/⬛ = Model (datos).
+
+#### Ejemplo 1 — La app del tiempo (el Model habla con una API)
+
+```mermaid
+flowchart LR
+    A["⬛ API del tiempo<br/>json: {t:21,d:'sol'}"] --> R["🟨 MeteoroRepository<br/>única puerta de datos"]
+    R --> VM["🟦 MeteoroViewModel<br/>estado: Meteoro?"]
+    VM --> V["🟩 ClimaCard<br/>🌤 Cádiz · 21°"]
+    style A fill:#4a5568,color:#fff
+    style R fill:#d69e2e,color:#000
+    style VM fill:#2b6cb0,color:#fff
+    style V fill:#2f855a,color:#fff
+```
+
+```kotlin
+// ── MODELO (la cocina) ─────────────────────────────────────────
+data class Meteoro(val ciudad: String, val grados: Int, val icono: String)  // [M] dato puro
+
+class MeteoroRepository {                       // [M] única puerta de entrada
+    suspend fun getMeteoro(c: String): Meteoro =
+        apiRest.getMeteoro(c)                   // [M] hoy llama a red; mañana a caché
+}                                               // [M] y la View ni se entera del cambio
+
+// ── VIEWMODEL (el camarero) ────────────────────────────────────
+class MeteoroViewModel : ViewModel() {          // [VM] cerebro de esta pantalla
+    private val repo = MeteoroRepository()      // [VM] solo habla con la cocina
+    private val _meteoro = MutableStateFlow<Meteoro?>(null)     // [VM] el estado
+    val meteoro: StateFlow<Meteoro?> = _meteoro.asStateFlow()   // [VM] lo que la View observa
+
+    init {                                      // [VM] al nacer la pantalla…
+        viewModelScope.launch {                 // [VM] …pedimos el dato a la cocina
+            _meteoro.value = repo.getMeteoro("Cádiz")           // [VM] y lo guardamos
+        }
+    }
+}
+
+// ── VISTA (el comedor) ─────────────────────────────────────────
+@Composable
+fun ClimaCard(vm: MeteoroViewModel) {           // [V] la pantalla
+    val m by vm.meteoro.collectAsState()        // [V] OBSERVA el estado
+    m?.let { Text("${it.icono} ${it.ciudad} · ${it.grados}°") } // [V] y lo PINTA
+}
+```
+
+> **Veredicto:** el **Model** es `Meteoro` + `MeteoroRepository` (sabe de JSON y de red, no sabe que existe `Text`). El **ViewModel** es `MeteoroViewModel` (guarda el `Meteoro?` y lo carga al nacer). La **View** es `ClimaCard` (no sabe que hay una API: solo ve un dato nullable y lo pinta cuando llega).
+
+#### Ejemplo 2 — El contador que sobrevive a reinicios (el Model guarda en disco)
+
+```mermaid
+flowchart LR
+    V["🟩 Button +1 y Text<br/>'3 pulsaciones'"] -.->|"evento SUBE"| VM["🟦 ContadorViewModel<br/>incrementar()"]
+    VM -->|"guardar"| M["⬛ PrefsStore<br/>SharedPreferences"]
+    VM -.->|"estado BAJA"| V
+    style V fill:#2f855a,color:#fff
+    style VM fill:#2b6cb0,color:#fff
+    style M fill:#4a5568,color:#fff
+```
+
+```kotlin
+// ── MODELO: el número vive aquí, no en la pantalla ─────────────
+object PrefsStore {                             // [M] la despensa: persistencia
+    private var guardado = 0                    // [M] en la vida real: SharedPreferences
+    fun leer(): Int = guardado                  // [M]
+    fun escribir(n: Int) { guardado = n }       // [M]
+}
+
+// ── VIEWMODEL: la única regla de negocio de la pantalla ────────
+class ContadorViewModel : ViewModel() {         // [VM]
+    private val _cuenta = MutableStateFlow(PrefsStore.leer())   // [VM] arranca con lo guardado
+    val cuenta: StateFlow<Int> = _cuenta.asStateFlow()          // [VM] lo que se observa
+
+    fun incrementar() {                         // [VM] el camarero apunta el pedido
+        _cuenta.value += 1                      // [VM] actualiza el estado → la pantalla se redibuja
+        PrefsStore.escribir(_cuenta.value)      // [VM] y avisa a la cocina: guarda en disco
+    }
+}
+
+// ── VISTA: pinta y reenvía, sin decidir nada ────────────────────
+@Composable
+fun Contador(vm: ContadorViewModel) {           // [V]
+    val n by vm.cuenta.collectAsState()         // [V] observa
+    Column {
+        Text("Vas por $n")                      // [V] pinta el estado que BAJA
+        Button(onClick = { vm.incrementar() }) { Text("+1") }  // [V] el clic SUBE al VM
+    }
+}
+```
+
+> **Veredicto:** el **Model** es `PrefsStore` (el número VIVE ahí; por eso sobrevive a reinicios). El **ViewModel** es `ContadorViewModel` (la única regla: +1, avisar a la View y pedir guarda). La **View** es `Contador` (no sabe si el número está en memoria, en disco o en Marte). Si mañana el contador se guarda en una API, solo tocas el Model: `vm.incrementar()` y el `Text` no cambian ni una letra.
+
+#### Ejemplo 3 — La lista de la compra compartida: la cadena completa
 
 Cada pieza de la cadena:
 
@@ -407,13 +544,15 @@ class MainActivity : ComponentActivity() {
 !!! note "Aclaración"
     En Jetpack Compose la interfaz ya no se describe en XML: se construye con funciones `@Composable` en Kotlin. La plantilla *Empty Activity* actual ya genera código Compose, como se vio en la captura de Android Studio.
 
+> **Veredicto del ejemplo 3:** el **Model** son `Item`, `ItemsRepository` y la fuente (API o SQLite). El **ViewModel** es `HomeViewModel`: su `_items: MutableStateFlow<List<Item>>` es el único sitio donde vive "lo que hay en pantalla". La **View** es `MainActivity`: `collectAsState()` observa y `LazyColumn` pinta; ni una consulta a datos dentro. Misma receta que los ejemplos 1 y 2, solo que con lista.
+
 ### 7. Modelo de estados y ciclo de vida de una app
 
 **Estados: activo, pausado y destruido.**
 
-1. **Activo (foreground):** la app está visible e interactiva.
-2. **Pausa/Background:** perdió foco (otra app delante o pantalla bloqueada). Debe guardar estado, parar sensores/tareas y reducir consumo.
-3. **Destruido/Terminado:** el sistema o el usuario la cierra; los recursos se liberan.
+1. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**Activo (foreground):** la app está visible e interactiva.</span>
+2. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**Pausa/Background:** perdió foco (otra app delante o pantalla bloqueada). Debe guardar estado, parar sensores/tareas y reducir consumo.</span>
+3. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**Destruido/Terminado:** el sistema o el usuario la cierra; los recursos se liberan.</span>
 
 **¿Y cómo sé EN qué estado está mi app?** Android no te lo "dice" directamente: te **avisa llamando a métodos** de tu Activity en cada transición. Son los **callbacks del ciclo de vida**, y TÚ decides qué hacer en cada uno sobrescribiéndolos. Si no los sobrescribes, existen igual (con cuerpo vacío) — igual que pasaba con los parámetros por defecto de `Row`: no son obligatorios, pero ahí están.
 
@@ -450,12 +589,12 @@ El mapa completo de callbacks:
 
 **Cómo leerlo (reglas mnemotécnicas):**
 
-- `onCreate → onStart → onResume` es la **secuencia de arranque**. Se ejecutan SIEMPRE las tres, en ese orden.
-- `onResume` no significa "reanudar después de una pausa": significa **"la app está ahora interactiva"**. Es el último en ejecutarse al arrancar.
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`onCreate → onStart → onResume` es la **secuencia de arranque**. Se ejecutan SIEMPRE las tres, en ese orden.</span>
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`onResume` no significa "reanudar después de una pausa": significa **"la app está ahora interactiva"**.</span> Es el último en ejecutarse al arrancar.
 - **¿La app está corriendo/activa?** → cuando se ha ejecutado `onResume()` y aún no ha llegado `onPause()`.
 - **¿Cómo lo veo yo, el programador?** → con **`Log.d()` + Logcat**. Es el "printf de Android": pintas un mensaje en cada callback y los ves aparecer en la pestaña *Logcat* de Android Studio, con la app real ejecutándose. El código exacto, más abajo.
 - `onPause` = "pierdo el foco" (半 visible: un diálogo encima, va a cerrarse). `onStop` = "ya no se ve nada". No son lo mismo: en un diálogo solo llega `onPause`.
-- `onDestroy` **no está garantizado**: si el sistema mata el proceso desde `onStop`, tu app desaparece sin pasar por él. Por eso lo importante se guarda ANTES (en `onPause`/`onStop`).
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`onDestroy` **no está garantizado**: si el sistema mata el proceso desde `onStop`, tu app desaparece sin pasar por él. Por eso lo importante se guarda ANTES (en `onPause`/`onStop`).</span>
 
 **El mapeo estados ↔ callbacks:**
 
@@ -561,11 +700,11 @@ override fun onStop() {
 
 **Ciclo de vida completo de una aplicación: descubrimiento → instalación → ejecución → actualización → borrado.**
 
-1. **Descubrimiento:** ficha en tienda (ASO), web, redes, recomendaciones.
+1. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**Descubrimiento:** ficha en tienda (ASO), web, redes, recomendaciones.</span>
 2. **Instalación:** descarga del paquete (Android: AAB/APK; iOS: IPA vía Store), verificaciones, permisos en tiempo de ejecución.
 3. **Ejecución:** primera apertura (onboarding), permisos bajo demanda, manejo de estados y eventos de sistema (red/batería).
 4. **Actualización:** nuevas versiones (migraciones de esquema, notas de versión). Android soporta In-App Updates; en iOS, aviso/redirección a Store.
-5. **Borrado:** desinstalación → se elimina el sandbox local; si hay datos en nube, ofrecer exportar/eliminar (privacidad).
+5. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**Borrado:** desinstalación → se elimina el sandbox local; si hay datos en nube, ofrecer exportar/eliminar (privacidad).</span>
 
 **Buenas prácticas en el ciclo de vida:**
 
@@ -647,7 +786,7 @@ adb shell dumpsys batterystats
 10-08 10:16:50.743  1299  2525 I NetworkScheduler: Using standalone scheduling engine [CONTEXT service_id=218]
 ```
 
-La inicial del nivel es clave: `V`=verbose, `D`=debug, `I`=info, `W`=warning, `E`=error. Con `*:W` solo pasan las W y E — imprescindible para buscar un crash entre miles de líneas.
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La inicial del nivel es clave: `V`=verbose, `D`=debug, `I`=info, `W`=warning, `E`=error.</span> Con `*:W` solo pasan las W y E — imprescindible para buscar un crash entre miles de líneas.
 
 **Y en la pantalla del emulador.** Ejemplo real: lanzamos Ajustes con `am start -a android.settings.SETTINGS` y volvemos al launcher con `input keyevent 3`. Así queda el emulador tras cada comando (capturas reales capturadas con `adb shell screencap`):
 
@@ -729,8 +868,8 @@ En este tema has aprendido que:
 
 - F.J. Álvaro. *Programación Multimedia y Dispositivos Móviles. IES Rafael Alberti. 2025/2026*. Material docente del módulo (presentación del tema 1).
 - Android Developers. <https://developer.android.com>
-- Real Decreto 450/2010, de 16 de abril. Módulo profesional 0489 Programación multimedia y dispositivos móviles.
+- Real Decreto 405/2023, de 29 de mayo (BOE-A-2023-13221). Módulo profesional 0489 Programación multimedia y dispositivos móviles.
 
 ## Presentación
 
-- [PM-U1.1 - Análisis de tecnologías para aplicaciones móviles](https://ismaelvelasco-star.github.io/pmdm-multimedia-dispositivos-moviles/slides/section1-pmdm/PM-U1.1.-AnalisisTecnologiasMoviles.html)
+- [PM-U1.1 - Análisis de tecnologías para aplicaciones móviles](https://revilofe.github.io/slides/section5-pmdm/PM-U1.1.-AnalisisTecnologiasMoviles.html)

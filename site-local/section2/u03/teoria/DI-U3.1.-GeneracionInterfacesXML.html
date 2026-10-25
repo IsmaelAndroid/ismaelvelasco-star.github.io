@@ -1,0 +1,2935 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="El mundo XML que sobrevive en Android moderno: documentos bien formados, lenguajes derivados (SVG, vector drawables), recursos, eventos declarativos y su puente con Jetpack Compose.">
+      
+      
+        <meta name="author" content="Ismael Velasco">
+      
+      
+      
+        <link rel="prev" href="../index.html">
+      
+      
+        <link rel="next" href="../practica/DI-U3.-Practica.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>UD 3 - Generación de interfaces a partir de documentos XML - Aula 2º DAM - Ismael Velasco</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ud-3-generacion-de-interfaces-a-partir-de-documentos-xml" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../../index.html" title="Aula 2º DAM - Ismael Velasco" class="md-header__button md-logo" aria-label="Aula 2º DAM - Ismael Velasco" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Aula 2º DAM - Ismael Velasco
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UD 3 - Generación de interfaces a partir de documentos XML
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ismaelvelasco-star/ismaelvelasco-star.github.io" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ismaelvelasco-star/ismaelvelasco-star.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../index.html" class="md-tabs__link">
+        
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    
+  
+  Principal
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../section1/index.html" class="md-tabs__link">
+          
+  
+  
+  PMDM
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../index.html" class="md-tabs__link">
+          
+  
+  
+  Desarrollo de Interfaces
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../section3/index.html" class="md-tabs__link">
+          
+  
+  
+  Entornos de Desarrollo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Acerca de
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="Aula 2º DAM - Ismael Velasco" class="md-nav__button md-logo" aria-label="Aula 2º DAM - Ismael Velasco" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Aula 2º DAM - Ismael Velasco
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ismaelvelasco-star/ismaelvelasco-star.github.io" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ismaelvelasco-star/ismaelvelasco-star.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Principal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PMDM
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PMDM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section1/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programación Multimedia y Dispositivos Móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U1: Análisis de tecnologías para dispositivos móviles
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U1: Análisis de tecnologías para dispositivos móviles
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section1/u01/index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - Análisis de tecnologías para aplicaciones móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section1/u01/teoria/PMDM-U1.1.-AnalisisTecnologiasDispositivosMoviles.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Análisis de tecnologías para dispositivos móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section1/u01/practica/PMDM-U1.-Practica001.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.1: Explorando Android Studio y sus plantillas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section1/u01/practica/PMDM-U1.-Practica002.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.2: Emuladores y perfiles de dispositivo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section1/u01/practica/PMDM-U1.-Practica003.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.3: ADB y el administrador de aplicaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desarrollo de Interfaces
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Desarrollo de Interfaces
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    DI — Desarrollo de Interfaces (2º DAM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - Introducción a la confección de interfaces
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD 1 - Introducción a la confección de interfaces
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u01/index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - Introducción a la confección de interfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u01/teoria/DI-U1.1.-IntroduccionConfeccionInterfaces.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Introducción a la confección de interfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u01/practica/DI-U1.-Practica001.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1: Nuestra app en todas las plataformas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u01/teoria/DI-U1.1.-IntroduccionConfeccionInterfaces.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Introducción a la confección de interfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u01/practica/DI-U1.-Practica003.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3: Column, botones y contador (1 h)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u01/practica/DI-U1.-Practica004.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 4: Row y Card (1 h)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u01/practica/DI-U1.-Practica005.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 5: Imágenes y recursos (1 h)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u01/ejercicios/DI-U1.-SolucionarioPracticas.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario de prácticas (P3-P5)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u01/ejercicios/DI-U1.-Ejercicios.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios U1 (de menor a mayor)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u01/ejercicios/DI-U1.-Solucionario.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario U1 (con enunciados)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 2 - Clases y componentes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD 2 - Clases y componentes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u02/index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3v6h8V3m-8 18h8V11h-8M3 21h8v-6H3m0-2h8V3H3z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 2 - Clases y componentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u02/teoria/DI-U2.1.-ClasesYComponentes.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3v6h8V3m-8 18h8V11h-8M3 21h8v-6H3m0-2h8V3H3z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1.-Clases y componentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u02/ejercicios/DI-U2.-Ejercicios.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.5 11H19V7a2 2 0 0 0-2-2h-4V3.5A2.5 2.5 0 0 0 10.5 1 2.5 2.5 0 0 0 8 3.5V5H4a2 2 0 0 0-2 2v3.8h1.5c1.5 0 2.7 1.2 2.7 2.7S5 16.2 3.5 16.2H2V20a2 2 0 0 0 2 2h3.8v-1.5c0-1.5 1.2-2.7 2.7-2.7s2.7 1.2 2.7 2.7V22H17a2 2 0 0 0 2-2v-4h1.5a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios U2 (práctica progresiva)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u02/ejercicios/DI-U2.-Solucionario.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario U2 (con enunciados)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 3 - Generación de interfaces a partir de documentos XML
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD 3 - Generación de interfaces a partir de documentos XML
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.89 3 1.96.4L11.11 21l-1.96-.4zm6.7 9L16 8.41V5.58L22.42 12 16 18.41v-2.83zM1.58 12 8 5.58v2.83L4.41 12 8 15.58v2.83z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 3 - Generación de interfaces a partir de documentos XML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.89 3 1.96.4L11.11 21l-1.96-.4zm6.7 9L16 8.41V5.58L22.42 12 16 18.41v-2.83zM1.58 12 8 5.58v2.83L4.41 12 8 15.58v2.83z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1.-Generación de interfaces a partir de documentos XML
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="DI-U3.1.-GeneracionInterfacesXML.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.89 3 1.96.4L11.11 21l-1.96-.4zm6.7 9L16 8.41V5.58L22.42 12 16 18.41v-2.83zM1.58 12 8 5.58v2.83L4.41 12 8 15.58v2.83z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1.-Generación de interfaces a partir de documentos XML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion-y-contextualizacion-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introducción y contextualización práctica
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-lenguajes-de-descripcion-de-interfaces-basados-en-xml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Lenguajes de descripción de interfaces basados en XML
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Lenguajes de descripción de interfaces basados en XML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-xhtml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. XHTML
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-gml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. GML
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-mathml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. MathML
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-rss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. RSS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-xslt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. XSLT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-svg-y-los-vector-drawables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6. SVG y los vector drawables
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-el-documento-xml-analisis-y-edicion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. El documento XML. Análisis y edición
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. El documento XML. Análisis y edición">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-la-primera-linea-prologo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. La primera línea: prólogo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-etiquetas-elementos-y-nodos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Etiquetas, elementos y nodos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-atributos-y-valores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Atributos y valores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-bien-formado-vs-valido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4. Bien formado vs. válido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-herramientas-de-analisis-y-edicion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5. Herramientas de análisis y edición
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-el-layout-editor-la-palette-que-volvio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6. El Layout Editor: la palette que volvió
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-eventos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Eventos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-generacion-de-recursos-y-codigo-para-android" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Generación de recursos y código para Android
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Generación de recursos y código para Android">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-caso-practico-1-el-logo-de-la-radio-version-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Caso práctico 1: "El logo de la radio, versión 2026"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-caso-practico-2-estructura-de-un-documento-xml-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Caso práctico 2: "Estructura de un documento XML de datos"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Resumen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bibliografia-y-fuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bibliografía y fuentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practica/DI-U3.-Practica.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.89 3 1.96.4L11.11 21l-1.96-.4zm6.7 9L16 8.41V5.58L22.42 12 16 18.41v-2.83zM1.58 12 8 5.58v2.83L4.41 12 8 15.58v2.83z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3: XML vivo en tu app Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejercicios/DI-U3.-PracticaSolucion.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m23 12-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68zm-13 5-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario de la práctica 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejercicios/DI-U3.-Ejercicios.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.5 11H19V7a2 2 0 0 0-2-2h-4V3.5A2.5 2.5 0 0 0 10.5 1 2.5 2.5 0 0 0 8 3.5V5H4a2 2 0 0 0-2 2v3.8h1.5c1.5 0 2.7 1.2 2.7 2.7S5 16.2 3.5 16.2H2V20a2 2 0 0 0 2 2h3.8v-1.5c0-1.5 1.2-2.7 2.7-2.7s2.7 1.2 2.7 2.7V22H17a2 2 0 0 0 2-2v-4h1.5a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios U3 (de menor a mayor)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejercicios/DI-U3.-Solucionario.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m23 12-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68zm-13 5-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario U3 (con enunciados)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entornos de Desarrollo
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Entornos de Desarrollo
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section3/index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    EDES — Entornos de Desarrollo (1º DAM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - GitHub: repositorios, versiones y trabajo en equipo
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD 1 - GitHub: repositorios, versiones y trabajo en equipo
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section3/u01/index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14c-3.36 0-4.46 1.35-4.82 2.24C9.25 16.7 10 17.76 10 19a3 3 0 0 1-3 3 3 3 0 0 1-3-3c0-1.31.83-2.42 2-2.83V7.83A2.99 2.99 0 0 1 4 5a3 3 0 0 1 3-3 3 3 0 0 1 3 3c0 1.31-.83 2.42-2 2.83v5.29c.88-.65 2.16-1.12 4-1.12 2.67 0 3.56-1.34 3.85-2.23A3.01 3.01 0 0 1 14 7a3 3 0 0 1 3-3 3 3 0 0 1 3 3c0 1.34-.88 2.5-2.09 2.86C17.65 11.29 16.68 14 13 14m-6 4a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1M7 4a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1m10 2a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - GitHub: repositorios, versiones y trabajo en equipo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section3/u01/teoria/EDES-U1.1.-GitYGitHub.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14c-3.36 0-4.46 1.35-4.82 2.24C9.25 16.7 10 17.76 10 19a3 3 0 0 1-3 3 3 3 0 0 1-3-3c0-1.31.83-2.42 2-2.83V7.83A2.99 2.99 0 0 1 4 5a3 3 0 0 1 3-3 3 3 0 0 1 3 3c0 1.31-.83 2.42-2 2.83v5.29c.88-.65 2.16-1.12 4-1.12 2.67 0 3.56-1.34 3.85-2.23A3.01 3.01 0 0 1 14 7a3 3 0 0 1 3-3 3 3 0 0 1 3 3c0 1.34-.88 2.5-2.09 2.86C17.65 11.29 16.68 14 13 14m-6 4a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1M7 4a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1m10 2a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Git y GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section3/u01/ejercicios/EDES-U1.-Ejercicios.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.5 11H19V7a2 2 0 0 0-2-2h-4V3.5A2.5 2.5 0 0 0 10.5 1 2.5 2.5 0 0 0 8 3.5V5H4a2 2 0 0 0-2 2v3.8h1.5c1.5 0 2.7 1.2 2.7 2.7S5 16.2 3.5 16.2H2V20a2 2 0 0 0 2 2h3.8v-1.5c0-1.5 1.2-2.7 2.7-2.7s2.7 1.2 2.7 2.7V22H17a2 2 0 0 0 2-2v-4h1.5a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios U1 (de menor a mayor)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section3/u01/ejercicios/EDES-U1.-Solucionario.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8c.76 0 1.5.11 2.2.31l1.57-1.57A9.8 9.8 0 0 0 12 2 10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10M7.91 10.08 6.5 11.5 11 16 21 6l-1.41-1.42L11 13.17z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario U1 (con enunciados)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h-2V7h2m0 10h-2v-6h2m-1-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Acerca de
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion-y-contextualizacion-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introducción y contextualización práctica
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-lenguajes-de-descripcion-de-interfaces-basados-en-xml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Lenguajes de descripción de interfaces basados en XML
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Lenguajes de descripción de interfaces basados en XML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-xhtml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. XHTML
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-gml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. GML
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-mathml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. MathML
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-rss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. RSS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-xslt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. XSLT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-svg-y-los-vector-drawables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6. SVG y los vector drawables
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-el-documento-xml-analisis-y-edicion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. El documento XML. Análisis y edición
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. El documento XML. Análisis y edición">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-la-primera-linea-prologo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. La primera línea: prólogo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-etiquetas-elementos-y-nodos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Etiquetas, elementos y nodos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-atributos-y-valores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Atributos y valores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-bien-formado-vs-valido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4. Bien formado vs. válido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-herramientas-de-analisis-y-edicion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5. Herramientas de análisis y edición
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-el-layout-editor-la-palette-que-volvio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6. El Layout Editor: la palette que volvió
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-eventos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Eventos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-generacion-de-recursos-y-codigo-para-android" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Generación de recursos y código para Android
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Generación de recursos y código para Android">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-caso-practico-1-el-logo-de-la-radio-version-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Caso práctico 1: "El logo de la radio, versión 2026"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-caso-practico-2-estructura-de-un-documento-xml-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Caso práctico 2: "Estructura de un documento XML de datos"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Resumen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bibliografia-y-fuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bibliografía y fuentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="ud-3-generacion-de-interfaces-a-partir-de-documentos-xml">UD 3 — Generación de interfaces a partir de documentos XML</h1>
+<h2 id="1-introduccion-y-contextualizacion-practica">1. Introducción y contextualización práctica</h2>
+<p>En la UD 1 viste que Compose es <em>code-first</em>: la interfaz se escribe en Kotlin y la herramienta de diseño la renderiza en vivo. ¿Y entonces por qué dedicar una unidad entera a XML?</p>
+<p>Porque XML no ha desaparecido de tu proyecto Android: se ha retirado del primer plano. Abre cualquier proyecto Compose recién creado y encontrarás XML en el <code>AndroidManifest.xml</code>, en <code>res/values/strings.xml</code> y <code>themes.xml</code>, y quizá un <code>ic_launcher_foreground.xml</code> en <code>drawable/</code>. Y si abres una app corporativa de las que mantienen los bancos —o el AOSP que ya viste en PMDM—, su capa de UI sigue siendo el <strong>sistema de vistas XML clásico</strong>, con <code>layout/activity_main.xml</code> describiendo jerarquías de <code>TextView</code> y <code>MaterialButton</code>.</p>
+<p>Comprender XML sigue siendo clave por tres razones profesionales:</p>
+<ul>
+<li><strong>Intercambio de información</strong>: XML es texto plano estructurado, legible por cualquier plataforma sin software especial.</li>
+<li><strong>Lectura del legado</strong>: miles de apps en producción y tutoriales de una década usan el sistema Views; saber leerlo es saber mantenerlo.</li>
+<li><strong>Recursos Android</strong>: strings, colores, temas, iconos vectoriales y el manifest son XML hoy, y lo seguirán siendo.</li>
+</ul>
+<p>En esta unidad analizamos el documento XML como tal, los lenguajes de descripción de interfaces derivados, y el puente entre ambos mundos: cómo Android genera recursos a partir de XML y cómo consumirlos desde Compose con una sola línea.</p>
+<div class="admonition tip">
+<p class="admonition-title">Objetivo de la unidad</p>
+<p>Al terminar sabrás leer, validar y modificar cualquier documento XML de un proyecto Android, distinguir los lenguajes derivados que siguen vivos (SVG → vector drawables, strings.xml → externalización) y conectar esos recursos con tus composables.</p>
+</div>
+<h2 id="2-lenguajes-de-descripcion-de-interfaces-basados-en-xml">2. Lenguajes de descripción de interfaces basados en XML</h2>
+<p>XML (<em>eXtensible Markup Language</em>) es un <strong>metalenguaje</strong>: un lenguaje para definir otros lenguajes. Esa es exactamente la razón de su longevidad — quien define el vocabulario de etiquetas decide para qué sirve, y así han nacido dialectos para interfaces (XHTML, XAML, GladeXML), para datos geográficos (GML), para matemáticas (MathML), para sindicación (RSS) y para gráficos vectoriales (SVG).</p>
+<p><img alt="Usos del lenguaje XML." src="assets/fig1-usos-xml.png" /></p>
+<h3 id="21-xhtml">2.1. XHTML</h3>
+<p>XHTML (<em>eXtensible HyperText Markup Language</em>) es HTML reformulado con las reglas de XML. Todo documento XHTML debe incluir <code>&lt;!DOCTYPE&gt;</code>, el atributo <code>xmlns</code> en <code>&lt;html&gt;</code> y las etiquetas <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;title&gt;</code> y <code>&lt;body&gt;</code>.</p>
+<p><img alt="Ejemplo de documento XHTML con sus partes obligatorias señaladas." src="assets/fig2-xhtml.png" /></p>
+<p>Sus reglas de diseño son las de XML puro — y son las mismas que te va a exigir el compilador de recursos de Android:</p>
+<table>
+<thead>
+<tr>
+<th>Regla XHTML</th>
+<th>En tu proyecto Android</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Elementos correctamente anidados</td>
+<td><code>&lt;LinearLayout&gt;</code> contiene <code>&lt;Button&gt;</code>, nunca se cruzan</td>
+</tr>
+<tr>
+<td>Toda etiqueta cerrada</td>
+<td><code>&lt;Button ... /&gt;</code> o <code>&lt;Button&gt;&lt;/Button&gt;</code>, sin excepción</td>
+</tr>
+<tr>
+<td>Minúsculas para etiquetas y atributos</td>
+<td><code>android:text</code>, no <code>Android:Text</code></td>
+</tr>
+<tr>
+<td>Valores de atributos siempre citados</td>
+<td><code>android:text="@string/hola"</code></td>
+</tr>
+<tr>
+<td>Atributos únicos, prohibida la minimización</td>
+<td><code>android:checked="true"</code>, nunca solo <code>checked</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-gml">2.2. GML</h3>
+<p><strong>GML</strong> (<em>Geography Markup Language</em>) es el dialecto del mundo GIS: describe características geográficas (coordenadas, polígonos, rutas) en XML. Las apps de mapas de hace unos años intercambiaban sus capas en GML, y KML —el dialecto de Google Earth— es su hijo directo. Hoy lo verás poco en móvil (JSON y GeoJSON se lo comieron), pero es un buen ejemplo de "XML para un dominio concreto".</p>
+<p>El PDF original mostraba GML como un formato de texto con marcas <code>:h1.</code>, <code>:p.</code> — eso es en realidad <strong>asciidoc</strong>, no GML. Confusión clásica de materiales antiguos: la defino correctamente arriba y no la arrastro.</p>
+<h3 id="23-mathml">2.3. MathML</h3>
+<p><strong>MathML</strong> describe fórmulas matemáticas para intercambio entre programas:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&lt;math&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&lt;mrow&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&lt;mi&gt;</span>a<span class="nt">&lt;/mi&gt;&lt;mn&gt;</span>2<span class="nt">&lt;/mn&gt;&lt;mo&gt;</span>+<span class="nt">&lt;/mo&gt;&lt;mi&gt;</span>b<span class="nt">&lt;/mi&gt;&lt;mn&gt;</span>2<span class="nt">&lt;/mn&gt;&lt;mo&gt;</span>=<span class="nt">&lt;/mo&gt;&lt;mi&gt;</span>c<span class="nt">&lt;/mi&gt;&lt;mn&gt;</span>2<span class="nt">&lt;/mn&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">&lt;/mrow&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">&lt;/math&gt;</span>
+</code></pre></div>
+<p>En Android no escribirás MathML, pero la idea —describir contenido no textual de forma estructurada— la vuelves a encontrar en <code>avd-*.xml</code> (animaciones vectoriales) o en los <code>objectAnimator</code> que animan propiedades.</p>
+<h3 id="24-rss">2.4. RSS</h3>
+<p><strong>RSS</strong> (<em>Really Simple Syndication</em>) sindica contenido actualizado: titular, descripción, enlace y fechas.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">&lt;rss</span><span class="w"> </span><span class="na">version=</span><span class="s">"2.0"</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&lt;channel&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">&lt;title&gt;</span>Última<span class="w"> </span>hora<span class="nt">&lt;/title&gt;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nt">&lt;description&gt;</span>Noticia<span class="w"> </span>importante<span class="nt">&lt;/description&gt;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nt">&lt;link&gt;</span>https://example.com/ultimas-noticias/<span class="nt">&lt;/link&gt;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nt">&lt;pubDate&gt;</span>Mon,<span class="w"> </span>06<span class="w"> </span>Jan<span class="w"> </span>2026<span class="w"> </span>16:20:00<span class="w"> </span>+0000<span class="nt">&lt;/pubDate&gt;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="nt">&lt;/channel&gt;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nt">&lt;/rss&gt;</span>
+</code></pre></div>
+<p>Es el protocolo de podcasts y sigue siendo el caso de uso de XML más visible para el gran público: cuando tu app favorita de radio muestra el listado de episodios, detrás hay un <code>&lt;channel&gt;</code> con <code>&lt;item&gt;</code> por episodio. En la práctica de esta unidad consumiremos uno de verdad.</p>
+<h3 id="25-xslt">2.5. XSLT</h3>
+<p><strong>XSLT</strong> (<em>eXtensible Stylesheet Language Transformations</em>) es el "CSS de XML", pero con superpoderes: no solo aplica estilo, sino que <strong>transforma</strong> un XML en otro documento distinto (otro XML, HTML o texto plano), añadiendo, eliminando y reordenando elementos, con condiciones y bucles. Es el antepasado conceptual de los <em>transformadores</em> de datos que hoy escribes en Kotlin con <code>map</code>/<code>filter</code>: entra un formato, sale otro.</p>
+<h3 id="26-svg-y-los-vector-drawables">2.6. SVG y los vector drawables</h3>
+<p><strong>SVG</strong> (<em>Scalable Vector Graphics</em>) describe gráficos vectoriales: formas geométricas, trazos y texto. Sus primitivas básicas:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">&lt;svg</span><span class="w"> </span><span class="na">width=</span><span class="s">"60"</span><span class="w"> </span><span class="na">height=</span><span class="s">"60"</span><span class="nt">&gt;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&lt;circle</span><span class="w"> </span><span class="na">cx=</span><span class="s">"30"</span><span class="w"> </span><span class="na">cy=</span><span class="s">"30"</span><span class="w"> </span><span class="na">r=</span><span class="s">"25"</span><span class="w"> </span><span class="na">fill=</span><span class="s">"cyan"</span><span class="w"> </span><span class="na">stroke=</span><span class="s">"black"</span><span class="w"> </span><span class="na">stroke-width=</span><span class="s">"3"</span><span class="nt">/&gt;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">&lt;/svg&gt;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nt">&lt;svg</span><span class="w"> </span><span class="na">width=</span><span class="s">"60"</span><span class="w"> </span><span class="na">height=</span><span class="s">"60"</span><span class="nt">&gt;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="nt">&lt;rect</span><span class="w"> </span><span class="na">x=</span><span class="s">"0"</span><span class="w"> </span><span class="na">y=</span><span class="s">"0"</span><span class="w"> </span><span class="na">width=</span><span class="s">"60"</span><span class="w"> </span><span class="na">height=</span><span class="s">"60"</span><span class="w"> </span><span class="na">fill=</span><span class="s">"red"</span><span class="nt">/&gt;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nt">&lt;/svg&gt;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="nt">&lt;svg</span><span class="w"> </span><span class="na">width=</span><span class="s">"60"</span><span class="w"> </span><span class="na">height=</span><span class="s">"60"</span><span class="nt">&gt;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="nt">&lt;ellipse</span><span class="w"> </span><span class="na">cx=</span><span class="s">"30"</span><span class="w"> </span><span class="na">cy=</span><span class="s">"30"</span><span class="w"> </span><span class="na">rx=</span><span class="s">"20"</span><span class="w"> </span><span class="na">ry=</span><span class="s">"16"</span><span class="w"> </span><span class="na">fill=</span><span class="s">"orange"</span><span class="nt">/&gt;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="nt">&lt;/svg&gt;</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="nt">&lt;svg</span><span class="w"> </span><span class="na">width=</span><span class="s">"60"</span><span class="w"> </span><span class="na">height=</span><span class="s">"60"</span><span class="nt">&gt;</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">  </span><span class="nt">&lt;polygon</span><span class="w"> </span><span class="na">fill=</span><span class="s">"green"</span><span class="w"> </span><span class="na">stroke=</span><span class="s">"black"</span><span class="w"> </span><span class="na">stroke-width=</span><span class="s">"2"</span><span class="w"> </span><span class="na">points=</span><span class="s">"5,30 15,10 25,30"</span><span class="nt">/&gt;</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="nt">&lt;/svg&gt;</span>
+</code></pre></div>
+<p>Y aquí viene el puente con tu día a día de desarrollador Android: <strong>Android Studio convierte cualquier SVG en un vector drawable</strong> (clic derecho sobre <code>drawable/</code> → <strong>New → Vector Asset</strong>), que es un XML casi idéntico pero con vocabulario Android:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cm">&lt;!-- res/drawable/ic_onda.xml --&gt;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">&lt;vector</span><span class="w"> </span><span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="na">android:width=</span><span class="s">"24dp"</span><span class="w"> </span><span class="na">android:height=</span><span class="s">"24dp"</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="na">android:viewportWidth=</span><span class="s">"24"</span><span class="w"> </span><span class="na">android:viewportHeight=</span><span class="s">"24"</span><span class="nt">&gt;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nt">&lt;path</span><span class="w"> </span><span class="na">android:fillColor=</span><span class="s">"#2E7D32"</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="na">android:pathData=</span><span class="s">"M12,4L16,10L8,10Z"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nt">&lt;/vector&gt;</span>
+</code></pre></div>
+<p>El <code>&lt;svg&gt;</code> se vuelve <code>&lt;vector&gt;</code>, el <code>fill</code> se vuelve <code>android:fillColor</code> y las formas se compilan en <code>pathData</code>. El flujo profesional es exactamente ese: <strong>el diseñador entrega SVG → tú lo importas como drawable → lo usas en Compose</strong>. El logo escalable que una radio pediría en 2023 ya no es un <code>&lt;svg&gt;</code> incrustado en una web, sino un drawable vectorial a todas densidades.</p>
+<h2 id="3-el-documento-xml-analisis-y-edicion">3. El documento XML. Análisis y edición</h2>
+<h3 id="31-la-primera-linea-prologo">3.1. La primera línea: prólogo</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+</code></pre></div>
+<ul>
+<li><strong><code>version</code></strong>: versión de la especificación XML empleada (1.0 sigue siendo la norma).</li>
+<li><strong><code>encoding</code></strong>: juego de caracteres (UTF-8 en todo lo que hagas; es el estándar de facto en Android).</li>
+</ul>
+<p>Un archivo <code>strings.xml</code> de Android <strong>no lleva prólogo</strong> (lo añade la herramienta de build), pero cualquier XML independiente que escribas sí debe llevarlo.</p>
+<h3 id="32-etiquetas-elementos-y-nodos">3.2. Etiquetas, elementos y nodos</h3>
+<p>Una <strong>etiqueta</strong> empieza con <code>&lt;</code>, continúa con un nombre identificativo y termina con <code>&gt;</code>. El nombre debe empezar por letra y puede continuar con letras, dígitos, guiones y puntos:</p>
+<ul>
+<li><strong>Start-Tag</strong> o etiqueta de apertura: <code>&lt;etiqueta&gt;</code></li>
+<li><strong>End-Tag</strong> o etiqueta de cierre: <code>&lt;/etiqueta&gt;</code></li>
+<li><strong>Empty-Tag</strong> o etiqueta vacía: <code>&lt;etiqueta_vacia /&gt;</code></li>
+</ul>
+<p>El conjunto de etiqueta de apertura + contenido + etiqueta de cierre es un <strong>elemento</strong> o <strong>nodo</strong>. <code>&lt;nombre&gt;Lucas&lt;/nombre&gt;</code> es un elemento con etiqueta <code>nombre</code> y contenido <code>Lucas</code>. Un elemento puede contener a otros elementos, pero <strong>no mezclar hijos y texto</strong> en el mismo nivel — esa es la diferencia entre un árbol limpio y un documento ambiguo:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cm">&lt;!-- BIEN: jerarquía limpia --&gt;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nt">&lt;cliente&gt;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nt">&lt;nombre&gt;</span>Lucas<span class="nt">&lt;/nombre&gt;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nt">&lt;pedidos&gt;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="nt">&lt;pedido</span><span class="w"> </span><span class="na">id=</span><span class="s">"7"</span><span class="nt">/&gt;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="nt">&lt;/pedidos&gt;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nt">&lt;/cliente&gt;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="cm">&lt;!-- MAL: texto y elementos mezclados --&gt;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="nt">&lt;cliente&gt;</span>Lucas<span class="nt">&lt;pedido</span><span class="w"> </span><span class="na">id=</span><span class="s">"7"</span><span class="nt">/&gt;&lt;/cliente&gt;</span>
+</code></pre></div>
+<p>La estructura es jerárquica y anidada: <strong>las etiquetas hijas se cierran antes que las madres</strong>, y toda etiqueta abierta debe quedar cerrada en orden inverso a su apertura. La Figura 3 del material original lo representa como un árbol genealógico de nodos — exactamente la misma metáfora que ya usamos para la jerarquía de composables en la UD 1.</p>
+<h3 id="33-atributos-y-valores">3.3. Atributos y valores</h3>
+<p>Un <strong>atributo</strong> es un par <code>nombre="valor"</code> que vive dentro de la etiqueta de apertura o de la vacía — nunca en la de cierre. Los atributos de un elemento son <strong>únicos</strong>: no puede haber dos <code>apellido</code> en la misma etiqueta.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cm">&lt;!-- Correcto: tres atributos únicos --&gt;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nt">&lt;programadora</span><span class="w"> </span><span class="na">nombre=</span><span class="s">"Augusta"</span><span class="w"> </span><span class="na">apellido1=</span><span class="s">"Ada"</span><span class="w"> </span><span class="na">apellido2=</span><span class="s">"King"</span><span class="nt">/&gt;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="cm">&lt;!-- Incorrecto: atributo repetido --&gt;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nt">&lt;programadora</span><span class="w"> </span><span class="na">nombre=</span><span class="s">"Augusta"</span><span class="w"> </span><span class="na">apellido=</span><span class="s">"Ada"</span><span class="w"> </span><span class="na">apellido=</span><span class="s">"King"</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>En Android verás la treta inversa usada a conciencia: cuando un elemento necesita lista de valores, se usan <strong>elementos repetidos</strong> en lugar de un atributo repetido:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="cm">&lt;!-- res/values/arrays.xml --&gt;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nt">&lt;integer-array</span><span class="w"> </span><span class="na">name=</span><span class="s">"duracion_barras"</span><span class="nt">&gt;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nt">&lt;item&gt;</span>300<span class="nt">&lt;/item&gt;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="nt">&lt;item&gt;</span>150<span class="nt">&lt;/item&gt;</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="nt">&lt;item&gt;</span>600<span class="nt">&lt;/item&gt;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nt">&lt;/integer-array&gt;</span>
+</code></pre></div>
+<h3 id="34-bien-formado-vs-valido">3.4. Bien formado vs. válido</h3>
+<p>Un XML está <strong>bien formado</strong> cuando cumple las reglas sintácticas anteriores (etiquetas cerradas, anidamiento correcto, atributos citados y únicos). Está <strong>válido</strong> cuando además obedece a un vocabulario externo — DTD o XML Schema. Android usa su propia validación: el compilador de recursos (AAPT) conoce el vocabulario de <code>&lt;vector&gt;</code>, <code>&lt;selector&gt;</code> o <code>&lt;string&gt;</code> y rompe el build con mensajes tan explícitos como:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>error: attribute 'android:fillColour' not found.
+</code></pre></div>
+<p>(Con la errata <code>fillColour</code> → <code>fillColor</code> incluida: AAPT no perdona ni una mayúscula — XML es <em>case-sensitive</em>.)</p>
+<h3 id="35-herramientas-de-analisis-y-edicion">3.5. Herramientas de análisis y edición</h3>
+<p>Los editores de XML modernos resaltan sintaxis, autocompletan etiquetas y estructuras comunes, y validan al vuelo. La comparativa clásica del material original — Notepad++ con su plugin XML Tools, Atom con Teletype, Dreamweaver WYSIWYG, VS Code con Live Share — queda hoy así:</p>
+<table>
+<thead>
+<tr>
+<th>Necesidad</th>
+<th>Herramienta 2026</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Editar un XML suelto rápido</td>
+<td>Cualquier editor con resaltado: VS Code, Notepad++</td>
+</tr>
+<tr>
+<td>Validar contra schema</td>
+<td>VS Code + extensión XML (Red Hat)</td>
+</tr>
+<tr>
+<td>Interfaz WYSIWYG desde XML</td>
+<td>Ya no aplica en Android: Compose es code-first</td>
+</tr>
+<tr>
+<td>Colaboración en tiempo real</td>
+<td>VS Code Live Share / JetBrains Code With Me</td>
+</tr>
+<tr>
+<td>El editor que ya tienes abierto</td>
+<td><strong>Android Studio</strong>: valida, autocompleta y previsualiza tus recursos XML</td>
+</tr>
+</tbody>
+</table>
+<p>Si el material de 2 años atrás dedicaba un apartado entero a elegir editor XML, hoy la respuesta es una: <strong>el que ya usas para programar</strong>. En Android Studio abres <code>strings.xml</code> o un drawable y tienes los tres servicios — resaltado, autocompletado y validación — sin instalar nada.</p>
+<div class="admonition note">
+<p class="admonition-title">¿Y el clásico Layout Editor de vistas XML?</p>
+<p>El editor visual de layouts XML (Design/Dual) sigue existiendo para apps Views heredadas, pero no es el camino recomendado para UI nueva: para eso está Compose, que viste en las UD 1 y 2. Aquí nos quedamos con la parte de XML que sigue viva: recursos y datos.</p>
+</div>
+<h3 id="36-el-layout-editor-la-palette-que-volvio">3.6. El Layout Editor: la palette que volvió</h3>
+<p>En la UD 1 descartamos la palette de componentes porque en Compose no existe: el código es la fuente de la verdad. Pues bien: <strong>en el sistema Views XML la palette sigue ahí, y es justo la "herramienta específica" que pide el temario</strong> para generar interfaces desde XML.</p>
+<p>Abre un layout XML (o crea una <strong>Empty Views Activity</strong>) y pulsa <strong>Split</strong> o <strong>Design</strong> en la esquina superior derecha del editor. Eso es el <strong>Layout Editor</strong>:</p>
+<p><img alt="El Layout Editor de Android Studio en modo Split: a la izquierda la Palette con sus categorías (Common, Text, Buttons, Widgets, Layouts, Containers…), el Component Tree con la jerarquía de vistas y el XML resultante sincronizado." src="assets/fig11-layout-editor.png" /></p>
+<p>Sus tres piezas, que son literalmente los criterios del RA2 del módulo:</p>
+<table>
+<thead>
+<tr>
+<th>Pieza</th>
+<th>Qué hace</th>
+<th>Criterio RA2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Palette</strong> (izquierda)</td>
+<td>Arrastras <code>Button</code>, <code>TextView</code>, <code>CheckBox</code>… al lienzo y Android Studio <strong>escribe el XML por ti</strong></td>
+<td><em>b) Se ha generado la descripción del interfaz en XML usando un editor gráfico</em></td>
+</tr>
+<tr>
+<td><strong>Component Tree</strong></td>
+<td>La jerarquía de nodos como árbol — la misma metáfora del árbol de composables de la UD 1</td>
+<td><em>c) Se ha analizado el documento XML generado</em></td>
+</tr>
+<tr>
+<td><strong>Attributes</strong> (derecha)</td>
+<td>Cambias <code>text</code>, <code>size</code>, <code>onClick</code>… visualmente y el XML se modifica al momento</td>
+<td><em>d) Se ha modificado el documento XML</em></td>
+</tr>
+</tbody>
+</table>
+<p>El flujo completo: arrastras de la palette → miras el XML que ha escrito → lo editas a mano en Code → vuelves a Design y ahí sigue tu cambio. <strong>Generar, analizar y modificar</strong>: el ciclo completo del RA2 sobre un solo documento, con la herramienta que ya tienen instalada.</p>
+<h2 id="4-eventos">4. Eventos</h2>
+<p>Una interfaz, por sí sola, no sabe cuándo el usuario quiere actuar. Los <strong>eventos</strong> son el mecanismo que convierte una interfaz estática en dinámica: pulsaciones, cambios de texto, foco, gestos.</p>
+<p>El material clásico enumeraba MouseMove, MouseDown, Click, GetFocus, LostFocus… El móvil los traduce a su vocabulario (no hay ratón ni foco de teclado igual que en escritorio):</p>
+<table>
+<thead>
+<tr>
+<th>Evento clásico (escritorio)</th>
+<th>Equivalente Android</th>
+<th>En Compose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Click</td>
+<td><code>onClick</code></td>
+<td><code>onClick = { ... }</code> en <code>Button</code>, <code>Text</code> con <code>clickable</code>…</td>
+</tr>
+<tr>
+<td>Change</td>
+<td><code>onTextChanged</code></td>
+<td><code>onValueChange = { ... }</code> en <code>TextField</code></td>
+</tr>
+<tr>
+<td>GetFocus / LostFocus</td>
+<td><code>onFocusChanged</code></td>
+<td><code>Modifier.focusProperties</code> / <code>onFocusEvent</code></td>
+</tr>
+<tr>
+<td>MouseMove / MouseEntered</td>
+<td><code>onHover</code> (escritorio)</td>
+<td><code>Modifier.pointerInput</code> + <code>detectTapGestures</code></td>
+</tr>
+<tr>
+<td>MouseDown / MouseUp</td>
+<td><code>onTouchEvent</code></td>
+<td><code>pointerInput</code> con <code>awaitPointerEvent</code></td>
+</tr>
+</tbody>
+</table>
+<p>La diferencia conceptual grande está en <strong>cómo se asocia la acción al evento</strong>:</p>
+<ul>
+<li><strong>Clásico (Views XML)</strong>: en el XML pones <code>android:onClick="saludar"</code> (o registras un <code>OnClickListener</code> en la actividad), y en Kotlin escribes <code>fun saludar(v: View)</code>. El XML <em>declara</em> el punto de conexión; el código lo <em>implementa</em>.</li>
+<li><strong>Compose</strong>: no hay registro por nombre — el handler es un parámetro más del componible: <code>Button(onClick = { contador++ })</code>. La asociación evento-acción es una expresión de Kotlin, verificada por el compilador (si te equivocas de nombre, no compila; en el sistema clásico, fallaba en ejecución).</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nd">@Composable</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">ContadorEventos</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">clics</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">texto</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="s">""</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="n">Column</span><span class="p">(</span><span class="n">horizontalAlignment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="na">CenterHorizontally</span><span class="p">,</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">           </span><span class="n">verticalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">8.</span><span class="n">dp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">"Clics: </span><span class="si">$</span><span class="n">clics</span><span class="s">"</span><span class="p">)</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">        </span><span class="n">OutlinedTextField</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">texto</span><span class="p">,</span><span class="w"> </span><span class="n">onValueChange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">texto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">            </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"Escribe algo"</span><span class="p">)</span><span class="w"> </span><span class="p">})</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">        </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">clics</span><span class="o">++</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"Suma"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="p">}</span>
+</code></pre></div>
+<p>Tres eventos, tres líneas de asociación: <code>onValueChange</code> (Change), <code>onClick</code> (Click), y el propio <code>Text("Clics: $clics")</code> reaccionando al estado — la UI declarativa de Compose es, en el fondo, <em>la respuesta automática a todos los eventos de estado</em>.</p>
+<h2 id="5-generacion-de-recursos-y-codigo-para-android">5. Generación de recursos y código para Android</h2>
+<p>La promesa del XML de interfaces era <em>"escribe el documento una vez, genera la interfaz para cada plataforma"</em>. En Android esa promesa se cumple a escala de recursos:</p>
+<ol>
+<li><strong>Escribes</strong> el documento XML (<code>strings.xml</code>, <code>ic_logo.xml</code>, <code>themes.xml</code>…).</li>
+<li><strong>AAPT lo compila</strong> y genera la clase <code>R</code> con identificadores (<code>R.string.app_name</code>, <code>R.drawable.ic_logo</code>).</li>
+<li><strong>Consumes</strong> desde código — clásico o Compose — con una línea.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">// Compose consumiendo recursos nacidos en XML:</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">Text</span><span class="p">(</span><span class="n">stringResource</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">string</span><span class="p">.</span><span class="na">bienvenida</span><span class="p">))</span><span class="w">            </span><span class="c1">// strings.xml</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">Icon</span><span class="p">(</span><span class="n">painterResource</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">drawable</span><span class="p">.</span><span class="na">ic_logo</span><span class="p">),</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w">      </span><span class="c1">// drawable vectorial (SVG importado)</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">Text</span><span class="p">(</span><span class="s">"Hola"</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">colorScheme</span><span class="p">.</span><span class="na">primary</span><span class="p">)</span><span class="w"> </span><span class="c1">// themes.xml</span>
+</code></pre></div>
+<p>El esquema del material original — XML → herramienta → código multiplataforma — es literalmente este flujo, solo que el "código generado" ya no es un <code>form1.java</code> autogenerado sino la clase <code>R</code> y los accesores de recursos.</p>
+<p><strong>Del SVG al icono en pantalla, el camino completo:</strong></p>
+<pre class="mermaid"><code>flowchart LR
+    A[SVG del diseñador] --&gt;|New → Vector Asset| B[drawable/ic_logo.xml]
+    B --&gt;|AAPT compila| C[Clase R]
+    C --&gt;|painterResource| D[Icon en Compose]
+    style A fill:#e8f5e9
+    style D fill:#e3f2fd</code></pre>
+<h3 id="51-caso-practico-1-el-logo-de-la-radio-version-2026">5.1. Caso práctico 1: <em>"El logo de la radio, versión 2026"</em></h3>
+<p><strong>Planteamiento.</strong> La emisora FourWaves (naturaleza, mindfulness, corazón y economía) quiere su logo vectorial para la app Android: cuatro ondas superpuestas — verde, azul, rosa y amarilla — reescalables a cualquier densidad.</p>
+<p><strong>Nudo.</strong> En el material clásico se resolvía con un <code>&lt;svg&gt;</code> con cuatro <code>&lt;ellipse&gt;</code> en una web. Hoy el mismo diseño viaja por el flujo Android: el diseñador entrega el SVG y tú lo conviertes en vector drawable. Estas son las cuatro elipses originales…</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nt">&lt;svg</span><span class="w"> </span><span class="na">height=</span><span class="s">"150"</span><span class="w"> </span><span class="na">width=</span><span class="s">"500"</span><span class="nt">&gt;</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="nt">&lt;ellipse</span><span class="w"> </span><span class="na">cx=</span><span class="s">"240"</span><span class="w"> </span><span class="na">cy=</span><span class="s">"100"</span><span class="w"> </span><span class="na">rx=</span><span class="s">"220"</span><span class="w"> </span><span class="na">ry=</span><span class="s">"30"</span><span class="w"> </span><span class="na">style=</span><span class="s">"fill:lime"</span><span class="nt">/&gt;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="nt">&lt;ellipse</span><span class="w"> </span><span class="na">cx=</span><span class="s">"220"</span><span class="w"> </span><span class="na">cy=</span><span class="s">"70"</span><span class="w">  </span><span class="na">rx=</span><span class="s">"190"</span><span class="w"> </span><span class="na">ry=</span><span class="s">"20"</span><span class="w"> </span><span class="na">style=</span><span class="s">"fill:cyan"</span><span class="nt">/&gt;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">  </span><span class="nt">&lt;ellipse</span><span class="w"> </span><span class="na">cx=</span><span class="s">"210"</span><span class="w"> </span><span class="na">cy=</span><span class="s">"45"</span><span class="w">  </span><span class="na">rx=</span><span class="s">"170"</span><span class="w"> </span><span class="na">ry=</span><span class="s">"15"</span><span class="w"> </span><span class="na">style=</span><span class="s">"fill:pink"</span><span class="nt">/&gt;</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">  </span><span class="nt">&lt;ellipse</span><span class="w"> </span><span class="na">cx=</span><span class="s">"205"</span><span class="w"> </span><span class="na">cy=</span><span class="s">"25"</span><span class="w">  </span><span class="na">rx=</span><span class="s">"140"</span><span class="w"> </span><span class="na">ry=</span><span class="s">"12"</span><span class="w"> </span><span class="na">style=</span><span class="s">"fill:yellow"</span><span class="nt">/&gt;</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nt">&lt;/svg&gt;</span>
+</code></pre></div>
+<p>…y así queda tras importarlo (Vector Asset acepta el SVG y genera el XML Android):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="cm">&lt;!-- res/drawable/ic_fourwaves.xml --&gt;</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nt">&lt;vector</span><span class="w"> </span><span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="na">android:width=</span><span class="s">"120dp"</span><span class="w"> </span><span class="na">android:height=</span><span class="s">"36dp"</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span><span class="na">android:viewportWidth=</span><span class="s">"500"</span><span class="w"> </span><span class="na">android:viewportHeight=</span><span class="s">"150"</span><span class="nt">&gt;</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">    </span><span class="nt">&lt;path</span><span class="w"> </span><span class="na">android:fillColor=</span><span class="s">"#7CB342"</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">        </span><span class="na">android:pathData=</span><span class="s">"M20,100 a220,30 0 1,0 440,0 a220,30 0 1,0 -440,0"</span><span class="nt">/&gt;</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span><span class="nt">&lt;path</span><span class="w"> </span><span class="na">android:fillColor=</span><span class="s">"#4DD0E1"</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">        </span><span class="na">android:pathData=</span><span class="s">"M30,70 a190,20 0 1,0 380,0 a190,20 0 1,0 -380,0"</span><span class="nt">/&gt;</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">    </span><span class="nt">&lt;path</span><span class="w"> </span><span class="na">android:fillColor=</span><span class="s">"#F48FB1"</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">        </span><span class="na">android:pathData=</span><span class="s">"M40,45 a170,15 0 1,0 340,0 a170,15 0 1,0 -340,0"</span><span class="nt">/&gt;</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">    </span><span class="nt">&lt;path</span><span class="w"> </span><span class="na">android:fillColor=</span><span class="s">"#FFF176"</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">        </span><span class="na">android:pathData=</span><span class="s">"M65,25 a140,12 0 1,0 280,0 a140,12 0 1,0 -280,0"</span><span class="nt">/&gt;</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="nt">&lt;/vector&gt;</span>
+</code></pre></div>
+<p><strong>Desenlace.</strong> En la pantalla Compose:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">Image</span><span class="p">(</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="n">painter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">painterResource</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">drawable</span><span class="p">.</span><span class="na">ic_fourwaves</span><span class="p">),</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="n">contentDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Logo FourWaves"</span><span class="p">,</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxWidth</span><span class="p">()</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="p">)</span>
+</code></pre></div>
+<p><img alt="Logo FourWaves con las cuatro ondas." src="assets/fig10-logo.png" /></p>
+<p>Un solo XML, todas las densidades: el drawable vectorial no tiene <code>@2x/@3x</code> como los PNG — escala sin pérdida porque es matemática, no píxeles. Y este es el resultado real, corriendo en el emulador: la app consumiendo un drawable a través de <code>painterResource</code> — con Mostrar/Ocultar gobernando la recomposición:</p>
+<figure>
+<p><img alt="Captura real del emulador: pantalla Compose mostrando un drawable con botones Mostrar/Ocultar." src="assets/captura-drawable-compose.png" /></p>
+<figcaption>Fig. 7. Un drawable de `res/drawable` dentro de `Image(painterResource(...))`, en el emulador.</figcaption>
+</figure>
+<h3 id="52-caso-practico-2-estructura-de-un-documento-xml-de-datos">5.2. Caso práctico 2: <em>"Estructura de un documento XML de datos"</em></h3>
+<p><strong>Planteamiento.</strong> Para la app de viajes TravelWithMe necesitamos almacenar las siete maravillas del mundo moderno (nombre, país).</p>
+<p><strong>Nudo.</strong> Un documento XML de datos, con elemento repetido <code>maravilla</code> y subelementos <code>nombre</code>/<code>pais</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nt">&lt;maravillas&gt;</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">  </span><span class="nt">&lt;maravilla&gt;</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span><span class="nt">&lt;nombre&gt;</span>Muralla<span class="w"> </span>China<span class="nt">&lt;/nombre&gt;</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">    </span><span class="nt">&lt;pais&gt;</span>China<span class="nt">&lt;/pais&gt;</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">  </span><span class="nt">&lt;/maravilla&gt;</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">  </span><span class="nt">&lt;maravilla&gt;</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">    </span><span class="nt">&lt;nombre&gt;</span>Coliseo<span class="w"> </span>Romano<span class="nt">&lt;/nombre&gt;</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">    </span><span class="nt">&lt;pais&gt;</span>Italia<span class="nt">&lt;/pais&gt;</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">  </span><span class="nt">&lt;/maravilla&gt;</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">  </span><span class="nt">&lt;maravilla&gt;</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">    </span><span class="nt">&lt;nombre&gt;</span>Chichén<span class="w"> </span>Itzá<span class="nt">&lt;/nombre&gt;</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">    </span><span class="nt">&lt;pais&gt;</span>México<span class="nt">&lt;/pais&gt;</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="w">  </span><span class="nt">&lt;/maravilla&gt;</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="w">  </span><span class="nt">&lt;maravilla&gt;</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="w">    </span><span class="nt">&lt;nombre&gt;</span>Machu<span class="w"> </span>Picchu<span class="nt">&lt;/nombre&gt;</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="w">    </span><span class="nt">&lt;pais&gt;</span>Perú<span class="nt">&lt;/pais&gt;</span>
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="w">  </span><span class="nt">&lt;/maravilla&gt;</span>
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="w">  </span><span class="nt">&lt;maravilla&gt;</span>
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a><span class="w">    </span><span class="nt">&lt;nombre&gt;</span>Taj<span class="w"> </span>Mahal<span class="nt">&lt;/nombre&gt;</span>
+<a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="w">    </span><span class="nt">&lt;pais&gt;</span>India<span class="nt">&lt;/pais&gt;</span>
+<a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a><span class="w">  </span><span class="nt">&lt;/maravilla&gt;</span>
+<a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a><span class="w">  </span><span class="nt">&lt;maravilla&gt;</span>
+<a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a><span class="w">    </span><span class="nt">&lt;nombre&gt;</span>Cristo<span class="w"> </span>Redentor<span class="nt">&lt;/nombre&gt;</span>
+<a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a><span class="w">    </span><span class="nt">&lt;pais&gt;</span>Brasil<span class="nt">&lt;/pais&gt;</span>
+<a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a><span class="w">  </span><span class="nt">&lt;/maravilla&gt;</span>
+<a id="__codelineno-14-27" name="__codelineno-14-27" href="#__codelineno-14-27"></a><span class="w">  </span><span class="nt">&lt;maravilla&gt;</span>
+<a id="__codelineno-14-28" name="__codelineno-14-28" href="#__codelineno-14-28"></a><span class="w">    </span><span class="nt">&lt;nombre&gt;</span>Petra<span class="nt">&lt;/nombre&gt;</span>
+<a id="__codelineno-14-29" name="__codelineno-14-29" href="#__codelineno-14-29"></a><span class="w">    </span><span class="nt">&lt;pais&gt;</span>Jordania<span class="nt">&lt;/pais&gt;</span>
+<a id="__codelineno-14-30" name="__codelineno-14-30" href="#__codelineno-14-30"></a><span class="w">  </span><span class="nt">&lt;/maravilla&gt;</span>
+<a id="__codelineno-14-31" name="__codelineno-14-31" href="#__codelineno-14-31"></a><span class="nt">&lt;/maravillas&gt;</span>
+</code></pre></div>
+<p><strong>Desenlace.</strong> La información queda estructurada en elementos <code>maravilla</code> repetidos con subelementos regulares — el patrón exacto que luego parsearás con <code>XmlPullParser</code> en la práctica de la unidad (y el mismo que sigue hoy cualquier feed RSS o sitemap). Y aquí, el documento ya <strong>vivo en la app</strong>: parseado y pintado en una <code>LazyColumn</code> de <code>Card</code>s:</p>
+<figure>
+<p><img alt="Captura real del emulador: las 7 maravillas cargadas desde res/xml y mostradas como lista de tarjetas." src="assets/captura-maravillas.png" /></p>
+<figcaption>Fig. 8. El XML de datos convertido en interfaz: cada `maravilla` es una Card con nombre y país.</figcaption>
+</figure>
+<h2 id="6-resumen">6. Resumen</h2>
+<ul>
+<li>XML es un metalenguaje: define lenguajes (XHTML, GML, MathML, RSS, XSLT, SVG). En Android los que siguen vivos son <strong>SVG→vector drawables</strong>, <strong>strings/temas/colores</strong> y el <strong>manifest</strong>.</li>
+<li>Un documento XML bien formado exige prólogo, etiquetas cerradas y correctamente anidadas, minúsculas, atributos únicos y valores citados. AAPT valida el vocabulario Android al compilar.</li>
+<li>Los eventos clásicos (Click, Change, Focus…) existen en Android; en Compose la asociación evento→acción es un parámetro de Kotlin (<code>onClick = { }</code>), verificada en compilación.</li>
+<li>El flujo moderno de "interfaz desde XML" es: <strong>SVG → Vector Asset → drawable XML → clase R → composable</strong>. La generación de código multiplataforma que prometía XML la cumple hoy la clase <code>R</code> para recursos.</li>
+<li>Los documentos de datos (maravillas, feeds RSS) siguen el patrón <strong>elemento contenedor + elementos repetidos con subelementos regulares</strong>: listo para parsear con <code>XmlPullParser</code>.</li>
+</ul>
+<h2 id="bibliografia-y-fuentes">Bibliografía y fuentes</h2>
+<ul>
+<li>Develop Android. <em>Vector graphics</em>. Android Developers. https://developer.android.com/develop/ui/views/graphics/vector-drawable-resources</li>
+<li>Develop Android. <em>App resources overview</em>. Android Developers. https://developer.android.com/guide/topics/resources/providing-resources</li>
+<li>W3C. <em>Extensible Markup Language (XML) 1.0 (Fifth Edition)</em>. https://www.w3.org/TR/xml/</li>
+<li>W3C. <em>Scalable Vector Graphics (SVG) 1.1</em>. https://www.w3.org/TR/SVG11/</li>
+<li>Material original del módulo (Tema 3, 2023) — adaptado, corregido y actualizado a Kotlin/Jetpack Compose.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

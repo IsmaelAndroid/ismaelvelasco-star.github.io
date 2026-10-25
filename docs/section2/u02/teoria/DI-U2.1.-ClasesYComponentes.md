@@ -22,13 +22,17 @@ tags:
 !!! abstract "Idea principal"
     Este tema convierte la pantalla en un catálogo de piezas: los **componentes** (botones, textos, campos, selección) que recogen entradas del usuario, los **contenedores** que los ordenan (Column, Row, Box, Scaffold) y la forma de **conectar pantallas** entre sí mediante eventos. Al terminar sabrás montar una pantalla completa con disposición profesional y comportamiento real.
 
+
+<div style="background-color:#a5d6a7; border-radius:8px; padding:10px 14px; margin:14px 0;">
+<strong>🟢 Leyenda de repaso obligatorio:</strong> los textos con <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">este fondo verde</span> son imprescindibles para programar interfaces: hay que repasarlos <strong>cada semana</strong>, porque entrarán en todas las evaluaciones del módulo.</div>
+
 ## 1. Introducción y contextualización práctica
 
 El desarrollo de interfaces gráficas permite crear el canal de comunicación entre el usuario y la aplicación y, por esta razón, su diseño requiere especial atención. En la actualidad, las herramientas de desarrollo permiten implementar el código relativo a una interfaz a través de vistas de diseño que facilitan y hacen más intuitivo el proceso de creación.
 
 Existen numerosos componentes: tipos de elementos que pueden incluirse en una interfaz simulando una comunicación bidireccional, en la que la aplicación recibe diferentes entradas de datos en función del componente escogido. Por ejemplo, sería posible que el usuario introduzca texto en una caja, seleccione un valor en un menú desplegable o se conecte a otras pantallas a través de la acción sobre un botón, entre otras.
 
-En este tema se verán en detalle los principales tipos de componentes, así como sus características más importantes. La distribución de estos elementos depende de los llamados **layouts**: los contenedores que definen la ubicación exacta de los elementos. Una misma aplicación puede presentar más de una pantalla: la principal (la *actividad* que ya conoces del tema anterior) y las secundarias, a las que se llega **navegando** mediante eventos. Los **diálogos modales** completan el cuadro: ventanas que bloquean hasta que respondes.
+En este tema se verán en detalle los principales tipos de componentes, así como sus características más importantes. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La distribución de estos elementos depende de los llamados **layouts**: los contenedores que definen la ubicación exacta de los elementos</span>. Una misma aplicación puede presentar más de una pantalla: la principal (la *actividad* que ya conoces del tema anterior) y las secundarias, a las que se llega **navegando** mediante eventos. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Los **diálogos modales** completan el cuadro: ventanas que bloquean hasta que respondes</span>.
 
 ```mermaid
 flowchart LR
@@ -51,7 +55,7 @@ flowchart LR
 
 Conocer en profundidad el área de diseño (lo que en los entornos clásicos se llamaba "explotar el área de diseño") sigue siendo fundamental para un correcto desarrollo; lo que cambia es la mecánica. En el tema anterior recorrimos el entorno completo; aquí lo explotamos para construir de verdad.
 
-**Primero, una verdad incómoda que conviene saber desde el primer día: en Jetpack Compose no hay paleta de arrastrar y soltar.** Ese flujo de trabajo "visual" (abrir una paleta, arrastrar un botón al lienzo y que se genere código) era el del sistema clásico de Views con XML y el de los editores visuales históricos. Compose apuesta por lo contrario: **primero el código**. Tú escribes la llamada en Kotlin (`Text(`, `Button(`, `Column {`) y la **vista Split** renderiza la interfaz en vivo a tu lado, al segundo. Escribir código ya no significa "no ver nada hasta ejecutar".
+**Primero, una verdad incómoda que conviene saber desde el primer día: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">en Jetpack Compose no hay paleta de arrastrar y soltar</span>.** Ese flujo de trabajo "visual" (abrir una paleta, arrastrar un botón al lienzo y que se genere código) era el del sistema clásico de Views con XML y el de los editores visuales históricos. Compose apuesta por lo contrario: **primero el código**. Tú escribes la llamada en Kotlin (`Text(`, `Button(`, `Column {`) y <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">la **vista Split** renderiza la interfaz en vivo a tu lado, al segundo</span>. Escribir código ya no significa "no ver nada hasta ejecutar".
 
 El flujo de trabajo es siempre el mismo: escribes el componible en la vista *Code*, y la vista *Split* te muestra el resultado renderizándose en vivo (y si te equivocas, en rojo). Las zonas del entorno que sí usaremos a diario son:
 
@@ -64,7 +68,7 @@ El flujo de trabajo es siempre el mismo: escribes el componible en la vista *Cod
 </figure>
 
 - **Editor (Code)**: donde escribes las llamadas a los composables en Kotlin. Es el corazón del desarrollo Compose: aquí se inserta, se modifica y se elimina todo.
-- **Zona de preview (Split/Design)**: el lienzo donde se renderiza en vivo lo que escribes. Las funciones anotadas con `@Preview` se dibujan aquí sin ejecutar la app; al hacer clic sobre un elemento de la preview, Android Studio te lleva a su línea exacta de código (y al revés).
+- **Zona de preview (Split/Design)**: el lienzo donde se renderiza en vivo lo que escribes. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Las funciones anotadas con `@Preview` se dibujan aquí sin ejecutar la app</span>; al hacer clic sobre un elemento de la preview, Android Studio te lleva a su línea exacta de código (y al revés).
 - **Component Tree**: el mapa jerárquico de los elementos en pantalla, como un explorador de carpetas pero de la interfaz. Aparece en la vista Design al lado de la preview y sirve para seleccionar (y borrar) elementos sin acertar a clicarlos en el dibujo.
 
 Por ejemplo, si escribimos un `Button` dentro de un `Column`, en la preview aparece el botón renderizado al segundo, el *Component Tree* gana esa rama y al hacer clic sobre el botón (en la preview o en el árbol) el editor salta a su línea exacta:
@@ -93,7 +97,7 @@ Código 1. Lo que pasa al escribir un Button dentro de un Column: aparece en la 
 
 ### 2.1. Insertar elementos
 
-En Compose, insertar un elemento es **escribir su llamada** dentro del contenedor adecuado: añades `Button(onClick = { }) { Text("Púlsame") }` dentro de las llaves de un `Column` y listo — la preview lo renderiza al segundo. Dos ayudas del IDE que sustituyen a la vieja paleta: el **autocompletado** (escribes `Butt` + Ctrl+Espacio y te ofrece Button, ButtonDefaults, OutlinedButton... con sus parámetros visibles) y la **paleta de plantillas del editor** (en la vista Design, Android Studio ofrece insertar composables habituales con un clic). El elemento queda insertado **dentro** del contenedor donde escribas la llamada: las dos vistas son espejos del mismo código.
+En Compose, <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">insertar un elemento es **escribir su llamada** dentro del contenedor adecuado</span>: añades `Button(onClick = { }) { Text("Púlsame") }` dentro de las llaves de un `Column` y listo — la preview lo renderiza al segundo. Dos ayudas del IDE que sustituyen a la vieja paleta: el **autocompletado** (escribes `Butt` + Ctrl+Espacio y te ofrece Button, ButtonDefaults, OutlinedButton... con sus parámetros visibles) y la **paleta de plantillas del editor** (en la vista Design, Android Studio ofrece insertar composables habituales con un clic). El elemento queda insertado **dentro** del contenedor donde escribas la llamada: las dos vistas son espejos del mismo código.
 
 ```kotlin
 // ANTES: un Column con un solo Text
@@ -170,9 +174,9 @@ Antes de entrar en componentes conviene repasar el lenguaje en el que están esc
 
 ### 3.1. Clases
 
-Una clase representa un conjunto de objetos que comparten una misma **estructura** (atributos) y **comportamiento** (métodos). A partir de una clase se pueden instanciar tantos objetos como se quieran: para ello se utilizan los **constructores**.
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Una clase representa un conjunto de objetos que comparten una misma **estructura** (atributos) y **comportamiento** (métodos)</span>. A partir de una clase se pueden instanciar tantos objetos como se quieran: para ello se utilizan los **constructores**.
 
-En Kotlin, la instanciación de una clase para crear un nuevo objeto se hace con el nombre de la clase seguido de un par de paréntesis — sin la palabra `new`:
+En Kotlin, <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">la instanciación de una clase para crear un nuevo objeto se hace con el nombre de la clase seguido de un par de paréntesis — sin la palabra `new`</span>:
 
 ```kotlin
 val circulo = Circulo(4.0)     // instanciar: crear un objeto de la clase
@@ -182,11 +186,11 @@ Un constructor es sintácticamente muy semejante a una función. Puede recibir a
 
 ### 3.2. Métodos
 
-Los métodos definen el comportamiento de un objeto: toda acción que se quiera realizar sobre la clase tiene que estar previamente definida en un método. Los métodos pueden recibir argumentos o no y, en función de su definición, devolverán un valor o realizarán alguna modificación sobre los atributos de la clase. En Kotlin una función se declara con `fun`, y si no devuelve nada su tipo es `Unit` (equivalente al `void` clásico).
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Los métodos definen el comportamiento de un objeto</span>: toda acción que se quiera realizar sobre la clase tiene que estar previamente definida en un método. Los métodos pueden recibir argumentos o no y, en función de su definición, devolverán un valor o realizarán alguna modificación sobre los atributos de la clase. En Kotlin una función se declara con `fun`, y si no devuelve nada su tipo es `Unit` (equivalente al `void` clásico).
 
 ### 3.3. Propiedades o atributos
 
-Un objeto es una cápsula que contiene todos los datos y métodos ligados a él. Los atributos definen las características del objeto; por ejemplo, si se tiene una clase `Circulo`, sus atributos podrían ser el radio y el color. Estos constituyen la estructura del objeto, que posteriormente podrá ser modelada a través de los métodos oportunos.
+Un objeto es una cápsula que contiene todos los datos y métodos ligados a él. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Los atributos definen las características del objeto</span>; por ejemplo, si se tiene una clase `Circulo`, sus atributos podrían ser el radio y el color. Estos constituyen la estructura del objeto, que posteriormente podrá ser modelada a través de los métodos oportunos.
 
 ```kotlin
 class Circulo(
@@ -264,7 +268,7 @@ Código 5. Los atributos de un objeto alimentando la interfaz: `nombre` y `telef
 
 ## 4. La pantalla y sus contenedores
 
-En el tema anterior vimos que la **actividad** (`ComponentActivity`) es la pantalla del sistema que aloja la interfaz, y que `setContent { }` monta dentro los composables. Profundicemos ahora en la organización **dentro** de esa pantalla.
+En el tema anterior vimos que <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">la **actividad** (`ComponentActivity`) es la pantalla del sistema que aloja la interfaz, y que `setContent { }` monta dentro los composables</span>. Profundicemos ahora en la organización **dentro** de esa pantalla.
 
 ### 4.1. La actividad: la ventana principal
 
@@ -272,7 +276,7 @@ La actividad es el equivalente funcional de la ventana principal de una aplicaci
 
 ### 4.2. Los paneles: composables contenedores
 
-Complementando la actividad tenemos los **contenedores**: composables que no se ven por sí mismos (no pintan nada) pero que **organizan** a otros. Son el equivalente de los paneles clásicos: bloques "invisibles" sobre los que se ubican los elementos, sin colocarlos directamente sobre la ventana.
+Complementando la actividad tenemos <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">los **contenedores**: composables que no se ven por sí mismos (no pintan nada) pero que **organizan** a otros</span>. Son el equivalente de los paneles clásicos: bloques "invisibles" sobre los que se ubican los elementos, sin colocarlos directamente sobre la ventana.
 
 ```kotlin
 @Composable
@@ -320,7 +324,7 @@ flowchart TD
 
 </figure>
 
-Cuando la pantalla crece, Compose ofrece **Scaffold**: un contenedor de pantalla completa que trae **huecos preparados** (slots) para las piezas típicas de una app: `topBar` (cabecera), `bottomBar` (barra inferior de navegación), `floatingActionButton` (el botón redondo flotante) y el `content` central. Es el esqueleto estándar de las apps Material:
+Cuando la pantalla crece, Compose ofrece <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**Scaffold**: un contenedor de pantalla completa que trae **huecos preparados** (slots) para las piezas típicas de una app</span>: `topBar` (cabecera), `bottomBar` (barra inferior de navegación), `floatingActionButton` (el botón redondo flotante) y el `content` central. Es el esqueleto estándar de las apps Material:
 
 ```kotlin
 @OptIn(ExperimentalMaterial3Api::class)
@@ -358,7 +362,7 @@ Las aplicaciones que solo usan una pantalla no necesitan nada más; pero cuando 
 
 </figure>
 
-Un **diálogo modal** es una ventana que aparece sobre la pantalla y **no permite interactuar con nada más** hasta que se cierra: la app queda a la espera de una respuesta. Por ejemplo, la selección del número de asiento en una compra de billetes, o la confirmación de borrado de un dato. Los diálogos **no modales** (como las *bottom sheets*, láminas que suben desde abajo) permiten seguir usando la pantalla mientras están abiertos.
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un **diálogo modal** es una ventana que aparece sobre la pantalla y **no permite interactuar con nada más** hasta que se cierra</span>: la app queda a la espera de una respuesta. Por ejemplo, la selección del número de asiento en una compra de billetes, o la confirmación de borrado de un dato. Los diálogos **no modales** (como las *bottom sheets*, láminas que suben desde abajo) permiten seguir usando la pantalla mientras están abiertos.
 
 ```kotlin
 var mostrarDialogo by remember { mutableStateOf(false) }
@@ -410,7 +414,7 @@ Para crear una conexión entre dos o más pantallas, primero hay que crearlas to
 
 </figure>
 
-El sistema estándar es la librería **Navigation Compose**: un `NavHost` registra las pantallas (cada una con su **ruta**, un nombre único) y el `NavHostController` (que se obtiene con `rememberNavController()`) permite saltar de una a otra:
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El sistema estándar es la librería **Navigation Compose**: un `NavHost` registra las pantallas (cada una con su **ruta**, un nombre único)</span> y el `NavHostController` (que se obtiene con `rememberNavController()`) permite saltar de una a otra:
 
 ```kotlin
 @Composable
@@ -440,7 +444,7 @@ Código 9. Navegación entre dos pantallas: el NavHost las registra por ruta; el
 
 </figure>
 
-**Los eventos en Compose** funcionan así: cada componente interactivo recibe su manejador como parámetro — `onClick` para botones y filas, `onValueChange` para campos de texto, `onCheckedChange` para casillas, `onDismissRequest` para diálogos. No hay que registrar listeners ni clases auxiliares: el evento es un parámetro más de la función, una lambda entre llaves que se ejecuta cuando ocurre la acción.
+**Los eventos en Compose** funcionan así: cada componente interactivo recibe su manejador como parámetro — `onClick` para botones y filas, `onValueChange` para campos de texto, `onCheckedChange` para casillas, `onDismissRequest` para diálogos. No hay que registrar listeners ni clases auxiliares: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">el evento es un parámetro más de la función, una lambda entre llaves que se ejecuta cuando ocurre la acción</span>.
 
 ```kotlin
 // el evento es una lambda: el código entre llaves se ejecuta al pulsar
@@ -467,7 +471,7 @@ Código 10. El evento como parámetro: onClick recibe una lambda con todas las a
 
 ## 7. Componentes
 
-Existe un amplio abanico de componentes. En este apartado se verán los que constituyen la gran parte de las interfaces. Los componentes son los elementos que se sitúan en la pantalla, directamente sobre contenedores o anidados en otros componentes. Hay que prestar especial atención a aquellas propiedades que tienen un mismo nombre, puesto que **no realizan la misma acción en todos los elementos** (por ejemplo, `enabled` deshabilita un botón pero en un campo de texto significa que no responde; `color` en un Text colorea letras y en un Button colorea el fondo).
+Existe un amplio abanico de componentes. En este apartado se verán los que constituyen la gran parte de las interfaces. Los componentes son los elementos que se sitúan en la pantalla, directamente sobre contenedores o anidados en otros componentes. Hay que prestar especial atención a aquellas propiedades que tienen un mismo nombre, puesto que **<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">no realizan la misma acción en todos los elementos</span>** (por ejemplo, `enabled` deshabilita un botón pero en un campo de texto significa que no responde; `color` en un Text colorea letras y en un Button colorea el fondo).
 
 ### 7.1. Button
 
@@ -479,7 +483,7 @@ Existe un amplio abanico de componentes. En este apartado se verán los que cons
 
 </figure>
 
-El botón es el componente de acción por excelencia: dispara el evento principal de la interfaz. Su peculiaridad estructural: **el texto no es un parámetro, sino un componible que va dentro de las llaves** (así un botón puede contener texto, iconos o ambos).
+El botón es el componente de acción por excelencia: dispara el evento principal de la interfaz. Su peculiaridad estructural: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**el texto no es un parámetro, sino un componible que va dentro de las llaves**</span> (así un botón puede contener texto, iconos o ambos).
 
 ```kotlin
 Button(
@@ -515,7 +519,7 @@ Código 11. Button con sus propiedades más usadas. El contenido (Text) se decla
 
 Tabla 1. Propiedades de Button. Fíjate: en Compose la apariencia se ajusta con `colors`/`modifier`, no hay una lista infinita de propiedades sueltas.
 
-**Las tres jerarquías de botón** (principio de Material Design: una acción principal por pantalla):
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**Las tres jerarquías de botón** (principio de Material Design: una acción principal por pantalla)</span>:
 
 ```kotlin
 Button(onClick = { }) { Text("Guardar") }              // principal: relleno
@@ -558,7 +562,7 @@ Text(
 )
 ```
 
-Código 13. Text con estilo: la buena práctica es usar los estilos del tema (titleLarge, bodyLarge...) en lugar de tamaños sueltos, para que toda la app sea coherente.
+Código 13. Text con estilo: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">la buena práctica es usar los estilos del tema (titleLarge, bodyLarge...)</span> en lugar de tamaños sueltos, para que toda la app sea coherente.
 
 <figure markdown>
 
@@ -589,7 +593,7 @@ Tabla 2. Parámetros de Text.
 
 </figure>
 
-El campo de texto es el componente de entrada por excelencia: una caja de **una línea** (o varias con `minLines`) donde el usuario escribe. Su diferencia conceptual con los componentes anteriores: **necesita estado**. Un botón es autónomo; un campo de texto guarda información que la app debe leer después. Por eso siempre van en pareja:
+El campo de texto es el componente de entrada por excelencia: una caja de **una línea** (o varias con `minLines`) donde el usuario escribe. Su diferencia conceptual con los componentes anteriores: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**necesita estado**. Un botón es autónomo; un campo de texto guarda información que la app debe leer después</span>. Por eso siempre van en pareja:
 
 ```kotlin
 var nombre by remember { mutableStateOf("") }     // el estado guarda lo escrito
@@ -606,7 +610,7 @@ OutlinedTextField(
 )
 ```
 
-Código 14. OutlinedTextField con estado: `value` muestra el estado y `onValueChange` lo actualiza. Sin esta pareja, el campo no deja escribir.
+Código 14. OutlinedTextField con estado: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`value` muestra el estado y `onValueChange` lo actualiza</span>. Sin esta pareja, el campo no deja escribir.
 
 <figure markdown>
 
@@ -653,7 +657,7 @@ Código 15. Campo de contraseña: PasswordVisualTransformation enmascara lo escr
 
 </figure>
 
-Los elementos de tipo casilla se presentan como una pequeña caja cuadrada que el usuario puede marcar o desmarcar. Son **independientes**: marcar una no afecta a las demás (para exclusividad usa RadioButton).
+Los elementos de tipo casilla se presentan como una pequeña caja cuadrada que el usuario puede marcar o desmarcar. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Son **independientes**: marcar una no afecta a las demás (para exclusividad usa RadioButton)</span>.
 
 ```kotlin
 var acepta by remember { mutableStateOf(false) }
@@ -719,7 +723,7 @@ Código 17. Varios checkboxes con una lista de estado (mutableStateListOf): marc
 
 </figure>
 
-Los RadioButton se utilizan para ofrecer varias opciones de las que **solo se puede escoger una**: son excluyentes entre sí. Su truco no está en el componente sino en cómo se conecta el estado: todos los botones comparan su opción con la **misma variable**:
+Los RadioButton se utilizan para ofrecer varias opciones de las que **<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">solo se puede escoger una**: son excluyentes entre sí</span>. Su truco no está en el componente sino en cómo se conecta el estado: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">todos los botones comparan su opción con la **misma variable**</span>:
 
 ```kotlin
 val formasPago = listOf("Tarjeta", "PayPal", "Efectivo")
@@ -763,7 +767,7 @@ Código 18. RadioButtons excluyentes: como todos leen y escriben la misma variab
 
 </figure>
 
-El menú desplegable permite elegir un valor de una lista sin ocupar espacio permanente en la interfaz. En Material 3 se construye con `ExposedDropdownMenuBox`:
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El menú desplegable permite elegir un valor de una lista sin ocupar espacio permanente en la interfaz</span>. En Material 3 se construye con `ExposedDropdownMenuBox`:
 
 ```kotlin
 val ciclos = listOf("DAM", "DAW", "ASIR", "SMR")
@@ -811,7 +815,7 @@ Código 19. Menú desplegable completo: la caja (readOnly, no se escribe), el es
 
 ## 8. Disposición: los layouts de Compose
 
-Un **layout** (contenedor de disposición) permite adaptar la distribución de los componentes sobre la pantalla: son los encargados de colocar los componentes en el punto deseado y con el tamaño preciso. Sin ellos, los elementos se amontonan. El uso de los contenedores nos permite modificar el tamaño y la posición de los componentes de forma automática y adaptativa (la pantalla de un móvil pequeño y una tablet reordenan solos).
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un **layout** (contenedor de disposición) permite adaptar la distribución de los componentes sobre la pantalla</span>: son los encargados de colocar los componentes en el punto deseado y con el tamaño preciso. Sin ellos, los elementos se amontonan. El uso de los contenedores nos permite modificar el tamaño y la posición de los componentes de forma automática y adaptativa (la pantalla de un móvil pequeño y una tablet reordenan solos).
 
 <figure markdown>
 
@@ -823,7 +827,7 @@ Un **layout** (contenedor de disposición) permite adaptar la distribución de l
 
 ### 8.1. Column
 
-Apila los elementos **uno debajo de otro** en vertical (el más usado en formularios). Permite definir la alineación horizontal de los hijos y el **espaciado** entre ellos:
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Apila los elementos **uno debajo de otro** en vertical (el más usado en formularios)</span>. Permite definir la alineación horizontal de los hijos y el **espaciado** entre ellos:
 
 ```kotlin
 Column(
@@ -849,7 +853,7 @@ Código 20. Column con espaciado (equivalente del vgaphgap clásico: aquí se ll
 
 ### 8.2. Row
 
-Coloca los elementos **uno al lado de otro** en horizontal:
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Coloca los elementos **uno al lado de otro** en horizontal</span>:
 
 ```kotlin
 Row(
@@ -878,7 +882,7 @@ Código 21. Row centrada con un Spacer entre botones. Row es el equivalente del 
 
 ### 8.3. Box
 
-El contenedor de **superposición**: apila los elementos uno sobre otro (el último tapa a los anteriores). Ideal para poner un texto sobre una imagen o un badge sobre un icono:
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El contenedor de **superposición**: apila los elementos uno sobre otro (el último tapa a los anteriores)</span>. Ideal para poner un texto sobre una imagen o un badge sobre un icono:
 
 ```kotlin
 Box(
@@ -902,7 +906,7 @@ Código 22. Box centrando un Text sobre una Image: superposición con contentAli
 
 ### 8.4. LazyVerticalGrid
 
-La **rejilla** de Compose: coloca los elementos en filas y columnas automáticas (el equivalente del GridLayout clásico, pero perezoso: solo compone lo visible, por eso lo de "Lazy"):
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La **rejilla** de Compose: coloca los elementos en filas y columnas automáticas</span> (el equivalente del GridLayout clásico, pero perezoso: solo compone lo visible, por eso lo de "Lazy"):
 
 ```kotlin
 LazyVerticalGrid(
@@ -1110,7 +1114,7 @@ En este tema hemos estudiado **Jetpack Compose**, el kit que contiene todas las 
 
 También hemos visto que distinguir entre la **pantalla principal** (actividad) y las **secundarias** (navegación entre composables) y los **diálogos modales** (AlertDialog) es fundamental, no tanto por su implementación como por el uso que se les va a dar: confirmaciones críticas van en diálogo modal; flujos completos, en pantallas navegables.
 
-En próximos temas se verá con más detalle el análisis de eventos y estado avanzado, pero ya hemos adelantado el patrón que gobierna todo Compose: **el evento actualiza el estado, y el estado redibuja la interfaz**. Finalmente, hemos comprobado que la elección de una buena combinación de componentes y su distribución con los contenedores adecuados (Column, Row, Box, rejillas, Scaffold) determina la usabilidad del diseño de una aplicación.
+En próximos temas se verá con más detalle el análisis de eventos y estado avanzado, pero ya hemos adelantado el patrón que gobierna todo Compose: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**el evento actualiza el estado, y el estado redibuja la interfaz**</span>. Finalmente, hemos comprobado que la elección de una buena combinación de componentes y su distribución con los contenedores adecuados (Column, Row, Box, rejillas, Scaffold) determina la usabilidad del diseño de una aplicación.
 
 **Resolución del caso práctico de la unidad.** Con los conocimientos adquiridos podemos responder a las preguntas de diseño sobre la interfaz de **compra de entradas de teatro**:
 
@@ -1125,5 +1129,5 @@ En próximos temas se verá con más detalle el análisis de eventos y estado av
 - Android Developers. *Navigation Compose*. <https://developer.android.com/develop/ui/compose/navigation>
 - Android Developers. *Layouts in Compose*. <https://developer.android.com/develop/ui/compose/layouts>
 - Kotlin Foundation. *Kotlin docs — Classes*. <https://kotlinlang.org/docs/classes.html>
-- Real Decreto 450/2010. Módulo profesional 0488 Desarrollo de interfaces.
+- Real Decreto 405/2023, de 29 de mayo (BOE-A-2023-13221). Módulo profesional 0488 Desarrollo de interfaces.
 - Temario del módulo como base conceptual de la adaptación.

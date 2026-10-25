@@ -1,44 +1,27 @@
 ---
 title: "UD 1 - Introducción a la confección de interfaces"
-description: Introducción a la confección de interfaces
-summary: Introducción a la confección de interfaces
+description: "Índice de la unidad 1 de Desarrollo de Interfaces: teoría y presentación del entorno Android Studio con Kotlin y Jetpack Compose."
 authors:
     - Ismael Velasco
-date: 2026-09-23
-icon: "material/book-open-variant"
-permalink: /di/unidad1
+date: 2026-09-27
+icon: "material/file-document-outline"
+permalink: /di/unidad1/
+categories: DI
+tags:
+    - DI
+    - Android Studio
+    - Kotlin
+    - Jetpack Compose
 ---
 
-# Unidad 1. Introducción a la confección de interfaces
+# UD 1 - Introducción a la confección de interfaces
 
-Contenido de la unidad 1: paradigmas, modelos de programación, primer contacto con Kotlin y Jetpack Compose, y herramientas de edición.
+Bienvenido a la primera unidad del módulo **Desarrollo de Interfaces** (código 0488, RD 405/2023), adaptado a **Kotlin y Jetpack Compose**.
 
-## Teoría
+## Contenido de la unidad
 
-La teoría completa de la unidad está en un único documento:
+- Teoría: [1.1 - Introducción a la confección de interfaces](teoria/DI-U1.1.-IntroduccionConfeccionInterfaces.md)
 
-- [1. Introducción a la confección de interfaces](teoria/DI-U1.1.-IntroduccionConfeccionInterfaces.md) — paradigmas, herramientas, instalación de Android Studio, primer proyecto con Kotlin y entorno de diseño.
+## Presentación
 
-## Presentaciones
-
-#### Unidad 1 - Introducción a la confección de interfaces
-
-* [DI-U1.1 - Introducción a la confección de interfaces](https://ismaelvelasco-star.github.io/slides/section2-di/DI-U1.1.-IntroduccionConfeccionInterfaces.html)
-
-## Ejercicios
-
-| Documento | Contenido |
-|-----------|-----------|
-| [Ejercicios U1](ejercicios/DI-U1.-Ejercicios.md) | 13 ejercicios graduados en 4 bloques (A conceptos, B Kotlin, C primer proyecto, D integración) |
-| [Solucionario U1](ejercicios/DI-U1.-Solucionario.md) | Soluciones comentadas de todos los ejercicios |
-
-!!! note "Norma de nombrado de proyectos"
-    Los proyectos de los ejercicios se nombran siempre con **tu nombre y apellido** delante: `NombreApellido` + nombre del proyecto (ej. `AnaGarciaMiPrimeraInterfaz`). Ver detalle en el enunciado del bloque C.
-
-## Información
-
-**Resultados de aprendizaje trabajados:** RA1 del módulo 0488 (interfaces con editores visuales, adaptando código generado).
-
-**Temporalización orientativa:** 6 sesiones (2 semanas). Bloques A+B: 1 sesión. Bloque C: 2 sesiones. Bloque D: 2 sesiones. Repaso y corrección: 1 sesión.
-
-**Evaluación:** los ejercicios de los bloques C y D alimentan la rúbrica del RA1 (creación con asistente, ubicación de componentes, modificación de propiedades, adaptación de código generado).
+- [DI-U1.1 - Introducción a la confección de interfaces](https://revilofe.github.io/slides/section6-di/DI-U1.1.-IntroduccionConfeccionInterfaces.html)

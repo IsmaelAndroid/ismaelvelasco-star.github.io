@@ -1,0 +1,3583 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Introducción al módulo y al entorno de trabajo: paradigmas, herramientas de edición e instalación y primer contacto con Android Studio, Kotlin y Jetpack Compose.">
+      
+      
+        <meta name="author" content="Ismael Velasco">
+      
+      
+      
+        <link rel="prev" href="../practica/DI-U1.-Practica001.html">
+      
+      
+        <link rel="next" href="../practica/DI-U1.-Practica003.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>UD 1 - Introducción a la confección de interfaces - Aula 2º DAM - Ismael Velasco</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduccion-a-la-confeccion-de-interfaces" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../../index.html" title="Aula 2º DAM - Ismael Velasco" class="md-header__button md-logo" aria-label="Aula 2º DAM - Ismael Velasco" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Aula 2º DAM - Ismael Velasco
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UD 1 - Introducción a la confección de interfaces
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ismaelvelasco-star/ismaelvelasco-star.github.io" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ismaelvelasco-star/ismaelvelasco-star.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../index.html" class="md-tabs__link">
+        
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    
+  
+  Principal
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../section1/index.html" class="md-tabs__link">
+          
+  
+  
+  PMDM
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../index.html" class="md-tabs__link">
+          
+  
+  
+  Desarrollo de Interfaces
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../section3/index.html" class="md-tabs__link">
+          
+  
+  
+  Entornos de Desarrollo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Acerca de
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="Aula 2º DAM - Ismael Velasco" class="md-nav__button md-logo" aria-label="Aula 2º DAM - Ismael Velasco" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Aula 2º DAM - Ismael Velasco
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ismaelvelasco-star/ismaelvelasco-star.github.io" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ismaelvelasco-star/ismaelvelasco-star.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Principal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PMDM
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PMDM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section1/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programación Multimedia y Dispositivos Móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U1: Análisis de tecnologías para dispositivos móviles
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U1: Análisis de tecnologías para dispositivos móviles
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section1/u01/index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - Análisis de tecnologías para aplicaciones móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section1/u01/teoria/PMDM-U1.1.-AnalisisTecnologiasDispositivosMoviles.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Análisis de tecnologías para dispositivos móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section1/u01/practica/PMDM-U1.-Practica001.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.1: Explorando Android Studio y sus plantillas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section1/u01/practica/PMDM-U1.-Practica002.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.2: Emuladores y perfiles de dispositivo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section1/u01/practica/PMDM-U1.-Practica003.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.3: ADB y el administrador de aplicaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desarrollo de Interfaces
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Desarrollo de Interfaces
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    DI — Desarrollo de Interfaces (2º DAM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - Introducción a la confección de interfaces
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD 1 - Introducción a la confección de interfaces
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - Introducción a la confección de interfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Introducción a la confección de interfaces
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="DI-U1.1.-IntroduccionConfeccionInterfaces.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Introducción a la confección de interfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion-y-contextualizacion-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introducción y contextualización práctica
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-paradigmas-de-programacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Paradigmas de programación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-programacion-orientada-a-objetos-eventos-y-componentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Programación orientada a objetos, eventos y componentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-herramientas-propietarias-y-libres-de-edicion-de-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Herramientas propietarias y libres de edición de interfaces
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-librerias-jetpack-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Librerías. Jetpack Compose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-instalacion-de-android-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Instalación de Android Studio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-primer-proyecto-con-kotlin-la-funcion-composable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Primer proyecto con Kotlin. La función composable
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Primer proyecto con Kotlin. La función composable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-la-estructura-del-proyecto-que-es-cada-carpeta-y-para-que-sirve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1. La estructura del proyecto: qué es cada carpeta y para qué sirve
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-analisis-del-entorno-de-diseno-en-android-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Análisis del entorno de diseño en Android Studio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-caso-practico-1-creacion-de-una-pantalla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Caso práctico 1: "Creación de una pantalla"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-caso-practico-2-creacion-de-un-boton" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Caso práctico 2: "Creación de un botón"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-el-caso-practico-2-linea-a-linea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. El caso práctico 2, línea a línea
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. El caso práctico 2, línea a línea">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-los-imports-el-mapa-de-la-biblioteca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1. Los imports: el mapa de la biblioteca
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-composable-el-carne-de-la-funcion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2. @Composable: el carné de la función
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-row-un-contenedor-con-doble-eje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3. Row: un contenedor con doble eje
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-button-text-el-patron-slot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4. Button { Text }: el patrón slot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#115-preview-el-bucle-de-retroalimentacion-instantaneo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5. @Preview: el bucle de retroalimentación instantáneo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-matriz-de-fallos-15-maneras-de-romper-la-interfaz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Matriz de fallos: 15 maneras de romper la interfaz
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Matriz de fallos: 15 maneras de romper la interfaz">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-las-tres-familias-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1. Las tres familias de errores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2. Para practicar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-resumen-y-resolucion-del-caso-practico-de-la-unidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Resumen y resolución del caso práctico de la unidad
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bibliografia-y-fuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bibliografía y fuentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practica/DI-U1.-Practica001.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1: Nuestra app en todas las plataformas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Introducción a la confección de interfaces
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="DI-U1.1.-IntroduccionConfeccionInterfaces.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Introducción a la confección de interfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion-y-contextualizacion-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introducción y contextualización práctica
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-paradigmas-de-programacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Paradigmas de programación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-programacion-orientada-a-objetos-eventos-y-componentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Programación orientada a objetos, eventos y componentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-herramientas-propietarias-y-libres-de-edicion-de-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Herramientas propietarias y libres de edición de interfaces
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-librerias-jetpack-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Librerías. Jetpack Compose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-instalacion-de-android-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Instalación de Android Studio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-primer-proyecto-con-kotlin-la-funcion-composable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Primer proyecto con Kotlin. La función composable
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Primer proyecto con Kotlin. La función composable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-la-estructura-del-proyecto-que-es-cada-carpeta-y-para-que-sirve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1. La estructura del proyecto: qué es cada carpeta y para qué sirve
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-analisis-del-entorno-de-diseno-en-android-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Análisis del entorno de diseño en Android Studio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-caso-practico-1-creacion-de-una-pantalla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Caso práctico 1: "Creación de una pantalla"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-caso-practico-2-creacion-de-un-boton" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Caso práctico 2: "Creación de un botón"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-el-caso-practico-2-linea-a-linea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. El caso práctico 2, línea a línea
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. El caso práctico 2, línea a línea">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-los-imports-el-mapa-de-la-biblioteca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1. Los imports: el mapa de la biblioteca
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-composable-el-carne-de-la-funcion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2. @Composable: el carné de la función
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-row-un-contenedor-con-doble-eje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3. Row: un contenedor con doble eje
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-button-text-el-patron-slot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4. Button { Text }: el patrón slot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#115-preview-el-bucle-de-retroalimentacion-instantaneo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5. @Preview: el bucle de retroalimentación instantáneo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-matriz-de-fallos-15-maneras-de-romper-la-interfaz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Matriz de fallos: 15 maneras de romper la interfaz
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Matriz de fallos: 15 maneras de romper la interfaz">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-las-tres-familias-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1. Las tres familias de errores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2. Para practicar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-resumen-y-resolucion-del-caso-practico-de-la-unidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Resumen y resolución del caso práctico de la unidad
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bibliografia-y-fuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bibliografía y fuentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practica/DI-U1.-Practica003.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3: Column, botones y contador (1 h)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practica/DI-U1.-Practica004.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 4: Row y Card (1 h)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practica/DI-U1.-Practica005.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 5: Imágenes y recursos (1 h)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejercicios/DI-U1.-SolucionarioPracticas.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario de prácticas (P3-P5)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejercicios/DI-U1.-Ejercicios.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios U1 (de menor a mayor)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejercicios/DI-U1.-Solucionario.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario U1 (con enunciados)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 2 - Clases y componentes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD 2 - Clases y componentes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u02/index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3v6h8V3m-8 18h8V11h-8M3 21h8v-6H3m0-2h8V3H3z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 2 - Clases y componentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u02/teoria/DI-U2.1.-ClasesYComponentes.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3v6h8V3m-8 18h8V11h-8M3 21h8v-6H3m0-2h8V3H3z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1.-Clases y componentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u02/ejercicios/DI-U2.-Ejercicios.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.5 11H19V7a2 2 0 0 0-2-2h-4V3.5A2.5 2.5 0 0 0 10.5 1 2.5 2.5 0 0 0 8 3.5V5H4a2 2 0 0 0-2 2v3.8h1.5c1.5 0 2.7 1.2 2.7 2.7S5 16.2 3.5 16.2H2V20a2 2 0 0 0 2 2h3.8v-1.5c0-1.5 1.2-2.7 2.7-2.7s2.7 1.2 2.7 2.7V22H17a2 2 0 0 0 2-2v-4h1.5a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios U2 (práctica progresiva)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u02/ejercicios/DI-U2.-Solucionario.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario U2 (con enunciados)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 3 - Generación de interfaces a partir de documentos XML
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD 3 - Generación de interfaces a partir de documentos XML
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u03/index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.89 3 1.96.4L11.11 21l-1.96-.4zm6.7 9L16 8.41V5.58L22.42 12 16 18.41v-2.83zM1.58 12 8 5.58v2.83L4.41 12 8 15.58v2.83z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 3 - Generación de interfaces a partir de documentos XML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u03/teoria/DI-U3.1.-GeneracionInterfacesXML.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.89 3 1.96.4L11.11 21l-1.96-.4zm6.7 9L16 8.41V5.58L22.42 12 16 18.41v-2.83zM1.58 12 8 5.58v2.83L4.41 12 8 15.58v2.83z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1.-Generación de interfaces a partir de documentos XML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u03/practica/DI-U3.-Practica.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.89 3 1.96.4L11.11 21l-1.96-.4zm6.7 9L16 8.41V5.58L22.42 12 16 18.41v-2.83zM1.58 12 8 5.58v2.83L4.41 12 8 15.58v2.83z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3: XML vivo en tu app Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u03/ejercicios/DI-U3.-PracticaSolucion.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m23 12-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68zm-13 5-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario de la práctica 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u03/ejercicios/DI-U3.-Ejercicios.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.5 11H19V7a2 2 0 0 0-2-2h-4V3.5A2.5 2.5 0 0 0 10.5 1 2.5 2.5 0 0 0 8 3.5V5H4a2 2 0 0 0-2 2v3.8h1.5c1.5 0 2.7 1.2 2.7 2.7S5 16.2 3.5 16.2H2V20a2 2 0 0 0 2 2h3.8v-1.5c0-1.5 1.2-2.7 2.7-2.7s2.7 1.2 2.7 2.7V22H17a2 2 0 0 0 2-2v-4h1.5a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios U3 (de menor a mayor)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../u03/ejercicios/DI-U3.-Solucionario.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m23 12-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68zm-13 5-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario U3 (con enunciados)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entornos de Desarrollo
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Entornos de Desarrollo
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section3/index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    EDES — Entornos de Desarrollo (1º DAM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - GitHub: repositorios, versiones y trabajo en equipo
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD 1 - GitHub: repositorios, versiones y trabajo en equipo
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section3/u01/index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14c-3.36 0-4.46 1.35-4.82 2.24C9.25 16.7 10 17.76 10 19a3 3 0 0 1-3 3 3 3 0 0 1-3-3c0-1.31.83-2.42 2-2.83V7.83A2.99 2.99 0 0 1 4 5a3 3 0 0 1 3-3 3 3 0 0 1 3 3c0 1.31-.83 2.42-2 2.83v5.29c.88-.65 2.16-1.12 4-1.12 2.67 0 3.56-1.34 3.85-2.23A3.01 3.01 0 0 1 14 7a3 3 0 0 1 3-3 3 3 0 0 1 3 3c0 1.34-.88 2.5-2.09 2.86C17.65 11.29 16.68 14 13 14m-6 4a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1M7 4a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1m10 2a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - GitHub: repositorios, versiones y trabajo en equipo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section3/u01/teoria/EDES-U1.1.-GitYGitHub.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14c-3.36 0-4.46 1.35-4.82 2.24C9.25 16.7 10 17.76 10 19a3 3 0 0 1-3 3 3 3 0 0 1-3-3c0-1.31.83-2.42 2-2.83V7.83A2.99 2.99 0 0 1 4 5a3 3 0 0 1 3-3 3 3 0 0 1 3 3c0 1.31-.83 2.42-2 2.83v5.29c.88-.65 2.16-1.12 4-1.12 2.67 0 3.56-1.34 3.85-2.23A3.01 3.01 0 0 1 14 7a3 3 0 0 1 3-3 3 3 0 0 1 3 3c0 1.34-.88 2.5-2.09 2.86C17.65 11.29 16.68 14 13 14m-6 4a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1M7 4a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1m10 2a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Git y GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section3/u01/ejercicios/EDES-U1.-Ejercicios.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.5 11H19V7a2 2 0 0 0-2-2h-4V3.5A2.5 2.5 0 0 0 10.5 1 2.5 2.5 0 0 0 8 3.5V5H4a2 2 0 0 0-2 2v3.8h1.5c1.5 0 2.7 1.2 2.7 2.7S5 16.2 3.5 16.2H2V20a2 2 0 0 0 2 2h3.8v-1.5c0-1.5 1.2-2.7 2.7-2.7s2.7 1.2 2.7 2.7V22H17a2 2 0 0 0 2-2v-4h1.5a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios U1 (de menor a mayor)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section3/u01/ejercicios/EDES-U1.-Solucionario.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8c.76 0 1.5.11 2.2.31l1.57-1.57A9.8 9.8 0 0 0 12 2 10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10M7.91 10.08 6.5 11.5 11 16 21 6l-1.41-1.42L11 13.17z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario U1 (con enunciados)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h-2V7h2m0 10h-2v-6h2m-1-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Acerca de
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion-y-contextualizacion-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introducción y contextualización práctica
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-paradigmas-de-programacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Paradigmas de programación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-programacion-orientada-a-objetos-eventos-y-componentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Programación orientada a objetos, eventos y componentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-herramientas-propietarias-y-libres-de-edicion-de-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Herramientas propietarias y libres de edición de interfaces
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-librerias-jetpack-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Librerías. Jetpack Compose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-instalacion-de-android-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Instalación de Android Studio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-primer-proyecto-con-kotlin-la-funcion-composable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Primer proyecto con Kotlin. La función composable
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Primer proyecto con Kotlin. La función composable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-la-estructura-del-proyecto-que-es-cada-carpeta-y-para-que-sirve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1. La estructura del proyecto: qué es cada carpeta y para qué sirve
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-analisis-del-entorno-de-diseno-en-android-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Análisis del entorno de diseño en Android Studio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-caso-practico-1-creacion-de-una-pantalla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Caso práctico 1: "Creación de una pantalla"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-caso-practico-2-creacion-de-un-boton" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Caso práctico 2: "Creación de un botón"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-el-caso-practico-2-linea-a-linea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. El caso práctico 2, línea a línea
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. El caso práctico 2, línea a línea">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-los-imports-el-mapa-de-la-biblioteca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1. Los imports: el mapa de la biblioteca
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-composable-el-carne-de-la-funcion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2. @Composable: el carné de la función
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-row-un-contenedor-con-doble-eje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3. Row: un contenedor con doble eje
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-button-text-el-patron-slot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4. Button { Text }: el patrón slot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#115-preview-el-bucle-de-retroalimentacion-instantaneo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5. @Preview: el bucle de retroalimentación instantáneo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-matriz-de-fallos-15-maneras-de-romper-la-interfaz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Matriz de fallos: 15 maneras de romper la interfaz
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Matriz de fallos: 15 maneras de romper la interfaz">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-las-tres-familias-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1. Las tres familias de errores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-para-practicar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2. Para practicar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-resumen-y-resolucion-del-caso-practico-de-la-unidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Resumen y resolución del caso práctico de la unidad
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bibliografia-y-fuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bibliografía y fuentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="introduccion-a-la-confeccion-de-interfaces">Introducción a la confección de interfaces</h1>
+<div class="admonition abstract">
+<p class="admonition-title">Idea principal</p>
+<p>Este tema presenta el terreno de juego: qué es una interfaz, qué paradigmas hay detrás y, sobre todo, <strong>el entorno donde vamos a trabajar todo el módulo: Android Studio con Kotlin y Jetpack Compose</strong>. Al terminar tendremos el IDE instalado, creada la primera interfaz y conocidas las zonas del entorno de diseño.</p>
+</div>
+<h2 id="1-introduccion-y-contextualizacion-practica">1. Introducción y contextualización práctica</h2>
+<p>Un lenguaje de programación consiste en un conjunto de reglas y normas que permiten a una persona (en este caso un programador o programadora) escribir un conjunto de instrucciones interpretables por un ordenador, cuyo objetivo es controlar diferentes comportamientos lógicos o físicos de una máquina.</p>
+<p>De manera tradicional se ha establecido una clasificación entre lenguajes de <strong>bajo y alto nivel</strong>. Los primeros se encuentran más cerca de lo que es capaz de entender un ordenador, ejercen un control directo sobre el hardware y están más alejados de la lógica humana (lenguaje máquina con 0 y 1, o lenguaje ensamblador). Los anteriores resultan muy difíciles de entender por una persona. Por esa razón aparecen los lenguajes de <strong>alto nivel</strong>, que pueden ser descritos utilizando reglas comprensibles por el programador, con un lenguaje más cercano al natural. Será durante el proceso de compilación del código fuente cuando estos se traduzcan a un lenguaje de bajo nivel, capaz de ser entendido por una máquina.</p>
+<figure>
+<p><img alt="Diagrama de lenguajes de alto y bajo nivel y el proceso de compilación." src="assets/compilacion.png" /></p>
+<figcaption>Fig. 1. Diagrama de lenguajes de alto y bajo nivel. Fuente: temario del módulo.</figcaption>
+</figure>
+<p><strong>Kotlin</strong>, el lenguaje que usaremos en este módulo, es de alto nivel: compila a bytecode que ejecuta la máquina virtual (JVM o ART en Android).</p>
+<p>Ahora bien, las herramientas desarrolladas a través de un lenguaje de programación, sea del tipo que sea, requieren del desarrollo de una <strong>interfaz</strong> que permita la interacción con el usuario, de lo contrario se requeriría que todos fuéramos programadores expertos para utilizar cualquier aplicación atendiendo a su lenguaje fuente.</p>
+<h2 id="2-paradigmas-de-programacion">2. Paradigmas de programación</h2>
+<p>Un paradigma de programación define un estilo de programación: describe la estructura del programa que va a dar solución a los problemas computacionales.</p>
+<p>En primer lugar encontramos el modelo <strong>imperativo</strong>, que consiste en un conjunto de instrucciones ordenadas de forma secuencial y claramente definidas para su ejecución en una máquina; es decir, definen un paso a paso. Este modelo se divide en otros tipos:</p>
+<ul>
+<li><strong>Programación estructurada</strong>: incluye estructuras de control que permiten evaluar los casos para decidir entre un camino de instrucciones u otro. También incorpora estructuras iterativas.</li>
+<li><strong>Programación procedimental o basada en funciones</strong>: subdivide el programa en subrutinas y funciones de menor tamaño que simplifican la programación, aligerando su implementación y posterior mantenimiento.</li>
+<li><strong>Programación modular</strong>: permite desarrollar cada programa de forma completamente independiente al resto del código, lo que agiliza las tareas de implementación y prueba. Será en la parte final del proceso cuando se combinen todos los módulos, creando el software definitivo.</li>
+</ul>
+<p>Algunos lenguajes conocidos que utilizan la programación imperativa son <strong>Kotlin</strong>, Java, C, C#, Python o Ruby.</p>
+<p>En el modelo imperativo se indica la secuencia de pasos exacta a seguir para resolver un problema. Por el contrario, en el caso del modelo <strong>declarativo</strong> no se describen los pasos, sino el problema que se plantea. Algunos ejemplos de lenguajes declarativos son HTML, CSS y SQL.</p>
+<h2 id="3-programacion-orientada-a-objetos-eventos-y-componentes">3. Programación orientada a objetos, eventos y componentes</h2>
+<p>Encontramos otros modelos de programación que incluyen características propias de los definidos anteriormente. Es el caso de la programación orientada a objetos, eventos o componentes. <strong>La combinación de estos tres tipos resulta clave para el desarrollo de las interfaces que veremos en este módulo.</strong></p>
+<ul>
+<li><strong>Modelo orientado a objetos</strong>: el funcionamiento de este tipo de programas se basa en la creación de entidades, que reciben el nombre de <strong>objetos</strong>, las cuales tienen asociados atributos, propiedades y métodos. La interacción entre los objetos permite resolver los problemas de computación planteados. Algunos lenguajes orientados a objetos son Java, Ruby, Visual Basic, Perl, PHP, Python o <strong>Kotlin</strong>.</li>
+<li><strong>Modelo basado en eventos</strong>: su funcionamiento viene determinado por acciones externas, por ejemplo, la pulsación sobre un botón. Uno de los lenguajes típicos de este tipo de programación es JavaScript, que utiliza manejadores de eventos tanto en el lado del cliente como del servidor (Node.js).</li>
+<li><strong>Modelo basado en componentes</strong>: la clave de este último modelo es la <strong>reutilización de módulos de software desarrollados previamente</strong>. Para llevar a cabo esta tarea, la mayoría de los entornos de desarrollo integrados (IDE) permiten desarrollar componentes visuales, permitiendo empaquetar el código para reutilizarlo posteriormente.</li>
+</ul>
+<p>En Jetpack Compose los tres modelos se dan cita: los composables son componentes reutilizables (que se definen una vez y se usan en cualquier pantalla), reaccionan a eventos (la pulsación de un botón) y se apoyan en objetos y clases de Kotlin.</p>
+<h2 id="4-herramientas-propietarias-y-libres-de-edicion-de-interfaces">4. Herramientas propietarias y libres de edición de interfaces</h2>
+<p>La motivación principal para utilizar herramientas de desarrollo software basado en componentes visuales radica en que, una vez empaquetados, se podrán compartir con otros desarrolladores y, por tanto, serán reutilizables. Esto supone un mayor ciclo de vida que el desarrollo tradicional por comandos. Si no se desarrolla utilizando componentes y se realiza de manera directa, se producirá un incremento de tiempo y costes asociados al proyecto.</p>
+<p>Destacamos a continuación las principales herramientas de desarrollo software:</p>
+<table>
+<thead>
+<tr>
+<th>Nombre</th>
+<th>Licencia</th>
+<th>Lenguajes soportados</th>
+<th>Enlace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MonoDevelop</td>
+<td>Libre</td>
+<td>C#, Java, .NET, Python</td>
+<td>monodevelop.com</td>
+</tr>
+<tr>
+<td>Glade</td>
+<td>Libre</td>
+<td>C++, C#, Java, Python</td>
+<td>glade.gnome.org</td>
+</tr>
+<tr>
+<td><strong>Android Studio</strong></td>
+<td>Libre</td>
+<td><strong>Kotlin, Java</strong></td>
+<td>developer.android.com/studio</td>
+</tr>
+</tbody>
+</table>
+<p>Tabla 1. Tabla comparativa de las herramientas de edición de interfaces (selección).</p>
+<p><strong>4.1. MonoDevelop.</strong> Este IDE libre y gratuito proporciona las funcionalidades propias de un editor de texto, además de las propias de un entorno para depurar y gestionar proyectos. Pertenece al ecosistema de Unity (motor de videojuegos multiplataforma), lo que resulta interesante porque permite desarrollar para Windows, macOS y Linux.</p>
+<figure>
+<p><img alt="Interfaz de la aplicación MonoDevelop con su diseñador visual." src="assets/monodevelop.png" /></p>
+<figcaption>Fig. 2. Interfaz de la aplicación MonoDevelop. Fuente: temario del módulo.</figcaption>
+</figure>
+<p><strong>4.2. Glade.</strong> Este programa ayuda a la creación de interfaces gráficas de usuario y es muy utilizado en entornos XML, también para interfaces basadas en C, C++, C#, Java o Python. Su interfaz es bastante intuitiva y se domina invirtiendo poco tiempo. La principal diferencia respecto a las demás propuestas es que está diseñada pensando especialmente en GNU/Linux.</p>
+<figure>
+<p><img alt="Interfaz de la aplicación Glade con su paleta de componentes y propiedades." src="assets/glade.png" /></p>
+<figcaption>Fig. 3. Interfaz de la aplicación Glade. Fuente: temario del módulo.</figcaption>
+</figure>
+<p><strong>4.3. Android Studio.</strong> Es el IDE oficial para el desarrollo Android: gratuito, libre y multiplataforma, basado en IntelliJ IDEA. Reúne las virtudes de los anteriores (editor con autocompletado y detección de errores en tiempo real, depuración paso a paso, integración con Git/GitHub) y añade lo que da nombre al módulo moderno: la vista de diseño en vivo para <strong>Jetpack Compose</strong> (previsualización sin ejecutar la app), el emulador de dispositivos Android integrado y el soporte completo de <strong>Kotlin</strong>. Para completar esta asignatura vamos a utilizar <strong>Android Studio</strong>, puesto que su uso es el estándar profesional actual en el desarrollo de interfaces móviles.</p>
+<figure>
+<p><img alt="Burbujas con lenguajes de programación de alto nivel, entre ellos Kotlin." src="assets/lenguajes.png" /></p>
+<figcaption>Fig. 4. Lenguajes de programación de alto nivel. Fuente: temario del módulo.</figcaption>
+</figure>
+<h2 id="5-librerias-jetpack-compose">5. Librerías. Jetpack Compose</h2>
+<p>Algunos lenguajes de programación (entre ellos Kotlin) utilizan <strong>librerías</strong>: un conjunto de clases y funciones con sus propios atributos y métodos ya implementados. De esta forma pueden utilizarse para cualquier desarrollo reutilizando su código, lo cual reduce considerablemente el tiempo de programación. En cuanto al desarrollo de interfaces gráficas, para poder implementarlas debemos usar librerías que lo permitan.</p>
+<p>En el desarrollo Android con Kotlin, la librería de interfaz es <strong>Jetpack Compose</strong>: el kit de herramientas oficial de Google para construir UIs. Sus componentes (botones, textos, campos de texto, contenedores...) son <strong>funciones de Kotlin</strong> anotadas con <code>@Composable</code> que se combinan entre sí para describir la pantalla.</p>
+<p>Para poder utilizar las funciones y clases de estas librerías es necesario <strong>importarlas</strong> en Kotlin. Para ello se utiliza la palabra clave <code>import</code> seguida de la ruta del paquete que se va a agregar, justo después de la declaración del paquete, si esta existe:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material3.Button</span><span class="w">   </span><span class="c1">// solo Button</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material3.*</span><span class="w">        </span><span class="c1">// todos los componentes Material 3</span>
+</code></pre></div>
+<p>Código 1. Código para importar las librerías de Jetpack Compose.</p>
+<p>Al igual que ocurría con las librerías clásicas de interfaces, Compose garantiza que el diseño y comportamiento de las aplicaciones será exactamente el mismo independientemente del fabricante del dispositivo, y proporciona componentes visuales avanzados con apariencia propia (Material Design 3).</p>
+<h2 id="6-instalacion-de-android-studio">6. Instalación de Android Studio</h2>
+<p>Para la implementación de interfaces en Kotlin se va a utilizar <strong>Android Studio</strong>, el entorno que integra todo lo necesario: editor, diseñador visual, emulador y el SDK de Android. A diferencia de otros IDE clásicos, no hay que instalar por separado ni el JDK (incluye uno embebido) ni la librería de interfaces: el asistente de proyectos añade Jetpack Compose automáticamente. El proceso de instalación se describe a continuación:</p>
+<ul>
+<li>Desde el sitio web oficial (<a href="https://developer.android.com/studio">https://developer.android.com/studio</a>) se descarga el instalador correspondiente a nuestro sistema operativo (Windows, macOS o Linux) y se ejecuta.</li>
+<li>Seguimos el asistente con las opciones por defecto: tipo de instalación <em>Standard</em>, que instala el SDK de Android, sus plataformas y las herramientas de emulador. Este proceso ocupa pocos minutos.</li>
+<li>En el primer arranque, el asistente de configuración (setup wizard) descarga e instala los componentes restantes.</li>
+<li>Para ejecutar Android Studio basta con pulsar sobre el icono de la aplicación. La pantalla de bienvenida ofrece crear un nuevo proyecto o abrir uno existente.</li>
+</ul>
+<p>Una vez completado este proceso, ya tendríamos instalado todo el entorno básico para el desarrollo de interfaces posterior.</p>
+<h2 id="7-primer-proyecto-con-kotlin-la-funcion-composable">7. Primer proyecto con Kotlin. La función composable</h2>
+<p>La importación de las librerías de Compose se realiza usando la sentencia <code>import androidx.compose...</code>, como vimos en el apartado anterior. Lo habitual es que el propio IDE añada estas importaciones automáticamente (con <strong>Alt+Intro</strong> sobre el elemento en rojo).</p>
+<p>Uno de los elementos más importantes de Compose es la <strong>función composable</strong> (así la llamaremos en este módulo, como hace la comunidad y la mayoría de materiales en vídeo): una función de Kotlin anotada con <code>@Composable</code> que describe un trozo de interfaz. Sobre ella se añaden el resto de elementos.</p>
+<div class="admonition note">
+<p class="admonition-title">Si lees la documentación oficial en español</p>
+<p>La documentación de Google traducida al español llama a esta función <strong>"función de componibilidad"</strong> (o "función que admite composición") y la abrevia como <strong>"componible"</strong>. Es exactamente el mismo concepto: la función anotada con <code>@Composable</code>. Nosotros diremos <strong>composable</strong>, que es como se oye en tutoriales, foros y equipos de trabajo.</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nd">@Composable</span><span class="w">                  </span><span class="c1">// &lt;- la ANOTACIÓN: marca la función</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">Saludo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">               </span><span class="c1">// &lt;- la FUNCIÓN composable en sí</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">Text</span><span class="p">(</span><span class="s">"Hola"</span><span class="p">)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">}</span>
+</code></pre></div>
+<p>Es importante distinguir los dos términos para no mezclarlos:</p>
+<table>
+<thead>
+<tr>
+<th>Término</th>
+<th>Qué es</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@Composable</code></td>
+<td>La <strong>anotación</strong> que se escribe delante de la función</td>
+<td><code>@Composable fun Saludo()</code></td>
+</tr>
+<tr>
+<td>Función composable (o composable)</td>
+<td>La <strong>función</strong> marcada con esa anotación, que describe la interfaz</td>
+<td><code>Saludo()</code>, <code>Text()</code>, <code>Button()</code></td>
+</tr>
+</tbody>
+</table>
+<p>En este punto es fácil confundir dos conceptos que viven en capas distintas: el <strong>composable raíz</strong> y la <strong>actividad</strong> (<code>ComponentActivity</code>). La diferencia es la misma que hay entre un <strong>edificio</strong> y la <strong>decoración de una habitación</strong>: el edificio (actividad) es la estructura del sistema operativo, con ventanas, puerta y contrato con Android; la decoración (composables) es lo que tú dibujas dentro. Y el <code>setContent { }</code> es el contrato de alquiler que dice qué decoración se coloca en cada habitación.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Un vistazo rápido</label><label for="__tabbed_1_2">Versión extendida con comentarios</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// ─────────────────────────────────────────────────────────</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">// CAPA 1: LA ACTIVIDAD (el "edificio")</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1">// No dibuja nada: es la pantalla que Android crea y gestiona.</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">// ─────────────────────────────────────────────────────────</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kd">class</span><span class="w"> </span><span class="nc">MainActivity</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ComponentActivity</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span><span class="w"> </span><span class="n">Bundle?</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="n">setContent</span><span class="w"> </span><span class="p">{</span><span class="w">              </span><span class="c1">// &lt;- PUENTE entre los dos mundos</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">            </span><span class="n">MiApp</span><span class="p">()</span><span class="w">               </span><span class="c1">// &lt;- aquí se "monta" la interfaz</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="p">}</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="c1">// ─────────────────────────────────────────────────────────</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="c1">// CAPA 2: EL COMPOSABLE RAÍZ (la "decoración")</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="c1">// Todo lo que se ve en pantalla se describe aquí, en Kotlin.</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="c1">// ─────────────────────────────────────────────────────────</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="nd">@Composable</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">MiApp</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="n">Column</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">"Bienvenido"</span><span class="p">)</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">        </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">            </span><span class="n">Text</span><span class="p">(</span><span class="s">"Entrar"</span><span class="p">)</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// 1) LA ACTIVIDAD: pertenece al MUNDO ANDROID (sistema).</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1">//    Android la crea, la destruye y le da ciclos de vida.</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1">//    Por eso extiende de ComponentActivity y sobrescribe onCreate().</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kd">class</span><span class="w"> </span><span class="nc">MainActivity</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ComponentActivity</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span><span class="w"> </span><span class="n">Bundle?</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="c1">// 2) setContent {}: el PUENTE.</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="c1">//    Todo lo que va entre llaves es código Compose.</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="c1">//    Aquí termina el mundo de las actividades y empieza el tuyo.</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="n">setContent</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">            </span><span class="n">MiApp</span><span class="p">()</span><span class="w">   </span><span class="c1">// &lt;- un único composable raíz por setContent</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="p">}</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="c1">// 3) EL COMPOSABLE RAÍZ: pertenece al MUNDO COMPOSE (interfaz).</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="c1">//    Es una función normal de Kotlin anotada con @Composable.</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="c1">//    Android no sabe que existe: solo sabe dibujar lo que ella describe.</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="nd">@Composable</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">MiApp</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">    </span><span class="n">Column</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">"Bienvenido"</span><span class="p">)</span><span class="w">          </span><span class="c1">// composable hijo</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">        </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">            </span><span class="n">Text</span><span class="p">(</span><span class="s">"Entrar"</span><span class="p">)</span><span class="w">          </span><span class="c1">// composable nieto</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Actividad</strong> (<code>ComponentActivity</code>)</th>
+<th><strong>Composable raíz</strong> (<code>MiApp()</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Qué es</strong></td>
+<td>La pantalla del sistema que aloja la interfaz</td>
+<td>La función que describe la interfaz</td>
+</tr>
+<tr>
+<td><strong>Quién la gestiona</strong></td>
+<td><strong>Android</strong> (la crea, pausa, destruye)</td>
+<td><strong>Compose</strong> (se re-ejecuta al cambiar el estado)</td>
+</tr>
+<tr>
+<td><strong>Formato</strong></td>
+<td>Clase Kotlin que hereda de <code>ComponentActivity</code></td>
+<td>Función Kotlin anotada con <code>@Composable</code></td>
+</tr>
+<tr>
+<td><strong>Dónde vive</strong></td>
+<td><code>MainActivity.kt</code>, registrada en <code>AndroidManifest.xml</code></td>
+<td>En cualquier archivo <code>.kt</code>; la invocas desde <code>setContent</code></td>
+</tr>
+<tr>
+<td><strong>Ciclo de vida</strong></td>
+<td><code>onCreate()</code> → <code>onStart()</code> → <code>onResume()</code> …</td>
+<td>Recomposición: se re-ejecuta cuando cambia un estado</td>
+</tr>
+<tr>
+<td><strong>¿Dibuja píxeles?</strong></td>
+<td>No (solo aloja)</td>
+<td>Sí (describe toda la UI)</td>
+</tr>
+<tr>
+<td><strong>Analogía</strong></td>
+<td>El edificio con ventana a la pantalla</td>
+<td>La decoración interior de una habitación</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>flowchart TD
+    OS[Android / sistema operativo] --&gt; A["Actividad MainActivity&lt;br/&gt;(pantalla del sistema)"]
+    A --&gt;|setContent { ... }| R["Composable raíz MiApp()&lt;br/&gt;(inicio del árbol de interfaz)"]
+    R --&gt; C["Column&lt;br/&gt;(contenedor)"]
+    C --&gt; T1["Text · Bienvenido"]
+    C --&gt; B["Button"]
+    B --&gt; T2["Text · Entrar"]
+    style OS fill:#4a5568,color:#fff
+    style A fill:#2b6cb0,color:#fff
+    style R fill:#2f855a,color:#fff
+    style C fill:#2f855a,color:#fff
+    style T1 fill:#276749,color:#fff
+    style B fill:#276749,color:#fff
+    style T2 fill:#276749,color:#fff</code></pre>
+<p><strong>Cómo leer el diagrama:</strong> todo lo azul pertenece al mundo Android (la actividad), todo lo verde pertenece al mundo Compose (los composables). El único punto de contacto entre ambos mundos es la flecha <code>setContent { }</code>: por encima hay sistema operativo, por debajo solo hay funciones de Kotlin describiendo píxeles.</p>
+<p>Un error típico de principiante es intentar dibujar dentro de la clase de la actividad (por ejemplo, escribiendo <code>Text(...)</code> suelto en <code>onCreate()</code>). No funciona: sin pasar por <code>setContent { }</code>, Android no sabe que ese código existe como interfaz. El orden siempre es: <strong>actividad → <code>setContent { }</code> → composable raíz → resto del árbol</strong>.</p>
+<pre class="mermaid"><code>flowchart LR
+    subgraph SAC[" "]
+        direction TB
+        MA["class MainActivity&lt;br/&gt;: ComponentActivity()&lt;br/&gt;&lt;br/&gt;onCreate()"] --&gt;|llama a| SC["setContent { MiApp() }"]
+    end
+    subgraph SUI[" "]
+        direction TB
+        MI["@Composable&lt;br/&gt;fun MiApp()"] --&gt; CO["Column { ... }"]
+        CO --&gt; TX["Text() · Button()"]
+    end
+    SC ==&gt;|"puente único"| MI
+    style SAC fill:#2b6cb033,stroke:#2b6cb0
+    style SUI fill:#2f855a33,stroke:#2f855a</code></pre>
+<p>La actividad puede seguir ejecutando código de sistema (gestionar permisos, escuchar el ciclo de vida, lanzar otras pantallas), pero <strong>toda la interfaz visible se describe fuera de ella</strong>, en funciones <code>@Composable</code>. Esta separación es deliberada: permite que la misma función <code>MiApp()</code> se muestre en un teléfono, una tablet o un escritorio sin tocar la actividad, como ya vimos con el proyecto multiplataforma.</p>
+<pre class="mermaid"><code>flowchart LR
+    A1["Actividad Android"] --&gt;|"setContent { MiApp() }"| MI["composable raíz MiApp()"]
+    D1["Ventana de escritorio&lt;br/&gt;(Window())"] --&gt;|setContent| MI
+    W1["Navegador (Wasm)"] --&gt;|Canvas-based rendering| MI
+    style MI fill:#2f855a,color:#fff
+    style A1 fill:#2b6cb0,color:#fff
+    style D1 fill:#805ad5,color:#fff
+    style W1 fill:#d69e2e,color:#000</code></pre>
+<p><strong>Moraleja:</strong> la actividad <em>aloja</em>, el composable <em>describe</em>. Mientras más claro tengas la frontera <code>setContent { }</code>, más fácil te será depurar y reutilizar tu código.</p>
+<p>La creación de nuestro primer proyecto se realiza en dos sencillos pasos:</p>
+<ul>
+<li>Desde la pantalla de bienvenida (o desde <em>File → New</em>) seleccionamos <strong>New Project</strong>.</li>
+<li>En la galería de plantillas elegimos <strong>Empty Activity</strong> (la plantilla básica con Compose), damos nombre al proyecto (por ejemplo <code>MiPrimeraInterfaz</code>), y pulsamos <strong>Finish</strong>.</li>
+</ul>
+<p>Android Studio genera el proyecto con una actividad y su primer composable de ejemplo (<code>Greeting</code>). El resultado sería el mismo programándolo a mano, pero se recomienda partir de la plantilla porque deja configuradas las dependencias de Compose. La vista de diseño (Split/Design) estará disponible desde el primer momento.</p>
+<h3 id="71-la-estructura-del-proyecto-que-es-cada-carpeta-y-para-que-sirve">7.1. La estructura del proyecto: qué es cada carpeta y para qué sirve</h3>
+<p>Al crear el proyecto, la vista <strong>Android</strong> del panel <em>Project</em> (a la izquierda del IDE) organiza los archivos de forma lógica en grupos que conviene dominar desde el primer día:</p>
+<figure>
+<p><img alt="Vista Android del panel Project de Android Studio con los módulos y los Gradle Scripts." src="assets/vista-android-project.png" /></p>
+<figcaption>Fig. 5. La vista Android del panel Project agrupa el código por módulos y reúne todos los Gradle Scripts. Fuente: developer.android.com.</figcaption>
+</figure>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>MiPrimeraInterfaz/
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>├── app/                          &lt;- el módulo principal de la app
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>│   ├── manifests/                &lt;- AndroidManifest.xml
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>│   ├── java/ y kotlin+java/      &lt;- el código Kotlin (MainActivity.kt, composables)
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>│   └── res/                      &lt;- recursos no-código
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>│       ├── drawable/             &lt;- imágenes e iconos
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>│       ├── values/               &lt;- strings.xml (textos), themes.xml (tema), colores
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>│       └── ...
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>├── Gradle Scripts/
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>│   ├── build.gradle.kts (Project)   &lt;- config del proyecto entero
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>│   ├── build.gradle.kts (Module:app)&lt;- config del módulo app (dependencias Compose)
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>│   ├── settings.gradle.kts          &lt;- qué módulos forman el proyecto
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>│   └── gradle.properties            &lt;- propiedades de la construcción
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>└── ...
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Qué guarda</th>
+<th>Para qué sirve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>app/manifests/AndroidManifest.xml</code></td>
+<td>La "carta de identidad" de la app</td>
+<td>Declara el nombre, el icono, las actividades (pantallas) y los permisos que necesita</td>
+</tr>
+<tr>
+<td><code>app/java</code> + <code>kotlin+java/</code></td>
+<td>El <strong>código fuente Kotlin</strong></td>
+<td>Aquí viven <code>MainActivity.kt</code> y todos los composables: la lógica y la interfaz</td>
+</tr>
+<tr>
+<td><code>app/res/drawable/</code></td>
+<td>Imágenes e iconos</td>
+<td>Fondos, logos, gráficos que usa la interfaz</td>
+</tr>
+<tr>
+<td><code>app/res/values/strings.xml</code></td>
+<td>Los <strong>textos</strong> separados del código</td>
+<td>Permiten traducir la app cambiando un solo archivo (buena práctica: nunca textos "duros" en Kotlin)</td>
+</tr>
+<tr>
+<td><code>app/res/values/themes.xml</code></td>
+<td>El tema de la app</td>
+<td>Colores y tipografía de Material que heredan todas las pantallas</td>
+</tr>
+<tr>
+<td><code>build.gradle.kts (Project)</code></td>
+<td>La configuración global</td>
+<td>Versión de las herramientas de compilación y repositorios de descarga</td>
+</tr>
+<tr>
+<td><code>build.gradle.kts (Module :app)</code></td>
+<td>Dependencias y versión de la app</td>
+<td>Aquí está la lista de librerías: es donde vive <strong>Jetpack Compose</strong></td>
+</tr>
+<tr>
+<td><code>settings.gradle.kts</code></td>
+<td>La lista de módulos</td>
+<td>Define qué módulos (app, librerías propias...) forman el proyecto</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Gradle</strong> es el sistema de construcción: la herramienta que descarga las librerías, compila el código y genera el APK instalable. Cuando añadas una dependencia nueva, Android Studio te pedirá <em>Sync</em> (sincronizar): es Gradle descargándola y dejándola lista.</p>
+<h2 id="8-analisis-del-entorno-de-diseno-en-android-studio">8. Análisis del entorno de diseño en Android Studio</h2>
+<p>El entorno de desarrollo de Android Studio para <strong>Jetpack Compose es <em>code-first</em></strong>: la interfaz se escribe en Kotlin y la herramienta de diseño la renderiza en vivo. A diferencia de los editores visuales clásicos (y del sistema de vistas XML anterior), <strong>Compose no tiene paleta de componentes para arrastrar y soltar</strong>: el código es la fuente de la verdad y la vista <em>Split/Design</em> es su espejo, que se redibuja al segundo. Los grupos de herramientas que describimos a continuación acompañan ese flujo de trabajo.</p>
+<p>A continuación se describen los diferentes grupos de herramientas que podemos encontrar, tanto los de tipo general como los específicos del área de diseño.</p>
+<p><strong>8.1. Toolbar.</strong> En la barra de herramientas se encuentran los iconos relativos a las acciones genéricas: creación de proyectos y archivos, sincronización de Gradle, gestor de SDK, emulador... Uno de los botones más importantes es el encargado de la ejecución de la app (<strong>Run</strong> ▶). Al hacer clic sobre la flecha que se encuentra a su derecha (en realidad sobre el selector de dispositivo) se podrá seleccionar el emulador o dispositivo físico sobre el que ejecutar:</p>
+<figure>
+<p><img alt="Selector de dispositivos de la toolbar de Android Studio con el desplegable Available devices abierto." src="assets/toolbar-dispositivos.png" /></p>
+<figcaption>Fig. 6. El selector de dispositivos de la toolbar: emuladores disponibles (Pixel, Wear OS...), emparejar por Wi-Fi y acceso al Device Manager. Fuente: developer.android.com.</figcaption>
+</figure>
+<p><strong>8.2. Vista de diseño. General.</strong> La zona de diseño es la ventana principal del entorno con Compose: en ella se colocan los elementos de la interfaz. Android Studio ofrece tres modos combinables mediante pestañas: <strong>Code</strong> (solo código), <strong>Split</strong> (código y previsualización al mismo tiempo) y <strong>Design</strong> (solo previsualización). En la zona de previsualización se muestra el aspecto de la aplicación que se está implementando: podríamos decir que es el lienzo sobre el que dibujar la interfaz. Las funciones anotadas con <code>@Preview</code> se renderizan aquí en vivo, sin ejecutar la app:</p>
+<figure>
+<p><img alt="Vista Split de Android Studio: código Kotlin a la izquierda y preview de Compose renderizada a la derecha." src="assets/vista-split.png" /></p>
+<figcaption>Fig. 7. La vista Split: el código Kotlin a la izquierda y la preview de la interfaz renderizándose en vivo a la derecha (indicador "Up-to-date"). Fuente: developer.android.com.</figcaption>
+</figure>
+<p><strong>8.3. El catálogo de componentes.</strong> Los componentes gráficos son los elementos que permiten al usuario interaccionar con la aplicación; cada uno corresponde con una función de Kotlin con sus propios parámetros: textos (<code>Text</code>) y botones (<code>Button</code>), campos de texto (<code>TextField</code>), casillas de verificación (<code>Checkbox</code>), contenedores de disposición (<code>Column</code>, <code>Row</code>, <code>Box</code>), etc. En Compose ese catálogo <strong>no vive en una paleta lateral sino en el propio lenguaje</strong>: se insertan escribiendo su nombre y dejando que el autocompletado de Android Studio (<strong>Ctrl+Espacio</strong>) los ofrezca con su documentación y parámetros. Escribe <code>But</code>, acepta <code>Button</code> y la preview de la vista <em>Split</em> lo renderiza al instante. El autocompletado es, en la práctica, la "paleta" de Compose: cada componible que existe está a tres letras y un tabulador de distancia.</p>
+<p><strong>8.4. Jerarquía y propiedades.</strong> Compose conserva dos ayudas visuales heredadas de los editores clásicos, adaptadas al flujo code-first:</p>
+<ul>
+<li><strong>Component Tree</strong>: el árbol con la jerarquía de lo escrito, como un explorador de carpetas pero de la interfaz. Aparece el nombre de la función componible (por ejemplo <code>Button</code> o <code>Text</code>); el texto que se muestra al usuario puede ser diferente y, en la mayor parte de los casos, lo será. Clic en el árbol → salta a esa línea de código; útil para seleccionar un elemento pequeño o anidado sin fallar el clic en la preview.</li>
+<li><strong>Parámetros de la función = propiedades.</strong> No hay panel <em>Attributes</em>: las "propiedades" de cada componente son los <strong>parámetros de su función Kotlin</strong>. Las típicas de un botón: <code>enabled</code> (habilitar/deshabilitar), <code>colors</code> (colores), <code>modifier</code> (tamaño y alineación); y su contenido — el texto que ve el usuario — se declara entre las llaves del propio botón. Cambiar una propiedad es cambiar un argumento, y la preview se actualiza sola.</li>
+</ul>
+<p><strong>8.5. Tipos de proyecto nuevos.</strong> Al crear un <em>New Project</em>, la galería de plantillas de Android Studio ofrece varios puntos de partida. Estas son las plantillas disponibles para teléfono/tablet, que conviene saber distinguir:</p>
+<figure>
+<p><img alt="Galería de plantillas de nuevo proyecto en Android Studio: No Activity, Empty Activity, Gemini API, Navigation UI Activity, Basic Views Activity, Empty Views Activity, Responsive Views Activity, Game Activity y Native C++." src="assets/plantillas-proyecto.png" /></p>
+<figcaption>Fig. 8. La galería de plantillas al crear un nuevo proyecto en Android Studio (captura del aula).</figcaption>
+</figure>
+<table>
+<thead>
+<tr>
+<th>Plantilla</th>
+<th>Qué genera</th>
+<th>Cuándo usarla</th>
+<th>Diferencia con las demás</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>No Activity</strong></td>
+<td>Solo la estructura del proyecto, sin ninguna pantalla</td>
+<td>Módulos de librería o proyectos donde las pantallas se añaden luego a mano</td>
+<td>La única sin actividad inicial: el lienzo más vacío posible</td>
+</tr>
+<tr>
+<td><strong>Empty Activity</strong></td>
+<td>Una actividad con una función composable vacía y Compose ya configurado</td>
+<td><strong>La de este módulo</strong>: partir de cero con la interfaz limpia</td>
+<td>La mínima con Compose: sin navegación ni componentes precolocados</td>
+</tr>
+<tr>
+<td><strong>Gemini API</strong></td>
+<td>Actividad con el ejemplo ya conectado a la IA de Google (Gemini)</td>
+<td>Explorar integración de IA generativa en la app</td>
+<td>Incluye dependencias y código de IA; no es para UI base</td>
+</tr>
+<tr>
+<td><strong>Navigation UI Activity</strong></td>
+<td>Actividad con menú de navegación (barra inferior o lateral) y varias pantallas ya conectadas</td>
+<td>Apps con varias secciones (Inicio, Perfil, Ajustes...)</td>
+<td>Trae <em>navigation</em> ya montado: cambiar de pantalla sin escribirlo</td>
+</tr>
+<tr>
+<td><strong>Basic Views Activity</strong></td>
+<td>Actividad con el sistema clásico de vistas (XML) y estructura básica de menú</td>
+<td>Mantener apps antiguas que usan Views con XML</td>
+<td>UI imperativa sin Compose: el sistema anterior al que usaremos</td>
+</tr>
+<tr>
+<td><strong>Empty Views Activity</strong></td>
+<td>Una actividad con layout XML vacío (sistema clásico de vistas)</td>
+<td>Solo para apps heredadas con Views</td>
+<td>La versión "vacía" de la anterior: XML en vez de Compose</td>
+</tr>
+<tr>
+<td><strong>Responsive Views Activity</strong></td>
+<td>Actividad con diseño adaptativo que se ajusta a móvil, tablet y escritorio</td>
+<td>Apps que deben verse bien en cualquier tamaño de pantalla</td>
+<td>Centrada en adaptabilidad con breakpoints, también con Views</td>
+</tr>
+<tr>
+<td><strong>Game Activity (C++)</strong></td>
+<td>Proyecto de videojuego con el motor C++ (Native Game)</td>
+<td>Juegos 2D/3D en C++</td>
+<td>Otro lenguaje y otro mundo: ni Kotlin ni UI de apps</td>
+</tr>
+<tr>
+<td><strong>Native C++</strong></td>
+<td>Proyecto con código nativo C++ enlazado con Kotlin/Java</td>
+<td>Apps que necesitan máximo rendimiento o librerías nativas</td>
+<td>Añade capa C++ (NDK) sobre la app normal</td>
+</tr>
+</tbody>
+</table>
+<p>Tabla 2. Plantillas de proyecto nuevo (teléfono/tablet) y sus diferencias.</p>
+<p>Fíjate en el criterio de elección: para <strong>interfaces con Compose</strong> la opción es <em>Empty Activity</em> (o <em>Navigation UI Activity</em> si la app tiene varias secciones desde el inicio); las <em>Views</em> son el sistema clásico anterior; y las de C++ cambian de lenguaje por completo. En este módulo usaremos <strong>Empty Activity</strong>, que nos deja el lienzo limpio para construir la interfaz desde cero.</p>
+<p><strong>8.6. ¿Y si quiero mi app en TODOS los sistemas operativos? Kotlin Multiplatform.</strong> Las plantillas anteriores generan proyectos <strong>Android</strong>. Si el objetivo es una app que compile a la vez para Android, iOS, escritorio (Windows/macOS/Linux), web y servidor, JetBrains ofrece el <strong>asistente de Kotlin Multiplatform</strong> (kmp.jetbrains.com): marcas las plataformas objetivo y te genera el proyecto con la estructura compartida ya montada.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>kmp.jetbrains.com/?android=true&amp;ios=true&amp;iosui=compose&amp;desktop=true&amp;web=true&amp;webui=compose&amp;server=true
+</code></pre></div>
+<p>La idea de KMP: compartes en Kotlin lo común (lógica, datos, reglas de negocio) y decides si la UI también se comparte con <strong>Compose Multiplatform</strong> (la misma forma de escribir interfaces que aprendemos en este módulo, funcionando además en iOS, escritorio y web). No lo usaremos en el módulo — el objetivo es dominar Android con Compose —, pero conviene conocerlo: es la respuesta actual a "un solo proyecto, todos los SO", y todo lo que aprendas aquí de componibles te sirve directamente allí.</p>
+<h2 id="9-caso-practico-1-creacion-de-una-pantalla">9. Caso práctico 1: "Creación de una pantalla"</h2>
+<p><strong>Planteamiento.</strong> Los pasos imprescindibles para la creación de una pantalla con Compose son: declarar la función composable, describir su contenido y asignarla a la actividad con <code>setContent</code>. Implementa una pantalla desde cero utilizando solo el código de programación, es decir, sin utilizar la vista <em>Design</em>. Tras realizar este desarrollo, ¿cuál es una de las grandes diferencias que puedes observar entre las dos formas de creación descritas?</p>
+<p><strong>Nudo.</strong> En el siguiente código se muestra cada uno de los pasos descritos en el planteamiento: la actividad monta el contenido con <code>setContent</code> y la función composable <code>MiPrimeraInterfaz</code> describe lo que se ve en pantalla (un texto centrado).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">MainActivity</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ComponentActivity</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span><span class="w"> </span><span class="n">Bundle?</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">        </span><span class="n">setContent</span><span class="w"> </span><span class="p">{</span><span class="w">                        </span><span class="c1">// paso 2: asignar a la actividad</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">            </span><span class="n">MiPrimeraInterfaz</span><span class="p">()</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">}</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="nd">@Composable</span><span class="w">                                  </span><span class="c1">// paso 1: declarar el composable</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">MiPrimeraInterfaz</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">                    </span><span class="c1">// paso 3: describir el contenido</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">    </span><span class="n">Column</span><span class="p">(</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">        </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">(),</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">        </span><span class="n">verticalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">Center</span><span class="p">,</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">        </span><span class="n">horizontalAlignment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="na">CenterHorizontally</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">"Mi primera interfaz"</span><span class="p">)</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="p">}</span>
+</code></pre></div>
+<p>Código 2. Código de creación de la primera pantalla.</p>
+<p><strong>Desenlace.</strong> El resultado del código anterior es una pantalla como la que se muestra a continuación, con el texto centrado sobre el fondo de la app. A diferencia de las ventanas de escritorio clásicas, no hay que indicar tamaño ni visibilidad: la interfaz ocupa toda la pantalla del dispositivo y se adapta a ella.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>┌─────────────────────────┐
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>│                         │
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>│                         │
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>│   Mi primera interfaz   │
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>│                         │
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>│                         │
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>└─────────────────────────┘
+</code></pre></div>
+<p>Es importante destacar que una de las principales diferencias a la hora de crear la interfaz directamente con código es que la vista <em>Split/Design</em> seguirá disponible para cualquier función <code>@Preview</code> que añadamos, pero no se genera automáticamente: la previsualización hay que declararla expresamente.</p>
+<h2 id="10-caso-practico-2-creacion-de-un-boton">10. Caso práctico 2: "Creación de un botón"</h2>
+<p><strong>Planteamiento.</strong> A lo largo del tema hemos analizado que la vista <em>Split</em> muestra el código y su previsualización al mismo tiempo: escribimos Kotlin a la izquierda y el resultado se redibuja a la derecha. Utilizando este flujo, crea dos botones que muestren las opciones <strong>Aceptar</strong> y <strong>Cancelar</strong>.</p>
+<p><strong>Nudo.</strong> Partiendo del proyecto del caso práctico anterior, sustituimos el contenido del componible por una fila (<code>Row</code>) con dos botones. Se escriben directamente en el editor (con <strong>Ctrl+Espacio</strong> para insertarlos con sus parámetros); la vista <em>Split</em> renderiza el resultado al instante:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nd">@Composable</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">MiPrimeraInterfaz</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="n">Row</span><span class="p">(</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">        </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">(),</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">        </span><span class="n">horizontalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">Center</span><span class="p">,</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">        </span><span class="n">verticalAlignment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="na">CenterVertically</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">        </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">            </span><span class="n">Text</span><span class="p">(</span><span class="s">"Aceptar"</span><span class="p">)</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">        </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">            </span><span class="n">Text</span><span class="p">(</span><span class="s">"Cancelar"</span><span class="p">)</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="p">}</span>
+</code></pre></div>
+<p>Código 3. Dos botones en una fila.</p>
+<p><strong>Desenlace.</strong> La interfaz final que obtendremos corresponde con un resultado similar al que se muestra en la imagen, con los dos botones centrados en pantalla y la previsualización actualizándose en vivo en la vista <em>Split</em> mientras escribimos.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>┌─────────────────────────┐
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>│                         │
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>│                         │
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>│  [Aceptar]  [Cancelar]  │
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>│                         │
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>│                         │
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>└─────────────────────────┘
+</code></pre></div>
+<h2 id="11-el-caso-practico-2-linea-a-linea">11. El caso práctico 2, línea a línea</h2>
+<p>En el caso práctico anterior hemos <strong>escrito</strong> la interfaz; ahora vamos a <strong>leerla como la lee el compilador</strong>. Este es el código completo (idéntico al del caso práctico 2, solo que con un nombre de función más descriptivo — el nombre de un composable siempre debe decir qué pinta):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nd">@Composable</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">BotonesAceptarCancelar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="n">Row</span><span class="p">(</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">        </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">(),</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">        </span><span class="n">horizontalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">Center</span><span class="p">,</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">        </span><span class="n">verticalAlignment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="na">CenterVertically</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">        </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">            </span><span class="n">Text</span><span class="p">(</span><span class="s">"Aceptar"</span><span class="p">)</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">        </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">            </span><span class="n">Text</span><span class="p">(</span><span class="s">"Cancelar"</span><span class="p">)</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="p">}</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="nd">@Preview</span><span class="p">(</span><span class="n">showBackground</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="nd">@Composable</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">BotonesPreview</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="w">    </span><span class="n">BotonesAceptarCancelar</span><span class="p">()</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="p">}</span>
+</code></pre></div>
+<p>Parece poco código, pero contiene <strong>los cuatro pilares de cualquier interfaz Compose</strong>: un contenedor (<code>Row</code>), un modificador de tamaño (<code>fillMaxSize</code>), dos sistemas de alineación (<code>Arrangement</code>/<code>Alignment</code>) y el patrón de contenido anidado (<code>Button { Text }</code>).</p>
+<h3 id="111-los-imports-el-mapa-de-la-biblioteca">11.1. Los imports: el mapa de la biblioteca</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.Row</span>
+</code></pre></div>
+<p>En Compose <strong>todo es una función con nombre completo</strong>. <code>Row</code> no existe "de serie" en Kotlin: vive en la biblioteca <code>androidx.compose.foundation.layout</code>, en el archivo <code>Row.kt</code>. El import le dice al compilador: <em>cuando escriba <code>Row</code>, me refiero a esa</em>.</p>
+<p>Si lo quitas, el compilador no dirá "falta un import" — dirá <code>Unresolved reference: Row</code>: <em>referencia sin resolver</em>, no tengo ni idea de qué es eso que has escrito. Es el error más frecuente del principiante y el más fácil de arreglar: <strong>Alt+Enter</strong> sobre la palabra roja → <em>Import</em>.</p>
+<h3 id="112-composable-el-carne-de-la-funcion">11.2. <code>@Composable</code>: el carné de la función</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nd">@Composable</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">BotonesAceptarCancelar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</code></pre></div>
+<p>Una anotación (<code>@</code>) es metadata: información <em>sobre</em> la función. <code>@Composable</code> declara: <strong>esta función participa en la composición</strong> — puede llamar a otras funciones composable y puede ser llamada desde composables o desde <code>setContent</code>.</p>
+<p>Sin la anotación, la función es Kotlin normal y corriente... y en cuanto intentes usar <code>Row</code> dentro, el compilador corta el paso con dos mensajes y una idea: <em>para llamar a composables hay que ser composable</em>. Es la regla de entrada del club.</p>
+<h3 id="113-row-un-contenedor-con-doble-eje">11.3. <code>Row</code>: un contenedor con doble eje</h3>
+<p><code>Row</code> es un <strong>contenedor de fila</strong>: apila a sus hijos en <strong>horizontal</strong>, de izquierda a derecha (su hermano <code>Column</code> lo hace en vertical). Al llamarlo le pasamos tres parámetros con nombre:</p>
+<ul>
+<li><strong><code>modifier = Modifier.fillMaxSize()</code></strong> — el "tamaño" del contenedor. <code>Modifier</code> es una cadena de instrucciones de tamaño/posición/comportamiento que se pasan <strong>al crear</strong> el componente, nunca después. <code>fillMaxSize()</code> significa "ocupa todo el espacio disponible". Sin él, el <code>Row</code> se encoge a lo estrictamente necesario para contener sus hijos.</li>
+<li><strong><code>horizontalArrangement = Arrangement.Center</code></strong> — <strong>cómo se reparten los hijos en el eje X</strong> (el principal del <code>Row</code>). <code>Arrangement</code> es la familia de opciones: <code>Start</code>, <code>Center</code>, <code>End</code>, <code>SpaceBetween</code>, <code>SpaceAround</code>, <code>SpaceEvenly</code>...</li>
+<li><strong><code>verticalAlignment = Alignment.CenterVertically</code></strong> — <strong>dónde se alinean los hijos en el eje Y</strong> (el perpendicular). Fíjate en la asimetría del API: en el eje principal se <em>arregla el reparto</em> (<code>Arrangement</code>); en el perpendicular, <em>la alineación</em> (<code>Alignment</code>).</li>
+</ul>
+<blockquote>
+<p><strong>Regla mnemotécnica:</strong> en un <code>Row</code>, X es <em>arrangement</em> e Y es <em>alignment</em>. En un <code>Column</code>, al revés.</p>
+</blockquote>
+<p>Los tres parámetros son <strong>opcionales</strong>: si los quitas, el código compila y los botones quedan arriba a la izquierda (valores por defecto <code>Start</code>/<code>Top</code>). Es la familia de errores más traicionera: <strong>no hay mensaje de error, hay que usar el ojo</strong> (y el <code>@Preview</code>).</p>
+<h3 id="114-button-text-el-patron-slot">11.4. <code>Button { Text }</code>: el patrón slot</h3>
+<p>Aquí hay dos cosas que conviene ver separadas:</p>
+<ol>
+<li><strong><code>onClick = { }</code> es un parámetro obligatorio.</strong> Es una <em>lambda</em>: el bloque de código que se ejecuta al pulsar. Aquí está vacío (el botón no hace nada todavía), pero el parámetro existe y hay que pasarlo.</li>
+<li><strong><code>Text("Aceptar")</code> va DENTRO de las llaves del botón.</strong> Es el patrón <em>slot</em> de Compose: <code>Button</code> no recibe el texto como <code>String</code>, recibe <strong>otro componible</strong> como contenido. Ese bloque final tras los parámetros es la <em>trailing lambda</em> de <code>content</code>. Por eso <code>Button("Aceptar")</code> no compila: el primer parámetro posicional de <code>Button</code> no es un texto.</li>
+</ol>
+<h3 id="115-preview-el-bucle-de-retroalimentacion-instantaneo">11.5. <code>@Preview</code>: el bucle de retroalimentación instantáneo</h3>
+<p><code>@Preview</code> (de <code>ui-tooling-preview</code>) le dice al IDE: <strong>renderiza esta función sin ejecutar la app</strong>. Es el bucle de retroalimentación más rápido que existe: código → previsualización casi en el mismo segundo, sin emulador.</p>
+<ul>
+<li><code>showBackground = true</code> le pone un fondo blanco (por defecto la interfaz se ve "flotando" sobre el panel).</li>
+<li>La función de preview <strong>también es <code>@Composable</code></strong> y su cuerpo es una sola línea: llamar a la función real. <strong>Nunca lógica en la preview</strong> — solo decorarla con datos de prueba si hace falta.</li>
+</ul>
+<p>Quitar <code>@Preview</code> no rompe nada: la app compila y funciona igual. Solo pierdes la vista previa del IDE.</p>
+<h2 id="12-matriz-de-fallos-15-maneras-de-romper-la-interfaz">12. Matriz de fallos: 15 maneras de romper la interfaz</h2>
+<p>Todas las variantes de esta tabla se han compilado de verdad, rompiendo <strong>una sola cosa cada vez</strong>. Tapa la columna del resultado e intenta predecir qué pasará antes de leerlo.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Qué rompo</th>
+<th>¿Compila?</th>
+<th>Qué pasa / mensaje del compilador</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>Quitar <code>@Composable</code> de la función principal</td>
+<td>❌</td>
+<td><code>Functions which invoke @Composable functions must be marked with the @Composable annotation</code> + <code>@Composable invocations can only happen from the context of a @Composable function</code></td>
+</tr>
+<tr>
+<td>02</td>
+<td>Quitar <code>@Preview</code> (y su import)</td>
+<td>✅</td>
+<td>Compila y la app funciona. Solo pierdes la vista previa del IDE</td>
+</tr>
+<tr>
+<td>03</td>
+<td>Quitar <code>import ...layout.Row</code></td>
+<td>❌</td>
+<td><code>Unresolved reference: Row</code> (+ errores en cascada)</td>
+</tr>
+<tr>
+<td>04</td>
+<td>Quitar <code>import ...layout.fillMaxSize</code></td>
+<td>❌</td>
+<td><code>Unresolved reference: fillMaxSize</code></td>
+</tr>
+<tr>
+<td>05</td>
+<td>Quitar <code>import ...layout.Arrangement</code></td>
+<td>❌</td>
+<td><code>Unresolved reference: Arrangement</code></td>
+</tr>
+<tr>
+<td>06</td>
+<td>Quitar <code>import ...ui.Alignment</code></td>
+<td>❌</td>
+<td><code>Unresolved reference: Alignment</code></td>
+</tr>
+<tr>
+<td>07</td>
+<td>Quitar <code>modifier = Modifier.fillMaxSize()</code></td>
+<td>✅</td>
+<td>El <code>Row</code> se encoge: botones <strong>arriba a la izquierda</strong></td>
+</tr>
+<tr>
+<td>08</td>
+<td><code>Arrangement.Center</code> → <code>Arrangement.SpaceBetween</code></td>
+<td>✅</td>
+<td>Botones pegados a los <strong>extremos</strong> con el hueco en medio</td>
+</tr>
+<tr>
+<td>09</td>
+<td>Quitar <code>horizontalArrangement</code></td>
+<td>✅</td>
+<td>Botones a la <strong>izquierda</strong> (Start por defecto)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Quitar <code>verticalAlignment</code></td>
+<td>✅</td>
+<td>Botones <strong>arriba</strong> (Top por defecto)</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>Button(onClick = { })</code> → <code>Button()</code></td>
+<td>❌</td>
+<td><code>No value passed for parameter 'onClick'</code></td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>onClick = { println("click") }</code></td>
+<td>✅</td>
+<td>El botón ya "hace" algo (visible en Logcat)</td>
+</tr>
+<tr>
+<td>13</td>
+<td><code>Text("Aceptar")</code> → <code>Text()</code></td>
+<td>❌</td>
+<td><code>No value passed for parameter 'text'</code></td>
+</tr>
+<tr>
+<td>14</td>
+<td>Quitar el <code>Text</code> de dentro del <code>Button</code></td>
+<td>❌</td>
+<td><code>No value passed for parameter 'content'</code></td>
+</tr>
+<tr>
+<td>15</td>
+<td><code>@Preview(showBackground = true)</code> → <code>@Preview</code></td>
+<td>✅</td>
+<td>Preview sin fondo: la interfaz se ve "flotando"</td>
+</tr>
+</tbody>
+</table>
+<h3 id="121-las-tres-familias-de-errores">12.1. Las tres familias de errores</h3>
+<p>Cuando alguien pierde media hora con un error de Compose, casi siempre es de una de estas tres familias:</p>
+<ol>
+<li><strong>Familia A — Anotación</strong> (01): <em>quién puede llamar a quién</em>. El compilador nos recuerda la regla del club <code>@Composable</code>.</li>
+<li><strong>Familia B — Import</strong> (03-06): <code>Unresolved reference</code> = "no sé qué es eso". Se arregla con <strong>Alt+Enter → Import</strong>.</li>
+<li><strong>Familia C — Parámetro obligatorio</strong> (11, 13, 14): <code>No value passed for parameter 'X'</code>. El API de Compose obliga a dar ciertos valores (<code>onClick</code>, <code>text</code>, <code>content</code>).</li>
+</ol>
+<p>Y aparte, la <strong>familia silenciosa</strong> (07-10): código que compila y se ve mal. Contra ella solo hay dos defensas: el <code>@Preview</code> y la costumbre de leer el resultado con ojos críticos. Recuérdalo: <strong>que compile no significa que esté bien</strong>.</p>
+<h3 id="122-para-practicar">12.2. Para practicar</h3>
+<p>Elige un número de la matriz <strong>sin mirar el resultado</strong>, predice en voz alta qué pasará (¿error? ¿dónde? ¿qué mensaje exacto?) y luego provoca el fallo en el proyecto y comprueba la predicción. Si quieres ir más allá: inventa una variante nueva y clasifícala en una de las tres familias.</p>
+<h2 id="13-resumen-y-resolucion-del-caso-practico-de-la-unidad">13. Resumen y resolución del caso práctico de la unidad</h2>
+<p>En este tema hemos visto que la librería <strong>Jetpack Compose</strong> contiene todas las funciones necesarias para programar todo tipo de componentes visuales como botones, textos, campos de edición o casillas de verificación, entre muchos otros. Para lograr una interfaz básica, será necesario hacer uso de al menos una <strong>función composable</strong> que describa la pantalla y poder añadirle objetos que sirvan para interactuar entre el usuario y la aplicación.</p>
+<p>Hemos comprobado también que Compose es <strong>code-first</strong>: la interfaz se escribe en código Kotlin y la vista <em>Split/Design</em> es su previsualización en vivo. No existe paleta de arrastre: el catálogo de componentes vive en el autocompletado (<strong>Ctrl+Espacio</strong>) y las propiedades de cada componente son los parámetros de su función.</p>
+<p><strong>Resolución del caso práctico de la unidad.</strong> Como se ha visto a lo largo del tema, el proceso de implementación no solo es importante para el desarrollo de interfaces, sino también para tomar una serie de decisiones previas. Para el caso inicial del desarrollo de la interfaz de una <strong>aplicación de bienvenida para el instituto</strong>:</p>
+<ul>
+<li><strong>¿Qué tipo de componentes gráficos serán necesarios implementar en la interfaz?</strong> Dadas las características de la interfaz, sería necesario utilizar textos para el título y la información, y un botón para la acción principal ("Entrar").</li>
+<li><strong>¿Cuál crees que sería el lenguaje más apropiado para desarrollar esta interfaz?</strong> Tal y como se ha visto a lo largo del tema, para el desarrollo de una interfaz debemos utilizar lenguajes de alto nivel. En este caso se opta por el lenguaje <strong>Kotlin</strong>.</li>
+<li><strong>¿Qué entorno de desarrollo elegirías?</strong> Dependiendo del lenguaje de programación que se vaya a utilizar y del tipo de interfaz, habrá que elegir un IDE u otro. En este caso, si se usa Kotlin para una app móvil, el IDE recomendado es <strong>Android Studio</strong>.</li>
+<li><strong>¿Conoces alguna librería específica para el desarrollo gráfico de interfaces?</strong> Para la implementación de interfaces gráficas se requiere del uso de librerías que permitan el desarrollo de interfaces. En Kotlin para Android podemos utilizar <strong>Jetpack Compose</strong>.</li>
+</ul>
+<h2 id="bibliografia-y-fuentes">Bibliografía y fuentes</h2>
+<ul>
+<li>Android Developers. <em>Descargar Android Studio</em>. <a href="https://developer.android.com/studio">https://developer.android.com/studio</a></li>
+<li>Android Developers. <em>Jetpack Compose documentation</em>. <a href="https://developer.android.com/develop/ui/compose">https://developer.android.com/develop/ui/compose</a></li>
+<li>Android Developers. <em>Thinking in Compose</em>. <a href="https://developer.android.com/develop/ui/compose/mental-model">https://developer.android.com/develop/ui/compose/mental-model</a></li>
+<li>Kotlin Foundation. <em>Kotlin docs</em>. <a href="https://kotlinlang.org/docs/home.html">https://kotlinlang.org/docs/home.html</a></li>
+<li>JetBrains. <em>Kotlin Multiplatform — asistente de proyecto</em>. <a href="https://kmp.jetbrains.com/">https://kmp.jetbrains.com/</a></li>
+<li>JetBrains. <em>Compose Multiplatform</em>. <a href="https://www.jetbrains.com/compose/multiplatform/">https://www.jetbrains.com/compose/multiplatform/</a></li>
+<li>Real Decreto 450/2010. Módulo profesional 0488 Desarrollo de interfaces.</li>
+<li>Temario del módulo como base conceptual de la adaptación.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

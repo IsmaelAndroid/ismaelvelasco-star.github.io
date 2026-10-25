@@ -1,0 +1,3422 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Dispositivos móviles, redes, sistemas operativos, tecnologías de desarrollo, emuladores, estructura de apps, ciclo de vida y herramientas del administrador de aplicaciones.">
+      
+      
+        <meta name="author" content="Ismael Velasco">
+      
+      
+      
+        <link rel="prev" href="../index.html">
+      
+      
+        <link rel="next" href="../practica/PMDM-U1.-Practica001.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>UD 1 - 1.1 Análisis de tecnologías para dispositivos móviles - Aula 2º DAM - Ismael Velasco</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#11-analisis-de-tecnologias-para-dispositivos-moviles" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../../index.html" title="Aula 2º DAM - Ismael Velasco" class="md-header__button md-logo" aria-label="Aula 2º DAM - Ismael Velasco" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Aula 2º DAM - Ismael Velasco
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UD 1 - 1.1 Análisis de tecnologías para dispositivos móviles
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ismaelvelasco-star/ismaelvelasco-star.github.io" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ismaelvelasco-star/ismaelvelasco-star.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../index.html" class="md-tabs__link">
+        
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    
+  
+  Principal
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../index.html" class="md-tabs__link">
+          
+  
+  
+  PMDM
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../section2/index.html" class="md-tabs__link">
+          
+  
+  
+  Desarrollo de Interfaces
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../section3/index.html" class="md-tabs__link">
+          
+  
+  
+  Entornos de Desarrollo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Acerca de
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="Aula 2º DAM - Ismael Velasco" class="md-nav__button md-logo" aria-label="Aula 2º DAM - Ismael Velasco" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Aula 2º DAM - Ismael Velasco
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ismaelvelasco-star/ismaelvelasco-star.github.io" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ismaelvelasco-star/ismaelvelasco-star.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Principal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PMDM
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PMDM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programación Multimedia y Dispositivos Móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U1: Análisis de tecnologías para dispositivos móviles
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U1: Análisis de tecnologías para dispositivos móviles
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - Análisis de tecnologías para aplicaciones móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Análisis de tecnologías para dispositivos móviles
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="PMDM-U1.1.-AnalisisTecnologiasDispositivosMoviles.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Análisis de tecnologías para dispositivos móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-analisis-de-tecnologias-para-dispositivos-moviles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Análisis de tecnologías para dispositivos móviles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1. Análisis de tecnologías para dispositivos móviles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-dispositivos-moviles-evolucion-tipos-y-caracteristicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Dispositivos móviles: evolución, tipos y características
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-redes-de-comunicaciones-moviles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Redes de comunicaciones móviles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sistemas-operativos-moviles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Sistemas operativos móviles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Sistemas operativos móviles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#android" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Android
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        iOS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otros-sistemas-operativos-moviles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Otros sistemas operativos móviles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-tecnologias-de-desarrollo-nativas-y-multiplataforma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tecnologías de desarrollo: nativas y multiplataforma
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Tecnologías de desarrollo: nativas y multiplataforma">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#desarrollo-nativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Desarrollo nativo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desarrollo-multiplataforma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Desarrollo multiplataforma
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lenguajes-y-entornos-destacados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lenguajes y entornos destacados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instalacion-de-android-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalación de Android Studio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-emuladores-configuraciones-perfiles-y-dispositivos-soportados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Emuladores: configuraciones, perfiles y dispositivos soportados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-aplicaciones-moviles-estructura-y-jerarquia-de-clases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Aplicaciones móviles: estructura y jerarquía de clases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-modelo-de-estados-y-ciclo-de-vida-de-una-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Modelo de estados y ciclo de vida de una app
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-utilizacion-del-entorno-de-ejecucion-del-administrador-de-aplicaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Utilización del entorno de ejecución del administrador de aplicaciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-buenas-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Buenas prácticas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-errores-frecuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Errores frecuentes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Resumen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bibliografia-y-fuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bibliografía y fuentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#presentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Presentación
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practica/PMDM-U1.-Practica001.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.1: Explorando Android Studio y sus plantillas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practica/PMDM-U1.-Practica002.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.2: Emuladores y perfiles de dispositivo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practica/PMDM-U1.-Practica003.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.3: ADB y el administrador de aplicaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desarrollo de Interfaces
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Desarrollo de Interfaces
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section2/index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    DI — Desarrollo de Interfaces (2º DAM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - Introducción a la confección de interfaces
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD 1 - Introducción a la confección de interfaces
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section2/u01/index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - Introducción a la confección de interfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section2/u01/teoria/DI-U1.1.-IntroduccionConfeccionInterfaces.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Introducción a la confección de interfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section2/u01/practica/DI-U1.-Practica001.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1: Nuestra app en todas las plataformas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section2/u01/teoria/DI-U1.1.-IntroduccionConfeccionInterfaces.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Introducción a la confección de interfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section2/u01/practica/DI-U1.-Practica003.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3: Column, botones y contador (1 h)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section2/u01/practica/DI-U1.-Practica004.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 4: Row y Card (1 h)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section2/u01/practica/DI-U1.-Practica005.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 5: Imágenes y recursos (1 h)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section2/u01/ejercicios/DI-U1.-SolucionarioPracticas.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario de prácticas (P3-P5)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section2/u01/ejercicios/DI-U1.-Ejercicios.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios U1 (de menor a mayor)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section2/u01/ejercicios/DI-U1.-Solucionario.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario U1 (con enunciados)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 2 - Clases y componentes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD 2 - Clases y componentes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section2/u02/index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3v6h8V3m-8 18h8V11h-8M3 21h8v-6H3m0-2h8V3H3z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 2 - Clases y componentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section2/u02/teoria/DI-U2.1.-ClasesYComponentes.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3v6h8V3m-8 18h8V11h-8M3 21h8v-6H3m0-2h8V3H3z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1.-Clases y componentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section2/u02/ejercicios/DI-U2.-Ejercicios.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.5 11H19V7a2 2 0 0 0-2-2h-4V3.5A2.5 2.5 0 0 0 10.5 1 2.5 2.5 0 0 0 8 3.5V5H4a2 2 0 0 0-2 2v3.8h1.5c1.5 0 2.7 1.2 2.7 2.7S5 16.2 3.5 16.2H2V20a2 2 0 0 0 2 2h3.8v-1.5c0-1.5 1.2-2.7 2.7-2.7s2.7 1.2 2.7 2.7V22H17a2 2 0 0 0 2-2v-4h1.5a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios U2 (práctica progresiva)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section2/u02/ejercicios/DI-U2.-Solucionario.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario U2 (con enunciados)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 3 - Generación de interfaces a partir de documentos XML
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD 3 - Generación de interfaces a partir de documentos XML
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section2/u03/index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.89 3 1.96.4L11.11 21l-1.96-.4zm6.7 9L16 8.41V5.58L22.42 12 16 18.41v-2.83zM1.58 12 8 5.58v2.83L4.41 12 8 15.58v2.83z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 3 - Generación de interfaces a partir de documentos XML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section2/u03/teoria/DI-U3.1.-GeneracionInterfacesXML.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.89 3 1.96.4L11.11 21l-1.96-.4zm6.7 9L16 8.41V5.58L22.42 12 16 18.41v-2.83zM1.58 12 8 5.58v2.83L4.41 12 8 15.58v2.83z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1.-Generación de interfaces a partir de documentos XML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section2/u03/practica/DI-U3.-Practica.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.89 3 1.96.4L11.11 21l-1.96-.4zm6.7 9L16 8.41V5.58L22.42 12 16 18.41v-2.83zM1.58 12 8 5.58v2.83L4.41 12 8 15.58v2.83z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3: XML vivo en tu app Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section2/u03/ejercicios/DI-U3.-PracticaSolucion.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m23 12-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68zm-13 5-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario de la práctica 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section2/u03/ejercicios/DI-U3.-Ejercicios.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.5 11H19V7a2 2 0 0 0-2-2h-4V3.5A2.5 2.5 0 0 0 10.5 1 2.5 2.5 0 0 0 8 3.5V5H4a2 2 0 0 0-2 2v3.8h1.5c1.5 0 2.7 1.2 2.7 2.7S5 16.2 3.5 16.2H2V20a2 2 0 0 0 2 2h3.8v-1.5c0-1.5 1.2-2.7 2.7-2.7s2.7 1.2 2.7 2.7V22H17a2 2 0 0 0 2-2v-4h1.5a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios U3 (de menor a mayor)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section2/u03/ejercicios/DI-U3.-Solucionario.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m23 12-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68zm-13 5-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario U3 (con enunciados)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entornos de Desarrollo
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Entornos de Desarrollo
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section3/index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    EDES — Entornos de Desarrollo (1º DAM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - GitHub: repositorios, versiones y trabajo en equipo
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD 1 - GitHub: repositorios, versiones y trabajo en equipo
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section3/u01/index.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14c-3.36 0-4.46 1.35-4.82 2.24C9.25 16.7 10 17.76 10 19a3 3 0 0 1-3 3 3 3 0 0 1-3-3c0-1.31.83-2.42 2-2.83V7.83A2.99 2.99 0 0 1 4 5a3 3 0 0 1 3-3 3 3 0 0 1 3 3c0 1.31-.83 2.42-2 2.83v5.29c.88-.65 2.16-1.12 4-1.12 2.67 0 3.56-1.34 3.85-2.23A3.01 3.01 0 0 1 14 7a3 3 0 0 1 3-3 3 3 0 0 1 3 3c0 1.34-.88 2.5-2.09 2.86C17.65 11.29 16.68 14 13 14m-6 4a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1M7 4a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1m10 2a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - GitHub: repositorios, versiones y trabajo en equipo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section3/u01/teoria/EDES-U1.1.-GitYGitHub.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14c-3.36 0-4.46 1.35-4.82 2.24C9.25 16.7 10 17.76 10 19a3 3 0 0 1-3 3 3 3 0 0 1-3-3c0-1.31.83-2.42 2-2.83V7.83A2.99 2.99 0 0 1 4 5a3 3 0 0 1 3-3 3 3 0 0 1 3 3c0 1.31-.83 2.42-2 2.83v5.29c.88-.65 2.16-1.12 4-1.12 2.67 0 3.56-1.34 3.85-2.23A3.01 3.01 0 0 1 14 7a3 3 0 0 1 3-3 3 3 0 0 1 3 3c0 1.34-.88 2.5-2.09 2.86C17.65 11.29 16.68 14 13 14m-6 4a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1M7 4a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1m10 2a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Git y GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section3/u01/ejercicios/EDES-U1.-Ejercicios.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.5 11H19V7a2 2 0 0 0-2-2h-4V3.5A2.5 2.5 0 0 0 10.5 1 2.5 2.5 0 0 0 8 3.5V5H4a2 2 0 0 0-2 2v3.8h1.5c1.5 0 2.7 1.2 2.7 2.7S5 16.2 3.5 16.2H2V20a2 2 0 0 0 2 2h3.8v-1.5c0-1.5 1.2-2.7 2.7-2.7s2.7 1.2 2.7 2.7V22H17a2 2 0 0 0 2-2v-4h1.5a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios U1 (de menor a mayor)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../section3/u01/ejercicios/EDES-U1.-Solucionario.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8c.76 0 1.5.11 2.2.31l1.57-1.57A9.8 9.8 0 0 0 12 2 10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10M7.91 10.08 6.5 11.5 11 16 21 6l-1.41-1.42L11 13.17z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario U1 (con enunciados)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about.html" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h-2V7h2m0 10h-2v-6h2m-1-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Acerca de
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-analisis-de-tecnologias-para-dispositivos-moviles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Análisis de tecnologías para dispositivos móviles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1. Análisis de tecnologías para dispositivos móviles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-dispositivos-moviles-evolucion-tipos-y-caracteristicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Dispositivos móviles: evolución, tipos y características
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-redes-de-comunicaciones-moviles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Redes de comunicaciones móviles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sistemas-operativos-moviles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Sistemas operativos móviles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Sistemas operativos móviles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#android" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Android
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        iOS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otros-sistemas-operativos-moviles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Otros sistemas operativos móviles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-tecnologias-de-desarrollo-nativas-y-multiplataforma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tecnologías de desarrollo: nativas y multiplataforma
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Tecnologías de desarrollo: nativas y multiplataforma">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#desarrollo-nativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Desarrollo nativo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desarrollo-multiplataforma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Desarrollo multiplataforma
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lenguajes-y-entornos-destacados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lenguajes y entornos destacados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instalacion-de-android-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalación de Android Studio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-emuladores-configuraciones-perfiles-y-dispositivos-soportados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Emuladores: configuraciones, perfiles y dispositivos soportados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-aplicaciones-moviles-estructura-y-jerarquia-de-clases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Aplicaciones móviles: estructura y jerarquía de clases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-modelo-de-estados-y-ciclo-de-vida-de-una-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Modelo de estados y ciclo de vida de una app
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-utilizacion-del-entorno-de-ejecucion-del-administrador-de-aplicaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Utilización del entorno de ejecución del administrador de aplicaciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-buenas-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Buenas prácticas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-errores-frecuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Errores frecuentes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Resumen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bibliografia-y-fuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bibliografía y fuentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#presentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Presentación
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>1.1.-Análisis de tecnologías para dispositivos móviles</h1>
+
+<h2 id="11-analisis-de-tecnologias-para-dispositivos-moviles">1.1. Análisis de tecnologías para dispositivos móviles</h2>
+<div class="admonition abstract">
+<p class="admonition-title">Idea principal</p>
+<p>Antes de programar una aplicación móvil hay que conocer el terreno de juego: qué dispositivos existen, qué redes usan, cómo se organizan sus sistemas operativos y qué tecnologías de desarrollo hay disponibles. Elegir bien la tecnología condiciona el rendimiento, el coste y el alcance de la app.</p>
+</div>
+<p>Un dispositivo móvil es, en la práctica, un ordenador de bolsillo diseñado para funcionar con batería, conexión inalámbrica y pantalla táctil. Desde los PDA y los primeros smartphones con teclado físico se ha pasado a terminales con pantallas táctiles de alta resolución, CPU multinúcleo, GPU potentes y múltiples sensores. Las mejoras en los dispositivos y en las redes ha posibilitado la aparición de un gran mercado de aplicaciones, y para nutrir ese mercado se han creado numerosos entornos de desarrollo.</p>
+<p>El objetivo de este tema no es memorizar definiciones aisladas, sino entender qué podemos exigir a cada tecnología y saber aplicarla en situaciones cercanas al trabajo real.</p>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RA 1</td>
+<td>Aplica tecnologías de desarrollo para dispositivos móviles evaluando sus características y capacidades.</td>
+</tr>
+<tr>
+<td>CE a)</td>
+<td>Se han analizado las limitaciones que plantea la ejecución de aplicaciones en dispositivos móviles.</td>
+</tr>
+<tr>
+<td>CE b)</td>
+<td>Se han identificado las tecnologías de desarrollo de aplicaciones para dispositivos móviles.</td>
+</tr>
+<tr>
+<td>CE c)</td>
+<td>Se han instalado, configurado y utilizado entornos de trabajo para el desarrollo de aplicaciones para dispositivos móviles.</td>
+</tr>
+<tr>
+<td>CE d)</td>
+<td>Se han identificado configuraciones que clasifican los dispositivos móviles en base a sus características.</td>
+</tr>
+<tr>
+<td>CE e)</td>
+<td>Se han descrito perfiles que establecen la relación entre dispositivos y tipos de aplicaciones.</td>
+</tr>
+<tr>
+<td>CE f)</td>
+<td>Se han reconocido las limitaciones técnicas de los dispositivos móviles.</td>
+</tr>
+<tr>
+<td>CE g)</td>
+<td>Se han analizado las capacidades gráficas y sonoras de los dispositivos en base a las necesidades de la aplicación.</td>
+</tr>
+<tr>
+<td>CE h)</td>
+<td>Se han reconocido los mecanismos de seguridad y distribución de software específicos de dispositivos móviles.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Qué deberías saber al terminar</p>
+<p>Al acabar este tema deberías poder:</p>
+<ul>
+<li>describir los tipos de dispositivos móviles y sus limitaciones para el desarrollo;</li>
+<li>repasar la evolución de las redes de comunicaciones móviles y su capacidad actual;</li>
+<li>comparar el desarrollo nativo con el multiplataforma y elegir según el caso;</li>
+<li>instalar Android Studio y crear un primer proyecto de aplicación;</li>
+<li>configurar emuladores (AVD) y justificar cuándo es necesario un dispositivo real;</li>
+<li>explicar la estructura de un proyecto Android y el ciclo de vida de una aplicación.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Mapa del tema</p>
+<p>En este documento vamos a seguir esta secuencia:</p>
+<ol>
+<li>dispositivos móviles: evolución, tipos y características;</li>
+<li>redes de comunicaciones móviles: de la 0G a la 6G;</li>
+<li>sistemas operativos móviles y tecnologías de desarrollo;</li>
+<li>emuladores: configuraciones, perfiles y dispositivos soportados;</li>
+<li>aplicaciones móviles: estructura, jerarquía de clases y ciclo de vida;</li>
+<li>entorno de ejecución del administrador de aplicaciones.</li>
+</ol>
+</div>
+<h3 id="1-dispositivos-moviles-evolucion-tipos-y-caracteristicas">1. Dispositivos móviles: evolución, tipos y características</h3>
+<p>Un <strong>dispositivo móvil</strong> es un aparato de pequeño tamaño, portable, con autonomía de funcionamiento suministrada por una batería, conexión permanente o semipermanente a una red de comunicaciones y con varias funciones. La función original de los dispositivos móviles era llamar por teléfono; hoy un smartphone puede hacer muchas funciones que antes realizaban aparatos y sistemas diferentes.</p>
+<div class="admonition definition">
+<p class="admonition-title">Definición</p>
+<p>Dispositivo móvil: aparato de pequeño tamaño, portable, con autonomía de funcionamiento suministrada por una batería, conexión permanente o semipermanente a una red de comunicaciones y con varias funciones.</p>
+</div>
+<p>Es importante conocer las características de los dispositivos para los cuales vamos a diseñar y desarrollar las aplicaciones, porque sus limitaciones condicionan el diseño.</p>
+<p><strong>Características principales:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Qué implica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tamaño</td>
+<td>Para ser portable debe tener un tamaño reducido, pudiendo portarse incluso durante actividades deportivas.</td>
+</tr>
+<tr>
+<td>Movilidad</td>
+<td>Por su tamaño y no dependencia de cableado: tamaño, batería duradera y comunicación inalámbrica.</td>
+</tr>
+<tr>
+<td>Conectividad</td>
+<td>Uso de comunicaciones inalámnicas; las redes han evolucionado mucho y han permitido la incorporación masiva de estos dispositivos.</td>
+</tr>
+<tr>
+<td>Capacidad de procesado</td>
+<td>Requieren microprocesadores capaces de realizar los procesos de cálculo y de gestionar la información a la que acceden.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Características secundarias:</strong> sistema operativo, ergonomía, diseño, tamaño de la pantalla y gadgets compatibles.</p>
+<p><strong>Tipos de dispositivos móviles:</strong></p>
+<ul>
+<li><strong>Smartphones.</strong> Con una función principal de teléfono móvil, pero por sus características se parece a un ordenador personal: pantalla de alta calidad, múltiple conectividad, gran capacidad de procesamiento y almacenamiento y dispositivos incorporados (cámara, sensores, GPS).</li>
+<li><strong>Tablets.</strong> Con tamaño intermedio entre el ordenador y el móvil. Son ligeros, autónomos y con fácil manejo (pantalla táctil).</li>
+<li><strong>PDAs</strong> (Personal Digital Assistant). Dispositivos que intentan combinar prestaciones para servir de organizador personal. Su uso está en declive.</li>
+<li><strong>eBooks.</strong> Libro electrónico. Ligeros, con gran capacidad de almacenaje y tinta electrónica.</li>
+<li><strong>Wearables.</strong> El más difundido es el smartwatch o reloj inteligente.</li>
+</ul>
+<figure>
+  <img alt="Tipos de dispositivos móviles" src="assets/tipos-dispositivos-moviles.png" />
+<br />
+<figcaption>Tipos de dispositivos móviles: la familia no se limita al smartphone.</figcaption>
+</figure>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<p>Una misma aplicación de mensajería debe funcionar en un móvil de 6 pulgadas, una tablet de 10 y un reloj: misma lógica, tres interfaces radicalmente distintas.</p>
+</div>
+<p><strong>Limitaciones para el desarrollo:</strong></p>
+<ul>
+<li>La mayoría de las limitaciones están relacionadas con el <strong>hardware</strong>, que puede limitar la capacidad de procesamiento y almacenaje, aunque se ha mejorado mucho.</li>
+<li><strong>Diversidad en el tamaño de la pantalla</strong>: debemos diseñar con estilo responsive o tener en cuenta las variaciones.</li>
+<li>No todos los teléfonos tendrán los mismos <strong>sensores y GPS</strong>.</li>
+<li>No todas las herramientas y librerías de terceros son soportadas por todos los dispositivos.</li>
+<li>Antes de lanzar una aplicación a explotación se debe <strong>probar en varios dispositivos reales o emuladores</strong>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Aclaración</p>
+<p>Hoy hay más de 5 millones de aplicaciones repartidas entre los grandes repositorios (Play Store, App Store y otras). Las descargas anuales superaban los 40 billones en 2020 (15% juegos) y los 250 billones en 2024 (un 34% juegos): el mercado justifica el esfuerzo de conocerlo bien.</p>
+</div>
+<figure>
+  <img alt="Tiendas de aplicaciones" src="assets/tiendas-apps.png" />
+<br />
+<figcaption>Los grandes repositorios de aplicaciones: App Store y Google Play.</figcaption>
+</figure>
+<h3 id="2-redes-de-comunicaciones-moviles">2. Redes de comunicaciones móviles</h3>
+<p>Las redes de comunicaciones móviles han ido evolucionando con el tiempo. Actualmente se está implantando la quinta generación (5G), pero ya se investiga la 6G.</p>
+<table>
+<thead>
+<tr>
+<th>Generación</th>
+<th>Época</th>
+<th>Tecnología</th>
+<th>Velocidad típica</th>
+<th>Hitos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0G</td>
+<td>Años 30-40</td>
+<td>Onda de radio (PTT, IMTS)</td>
+<td>Solo voz</td>
+<td>Walkie talkies; difusión en la II Guerra Mundial</td>
+</tr>
+<tr>
+<td>1G</td>
+<td>1977</td>
+<td>AMPS (EE. UU.), NMT (Escandinavia)</td>
+<td>Solo voz, analógica</td>
+<td>Primera red celular en Chicago; equipos grandes y pesados, baja seguridad</td>
+</tr>
+<tr>
+<td>2G</td>
+<td>Años 90</td>
+<td>GSM (Europa), IS-136 (EE. UU.)</td>
+<td>Voz + datos digitales</td>
+<td>Tarjeta SIM, SMS; tecnología digital</td>
+</tr>
+<tr>
+<td>2.5G/2.75G</td>
+<td>Finales 90</td>
+<td>GPRS, EDGE</td>
+<td>Navegación básica</td>
+<td>Redes de respaldo aún vigentes</td>
+</tr>
+<tr>
+<td>3G</td>
+<td>2001 (Japón)</td>
+<td>UMTS, CDMA</td>
+<td>Hasta 2 Mbps</td>
+<td>Convergencia voz/datos; navegación fluida; auge de BlackBerry</td>
+</tr>
+<tr>
+<td>3.5G/3.75G</td>
+<td>~2005</td>
+<td>HSPA</td>
+<td>Hasta 14 Mbps</td>
+<td>Mejora de la 3G en velocidad</td>
+</tr>
+<tr>
+<td>4G</td>
+<td>2010</td>
+<td>LTE, UMTS, WiMax</td>
+<td>60 Mbps bajada / 40 subida</td>
+<td>Bandas 800/1800/2600 MHz; señal de televisión</td>
+</tr>
+<tr>
+<td>4G+</td>
+<td>2016</td>
+<td>LTE-A</td>
+<td>300 Mbps / 50 Mbps</td>
+<td>Banda de 700 MHz</td>
+</tr>
+<tr>
+<td>5G</td>
+<td>2017 (MWC Barcelona)</td>
+<td>NR</td>
+<td>1-10 Gbps</td>
+<td>Antenas mejoradas; IoT, WSN, AR/VR comunicada</td>
+</tr>
+<tr>
+<td>6G</td>
+<td>Investigación</td>
+<td>Satélites</td>
+<td>Hasta 100 Gbps</td>
+<td>Cobertura global; frecuencias más elevadas</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<p>Una app de vídeo en streaming necesita el ancho de banda de una 4G para no tartamudear; un chat funciona incluso en 2G de respaldo. La generación de red disponible condiciona qué puede hacer tu aplicación y cómo debe degradarse con elegancia cuando la red empeora.</p>
+</div>
+<figure>
+  <img alt="Red 5G sobre una ciudad" src="assets/red-5g.jpg" />
+<br />
+<figcaption>La 5G integra redes celulares, sensores inalámbricos (WSN) e IoT, y supera el ámbito del teléfono.</figcaption>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Atención</p>
+<p>El contexto de red cambia constantemente (red, luz, batería, orientación), así que la app debe ser <strong>responsiva, eficiente y resiliente</strong>: capaz de pausar y reanudar sin perder estado.</p>
+</div>
+<h3 id="3-sistemas-operativos-moviles">3. Sistemas operativos móviles</h3>
+<p>Los sistemas operativos (OS) móviles, al igual que en los ordenadores personales, gestionan el conjunto de programas de bajo nivel que permiten la abstracción del hardware concreto y proporcionan servicios a las aplicaciones que se ejecutan sobre él. La mayoría de los SO móviles se organizan en un <strong>sistema de capas</strong>:</p>
+<ol>
+<li><strong>Kernel o núcleo.</strong> Permite el acceso a los elementos del hardware, ofreciendo servicios a las capas superiores a través de controladores o drivers, como la gestión de procesos, gestión de la memoria o el sistema de archivos.</li>
+<li><strong>Middleware.</strong> Conjunto de módulos que permite la existencia de aplicaciones. Es transparente al usuario.</li>
+<li><strong>Gestor de aplicaciones.</strong> Aplicaciones nativas o multiplataforma.</li>
+</ol>
+<h4 id="android">Android</h4>
+<p>Es el sistema operativo líder en el mercado. Fue lanzado por la Open Handset Alliance (OHA) en 2007, a través de una agrupación de 78 compañías lideradas por Google. Sus capas, de abajo arriba:</p>
+<ol>
+<li><strong>Kernel de Linux.</strong></li>
+<li><strong>Capa de abstracción de hardware (HAL).</strong></li>
+<li><strong>Runtime.</strong> Cada app ejecuta sus propios procesos con sus propias instancias de tiempo de ejecución.</li>
+<li><strong>Biblioteca C/C++ nativas.</strong> Muchos componentes y servicios están programados en estos lenguajes.</li>
+<li><strong>Framework de API Java.</strong> Acceso a funciones de Android a través de una API.</li>
+<li><strong>Apps del sistema.</strong> Conjunto de apps nativas para correo electrónico, navegador, calendario...</li>
+</ol>
+<figure>
+  <img alt="Arquitectura por capas de Android" src="assets/arquitectura-android.png" />
+<br />
+<figcaption>La pila de software de Android: del kernel de Linux a las apps del sistema.</figcaption>
+</figure>
+<h4 id="ios">iOS</h4>
+<p>Fue desarrollado por Apple, se llamó originalmente iPhone OS y es un derivado de Mac OS X. Su principal punto fuerte es la combinación excelente entre hardware y software, así como el uso de pantalla multitáctil desde sus comienzos. Solo funciona en los dispositivos de la propia empresa (iPhone, iPad), lo que le permite una integración total entre hardware y software y actualizaciones simultáneas para toda su gama. Sus aplicaciones se desarrollan en <strong>Swift</strong> (o el veterano Objective-C) con Xcode, y se distribuyen exclusivamente a través de la App Store, cuyo proceso de revisión es más estricto que el de otras tiendas.</p>
+<h4 id="otros-sistemas-operativos-moviles">Otros sistemas operativos móviles</h4>
+<ul>
+<li><strong>Windows Phone.</strong> Desarrollado por Microsoft y lanzado en 2010.</li>
+<li><strong>BlackBerry OS.</strong></li>
+<li><strong>Symbian.</strong></li>
+<li><strong>Firefox OS.</strong> Desarrollado por Mozilla, con núcleo Linux y basado en HTML5, pensado en dispositivos de gama baja.</li>
+<li><strong>Ubuntu Touch.</strong></li>
+<li><strong>HarmonyOS.</strong> Desarrollado por Huawei Technologies, diseñado además para la intercomunicación de dispositivos IoT.</li>
+</ul>
+<h3 id="4-tecnologias-de-desarrollo-nativas-y-multiplataforma">4. Tecnologías de desarrollo: nativas y multiplataforma</h3>
+<p>Para la programación de dispositivos móviles existen una gran cantidad de herramientas, entornos y lenguajes. En primer lugar hay que decidir qué lenguaje se va a usar y, por otra parte, si se opta por desarrollo nativo o multiplataforma.</p>
+<h4 id="desarrollo-nativo">Desarrollo nativo</h4>
+<p>Supone emplear las herramientas y lenguajes propios de cada sistema operativo:</p>
+<ul>
+<li>Sus principales ventajas: apps muy optimizadas, máximo rendimiento y mayor flexibilidad para el programador.</li>
+<li>Su principal desventaja: si se quiere desarrollar para otras plataformas, el tiempo de desarrollo es mayor.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Plataforma</th>
+<th>Lenguajes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Android</td>
+<td>Java, Kotlin</td>
+</tr>
+<tr>
+<td>iOS</td>
+<td>Objective-C, Swift, Cocoa Touch</td>
+</tr>
+<tr>
+<td>Windows Phone</td>
+<td>C# + XAML</td>
+</tr>
+</tbody>
+</table>
+<h4 id="desarrollo-multiplataforma">Desarrollo multiplataforma</h4>
+<p>Distinguimos dos tipos:</p>
+<ul>
+<li><strong>Compilado a nativo.</strong> Usa una plataforma intermedia, como <strong>Xamarin</strong>, que con un único lenguaje (C# sobre .NET) puede programar para varias plataformas. Las aplicaciones se compilan después en código nativo, lo que le da el mismo rendimiento que el desarrollo nativo.</li>
+<li><strong>Basado en HTML5.</strong> Utilización de herramientas basadas en HTML5 que generan aplicaciones para todas las plataformas, como <strong>PhoneGap/Cordova</strong> o <strong>Ionic</strong>. No tienen el mismo rendimiento que las aplicaciones nativas.</li>
+</ul>
+<h4 id="lenguajes-y-entornos-destacados">Lenguajes y entornos destacados</h4>
+<p><strong>Kotlin.</strong> Fue desarrollado por JetBrains en 2016. Dentro del desarrollo nativo Android está tomando gran fuerza por encima de Java, al ser señalado por Google como lenguaje principal. Corre sobre la máquina virtual de Java. Sus ventajas: simplicidad, más seguro que Java, robusto y orientado a objetos, con acceso a gran número de librerías, sintaxis más limpia (necesita menos código) y coexistencia simultánea con Java.</p>
+<p><strong>Java.</strong> Es el lenguaje nativo original para Android. Paralelo a Java es necesario conocer bien XML para el desarrollo de aplicaciones. Herramienta de desarrollo: Android Studio, un IDE basado en IntelliJ IDEA que se lanzó para reemplazar a Eclipse.</p>
+<p><strong>Ionic.</strong> Permite desarrollar y desplegar aplicaciones híbridas que funcionan en múltiples plataformas (iOS, Android, escritorio y web como PWA) con una única base de código. Ofrece un diseño limpio, sencillo y funcional. Está construido sobre tecnologías web (HTML, CSS y JavaScript) y se puede usar con los frameworks frontend más populares: Angular, React y Vue.</p>
+<p><strong>Flutter.</strong> SDK de Google para crear aplicaciones Android e iOS, para móvil, web y escritorio, desde una única base de código. Su lenguaje es <strong>Dart</strong> y se caracteriza por el desarrollo rápido gracias a <strong>Hot Reload</strong>: se pueden hacer cambios sin parar y arrancar la aplicación, reduciendo las esperas.</p>
+<p><strong>Xamarin.</strong> Entorno de desarrollo creado por Microsoft que permite crear aplicaciones Android e iOS en C#. Es gratuito y va integrado en Visual Studio. Pese a no desarrollar para Android en Java, permite crear una aplicación nativa que asegura una buena experiencia de usuario.</p>
+<p><strong>NativeScript.</strong> Entorno de desarrollo de código abierto para crear aplicaciones móviles Android e iOS. Lenguajes: Angular, Vue.js, TypeScript o JavaScript. Su principal ventaja es el rendimiento nativo: defines una vez y se adapta para ejecutarse en todas partes, adaptando la interfaz a dispositivos y pantallas concretos.</p>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<p>Para una app corporativa interna que deba salir ya para Android e iOS con un equipo pequeño, Flutter o Xamarin reducen a la mitad el esfuerzo. Para una app de realidad aumentada con máximo rendimiento gráfico, el camino razonable es nativo: Kotlin en Android, Swift en iOS.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Aclaración</p>
+<p>Unity3D es un ejemplo de entorno <strong>específico para videojuegos</strong>, frente a entornos de carácter general como Android Studio. En este módulo nos centraremos en el entorno Android Studio + Kotlin.</p>
+</div>
+<h4 id="instalacion-de-android-studio">Instalación de Android Studio</h4>
+<ul>
+<li>Descarga desde <a href="https://developer.android.com">https://developer.android.com</a>.</li>
+<li>Android Studio está basado en IntelliJ (IDE para Java, como Eclipse o Netbeans).</li>
+<li>Dentro de Android Studio se puede programar con Kotlin.</li>
+<li>No solo se pueden programar apps para móviles, sino también para wearables, TV smart y otros.</li>
+</ul>
+<p>Los pasos del instalador (dejar las opciones por defecto) llevan hasta la pantalla de bienvenida, desde donde se crea el primer proyecto. En la siguiente captura se ve un proyecto recién creado con plantilla <em>Empty Activity</em>, mientras Gradle sincroniza las dependencias:</p>
+<figure>
+  <img alt="Primer proyecto en Android Studio" src="assets/android-studio-primer-proyecto.png" />
+<br />
+<figcaption>Primer proyecto en Android Studio: estructura del proyecto y MainActivity.kt en Kotlin con plantilla Jetpack Compose.</figcaption>
+</figure>
+<h3 id="5-emuladores-configuraciones-perfiles-y-dispositivos-soportados">5. Emuladores: configuraciones, perfiles y dispositivos soportados</h3>
+<p>Para qué sirven: los emuladores y simuladores permiten ejecutar y depurar apps <strong>sin dispositivo físico</strong>, variando tamaño de pantalla, versión del SO, sensores y condiciones de red.</p>
+<p><strong>Configuración clave de un AVD (Android Virtual Device):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Opciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>API/Imagen del sistema</td>
+<td>Elige la versión (nivel de API) que quieres probar</td>
+</tr>
+<tr>
+<td>ABI</td>
+<td>x86_64/arm64 (x86_64 suele ser más rápido en PC)</td>
+</tr>
+<tr>
+<td>Hardware</td>
+<td>RAM, almacenamiento, cámara virtual (frontal/trasera), aceleración (Hyper-V/WHPX en Windows, HAXM obsoleto; KVM en Linux; nativo en macOS)</td>
+</tr>
+<tr>
+<td>Pantalla</td>
+<td>Tamaño (pulgadas), densidad (dpi), rotación, "safe areas" (notch, recortes)</td>
+</tr>
+<tr>
+<td>Sensores</td>
+<td>GPS (inyectar lat/lon), acelerómetro/giroscopio (controles en AVD), batería (nivel/temperatura)</td>
+</tr>
+<tr>
+<td>Red</td>
+<td>Perfiles de latencia/pérdidas (3G/4G/5G/poor)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Perfiles útiles:</strong></p>
+<ul>
+<li>Gama baja: 2 GB RAM, pantalla 5", dpi alto, API n−2.</li>
+<li>Gama media: 3-4 GB RAM, 6-6.5", API actual.</li>
+<li>Pantalla grande/Tablet: 10-12", comprobar layouts adaptativos.</li>
+<li>Foldable: probar continuity al plegar/desplegar.</li>
+<li>Wear OS/TV/Auto: emuladores específicos para relojes/TV/coche.</li>
+</ul>
+<p><strong>Cuándo usar dispositivo real:</strong> cámara avanzada, BLE/NFC, rendimiento fino, gestos complejos y casos OEM.</p>
+<figure>
+  <img alt="Emulador AVD en ejecución junto al editor de layouts" src="assets/emulador-avd.png" />
+<br />
+<figcaption>Emulador Android (AVD) en ejecución junto al editor visual de interfaces de Android Studio.</figcaption>
+</figure>
+<h3 id="6-aplicaciones-moviles-estructura-y-jerarquia-de-clases">6. Aplicaciones móviles: estructura y jerarquía de clases</h3>
+<p>Los proyectos que se crean en Android Studio tienen una estructura bien definida. Veamos <strong>para qué sirve cada carpeta</strong> del árbol:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>MiProyecto/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> ├─ app/                          ← el MÓDULO de tu aplicación (lo que se compila e instala)
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a> │   ├─ src/main/                 ← el código FUENTE de la app
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a> │   │   ├─ AndroidManifest.xml   ← el DNI de la app: nombre, icono, activities, permisos
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a> │   │   ├─ java/ (o kotlin/)     ← TU CÓDIGO: activities, viewmodels, repositorios...
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a> │   │   └─ res/                  ← RECURSOS (todo lo que no es código)
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a> │   │        ├─ layout/          ← interfaces en XML (si no usas Compose)
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a> │   │        ├─ values/          ← constantes: strings.xml (textos), colors.xml, themes
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a> │   │        ├─ drawable/        ← imágenes e iconos
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a> │   │        ├─ mipmap/          ← iconos de la app en varios tamaños
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a> │   │        └─ xml/             ← configuraciones varias (permisos, backups...)
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a> │   └─ build.gradle(.kts)        ← receta del módulo: dependencias, versión del SDK...
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a> ├─ build.gradle(.kts)            ← receta del PROYECTO (plugins, repositorios)
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a> ├─ settings.gradle(.kts)         ← qué módulos forman el proyecto
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a> └─ gradle.properties             ← opciones de Gradle (memoria, AndroidX...)
+</code></pre></div>
+<p><strong>¿Para qué vale cada cosa?</strong></p>
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Para qué sirve</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AndroidManifest.xml</code></td>
+<td>Declara la identidad de la app: paquete, nombre, icono, qué activities contiene y qué permisos necesita. Sin manifest, Android no sabe que tu app existe.</td>
+<td><code>&lt;uses-permission android:name="android.permission.CAMERA"/&gt;</code> declara que usarás la cámara</td>
+</tr>
+<tr>
+<td><code>java/</code> o <code>kotlin/</code></td>
+<td>Todo tu código Kotlin: la lógica, las pantallas, el acceso a datos. Es lo único que "programas" en sentido estricto.</td>
+<td><code>MainActivity.kt</code></td>
+</tr>
+<tr>
+<td><code>res/layout/</code></td>
+<td>Interfaces definidas en XML (la forma clásica, pre-Compose). Cada archivo es una pantalla o fragmento de pantalla.</td>
+<td><code>activity_main.xml</code></td>
+</tr>
+<tr>
+<td><code>res/values/strings.xml</code></td>
+<td>Los textos de la app separados del código: así se puede traducir la app cambiando un solo archivo.</td>
+<td><code>res/values-es/strings.xml</code> = versión española</td>
+</tr>
+<tr>
+<td><code>res/drawable/</code></td>
+<td>Imágenes, iconos y formas dibujables que usa la interfaz.</td>
+<td><code>logo.png</code></td>
+</tr>
+<tr>
+<td><code>res/mipmap/</code></td>
+<td>El icono del launcher en distintas densidades (hdpi, xhdpi...) para que se vea nítido en cualquier pantalla.</td>
+<td><code>ic_launcher</code></td>
+</tr>
+<tr>
+<td><code>build.gradle(.kts)</code></td>
+<td>La "receta de construcción": qué librerías descarga (dependencias), versión mínima de Android soportada, versión con la que se compila.</td>
+<td><code>implementation("androidx.compose.material3:material3")</code></td>
+</tr>
+<tr>
+<td><code>settings.gradle(.kts)</code></td>
+<td>Lista los módulos que componen el proyecto.</td>
+<td><code>include(":app")</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Componentes software de una aplicación. Estructura por capas:</strong></p>
+<ol>
+<li><strong>Activity</strong> — una pantalla de la app con la que el usuario interactúa. Es el <strong>punto de entrada</strong>: cuando abres una app, Android arranca una de sus activities. Contiene la interfaz y reacciona a los eventos (tocs, girar el móvil...). Una app típica tiene varias (MainActivity, DetailActivity...).</li>
+<li><strong>Fragment</strong> — un "trozo de pantalla" reutilizable que vive DENTRO de una Activity. Útil para paneles que aparecen en varias pantallas o para tablet/móvil con la misma activity.</li>
+<li><strong>ViewModel</strong> — guarda el <strong>estado</strong> de la pantalla (los datos que se ven) y su lógica de presentación, y <strong>sobrevive a rotaciones de pantalla</strong>: si giras el móvil, la Activity se destruye y se recrea, pero el ViewModel conserva los datos.</li>
+<li><strong>Repository</strong> — la única puerta de entrada y salida de <strong>datos</strong>: decide si leer de red (API REST), de base de datos (SQLite/Room) o de caché. Las capas superiores no saben de dónde vienen los datos.</li>
+<li><strong>Service</strong> — trabajo en <strong>segundo plano</strong> sin interfaz: música sonando mientras miras otra app, descarga de un archivo, sincronización.</li>
+<li><strong>BroadcastReceiver</strong> — un "receptor de radio" que escucha eventos del sistema (batería baja, WiFi conectado, arrancar el móvil) y reacciona.</li>
+<li><strong>ContentProvider</strong> — comparte tus datos con OTRAS apps de forma controlada (agenda, fotos...).</li>
+<li>UI tradicional (XML) o <strong>Jetpack Compose</strong> (UI declarativa en Kotlin).</li>
+</ol>
+<p><strong>Jerarquía típica con patrón MVVM:</strong></p>
+<p>Antes de ver la cadena, definamos las siglas: <strong>MVVM</strong> = <em>Model-View-ViewModel</em>, un patrón que separa la interfaz (View) del estado y lógica de pantalla (ViewModel) y de los datos (Model). El objetivo: que cada capa se pueda cambiar y probar sin romper las otras.</p>
+<p>Cada pieza de la cadena:</p>
+<ul>
+<li><strong>MainActivity</strong> (View): la pantalla. Su único trabajo es <strong>dibujar</strong> lo que le dice el ViewModel y <strong>reenviarle</strong> los clics del usuario. No consulta datos ni calcula nada.</li>
+<li><strong>HomeFragment</strong> (View): ídem, un fragmento de esa pantalla.</li>
+<li><strong>HomeViewModel</strong> (ViewModel): el "cerebro de la pantalla". Guarda el estado (la lista de items que se está viendo) y la lógica (qué pasa al pulsar "borrar"). Si la pantalla rota, él sobrevive.</li>
+<li><strong>ItemsRepository</strong> (Model/Repository): el "bibliotecario de datos". Le piden items y él decide si ir a la API REST o a SQLite. Único punto de acceso a datos.</li>
+<li><strong>API REST / SQLite</strong>: la fuente real de los datos: un servidor en internet o una base de datos local.</li>
+<li><strong>Clases de dominio</strong> (p. ej. <code>Item</code>): los "contenedores de datos" puros (data classes) que viajan por toda la cadena: <code>data class Item(val id: Int, val titulo: String)</code>.</li>
+</ul>
+<p><strong>La traza completa, paso a paso</strong> — del arranque al dato en pantalla:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>[1] El usuario toca el icono de la app
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>        │
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        ▼
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>[2] Android lee AndroidManifest.xml y arranca MainActivity (la activity "launcher")
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        │
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        ▼
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>[3] MainActivity se crea y pide su ViewModel al sistema:
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    val vm: HomeViewModel by viewModels()
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        │
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        ▼
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>[4] HomeViewModel al nacer llama al repositorio:
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    init { cargarItems() }
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>        │
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>        ▼
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>[5] ItemsRepository decide la fuente y trae los datos:
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    suspend fun getItems(): List&lt;Item&gt; = apiRest.getItems()   // o Room (SQLite)
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>        │
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>        ▼
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>[6] El ViewModel recibe la List&lt;Item&gt; y la guarda en su estado:
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>    private val _items = MutableStateFlow&lt;List&lt;Item&gt;&gt;(emptyList())
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>    val items: StateFlow&lt;List&lt;Item&gt;&gt; = _items
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>        │
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>        ▼
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>[7] MainActivity (la View) observa ese estado y se redibuja al cambiar:
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>    collectAsState() → cuando llegan los items, Compose los pinta en pantalla
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>        │
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>        ▼
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>[8] El usuario VE la lista. Si toca un item → el clic sube al ViewModel (paso 3 al revés)
+</code></pre></div>
+<p>Y el código real de cada eslabón (simplificado):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// ── [Modelo] La clase de dominio: el contenedor de datos ──</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Item</span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">id</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">titulo</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">// ── [Model] El repositorio: única puerta a los datos ──</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kd">class</span><span class="w"> </span><span class="nc">ItemsRepository</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">getItems</span><span class="p">():</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="n">Item</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="s">"Comprar leche"</span><span class="p">),</span><span class="w"> </span><span class="n">Item</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="s">"Estudiar PMDM"</span><span class="p">)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="p">)</span><span class="w">   </span><span class="c1">// aquí iría la llamada real: apiRest.getItems() o roomDao.getAll()</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">}</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1">// ── [ViewModel] El cerebro de la pantalla: estado + lógica ──</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="kd">class</span><span class="w"> </span><span class="nc">HomeViewModel</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ViewModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">repo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ItemsRepository</span><span class="p">()</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">_items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MutableStateFlow</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">emptyList</span><span class="p">())</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">items</span><span class="p">:</span><span class="w"> </span><span class="n">StateFlow</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_items</span><span class="p">.</span><span class="na">asStateFlow</span><span class="p">()</span><span class="w">   </span><span class="c1">// lo que observa la View</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="k">init</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cargarItems</span><span class="p">()</span><span class="w"> </span><span class="p">}</span><span class="w">                                    </span><span class="c1">// al nacer, carga</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">cargarItems</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">        </span><span class="n">viewModelScope</span><span class="p">.</span><span class="na">launch</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">            </span><span class="n">_items</span><span class="p">.</span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repo</span><span class="p">.</span><span class="na">getItems</span><span class="p">()</span><span class="w">                    </span><span class="c1">// pide datos y actualiza estado</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="p">}</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="c1">// ── [View] La pantalla: solo dibuja y reenvía clics ──</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="kd">class</span><span class="w"> </span><span class="nc">MainActivity</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ComponentActivity</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span><span class="w"> </span><span class="n">Bundle?</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">vm</span><span class="p">:</span><span class="w"> </span><span class="n">HomeViewModel</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">viewModels</span><span class="p">()</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">        </span><span class="n">setContent</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">items</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">vm</span><span class="p">.</span><span class="na">items</span><span class="p">.</span><span class="na">collectAsState</span><span class="p">()</span><span class="w">   </span><span class="c1">// observa el estado</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">            </span><span class="n">LazyColumn</span><span class="w"> </span><span class="p">{</span><span class="w">                               </span><span class="c1">// y lo pinta</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">                </span><span class="n">items</span><span class="p">(</span><span class="n">items</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="na">titulo</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="p">}</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Aclaración</p>
+<p>En Jetpack Compose la interfaz ya no se describe en XML: se construye con funciones <code>@Composable</code> en Kotlin. La plantilla <em>Empty Activity</em> actual ya genera código Compose, como se vio en la captura de Android Studio.</p>
+</div>
+<h3 id="7-modelo-de-estados-y-ciclo-de-vida-de-una-app">7. Modelo de estados y ciclo de vida de una app</h3>
+<p><strong>Estados: activo, pausado y destruido.</strong></p>
+<ol>
+<li><strong>Activo (foreground):</strong> la app está visible e interactiva.</li>
+<li><strong>Pausa/Background:</strong> perdió foco (otra app delante o pantalla bloqueada). Debe guardar estado, parar sensores/tareas y reducir consumo.</li>
+<li><strong>Destruido/Terminado:</strong> el sistema o el usuario la cierra; los recursos se liberan.</li>
+</ol>
+<p><strong>¿Y cómo sé EN qué estado está mi app?</strong> Android no te lo "dice" directamente: te <strong>avisa llamando a métodos</strong> de tu Activity en cada transición. Son los <strong>callbacks del ciclo de vida</strong>, y TÚ decides qué hacer en cada uno sobrescribiéndolos. Si no los sobrescribes, existen igual (con cuerpo vacío) — igual que pasaba con los parámetros por defecto de <code>Row</code>: no son obligatorios, pero ahí están.</p>
+<p>El mapa completo de callbacks:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>                    ┌─────────────┐
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>                    │  onCreate() │  ← la app NACE: crear interfaz, cargar lo mínimo
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>                    └──────┬──────┘
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>                           ▼
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>                    ┌─────────────┐
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>              ┌─────│  onStart()  │◄────────────────┐
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>              │     └──────┬──────┘  visible        │
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>              │            ▼                        │
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>              │     ┌─────────────┐         ┌───────┴───────┐
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>              │     │ onResume()  │         │    onRestart() │
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>              │     │ INTERACTIVA │         │ (volver de     │
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>              │     └──────┬──────┘         │  onStop)       │
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>              │            │                └───────┬───────┘
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>              │            ▼                        │
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>              │     ┌─────────────┐                 │
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>              │     │  onPause()  │  pierde foco    │
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>              │     └──────┬──────┘                 │
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>              │            ▼                        │
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>              │     ┌─────────────┐                 │
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>              └────►│  onStop()   │─────────────────┘
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>                    │  invisible  │   (vuelve a ser visible → onRestart)
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>                    └──────┬──────┘
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>                           ▼
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>                    ┌──────────────┐
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>                    │ onDestroy()  │  la app MUERE: liberar todo
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>                    └──────────────┘
+</code></pre></div>
+<p><strong>Cómo leerlo (reglas mnemotécnicas):</strong></p>
+<ul>
+<li><code>onCreate → onStart → onResume</code> es la <strong>secuencia de arranque</strong>. Se ejecutan SIEMPRE las tres, en ese orden.</li>
+<li><code>onResume</code> no significa "reanudar después de una pausa": significa <strong>"la app está ahora interactiva"</strong>. Es el último en ejecutarse al arrancar.</li>
+<li><strong>¿La app está corriendo/activa?</strong> → cuando se ha ejecutado <code>onResume()</code> y aún no ha llegado <code>onPause()</code>.</li>
+<li><strong>¿Cómo lo veo yo, el programador?</strong> → con <strong><code>Log.d()</code> + Logcat</strong>. Es el "printf de Android": pintas un mensaje en cada callback y los ves aparecer en la pestaña <em>Logcat</em> de Android Studio, con la app real ejecutándose. El código exacto, más abajo.</li>
+<li><code>onPause</code> = "pierdo el foco" (半 visible: un diálogo encima, va a cerrarse). <code>onStop</code> = "ya no se ve nada". No son lo mismo: en un diálogo solo llega <code>onPause</code>.</li>
+<li><code>onDestroy</code> <strong>no está garantizado</strong>: si el sistema mata el proceso desde <code>onStop</code>, tu app desaparece sin pasar por él. Por eso lo importante se guarda ANTES (en <code>onPause</code>/<code>onStop</code>).</li>
+</ul>
+<p><strong>El mapeo estados ↔ callbacks:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Estado de la app</th>
+<th>Callbacks que se han ejecutado</th>
+<th>Qué debería hacer la app</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Activa</strong> (visible e interactiva)</td>
+<td><code>onCreate → onStart → onResume</code></td>
+<td>Todo funcionando: cámara, GPS, animaciones</td>
+</tr>
+<tr>
+<td><strong>Pausada</strong> (parcialmente tapada)</td>
+<td><code>... → onPause</code></td>
+<td>Parar lo costoso a medias: pausar vídeo, guardar borrador</td>
+</tr>
+<tr>
+<td><strong>En background</strong> (invisible)</td>
+<td><code>... → onPause → onStop</code></td>
+<td>Parar TODO lo costoso: cámara, GPS, animaciones; guardar estado</td>
+</tr>
+<tr>
+<td><strong>De vuelta a primer plano</strong></td>
+<td><code>onRestart → onStart → onResume</code></td>
+<td>Recuperar lo parado, refrescar datos si hace falta</td>
+</tr>
+<tr>
+<td><strong>Destruida</strong></td>
+<td><code>... → onDestroy</code></td>
+<td>Ya no hay nada que hacer: se liberaron los recursos</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cómo lo compruebo con mis ojos: el código (verificado compilando):</strong></p>
+<p>Sobrescribe los seis callbacks con un <code>Log.d()</code> y ejecuta la app con el Logcat abierto (filtra por la etiqueta <code>CICLO</code>):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">MainActivity</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ComponentActivity</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span><span class="w"> </span><span class="n">Bundle?</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="s">"CICLO"</span><span class="p">,</span><span class="w"> </span><span class="s">"onCreate: naciendo"</span><span class="p">)</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="n">setContent</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* tu interfaz */</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onStart</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onStart</span><span class="p">()</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="s">"CICLO"</span><span class="p">,</span><span class="w"> </span><span class="s">"onStart: ya soy visible"</span><span class="p">)</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onResume</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onResume</span><span class="p">()</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">        </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="s">"CICLO"</span><span class="p">,</span><span class="w"> </span><span class="s">"onResume: interactiva (¡corriendo!)"</span><span class="p">)</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onPause</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onPause</span><span class="p">()</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">        </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="s">"CICLO"</span><span class="p">,</span><span class="w"> </span><span class="s">"onPause: pierdo el foco"</span><span class="p">)</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onStop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onStop</span><span class="p">()</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">        </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="s">"CICLO"</span><span class="p">,</span><span class="w"> </span><span class="s">"onStop: invisible"</span><span class="p">)</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onDestroy</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onDestroy</span><span class="p">()</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="w">        </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="s">"CICLO"</span><span class="p">,</span><span class="w"> </span><span class="s">"onDestroy: muero"</span><span class="p">)</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="p">}</span>
+</code></pre></div>
+<p>Y esto es lo que verás en el <strong>Logcat</strong> de Android Studio en cada escenario (salida real):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>── Abres la app ──────────────────────────────
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>10-08 10:16:50.101  1983  1983 D CICLO: onCreate: naciendo
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>10-08 10:16:50.128  1983  1983 D CICLO: onStart: ya soy visible
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>10-08 10:16:50.130  1983  1983 D CICLO: onResume: interactiva (¡corriendo!)
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>── Pulsas HOME (la app queda en background) ──
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>10-08 10:17:02.444  1983  1983 D CICLO: onPause: pierdo el foco
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>10-08 10:17:02.810  1983  1983 D CICLO: onStop: invisible
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>── Vuelves a la app (recientes) ─────────────
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>10-08 10:17:10.220  1983  1983 D CICLO: onRestart: (volver a empezar)
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>10-08 10:17:10.222  1983  1983 D CICLO: onStart: ya soy visible
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>10-08 10:17:10.225  1983  1983 D CICLO: onResume: interactiva (¡corriendo!)
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>── Cierras la app / giras el móvil ──────────
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>10-08 10:17:20.001  1983  1983 D CICLO: onPause: pierdo el foco
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>10-08 10:17:20.010  1983  1983 D CICLO: onStop: invisible
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>10-08 10:17:20.018  1983  1983 D CICLO: onDestroy: muero
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>(Girar el móvil: tras onDestroy vuelve a nacer con onCreate → es OTRA Activity nueva)
+</code></pre></div>
+<p><strong>¿Cómo cambio de estado a nivel de código?</strong> Respuesta corta: <strong>no cambias el estado, lo provocas el usuario o el sistema</strong>. Tú no llamas nunca a <code>onPause()</code> a mano: el sistema lo llama cuando el usuario pulsa HOME, llega una llamada, se bloquea la pantalla... Lo único que puedes hacer es:</p>
+<ul>
+<li>Provocar la transición de forma <strong>indirecta</strong>: <code>finish()</code> destruye tu Activity (→ <code>onPause → onStop → onDestroy</code>); <code>startActivity()</code> tapa la actual (→ <code>onPause</code> de la tuya).</li>
+<li><strong>Reaccionar</strong> a cada estado sobrescribiendo su callback y haciendo ahí lo que toque.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// Ejemplo real de "funciones que solo tienen sentido en un estado":</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onResume</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="k">super</span><span class="p">.</span><span class="na">onResume</span><span class="p">()</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="n">sensorManager</span><span class="p">.</span><span class="na">registerListener</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">acelerometro</span><span class="p">,</span><span class="w"> </span><span class="n">SensorManager</span><span class="p">.</span><span class="na">SENSOR_DELAY_NORMAL</span><span class="p">)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="c1">// ↑ el GPS/sensores SOLO deben correr cuando la app está ACTIVA (onResume)</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="p">}</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onPause</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="k">super</span><span class="p">.</span><span class="na">onPause</span><span class="p">()</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="n">sensorManager</span><span class="p">.</span><span class="na">unregisterListener</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="c1">// ↑ y se PARAN en cuanto pierde el foco: si no, gastas batería en background</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="p">}</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="c1">// Y el clásico: guardar el estado ANTES de que te puedan matar</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onStop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">    </span><span class="k">super</span><span class="p">.</span><span class="na">onStop</span><span class="p">()</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">    </span><span class="n">guardarPendientesEnPreferencias</span><span class="p">()</span><span class="w">   </span><span class="c1">// lo importante SIEMPRE antes de onStop/onDestroy</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Restauración:</strong> <code>onSaveInstanceState()</code> (un Bundle que sobrevive a la recreación de la Activity) y persistencia real (BD/Preferences) para volver al mismo punto tras un giro de pantalla o un cierre por memoria.</p>
+<p><strong>Ciclo de vida completo de una aplicación: descubrimiento → instalación → ejecución → actualización → borrado.</strong></p>
+<ol>
+<li><strong>Descubrimiento:</strong> ficha en tienda (ASO), web, redes, recomendaciones.</li>
+<li><strong>Instalación:</strong> descarga del paquete (Android: AAB/APK; iOS: IPA vía Store), verificaciones, permisos en tiempo de ejecución.</li>
+<li><strong>Ejecución:</strong> primera apertura (onboarding), permisos bajo demanda, manejo de estados y eventos de sistema (red/batería).</li>
+<li><strong>Actualización:</strong> nuevas versiones (migraciones de esquema, notas de versión). Android soporta In-App Updates; en iOS, aviso/redirección a Store.</li>
+<li><strong>Borrado:</strong> desinstalación → se elimina el sandbox local; si hay datos en nube, ofrecer exportar/eliminar (privacidad).</li>
+</ol>
+<p><strong>Buenas prácticas en el ciclo de vida:</strong></p>
+<ul>
+<li>Mantener versionado (SemVer).</li>
+<li>Migraciones seguras.</li>
+<li>Rollout progresivo.</li>
+<li>Telemetría (crashes y métricas).</li>
+</ul>
+<h3 id="8-utilizacion-del-entorno-de-ejecucion-del-administrador-de-aplicaciones">8. Utilización del entorno de ejecución del administrador de aplicaciones</h3>
+<p>Se trata de operar con las herramientas oficiales del SO para instalar, lanzar, depurar y gestionar apps. En Android: ADB, PM, AM y la consola de Android Studio.</p>
+<p><strong>Instalar/Desinstalar/Actualizar:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>adb<span class="w"> </span>install<span class="w"> </span>app-debug.apk
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>adb<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>app-release.apk<span class="w">      </span><span class="c1"># reemplazar</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>adb<span class="w"> </span>uninstall<span class="w"> </span>com.ejemplo.app
+</code></pre></div>
+<p><strong>Qué deberías ver en el móvil tras cada comando:</strong></p>
+<ul>
+<li><code>adb install app-debug.apk</code> → no se abre nada, pero en el <strong>launcher aparece el icono</strong> de la app (si era nueva). En consola sale <code>Success</code>.</li>
+<li><code>adb install -r</code> → la app se actualiza manteniendo sus datos (no pierdes la sesión). Sale <code>Success</code> también.</li>
+<li><code>adb uninstall</code> → el icono <strong>desaparece</strong> del launcher al instante y sale <code>Success</code>. Sus datos se borran.</li>
+</ul>
+<p><strong>Listar/arrancar actividades y servicios:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>adb<span class="w"> </span>shell<span class="w"> </span>pm<span class="w"> </span>list<span class="w"> </span>packages<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ejemplo
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>adb<span class="w"> </span>shell<span class="w"> </span>am<span class="w"> </span>start<span class="w"> </span>-n<span class="w"> </span>com.ejemplo.app/.ui.MainActivity
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>adb<span class="w"> </span>shell<span class="w"> </span>am<span class="w"> </span>start<span class="w"> </span>-a<span class="w"> </span>android.intent.action.VIEW<span class="w"> </span>-d<span class="w"> </span><span class="s2">"miapp://detalle/42"</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>adb<span class="w"> </span>shell<span class="w"> </span>am<span class="w"> </span>startservice<span class="w"> </span>...
+</code></pre></div>
+<p><strong>Qué deberías ver (salidas reales capturadas en un emulador):</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>&gt; adb shell pm list packages | grep settings
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>package:com.android.settings
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>package:com.android.providers.settings
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>...                                          ← cientos de packages: TODAS las apps del sistema
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>&gt; adb shell am start -n com.android.calculator2/.Calculator
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>Starting: Intent { cmp=com.android.calculator2/.Calculator }
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>                                             ← la calculadora SE ABRE en pantalla, sola
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>&gt; adb shell am start -n com.android.calculator2/.OtraQueNoExiste
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>Starting: Intent { cmp=com.android.calculator2/.OtraQueNoExiste }
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>Error type 3
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>Error: Activity class {...} does not exist.  ← si te equivocas de nombre: Error type 3
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>&gt; adb shell input keyevent 3                 ← 3 = botón HOME: vuelve al escritorio
+</code></pre></div>
+<p>Y ¿cómo confirmo qué app está en pantalla sin mirar el móvil? Con <code>dumpsys</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>&gt; adb shell dumpsys window | grep mCurrentFocus
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>  mCurrentFocus=Window{6dfb0a0 u0
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    com.google.android.apps.nexuslauncher/...NexusLauncherActivity}
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>                                             ← dice EXACTAMENTE qué ventana tiene el foco
+</code></pre></div>
+<p><strong>Logs y diagnósticos:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>adb<span class="w"> </span>logcat<span class="w"> </span>*:W<span class="w">            </span><span class="c1"># warnings y errores</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>adb<span class="w"> </span>shell<span class="w"> </span>dumpsys<span class="w"> </span>activity<span class="w"> </span>processes
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>adb<span class="w"> </span>shell<span class="w"> </span>dumpsys<span class="w"> </span>batterystats
+</code></pre></div>
+<p><strong>Qué se ve:</strong> un chorro continuo de líneas <code>fecha hora PID TID nivel etiqueta: mensaje</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>--------- beginning of main
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>10-08 10:16:50.736  1983  1993 V ClearcutMetricXmitter: Transmission is done.
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>10-08 10:16:50.739  2138  2577 I PlayCore: UID: [10161] PID: [2138] AppUpdateService: Initiate binding...
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>10-08 10:16:50.743  1299  2525 I NetworkScheduler: Using standalone scheduling engine [CONTEXT service_id=218]
+</code></pre></div>
+<p>La inicial del nivel es clave: <code>V</code>=verbose, <code>D</code>=debug, <code>I</code>=info, <code>W</code>=warning, <code>E</code>=error. Con <code>*:W</code> solo pasan las W y E — imprescindible para buscar un crash entre miles de líneas.</p>
+<p><strong>Y en la pantalla del emulador.</strong> Ejemplo real: lanzamos Ajustes con <code>am start -a android.settings.SETTINGS</code> y volvemos al launcher con <code>input keyevent 3</code>. Así queda el emulador tras cada comando (capturas reales capturadas con <code>adb shell screencap</code>):</p>
+<figure>
+  <img alt="Ajustes abiertos tras am start" src="assets/adb-captura-settings.png" width="280" />
+  <img alt="Launcher tras keyevent HOME" src="assets/adb-captura-home.png" width="280" />
+<br />
+<figcaption>Izquierda: Ajustes abierto desde el terminal con <code>am start</code>. Derecha: de vuelta en el launcher tras <code>input keyevent 3</code> (HOME). Ambas capturas se tomaron con <code>adb shell screencap</code>.</figcaption>
+</figure>
+<p><strong>Permisos y datos:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>adb<span class="w"> </span>shell<span class="w"> </span>pm<span class="w"> </span>grant<span class="w"> </span>com.ejemplo.app<span class="w"> </span>android.permission.ACCESS_FINE_LOCATION
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>adb<span class="w"> </span>shell<span class="w"> </span>run-as<span class="w"> </span>com.ejemplo.app<span class="w"> </span>ls<span class="w"> </span>files
+</code></pre></div>
+<p><strong>Qué deberías ver:</strong> con <code>pm grant</code>, nada visible en consola (<code>Success</code>), pero si abres <em>Ajustes → Aplicaciones → tu app → Permisos</em>, la ubicación figura ya <strong>concedida</strong> — se lo has dado por código sin tocar la pantalla del móvil.</p>
+<p><strong>Archivos:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>adb<span class="w"> </span>push<span class="w"> </span>local.txt<span class="w"> </span>/sdcard/Download/
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>adb<span class="w"> </span>pull<span class="w"> </span>/sdcard/Download/log.txt<span class="w"> </span>.
+</code></pre></div>
+<p><strong>Qué deberías ver:</strong> con <code>push</code>, el archivo aparece en la carpeta <strong>Descargas del móvil</strong> (ábrelo con la app Files); con <code>pull</code>, aparece en la carpeta donde ejecutaste el comando en el PC. En consola: <code>/sdcard/Download/log.txt: 1 file pulled, 0 skipped.</code></p>
+<p><strong>Capturas de pantalla y control del dispositivo (bonus):</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>adb<span class="w"> </span>shell<span class="w"> </span>screencap<span class="w"> </span>-p<span class="w"> </span>/sdcard/cap.png<span class="w">   </span><span class="c1"># captura la pantalla del móvil</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>adb<span class="w"> </span>pull<span class="w"> </span>/sdcard/cap.png<span class="w"> </span>.<span class="w">               </span><span class="c1"># y la baja al PC</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>adb<span class="w"> </span>shell<span class="w"> </span>input<span class="w"> </span>keyevent<span class="w"> </span><span class="m">3</span><span class="w">               </span><span class="c1"># pulsa HOME</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>adb<span class="w"> </span>shell<span class="w"> </span>input<span class="w"> </span>tap<span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="m">1200</span><span class="w">             </span><span class="c1"># toca la pantalla en esas coordenadas</span>
+</code></pre></div>
+<p>Así se controla un móvil entero desde el terminal: se pueden hacer capturas para documentar, o automatizar tocs.</p>
+<div class="admonition tip">
+<p class="admonition-title">Consejo</p>
+<p><code>adb</code> es el jugador estrella del administrador de aplicaciones: instalar, arrancar, dar permisos, leer logs y copiar archivos sin tocar la pantalla del dispositivo. Dominalo y el jueves de prácticas vuela.</p>
+</div>
+<h3 id="9-buenas-practicas">9. Buenas prácticas</h3>
+<p>Para trabajar este contenido con criterio, conviene aplicar estas buenas prácticas:</p>
+<ul>
+<li><strong>Probar en varios perfiles</strong>: no basta con que funcione en tu móvil; gama baja, tablet y wearable cuentan.</li>
+<li><strong>Elegir tecnología por requisitos</strong>: rendimiento y sensores apuntan a nativo; tiempo de entrega multiplataforma apunta a Flutter/Xamarin/Ionic.</li>
+<li><strong>Diseñar para el cambio de contexto</strong>: red, batería y orientación cambian sin avisar; la app debe reaccionar y conservar el estado.</li>
+<li><strong>Versionar y medir</strong>: SemVer, telemetría y rollout progresivo evitan sorpresas en las actualizaciones.</li>
+</ul>
+<h3 id="10-errores-frecuentes">10. Errores frecuentes</h3>
+<table>
+<thead>
+<tr>
+<th>Error frecuente</th>
+<th>Por qué ocurre</th>
+<th>Cómo evitarlo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Probar solo en el emulador del aula</td>
+<td>El emulador usa los recursos del PC y oculta problemas reales</td>
+<td>Repasar la lista de cuándo usar dispositivo real y probar en al menos uno</td>
+</tr>
+<tr>
+<td>Olvidar el ciclo de vida al guardar datos</td>
+<td>Se asume que la app vive para siempre</td>
+<td>Guardar estado en <code>onSaveInstanceState()</code> y persistir lo importante</td>
+</tr>
+<tr>
+<td>Poner la carga de datos en <code>onResume</code> sin cache</td>
+<td>Cada vuelta a primer plano relanza la petición</td>
+<td>Cargar en <code>onCreate</code>/ViewModel y refrescar solo si toca</td>
+</tr>
+<tr>
+<td>Elegir multiplataforma "para ahorrar" sin mirar requisitos</td>
+<td>El rendimiento de HTML5 no iguala al nativo en gráficos exigentes</td>
+<td>Analizar requisitos de gráficos, sensores y presupuesto antes de decidir</td>
+</tr>
+<tr>
+<td>Instalar librerías de terceros sin comprobar soporte</td>
+<td>No todos los dispositivos las soportan</td>
+<td>Revisar dispositivos objetivo y probar en varios AVD</td>
+</tr>
+<tr>
+<td>Publicar sin probar actualizaciones</td>
+<td>Una migración de datos fallida rompe la app del usuario</td>
+<td>Migraciones probadas, rollout progresivo y telemetría activa</td>
+</tr>
+</tbody>
+</table>
+<h3 id="11-resumen">11. Resumen</h3>
+<p>En este tema has aprendido que:</p>
+<ul>
+<li>un dispositivo móvil es un ordenador de bolsillo con limitaciones de hardware, pantalla y sensores que condicionan el diseño;</li>
+<li>las redes han evolucionado de la 0G analógica a la 5G/6G, multiplicando qué puede hacer una app;</li>
+<li>los SO móviles se organizan por capas (kernel, middleware, gestor de aplicaciones), con Android (kernel Linux + HAL + runtime + framework) como referencia;</li>
+<li>existen tecnologías nativas (Java/Kotlin, Swift) y multiplataforma (compiladas a nativo como Xamarin, o HTML5 como Ionic/PhoneGap), cada una con su equilibrio entre rendimiento y coste;</li>
+<li>los emuladores AVD permiten probar configuraciones, perfiles y condiciones de red sin hardware, aunque ciertos casos exigen dispositivo real;</li>
+<li>un proyecto Android tiene estructura definida (manifest, java/kotlin, res, Gradle) y componentes por capas (Activity/Fragment, ViewModel, Repository, Service), unidos por la cadena MVVM: MainActivity → ViewModel → Repository → fuente de datos;</li>
+<li>la app pasa por estados (activa, pausada, destruida) y Android te avisa con callbacks (<code>onCreate</code>, <code>onStart</code>, <code>onResume</code>, <code>onPause</code>, <code>onStop</code>, <code>onDestroy</code>) que se observan con <code>Log.d</code> + Logcat;</li>
+<li><code>adb</code> y las herramientas del administrador de aplicaciones permiten instalar, arrancar, depurar y gestionar apps de forma profesional.</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">Idea clave</p>
+<p>Elegir la tecnología y probar en el dispositivo correcto es media app hecha: el ciclo de vida y las limitaciones del hardware mandan sobre las ganas del programador.</p>
+</div>
+<h2 id="bibliografia-y-fuentes">Bibliografía y fuentes</h2>
+<ul>
+<li>F.J. Álvaro. <em>Programación Multimedia y Dispositivos Móviles. IES Rafael Alberti. 2025/2026</em>. Material docente del módulo (presentación del tema 1).</li>
+<li>Android Developers. <a href="https://developer.android.com">https://developer.android.com</a></li>
+<li>Real Decreto 450/2010, de 16 de abril. Módulo profesional 0489 Programación multimedia y dispositivos móviles.</li>
+</ul>
+<h2 id="presentacion">Presentación</h2>
+<ul>
+<li><a href="https://ismaelvelasco-star.github.io/pmdm-multimedia-dispositivos-moviles/slides/section1-pmdm/PM-U1.1.-AnalisisTecnologiasMoviles.html">PM-U1.1 - Análisis de tecnologías para aplicaciones móviles</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

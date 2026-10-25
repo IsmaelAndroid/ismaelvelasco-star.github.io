@@ -237,6 +237,6 @@ Para que nadie (ni el tribunal) se confunda:
 >> `verticalScroll(rememberScrollState())` en la Column y `windowSoftInputMode="adjustResize"` en el Manifest (o `enableEdgeToEdge` + insets modernos). El de producción es el Manifest: lo resuelve el sistema para todas las pantallas, no parche a parche.
 
 ---
-**Cumplimiento**: este apartado trabaja los criterios RA2.a (entorno de desarrollo), RA2.b (herramientas visuales de interfaz), RA2.e (integración en el dispositivo) y RA2.f (prueba y depuración en emulador) del RD 2088/2022 — el resto de RA2 se cierra con la práctica del mini-proyecto y el tema 3.
+**Cumplimiento**: este apartado trabaja los criterios RA2.a (estructura de clases de la aplicación), RA2.b (clases que modelan ventanas, menús, alertas y controles) y RA2.g (pruebas de interacción usuario-aplicación en emulador) del RD 405/2023 — el resto de RA2 se cierra con la práctica del mini-proyecto y el tema 3.
 
 **Materiales**: [Docs de Scaffold y listas](https://developer.android.com/develop/ui/compose/layouts) · **Presentación**: [diapositivas del tema 2.3](https://revilofe.github.io/slides/section5-pmdm/PM-U2.3.-AppComposeListasYFormulario.html) · Anterior: [2.2 — Actividades e Intents](./PMDM-U2.2.-ActividadesEIntents.md) · Práctica: [2.4 — Mini-proyecto](../../u02/practica/PMDM-U2.-MiniProyectoContactos.md)

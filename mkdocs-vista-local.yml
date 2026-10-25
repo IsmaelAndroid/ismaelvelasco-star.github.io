@@ -1,0 +1,5 @@
+# Config SOLO para la vista local (file://) de Ismael: enlaces .html en vez de directorios
+# No se sube al repo ni afecta al build de Pages.
+INHERIT: mkdocs.yml
+use_directory_urls: false
+site_url: ''

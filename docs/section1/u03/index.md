@@ -1,6 +1,6 @@
 ---
 title: "UD 3 - Programación en Android: gestión de datos"
-description: "Índice de la unidad 3 de PMDM: navegación con argumentos y deep links, formularios con estado, MVVM, Hilt, Room, persistencia remota y autenticación."
+description: "Unidad 3 de PMDM: navegación con datos, estado con ViewModel, Room, Retrofit y sesión. Cinco apartados dimensionados a las horas reales del módulo."
 authors:
     - Ismael Velasco
 date: 2026-10-25
@@ -13,7 +13,6 @@ tags:
     - Navegación
     - Room
     - Retrofit
-    - Hilt
     - MVVM
 
 toc: true
@@ -23,17 +22,33 @@ toc_icon: "file-code"
 
 ## **UD 3 - Programación en Android: gestión de datos**
 
-La unidad donde la app deja de tener datos de mentira: navegación con argumentos, formularios que validan, estado que sobrevive, base de datos local (Room), servidor (Retrofit) y sesión de usuario. Todo el código está ejecutado en emulador: las capturas son la prueba.
+La unidad donde la app deja de tener datos de mentira: navegación con argumentos, estado que sobrevive, base de datos local y servidor. Todo el código está ejecutado en emulador: las capturas son la prueba.
 
 ### 1. Normativa que respalda la unidad
 
 Módulo **Programación Multimedia y Dispositivos Móviles** (0489), currículo vigente del **RD 405/2023** (BOE-A-2023-13221). Se trabajan del **RA2** los criterios **a)** estructura de clases, **e)** conexiones HTTP y HTTPS, **f)** conexiones con almacenes de datos garantizando la persistencia, **g)** pruebas de interacción en emulador, **i)** documentación de los procesos y **j)** permisos requeridos. El texto íntegro está en [`recursos/PMDM Normativa.txt`](../recursos/PMDM%20Normativa.txt).
 
+### 2. Reparto de horas (esto es lo que da tiempo)
+
+El módulo tiene **3 sesiones semanales** (≈2 h 45 min/semana). La unidad se cierra en **4 semanas**:
+
+| Apartado | Contenido | Horas |
+|---|---|---|
+| 3.1 | Navegación con datos: argumentos, pila y deep links | 2 |
+| 3.2 | Estado y formularios: ViewModel + StateFlow + validación | 2,5 |
+| 3.3 | Room: persistencia local (con Hilt para el DAO) | 3 |
+| 3.4 | Retrofit y sesión: red, DTOs y token en DataStore | 3 |
+| 3.5 | Taller integrador y resolución de errores | 2,5 |
+| — | **Práctica evaluable** (entrega con capturas) | 3 |
+| | **Total** | **16 h** |
+
+> Los ocho apartados del borrador inicial (3.1 a 3.8) se han **fundido en cinco**: MVVM va con formularios, Hilt va con Room, y autenticación va con Retrofit. Así se da todo sin quedarse a medias.
+
 ### Teoría
 
 - [3.1.- Navegación: grafo, argumentos y enlaces profundos](teoria/PMDM-U3.1.-NavegacionGrafoArgumentosYDeepLinks.md) — rutas con argumento tipado, control de la pila, valores por defecto y deep links.
 
-> 3.2 Formularios y diálogos con estado · 3.3 MVVM aplicado a datos · 3.4 Hilt · 3.5 Room · 3.6 Persistencia remota · 3.7 Autenticación · 3.8 Troubleshooting — en preparación.
+> 3.2 Estado y formularios · 3.3 Room · 3.4 Retrofit y sesión · 3.5 Taller integrador — en preparación.
 
 ### Prácticas
 

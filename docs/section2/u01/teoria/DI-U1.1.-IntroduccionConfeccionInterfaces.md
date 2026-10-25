@@ -21,44 +21,47 @@ tags:
 !!! abstract "Idea principal"
     Este tema presenta el terreno de juego: qué es una interfaz, qué paradigmas hay detrás y, sobre todo, **el entorno donde vamos a trabajar todo el módulo: Android Studio con Kotlin y Jetpack Compose**. Al terminar tendremos el IDE instalado, creada la primera interfaz y conocidas las zonas del entorno de diseño.
 
+<div style="background-color:#a5d6a7; border-radius:8px; padding:10px 14px; margin:14px 0;">
+<strong>🟢 Leyenda de repaso obligatorio:</strong> los textos con <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">este fondo verde</span> son imprescindibles para programar interfaces: hay que repasarlos <strong>cada semana</strong>, porque entrarán en todas las evaluaciones del módulo.</div>
+
 ## 1. Introducción y contextualización práctica
 
-Un lenguaje de programación consiste en un conjunto de reglas y normas que permiten a una persona (en este caso un programador o programadora) escribir un conjunto de instrucciones interpretables por un ordenador, cuyo objetivo es controlar diferentes comportamientos lógicos o físicos de una máquina.
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un lenguaje de programación consiste en un conjunto de reglas y normas que permiten a una persona (en este caso un programador o programadora) escribir un conjunto de instrucciones interpretables por un ordenador, cuyo objetivo es controlar diferentes comportamientos lógicos o físicos de una máquina.</span>
 
-De manera tradicional se ha establecido una clasificación entre lenguajes de **bajo y alto nivel**. Los primeros se encuentran más cerca de lo que es capaz de entender un ordenador, ejercen un control directo sobre el hardware y están más alejados de la lógica humana (lenguaje máquina con 0 y 1, o lenguaje ensamblador). Los anteriores resultan muy difíciles de entender por una persona. Por esa razón aparecen los lenguajes de **alto nivel**, que pueden ser descritos utilizando reglas comprensibles por el programador, con un lenguaje más cercano al natural. Será durante el proceso de compilación del código fuente cuando estos se traduzcan a un lenguaje de bajo nivel, capaz de ser entendido por una máquina.
+De manera tradicional se ha establecido una clasificación entre lenguajes de **bajo y alto nivel**. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Los primeros se encuentran más cerca de lo que es capaz de entender un ordenador, ejercen un control directo sobre el hardware y están más alejados de la lógica humana (lenguaje máquina con 0 y 1, o lenguaje ensamblador).</span> Los anteriores resultan muy difíciles de entender por una persona. Por esa razón aparecen los lenguajes de **alto nivel**, <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">que pueden ser descritos utilizando reglas comprensibles por el programador, con un lenguaje más cercano al natural. Será durante el proceso de compilación del código fuente cuando estos se traduzcan a un lenguaje de bajo nivel, capaz de ser entendido por una máquina.</span>
 
 <figure markdown>
 ![Diagrama de lenguajes de alto y bajo nivel y el proceso de compilación.](assets/compilacion.png)
 <figcaption>Fig. 1. Diagrama de lenguajes de alto y bajo nivel. Fuente: temario del módulo.</figcaption>
 </figure>
 
-**Kotlin**, el lenguaje que usaremos en este módulo, es de alto nivel: compila a bytecode que ejecuta la máquina virtual (JVM o ART en Android).
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**Kotlin**, el lenguaje que usaremos en este módulo, es de alto nivel: compila a bytecode que ejecuta la máquina virtual (JVM o ART en Android).</span>
 
-Ahora bien, las herramientas desarrolladas a través de un lenguaje de programación, sea del tipo que sea, requieren del desarrollo de una **interfaz** que permita la interacción con el usuario, de lo contrario se requeriría que todos fuéramos programadores expertos para utilizar cualquier aplicación atendiendo a su lenguaje fuente.
+Ahora bien, las herramientas desarrolladas a través de un lenguaje de programación, sea del tipo que sea, <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">requieren del desarrollo de una **interfaz** que permita la interacción con el usuario</span>, de lo contrario se requeriría que todos fuéramos programadores expertos para utilizar cualquier aplicación atendiendo a su lenguaje fuente.
 
 ## 2. Paradigmas de programación
 
-Un paradigma de programación define un estilo de programación: describe la estructura del programa que va a dar solución a los problemas computacionales.
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un paradigma de programación define un estilo de programación: describe la estructura del programa que va a dar solución a los problemas computacionales.</span>
 
-En primer lugar encontramos el modelo **imperativo**, que consiste en un conjunto de instrucciones ordenadas de forma secuencial y claramente definidas para su ejecución en una máquina; es decir, definen un paso a paso. Este modelo se divide en otros tipos:
+En primer lugar encontramos el modelo **imperativo**, que <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">consiste en un conjunto de instrucciones ordenadas de forma secuencial y claramente definidas para su ejecución en una máquina; es decir, definen un paso a paso.</span> Este modelo se divide en otros tipos:
 
-- **Programación estructurada**: incluye estructuras de control que permiten evaluar los casos para decidir entre un camino de instrucciones u otro. También incorpora estructuras iterativas.
-- **Programación procedimental o basada en funciones**: subdivide el programa en subrutinas y funciones de menor tamaño que simplifican la programación, aligerando su implementación y posterior mantenimiento.
-- **Programación modular**: permite desarrollar cada programa de forma completamente independiente al resto del código, lo que agiliza las tareas de implementación y prueba. Será en la parte final del proceso cuando se combinen todos los módulos, creando el software definitivo.
+- **Programación estructurada**: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">incluye estructuras de control que permiten evaluar los casos para decidir entre un camino de instrucciones u otro. También incorpora estructuras iterativas.</span>
+- **Programación procedimental o basada en funciones**: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">subdivide el programa en subrutinas y funciones de menor tamaño que simplifican la programación, aligerando su implementación y posterior mantenimiento.</span>
+- **Programación modular**: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">permite desarrollar cada programa de forma completamente independiente al resto del código, lo que agiliza las tareas de implementación y prueba.</span> Será en la parte final del proceso cuando se combinen todos los módulos, creando el software definitivo.
 
-Algunos lenguajes conocidos que utilizan la programación imperativa son **Kotlin**, Java, C, C#, Python o Ruby.
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Algunos lenguajes conocidos que utilizan la programación imperativa son **Kotlin**, Java, C, C#, Python o Ruby.</span>
 
-En el modelo imperativo se indica la secuencia de pasos exacta a seguir para resolver un problema. Por el contrario, en el caso del modelo **declarativo** no se describen los pasos, sino el problema que se plantea. Algunos ejemplos de lenguajes declarativos son HTML, CSS y SQL.
+En el modelo imperativo se indica la secuencia de pasos exacta a seguir para resolver un problema. Por el contrario, <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">en el caso del modelo **declarativo** no se describen los pasos, sino el problema que se plantea. Algunos ejemplos de lenguajes declarativos son HTML, CSS y SQL.</span>
 
 ## 3. Programación orientada a objetos, eventos y componentes
 
-Encontramos otros modelos de programación que incluyen características propias de los definidos anteriormente. Es el caso de la programación orientada a objetos, eventos o componentes. **La combinación de estos tres tipos resulta clave para el desarrollo de las interfaces que veremos en este módulo.**
+Encontramos otros modelos de programación que incluyen características propias de los definidos anteriormente. Es el caso de la programación orientada a objetos, eventos o componentes. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**La combinación de estos tres tipos resulta clave para el desarrollo de las interfaces que veremos en este módulo.**</span>
 
-- **Modelo orientado a objetos**: el funcionamiento de este tipo de programas se basa en la creación de entidades, que reciben el nombre de **objetos**, las cuales tienen asociados atributos, propiedades y métodos. La interacción entre los objetos permite resolver los problemas de computación planteados. Algunos lenguajes orientados a objetos son Java, Ruby, Visual Basic, Perl, PHP, Python o **Kotlin**.
-- **Modelo basado en eventos**: su funcionamiento viene determinado por acciones externas, por ejemplo, la pulsación sobre un botón. Uno de los lenguajes típicos de este tipo de programación es JavaScript, que utiliza manejadores de eventos tanto en el lado del cliente como del servidor (Node.js).
-- **Modelo basado en componentes**: la clave de este último modelo es la **reutilización de módulos de software desarrollados previamente**. Para llevar a cabo esta tarea, la mayoría de los entornos de desarrollo integrados (IDE) permiten desarrollar componentes visuales, permitiendo empaquetar el código para reutilizarlo posteriormente.
+- **Modelo orientado a objetos**: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">el funcionamiento de este tipo de programas se basa en la creación de entidades, que reciben el nombre de **objetos**, las cuales tienen asociados atributos, propiedades y métodos. La interacción entre los objetos permite resolver los problemas de computación planteados.</span> Algunos lenguajes orientados a objetos son Java, Ruby, Visual Basic, Perl, PHP, Python o **Kotlin**.
+- **Modelo basado en eventos**: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">su funcionamiento viene determinado por acciones externas, por ejemplo, la pulsación sobre un botón.</span> Uno de los lenguajes típicos de este tipo de programación es JavaScript, que utiliza manejadores de eventos tanto en el lado del cliente como del servidor (Node.js).
+- **Modelo basado en componentes**: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">la clave de este último modelo es la **reutilización de módulos de software desarrollados previamente**.</span> Para llevar a cabo esta tarea, la mayoría de los entornos de desarrollo integrados (IDE) permiten desarrollar componentes visuales, permitiendo empaquetar el código para reutilizarlo posteriormente.
 
-En Jetpack Compose los tres modelos se dan cita: los composables son componentes reutilizables (que se definen una vez y se usan en cualquier pantalla), reaccionan a eventos (la pulsación de un botón) y se apoyan en objetos y clases de Kotlin.
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">En Jetpack Compose los tres modelos se dan cita: los composables son componentes reutilizables (que se definen una vez y se usan en cualquier pantalla), reaccionan a eventos (la pulsación de un botón) y se apoyan en objetos y clases de Kotlin.</span>
 
 ## 4. Herramientas propietarias y libres de edición de interfaces
 
@@ -88,7 +91,7 @@ Tabla 1. Tabla comparativa de las herramientas de edición de interfaces (selecc
 <figcaption>Fig. 3. Interfaz de la aplicación Glade. Fuente: temario del módulo.</figcaption>
 </figure>
 
-**4.3. Android Studio.** Es el IDE oficial para el desarrollo Android: gratuito, libre y multiplataforma, basado en IntelliJ IDEA. Reúne las virtudes de los anteriores (editor con autocompletado y detección de errores en tiempo real, depuración paso a paso, integración con Git/GitHub) y añade lo que da nombre al módulo moderno: la vista de diseño en vivo para **Jetpack Compose** (previsualización sin ejecutar la app), el emulador de dispositivos Android integrado y el soporte completo de **Kotlin**. Para completar esta asignatura vamos a utilizar **Android Studio**, puesto que su uso es el estándar profesional actual en el desarrollo de interfaces móviles.
+**4.3. Android Studio.** <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Es el IDE oficial para el desarrollo Android: gratuito, libre y multiplataforma, basado en IntelliJ IDEA.</span> Reúne las virtudes de los anteriores (editor con autocompletado y detección de errores en tiempo real, depuración paso a paso, integración con Git/GitHub) y añade lo que da nombre al módulo moderno: la vista de diseño en vivo para **Jetpack Compose** (previsualización sin ejecutar la app), el emulador de dispositivos Android integrado y el soporte completo de **Kotlin**. Para completar esta asignatura vamos a utilizar **Android Studio**, puesto que su uso es el estándar profesional actual en el desarrollo de interfaces móviles.
 
 <figure markdown>
 ![Burbujas con lenguajes de programación de alto nivel, entre ellos Kotlin.](assets/lenguajes.png)
@@ -99,7 +102,7 @@ Tabla 1. Tabla comparativa de las herramientas de edición de interfaces (selecc
 
 Algunos lenguajes de programación (entre ellos Kotlin) utilizan **librerías**: un conjunto de clases y funciones con sus propios atributos y métodos ya implementados. De esta forma pueden utilizarse para cualquier desarrollo reutilizando su código, lo cual reduce considerablemente el tiempo de programación. En cuanto al desarrollo de interfaces gráficas, para poder implementarlas debemos usar librerías que lo permitan.
 
-En el desarrollo Android con Kotlin, la librería de interfaz es **Jetpack Compose**: el kit de herramientas oficial de Google para construir UIs. Sus componentes (botones, textos, campos de texto, contenedores...) son **funciones de Kotlin** anotadas con `@Composable` que se combinan entre sí para describir la pantalla.
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">En el desarrollo Android con Kotlin, la librería de interfaz es **Jetpack Compose**: el kit de herramientas oficial de Google para construir UIs.</span> <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Sus componentes (botones, textos, campos de texto, contenedores...) son **funciones de Kotlin** anotadas con `@Composable` que se combinan entre sí para describir la pantalla</span>.
 
 Para poder utilizar las funciones y clases de estas librerías es necesario **importarlas** en Kotlin. Para ello se utiliza la palabra clave `import` seguida de la ruta del paquete que se va a agregar, justo después de la declaración del paquete, si esta existe:
 
@@ -125,9 +128,9 @@ Una vez completado este proceso, ya tendríamos instalado todo el entorno básic
 
 ## 7. Primer proyecto con Kotlin. La función composable
 
-La importación de las librerías de Compose se realiza usando la sentencia `import androidx.compose...`, como vimos en el apartado anterior. Lo habitual es que el propio IDE añada estas importaciones automáticamente (con **Alt+Intro** sobre el elemento en rojo).
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La importación de las librerías de Compose se realiza usando la sentencia `import androidx.compose...`</span>, como vimos en el apartado anterior. Lo habitual es que el propio IDE añada estas importaciones automáticamente (con **Alt+Intro** sobre el elemento en rojo).
 
-Uno de los elementos más importantes de Compose es la **función composable** (así la llamaremos en este módulo, como hace la comunidad y la mayoría de materiales en vídeo): una función de Kotlin anotada con `@Composable` que describe un trozo de interfaz. Sobre ella se añaden el resto de elementos.
+Uno de los elementos más importantes de Compose es la **función composable** (así la llamaremos en este módulo, como hace la comunidad y la mayoría de materiales en vídeo): <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">una función de Kotlin anotada con `@Composable` que describe un trozo de interfaz</span>. Sobre ella se añaden el resto de elementos.
 
 !!! note "Si lees la documentación oficial en español"
     La documentación de Google traducida al español llama a esta función **"función de componibilidad"** (o "función que admite composición") y la abrevia como **"componible"**. Es exactamente el mismo concepto: la función anotada con `@Composable`. Nosotros diremos **composable**, que es como se oye en tutoriales, foros y equipos de trabajo.
@@ -241,7 +244,7 @@ flowchart TD
 
 **Cómo leer el diagrama:** todo lo azul pertenece al mundo Android (la actividad), todo lo verde pertenece al mundo Compose (los composables). El único punto de contacto entre ambos mundos es la flecha `setContent { }`: por encima hay sistema operativo, por debajo solo hay funciones de Kotlin describiendo píxeles.
 
-Un error típico de principiante es intentar dibujar dentro de la clase de la actividad (por ejemplo, escribiendo `Text(...)` suelto en `onCreate()`). No funciona: sin pasar por `setContent { }`, Android no sabe que ese código existe como interfaz. El orden siempre es: **actividad → `setContent { }` → composable raíz → resto del árbol**.
+Un error típico de principiante es intentar dibujar dentro de la clase de la actividad (por ejemplo, escribiendo `Text(...)` suelto en `onCreate()`). No funciona: sin pasar por `setContent { }`, Android no sabe que ese código existe como interfaz. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El orden siempre es: **actividad → `setContent { }` → composable raíz → resto del árbol**</span>.
 
 ```mermaid
 flowchart LR
@@ -318,11 +321,11 @@ MiPrimeraInterfaz/
 | `build.gradle.kts (Module :app)` | Dependencias y versión de la app | Aquí está la lista de librerías: es donde vive **Jetpack Compose** |
 | `settings.gradle.kts` | La lista de módulos | Define qué módulos (app, librerías propias...) forman el proyecto |
 
-**Gradle** es el sistema de construcción: la herramienta que descarga las librerías, compila el código y genera el APK instalable. Cuando añadas una dependencia nueva, Android Studio te pedirá *Sync* (sincronizar): es Gradle descargándola y dejándola lista.
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**Gradle** es el sistema de construcción: la herramienta que descarga las librerías, compila el código y genera el APK instalable</span>. Cuando añadas una dependencia nueva, Android Studio te pedirá *Sync* (sincronizar): es Gradle descargándola y dejándola lista.
 
 ## 8. Análisis del entorno de diseño en Android Studio
 
-El entorno de desarrollo de Android Studio para **Jetpack Compose es *code-first***: la interfaz se escribe en Kotlin y la herramienta de diseño la renderiza en vivo. A diferencia de los editores visuales clásicos (y del sistema de vistas XML anterior), **Compose no tiene paleta de componentes para arrastrar y soltar**: el código es la fuente de la verdad y la vista *Split/Design* es su espejo, que se redibuja al segundo. Los grupos de herramientas que describimos a continuación acompañan ese flujo de trabajo.
+El entorno de desarrollo de Android Studio para **Jetpack Compose es *code-first***: la interfaz se escribe en Kotlin y la herramienta de diseño la renderiza en vivo. A diferencia de los editores visuales clásicos (y del sistema de vistas XML anterior), <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**Compose no tiene paleta de componentes para arrastrar y soltar**: el código es la fuente de la verdad y la vista *Split/Design* es su espejo, que se redibuja al segundo</span>. Los grupos de herramientas que describimos a continuación acompañan ese flujo de trabajo.
 
 A continuación se describen los diferentes grupos de herramientas que podemos encontrar, tanto los de tipo general como los específicos del área de diseño.
 
@@ -333,19 +336,19 @@ A continuación se describen los diferentes grupos de herramientas que podemos e
 <figcaption>Fig. 6. El selector de dispositivos de la toolbar: emuladores disponibles (Pixel, Wear OS...), emparejar por Wi-Fi y acceso al Device Manager. Fuente: developer.android.com.</figcaption>
 </figure>
 
-**8.2. Vista de diseño. General.** La zona de diseño es la ventana principal del entorno con Compose: en ella se colocan los elementos de la interfaz. Android Studio ofrece tres modos combinables mediante pestañas: **Code** (solo código), **Split** (código y previsualización al mismo tiempo) y **Design** (solo previsualización). En la zona de previsualización se muestra el aspecto de la aplicación que se está implementando: podríamos decir que es el lienzo sobre el que dibujar la interfaz. Las funciones anotadas con `@Preview` se renderizan aquí en vivo, sin ejecutar la app:
+**8.2. Vista de diseño. General.** La zona de diseño es la ventana principal del entorno con Compose: en ella se colocan los elementos de la interfaz. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Android Studio ofrece tres modos combinables mediante pestañas: **Code** (solo código), **Split** (código y previsualización al mismo tiempo) y **Design** (solo previsualización)</span>. En la zona de previsualización se muestra el aspecto de la aplicación que se está implementando: podríamos decir que es el lienzo sobre el que dibujar la interfaz. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Las funciones anotadas con `@Preview` se renderizan aquí en vivo, sin ejecutar la app</span>:
 
 <figure markdown>
 ![Vista Split de Android Studio: código Kotlin a la izquierda y preview de Compose renderizada a la derecha.](assets/vista-split.png)
 <figcaption>Fig. 7. La vista Split: el código Kotlin a la izquierda y la preview de la interfaz renderizándose en vivo a la derecha (indicador "Up-to-date"). Fuente: developer.android.com.</figcaption>
 </figure>
 
-**8.3. El catálogo de componentes.** Los componentes gráficos son los elementos que permiten al usuario interaccionar con la aplicación; cada uno corresponde con una función de Kotlin con sus propios parámetros: textos (`Text`) y botones (`Button`), campos de texto (`TextField`), casillas de verificación (`Checkbox`), contenedores de disposición (`Column`, `Row`, `Box`), etc. En Compose ese catálogo **no vive en una paleta lateral sino en el propio lenguaje**: se insertan escribiendo su nombre y dejando que el autocompletado de Android Studio (**Ctrl+Espacio**) los ofrezca con su documentación y parámetros. Escribe `But`, acepta `Button` y la preview de la vista *Split* lo renderiza al instante. El autocompletado es, en la práctica, la "paleta" de Compose: cada componible que existe está a tres letras y un tabulador de distancia.
+**8.3. El catálogo de componentes.** <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Los componentes gráficos son los elementos que permiten al usuario interaccionar con la aplicación</span>; cada uno corresponde con una función de Kotlin con sus propios parámetros: textos (`Text`) y botones (`Button`), campos de texto (`TextField`), casillas de verificación (`Checkbox`), contenedores de disposición (`Column`, `Row`, `Box`), etc. En Compose ese catálogo **no vive en una paleta lateral sino en el propio lenguaje**: se insertan escribiendo su nombre y dejando que el autocompletado de Android Studio (**Ctrl+Espacio**) los ofrezca con su documentación y parámetros. Escribe `But`, acepta `Button` y la preview de la vista *Split* lo renderiza al instante. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El autocompletado es, en la práctica, la "paleta" de Compose</span>: cada componible que existe está a tres letras y un tabulador de distancia.
 
 **8.4. Jerarquía y propiedades.** Compose conserva dos ayudas visuales heredadas de los editores clásicos, adaptadas al flujo code-first:
 
 - **Component Tree**: el árbol con la jerarquía de lo escrito, como un explorador de carpetas pero de la interfaz. Aparece el nombre de la función componible (por ejemplo `Button` o `Text`); el texto que se muestra al usuario puede ser diferente y, en la mayor parte de los casos, lo será. Clic en el árbol → salta a esa línea de código; útil para seleccionar un elemento pequeño o anidado sin fallar el clic en la preview.
-- **Parámetros de la función = propiedades.** No hay panel *Attributes*: las "propiedades" de cada componente son los **parámetros de su función Kotlin**. Las típicas de un botón: `enabled` (habilitar/deshabilitar), `colors` (colores), `modifier` (tamaño y alineación); y su contenido — el texto que ve el usuario — se declara entre las llaves del propio botón. Cambiar una propiedad es cambiar un argumento, y la preview se actualiza sola.
+- **Parámetros de la función = propiedades.** No hay panel *Attributes*: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">las "propiedades" de cada componente son los **parámetros de su función Kotlin**</span>. Las típicas de un botón: `enabled` (habilitar/deshabilitar), `colors` (colores), `modifier` (tamaño y alineación); y su contenido — el texto que ve el usuario — se declara entre las llaves del propio botón. Cambiar una propiedad es cambiar un argumento, y la preview se actualiza sola.
 
 **8.5. Tipos de proyecto nuevos.** Al crear un *New Project*, la galería de plantillas de Android Studio ofrece varios puntos de partida. Estas son las plantillas disponibles para teléfono/tablet, que conviene saber distinguir:
 
@@ -368,7 +371,7 @@ A continuación se describen los diferentes grupos de herramientas que podemos e
 
 Tabla 2. Plantillas de proyecto nuevo (teléfono/tablet) y sus diferencias.
 
-Fíjate en el criterio de elección: para **interfaces con Compose** la opción es *Empty Activity* (o *Navigation UI Activity* si la app tiene varias secciones desde el inicio); las *Views* son el sistema clásico anterior; y las de C++ cambian de lenguaje por completo. En este módulo usaremos **Empty Activity**, que nos deja el lienzo limpio para construir la interfaz desde cero.
+Fíjate en el criterio de elección: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">para **interfaces con Compose** la opción es *Empty Activity*</span> (o *Navigation UI Activity* si la app tiene varias secciones desde el inicio); las *Views* son el sistema clásico anterior; y las de C++ cambian de lenguaje por completo. En este módulo usaremos **Empty Activity**, que nos deja el lienzo limpio para construir la interfaz desde cero.
 
 **8.6. ¿Y si quiero mi app en TODOS los sistemas operativos? Kotlin Multiplatform.** Las plantillas anteriores generan proyectos **Android**. Si el objetivo es una app que compile a la vez para Android, iOS, escritorio (Windows/macOS/Linux), web y servidor, JetBrains ofrece el **asistente de Kotlin Multiplatform** (kmp.jetbrains.com): marcas las plataformas objetivo y te genera el proyecto con la estructura compartida ya montada.
 
@@ -460,126 +463,11 @@ Código 3. Dos botones en una fila.
 └─────────────────────────┘
 ```
 
-## 11. El caso práctico 2, línea a línea
+## 11. Resumen y resolución del caso práctico de la unidad
 
-En el caso práctico anterior hemos **escrito** la interfaz; ahora vamos a **leerla como la lee el compilador**. Este es el código completo (idéntico al del caso práctico 2, solo que con un nombre de función más descriptivo — el nombre de un composable siempre debe decir qué pinta):
+En este tema hemos visto que la librería **Jetpack Compose** contiene todas las funciones necesarias para programar todo tipo de componentes visuales como botones, textos, campos de edición o casillas de verificación, entre muchos otros. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Para lograr una interfaz básica, será necesario hacer uso de al menos una **función composable** que describa la pantalla</span> y poder añadirle objetos que sirvan para interactuar entre el usuario y la aplicación.
 
-```kotlin
-@Composable
-fun BotonesAceptarCancelar() {
-    Row(
-        modifier = Modifier.fillMaxSize(),
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Button(onClick = { }) {
-            Text("Aceptar")
-        }
-        Button(onClick = { }) {
-            Text("Cancelar")
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun BotonesPreview() {
-    BotonesAceptarCancelar()
-}
-```
-
-Parece poco código, pero contiene **los cuatro pilares de cualquier interfaz Compose**: un contenedor (`Row`), un modificador de tamaño (`fillMaxSize`), dos sistemas de alineación (`Arrangement`/`Alignment`) y el patrón de contenido anidado (`Button { Text }`).
-
-### 11.1. Los imports: el mapa de la biblioteca
-
-```kotlin
-import androidx.compose.foundation.layout.Row
-```
-
-En Compose **todo es una función con nombre completo**. `Row` no existe "de serie" en Kotlin: vive en la biblioteca `androidx.compose.foundation.layout`, en el archivo `Row.kt`. El import le dice al compilador: *cuando escriba `Row`, me refiero a esa*.
-
-Si lo quitas, el compilador no dirá "falta un import" — dirá `Unresolved reference: Row`: *referencia sin resolver*, no tengo ni idea de qué es eso que has escrito. Es el error más frecuente del principiante y el más fácil de arreglar: **Alt+Enter** sobre la palabra roja → *Import*.
-
-### 11.2. `@Composable`: el carné de la función
-
-```kotlin
-@Composable
-fun BotonesAceptarCancelar() {
-```
-
-Una anotación (`@`) es metadata: información *sobre* la función. `@Composable` declara: **esta función participa en la composición** — puede llamar a otras funciones composable y puede ser llamada desde composables o desde `setContent`.
-
-Sin la anotación, la función es Kotlin normal y corriente... y en cuanto intentes usar `Row` dentro, el compilador corta el paso con dos mensajes y una idea: *para llamar a composables hay que ser composable*. Es la regla de entrada del club.
-
-### 11.3. `Row`: un contenedor con doble eje
-
-`Row` es un **contenedor de fila**: apila a sus hijos en **horizontal**, de izquierda a derecha (su hermano `Column` lo hace en vertical). Al llamarlo le pasamos tres parámetros con nombre:
-
-- **`modifier = Modifier.fillMaxSize()`** — el "tamaño" del contenedor. `Modifier` es una cadena de instrucciones de tamaño/posición/comportamiento que se pasan **al crear** el componente, nunca después. `fillMaxSize()` significa "ocupa todo el espacio disponible". Sin él, el `Row` se encoge a lo estrictamente necesario para contener sus hijos.
-- **`horizontalArrangement = Arrangement.Center`** — **cómo se reparten los hijos en el eje X** (el principal del `Row`). `Arrangement` es la familia de opciones: `Start`, `Center`, `End`, `SpaceBetween`, `SpaceAround`, `SpaceEvenly`...
-- **`verticalAlignment = Alignment.CenterVertically`** — **dónde se alinean los hijos en el eje Y** (el perpendicular). Fíjate en la asimetría del API: en el eje principal se *arregla el reparto* (`Arrangement`); en el perpendicular, *la alineación* (`Alignment`).
-
-> **Regla mnemotécnica:** en un `Row`, X es *arrangement* e Y es *alignment*. En un `Column`, al revés.
-
-Los tres parámetros son **opcionales**: si los quitas, el código compila y los botones quedan arriba a la izquierda (valores por defecto `Start`/`Top`). Es la familia de errores más traicionera: **no hay mensaje de error, hay que usar el ojo** (y el `@Preview`).
-
-### 11.4. `Button { Text }`: el patrón slot
-
-Aquí hay dos cosas que conviene ver separadas:
-
-1. **`onClick = { }` es un parámetro obligatorio.** Es una *lambda*: el bloque de código que se ejecuta al pulsar. Aquí está vacío (el botón no hace nada todavía), pero el parámetro existe y hay que pasarlo.
-2. **`Text("Aceptar")` va DENTRO de las llaves del botón.** Es el patrón *slot* de Compose: `Button` no recibe el texto como `String`, recibe **otro componible** como contenido. Ese bloque final tras los parámetros es la *trailing lambda* de `content`. Por eso `Button("Aceptar")` no compila: el primer parámetro posicional de `Button` no es un texto.
-
-### 11.5. `@Preview`: el bucle de retroalimentación instantáneo
-
-`@Preview` (de `ui-tooling-preview`) le dice al IDE: **renderiza esta función sin ejecutar la app**. Es el bucle de retroalimentación más rápido que existe: código → previsualización casi en el mismo segundo, sin emulador.
-
-- `showBackground = true` le pone un fondo blanco (por defecto la interfaz se ve "flotando" sobre el panel).
-- La función de preview **también es `@Composable`** y su cuerpo es una sola línea: llamar a la función real. **Nunca lógica en la preview** — solo decorarla con datos de prueba si hace falta.
-
-Quitar `@Preview` no rompe nada: la app compila y funciona igual. Solo pierdes la vista previa del IDE.
-
-## 12. Matriz de fallos: 15 maneras de romper la interfaz
-
-Todas las variantes de esta tabla se han compilado de verdad, rompiendo **una sola cosa cada vez**. Tapa la columna del resultado e intenta predecir qué pasará antes de leerlo.
-
-| # | Qué rompo | ¿Compila? | Qué pasa / mensaje del compilador |
-|---|-----------|-----------|-----------------------------------|
-| 01 | Quitar `@Composable` de la función principal | ❌ | `Functions which invoke @Composable functions must be marked with the @Composable annotation` + `@Composable invocations can only happen from the context of a @Composable function` |
-| 02 | Quitar `@Preview` (y su import) | ✅ | Compila y la app funciona. Solo pierdes la vista previa del IDE |
-| 03 | Quitar `import ...layout.Row` | ❌ | `Unresolved reference: Row` (+ errores en cascada) |
-| 04 | Quitar `import ...layout.fillMaxSize` | ❌ | `Unresolved reference: fillMaxSize` |
-| 05 | Quitar `import ...layout.Arrangement` | ❌ | `Unresolved reference: Arrangement` |
-| 06 | Quitar `import ...ui.Alignment` | ❌ | `Unresolved reference: Alignment` |
-| 07 | Quitar `modifier = Modifier.fillMaxSize()` | ✅ | El `Row` se encoge: botones **arriba a la izquierda** |
-| 08 | `Arrangement.Center` → `Arrangement.SpaceBetween` | ✅ | Botones pegados a los **extremos** con el hueco en medio |
-| 09 | Quitar `horizontalArrangement` | ✅ | Botones a la **izquierda** (Start por defecto) |
-| 10 | Quitar `verticalAlignment` | ✅ | Botones **arriba** (Top por defecto) |
-| 11 | `Button(onClick = { })` → `Button()` | ❌ | `No value passed for parameter 'onClick'` |
-| 12 | `onClick = { println("click") }` | ✅ | El botón ya "hace" algo (visible en Logcat) |
-| 13 | `Text("Aceptar")` → `Text()` | ❌ | `No value passed for parameter 'text'` |
-| 14 | Quitar el `Text` de dentro del `Button` | ❌ | `No value passed for parameter 'content'` |
-| 15 | `@Preview(showBackground = true)` → `@Preview` | ✅ | Preview sin fondo: la interfaz se ve "flotando" |
-
-### 12.1. Las tres familias de errores
-
-Cuando alguien pierde media hora con un error de Compose, casi siempre es de una de estas tres familias:
-
-1. **Familia A — Anotación** (01): *quién puede llamar a quién*. El compilador nos recuerda la regla del club `@Composable`.
-2. **Familia B — Import** (03-06): `Unresolved reference` = "no sé qué es eso". Se arregla con **Alt+Enter → Import**.
-3. **Familia C — Parámetro obligatorio** (11, 13, 14): `No value passed for parameter 'X'`. El API de Compose obliga a dar ciertos valores (`onClick`, `text`, `content`).
-
-Y aparte, la **familia silenciosa** (07-10): código que compila y se ve mal. Contra ella solo hay dos defensas: el `@Preview` y la costumbre de leer el resultado con ojos críticos. Recuérdalo: **que compile no significa que esté bien**.
-
-### 12.2. Para practicar
-
-Elige un número de la matriz **sin mirar el resultado**, predice en voz alta qué pasará (¿error? ¿dónde? ¿qué mensaje exacto?) y luego provoca el fallo en el proyecto y comprueba la predicción. Si quieres ir más allá: inventa una variante nueva y clasifícala en una de las tres familias.
-
-## 13. Resumen y resolución del caso práctico de la unidad
-
-En este tema hemos visto que la librería **Jetpack Compose** contiene todas las funciones necesarias para programar todo tipo de componentes visuales como botones, textos, campos de edición o casillas de verificación, entre muchos otros. Para lograr una interfaz básica, será necesario hacer uso de al menos una **función composable** que describa la pantalla y poder añadirle objetos que sirvan para interactuar entre el usuario y la aplicación.
-
-Hemos comprobado también que Compose es **code-first**: la interfaz se escribe en código Kotlin y la vista *Split/Design* es su previsualización en vivo. No existe paleta de arrastre: el catálogo de componentes vive en el autocompletado (**Ctrl+Espacio**) y las propiedades de cada componente son los parámetros de su función.
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Hemos comprobado también que Compose es **code-first**: la interfaz se escribe en código Kotlin y la vista *Split/Design* es su previsualización en vivo</span>. No existe paleta de arrastre: el catálogo de componentes vive en el autocompletado (**Ctrl+Espacio**) y las propiedades de cada componente son los parámetros de su función.
 
 **Resolución del caso práctico de la unidad.** Como se ha visto a lo largo del tema, el proceso de implementación no solo es importante para el desarrollo de interfaces, sino también para tomar una serie de decisiones previas. Para el caso inicial del desarrollo de la interfaz de una **aplicación de bienvenida para el instituto**:
 
@@ -596,5 +484,5 @@ Hemos comprobado también que Compose es **code-first**: la interfaz se escribe 
 - Kotlin Foundation. *Kotlin docs*. <https://kotlinlang.org/docs/home.html>
 - JetBrains. *Kotlin Multiplatform — asistente de proyecto*. <https://kmp.jetbrains.com/>
 - JetBrains. *Compose Multiplatform*. <https://www.jetbrains.com/compose/multiplatform/>
-- Real Decreto 450/2010. Módulo profesional 0488 Desarrollo de interfaces.
+- Real Decreto 405/2023, de 29 de mayo (BOE-A-2023-13221). Módulo profesional 0488 Desarrollo de interfaces.
 - Temario del módulo como base conceptual de la adaptación.

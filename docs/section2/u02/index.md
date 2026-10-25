@@ -1,36 +1,27 @@
 ---
 title: "UD 2 - Clases y componentes"
-description: "Índice de la unidad 2: teoría, ejercicios y solucionario de componentes, contenedores, diálogos y navegación en Jetpack Compose."
+description: "Índice de la unidad 2 de Desarrollo de Interfaces: clases y componentes de Jetpack Compose con capturas reales de cada ejemplo en Android Studio y el emulador."
 authors:
     - Ismael Velasco
-date: 2026-09-26
+date: 2026-10-12
 icon: "material/view-dashboard"
 permalink: /di/unidad2/
-categories:
-    - DI
+categories: DI
 tags:
     - DI
+    - Android Studio
+    - Kotlin
     - Jetpack Compose
 ---
 
-# UD 2 — Clases y componentes
+# UD 2 - Clases y componentes
 
-La unidad que convierte la pantalla en un catálogo de piezas: componentes que recogen datos del usuario, contenedores que los ordenan, diálogos que confirman y navegación que conecta pantallas.
+Segunda unidad del módulo **Desarrollo de Interfaces** (código 0488, RD 405/2023): el catálogo completo de componentes de **Jetpack Compose**, cada uno con su código y una captura real del ejemplo en ejecución en el emulador.
 
-## Contenido
+## Contenido de la unidad
 
-- [Teoría 2.1 — Clases y componentes](teoria/DI-U2.1.-ClasesYComponentes.md)
-- [Ejercicios UD 2](ejercicios/DI-U2.-Ejercicios.md)
-- [Solucionario UD 2](ejercicios/DI-U2.-Solucionario.md)
+- Teoría: [2.1 - Clases y componentes](teoria/DI-U2.1.-ClasesYComponentes.md)
 
-## Presentaciones
+## Presentación
 
-- [DI-U2.1 — Clases y componentes](https://ismaelvelasco-star.github.io/slides/section2-di/DI-U2.1.-ClasesYComponentes.html)
-
-## Qué aprenderás
-
-- El repaso exprés de POO que usa Compose (clases, atributos, métodos) y por qué el estado es POO en acción.
-- Los contenedores: Column, Row, Box, LazyVerticalGrid y Scaffold (la pantalla con huecos preparados).
-- Los 6 componentes esenciales con código y visual: Button, Text, TextField, Checkbox, RadioButton y menú desplegable.
-- Diálogos modales con AlertDialog y la conexión entre pantallas con Navigation Compose.
-- Dos casos prácticos completos: login con navegación y reproductor en rejilla.
+- [DI-U2.1 - Clases y componentes](https://revilofe.github.io/slides/section6-di/DI-U2.1.-ClasesYComponentes.html)

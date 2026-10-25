@@ -1,0 +1,122 @@
+Módulo Profesional: Programación multimedia y dispositivos móviles.
+Equivalencia en créditos ECTS: 7.
+Código: 0489.
+Ciclo: Desarrollo de Aplicaciones Multiplataforma (Real Decreto 450/2010, de 16 de abril, Anexo I).
+
+
+Resultados de aprendizaje y criterios de evaluación.
+
+1. Aplica tecnologías de desarrollo para dispositivos móviles evaluando sus características y capacidades.
+Criterios de evaluación:
+a) Se han analizado las limitaciones que plantea la ejecución de aplicaciones en los dispositivos móviles.
+b) Se han identificado las tecnologías de desarrollo de aplicaciones para dispositivos móviles.
+c) Se han instalado, configurado y utilizado entornos de trabajo para el desarrollo de aplicaciones para dispositivos móviles.
+d) Se han identificado configuraciones que clasifican los dispositivos móviles en base a sus características.
+e) Se han descrito perfiles que establecen la relación entre dispositivos y tipos de aplicaciones.
+f) Se han reconocido las limitaciones técnicas de los dispositivos móviles.
+g) Se han analizado las capacidades gráficas y sonoras de los dispositivos en base a las necesidades del aplicación.
+h) Se han reconocido los mecanismos de seguridad y distribución de software específicos de dispositivos móviles.
+
+2. Desarrolla aplicaciones para dispositivos móviles mediante herramientas gráficas, integrando interfaces, persistencia y comunicaciones.
+Criterios de evaluación:
+a) Se han utilizado entornos de desarrollo específicos para dispositivos móviles.
+b) Se han utilizado herramientas visuales para crear interfaces de usuario.
+c) Se han incorporado mecanismos de persistencia mediante herramientas visuales.
+d) Se han incorporado mecanismos de conectividad y comunicación de datos en aplicaciones para dispositivos móviles.
+e) Se han integrado y adaptado aplicaciones en el dispositivo móvil.
+f) Se ha probado y depurado la aplicación en el emulador y en el dispositivo real.
+g) Se han generado paquetes de despliegue de las aplicaciones.
+h) Se han descrito las tecnologías disponibles para la publicación de aplicaciones en los mercados correspondientes.
+i) Se ha documentado la aplicación desarrollada.
+
+3. Desarrolla aplicaciones que gestionan dispositivos con conexión inalámbrica, incorporando mecanismos de seguridad y verificando su funcionamiento.
+Criterios de evaluación:
+a) Se han reconocido las tecnologías de comunicación inalámbrica disponibles en los dispositivos.
+b) Se han reconocido los tipos de dispositivos que se pueden conectar mediante tecnologías inalámbricas.
+c) Se han descrito las funciones de los perfiles y protocolos de comunicación en tecnologías inalámbricas.
+d) Se ha utilizado el emulador para simular la comunicación entre dispositivos.
+e) Se han utilizado interfaces de programación específicas para el intercambio de datos entre dispositivos conectados.
+f) Se han desarrollado aplicaciones que realizan intercambio de información entre dispositivos mediante tecnologías inalámbricas.
+g) Se han incorporado mecanismos de seguridad en las comunicaciones inalámbricas.
+h) Se han probado y depurado las aplicaciones desarrolladas.
+
+4. Desarrolla aplicaciones que integran objetos multimedia comprobando su funcionamiento y los mecanismos de seguridad aplicados.
+Criterios de evaluación:
+a) Se han identificado los tipos de objetos multimedia que se pueden integrar en una aplicación.
+b) Se han descrito las librerías y componentes disponibles para integrar objetos multimedia.
+c) Se han utilizado componentes multimedia en aplicaciones.
+d) Se han incorporado mecanismos de reproducción y grabación de sonido y vídeo.
+e) Se ha incorporado un analizador de grafos en tiempo real de la señal de audio.
+f) Se han reconocido los mecanismos de seguridad relacionados con los objetos multimedia.
+g) Se ha probado el funcionamiento de las aplicaciones.
+h) Se han utilizado herramientas de depuración para analizar el rendimiento de las aplicaciones multimedia.
+i) Se ha documentado la aplicación desarrollada.
+
+5. Desarrolla juegos aplicando técnicas específicas de desarrollo y validando su funcionamiento.
+Criterios de evaluación:
+a) Se han identificado los tipos de juegos y sus características.
+b) Se han analizado motores de juegos, sus características y funcionalidades.
+c) Se han reconocido las estructuras de datos específicas del desarrollo de juegos.
+d) Se han aplicado técnicas de desarrollo de juegos, utilizando instrucciones gráficas para establecer efectos sobre objetos o imágenes.
+e) Se han desarrollado juegos 2D y 3D.
+f) Se han incorporado mecanismos de persistencia en los juegos.
+g) Se han incorporado mecanos de seguridad en los juegos.
+h) Se han probado y depurado los juegos.
+i) Se ha documentado el juego desarrollado.
+
+
+Duración: 105 horas.
+
+
+Contenidos básicos.
+
+1. Programación de aplicaciones para dispositivos móviles:
+− Análisis de las tecnologías de desarrollo para dispositivos móviles.
+− Limitaciones de los dispositivos móviles: memoria, pantalla, persistencia, comunicaciones, interface.
+− Características de las aplicaciones para dispositivos móviles. Perfiles de aplicación.
+− Entornos de desarrollo para dispositivos móviles.
+− Emuladores y dispositivos físicos. Pruebas de aplicaciones en emuladores y en dispositivos reales.
+− Estructura de las aplicaciones para dispositivos móviles: componentes, ciclo de vida.
+− Interfaces de usuario para dispositivos móviles: interfaces adaptativas, XML, otras.
+− Persistencia en dispositivos móviles. Ficheros. Bases de datos embebidas.
+− Comunicaciones en dispositivos móviles.
+− Empaquetado, firma y distribución de aplicaciones. Publicación en mercados.
+− Seguridad en las aplicaciones para dispositivos móviles.
+
+2. Utilización de librerías multimedia integradas:
+− Tipos de objetos multimedia: imagen, sonido, vídeo, animaciones.
+− Librerías y componentes multimedia. Características y funcionalidades.
+− Reproducción y grabación de audio y vídeo.
+− Análisis de grafos en tiempo real de la señal de audio.
+− Integración de componentes multimedia en aplicaciones.
+− Motores de juegos.
+
+3. Motores de juegos:
+− Tipos de juegos. Características.
+− Motores de juegos. Características y funcionalidades.
+− Estructuras de datos específicas del desarrollo de juegos.
+− Técnicas específicas de desarrollo de juegos.
+− Desarrollo de juegos 2D y 3D.
+− Instrucciones gráficas. Efectos sobre objetos o imágenes.
+− Persistencia y seguridad en juegos.
+
+4. Conexión inalámbrica de dispositivos:
+− Tecnologías de comunicación inalámbrica.
+− Perfiles y protocolos de comunicación.
+− Emuladores y dispositivos físicos. Simulación de la comunicación entre dispositivos.
+− Interfaces de programación para el intercambio de datos.
+− Seguridad en las comunicaciones inalámbricas.
+
+
+Orientaciones pedagógicas.
+
+Este módulo asociado a la unidad de competencia uc0960_3 se corresponde con la función de desarrollo de software para dispositivos móviles.
+
+La formación del módulo contribuye a alcanzar los objetivos generales b), d), e), f), g), i), j), k) y l) del ciclo formativo, y las competencias profesionales, personales y sociales b), c), d), e), f), g), h), i), j) y k) del título.
+
+Las líneas de actuación en el proceso enseñanza-aprendizaje que permiten alcanzar los objetivos del módulo versarán sobre:
+− La instalación y utilización de entornos de desarrollo para aplicaciones y juegos en dispositivos móviles.
+− La implementación de aplicaciones para dispositivos móviles con interfaces de usuario, persistencia de los datos y mecanismos de comunicación.
+− El desarrollo de aplicaciones que integran objetos multimedia.
+− El análisis de motores de juegos, sus características y funcionalidades.
+− El desarrollo de juegos 2D y 3D aplicando técnicas específicas y utilizando instrucciones gráficas para establecer efectos sobre objetos o imágenes.
