@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Índice de la unidad 3 de PMDM: navegación con argumentos y deep links, formularios con estado, MVVM, Hilt, Room, persistencia remota y autenticación.">
+        <meta name="description" content="Unidad 3 de PMDM: navegación con datos, estado con ViewModel, Room, Retrofit y sesión. Cinco apartados dimensionados a las horas reales del módulo.">
       
       
         <meta name="author" content="Ismael Velasco">
@@ -1049,6 +1049,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#2-reparto-de-horas-esto-es-lo-que-da-tiempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Reparto de horas (esto es lo que da tiempo)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#teoria" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1294,7 +1305,7 @@
         
   
   
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
   
   <span class="md-ellipsis">
     
@@ -3106,6 +3117,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#2-reparto-de-horas-esto-es-lo-que-da-tiempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Reparto de horas (esto es lo que da tiempo)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#teoria" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3177,15 +3199,66 @@
   <h1>UD 3 - Programación en Android: gestión de datos</h1>
 
 <h2 id="ud-3-programacion-en-android-gestion-de-datos"><strong>UD 3 - Programación en Android: gestión de datos</strong></h2>
-<p>La unidad donde la app deja de tener datos de mentira: navegación con argumentos, formularios que validan, estado que sobrevive, base de datos local (Room), servidor (Retrofit) y sesión de usuario. Todo el código está ejecutado en emulador: las capturas son la prueba.</p>
+<p>La unidad donde la app deja de tener datos de mentira: navegación con argumentos, estado que sobrevive, base de datos local y servidor. Todo el código está ejecutado en emulador: las capturas son la prueba.</p>
 <h3 id="1-normativa-que-respalda-la-unidad">1. Normativa que respalda la unidad</h3>
 <p>Módulo <strong>Programación Multimedia y Dispositivos Móviles</strong> (0489), currículo vigente del <strong>RD 405/2023</strong> (BOE-A-2023-13221). Se trabajan del <strong>RA2</strong> los criterios <strong>a)</strong> estructura de clases, <strong>e)</strong> conexiones HTTP y HTTPS, <strong>f)</strong> conexiones con almacenes de datos garantizando la persistencia, <strong>g)</strong> pruebas de interacción en emulador, <strong>i)</strong> documentación de los procesos y <strong>j)</strong> permisos requeridos. El texto íntegro está en <a href="../recursos/PMDM%20Normativa.txt"><code>recursos/PMDM Normativa.txt</code></a>.</p>
+<h3 id="2-reparto-de-horas-esto-es-lo-que-da-tiempo">2. Reparto de horas (esto es lo que da tiempo)</h3>
+<p>El módulo tiene <strong>3 sesiones semanales</strong> (≈2 h 45 min/semana). La unidad se cierra en <strong>4 semanas</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Apartado</th>
+<th>Contenido</th>
+<th>Horas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3.1</td>
+<td>Navegación con datos: argumentos, pila y deep links</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3.2</td>
+<td>Estado y formularios: ViewModel + StateFlow + validación</td>
+<td>2,5</td>
+</tr>
+<tr>
+<td>3.3</td>
+<td>Room: persistencia local (con Hilt para el DAO)</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3.4</td>
+<td>Retrofit y sesión: red, DTOs y token en DataStore</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3.5</td>
+<td>Taller integrador y resolución de errores</td>
+<td>2,5</td>
+</tr>
+<tr>
+<td>—</td>
+<td><strong>Práctica evaluable</strong> (entrega con capturas)</td>
+<td>3</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total</strong></td>
+<td><strong>16 h</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Los ocho apartados del borrador inicial (3.1 a 3.8) se han <strong>fundido en cinco</strong>: MVVM va con formularios, Hilt va con Room, y autenticación va con Retrofit. Así se da todo sin quedarse a medias.</p>
+</blockquote>
 <h3 id="teoria">Teoría</h3>
 <ul>
 <li><a href="teoria/PMDM-U3.1.-NavegacionGrafoArgumentosYDeepLinks/">3.1.- Navegación: grafo, argumentos y enlaces profundos</a> — rutas con argumento tipado, control de la pila, valores por defecto y deep links.</li>
 </ul>
 <blockquote>
-<p>3.2 Formularios y diálogos con estado · 3.3 MVVM aplicado a datos · 3.4 Hilt · 3.5 Room · 3.6 Persistencia remota · 3.7 Autenticación · 3.8 Troubleshooting — en preparación.</p>
+<p>3.2 Estado y formularios · 3.3 Room · 3.4 Retrofit y sesión · 3.5 Taller integrador — en preparación.</p>
 </blockquote>
 <h3 id="practicas">Prácticas</h3>
 <ul>
