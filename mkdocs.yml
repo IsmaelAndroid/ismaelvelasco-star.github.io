@@ -22,6 +22,9 @@ nav:
         - '2.2.-Actividades e Intents': 'section1/u02/teoria/PMDM-U2.2.-ActividadesEIntents.md'
         - '2.3.-La app Compose: listas y formulario': 'section1/u02/teoria/PMDM-U2.3.-AppComposeListasYFormulario.md'
         - 'Práctica 2.1: Mini-proyecto de la libreta': 'section1/u02/practica/PMDM-U2.-MiniProyectoContactos.md'
+    - 'U3: Gestión de datos':
+        - 'section1/u03/index.md'
+        - '3.1.-Navegación: grafo, argumentos y deep links': 'section1/u03/teoria/PMDM-U3.1.-NavegacionGrafoArgumentosYDeepLinks.md'
   - 'Desarrollo de Interfaces':
     - 'section2/index.md'
     - 'UD 1 - Introducción a la confección de interfaces':
