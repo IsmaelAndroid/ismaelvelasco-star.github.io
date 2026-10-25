@@ -42,6 +42,7 @@ nav:
         - 'section1/u05/index.md'
         - '5.1.-Formatos y entornos multimedia': 'section1/u05/teoria/PMDM-U5.1.-FormatosYEntornosMultimedia.md'
         - '5.2.-Captura y procesamiento en Android': 'section1/u05/teoria/PMDM-U5.2.-CapturaYProcesamientoEnAndroid.md'
+        - '5.3.-Reproducción de audio y vídeo': 'section1/u05/teoria/PMDM-U5.3.-ReproduccionDeAudioYVideo.md'
 theme:
   name: material
   language: es
