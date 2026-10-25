@@ -2275,7 +2275,12 @@
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>albedo_color = Color(0.36, 0.62, 0.95, 1)
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>metallic = 0.4
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>roughness = 0.25
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>[sub_resource type="BoxMesh" id="BoxMesh_caja"]
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>size = Vector3(1, 1, 1)
 </code></pre></div>
+<p>El material <strong>no basta</strong>: hace falta una malla (<code>BoxMesh</code>) que le dé forma y una forma de colisión (<code>BoxShape3D</code>) que le dé cuerpo. Un <code>MeshInstance3D</code> sin <code>mesh</code> no dibuja nada, aunque tenga material.</p>
+<p>{ V('Un <code>MeshInstance3D</code> sin <code>mesh</code> no se ve: el material solo se aplica a una superficie, y sin malla no hay superficie.') }</p>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>metallic</code> y <code>roughness</code> solo se notan si hay luz y entorno. Un objeto metálico sin luz alrededor se ve negro: el material no crea la luz.</span></p>
 <h2 id="5-camara-ce-g">5. Cámara (CE g)</h2>
 <p>La cámara es el ojo del jugador. Su <code>transform</code> guarda posición y rotación juntas, así que se lee mal a simple vista. Lo importante:</p>
@@ -2346,6 +2351,8 @@
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La <code>DirectionalLight3D</code> solo cuenta su <strong>rotación</strong>, no su posición: moverla no cambia la luz, girarla sí.</span></p>
 <p>Y una <code>OmniLight3D</code> (bombilla) sí depende de la posición y se atenúa con la distancia: es la que se usa para farolas y antorchas.</p>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Direccional = sol (solo rotación). Omni = bombilla (posición y alcance). Spot = foco (cono con ángulo).</span></p>
+<p><img alt="La caja azul cayendo sobre el suelo 3D con su sombra" src="../assets/captura-3d-cayendo.png" /></p>
+<p><em>La caja azul cayendo: 2,46 m de altura, con la sombra proyectada por la <code>DirectionalLight3D</code>. Captura real de <code>fisica3d.tscn</code>.</em></p>
 <h2 id="7-el-codigo-de-la-escena-3d">7. El código de la escena 3D</h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">extends</span><span class="w"> </span><span class="n">Node3D</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># ============================================================</span>
@@ -2361,6 +2368,8 @@
 <a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="c1"># muestra en pantalla la altura real de la caja cada fotograma</span>
 <a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="n">etiqueta</span><span class="o">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"altura de la caja: </span><span class="si">%.2f</span><span class="s2"> m"</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">caja</span><span class="o">.</span><span class="n">global_position</span><span class="o">.</span><span class="n">y</span>
 </code></pre></div>
+<p><img alt="La misma caja en reposo sobre el suelo: 0,69 m" src="../assets/captura-3d-reposo.png" /></p>
+<p><em>Dos segundos y medio después: la caja ha caído y descansa sobre el suelo. La altura la mide el propio motor (<code>0.69 m</code>). Captura real.</em></p>
 <p>Cuatro líneas de código y una escena: la física la pone el motor. Ese es el sentido de usar un motor de juegos.</p>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La altura se lee de <code>caja.global_position.y</code>, la posición real simulada, no de una variable que llevemos a mano.</span></p>
 <h2 id="8-anadir-rebote-e-impulso">8. Añadir rebote e impulso</h2>

@@ -2332,7 +2332,7 @@
 </code></pre></div>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>direccion * 320.0</code> con <code>velocity</code> da píxeles por segundo. Si multiplicas además por <code>delta</code> a mano, el jugador irá lentísimo: <code>move_and_slide()</code> ya lo hace.</span></p>
 <h2 id="7-ejemplo-completo-y-ejecutado-la-logica-del-juego">7. Ejemplo completo y ejecutado: la lógica del juego</h2>
-<p>Este es el script real de la escena <code>juego2d.tscn</code> del proyecto <strong>IsmaelJuego</strong>, ejecutado en Godot 4.7.2. Implementa las seis reglas de la lista del apartado 2:</p>
+<p>Este es el script real de la escena <code>juego2d.tscn</code> del proyecto <strong>IsmaelJuego</strong>, ejecutado en Godot 4.7.2. Implementa las cinco primeras reglas de la lista del apartado 2 (la sexta, el final de partida, se añade justo después):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">extends</span><span class="w"> </span><span class="n">Node2D</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># ============================================================</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># UD6 · Juego 2D: movimiento, colisiones, puntuación y sonido</span>
