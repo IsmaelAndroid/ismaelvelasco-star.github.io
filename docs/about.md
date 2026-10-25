@@ -15,5 +15,5 @@ Material docente del módulo **Programación Multimedia y Dispositivos Móviles*
 
 - Autor: Ismael Velasco
 - Estructura del sitio y sistema de slides inspirados en la plantilla de [Eduardo Fdez (revilofe)](https://revilofe.github.io/), usada con permiso en el entorno docente del IES Rafael Alberti.
-- Normativa de referencia: RD 450/2010, módulo 0489.
+- Normativa de referencia: RD 405/2023, módulo 0489.
 - Material docente propio elaborado directamente en Kotlin y Android Studio.

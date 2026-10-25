@@ -13,8 +13,8 @@ permalink: /
 
 Material docente de los módulos del ciclo **Desarrollo de Aplicaciones Multiplataforma**:
 
-- **PMDM — Programación Multimedia y Dispositivos Móviles** (código 0489, RD 450/2010), con Kotlin y Android.
-- **DI — Desarrollo de Interfaces** (código 0488, RD 450/2010), con Kotlin y Jetpack Compose.
+- **PMDM — Programación Multimedia y Dispositivos Móviles** (código 0489, RD 405/2023), con Kotlin y Android.
+- **DI — Desarrollo de Interfaces** (código 0488, RD 405/2023), con Kotlin y Jetpack Compose.
 
 ## Acceso directo
 

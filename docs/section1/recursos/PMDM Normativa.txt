@@ -1,7 +1,7 @@
 Módulo Profesional: Programación multimedia y dispositivos móviles.
 Equivalencia en créditos ECTS: 7.
 Código: 0489.
-Ciclo: Desarrollo de Aplicaciones Multiplataforma (Real Decreto 450/2010, de 16 de abril, Anexo I).
+Ciclo: Desarrollo de Aplicaciones Multiplataforma (Real Decreto 405/2023, de 29 de mayo).
 
 
 Resultados de aprendizaje y criterios de evaluación.
