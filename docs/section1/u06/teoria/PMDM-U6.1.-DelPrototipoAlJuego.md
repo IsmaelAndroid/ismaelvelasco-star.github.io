@@ -144,7 +144,7 @@ func _physics_process(_delta: float) -> void:
 
 ## 7. Ejemplo completo y ejecutado: la lógica del juego
 
-Este es el script real de la escena `juego2d.tscn` del proyecto **IsmaelJuego**, ejecutado en Godot 4.7.2. Implementa las seis reglas de la lista del apartado 2:
+Este es el script real de la escena `juego2d.tscn` del proyecto **IsmaelJuego**, ejecutado en Godot 4.7.2. Implementa las cinco primeras reglas de la lista del apartado 2 (la sexta, el final de partida, se añade justo después):
 
 ```gdscript
 extends Node2D

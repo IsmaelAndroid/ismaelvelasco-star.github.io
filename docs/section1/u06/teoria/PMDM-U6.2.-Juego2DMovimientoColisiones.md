@@ -185,7 +185,19 @@ func _al_recoger(cuerpo: Node2D, moneda: Area2D) -> void:
 
 func _actualizar_marcador() -> void:
 	etiqueta.text = "monedas: %d / %d" % [puntos, total]
+	if puntos == total:                                 # condición de fin de partida
+		etiqueta.text = "¡Has ganado! %d / %d" % [puntos, total]
 ```
+
+*En el fichero real hay además dos funciones de captura (`_capturar_secuencia` y `_guardar`) que solo se usan para generar las imágenes de estos apuntes; no forman parte de la lógica del juego.*
+
+![Partida terminada: marcador con el mensaje de victoria y sin monedas](assets/captura-juego2d-victoria.png)
+
+*Partida terminada: las tres monedas han desaparecido y el marcador muestra `¡Has ganado! 3 / 3`. Captura real del mismo proyecto.*
+
+![Partida terminada: marcador con el mensaje de victoria y sin monedas](assets/captura-juego2d-victoria.png)
+
+*Partida terminada: las tres monedas han desaparecido y el marcador muestra `¡Has ganado! 3 / 3`. Captura real del mismo proyecto.*
 
 ## 7. La escena en texto (`.tscn`)
 

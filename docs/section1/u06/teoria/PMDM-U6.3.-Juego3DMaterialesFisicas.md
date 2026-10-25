@@ -84,7 +84,14 @@ El aspecto final de la superficie lo decide el `StandardMaterial3D`:
 albedo_color = Color(0.36, 0.62, 0.95, 1)
 metallic = 0.4
 roughness = 0.25
+
+[sub_resource type="BoxMesh" id="BoxMesh_caja"]
+size = Vector3(1, 1, 1)
 ```
+
+El material **no basta**: hace falta una malla (`BoxMesh`) que le dé forma y una forma de colisión (`BoxShape3D`) que le dé cuerpo. Un `MeshInstance3D` sin `mesh` no dibuja nada, aunque tenga material.
+
+{ V('Un `MeshInstance3D` sin `mesh` no se ve: el material solo se aplica a una superficie, y sin malla no hay superficie.') }
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`metallic` y `roughness` solo se notan si hay luz y entorno. Un objeto metálico sin luz alrededor se ve negro: el material no crea la luz.</span>
 
@@ -124,6 +131,10 @@ Y una `OmniLight3D` (bombilla) sí depende de la posición y se atenúa con la d
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Direccional = sol (solo rotación). Omni = bombilla (posición y alcance). Spot = foco (cono con ángulo).</span>
 
+![La caja azul cayendo sobre el suelo 3D con su sombra](assets/captura-3d-cayendo.png)
+
+*La caja azul cayendo: 2,46 m de altura, con la sombra proyectada por la `DirectionalLight3D`. Captura real de `fisica3d.tscn`.*
+
 ## 7. El código de la escena 3D
 
 ```gdscript
@@ -141,6 +152,10 @@ func _process(_delta: float) -> void:
 	# muestra en pantalla la altura real de la caja cada fotograma
 	etiqueta.text = "altura de la caja: %.2f m" % caja.global_position.y
 ```
+
+![La misma caja en reposo sobre el suelo: 0,69 m](assets/captura-3d-reposo.png)
+
+*Dos segundos y medio después: la caja ha caído y descansa sobre el suelo. La altura la mide el propio motor (`0.69 m`). Captura real.*
 
 Cuatro líneas de código y una escena: la física la pone el motor. Ese es el sentido de usar un motor de juegos.
 
