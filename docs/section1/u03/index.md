@@ -58,7 +58,7 @@ El módulo tiene **3 sesiones semanales** (≈2 h 45 min/semana). La unidad se c
 
 ### Prácticas
 
-- Práctica 3.1: la agenda con navegación (enunciado en preparación).
+- Práctica 3.1 (mini-proyecto): «La agenda con datos» — 3 sesiones: tu app con navegación por argumentos, formulario validado, Room, petición HTTPS, sesión con DataStore y una prueba unitaria. Enunciado: [PMDM-U3.-AgendaConDatos](practica/PMDM-U3.-AgendaConDatos.md)
 
 ### Presentaciones
 

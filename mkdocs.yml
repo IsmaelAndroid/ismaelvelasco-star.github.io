@@ -29,6 +29,7 @@ nav:
         - '3.3.-Room: persistencia local': 'section1/u03/teoria/PMDM-U3.3.-RoomPersistenciaLocal.md'
         - '3.4.-Retrofit: red, DTOs y errores': 'section1/u03/teoria/PMDM-U3.4.-RetrofitRedYErrores.md'
         - '3.5.-Taller integrador: sesión y pruebas': 'section1/u03/teoria/PMDM-U3.5.-TallerIntegradorSesionYPruebas.md'
+        - 'Práctica 3.1: La agenda con datos': 'section1/u03/practica/PMDM-U3.-AgendaConDatos.md'
   - 'Desarrollo de Interfaces':
     - 'section2/index.md'
     - 'UD 1 - Introducción a la confección de interfaces':
