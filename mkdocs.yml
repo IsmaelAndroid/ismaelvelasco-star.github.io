@@ -16,6 +16,12 @@ nav:
         - 'Práctica 1.1: Explorando Android Studio y sus plantillas': 'section1/u01/practica/PMDM-U1.-Practica001.md'
         - 'Práctica 1.2: Emuladores y perfiles de dispositivo': 'section1/u01/practica/PMDM-U1.-Practica002.md'
         - 'Práctica 1.3: ADB y el administrador de aplicaciones': 'section1/u01/practica/PMDM-U1.-Practica003.md'
+    - 'U2: Programación en Android: IU con Jetpack Compose':
+        - 'section1/u02/index.md'
+        - '2.1.-Fundamentos del lenguaje Kotlin': 'section1/u02/teoria/PMDM-U2.1.-FundamentosLenguajeKotlin.md'
+        - '2.2.-Actividades e Intents': 'section1/u02/teoria/PMDM-U2.2.-ActividadesEIntents.md'
+        - '2.3.-La app Compose: listas y formulario': 'section1/u02/teoria/PMDM-U2.3.-AppComposeListasYFormulario.md'
+        - 'Práctica 2.1: Mini-proyecto de la libreta': 'section1/u02/practica/PMDM-U2.-MiniProyectoContactos.md'
   - 'Desarrollo de Interfaces':
     - 'section2/index.md'
     - 'UD 1 - Introducción a la confección de interfaces':

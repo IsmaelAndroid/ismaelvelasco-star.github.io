@@ -29,6 +29,9 @@ Todo el contenido está supeditado a mejora, de hecho está en construcción, y 
 #### Unidad 1 - Análisis de tecnologías para aplicaciones móviles
 
 * [PM-U1.1 - Análisis de tecnologías para aplicaciones móviles](https://ismaelvelasco-star.github.io/pmdm-multimedia-dispositivos-moviles/slides/section1-pmdm/PM-U1.1.-AnalisisTecnologiasMoviles.html)
+* [PM-U2.1 - Fundamentos del lenguaje Kotlin](https://ismaelvelasco-star.github.io/pmdm-multimedia-dispositivos-moviles/slides/section1-pmdm/PM-U2.1.-FundamentosKotlin.html)
+* [PM-U2.2 - Actividades e Intents](https://ismaelvelasco-star.github.io/pmdm-multimedia-dispositivos-moviles/slides/section1-pmdm/PM-U2.2.-ActividadesIntents.html)
+* [PM-U2.3 - La app Compose](https://ismaelvelasco-star.github.io/pmdm-multimedia-dispositivos-moviles/slides/section1-pmdm/PM-U2.3.-AppComposeListasYFormulario.html)
 
 ## Información
 
