@@ -36,9 +36,9 @@ El módulo tiene **3 sesiones semanales** (≈2 h 45 min/semana). La unidad se c
 |---|---|---|
 | 3.1 | Navegación con datos: argumentos, pila y deep links | 2 |
 | 3.2 | Estado y formularios: ViewModel + StateFlow + validación | 2,5 |
-| 3.3 | Room: persistencia local (con Hilt para el DAO) | 3 |
+| 3.3 | Room: persistencia local (entidades, DAO, Flow y migraciones) | 3 |
 | 3.4 | Retrofit y sesión: red, DTOs y token en DataStore | 3 |
-| 3.5 | Taller integrador y resolución de errores | 2,5 |
+| 3.5 | Taller integrador: Hilt, errores y pruebas | 2,5 |
 | — | **Práctica evaluable** (entrega con capturas) | 3 |
 | | **Total** | **16 h** |
 
@@ -50,7 +50,9 @@ El módulo tiene **3 sesiones semanales** (≈2 h 45 min/semana). La unidad se c
 
 - [3.2.- Estado y formularios: ViewModel, StateFlow y validación](teoria/PMDM-U3.2.-EstadoYFormularios.md) — dónde vive el estado, validación en el ViewModel y avisos con Snackbar.
 
-> 3.3 Room · 3.4 Retrofit y sesión · 3.5 Taller integrador — en preparación.
+- [3.3.- Room: persistencia local con entidades, DAO y Flow](teoria/PMDM-U3.3.-RoomPersistenciaLocal.md) — tabla, consultas, base de datos única, `Flow` y migraciones.
+
+> 3.4 Retrofit y sesión · 3.5 Taller integrador (Hilt) — en preparación.
 
 ### Prácticas
 
