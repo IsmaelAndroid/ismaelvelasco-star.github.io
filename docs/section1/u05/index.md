@@ -45,7 +45,7 @@ Unidad alineada con el módulo **Programación Multimedia y Dispositivos Móvile
 
 ### Presentaciones
 
-> Presentaciones de la unidad en preparación.
+* [PM-U5 - Contenidos multimedia](https://revilofe.github.io/slides/section5-pmdm/PM-U5.-ContenidosMultimedia.html)
 
 ### Situación en el módulo
 

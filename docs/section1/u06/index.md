@@ -32,6 +32,10 @@ weight: 6
 - [Tema 6.3 - Juego 3D: materiales, físicas, cámara e iluminación](teoria/PMDM-U6.3.-Juego3DMaterialesFisicas.md)
 - [Tema 6.4 - Pruebas, optimización y despliegue en móvil](teoria/PMDM-U6.4.-PruebasOptimizacionYDespliegue.md)
 
+## Presentaciones
+
+* [PM-U6 - Juegos 2D y 3D](https://revilofe.github.io/slides/section5-pmdm/PM-U6.-Juegos2DY3D.html)
+
 ## Práctica evaluable
 
 - [Práctica UD6 - Mi primer juego: recoge y gana](practica/PMDM-U6.-MiPrimerJuego.md)
