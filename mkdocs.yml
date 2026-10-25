@@ -38,6 +38,9 @@ nav:
         - '4.3.-Entornos y comparativa de motores': 'section1/u04/teoria/PMDM-U4.3.-EntornosYComparativaDeMotores.md'
         - '4.4.-Taller: ejecutar y depurar': 'section1/u04/teoria/PMDM-U4.4.-TallerPrimerProyectoEjecutarYDepurar.md'
         - 'Práctica 4.1: Anatomía de un juego': 'section1/u04/practica/PMDM-U4.-AnatomiaDeUnJuego.md'
+    - 'U5: Contenidos multimedia':
+        - 'section1/u05/index.md'
+        - '5.1.-Formatos y entornos multimedia': 'section1/u05/teoria/PMDM-U5.1.-FormatosYEntornosMultimedia.md'
 theme:
   name: material
   language: es
