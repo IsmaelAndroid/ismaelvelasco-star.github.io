@@ -200,3 +200,7 @@ Con esto se cierran los criterios **a)**, **e)**, **f)**, **g)**, **i)** y **j)*
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un almacén por nombre: cada `preferencesDataStore(name = ...)` abre un archivo, y multiplicar almacenes multiplica las escrituras.</span>
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Si una regla de negocio no se puede probar sin tocar la pantalla, está en la capa equivocada.</span>
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">En este módulo todo lo que entregues se demuestra con una captura o con una prueba: las dos son evidencia, la intención no.</span>
+
+## Presentación
+
+- [PM-U3 - Navegación, estado y red](https://revilofe.github.io/slides/section5-pmdm/PM-U3.-NavegacionEstadoYRed.html)

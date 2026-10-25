@@ -28,10 +28,23 @@ Todo el contenido está supeditado a mejora, de hecho está en construcción, y 
 
 #### Unidad 1 - Análisis de tecnologías para aplicaciones móviles
 
-* [PM-U1.1 - Análisis de tecnologías para aplicaciones móviles](https://ismaelvelasco-star.github.io/pmdm-multimedia-dispositivos-moviles/slides/section1-pmdm/PM-U1.1.-AnalisisTecnologiasMoviles.html)
-* [PM-U2.1 - Fundamentos del lenguaje Kotlin](https://ismaelvelasco-star.github.io/pmdm-multimedia-dispositivos-moviles/slides/section1-pmdm/PM-U2.1.-FundamentosKotlin.html)
-* [PM-U2.2 - Actividades e Intents](https://ismaelvelasco-star.github.io/pmdm-multimedia-dispositivos-moviles/slides/section1-pmdm/PM-U2.2.-ActividadesIntents.html)
-* [PM-U2.3 - La app Compose](https://ismaelvelasco-star.github.io/pmdm-multimedia-dispositivos-moviles/slides/section1-pmdm/PM-U2.3.-AppComposeListasYFormulario.html)
+* [PM-U1.1 - Análisis de tecnologías para aplicaciones móviles](https://revilofe.github.io/slides/section5-pmdm/PM-U1.1.-AnalisisTecnologiasMoviles.html)
+
+#### Unidad 3 - Navegación, estado y red
+
+* [PM-U3 - Navegación, estado y red](https://revilofe.github.io/slides/section5-pmdm/PM-U3.-NavegacionEstadoYRed.html)
+
+#### Unidad 4 - Motores de juegos
+
+* [PM-U4 - Motores de juegos](https://revilofe.github.io/slides/section5-pmdm/PM-U4.-MotoresDeJuegos.html)
+
+#### Unidad 5 - Contenidos multimedia
+
+* [PM-U5 - Contenidos multimedia](https://revilofe.github.io/slides/section5-pmdm/PM-U5.-ContenidosMultimedia.html)
+
+#### Unidad 6 - Juegos 2D y 3D
+
+* [PM-U6 - Juegos 2D y 3D](https://revilofe.github.io/slides/section5-pmdm/PM-U6.-Juegos2DY3D.html)
 
 ## Información
 
@@ -65,7 +78,7 @@ El curso tiene un total de XX semanas (XXX horas). La relación propuesta entre 
 ## Materiales
 
 ### Fuentes
-- [Rafael del Rio](https://rafaeldelrio.github.io/): Utilizado para la estructura de la página de presentación del módulo.
+- [Repositorio de la plantilla](https://revilofe.github.io/): Estructura del sitio y sistema de publicaciones.
 
 ### Bibliografía
 
@@ -73,4 +86,4 @@ El curso tiene un total de XX semanas (XXX horas). La relación propuesta entre 
   * Por definir.
 
 ### Recursos
-* [Repositorio GitHub del curso](https://github.com/ismaelvelasco-star/pmdm-multimedia-dispositivos-moviles): Aquí se encuentran los materiales y recursos adicionales para el módulo.
+* [Documentación oficial de Android Developers](https://developer.android.com/?hl=es): Referencia principal del módulo.

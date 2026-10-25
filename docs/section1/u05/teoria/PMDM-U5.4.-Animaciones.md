@@ -159,3 +159,7 @@ Comparando las dos capturas se ve lo importante: **el fotograma cambia solo** (a
 - Android — recursos `drawable`: [developer.android.com/guide/topics/resources/drawable-resource](https://developer.android.com/guide/topics/resources/drawable-resource).
 - Lottie — documentación oficial: [airbnb.io/lottie](https://airbnb.io/lottie/).
 - Módulo 0489 — Real Decreto 405/2023 (BOE): [BOE-A-2023-13221](https://www.boe.es/buscar/act.php?id=BOE-A-2023-13221).
+
+## Presentación
+
+- [PM-U5 - Contenidos multimedia](https://revilofe.github.io/slides/section5-pmdm/PM-U5.-ContenidosMultimedia.html)

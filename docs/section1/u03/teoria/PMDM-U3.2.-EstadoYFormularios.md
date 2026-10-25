@@ -214,3 +214,7 @@ alcance.launch { aviso.showSnackbar("Ficha guardada: ${estado.nombre}") }
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La `data class` de estado es inmutable y se cambia con `copy(...)`: por eso nunca quedan campos a medias tras una actualización.</span>
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Se validan todas las reglas a la vez y se muestran todos los errores a la vez: un error por pulsación alarga el tiempo de corrección.</span>
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un mensaje de error que vive en un `Toast` no se puede probar; uno que vive en el estado se pinta, se comprueba y se repite.</span>
+
+## Presentación
+
+- [PM-U3 - Navegación, estado y red](https://revilofe.github.io/slides/section5-pmdm/PM-U3.-NavegacionEstadoYRed.html)

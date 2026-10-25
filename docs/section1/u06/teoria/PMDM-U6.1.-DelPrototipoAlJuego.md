@@ -234,3 +234,7 @@ El último criterio del RA5 pide <span style="background-color:#a5d6a7;padding:0
 - Godot Engine — *Idle and Physics processing*: <https://docs.godotengine.org/en/stable/tutorials/scripting/idle_and_physics_processing.html>
 - Godot Engine — *GDScript reference*: <https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_basics.html>
 - Boletín Oficial del Estado — *RD 405/2023, currículo de PMDM*: <https://www.boe.es/buscar/act.php?id=BOE-A-2023-13221>
+
+## Presentación
+
+- [PM-U6 - Juegos 2D y 3D](https://revilofe.github.io/slides/section5-pmdm/PM-U6.-Juegos2DY3D.html)

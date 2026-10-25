@@ -200,3 +200,7 @@ val MIGRACION_1_2 = object : Migration(1, 2) {
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El DAO es una interfaz: la implementación la genera KSP al compilar, por eso no escribes SQLite a mano.</span>
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Si cambias una entidad sin subir `version`, Room lanza `IllegalStateException` al abrir: el número de versión es el contrato del esquema.</span>
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Toda escritura va en `suspend` (o en un `@Transaction`): en el hilo principal, SQLite bloquea la interfaz y se nota en el tacto.</span>
+
+## Presentación
+
+- [PM-U3 - Navegación, estado y red](https://revilofe.github.io/slides/section5-pmdm/PM-U3.-NavegacionEstadoYRed.html)

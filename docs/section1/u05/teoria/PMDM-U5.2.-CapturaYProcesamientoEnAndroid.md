@@ -197,3 +197,7 @@ Con `COMPATIBLE` se usa `TextureView`, que se dibuja dentro de la jerarquía de 
 - Android — permisos en tiempo de ejecución: [developer.android.com/training/permissions/requesting](https://developer.android.com/training/permissions/requesting).
 - Android — almacenamiento interno: [developer.android.com/training/data-storage/app-specific](https://developer.android.com/training/data-storage/app-specific).
 - Módulo 0489 — Real Decreto 405/2023 (BOE): [BOE-A-2023-13221](https://www.boe.es/buscar/act.php?id=BOE-A-2023-13221).
+
+## Presentación
+
+- [PM-U5 - Contenidos multimedia](https://revilofe.github.io/slides/section5-pmdm/PM-U5.-ContenidosMultimedia.html)

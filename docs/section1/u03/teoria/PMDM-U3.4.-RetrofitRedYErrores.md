@@ -195,3 +195,7 @@ Una pantalla que llama a un servidor tiene **tres estados**: cargando, error y d
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`baseUrl` termina en `/` y la ruta del `@GET` no empieza por `/`: si no respetas esa convención, la URL sale mal y el error es un 404 despistado.</span>
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El tiempo de espera también es configurable: sin `callTimeout`, un servidor colgado deja la pantalla con la rueda girando para siempre.</span>
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un `401` y un `404` se tratan distinto: el primero pide renovar la sesión, el segundo avisar y salir de la pantalla.</span>
+
+## Presentación
+
+- [PM-U3 - Navegación, estado y red](https://revilofe.github.io/slides/section5-pmdm/PM-U3.-NavegacionEstadoYRed.html)

@@ -234,3 +234,7 @@ Desde Navigation 2.8 puedes declarar las rutas como **clases serializables** en 
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Los argumentos viajan en un `Bundle`, así que solo caben tipos simples (`Int`, `Long`, `String`, `Boolean`). Un objeto completo se pasa por su `id` y se vuelve a leer.</span>
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un deep link no funciona solo: necesita su `intent-filter` en el `AndroidManifest.xml`. Sin esa declaración, el enlace abre el navegador, no tu app.</span>
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El botón atrás del sistema ya hace `popBackStack()`: no lo interceptes ni lo reimplementes, o el usuario pierde la navegación esperada.</span>
+
+## Presentación
+
+- [PM-U3 - Navegación, estado y red](https://revilofe.github.io/slides/section5-pmdm/PM-U3.-NavegacionEstadoYRed.html)

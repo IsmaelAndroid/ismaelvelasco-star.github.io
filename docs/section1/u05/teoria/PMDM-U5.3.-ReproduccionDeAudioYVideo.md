@@ -186,3 +186,7 @@ reproductor?.play()
 - Android — `PlaybackException` y códigos de error: [developer.android.com/reference/androidx/media3/common/PlaybackException](https://developer.android.com/reference/androidx/media3/common/PlaybackException).
 - Android — `MediaItem` y URIs: [developer.android.com/reference/androidx/media3/common/MediaItem](https://developer.android.com/reference/androidx/media3/common/MediaItem).
 - Módulo 0489 — Real Decreto 405/2023 (BOE): [BOE-A-2023-13221](https://www.boe.es/buscar/act.php?id=BOE-A-2023-13221).
+
+## Presentación
+
+- [PM-U5 - Contenidos multimedia](https://revilofe.github.io/slides/section5-pmdm/PM-U5.-ContenidosMultimedia.html)

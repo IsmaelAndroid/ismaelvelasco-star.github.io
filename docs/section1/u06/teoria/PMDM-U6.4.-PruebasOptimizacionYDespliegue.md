@@ -138,3 +138,7 @@ Antes de dar el juego por terminado:
 - Godot Engine — *Handling quit requests*: <https://docs.godotengine.org/en/stable/tutorials/inputs/handling_quit_requests.html>
 - Android Developers — *Android Studio*: <https://developer.android.com/studio>
 - Boletín Oficial del Estado — *RD 405/2023*: <https://www.boe.es/buscar/act.php?id=BOE-A-2023-13221>
+
+## Presentación
+
+- [PM-U6 - Juegos 2D y 3D](https://revilofe.github.io/slides/section5-pmdm/PM-U6.-Juegos2DY3D.html)

@@ -209,3 +209,7 @@ func _ready() -> void:
 - Godot Engine — *StandardMaterial3D*: <https://docs.godotengine.org/en/stable/classes/class_standardmaterial3d.html>
 - Godot Engine — *Cameras*: <https://docs.godotengine.org/en/stable/tutorials/3d/camera/index.html>
 - Godot Engine — *Lights and shadows*: <https://docs.godotengine.org/en/stable/tutorials/3d/lights_and_shadows.html>
+
+## Presentación
+
+- [PM-U6 - Juegos 2D y 3D](https://revilofe.github.io/slides/section5-pmdm/PM-U6.-Juegos2DY3D.html)

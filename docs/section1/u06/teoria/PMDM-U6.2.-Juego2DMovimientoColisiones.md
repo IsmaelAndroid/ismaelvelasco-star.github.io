@@ -255,3 +255,7 @@ position = Vector2(420, 520)
 - Godot Engine — *Signals*: <https://docs.godotengine.org/en/stable/getting_started/step_by_step/signals.html>
 - Godot Engine — *AudioStreamPlayer*: <https://docs.godotengine.org/en/stable/classes/class_audiostreamplayer.html>
 - Godot Engine — *CanvasLayer*: <https://docs.godotengine.org/en/stable/classes/class_canvaslayer.html>
+
+## Presentación
+
+- [PM-U6 - Juegos 2D y 3D](https://revilofe.github.io/slides/section5-pmdm/PM-U6.-Juegos2DY3D.html)
