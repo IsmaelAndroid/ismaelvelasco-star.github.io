@@ -37,13 +37,11 @@ Unidad alineada con el módulo **Programación Multimedia y Dispositivos Móvile
 - [5.1.- Formatos y entornos multimedia](teoria/PMDM-U5.1.-FormatosYEntornosMultimedia.md) — contenedor y códec, imagen, audio y vídeo, con medidas reales de `ffprobe` y `ffmpeg`.
 - [5.2.- Captura y procesamiento en Android](teoria/PMDM-U5.2.-CapturaYProcesamientoEnAndroid.md) — permisos, CameraX, `ImageCapture` y procesado de `Bitmap` con medidas reales.
 - [5.3.- Reproducción de audio y vídeo](teoria/PMDM-U5.3.-ReproduccionDeAudioYVideo.md) — Media3/ExoPlayer, estados, errores reales y audio sin vídeo.
-- 5.4.- Animaciones — *en preparación*.
+- [5.4.- Animaciones](teoria/PMDM-U5.4.-Animaciones.md) — fotogramas, `animateFloatAsState`, transición infinita y `graphicsLayer`.
 
 ### Prácticas
 
-- Práctica 5.1: «Mi app multimedia» — *enunciado en preparación*.
-
-> Los enunciados de las prácticas se entregan en el aula a través de la plataforma del curso.
+- [Práctica: «Mi app multimedia»](practica/PMDM-U5.-MiAppMultimedia.md) — captura, procesado, reproducción y animación, con rúbrica sobre 10.
 
 ### Presentaciones
 
