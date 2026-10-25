@@ -45,6 +45,13 @@ nav:
         - '5.3.-Reproducción de audio y vídeo': 'section1/u05/teoria/PMDM-U5.3.-ReproduccionDeAudioYVideo.md'
         - '5.4.-Animaciones': 'section1/u05/teoria/PMDM-U5.4.-Animaciones.md'
         - 'Práctica: Mi app multimedia': 'section1/u05/practica/PMDM-U5.-MiAppMultimedia.md'
+    - 'U6: Desarrollo de juegos 2D y 3D':
+        - 'section1/u06/index.md'
+        - '6.1.-Del prototipo al juego': 'section1/u06/teoria/PMDM-U6.1.-DelPrototipoAlJuego.md'
+        - '6.2.-Juego 2D: movimiento y colisiones': 'section1/u06/teoria/PMDM-U6.2.-Juego2DMovimientoColisiones.md'
+        - '6.3.-Juego 3D: materiales y físicas': 'section1/u06/teoria/PMDM-U6.3.-Juego3DMaterialesFisicas.md'
+        - '6.4.-Pruebas, optimización y despliegue': 'section1/u06/teoria/PMDM-U6.4.-PruebasOptimizacionYDespliegue.md'
+        - 'Práctica: Mi primer juego': 'section1/u06/practica/PMDM-U6.-MiPrimerJuego.md'
 theme:
   name: material
   language: es
