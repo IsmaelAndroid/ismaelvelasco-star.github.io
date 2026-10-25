@@ -38,7 +38,7 @@ El módulo tiene **3 sesiones semanales** (≈2 h 45 min/semana). La unidad se c
 | 3.2 | Estado y formularios: ViewModel + StateFlow + validación | 2,5 |
 | 3.3 | Room: persistencia local (entidades, DAO, Flow y migraciones) | 3 |
 | 3.4 | Retrofit: red, DTOs y manejo de errores | 3 |
-| 3.5 | Taller integrador: sesión con DataStore, Hilt y pruebas | 2,5 |
+| 3.5 | Taller integrador: sesión con DataStore y pruebas | 2,5 |
 | — | **Práctica evaluable** (entrega con capturas) | 3 |
 | | **Total** | **16 h** |
 
@@ -54,7 +54,7 @@ El módulo tiene **3 sesiones semanales** (≈2 h 45 min/semana). La unidad se c
 
 - [3.4.- Retrofit: red, DTOs y manejo de errores](teoria/PMDM-U3.4.-RetrofitRedYErrores.md) — peticiones HTTPS, `suspend`, `ignoreUnknownKeys`, permiso INTERNET y los tres estados de pantalla.
 
-> 3.5 Taller integrador: sesión con DataStore, Hilt y pruebas — en preparación.
+- [3.5.- Taller integrador: sesión con DataStore y pruebas](teoria/PMDM-U3.5.-TallerIntegradorSesionYPruebas.md) — sesión persistente, pruebas unitarias y repaso de la unidad.
 
 ### Prácticas
 
@@ -70,6 +70,6 @@ El módulo tiene **3 sesiones semanales** (≈2 h 45 min/semana). La unidad se c
 |---|---|---|
 | UD 1 | Análisis de tecnologías móviles | ✅ publicada |
 | UD 2 | IU con Compose | ✅ publicada |
-| **UD 3** | **Gestión de datos (esta)** | **en curso** |
+| **UD 3** | **Gestión de datos (esta)** | **teoría completa** |
 | UD 4 | Multimedia, testing y despliegue | en preparación |
 | UD 5-6 | Motores de juegos y realidad aumentada | 2.º trimestre |
