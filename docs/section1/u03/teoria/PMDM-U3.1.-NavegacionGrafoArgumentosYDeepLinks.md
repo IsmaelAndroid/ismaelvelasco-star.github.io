@@ -227,3 +227,10 @@ Desde Navigation 2.8 puedes declarar las rutas como **clases serializables** en 
 - Un **deep link** se declara en Manifest **y** en el grafo.
 
 **En la práctica** de esta unidad construirás el grafo de una agenda con tres destinos, argumento tipado, control de la pila y un deep link propio; las capturas de tu entrega tienen que demostrar los cinco comportamientos de las figuras 1 a 5.
+
+## Lo que tienes que llevarte de este apartado
+
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Toda ruta con argumento se declara con plantilla (`detalle/{id}`) y se navega con la ruta resuelta (`detalle/3`): si navegas a la plantilla literal, el argumento no llega.</span>
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Los argumentos viajan en un `Bundle`, así que solo caben tipos simples (`Int`, `Long`, `String`, `Boolean`). Un objeto completo se pasa por su `id` y se vuelve a leer.</span>
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un deep link no funciona solo: necesita su `intent-filter` en el `AndroidManifest.xml`. Sin esa declaración, el enlace abre el navegador, no tu app.</span>
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El botón atrás del sistema ya hace `popBackStack()`: no lo interceptes ni lo reimplementes, o el usuario pierde la navegación esperada.</span>

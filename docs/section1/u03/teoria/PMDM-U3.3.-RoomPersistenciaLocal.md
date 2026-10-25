@@ -193,3 +193,10 @@ val MIGRACION_1_2 = object : Migration(1, 2) {
 - La base de datos es **única** en toda la app.
 - Los datos **sobreviven** a cerrar la app: eso es persistencia.
 - Cambiar el esquema exige **subir versión y migrar**.
+
+## Lo que tienes que llevarte de este apartado
+
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Toda entidad necesita `@PrimaryKey`: sin clave, Room no construye la base de datos ni compila.</span>
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El DAO es una interfaz: la implementación la genera KSP al compilar, por eso no escribes SQLite a mano.</span>
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Si cambias una entidad sin subir `version`, Room lanza `IllegalStateException` al abrir: el número de versión es el contrato del esquema.</span>
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Toda escritura va en `suspend` (o en un `@Transaction`): en el hilo principal, SQLite bloquea la interfaz y se nota en el tacto.</span>

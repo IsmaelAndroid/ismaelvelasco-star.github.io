@@ -192,3 +192,11 @@ Tu entrega tiene que demostrar, con capturas propias:
 | 3.5 | DataStore para la sesión; las pruebas demuestran la lógica |
 
 Con esto se cierran los criterios **a)**, **e)**, **f)**, **g)**, **i)** y **j)** del RA2 del módulo 0489 (RD 405/2023): estructura de clases, conexiones HTTP/HTTPS, persistencia, pruebas en emulador, documentación y permisos.
+
+## Lo que tienes que llevarte de este apartado
+
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">DataStore se maneja con corutinas: `edit` es `suspend` y no bloquea el hilo de la interfaz.</span>
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El token de sesión se guarda en disco, nunca en una variable en memoria: las variables mueren al cerrar la app y la sesión con ellas.</span>
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un almacén por nombre: cada `preferencesDataStore(name = ...)` abre un archivo, y multiplicar almacenes multiplica las escrituras.</span>
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Si una regla de negocio no se puede probar sin tocar la pantalla, está en la capa equivocada.</span>
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">En este módulo todo lo que entregues se demuestra con una captura o con una prueba: las dos son evidencia, la intención no.</span>

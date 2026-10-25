@@ -44,7 +44,7 @@ En los siguientes enlaces se encuentran los contenidos, resultados de aprendizaj
 | Unidad | UD 1 | UD 2 | UD 3 | UD 4 | UD 5 | UD 6 |
 | ------ | ---- | ---- | ---- | ---- | ---- | ---- |
 | RA 1   | X    |      |      |      |      |      |
-| RA 2   |      | X    |      |      |      |      |
+| RA 2   |      | X    | X    |      |      |      |
 | RA 3   |      |      |      |      |  X   |      |
 | RA 4   |      |      |      |  X   |      |      |
 | RA 5   |      |      |      |      |      | X    |

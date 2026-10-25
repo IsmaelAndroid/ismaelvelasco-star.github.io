@@ -207,3 +207,10 @@ alcance.launch { aviso.showSnackbar("Ficha guardada: ${estado.nombre}") }
 - Los cambios se hacen con **`copy`**, nunca mutando.
 - La **validación** es lógica de negocio: vive en el ViewModel y devuelve el resultado.
 - El **Snackbar** es `suspend`: se lanza con un `rememberCoroutineScope()`.
+
+## Lo que tienes que llevarte de este apartado
+
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La validación es lógica de negocio, no pintura: vive en el `ViewModel` y así la puedes probar, reutilizar y mantener.</span>
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La `data class` de estado es inmutable y se cambia con `copy(...)`: por eso nunca quedan campos a medias tras una actualización.</span>
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Se validan todas las reglas a la vez y se muestran todos los errores a la vez: un error por pulsación alarga el tiempo de corrección.</span>
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un mensaje de error que vive en un `Toast` no se puede probar; uno que vive en el estado se pinta, se comprueba y se repite.</span>
