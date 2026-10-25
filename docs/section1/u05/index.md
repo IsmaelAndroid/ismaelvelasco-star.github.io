@@ -35,7 +35,7 @@ Unidad alineada con el módulo **Programación Multimedia y Dispositivos Móvile
 ### Teoría
 
 - [5.1.- Formatos y entornos multimedia](teoria/PMDM-U5.1.-FormatosYEntornosMultimedia.md) — contenedor y códec, imagen, audio y vídeo, con medidas reales de `ffprobe` y `ffmpeg`.
-- 5.2.- Captura y procesamiento en Android — *en preparación*.
+- [5.2.- Captura y procesamiento en Android](teoria/PMDM-U5.2.-CapturaYProcesamientoEnAndroid.md) — permisos, CameraX, `ImageCapture` y procesado de `Bitmap` con medidas reales.
 - 5.3.- Reproducción de audio y vídeo — *en preparación*.
 - 5.4.- Animaciones — *en preparación*.
 
