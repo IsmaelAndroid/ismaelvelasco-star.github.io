@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="'Segoe UI',Arial,sans-serif">
+  <defs>
+    <linearGradient id="kt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E44857"/><stop offset="0.5" stop-color="#C711E1"/><stop offset="1" stop-color="#417DFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="420" fill="#f6f8fa"/>
+  <text x="480" y="40" text-anchor="middle" font-size="24" font-weight="700" fill="#1f2328">El mismo programa, dos lenguajes</text>
+  <text x="480" y="66" text-anchor="middle" font-size="14" fill="#57606a">Hola mundo + data class · menos líneas = menos superficie de error</text>
+
+  <!-- Java card -->
+  <rect x="30" y="92" width="430" height="290" rx="12" fill="#ffffff" stroke="#d0d7de"/>
+  <rect x="30" y="92" width="430" height="40" rx="12" fill="#f0883e"/>
+  <text x="50" y="119" font-size="17" font-weight="700" fill="#ffffff">Java — 19 líneas</text>
+  <text x="440" y="119" text-anchor="end" font-size="13" fill="#fff9">boilerplate</text>
+  <g font-family="Consolas,monospace" font-size="12.5" fill="#24292f">
+    <text x="50" y="156">public class HolaMundo {</text>
+    <text x="50" y="176">    public static void main(String[] args) {</text>
+    <text x="50" y="196">        System.out.println("Hola, mundo");</text>
+    <text x="50" y="216">    }</text>
+    <text x="50" y="236">}</text>
+    <text x="50" y="268">class Persona {  // POJO: getter/setter/equals/hashCode</text>
+    <text x="50" y="288">    private String nombre; private int edad;</text>
+    <text x="50" y="308">    public String getNombre() { return nombre; }</text>
+    <text x="50" y="328">    public void setNombre(String n) { nombre = n; }</text>
+    <text x="50" y="348">    // ... equals(), hashCode(), toString(), copy()</text>
+    <text x="50" y="368">}</text>
+  </g>
+
+  <!-- Kotlin card -->
+  <rect x="500" y="92" width="430" height="290" rx="12" fill="#ffffff" stroke="#d0d7de"/>
+  <rect x="500" y="92" width="430" height="40" rx="12" fill="url(#kt)"/>
+  <text x="520" y="119" font-size="17" font-weight="700" fill="#ffffff">Kotlin — 2 líneas</text>
+  <text x="910" y="119" text-anchor="end" font-size="13" fill="#fff9">intención directa</text>
+  <g font-family="Consolas,monospace" font-size="12.5" fill="#24292f">
+    <text x="520" y="156">fun main() {</text>
+    <text x="520" y="176">    println("Hola, mundo")</text>
+    <text x="520" y="196">}</text>
+    <text x="520" y="236" fill="#8250df" font-weight="700">data class Persona(val nombre: String, var edad: Int)</text>
+    <text x="520" y="268" fill="#57606a">// equals ✓ hashCode ✓ toString ✓</text>
+    <text x="520" y="288" fill="#57606a">// copy ✓ destructuring ✓ getters automáticos ✓</text>
+    <text x="520" y="320" fill="#1a7f37">// nulabilidad en el tipo:</text>
+    <text x="520" y="340" fill="#1a7f37">//   String   nunca null</text>
+    <text x="520" y="360" fill="#1a7f37">//   String?  null gestionado → adiós NPE</text>
+  </g>
+
+  <text x="480" y="408" text-anchor="middle" font-size="13" fill="#57606a">Kotlin: lenguaje tipado estático, compilado a bytecode JVM · lenguaje preferido de Google para Android desde 2017</text>
+</svg>

@@ -1,0 +1,3644 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="PMDM (0489) y Desarrollo de Interfaces (0488) con Kotlin, Android y Jetpack Compose">
+      
+      
+        <meta name="author" content="Ismael Velasco">
+      
+      
+        <link rel="canonical" href="https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section1/u02/teoria/PMDM-U2.2.-ActividadesEIntents/">
+      
+      
+        <link rel="prev" href="../PMDM-U2.1.-FundamentosLenguajeKotlin/">
+      
+      
+        <link rel="next" href="../PMDM-U2.3.-AppComposeListasYFormulario/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Tema 2.2 - Actividades e Intents: la anatomía de una app Android - Aula 2º DAM - Ismael Velasco</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tema-22-actividades-e-intents-la-anatomia-de-una-app-android" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../../.." title="Aula 2º DAM - Ismael Velasco" class="md-header__button md-logo" aria-label="Aula 2º DAM - Ismael Velasco" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Aula 2º DAM - Ismael Velasco
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tema 2.2 - Actividades e Intents: la anatomía de una app Android
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ismaelvelasco-star/ismaelvelasco-star.github.io" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ismaelvelasco-star/ismaelvelasco-star.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    
+  
+  Principal
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+  
+  PMDM
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../section2/" class="md-tabs__link">
+          
+  
+  
+  Desarrollo de Interfaces
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../section3/" class="md-tabs__link">
+          
+  
+  
+  Entornos de Desarrollo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Acerca de
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Aula 2º DAM - Ismael Velasco" class="md-nav__button md-logo" aria-label="Aula 2º DAM - Ismael Velasco" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Aula 2º DAM - Ismael Velasco
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ismaelvelasco-star/ismaelvelasco-star.github.io" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ismaelvelasco-star/ismaelvelasco-star.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Principal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PMDM
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PMDM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programación Multimedia y Dispositivos Móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U1: Análisis de tecnologías para dispositivos móviles
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U1: Análisis de tecnologías para dispositivos móviles
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../u01/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - Análisis de tecnologías para aplicaciones móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../u01/teoria/PMDM-U1.1.-AnalisisTecnologiasDispositivosMoviles/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Análisis de tecnologías para dispositivos móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../u01/practica/PMDM-U1.-Practica001/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.1: Explorando Android Studio y sus plantillas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../u01/practica/PMDM-U1.-Practica002/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.2: Emuladores y perfiles de dispositivo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../u01/practica/PMDM-U1.-Practica003/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.3: ADB y el administrador de aplicaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U2: Programación en Android: IU con Jetpack Compose
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U2: Programación en Android: IU con Jetpack Compose
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 2 - Programación en Android: IU con Jetpack Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PMDM-U2.1.-FundamentosLenguajeKotlin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1.-Fundamentos del lenguaje Kotlin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2.-Actividades e Intents
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2.-Actividades e Intents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-una-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. ¿Qué es una Activity?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-el-ciclo-de-vida-las-siete-estaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. El ciclo de vida: las siete estaciones
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-sobrevivir-a-la-rotacion-remember-no-es-suficiente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Sobrevivir a la rotación: remember no es suficiente
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-intents-el-correo-postal-de-android" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Intents: el correo postal de Android
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-intent-explicito-tu-pantalla-llama-a-la-tuya" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Intent explícito: tu pantalla llama a la tuya
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-intent-implicito-que-lo-haga-quien-sepa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Intent implícito: que lo haga quien sepa
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-intent-filter-cuando-el-mundo-te-llama-a-ti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Intent filter: cuando el mundo te llama a ti
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-pendingintent-un-intent-con-reserva" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. PendingIntent: un intent con reserva
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-autoevaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Autoevaluación
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PMDM-U2.3.-AppComposeListasYFormulario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3.-La app Compose: listas y formulario
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practica/PMDM-U2.-MiniProyectoContactos/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 2.1: Mini-proyecto de la libreta
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desarrollo de Interfaces
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Desarrollo de Interfaces
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    DI — Desarrollo de Interfaces (2º DAM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - Introducción a la confección de interfaces
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD 1 - Introducción a la confección de interfaces
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/u01/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - Introducción a la confección de interfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/u01/teoria/DI-U1.1.-IntroduccionConfeccionInterfaces/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Introducción a la confección de interfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/u01/practica/DI-U1.-Practica001/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1: Nuestra app en todas las plataformas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/u01/teoria/DI-U1.1.-IntroduccionConfeccionInterfaces/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Introducción a la confección de interfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/u01/practica/DI-U1.-Practica003/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3: Column, botones y contador (1 h)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/u01/practica/DI-U1.-Practica004/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 4: Row y Card (1 h)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/u01/practica/DI-U1.-Practica005/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 5: Imágenes y recursos (1 h)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/u01/ejercicios/DI-U1.-SolucionarioPracticas/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario de prácticas (P3-P5)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/u01/ejercicios/DI-U1.-Ejercicios/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios U1 (de menor a mayor)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/u01/ejercicios/DI-U1.-Solucionario/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario U1 (con enunciados)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 2 - Clases y componentes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD 2 - Clases y componentes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/u02/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3v6h8V3m-8 18h8V11h-8M3 21h8v-6H3m0-2h8V3H3z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 2 - Clases y componentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/u02/teoria/DI-U2.1.-ClasesYComponentes/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3v6h8V3m-8 18h8V11h-8M3 21h8v-6H3m0-2h8V3H3z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1.-Clases y componentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/u02/ejercicios/DI-U2.-Ejercicios/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.5 11H19V7a2 2 0 0 0-2-2h-4V3.5A2.5 2.5 0 0 0 10.5 1 2.5 2.5 0 0 0 8 3.5V5H4a2 2 0 0 0-2 2v3.8h1.5c1.5 0 2.7 1.2 2.7 2.7S5 16.2 3.5 16.2H2V20a2 2 0 0 0 2 2h3.8v-1.5c0-1.5 1.2-2.7 2.7-2.7s2.7 1.2 2.7 2.7V22H17a2 2 0 0 0 2-2v-4h1.5a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios U2 (práctica progresiva)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/u02/ejercicios/DI-U2.-Solucionario/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario U2 (con enunciados)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 3 - Generación de interfaces a partir de documentos XML
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD 3 - Generación de interfaces a partir de documentos XML
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/u03/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.89 3 1.96.4L11.11 21l-1.96-.4zm6.7 9L16 8.41V5.58L22.42 12 16 18.41v-2.83zM1.58 12 8 5.58v2.83L4.41 12 8 15.58v2.83z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 3 - Generación de interfaces a partir de documentos XML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/u03/teoria/DI-U3.1.-GeneracionInterfacesXML/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.89 3 1.96.4L11.11 21l-1.96-.4zm6.7 9L16 8.41V5.58L22.42 12 16 18.41v-2.83zM1.58 12 8 5.58v2.83L4.41 12 8 15.58v2.83z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1.-Generación de interfaces a partir de documentos XML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/u03/practica/DI-U3.-Practica/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.89 3 1.96.4L11.11 21l-1.96-.4zm6.7 9L16 8.41V5.58L22.42 12 16 18.41v-2.83zM1.58 12 8 5.58v2.83L4.41 12 8 15.58v2.83z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3: XML vivo en tu app Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/u03/ejercicios/DI-U3.-PracticaSolucion/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m23 12-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68zm-13 5-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario de la práctica 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/u03/ejercicios/DI-U3.-Ejercicios/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.5 11H19V7a2 2 0 0 0-2-2h-4V3.5A2.5 2.5 0 0 0 10.5 1 2.5 2.5 0 0 0 8 3.5V5H4a2 2 0 0 0-2 2v3.8h1.5c1.5 0 2.7 1.2 2.7 2.7S5 16.2 3.5 16.2H2V20a2 2 0 0 0 2 2h3.8v-1.5c0-1.5 1.2-2.7 2.7-2.7s2.7 1.2 2.7 2.7V22H17a2 2 0 0 0 2-2v-4h1.5a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios U3 (de menor a mayor)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/u03/ejercicios/DI-U3.-Solucionario/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m23 12-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68zm-13 5-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario U3 (con enunciados)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prácticas del Castillo de Luna
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prácticas del Castillo de Luna
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 13h2v2h2v-2h2v2h2v-2h2v2h2v-5l3-3V1h2l4 2-4 2v2l3 3v12H11v-3a2 2 0 0 0-2-2 2 2 0 0 0-2 2v3H2zm16-3c-.55 0-1 .54-1 1.2V13h2v-1.8c0-.66-.45-1.2-1-1.2"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Prácticas del Castillo de Luna
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/practica/DI-CL.-Practica001/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 4 16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12h-1a2 2 0 0 1-2-2V7.5H9.86c-.09.37-.24.72-.44 1.05L15.18 19H20a2 2 0 0 1 2 2v1H2v-1a2 2 0 0 1 2-2h6.61l-4.69-8.5a4.006 4.006 0 0 1-3.81-3A4 4 0 0 1 5 2.63c2.13-.55 4.31.73 4.86 2.87H13V3a2 2 0 0 1 2-2h1v2.59L17.59 2H22v2zM6 4.5a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    CL 1: El entorno Android Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/solucionario/DI-CL.-Solucionario001/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario CL 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/practica/DI-CL.-Practica002/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7h5v10h-5v2a1 1 0 0 0 1 1h2v2h-2.5c-.55 0-1.5-.45-1.5-1 0 .55-.95 1-1.5 1H12v-2h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-2V2h2.5c.55 0 1.5.45 1.5 1 0-.55.95-1 1.5-1H20v2h-2a1 1 0 0 0-1 1zM2 7h11v2H4v6h9v2H2zm18 8V9h-3v6z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    CL 2: Login, calculadora y formulario
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/solucionario/DI-CL.-Solucionario002/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario CL 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/practica/DI-CL.-Practica003/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CL 3: De layout XML a Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/solucionario/DI-CL.-Solucionario003/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario CL 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/practica/DI-CL.-Practica004/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 3h8v4.34l5.66-5.65 5.65 5.65L16.66 13H21v8h-8v-8h3.66L11 7.34V11H3zm0 10h8v8H3z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    CL 4: Componentes reutilizables en Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/solucionario/DI-CL.-Solucionario004/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario CL 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/practica/DI-CL.-Practica005/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 2v2h1v14a4 4 0 0 0 4 4 4 4 0 0 0 4-4V4h1V2zm4 14c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1m2-4c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1m1-5h-4V4h4z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    CL 5: Pruebas unitarias con JUnit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/solucionario/DI-CL.-Solucionario005/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario CL 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/practica/DI-CL.-Practica006/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2M7 9.5C7 8.7 7.7 8 8.5 8s1.5.7 1.5 1.5S9.3 11 8.5 11 7 10.3 7 9.5m5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81M15.5 11c-.8 0-1.5-.7-1.5-1.5S14.7 8 15.5 8s1.5.7 1.5 1.5-.7 1.5-1.5 1.5"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    CL 6: Usabilidad I
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/solucionario/DI-CL.-Solucionario006/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario CL 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/practica/DI-CL.-Practica007/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 12a1.5 1.5 0 0 1-1.5-1.5A1.5 1.5 0 0 1 17.5 9a1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1-1.5 1.5m-3-4A1.5 1.5 0 0 1 13 6.5 1.5 1.5 0 0 1 14.5 5 1.5 1.5 0 0 1 16 6.5 1.5 1.5 0 0 1 14.5 8m-5 0A1.5 1.5 0 0 1 8 6.5 1.5 1.5 0 0 1 9.5 5 1.5 1.5 0 0 1 11 6.5 1.5 1.5 0 0 1 9.5 8m-3 4A1.5 1.5 0 0 1 5 10.5 1.5 1.5 0 0 1 6.5 9 1.5 1.5 0 0 1 8 10.5 1.5 1.5 0 0 1 6.5 12M12 3a9 9 0 0 0-9 9 9 9 0 0 0 9 9 1.5 1.5 0 0 0 1.5-1.5c0-.39-.15-.74-.39-1-.23-.27-.38-.62-.38-1a1.5 1.5 0 0 1 1.5-1.5H16a5 5 0 0 0 5-5c0-4.42-4.03-8-9-8"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    CL 7: Usabilidad II — pautas de diseño
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/solucionario/DI-CL.-Solucionario007/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario CL 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/practica/DI-CL.-Practica009/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CL 9: Listados y exportación de datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/solucionario/DI-CL.-Solucionario009/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario CL 9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/practica/DI-CL.-Practica010/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    CL 10: Documentación de aplicaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/solucionario/DI-CL.-Solucionario010/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario CL 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/practica/DI-CL.-Practica011/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18s-.41-.06-.57-.18l-7.9-4.44A.99.99 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18s.41.06.57.18l7.9 4.44c.32.17.53.5.53.88zM12 4.15l-1.89 1.07L16 8.61l1.96-1.11zM6.04 7.5 12 10.85l1.96-1.1-5.88-3.4zM5 15.91l6 3.38v-6.71L5 9.21zm14 0v-6.7l-6 3.37v6.71z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    CL 11: Distribución — APK, AAB y firma
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/solucionario/DI-CL.-Solucionario011/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario CL 11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/practica/DI-CL.-Practica012/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 7h-2.81c-.45-.8-1.07-1.5-1.82-2L16 3.41 14.59 2l-2.17 2.17a6 6 0 0 0-2.83 0L7.41 2 6 3.41 7.62 5c-.75.5-1.36 1.21-1.81 2H3v2h2.09c-.06.33-.09.66-.09 1v1H3v2h2v1c0 .34.03.67.09 1H3v2h2.81A6 6 0 0 0 13 19.65V19c0-2.54 1.61-4.8 4-5.65V13h2v-2h-2v-1c0-.34-.03-.67-.09-1H19zm-6 8H9v-2h4zm0-4H9V9h4zm4.75 11.16-2.75-3L16.16 18l1.59 1.59L21.34 16l1.16 1.41z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    CL 12: Realización de pruebas y depuración
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section2/castillo/solucionario/DI-CL.-Solucionario012/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario CL 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entornos de Desarrollo
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Entornos de Desarrollo
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section3/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    EDES — Entornos de Desarrollo (1º DAM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - GitHub: repositorios, versiones y trabajo en equipo
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD 1 - GitHub: repositorios, versiones y trabajo en equipo
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section3/u01/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14c-3.36 0-4.46 1.35-4.82 2.24C9.25 16.7 10 17.76 10 19a3 3 0 0 1-3 3 3 3 0 0 1-3-3c0-1.31.83-2.42 2-2.83V7.83A2.99 2.99 0 0 1 4 5a3 3 0 0 1 3-3 3 3 0 0 1 3 3c0 1.31-.83 2.42-2 2.83v5.29c.88-.65 2.16-1.12 4-1.12 2.67 0 3.56-1.34 3.85-2.23A3.01 3.01 0 0 1 14 7a3 3 0 0 1 3-3 3 3 0 0 1 3 3c0 1.34-.88 2.5-2.09 2.86C17.65 11.29 16.68 14 13 14m-6 4a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1M7 4a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1m10 2a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - GitHub: repositorios, versiones y trabajo en equipo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section3/u01/teoria/EDES-U1.1.-GitYGitHub/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14c-3.36 0-4.46 1.35-4.82 2.24C9.25 16.7 10 17.76 10 19a3 3 0 0 1-3 3 3 3 0 0 1-3-3c0-1.31.83-2.42 2-2.83V7.83A2.99 2.99 0 0 1 4 5a3 3 0 0 1 3-3 3 3 0 0 1 3 3c0 1.31-.83 2.42-2 2.83v5.29c.88-.65 2.16-1.12 4-1.12 2.67 0 3.56-1.34 3.85-2.23A3.01 3.01 0 0 1 14 7a3 3 0 0 1 3-3 3 3 0 0 1 3 3c0 1.34-.88 2.5-2.09 2.86C17.65 11.29 16.68 14 13 14m-6 4a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1M7 4a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1m10 2a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Git y GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section3/u01/ejercicios/EDES-U1.-Ejercicios/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.5 11H19V7a2 2 0 0 0-2-2h-4V3.5A2.5 2.5 0 0 0 10.5 1 2.5 2.5 0 0 0 8 3.5V5H4a2 2 0 0 0-2 2v3.8h1.5c1.5 0 2.7 1.2 2.7 2.7S5 16.2 3.5 16.2H2V20a2 2 0 0 0 2 2h3.8v-1.5c0-1.5 1.2-2.7 2.7-2.7s2.7 1.2 2.7 2.7V22H17a2 2 0 0 0 2-2v-4h1.5a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejercicios U1 (de menor a mayor)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section3/u01/ejercicios/EDES-U1.-Solucionario/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8c.76 0 1.5.11 2.2.31l1.57-1.57A9.8 9.8 0 0 0 12 2 10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10M7.91 10.08 6.5 11.5 11 16 21 6l-1.41-1.42L11 13.17z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Solucionario U1 (con enunciados)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../about/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h-2V7h2m0 10h-2v-6h2m-1-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Acerca de
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-una-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. ¿Qué es una Activity?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-el-ciclo-de-vida-las-siete-estaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. El ciclo de vida: las siete estaciones
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-sobrevivir-a-la-rotacion-remember-no-es-suficiente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Sobrevivir a la rotación: remember no es suficiente
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-intents-el-correo-postal-de-android" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Intents: el correo postal de Android
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-intent-explicito-tu-pantalla-llama-a-la-tuya" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Intent explícito: tu pantalla llama a la tuya
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-intent-implicito-que-lo-haga-quien-sepa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Intent implícito: que lo haga quien sepa
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-intent-filter-cuando-el-mundo-te-llama-a-ti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Intent filter: cuando el mundo te llama a ti
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-pendingintent-un-intent-con-reserva" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. PendingIntent: un intent con reserva
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-autoevaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Autoevaluación
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="tema-22-actividades-e-intents-la-anatomia-de-una-app-android">Tema 2.2 - Actividades e Intents: la anatomía de una app Android</h1>
+<p>Hasta ahora tus apps Compose han sido <strong>una sola pantalla bonita</strong>. En este tema aprendes qué es <em>eso</em> que hay debajo de <code>setContent</code>: la <strong>Activity</strong> (con su ciclo de vida, que el sistema controla) y los <strong>Intents</strong> (el correo postal de Android: la única forma legal de que una pantalla hable con otra, o tu app con las 300 apps del móvil).</p>
+<p><strong>Deberías saber ya</strong>: los fundamentos de Kotlin del <a href="../PMDM-U2.1.-FundamentosLenguajeKotlin/">apartado 2.1</a> y los fundamentos de Compose de <em>Desarrollo de Interfaces</em> (Column, Button, estado con <code>remember</code>). Aquí no enseñamos Compose: aquí enseñamos <strong>la app</strong> que lo aloja.</p>
+<div style="background-color:#a5d6a7; border-radius:8px; padding:10px 14px; margin:14px 0;">
+<strong>🟢 Leyenda de repaso obligatorio:</strong> los textos con <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">este fondo verde</span> son imprescindibles: hay que repasarlos <strong>cada semana</strong>, porque entrarán en todas las evaluaciones del módulo.</div>
+
+<p>La app de referencia del tema es <strong>FumetoContactos</strong>: una libreta de contactos que empieza siendo una pantalla y acaba siendo una app multi-pantalla que llama, comparte fotos y contesta a URLs propias. Todas las capturas están hechas ejecutando ese código en un emulador real.</p>
+<h2 id="1-que-es-una-activity">1. ¿Qué es una Activity?</h2>
+<p>Una <strong>Activity es una pantalla de tu app</strong> — pero no "una pantalla" en el sentido de un dibujo: es un <strong>objeto con ciclo de vida</strong> que el sistema operativo nace, pausa, detiene y mata cuando le da la gana (al girar el móvil, al faltarte memoria, al pulsar el botón de inicio). Tú escribes qué pasa en cada estación; <strong>quién decide cuándo</strong> es Android.</p>
+<p>Toda Activity se declara en el <code>AndroidManifest.xml</code> — el DNI de tu app. El nuestro, tal cual está en el proyecto:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Código 1 — El Manifest que declara nuestras tres pantallas</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">&lt;manifest</span><span class="w"> </span><span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">&lt;application</span><span class="w">                                          </span><span class="err">//</span><span class="w"> </span><span class="err">la</span><span class="w"> </span><span class="err">app</span><span class="w"> </span><span class="err">entera</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="na">android:label=</span><span class="s">"FumetoContactos"</span><span class="w">                   </span><span class="err">//</span><span class="w"> </span><span class="err">el</span><span class="w"> </span><span class="err">nombre</span><span class="w"> </span><span class="err">que</span><span class="w"> </span><span class="err">ve</span><span class="w"> </span><span class="err">el</span><span class="w"> </span><span class="err">usuario</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="na">android:icon=</span><span class="s">"@mipmap/ic_launcher"</span><span class="w">                </span><span class="err">//</span><span class="w"> </span><span class="err">su</span><span class="w"> </span><span class="err">icono</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="na">android:theme=</span><span class="s">"@style/Theme.MyApplication"</span><span class="nt">&gt;</span><span class="w">       </span>//<span class="w"> </span>su<span class="w"> </span>tema<span class="w"> </span>base
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="nt">&lt;activity</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">            </span><span class="na">android:name=</span><span class="s">".MainActivity"</span><span class="w">                  </span><span class="err">//</span><span class="w"> </span><span class="err">pantalla</span><span class="w"> </span><span class="err">1:</span><span class="w"> </span><span class="err">la</span><span class="w"> </span><span class="err">libreta</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">            </span><span class="na">android:exported=</span><span class="s">"true"</span><span class="w">                       </span><span class="err">//</span><span class="w"> </span><span class="err">el</span><span class="w"> </span><span class="err">launcher</span><span class="w"> </span><span class="err">(de</span><span class="w"> </span><span class="err">fuera)</span><span class="w"> </span><span class="err">puede</span><span class="w"> </span><span class="err">arrancarla</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">            </span><span class="na">android:windowSoftInputMode=</span><span class="s">"adjustResize"</span><span class="nt">&gt;</span><span class="w">   </span>//<span class="w"> </span>el<span class="w"> </span>teclado<span class="w"> </span>no<span class="w"> </span>tapa<span class="w"> </span>el<span class="w"> </span>formulario
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">            </span><span class="nt">&lt;intent-filter&gt;</span><span class="w">                               </span>//<span class="w"> </span>POR<span class="w"> </span>QUÉ<span class="w"> </span>aparece<span class="w"> </span>en<span class="w"> </span>el<span class="w"> </span>cajón
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">                </span><span class="nt">&lt;action</span><span class="w"> </span><span class="na">android:name=</span><span class="s">"android.intent.action.MAIN"</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w">      </span><span class="cm">&lt;!-- la entrada principal --&gt;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">                </span><span class="nt">&lt;category</span><span class="w"> </span><span class="na">android:name=</span><span class="s">"android.intent.category.LAUNCHER"</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w"> </span><span class="cm">&lt;!-- la pinta en el launcher --&gt;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">            </span><span class="nt">&lt;/intent-filter&gt;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="nt">&lt;/activity&gt;</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">        </span><span class="nt">&lt;activity</span><span class="w"> </span><span class="na">android:name=</span><span class="s">".FichaActivity"</span><span class="w">           </span><span class="err">//</span><span class="w"> </span><span class="err">pantalla</span><span class="w"> </span><span class="err">2:</span><span class="w"> </span><span class="err">la</span><span class="w"> </span><span class="err">ficha</span><span class="w"> </span><span class="err">de</span><span class="w"> </span><span class="err">un</span><span class="w"> </span><span class="err">contacto</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">            </span><span class="na">android:exported=</span><span class="s">"false"</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w">                   </span><span class="cm">&lt;!-- solo mi app la abre: no la ve nadie --&gt;</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">        </span><span class="nt">&lt;activity</span><span class="w"> </span><span class="na">android:name=</span><span class="s">".FichaWebActivity"</span><span class="w">         </span><span class="err">//</span><span class="w"> </span><span class="err">pantalla</span><span class="w"> </span><span class="err">3:</span><span class="w"> </span><span class="err">contesta</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">mi</span><span class="w"> </span><span class="err">URL</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">            </span><span class="na">android:exported=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="w">                       </span><span class="cm">&lt;!-- la abrirá el navegador: de fuera --&gt;</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">            </span><span class="nt">&lt;intent-filter&gt;</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">                </span><span class="nt">&lt;action</span><span class="w"> </span><span class="na">android:name=</span><span class="s">"android.intent.action.VIEW"</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w">                </span><span class="cm">&lt;!-- "ver esto" --&gt;</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">                </span><span class="nt">&lt;category</span><span class="w"> </span><span class="na">android:name=</span><span class="s">"android.intent.category.DEFAULT"</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w">          </span><span class="cm">&lt;!-- obligatoria en VIEW --&gt;</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">                </span><span class="nt">&lt;category</span><span class="w"> </span><span class="na">android:name=</span><span class="s">"android.intent.category.BROWSABLE"</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w">        </span><span class="cm">&lt;!-- desde navegador --&gt;</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">                </span><span class="nt">&lt;data</span><span class="w"> </span><span class="na">android:scheme=</span><span class="s">"https"</span><span class="w"> </span><span class="na">android:host=</span><span class="s">"fumeto.dev"</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w">            </span><span class="cm">&lt;!-- mi dominio --&gt;</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">            </span><span class="nt">&lt;/intent-filter&gt;</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">        </span><span class="nt">&lt;/activity&gt;</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">    </span><span class="nt">&lt;/application&gt;</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="nt">&lt;/manifest&gt;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Fíjate en <code>android:exported</code>: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>exported="true"</code> significa "cualquier app (o el launcher o el navegador) puede lanzar esta Activity"; <code>exported="false"</code> significa "solo yo misma"</span>. Es la primera línea de seguridad de tu app: nada que no necesites hacia fuera, expuesto.</p>
+<p>El código que <em>pinta</em> esa pantalla de casa (la verás entera y comentada en el <a href="../PMDM-U2.3.-AppComposeListasYFormulario/">apartado 2.3</a>): <code>MainActivity</code> extiende <code>ComponentActivity</code>, y en <code>onCreate</code> llama a <code>setContent { ... }</code> — el punto exacto donde Android le cede el micro a Compose.</p>
+<h2 id="2-el-ciclo-de-vida-las-siete-estaciones">2. El ciclo de vida: las siete estaciones</h2>
+<figure>
+<img src="./assets/capturas-codigo2-ciclo.png" alt="Panel del vigía del ciclo de vida con los eventos apuntados tras volver de Ajustes">
+<figcaption>Figura 2. La escena «vigía» anotando el ciclo en vivo: nací (onCreate → onStart → onResume), el usuario abrió Ajustes (onPause → onStop) y volvió con ATRÁS (onRestart → onStart → onResume).</figcaption>
+</figure>
+
+<p><code>MainActivity</code> no vive a su aire: el sistema la va llamando por teléfono en cada cambio de estado. El orden canónico — <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">y pregunta fija de examen — es:</span></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>nace ──▶ onCreate ▶ onStart ▶ onResume ──▶ (interactuando)
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>al tapar otra app ─▶ onPause ▶ onStop ─ (⚫ en segundo plano)
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>al volver ─▶ onRestart ▶ onStart ▶ onResume
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>al morir ─▶ onPause ▶ onStop ▶ onDestroy
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Estación</th>
+<th>Qué haces aquí en la vida real</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>onCreate</code></td>
+<td>Inflar UI (<code>setContent</code>), leer extras, crear el estado. <strong>Una sola vez</strong> por vida de la Activity</td>
+</tr>
+<tr>
+<td><code>onStart</code></td>
+<td>Ya es visible: suscribir escuchas de UI, sincronizar datos ligeros</td>
+</tr>
+<tr>
+<td><code>onResume</code></td>
+<td>Foco de interacción: arrancar cámara, reanudar animaciones, sonar</td>
+</tr>
+<tr>
+<td><code>onPause</code></td>
+<td><strong>Soy interactiva aún pero a medias</strong>: parar cámara, silenciar. Rápido: el sistema te espera</td>
+</tr>
+<tr>
+<td><code>onStop</code></td>
+<td>Ya no me ven: soltar recursos gordos, guardar borradores</td>
+</tr>
+<tr>
+<td><code>onDestroy</code></td>
+<td>Me borran: liberar hasta el的最后 un hilo suelto</td>
+</tr>
+</tbody>
+</table>
+<p>Como en Compose solo escribes <code>onCreate</code> (dentro de <code>setContent</code>), para <strong>observar</strong> el resto usamos un <code>LifecycleEventObserver</code> enganchado a la Activity:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Código 2 — Vigía del ciclo de vida (escena <code>--ei escena 2</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nd">@Composable</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">EscenaCiclo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">                                         </span><span class="c1">// pantallita que apunta TODO lo del ciclo</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">eventos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateListOf</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// el diario de a bordo</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">lanzador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">androidx</span><span class="p">.</span><span class="na">activity</span><span class="p">.</span><span class="na">compose</span><span class="p">.</span><span class="na">rememberLauncherForActivityResult</span><span class="p">(</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="n">ActivityResultContracts</span><span class="p">.</span><span class="na">StartActivityForResult</span><span class="p">()</span><span class="w">    </span><span class="c1">// lanzamos y esperamos la vuelta</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">eventos</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"◀ onActivityResult: hemos vuelto"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// al volver se anota</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">observador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LifecycleEventObserver</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">ev</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">      </span><span class="c1">// micro que escucha eventos del ciclo</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ev</span><span class="p">.</span><span class="na">event</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Lifecycle</span><span class="p">.</span><span class="na">Event</span><span class="p">.</span><span class="na">ON_CREATE</span><span class="p">)</span><span class="w"> </span><span class="n">eventos</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"onCreate  ✔ nace (una vez)"</span><span class="p">)</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ev</span><span class="p">.</span><span class="na">event</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Lifecycle</span><span class="p">.</span><span class="na">Event</span><span class="p">.</span><span class="na">ON_START</span><span class="p">)</span><span class="w">  </span><span class="n">eventos</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"onStart   ✔ ya se ve"</span><span class="p">)</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ev</span><span class="p">.</span><span class="na">event</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Lifecycle</span><span class="p">.</span><span class="na">Event</span><span class="p">.</span><span class="na">ON_RESUME</span><span class="p">)</span><span class="w"> </span><span class="n">eventos</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"onResume  ✔ con la interacción"</span><span class="p">)</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ev</span><span class="p">.</span><span class="na">event</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Lifecycle</span><span class="p">.</span><span class="na">Event</span><span class="p">.</span><span class="na">ON_PAUSE</span><span class="p">)</span><span class="w">  </span><span class="n">eventos</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"onPause   ⏸ otra app delante"</span><span class="p">)</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ev</span><span class="p">.</span><span class="na">event</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Lifecycle</span><span class="p">.</span><span class="na">Event</span><span class="p">.</span><span class="na">ON_STOP</span><span class="p">)</span><span class="w">   </span><span class="n">eventos</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"onStop    ⬛ dejó de verse"</span><span class="p">)</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">dueno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalLifecycleOwner</span><span class="p">.</span><span class="na">current</span><span class="w">                 </span><span class="c1">// la actividad que nos aloja</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="n">DisposableEffect</span><span class="p">(</span><span class="n">dueno</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                               </span><span class="c1">// suscripción mientras exista el composable</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">        </span><span class="n">dueno</span><span class="p">.</span><span class="na">lifecycle</span><span class="p">.</span><span class="na">addObserver</span><span class="p">(</span><span class="n">observador</span><span class="p">)</span><span class="w">             </span><span class="c1">// nos enganchamos al ciclo</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="n">onDispose</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">dueno</span><span class="p">.</span><span class="na">lifecycle</span><span class="p">.</span><span class="na">removeObserver</span><span class="p">(</span><span class="n">observador</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// y nos desenganchamos al morir</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="n">Column</span><span class="p">(</span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">().</span><span class="na">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">),</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">8.</span><span class="n">dp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">"Vigía del ciclo de vida"</span><span class="p">,</span><span class="w"> </span><span class="n">fontWeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FontWeight</span><span class="p">.</span><span class="na">Bold</span><span class="p">,</span><span class="w"> </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20.</span><span class="n">sp</span><span class="p">)</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">"Pulsa el botón, abre Ajustes y vuelve con ATRÁS:"</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="na">Gray</span><span class="p">,</span><span class="w"> </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">13.</span><span class="n">sp</span><span class="p">)</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">        </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">                                  </span><span class="c1">// intent IMPLÍCITO: quien abra Ajustes da igual</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">            </span><span class="n">lanzador</span><span class="p">.</span><span class="na">launch</span><span class="p">(</span><span class="n">Intent</span><span class="p">(</span><span class="n">Settings</span><span class="p">.</span><span class="na">ACTION_SETTINGS</span><span class="p">))</span><span class="w">   </span><span class="c1">// el sistema busca quién responde</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">        </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"Abrir Ajustes del sistema"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">        </span><span class="n">eventos</span><span class="p">.</span><span class="na">reversed</span><span class="p">().</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span><span class="w">                        </span><span class="c1">// lo más nuevo arriba</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">            </span><span class="n">Text</span><span class="p">(</span><span class="nb">it</span><span class="p">,</span><span class="w"> </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">14.</span><span class="n">sp</span><span class="p">)</span><span class="w">                      </span><span class="c1">// cada línea, una estación del ciclo</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Practica con esto hasta que lo sientas: abre Ajustes, vuelve, gira el emulador. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>onPause</code> salta SIEMPRE que pierdes la interacción (diálogo, notificación desplegada); <code>onStop</code> solo si dejas de ser visible</span>. Y recuerda que <code>onDestroy</code> no es una promesa: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Android puede matar tu proceso sin avisar desde <code>onStop</code>; todo lo guardable se guarda ANTES de que te pregunten</span>.</p>
+<h2 id="3-sobrevivir-a-la-rotacion-remember-no-es-suficiente">3. Sobrevivir a la rotación: <code>remember</code> no es suficiente</h2>
+<p>Gira el emulador (Ctrl+↑) y miramos qué pasa con dos contadores:</p>
+<figure>
+<img src="./assets/capturas-codigo3-rotacion-antes.png" alt="Dos contadores a 3 antes de rotar">
+<img src="./assets/capturas-codigo3-rotacion-despues.png" alt="Tras rotar, ambos contadores vuelven a 0: la Activity se recreó entera">
+<figcaption>Figura 3. Antes y después de rotar: <code>remember</code> sobrevive a recomposiciones, pero la rotación <strong>recrea la Activity entera</strong> — y los dos contadores vuelven a nacer a 0.</figcaption>
+</figure>
+
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Código 3 — Dos contadores, el mismo destino (escena <code>--ei escena 3</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nd">@Composable</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">EscenaRotador</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">                                       </span><span class="c1">// demuestra remember con dos contadores</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">sinRecordar</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="m">0</span><span class="p">)</span><span class="w">                    </span><span class="c1">// SIN remember: nace en cada recomposición</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">conRecordar</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">       </span><span class="c1">// CON remember: sobrevive a recomposiciones</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="n">Column</span><span class="p">(</span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">().</span><span class="na">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">),</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">10.</span><span class="n">dp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">"Gira el emulador (Ctrl+↑) y mira quién sobrevive"</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="na">Gray</span><span class="p">)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sinRecordar</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">conRecordar</span><span class="o">++</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"Sumar a los dos"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">"Sin remember: </span><span class="si">$</span><span class="n">sinRecordar</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">22.</span><span class="n">sp</span><span class="p">)</span><span class="w">   </span><span class="c1">// se reinicia al girar (se recrea TODO)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">"Con remember: </span><span class="si">$</span><span class="n">conRecordar</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">22.</span><span class="n">sp</span><span class="p">,</span><span class="w"> </span><span class="n">fontWeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FontWeight</span><span class="p">.</span><span class="na">Bold</span><span class="p">)</span><span class="w"> </span><span class="c1">// también se recrea…</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">"⚠ remember NO sobrevive a la rotación: la Activity se recrea de cero. "</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">             </span><span class="s">"Para eso está onSaveInstanceState (siguiente escena)."</span><span class="p">,</span><span class="w"> </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12.</span><span class="n">sp</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="na">Gray</span><span class="p">)</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>La rotación (o que te coman la memoria) dispara <strong>destrucción + creación completa</strong>: <code>onDestroy</code> → <code>onCreate</code>. ¿Dónde se guarda lo importante entonces? En el <strong>Bundle</strong> — un paquetito clave→valor que el sistema te devuelve en el <code>onCreate</code> siguiente:</p>
+<figure>
+<img src="./assets/capturas-codigo4-bundle-antes.png" alt="Contador del Bundle a 4 antes de rotar">
+<img src="./assets/capturas-codigo4-bundle-despues.png" alt="Tras rotar, el contador recuperado del Bundle sigue a 4">
+<figcaption>Figura 4. Con <code>onSaveInstanceState</code>: el contador se pierde al girar, pero <code>savedInstanceState</code> nos lo devuelve intacto.</figcaption>
+</figure>
+
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Código 4 — El Bundle que sube al ático (Activity dedicada, escena <code>--ei escena 4</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">EscenaGuardaActivity</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ComponentActivity</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">    </span><span class="c1">// Activity dedicada: tiene onSaveInstanceState</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">visitas</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="m">0</span><span class="p">)</span><span class="w">          </span><span class="c1">// SE RECREA a cero en cada rotación…</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">guardado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w">                          </span><span class="c1">// …pero ESTO lo devuelve el Bundle</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="kd">companion</span><span class="w"> </span><span class="kd">object</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">CLAVE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"visitas_guardadas"</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// clave del Bundle</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span><span class="w"> </span><span class="n">Bundle?</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="c1">// si el sistema nos devuelve Bundle, es que venimos de una rotación</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="n">guardado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="o">?.</span><span class="na">getInt</span><span class="p">(</span><span class="n">CLAVE</span><span class="p">)</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="m">0</span><span class="w">   </span><span class="c1">// null = arranque limpio</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="n">visitas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">guardado</span><span class="w">                                   </span><span class="c1">// y recuperamos el dato</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="n">setContent</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">            </span><span class="n">MaterialTheme</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">                </span><span class="n">Column</span><span class="p">(</span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">().</span><span class="na">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">),</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">10.</span><span class="n">dp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">                    </span><span class="n">Text</span><span class="p">(</span><span class="s">"Guardar estado al girar"</span><span class="p">,</span><span class="w"> </span><span class="n">fontWeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FontWeight</span><span class="p">.</span><span class="na">Bold</span><span class="p">,</span><span class="w"> </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20.</span><span class="n">sp</span><span class="p">)</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">                    </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">visitas</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">guardado</span><span class="o">++</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"Sumar (las dos)"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">                    </span><span class="n">Text</span><span class="p">(</span><span class="s">"visible ahora mismo: </span><span class="si">$</span><span class="n">visitas</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">22.</span><span class="n">sp</span><span class="p">)</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">                    </span><span class="n">Text</span><span class="p">(</span><span class="s">"recuperado del Bundle: </span><span class="si">$</span><span class="n">guardado</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">22.</span><span class="n">sp</span><span class="p">,</span><span class="w"> </span><span class="n">fontWeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FontWeight</span><span class="p">.</span><span class="na">Bold</span><span class="p">)</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">                    </span><span class="n">Text</span><span class="p">(</span><span class="s">"Gira (Ctrl+↑): si el Bundle funciona, el segundo NO baja a 0."</span><span class="p">,</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">                         </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12.</span><span class="n">sp</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">androidx</span><span class="p">.</span><span class="na">compose</span><span class="p">.</span><span class="na">ui</span><span class="p">.</span><span class="na">graphics</span><span class="p">.</span><span class="na">Color</span><span class="p">.</span><span class="na">Gray</span><span class="p">)</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">    </span><span class="c1">// EL MOMENTO CLAVE: el sistema avisa de que va a matarnos → guardamos lo que importa</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onSaveInstanceState</span><span class="p">(</span><span class="n">outState</span><span class="p">:</span><span class="w"> </span><span class="n">Bundle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">   </span><span class="c1">// el Bundle que sube al ático</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onSaveInstanceState</span><span class="p">(</span><span class="n">outState</span><span class="p">)</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">        </span><span class="n">outState</span><span class="p">.</span><span class="na">putInt</span><span class="p">(</span><span class="n">CLAVE</span><span class="p">,</span><span class="w"> </span><span class="n">guardado</span><span class="p">)</span><span class="w">                    </span><span class="c1">// solo lo mínimo: no serialices el mundo</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Reglas de oro del estado: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">el Bundle es para el estado de la INTERFAZ (scroll, texto a medio teclear, un contador) y tiene límite de tamaño (~512 KB en la transacción IPC); los datos de verdad van a disco o a una capa de datos (Room en el tema 3, ViewModel cuando llegue arquitectura)</span>. Si alguien te dice "lo guardo todo en el Bundle", pregúntale por una foto de 3 MB.</p>
+<h2 id="4-intents-el-correo-postal-de-android">4. Intents: el correo postal de Android</h2>
+<p>Un <strong>Intent es un objeto que describe una acción</strong> — no "abre la pantalla X", sino <em>"quiero VER esta URL"</em>, <em>"quiero MANDAR este texto"</em>, <em>"quiero la Activity FichaActivity con estos datos"</em>. El sistema lo reparte. Sus tres piezas:</p>
+<table>
+<thead>
+<tr>
+<th>Pieza</th>
+<th>Qué es</th>
+<th>Ejemplos reales de esta app</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>action</strong></td>
+<td>El verbo</td>
+<td><code>ACTION_VIEW</code> (ver), <code>ACTION_DIAL</code> (marcar), <code>ACTION_SEND</code> (compartir)</td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td>El dato (URI)</td>
+<td><code>tel:956 12 34 56</code>, <code>content://media/images/42</code>, <code>https://fumeto.dev/ficha/nerea</code></td>
+</tr>
+<tr>
+<td><strong>categories</strong></td>
+<td>Requisitos</td>
+<td><code>DEFAULT</code> (me vale un respondedor normal), <code>BROWSABLE</code> (desde navegador)</td>
+</tr>
+</tbody>
+</table>
+<p>Y la distinción que hay que tener clara desde el minuto uno: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">un intent EXPLÍCITO nombra a quién se lo mandas (una clase de Activity tuya); un intent IMPLÍCITO solo describe la acción y deja que el sistema busque quién la sabe hacer</span>.</p>
+<h2 id="5-intent-explicito-tu-pantalla-llama-a-la-tuya">5. Intent explícito: tu pantalla llama a la tuya</h2>
+<p>Pulsamos cualquier tarjeta de la lista y <code>MainActivity</code> lanza <code>FichaActivity</code> <strong>a dedo</strong>, nombrándola:</p>
+<figure>
+<img src="./assets/capturas-codigo5-ficha.png" alt="FichaActivity mostrando el nombre y teléfono recibidos por extras">
+<figcaption>Figura 5. FichaActivity: los datos viajaron dentro del intent como <em>extras</em> (parejas clave→valor) y aquí los leemos y pintamos.</figcaption>
+</figure>
+
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Código 5 — El sobre (emisor) y la carta (receptor)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// — EMISOR: en la lista, la tarjeta entera es pulsable —</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">Card</span><span class="p">(</span><span class="w">                                           </span><span class="c1">// tarjeta Material con sombra</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="w">                         </span><span class="c1">// el traje de la tarjeta:</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">        </span><span class="p">.</span><span class="na">fillMaxWidth</span><span class="p">()</span><span class="w">                         </span><span class="c1">// ancha como la pantalla</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="p">.</span><span class="na">clickable</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">alAbrir</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">               </span><span class="c1">// y pulsable por TODO: abre la ficha</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* fila con nombre, teléfono, switch y papelera (ver 2.3) */</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1">// — y en EscenaCasa, el callback que dispara el envío —</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="n">alAbrir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">                            </span><span class="c1">// C5: intent EXPLÍCITO a mi propia Activity</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="n">contexto</span><span class="p">.</span><span class="na">startActivity</span><span class="p">(</span><span class="w">                 </span><span class="c1">// "quién" lo arreglo yo, sin preguntas</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="n">Intent</span><span class="p">(</span><span class="n">contexto</span><span class="p">,</span><span class="w"> </span><span class="n">FichaActivity</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">)</span><span class="w">   </span><span class="c1">// destino: clase concreta</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">            </span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="n">FichaActivity</span><span class="p">.</span><span class="na">EXTRA_NOMBRE</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="na">nombre</span><span class="p">)</span><span class="w">     </span><span class="c1">// extra del nombre</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">            </span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="n">FichaActivity</span><span class="p">.</span><span class="na">EXTRA_TELEFONO</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="na">telefono</span><span class="p">)</span><span class="w"> </span><span class="c1">// extra del teléfono</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="p">)</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="p">},</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="c1">// — RECEPTOR: FichaActivity lee las extras en su onCreate —</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="kd">val</span><span class="w"> </span><span class="nv">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">intent</span><span class="p">.</span><span class="na">getStringExtra</span><span class="p">(</span><span class="n">EXTRA_NOMBRE</span><span class="p">)</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="s">"Desconocido"</span><span class="w"> </span><span class="c1">// null → "Desconocido"</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="kd">val</span><span class="w"> </span><span class="nv">telefono</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">intent</span><span class="p">.</span><span class="na">getStringExtra</span><span class="p">(</span><span class="n">EXTRA_TELEFONO</span><span class="p">)</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="s">"sin número"</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="kd">companion</span><span class="w"> </span><span class="kd">object</span><span class="w"> </span><span class="p">{</span><span class="w">                                    </span><span class="c1">// claves públicas: las usa el emisor</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">EXTRA_NOMBRE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"nombre"</span><span class="w">                 </span><span class="c1">// string de clave, el de verdad</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">EXTRA_TELEFONO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"telefono"</span><span class="w">             </span><span class="c1">// y el del teléfono</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Las extras son un Bundle con nombre: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">viajan tipos primitivos yParcelable (el heredero moderno de Serializable, serializado de verdad); y se leen SIEMPRE con nulabilidad obligada — <code>getStringExtra(...) ?: default</code> — porque si te saltan la Activity a mano con adb, las extras simplemente no están</span>. Compruébalo: <code>adb shell am start -n com.example.fumetocontactos/.FichaActivity</code> → verás la ficha de "Desconocido".</p>
+<h2 id="6-intent-implicito-que-lo-haga-quien-sepa">6. Intent implícito: que lo haga quien sepa</h2>
+<p><code>FichaActivity</code> tiene tres botones que <strong>no saben</strong> qué app los responderá:</p>
+<figure>
+<img src="./assets/capturas-codigo6-marcador.png" alt="Marcador del sistema abierto con el número del contacto listo para llamar">
+<figcaption>Figura 7. ACTION_DIAL: nuestro intent decía «marcador con este número»; el Dialer del emulador se ofreció y lo abrió. Ojo: DIAL no llama, deja el número escrito — para disparar la llamada hace falta ACTION_CALL… y permiso.</figcaption>
+</figure>
+
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Código 6 — Llamar sin conocer al marcador</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alLlamar</span><span class="p">,</span><span class="w"> </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxWidth</span><span class="p">(</span><span class="m">0.7f</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">Text</span><span class="p">(</span><span class="s">"📞 Llamar (intent implícito)"</span><span class="p">)</span><span class="w">           </span><span class="c1">// ACTION_DIAL</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">}</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1">// …y alLlamar, en el onCreate de FichaActivity:</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">alLlamar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">                          </span><span class="c1">// INTENT IMPLÍCITO con dato:</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="n">startActivity</span><span class="p">(</span><span class="n">Intent</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="na">ACTION_DIAL</span><span class="p">,</span><span class="w"> </span><span class="n">Uri</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">"tel:</span><span class="si">$</span><span class="n">telefono</span><span class="s">"</span><span class="p">)))</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="p">},</span><span class="w">                                    </span><span class="c1">// quien responda (el marcador) decide</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Compartir es igual de delegón: construimos el intent, le metemos el texto, y <code>createChooser</code> fuerza <strong>nuestro</strong> diálogo de elección (sin él, Android recuerda tu última app y ya no te pregunta más, que es una UX muy borde):</p>
+<figure>
+<img src="./assets/capturas-codigo7-chooser.png" alt="Diálogo Compartir ficha con… mostrando las apps capaces de recibir texto">
+<figcaption>Figura 8. <code>ACTION_SEND</code> + <code>createChooser</code>: el sistema busca quién declara poder recibir <code>text/plain</code> y deja al usuario elegir SIEMPRE.</figcaption>
+</figure>
+
+<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Código 7 — Compartir (ACTION_SEND + chooser)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">alCompartir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">                       </span><span class="c1">// ACTION_SEND: compartimos la ficha</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intent</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="na">ACTION_SEND</span><span class="p">).</span><span class="na">apply</span><span class="w"> </span><span class="p">{</span><span class="w">   </span><span class="c1">// construimos el intent</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">        </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"text/plain"</span><span class="w">                       </span><span class="c1">// MIME: texto plano</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">        </span><span class="n">putExtra</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="na">EXTRA_TEXT</span><span class="p">,</span><span class="w">               </span><span class="c1">// el contenido a compartir</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">            </span><span class="s">"Ficha de </span><span class="si">$</span><span class="n">nombre</span><span class="s"> — </span><span class="si">$</span><span class="n">telefono</span><span class="s"> (FumetoContactos)"</span><span class="p">)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="n">startActivity</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="na">createChooser</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="s">"Compartir ficha con…"</span><span class="p">))</span><span class="w"> </span><span class="c1">// nuestro chooser</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="p">},</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>El tercero pide una foto a la galería con el lanzador moderno (nada de <code>startActivityForResult</code> a mano):</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Código 8 — Galería: el sistema elige, nosotros pintamos</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">// en FichaActivity: lanzador registrado ANTES de que la Activity esté creada (así lo exige el ciclo)</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">pickImagen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">registerForActivityResult</span><span class="p">(</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="n">ActivityResultContracts</span><span class="p">.</span><span class="na">GetContent</span><span class="p">()</span><span class="w">              </span><span class="c1">// "dame contenido de un fichero"</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">uri</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">uri</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="n">rutaFoto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uri</span><span class="w"> </span><span class="p">}</span><span class="w">          </span><span class="c1">// si no cancela, guardamos el Uri</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c1">// el botón:</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">alGaleria</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pickImagen</span><span class="p">.</span><span class="na">launch</span><span class="p">(</span><span class="s">"image/*"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">          </span><span class="c1">// "cualquier imagen vale"</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1">// y en el composable Ficha, pintar lo elegido:</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">foto</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                               </span><span class="c1">// si ya hay foto elegida…</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">    </span><span class="n">Spacer</span><span class="p">(</span><span class="n">Modifier</span><span class="p">.</span><span class="na">height</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">))</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">androidx</span><span class="p">.</span><span class="na">compose</span><span class="p">.</span><span class="na">ui</span><span class="p">.</span><span class="na">platform</span><span class="p">.</span><span class="na">LocalContext</span><span class="p">.</span><span class="na">current</span><span class="w">      </span><span class="c1">// el Context real de la pantalla</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">bitmap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">remember</span><span class="p">(</span><span class="n">foto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                 </span><span class="c1">// la decodificamos UNA vez por Uri</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">        </span><span class="n">ctx</span><span class="p">.</span><span class="na">contentResolver</span><span class="p">.</span><span class="na">openInputStream</span><span class="p">(</span><span class="n">foto</span><span class="p">)</span><span class="o">?.</span><span class="na">use</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">    </span><span class="c1">// abrimos el content://</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">            </span><span class="n">BitmapFactory</span><span class="p">.</span><span class="na">decodeStream</span><span class="p">(</span><span class="n">input</span><span class="p">)</span><span class="w">     </span><span class="c1">// stream → Bitmap</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="w">    </span><span class="n">bitmap</span><span class="o">?.</span><span class="na">let</span><span class="w"> </span><span class="p">{</span><span class="w">                                 </span><span class="c1">// si se pudo leer:</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="w">        </span><span class="n">Image</span><span class="p">(</span><span class="w">                                    </span><span class="c1">// la pintamos en Compose</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="w">            </span><span class="n">bitmap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">asImageBitmap</span><span class="p">(),</span><span class="w">          </span><span class="c1">// Bitmap del sistema → ImageBitmap</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="w">            </span><span class="n">contentDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Foto de </span><span class="si">$</span><span class="n">nombre</span><span class="s">"</span><span class="p">,</span><span class="w">  </span><span class="c1">// accesibilidad: qué es la imagen</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="w">            </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">size</span><span class="p">(</span><span class="m">180.</span><span class="n">dp</span><span class="p">)</span><span class="w">      </span><span class="c1">// tamaño fijo, cuadradita</span>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="w">        </span><span class="p">)</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<figure>
+<img src="./assets/capturas-codigo8b-picker.png" alt="El selector de fotos del sistema con la imagen de prueba disponible">
+<figcaption>Figura 10. El selector del sistema con nuestra playa de prueba en DCIM. Con <code>GetContent</code> no hacen falta permisos: préstamo de acceso puntual sobre ESE fichero — la filosofía de Android en miniatura.</figcaption>
+</figure>
+
+<h2 id="7-intent-filter-cuando-el-mundo-te-llama-a-ti">7. Intent filter: cuando el mundo te llama a ti</h2>
+<p>Hasta aquí nosotros llamábamos. Un <code>&lt;intent-filter&gt;</code> es <strong>publicarse en las páginas amarillas del móvil</strong>: "si alguien quiere VIEW esta URL, aquí tiene quién". Nuestra <code>FichaWebActivity</code> se apunta a <code>https://fumeto.dev</code>:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Código 9 — Recibir una URL y interpretarla</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">FichaWebActivity</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ComponentActivity</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">    </span><span class="c1">// registrada en el Manifest con intent-filter</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span><span class="w"> </span><span class="n">Bundle?</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">uri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">intent</span><span class="p">.</span><span class="na">data</span><span class="w">                              </span><span class="c1">// la URL que nos trajeron: https://fumeto.dev/…</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">secciones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uri</span><span class="o">?.</span><span class="na">pathSegments</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="s">"(sin ruta)"</span><span class="p">)</span><span class="w"> </span><span class="c1">// /ficha/nerea → [ficha, nerea]</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span><span class="n">setContent</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">            </span><span class="n">MaterialTheme</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">                </span><span class="n">Surface</span><span class="p">(</span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">          </span><span class="c1">// superficie Material vacía</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">                    </span><span class="n">Column</span><span class="p">(</span><span class="n">Modifier</span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="m">20.</span><span class="n">dp</span><span class="p">),</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">8.</span><span class="n">dp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">                        </span><span class="n">Text</span><span class="p">(</span><span class="s">"🌐 ¡Me han abierto con una URL!"</span><span class="p">,</span><span class="w"> </span><span class="n">fontWeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FontWeight</span><span class="p">.</span><span class="na">Bold</span><span class="p">,</span><span class="w"> </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20.</span><span class="n">sp</span><span class="p">)</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">                        </span><span class="n">Text</span><span class="p">(</span><span class="s">"URL recibida: </span><span class="si">$</span><span class="n">uri</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">14.</span><span class="n">sp</span><span class="p">)</span><span class="w">          </span><span class="c1">// tal cual</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">                        </span><span class="n">Text</span><span class="p">(</span><span class="s">"Ruta interpretada:"</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">androidx</span><span class="p">.</span><span class="na">compose</span><span class="p">.</span><span class="na">ui</span><span class="p">.</span><span class="na">graphics</span><span class="p">.</span><span class="na">Color</span><span class="p">.</span><span class="na">Gray</span><span class="p">,</span><span class="w"> </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">13.</span><span class="n">sp</span><span class="p">)</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">                        </span><span class="n">secciones</span><span class="p">.</span><span class="na">forEachIndexed</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">                    </span><span class="c1">// segmento a segmento</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">                            </span><span class="n">Text</span><span class="p">(</span><span class="s">"  segmento </span><span class="si">$</span><span class="n">i</span><span class="s"> → </span><span class="si">$</span><span class="n">s</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">14.</span><span class="n">sp</span><span class="p">)</span><span class="w">      </span><span class="c1">// cada trozo de la ruta</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">                        </span><span class="p">}</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">                        </span><span class="n">Text</span><span class="p">(</span><span class="s">"Este lo contesta SOLO mi app: lo dice mi intent-filter."</span><span class="p">,</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">                             </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12.</span><span class="n">sp</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">androidx</span><span class="p">.</span><span class="na">compose</span><span class="p">.</span><span class="na">ui</span><span class="p">.</span><span class="na">graphics</span><span class="p">.</span><span class="na">Color</span><span class="p">(</span><span class="m">0</span><span class="n">xFF008248</span><span class="p">))</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">                    </span><span class="p">}</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Tres verdades del filtro: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">un filtro coincide si la action, las categories y el data del intent encajan TODOS; la categoría DEFAULT es obligatoria en filtros que no sean MAIN/LAUNCHER (sin ella tu app aparece en la lista pero nadie puede lanzarla); y dos apps con el mismo filtro pelean con un chooser — por eso tu dominio (o App Links verificados, tema 4) es tu territorio</span>.</p>
+<h2 id="8-pendingintent-un-intent-con-reserva">8. PendingIntent: un intent con reserva</h2>
+<p>A veces quien dispara el intent <strong>no eres tú</strong>: es el sistema, minutos después, cuando el usuario toca tu notificación. No puedes pasarle un <code>Intent</code> cualquiera (lo manejaría otro proceso con tus permisos… peligroso); le pasas un <strong>PendingIntent</strong>: "cuando toque, ejecuta ESTO, y con mi identidad".</p>
+<figure>
+<img src="./assets/capturas-codigo10-notif.png" alt="Notificación desplegada «Toca esto» creada por la escena 5">
+<figcaption>Figura 12. La escena 5 crea canal, notifica con id 42 y su <code>setContentIntent(tap)</code>: al tocar, el sistema dispara nuestro getActivity (y la notificación se auto-quita).</figcaption>
+</figure>
+
+<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Código 10 — Notificación con testigo (escena <code>--ei escena 5</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">notificar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">                                     </span><span class="c1">// lambda con todo el ritual de notificar</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">nm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contexto</span><span class="p">.</span><span class="na">getSystemService</span><span class="p">(</span><span class="n">NotificationManager</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">)</span><span class="w"> </span><span class="c1">// el sistema de notifs</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">canal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NotificationChannel</span><span class="p">(</span><span class="s">"fumeto_tap"</span><span class="p">,</span><span class="w">      </span><span class="c1">// id del canal (el que sea, estable)</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">        </span><span class="s">"Canal Fumeto"</span><span class="p">,</span><span class="w">                               </span><span class="c1">// nombre que ve el usuario en Ajustes</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">        </span><span class="n">NotificationManager</span><span class="p">.</span><span class="na">IMPORTANCE_DEFAULT</span><span class="p">)</span><span class="w">       </span><span class="c1">// importancia: silbato normal</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="n">nm</span><span class="p">.</span><span class="na">createNotificationChannel</span><span class="p">(</span><span class="n">canal</span><span class="p">)</span><span class="w">               </span><span class="c1">// idempotente: crearlo cada vez no molesta</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">destino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intent</span><span class="p">(</span><span class="n">contexto</span><span class="p">,</span><span class="w"> </span><span class="n">MainActivity</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">)</span><span class="w">  </span><span class="c1">// qué abrirá al tocar</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">        </span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="s">"escena"</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">)</span><span class="w">                        </span><span class="c1">// escena 6 = la pantalla de "te hemos traído"</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">        </span><span class="p">.</span><span class="na">addFlags</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="na">FLAG_ACTIVITY_CLEAR_TOP</span><span class="p">)</span><span class="w">     </span><span class="c1">// si ya existía, traemos su pila arriba</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">    </span><span class="c1">// el PendingIntent: "este intent lo disparará OTRO (el sistema al tocar)"</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">tap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PendingIntent</span><span class="p">.</span><span class="na">getActivity</span><span class="p">(</span><span class="w">              </span><span class="c1">// getActivity = abrirá una Activity</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">        </span><span class="n">contexto</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w">                                  </span><span class="c1">// contexto + código de petición</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">        </span><span class="n">destino</span><span class="p">,</span><span class="w">                                      </span><span class="c1">// el intent a disparar</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">        </span><span class="n">PendingIntent</span><span class="p">.</span><span class="na">FLAG_UPDATE_CURRENT</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">PendingIntent</span><span class="p">.</span><span class="na">FLAG_IMMUTABLE</span><span class="p">)</span><span class="w"> </span><span class="c1">// actualiza y no deja que otro lo mutile</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="w">    </span><span class="n">nm</span><span class="p">.</span><span class="na">notify</span><span class="p">(</span><span class="m">42</span><span class="p">,</span><span class="w"> </span><span class="n">NotificationCompat</span><span class="p">.</span><span class="na">Builder</span><span class="p">(</span><span class="n">contexto</span><span class="p">,</span><span class="w"> </span><span class="s">"fumeto_tap"</span><span class="p">)</span><span class="w">  </span><span class="c1">// id 42: re-notify = reemplaza</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="w">        </span><span class="p">.</span><span class="na">setSmallIcon</span><span class="p">(</span><span class="n">android</span><span class="p">.</span><span class="na">R</span><span class="p">.</span><span class="na">drawable</span><span class="p">.</span><span class="na">ic_dialog_info</span><span class="p">)</span><span class="w">              </span><span class="c1">// iconito blanco del sistema</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="w">        </span><span class="p">.</span><span class="na">setContentTitle</span><span class="p">(</span><span class="s">"Toca esto"</span><span class="p">)</span><span class="w">                                 </span><span class="c1">// línea gruesa</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">        </span><span class="p">.</span><span class="na">setContentText</span><span class="p">(</span><span class="s">"Su PendingIntent abre la escena 6"</span><span class="p">)</span><span class="w">          </span><span class="c1">// línea fina</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="w">        </span><span class="p">.</span><span class="na">setContentIntent</span><span class="p">(</span><span class="n">tap</span><span class="p">)</span><span class="w">                                        </span><span class="c1">// ⭐ su PendingIntent</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="w">        </span><span class="p">.</span><span class="na">setAutoCancel</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w">                                          </span><span class="c1">// al tocar, se quita sola</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w">                                                     </span><span class="c1">// a la calle</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="w">    </span><span class="kt">Unit</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<figure>
+<img src="./assets/capturas-codigo10b-landing.png" alt="Escena 6 de bienvenida: llegada desde la notificación">
+<figcaption>Figura 13. El destino del PendingIntent: MainActivity con la extra escena=6. La notificación fue el mensajero; el intent lo ejecutó el sistema.</figcaption>
+</figure>
+
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Desde Android 12 los PendingIntent son <code>FLAG_IMMUTABLE</code> por defecto obligatorio: sin esa flag el emisor pierde el derecho de decir quién puede modificar el intent, y un receptor malicioso podría reescribirlo</span>. Y desde Android 13, notificar exige el permiso runtime <code>POST_NOTIFICATIONS</code> — lo pediremos de verdad cuando montemos notificaciones de verdad (práctica 2.3).</p>
+<h2 id="9-autoevaluacion">9. Autoevaluación</h2>
+<blockquote>
+<p><strong>[!] Pregunta 1</strong> — Ordena las estaciones que se saltan al abrir un diálogo transparente encima de tu Activity.</p>
+<blockquote>
+<p>[!answer]
+Solo <code>onPause</code> (sigues visible → no hay <code>onStop</code>). Al cerrarse el diálogo: directo <code>onResume</code>.</p>
+</blockquote>
+<p><strong>[!] Pregunta 2</strong> — Rotas con 400 KB de texto en el Bundle y una foto de 4 MB en otra extra. ¿Qué revienta y por qué?</p>
+<blockquote>
+<p>[!answer]
+La foto: el Bundle viaja por una transacción IPC (~512 KB de tope) → <code>TransactionTooLargeException</code> (o la app muere). El texto de 400 KB pasa justito: el Bundle es para estado de UI, no para datos.</p>
+</blockquote>
+<p><strong>[!] Pregunta 3</strong> — ¿Qué dos cosas le faltan a este filtro para que tu app aparezca como opción del navegador? <code>&lt;intent-filter&gt;&lt;action android:name="android.intent.action.VIEW"/&gt;&lt;data android:scheme="https"/&gt;&lt;/intent-filter&gt;</code></p>
+<blockquote>
+<p>[!answer]
+Las categorías <code>DEFAULT</code> y <code>BROWSABLE</code> (y si quieres ser LA opción sin chooser, verificar el dominio con App Links: <code>assetlinks.json</code> servido por ti).</p>
+</blockquote>
+<p><strong>[!] Pregunta 4</strong> — ¿Por qué un <code>PendingIntent</code> y no un <code>Intent</code> a secas en una notificación?</p>
+<blockquote>
+<p>[!answer]
+Porque lo va a disparar OTRO proceso (system_server) en otro momento: el PendingIntent congela acción, datos e identidad del emisor, y la flag <code>IMMUTABLE</code> impide que el receptor lo deforme.</p>
+</blockquote>
+<p><strong>[!] Pregunta 5</strong> — Tu compañero lanza <code>FichaActivity</code> con adb sin extras y peta al leer `getStringExtra("nombre")!!.¿Por qué y con qué se arregla?</p>
+<blockquote>
+<p>[!answer]
+Porque las extras no garantizadas llegan null y el <code>!!</code> convierte el null en excepción. Con nulabilidad en el sitio de lectura: <code>?: "Desconocido"</code> — tal como hacemos en el Código 5.</p>
+</blockquote>
+</blockquote>
+<hr />
+<p><strong>Materiales</strong>: <a href="https://developer.android.com/guide/components/activities/intro-activities">Documentación oficial de Activities</a> · <a href="https://developer.android.com/guide/components/intents-filters">Referencia de Intents y filtros</a> · <strong>Presentación</strong>: <a href="https://revilofe.github.io/slides/section5-pmdm/PM-U2.2.-ActividadesIntents.html">diapositivas del tema 2.2</a> · Siguiente: <a href="../PMDM-U2.3.-AppComposeListasYFormulario/">2.3 — La app Compose: Scaffold, listas Lazy y formulario</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>
