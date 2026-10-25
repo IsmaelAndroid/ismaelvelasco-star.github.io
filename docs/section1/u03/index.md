@@ -48,7 +48,9 @@ El módulo tiene **3 sesiones semanales** (≈2 h 45 min/semana). La unidad se c
 
 - [3.1.- Navegación: grafo, argumentos y enlaces profundos](teoria/PMDM-U3.1.-NavegacionGrafoArgumentosYDeepLinks.md) — rutas con argumento tipado, control de la pila, valores por defecto y deep links.
 
-> 3.2 Estado y formularios · 3.3 Room · 3.4 Retrofit y sesión · 3.5 Taller integrador — en preparación.
+- [3.2.- Estado y formularios: ViewModel, StateFlow y validación](teoria/PMDM-U3.2.-EstadoYFormularios.md) — dónde vive el estado, validación en el ViewModel y avisos con Snackbar.
+
+> 3.3 Room · 3.4 Retrofit y sesión · 3.5 Taller integrador — en preparación.
 
 ### Prácticas
 
@@ -56,7 +58,7 @@ El módulo tiene **3 sesiones semanales** (≈2 h 45 min/semana). La unidad se c
 
 ### Presentaciones
 
-* [PM-U3.1 - Navegación: grafo, argumentos y deep links](https://revilofe.github.io/slides/section5-pmdm/PM-U3.1.-NavegacionGrafoArgumentos.html)
+* Presentaciones de la unidad en preparación.
 
 ### Situación en el módulo
 

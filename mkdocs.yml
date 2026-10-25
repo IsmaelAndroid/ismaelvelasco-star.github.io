@@ -25,6 +25,7 @@ nav:
     - 'U3: Gestión de datos':
         - 'section1/u03/index.md'
         - '3.1.-Navegación: grafo, argumentos y deep links': 'section1/u03/teoria/PMDM-U3.1.-NavegacionGrafoArgumentosYDeepLinks.md'
+- '3.2.-Estado y formularios: ViewModel y validación': 'section1/u03/teoria/PMDM-U3.2.-EstadoYFormularios.md'
   - 'Desarrollo de Interfaces':
     - 'section2/index.md'
     - 'UD 1 - Introducción a la confección de interfaces':
