@@ -13,7 +13,7 @@ permalink: /di
 
 Bienvenid@ al temario de **Desarrollo de Interfaces** del ciclo **Desarrollo de Aplicaciones Multiplataforma (2º DAM)**.
 
-Este curso el módulo se imparte íntegramente con **Kotlin y Jetpack Compose**, siguiendo la estructura oficial del módulo 0488 (RD 450/2010): teoría, ejercicios graduados con solucionario y presentaciones.
+Este curso el módulo se imparte íntegramente con **Kotlin y Jetpack Compose**, siguiendo la estructura oficial del módulo 0488 (RD 405/2023): teoría, ejercicios graduados con solucionario y presentaciones.
 
 ## Unidades
 
