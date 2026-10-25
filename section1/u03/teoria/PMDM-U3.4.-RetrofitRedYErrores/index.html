@@ -1244,6 +1244,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#lo-que-tienes-que-llevarte-de-este-apartado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lo que tienes que llevarte de este apartado
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3366,6 +3377,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#lo-que-tienes-que-llevarte-de-este-apartado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lo que tienes que llevarte de este apartado
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3628,6 +3650,13 @@ data class UsuarioRemoto(                                   // lo que devuelve e
 <li><strong><code>ignoreUnknownKeys</code></strong> te protege de cambios del servidor.</li>
 <li><strong>Permiso INTERNET</strong> obligatorio.</li>
 <li>Una pantalla con red tiene <strong>tres estados</strong>: cargando, error, datos.</li>
+</ul>
+<h2 id="lo-que-tienes-que-llevarte-de-este-apartado">Lo que tienes que llevarte de este apartado</h2>
+<ul>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Sin el permiso <code>INTERNET</code> en el <code>AndroidManifest.xml</code> la petición muere con <code>EPERM</code> antes de salir del teléfono: parece red y es declaración.</span></li>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>baseUrl</code> termina en <code>/</code> y la ruta del <code>@GET</code> no empieza por <code>/</code>: si no respetas esa convención, la URL sale mal y el error es un 404 despistado.</span></li>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El tiempo de espera también es configurable: sin <code>callTimeout</code>, un servidor colgado deja la pantalla con la rueda girando para siempre.</span></li>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un <code>401</code> y un <code>404</code> se tratan distinto: el primero pide renovar la sesión, el segundo avisar y salir de la pantalla.</span></li>
 </ul>
 
 

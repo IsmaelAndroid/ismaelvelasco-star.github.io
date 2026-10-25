@@ -1143,6 +1143,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#lo-que-tienes-que-llevarte-de-este-apartado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lo que tienes que llevarte de este apartado
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3332,6 +3343,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#lo-que-tienes-que-llevarte-de-este-apartado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lo que tienes que llevarte de este apartado
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3613,6 +3635,13 @@ Scaffold(                                              // andamio Material: barr
 <li>Un <strong>deep link</strong> se declara en Manifest <strong>y</strong> en el grafo.</li>
 </ul>
 <p><strong>En la práctica</strong> de esta unidad construirás el grafo de una agenda con tres destinos, argumento tipado, control de la pila y un deep link propio; las capturas de tu entrega tienen que demostrar los cinco comportamientos de las figuras 1 a 5.</p>
+<h2 id="lo-que-tienes-que-llevarte-de-este-apartado">Lo que tienes que llevarte de este apartado</h2>
+<ul>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Toda ruta con argumento se declara con plantilla (<code>detalle/{id}</code>) y se navega con la ruta resuelta (<code>detalle/3</code>): si navegas a la plantilla literal, el argumento no llega.</span></li>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Los argumentos viajan en un <code>Bundle</code>, así que solo caben tipos simples (<code>Int</code>, <code>Long</code>, <code>String</code>, <code>Boolean</code>). Un objeto completo se pasa por su <code>id</code> y se vuelve a leer.</span></li>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un deep link no funciona solo: necesita su <code>intent-filter</code> en el <code>AndroidManifest.xml</code>. Sin esa declaración, el enlace abre el navegador, no tu app.</span></li>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El botón atrás del sistema ya hace <code>popBackStack()</code>: no lo interceptes ni lo reimplementes, o el usuario pierde la navegación esperada.</span></li>
+</ul>
 
 
 

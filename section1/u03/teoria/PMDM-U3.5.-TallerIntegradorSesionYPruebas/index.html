@@ -1233,6 +1233,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#lo-que-tienes-que-llevarte-de-este-apartado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lo que tienes que llevarte de este apartado
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3288,6 +3299,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#lo-que-tienes-que-llevarte-de-este-apartado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lo que tienes que llevarte de este apartado
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3552,6 +3574,14 @@ fun `el telefono filtra lo que no son digitos`() {        // regla 4
 </tbody>
 </table>
 <p>Con esto se cierran los criterios <strong>a)</strong>, <strong>e)</strong>, <strong>f)</strong>, <strong>g)</strong>, <strong>i)</strong> y <strong>j)</strong> del RA2 del módulo 0489 (RD 405/2023): estructura de clases, conexiones HTTP/HTTPS, persistencia, pruebas en emulador, documentación y permisos.</p>
+<h2 id="lo-que-tienes-que-llevarte-de-este-apartado">Lo que tienes que llevarte de este apartado</h2>
+<ul>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">DataStore se maneja con corutinas: <code>edit</code> es <code>suspend</code> y no bloquea el hilo de la interfaz.</span></li>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El token de sesión se guarda en disco, nunca en una variable en memoria: las variables mueren al cerrar la app y la sesión con ellas.</span></li>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un almacén por nombre: cada <code>preferencesDataStore(name = ...)</code> abre un archivo, y multiplicar almacenes multiplica las escrituras.</span></li>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Si una regla de negocio no se puede probar sin tocar la pantalla, está en la capa equivocada.</span></li>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">En este módulo todo lo que entregues se demuestra con una captura o con una prueba: las dos son evidencia, la intención no.</span></li>
+</ul>
 
 
 

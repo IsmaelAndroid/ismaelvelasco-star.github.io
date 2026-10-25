@@ -1216,6 +1216,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#lo-que-tienes-que-llevarte-de-este-apartado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lo que tienes que llevarte de este apartado
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3366,6 +3377,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#lo-que-tienes-que-llevarte-de-este-apartado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lo que tienes que llevarte de este apartado
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3606,6 +3628,13 @@ abstract class AgendaDatabase : RoomDatabase() {
 <li>La base de datos es <strong>única</strong> en toda la app.</li>
 <li>Los datos <strong>sobreviven</strong> a cerrar la app: eso es persistencia.</li>
 <li>Cambiar el esquema exige <strong>subir versión y migrar</strong>.</li>
+</ul>
+<h2 id="lo-que-tienes-que-llevarte-de-este-apartado">Lo que tienes que llevarte de este apartado</h2>
+<ul>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Toda entidad necesita <code>@PrimaryKey</code>: sin clave, Room no construye la base de datos ni compila.</span></li>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El DAO es una interfaz: la implementación la genera KSP al compilar, por eso no escribes SQLite a mano.</span></li>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Si cambias una entidad sin subir <code>version</code>, Room lanza <code>IllegalStateException</code> al abrir: el número de versión es el contrato del esquema.</span></li>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Toda escritura va en <code>suspend</code> (o en un <code>@Transaction</code>): en el hilo principal, SQLite bloquea la interfaz y se nota en el tacto.</span></li>
 </ul>
 
 

@@ -1171,6 +1171,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#lo-que-tienes-que-llevarte-de-este-apartado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lo que tienes que llevarte de este apartado
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3332,6 +3343,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#lo-que-tienes-que-llevarte-de-este-apartado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lo que tienes que llevarte de este apartado
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3596,6 +3618,13 @@ fun guardar(): Boolean {                                // valida y decide si se
 <li>Los cambios se hacen con <strong><code>copy</code></strong>, nunca mutando.</li>
 <li>La <strong>validación</strong> es lógica de negocio: vive en el ViewModel y devuelve el resultado.</li>
 <li>El <strong>Snackbar</strong> es <code>suspend</code>: se lanza con un <code>rememberCoroutineScope()</code>.</li>
+</ul>
+<h2 id="lo-que-tienes-que-llevarte-de-este-apartado">Lo que tienes que llevarte de este apartado</h2>
+<ul>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La validación es lógica de negocio, no pintura: vive en el <code>ViewModel</code> y así la puedes probar, reutilizar y mantener.</span></li>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La <code>data class</code> de estado es inmutable y se cambia con <code>copy(...)</code>: por eso nunca quedan campos a medias tras una actualización.</span></li>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Se validan todas las reglas a la vez y se muestran todos los errores a la vez: un error por pulsación alarga el tiempo de corrección.</span></li>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un mensaje de error que vive en un <code>Toast</code> no se puede probar; uno que vive en el estado se pinta, se comprueba y se repite.</span></li>
 </ul>
 
 
