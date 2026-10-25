@@ -141,4 +141,4 @@ Antes de dar el juego por terminado:
 
 ## Presentación
 
-- [PM-U6 - Juegos 2D y 3D](https://revilofe.github.io/slides/section5-pmdm/PM-U6.-Juegos2DY3D.html)
+- [PM-U6 - Juegos 2D y 3D](https://revilofe.github.io/slides/section1-pmdm/PM-U6.-Juegos2DY3D.html)

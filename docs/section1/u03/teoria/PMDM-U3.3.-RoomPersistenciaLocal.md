@@ -203,4 +203,4 @@ val MIGRACION_1_2 = object : Migration(1, 2) {
 
 ## Presentación
 
-- [PM-U3 - Navegación, estado y red](https://revilofe.github.io/slides/section5-pmdm/PM-U3.-NavegacionEstadoYRed.html)
+- [PM-U3 - Navegación, estado y red](https://revilofe.github.io/slides/section1-pmdm/PM-U3.-NavegacionEstadoYRed.html)

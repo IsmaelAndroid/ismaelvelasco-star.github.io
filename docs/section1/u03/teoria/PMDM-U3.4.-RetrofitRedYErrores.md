@@ -198,4 +198,4 @@ Una pantalla que llama a un servidor tiene **tres estados**: cargando, error y d
 
 ## Presentación
 
-- [PM-U3 - Navegación, estado y red](https://revilofe.github.io/slides/section5-pmdm/PM-U3.-NavegacionEstadoYRed.html)
+- [PM-U3 - Navegación, estado y red](https://revilofe.github.io/slides/section1-pmdm/PM-U3.-NavegacionEstadoYRed.html)
