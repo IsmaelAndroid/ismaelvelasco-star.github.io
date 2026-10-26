@@ -37,6 +37,7 @@ El `NavHost` es el mapa de la app. Cada `composable` registra una ruta; la que l
 
 === "Código 1 — El grafo con una ruta que lleva argumento"
 
+    ```kotlin
     val nav = rememberNavController()                       // mando de navegación que sobrevive a recomposiciones
     Scaffold(                                              // andamio Material: barra + contenido
         topBar = { TopAppBar(title = { Text("IsmaelAgenda · navegación") }) }
@@ -62,6 +63,7 @@ El `NavHost` es el mapa de la app. Cada `composable` registra una ruta; la que l
             }
         }
     }
+    ```
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`navArgument("id") {{ type = NavType.IntType }}` obliga a que el argumento sea un entero: si llega otra cosa, la navegación falla en vez de reventar dentro de la pantalla.</span>
 
@@ -71,15 +73,13 @@ Al pulsar una ficha navegamos metiendo el id **dentro de la ruta**:
 .clickable { nav.navigate("detalle/${ficha.id}") }
 ```
 
-<figure>
-<img src="./assets/capturas-nav1-inicio.png" alt="Pantalla de inicio de IsmaelAgenda con la lista de fichas y el botón Acerca de IsmaelAgenda">
-<figcaption>Figura 1. El inicio de IsmaelAgenda: cada tarjeta es un `clickable` que navega a `detalle/{id}` con el id de esa ficha.</figcaption>
-</figure>
+![Pantalla de inicio de IsmaelAgenda con la lista de fichas y el botón Acerca de IsmaelAgenda](assets/capturas-nav1-inicio.png)
 
-<figure>
-<img src="./assets/capturas-nav2-detalle.png" alt="Pantalla de detalle con el texto Argumento recibido: id = 1 y la ficha de Alé Soto">
-<figcaption>Figura 2. El detalle recibiendo el argumento: `id = 1` y, con ese id, la ficha de Alé Soto. La ruta llevaba el dato; la pantalla no ha consultado nada global.</figcaption>
-</figure>
+*Figura 1. El inicio de IsmaelAgenda: cada tarjeta es un `clickable` que navega a `detalle/{id}` con el id de esa ficha.*
+
+![Pantalla de detalle con el texto Argumento recibido: id = 1 y la ficha de Alé Soto](assets/capturas-nav2-detalle.png)
+
+*Figura 2. El detalle recibiendo el argumento: `id = 1` y, con ese id, la ficha de Alé Soto. La ruta llevaba el dato; la pantalla no ha consultado nada global.*
 
 ## 3. La pila: empujar y desapilar
 
@@ -87,6 +87,7 @@ Cada `navigate()` **empuja** una entrada en la pila (back stack) y `popBackStack
 
 === "Código 2 — Leer la pila en vivo y empujar/desapilar a mano"
 
+    ```kotlin
     fun EscenaPila() {                                         // 3.1b: la pila de navegación
         val nav = rememberNavController()                       // mando de navegación
         val pila by nav.currentBackStack.collectAsState()      // lista viva de entradas de la pila
@@ -126,13 +127,13 @@ Cada `navigate()` **empuja** una entrada en la pila (back stack) y `popBackStack
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
+    ```
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`nav.currentBackStack` es un Flow: con `collectAsState()` la pantalla se redibuja sola cada vez que la pila cambia. Es la forma de depurar navegación sin adivinar.</span>
 
-<figure>
-<img src="./assets/capturas-nav3-pila.png" alt="Pantalla de pila de navegación mostrando Pantallas en la pila: 2 y las rutas separadas por mayor que">
-<figcaption>Figura 3. La pila en vivo: dos entradas (el grafo y `inicio`) con sus rutas. Al empujar `detalle/3`, el contador sube a 3; al desapilar, baja.</figcaption>
-</figure>
+![Pantalla de pila de navegación mostrando Pantallas en la pila: 2 y las rutas separadas por mayor que](assets/capturas-nav3-pila.png)
+
+*Figura 3. La pila en vivo: dos entradas (el grafo y `inicio`) con sus rutas. Al empujar `detalle/3`, el contador sube a 3; al desapilar, baja.*
 
 ## 4. Argumentos que no existen: nulabilidad
 
@@ -140,6 +141,7 @@ Un deep link, un test o un compañero pueden navegar a `detalle/99`. Si tu códi
 
 === "Código 3 — Leer el argumento y resolver la ficha sin reventar"
 
+    ```kotlin
     fun PantallaDetalle(nav: NavController, id: Int) {          // detalle: recibe el id de la ruta
         val ficha = AGENDA.firstOrNull { it.id == id }          // busca la ficha o null si el id no existe
         Column(Modifier.fillMaxSize().padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -157,13 +159,13 @@ Un deep link, un test o un compañero pueden navegar a `detalle/99`. Si tu códi
     }
 
     @Composable
+    ```
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`entrada.arguments?.getInt("id") ?: 0` y `firstOrNull {{ it.id == id }}` son las dos barreras: si el id no existe, la pantalla informa en vez de cerrarse.</span>
 
-<figure>
-<img src="./assets/capturas-nav4-inexistente.png" alt="Pantalla de detalle con id 99 y el mensaje No existe ninguna ficha con id 99">
-<figcaption>Figura 4. `detalle/99`: el argumento llegó, la ficha no existe y la app lo cuenta en pantalla. Ni un crash ni una pantalla en blanco.</figcaption>
-</figure>
+![Pantalla de detalle con id 99 y el mensaje No existe ninguna ficha con id 99](assets/capturas-nav4-inexistente.png)
+
+*Figura 4. `detalle/99`: el argumento llegó, la ficha no existe y la app lo cuenta en pantalla. Ni un crash ni una pantalla en blanco.*
 
 ## 5. Deep links: que la app se abra desde fuera
 
@@ -198,10 +200,9 @@ Un **deep link** es una URL que abre tu app en una pantalla concreta. Se declara
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El esquema `ismaelagenda` y el host `ficha` son un contrato público: cualquier app, QR o correo puede abrir `ismaelagenda://ficha/3` y aterrizar en tu pantalla de detalle.</span>
 
-<figure>
-<img src="./assets/capturas-nav5-deeplink.png" alt="Pantalla de detalle abierta por deep link con id 3 y la ficha de Manolo Alcántara">
-<figcaption>Figura 5. `adb shell am start -a android.intent.action.VIEW -d ismaelagenda://ficha/3`: la app se abre directamente en Manolo Alcántara, sin pasar por la lista.</figcaption>
-</figure>
+![Pantalla de detalle abierta por deep link con id 3 y la ficha de Manolo Alcántara](assets/capturas-nav5-deeplink.png)
+
+*Figura 5. `adb shell am start -a android.intent.action.VIEW -d ismaelagenda://ficha/3`: la app se abre directamente en Manolo Alcántara, sin pasar por la lista.*
 
 ## 6. Rutas type-safe: el siguiente escalón
 

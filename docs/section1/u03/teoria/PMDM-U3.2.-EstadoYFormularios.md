@@ -36,6 +36,7 @@ Todo lo que la pantalla necesita pintar vive en **una sola clase de estado** (`E
 
 === "Código 1 — Estado del formulario y ViewModel"
 
+    ```kotlin
     data class EstadoFormulario(                                // todo lo que la pantalla necesita pintar
         val nombre: String = "",                                // texto del campo nombre
         val telefono: String = "",                              // texto del campo teléfono
@@ -71,6 +72,7 @@ Todo lo que la pantalla necesita pintar vive en **una sola clase de estado** (`E
             return correcto                                     // la pantalla usa el resultado para el aviso
         }
     }
+    ```
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El patrón es siempre el mismo: `MutableStateFlow` privado + `StateFlow` público de solo lectura. La pantalla no puede escribir el estado a mano: tiene que llamar a un método del ViewModel.</span>
 
@@ -85,6 +87,7 @@ Fíjate en dos detalles que valen examen:
 
 === "Código 2 — La pantalla: campos conectados al estado"
 
+    ```kotlin
     fun EscenaFormulario() {                                    // 3.2: el formulario completo
         val vm: FormularioViewModel = viewModel()               // se crea una vez y sobrevive a la rotación
         val estado by vm.estado.collectAsState()                // el estado llega como State de Compose
@@ -124,13 +127,13 @@ Fíjate en dos detalles que valen examen:
                         }
                     }
                 }
+    ```
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`isError` pinta el borde rojo y `supportingText` el mensaje de debajo: los dos se alimentan del mismo campo del estado, así que la validación se ve sin escribir ni una línea de UI extra.</span>
 
-<figure>
-<img src="./assets/capturas-form1-vacio.png" alt="Formulario de nueva ficha vacío con la categoría Familia seleccionada y el estado sin guardar">
-<figcaption>Figura 1. Estado inicial: nombre y teléfono vacíos, categoría «Familia» por defecto, «Estado: sin guardar».</figcaption>
-</figure>
+![Formulario de nueva ficha vacío con la categoría Familia seleccionada y el estado sin guardar](assets/capturas-form1-vacio.png)
+
+*Figura 1. Estado inicial: nombre y teléfono vacíos, categoría «Familia» por defecto, «Estado: sin guardar».*
 
 ## 4. La validación va en el ViewModel, no en el botón
 
@@ -138,6 +141,7 @@ Si validas dentro del `onClick`, esa regla no se puede reutilizar, ni probar, ni
 
 === "Código 3 — Validación y decisión de guardado"
 
+    ```kotlin
                 Button(
                     onClick = {
                         val correcto = vm.guardar()             // valida dentro del ViewModel
@@ -154,18 +158,17 @@ Si validas dentro del `onClick`, esa regla no se puede reutilizar, ni probar, ni
             }
         }
     }
+    ```
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`guardar()` devuelve `true` solo si no hay ningún error, y deja los mensajes en el estado. La pantalla no decide nada: solo pregunta y reacciona.</span>
 
-<figure>
-<img src="./assets/capturas-form2-errores.png" alt="Formulario con los dos campos en rojo y los mensajes El nombre no puede estar vacío y El teléfono debe tener 9 dígitos">
-<figcaption>Figura 2. Pulsar «Guardar ficha» con todo vacío: dos errores a la vez, cada uno bajo su campo, y el estado sigue «sin guardar».</figcaption>
-</figure>
+![Formulario con los dos campos en rojo y los mensajes El nombre no puede estar vacío y El teléfono debe tener 9 dígitos](assets/capturas-form2-errores.png)
 
-<figure>
-<img src="./assets/capturas-form3-relleno.png" alt="Formulario relleno con Nerea Ruiz, teléfono 956234567 y la categoría Trabajo seleccionada">
-<figcaption>Figura 3. Al escribir, los errores desaparecen solos: el ViewModel los limpia en cada pulsación. Categoría cambiada a «Trabajo».</figcaption>
-</figure>
+*Figura 2. Pulsar «Guardar ficha» con todo vacío: dos errores a la vez, cada uno bajo su campo, y el estado sigue «sin guardar».*
+
+![Formulario relleno con Nerea Ruiz, teléfono 956234567 y la categoría Trabajo seleccionada](assets/capturas-form3-relleno.png)
+
+*Figura 3. Al escribir, los errores desaparecen solos: el ViewModel los limpia en cada pulsación. Categoría cambiada a «Trabajo».*
 
 ## 5. El aviso: Snackbar
 
@@ -179,10 +182,9 @@ alcance.launch { aviso.showSnackbar("Ficha guardada: ${estado.nombre}") }
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un Snackbar nunca se lanza desde el `onClick` a pelo: `showSnackbar` es `suspend`, así que necesita `rememberCoroutineScope()` o un `LaunchedEffect`.</span>
 
-<figure>
-<img src="./assets/capturas-form4-guardado.png" alt="Formulario guardado con el aviso flotante Ficha guardada: Nerea Ruiz y el estado guardado correcto">
-<figcaption>Figura 4. Guardado correcto: el aviso «Ficha guardada: Nerea Ruiz» y la línea de estado cambian a la vez, porque los dos leen del mismo estado.</figcaption>
-</figure>
+![Formulario guardado con el aviso flotante Ficha guardada: Nerea Ruiz y el estado guardado correcto](assets/capturas-form4-guardado.png)
+
+*Figura 4. Guardado correcto: el aviso «Ficha guardada: Nerea Ruiz» y la línea de estado cambian a la vez, porque los dos leen del mismo estado.*
 
 ## 6. Comprobarlo tú mismo (esto entra en la práctica)
 

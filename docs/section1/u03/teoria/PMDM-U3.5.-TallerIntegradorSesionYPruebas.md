@@ -32,6 +32,7 @@ weight: 7
 
 === "Código 1 — Repositorio de sesión con DataStore"
 
+    ```kotlin
     val Context.almacenSesion: DataStore<Preferences> by preferencesDataStore(name = "sesion") // un archivo por nombre
     val CLAVE_TOKEN = stringPreferencesKey("token")             // clave del token dentro del archivo
 
@@ -45,11 +46,13 @@ weight: 7
             contexto.almacenSesion.edit { it.remove(CLAVE_TOKEN) }
         }
     }
+    ```
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`preferencesDataStore(name = "sesion")` crea **un archivo** en la app. La clave se declara una sola vez y se usa para leer, escribir y borrar.</span>
 
 === "Código 2 — Pantalla de sesión"
 
+    ```kotlin
     fun EscenaSesion() {                                        // 3.5: la sesión sobrevive a cerrar la app
         val contexto = LocalContext.current
         val repositorio = remember { SesionRepositorio(contexto) } // una sola instancia
@@ -78,23 +81,21 @@ weight: 7
             }
         }
     }
+    ```
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`observar()` devuelve un `Flow`: si el token cambia desde otra pantalla, esta se entera sola. No hay que refrescar ni preguntar.</span>
 
-<figure>
-<img src="./assets/capturas-sesion1-sin.png" alt="Pantalla de sesión sin sesión iniciada y token vacío">
-<figcaption>Figura 1. Sin sesión: «Sin sesión iniciada» y el token a «—».</figcaption>
-</figure>
+![Pantalla de sesión sin sesión iniciada y token vacío](assets/capturas-sesion1-sin.png)
 
-<figure>
-<img src="./assets/capturas-sesion2-activa.png" alt="Pantalla de sesión con la sesión activa y el token token-demo-2026">
-<figcaption>Figura 2. Tras pulsar «Iniciar sesión»: el token se escribe en disco y la pantalla lo refleja.</figcaption>
-</figure>
+*Figura 1. Sin sesión: «Sin sesión iniciada» y el token a «—».*
 
-<figure>
-<img src="./assets/capturas-sesion3-persiste.png" alt="La misma pantalla con la sesión activa después de cerrar y volver a abrir la aplicación">
-<figcaption>Figura 3. Se cierra la app del todo (`am force-stop`) y se vuelve a abrir: **la sesión sigue activa**. Eso es DataStore: el token está en disco, no en memoria.</figcaption>
-</figure>
+![Pantalla de sesión con la sesión activa y el token token-demo-2026](assets/capturas-sesion2-activa.png)
+
+*Figura 2. Tras pulsar «Iniciar sesión»: el token se escribe en disco y la pantalla lo refleja.*
+
+![La misma pantalla con la sesión activa después de cerrar y volver a abrir la aplicación](assets/capturas-sesion3-persiste.png)
+
+*Figura 3. Se cierra la app del todo (`am force-stop`) y se vuelve a abrir: **la sesión sigue activa**. Eso es DataStore: el token está en disco, no en memoria.*
 
 ## 3. Pruebas: demostrar que la validación funciona
 
@@ -102,6 +103,7 @@ Una prueba unitaria comprueba la lógica **sin emulador**, en milisegundos. Se e
 
 === "Código 3 — Pruebas de la validación"
 
+    ```kotlin
         @Test
         fun `nombre vacio produce error y no guarda`() {          // regla 1
             val vm = FormularioViewModel()
@@ -138,6 +140,7 @@ Una prueba unitaria comprueba la lógica **sin emulador**, en milisegundos. Se e
             vm.cambiarTelefono("956-12-34-56")
             assertEquals("956123456", vm.estado.value.telefono)
         }
+    ```
 
 Resultado real de la ejecución en el proyecto:
 

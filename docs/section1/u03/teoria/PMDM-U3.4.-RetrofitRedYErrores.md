@@ -29,12 +29,14 @@ La app ya guarda en el móvil. Ahora tiene que **hablar con un servidor**: pedir
 
 === "Código 1 — DTO serializable"
 
+    ```kotlin
     @Serializable                                               // genera el parser a partir de la clase
     data class UsuarioRemoto(                                   // lo que devuelve el servidor
         val id: Int,                                            // campo id del JSON
         val login: String,                                      // campo login del JSON
         val html_url: String                                    // campo html_url del JSON
     )
+    ```
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El DTO copia el JSON del servidor, no tu modelo de negocio. Si el servidor llama `login`, tu DTO tiene `login`; la conversión a tu modelo se hace después.</span>
 
@@ -42,10 +44,12 @@ La app ya guarda en el móvil. Ahora tiene que **hablar con un servidor**: pedir
 
 === "Código 2 — Interfaz con `suspend`"
 
+    ```kotlin
     interface AgendaApi {                                       // contrato del servidor
         @GET("users")                                           // GET https://api.github.com/users
         suspend fun usuarios(): List<UsuarioRemoto>              // suspend: la llamada no bloquea la UI
     }
+    ```
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`suspend` es obligatorio: la petición se hace en segundo plano y la función se reanuda cuando llega la respuesta, sin bloquear la interfaz.</span>
 
@@ -53,6 +57,7 @@ La app ya guarda en el móvil. Ahora tiene que **hablar con un servidor**: pedir
 
 === "Código 3 — Construcción del cliente"
 
+    ```kotlin
     object RetrofitCliente {                                    // una sola instancia del cliente
         private val json = Json { ignoreUnknownKeys = true }     // si el servidor añade campos, no revienta
         private val retrofit = Retrofit.Builder()
@@ -61,6 +66,7 @@ La app ya guarda en el móvil. Ahora tiene que **hablar con un servidor**: pedir
             .build()
         val api: AgendaApi = retrofit.create(AgendaApi::class.java) // implementación generada
     }
+    ```
 
 Dos detalles que cuestan puntos en el examen:
 
@@ -83,6 +89,7 @@ Una pantalla que llama a un servidor tiene **tres estados**: cargando, error y d
 
 === "Código 4 — Estados de carga, error y datos"
 
+    ```kotlin
     fun EscenaApi() {                                           // 3.4: pedir datos a un servidor
         val alcance = rememberCoroutineScope()
         var usuarios by remember { mutableStateOf<List<UsuarioRemoto>>(emptyList()) }
@@ -140,21 +147,19 @@ Una pantalla que llama a un servidor tiene **tres estados**: cargando, error y d
             }
         }
     }
+    ```
 
-<figure>
-<img src="./assets/capturas-api1-inicial.png" alt="Pantalla API antes de pedir nada, con el contador a cero y sin error">
-<figcaption>Figura 1. Estado inicial: sin petición, «Usuarios recibidos: 0», sin error.</figcaption>
-</figure>
+![Pantalla API antes de pedir nada, con el contador a cero y sin error](assets/capturas-api1-inicial.png)
 
-<figure>
-<img src="./assets/capturas-api2-lista.png" alt="Pantalla API con 30 usuarios cargados por HTTPS desde la API de GitHub">
-<figcaption>Figura 2. Petición correcta por HTTPS: **30 usuarios** y la lista pintada. El `try/catch` no ha tenido nada que atrapar.</figcaption>
-</figure>
+*Figura 1. Estado inicial: sin petición, «Usuarios recibidos: 0», sin error.*
 
-<figure>
-<img src="./assets/capturas-api3-error.png" alt="Pantalla API con el mensaje ERROR: HTTP 404 y la lista anterior conservada">
-<figcaption>Figura 3. Error controlado: el servidor responde **404**, la app lo muestra en rojo y **no pierde** los datos que ya tenía. Eso es manejo de errores, no un crash.</figcaption>
-</figure>
+![Pantalla API con 30 usuarios cargados por HTTPS desde la API de GitHub](assets/capturas-api2-lista.png)
+
+*Figura 2. Petición correcta por HTTPS: **30 usuarios** y la lista pintada. El `try/catch` no ha tenido nada que atrapar.*
+
+![Pantalla API con el mensaje ERROR: HTTP 404 y la lista anterior conservada](assets/capturas-api3-error.png)
+
+*Figura 3. Error controlado: el servidor responde **404**, la app lo muestra en rojo y **no pierde** los datos que ya tenía. Eso es manejo de errores, no un crash.*
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un error de red no es una excepción que se ignora: es un estado más de la pantalla. Se muestra, se explica y se permite reintentar.</span>
 

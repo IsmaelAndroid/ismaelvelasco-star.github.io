@@ -63,6 +63,7 @@ Nuestra escena de señales, por dentro, es texto. Estas son sus declaraciones de
 
 === "Código 1 — escena_senales.tscn (fragmento de nodos)"
 
+    ```text
     [node name="EscenaSenales" type="Node2D"]
     script = ExtResource("1_main")
     [node name="Fondo" type="ColorRect" parent="."]
@@ -73,6 +74,7 @@ Nuestra escena de señales, por dentro, es texto. Estas son sus declaraciones de
     [node name="HUD" type="CanvasLayer" parent="."]
     [node name="Titulo" type="Label" parent="HUD"]
     [node name="Info" type="Label" parent="HUD"]
+    ```
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un `.tscn` es texto plano: se puede leer, comparar en Git y revisar en una revisión de código. No es un binario opaco.</span>
 
@@ -84,6 +86,7 @@ En esta escena, un `Timer` emite `timeout` cada 0,8 segundos y el script los cue
 
 === "Código 2 — main_senales.gd"
 
+    ```gdscript
     extends Node2D
     ## Escena de senales: un Timer emite y este script recibe.
 
@@ -100,11 +103,11 @@ En esta escena, un `Timer` emite `timeout` cada 0,8 segundos y el script los cue
     	pulsaciones += 1
     	$HUD/Info.text = "pulsaciones: %d  |  senal timeout recibida" % pulsaciones
     	print("senal recibida: ", pulsaciones)             # deja rastro en la consola
+    ```
 
-<figure>
-<img src="./assets/capturas-senales.png" alt="Escena de señales en ejecución con el botón verde y el contador de pulsaciones a 3">
-<figcaption>Figura 1. La escena de señales ejecutándose: el <code>Timer</code> ha emitido tres veces y el contador lo refleja (<strong>pulsaciones: 3</strong>).</figcaption>
-</figure>
+![Escena de señales en ejecución con el botón verde y el contador de pulsaciones a 3](assets/capturas-senales.png)
+
+*Figura 1. La escena de señales ejecutándose: el <code>Timer</code> ha emitido tres veces y el contador lo refleja (<strong>pulsaciones: 3</strong>).*
 
 Y esto es lo que escribe en la consola, tal cual, al ejecutarla desde terminal:
 

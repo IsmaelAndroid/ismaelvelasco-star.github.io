@@ -27,7 +27,7 @@ Esta es la unidad donde tu código deja de ser una pantalla suelta y pasa a ser 
 
 ### 1. Normativa que Respalda la Unidad
 
-Unidad alineada con el módulo **Programación Multimedia y Dispositivos Móviles** (0489) del ciclo DAM (RD 2088/2022), en torno al **Resultado de Aprendizaje 2** —desarrolla aplicaciones para dispositivos móviles analizando y empleando las tecnologías y librerías específicas— y sus criterios de evaluación **a)** entornos de desarrollo, **b)** herramientas visuales de interfaz, **e)** integración en el dispositivo y **f)** prueba y depuración en emulador y dispositivo real. El texto íntegro de RA y CE está en [`recursos/PMDM Normativa.txt`](../recursos/PMDM%20Normativa.txt).
+Unidad alineada con el módulo **Programación Multimedia y Dispositivos Móviles** (0489) del ciclo DAM, cuyo currículo vigente fija el **RD 405/2023** (que actualiza el RD 450/2010), en torno al **Resultado de Aprendizaje 2** —desarrolla aplicaciones para dispositivos móviles analizando y empleando las tecnologías y librerías específicas— y sus criterios de evaluación **a)** estructura de clases de la aplicación, **b)** clases que modelan ventanas, menús, alertas y controles, **g)** pruebas de interacción usuario-aplicación en emulador, **h)** empaquetado y despliegue en dispositivo real, **i)** documentación de los procesos y **j)** permisos requeridos. El texto íntegro de RA y CE está en [`recursos/PMDM Normativa.txt`](../recursos/PMDM%20Normativa.txt).
 
 ### Teoría
 
@@ -43,9 +43,9 @@ Unidad alineada con el módulo **Programación Multimedia y Dispositivos Móvile
 
 ### Presentaciones
 
-* [PM-U2.1 - Fundamentos del lenguaje Kotlin](https://revilofe.github.io/slides/section5-pmdm/PM-U2.1.-FundamentosKotlin.html)
-* [PM-U2.2 - Actividades e Intents](https://revilofe.github.io/slides/section5-pmdm/PM-U2.2.-ActividadesIntents.html)
-* [PM-U2.3 - La app Compose](https://revilofe.github.io/slides/section5-pmdm/PM-U2.3.-AppComposeListasYFormulario.html)
+* [PM-U2.1 - Fundamentos del lenguaje Kotlin](https://revilofe.github.io/slides/section1-pmdm/PM-U2.1.-FundamentosKotlin.html)
+* [PM-U2.2 - Actividades e Intents](https://revilofe.github.io/slides/section1-pmdm/PM-U2.2.-ActividadesIntents.html)
+* [PM-U2.3 - La app Compose](https://revilofe.github.io/slides/section1-pmdm/PM-U2.3.-AppComposeListasYFormulario.html)
 
 ### Situación en el módulo
 

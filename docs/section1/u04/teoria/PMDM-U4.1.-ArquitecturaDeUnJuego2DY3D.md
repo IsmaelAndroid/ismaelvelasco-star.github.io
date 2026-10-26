@@ -66,10 +66,9 @@ Léelo así: **`Escena2D`** es la raíz; `Fondo`, `Suelo`, `Muro`, `Jugador`, `C
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un nodo hijo hereda la posición de su padre: si mueves `Muro`, su `Forma` y su `Pintura` se mueven con él. Por eso la colisión y el dibujo van como hijos del mismo nodo.</span>
 
-<figure>
-<img src="./assets/capturas-editor-arbol.png" alt="Editor de Godot con el panel Escena mostrando el árbol de nodos y la vista 2D de la escena">
-<figcaption>Figura 1. El árbol de nodos en el panel <em>Escena</em> del editor, con la escena 2D dibujada en el centro y el sistema de archivos del proyecto abajo a la izquierda.</figcaption>
-</figure>
+![Editor de Godot con el panel Escena mostrando el árbol de nodos y la vista 2D de la escena](assets/capturas-editor-arbol.png)
+
+*Figura 1. El árbol de nodos en el panel <em>Escena</em> del editor, con la escena 2D dibujada en el centro y el sistema de archivos del proyecto abajo a la izquierda.*
 
 ## 4. Qué cambia entre 2D y 3D
 
@@ -100,6 +99,7 @@ El fichero de proyecto solo necesita estas líneas para arrancar:
 
 === "Código 1 — project.godot"
 
+    ```ini
     ; Engine configuration file.
     config_version=5
 
@@ -119,6 +119,7 @@ El fichero de proyecto solo necesita estas líneas para arrancar:
 
     renderer/rendering_method="gl_compatibility"
     renderer/rendering_method.mobile="gl_compatibility"
+    ```
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`run/main_scene` es la escena que se carga al pulsar F5. Si el nombre está mal, el proyecto compila y no arranca: es lo primero que se revisa cuando "no hace nada".</span>
 
@@ -128,6 +129,7 @@ Este es el script completo del jugador, comentado línea a línea:
 
 === "Código 2 — jugador.gd"
 
+    ```gdscript
     extends CharacterBody2D
     ## Jugador 2D: se mueve con las flechas y choca con los obstaculos.
 
@@ -145,6 +147,7 @@ Este es el script completo del jugador, comentado línea a línea:
     		direccion.y -= 1.0
     	velocity = direccion.normalized() * velocidad        # normalizar evita la diagonal rapida
     	move_and_slide()                                     # mueve y resuelve colisiones
+    ```
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`move_and_slide()` mueve el nodo y resuelve las colisiones en el mismo paso. Si mueves la posición a mano (`position += ...`), atraviesas las paredes.</span>
 
@@ -154,6 +157,7 @@ Este es el script completo del jugador, comentado línea a línea:
 
 === "Código 3 — main2d.gd"
 
+    ```gdscript
     extends Node2D
     ## Escena 2D: bucle de juego, HUD con FPS y captura automatica.
 
@@ -170,6 +174,7 @@ Este es el script completo del jugador, comentado línea a línea:
     	await RenderingServer.frame_post_draw               # espera el frame dibujado
     	get_viewport().get_texture().get_image().save_png("res://capturas/escena2d.png")
     	get_tree().quit()
+    ```
 
 Fíjate en tres cosas:
 
@@ -177,10 +182,9 @@ Fíjate en tres cosas:
 - `Engine.get_frames_per_second()` devuelve los FPS reales que está consiguiendo el juego.
 - La captura se guarda con `get_viewport().get_texture().get_image().save_png(...)`: es el propio juego el que se fotografía, sin herramientas externas.
 
-<figure>
-<img src="./assets/capturas-juego2d.png" alt="Escena 2D en ejecución con el HUD mostrando FPS, posición, tiempo y número de nodos">
-<figcaption>Figura 2. La escena 2D ejecutándose: <strong>FPS 60 · pos 300,536 · t 2.5 s · nodos 6</strong>. El jugador (cuadrado verde) está apoyado sobre el suelo y el muro marrón queda a su derecha.</figcaption>
-</figure>
+![Escena 2D en ejecución con el HUD mostrando FPS, posición, tiempo y número de nodos](assets/capturas-juego2d.png)
+
+*Figura 2. La escena 2D ejecutándose: <strong>FPS 60 · pos 300,536 · t 2.5 s · nodos 6</strong>. El jugador (cuadrado verde) está apoyado sobre el suelo y el muro marrón queda a su derecha.*
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El HUD no es decoración: es el instrumento de medida. Sin ver los FPS y la posición no puedes saber si el juego va bien o va a tirones.</span>
 
@@ -190,6 +194,7 @@ El script 3D es casi idéntico: cambian el tipo de nodo y las tres dimensiones.
 
 === "Código 4 — main3d.gd"
 
+    ```gdscript
     extends Node3D
     ## Escena 3D: cubo girando, camara y luz direccional.
 
@@ -211,13 +216,13 @@ El script 3D es casi idéntico: cambian el tipo de nodo y las tres dimensiones.
     	await RenderingServer.frame_post_draw
     	get_viewport().get_texture().get_image().save_png("res://capturas/escena3d.png")
     	get_tree().quit()
+    ```
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un nodo 3D sin cámara no se ve: la cámara decide qué parte del espacio se proyecta en la pantalla. Y sin luz, todo se ve negro.</span>
 
-<figure>
-<img src="./assets/capturas-juego3d.png" alt="Escena 3D en ejecución con un cubo iluminado, suelo en perspectiva y HUD con FPS, rotación y número de mallas">
-<figcaption>Figura 3. La escena 3D ejecutándose: <strong>FPS 60 · rotación Y 2.01 rad · mallas 2 · nodos 5</strong>. Se distinguen las caras del cubo con distinta iluminación y el suelo en perspectiva.</figcaption>
-</figure>
+![Escena 3D en ejecución con un cubo iluminado, suelo en perspectiva y HUD con FPS, rotación y número de mallas](assets/capturas-juego3d.png)
+
+*Figura 3. La escena 3D ejecutándose: <strong>FPS 60 · rotación Y 2.01 rad · mallas 2 · nodos 5</strong>. Se distinguen las caras del cubo con distinta iluminación y el suelo en perspectiva.*
 
 ## 9. El script que vuelca el árbol
 
@@ -225,6 +230,7 @@ Para comprobar la arquitectura sin abrir el editor usamos un script de diagnóst
 
 === "Código 5 — dump_arbol.gd"
 
+    ```gdscript
     extends SceneTree
     ## Vuelca por consola el arbol de nodos de una escena (diagnostico).
 
@@ -233,6 +239,7 @@ Para comprobar la arquitectura sin abrir el editor usamos un script de diagnóst
     	var escena: Node = empaquetada.instantiate()                  # crea los nodos en memoria
     	escena.print_tree_pretty()                                    # imprime el arbol con sangria
     	quit()                                                        # termina sin abrir ventana
+    ```
 
 Se ejecuta así, sin ventana:
 

@@ -69,10 +69,9 @@ El código que *pinta* esa pantalla de casa (la verás entera y comentada en el 
 
 ## 2. El ciclo de vida: las siete estaciones
 
-<figure>
-<img src="./assets/capturas-codigo2-ciclo.png" alt="Panel del vigía del ciclo de vida con los eventos apuntados tras volver de Ajustes">
-<figcaption>Figura 2. La escena «vigía» anotando el ciclo en vivo: nací (onCreate → onStart → onResume), el usuario abrió Ajustes (onPause → onStop) y volvió con ATRÁS (onRestart → onStart → onResume).</figcaption>
-</figure>
+![Panel del vigía del ciclo de vida con los eventos apuntados tras volver de Ajustes](assets/capturas-codigo2-ciclo.png)
+
+*Figura 2. La escena «vigía» anotando el ciclo en vivo: nací (onCreate → onStart → onResume), el usuario abrió Ajustes (onPause → onStop) y volvió con ATRÁS (onRestart → onStart → onResume).*
 
 `MainActivity` no vive a su aire: el sistema la va llamando por teléfono en cada cambio de estado. El orden canónico — <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">y pregunta fija de examen — es:</span>
 
@@ -134,11 +133,11 @@ Practica con esto hasta que lo sientas: abre Ajustes, vuelve, gira el emulador. 
 
 Gira el emulador (Ctrl+↑) y miramos qué pasa con dos contadores:
 
-<figure>
-<img src="./assets/capturas-codigo3-rotacion-antes.png" alt="Dos contadores a 3 antes de rotar">
-<img src="./assets/capturas-codigo3-rotacion-despues.png" alt="Tras rotar, ambos contadores vuelven a 0: la Activity se recreó entera">
-<figcaption>Figura 3. Antes y después de rotar: <code>remember</code> sobrevive a recomposiciones, pero la rotación <strong>recrea la Activity entera</strong> — y los dos contadores vuelven a nacer a 0.</figcaption>
-</figure>
+![Dos contadores a 3 antes de rotar](assets/capturas-codigo3-rotacion-antes.png)
+
+![Tras rotar, ambos contadores vuelven a 0: la Activity se recreó entera](assets/capturas-codigo3-rotacion-despues.png)
+
+*Figura 3. Antes y después de rotar: <code>remember</code> sobrevive a recomposiciones, pero la rotación <strong>recrea la Activity entera</strong> — y los dos contadores vuelven a nacer a 0.*
 
 === "Código 3 — Dos contadores, el mismo destino (escena `--ei escena 3`)"
 
@@ -160,11 +159,11 @@ Gira el emulador (Ctrl+↑) y miramos qué pasa con dos contadores:
 
 La rotación (o que te coman la memoria) dispara **destrucción + creación completa**: `onDestroy` → `onCreate`. ¿Dónde se guarda lo importante entonces? En el **Bundle** — un paquetito clave→valor que el sistema te devuelve en el `onCreate` siguiente:
 
-<figure>
-<img src="./assets/capturas-codigo4-bundle-antes.png" alt="Contador del Bundle a 4 antes de rotar">
-<img src="./assets/capturas-codigo4-bundle-despues.png" alt="Tras rotar, el contador recuperado del Bundle sigue a 4">
-<figcaption>Figura 4. Con <code>onSaveInstanceState</code>: el contador se pierde al girar, pero <code>savedInstanceState</code> nos lo devuelve intacto.</figcaption>
-</figure>
+![Contador del Bundle a 4 antes de rotar](assets/capturas-codigo4-bundle-antes.png)
+
+![Tras rotar, el contador recuperado del Bundle sigue a 4](assets/capturas-codigo4-bundle-despues.png)
+
+*Figura 4. Con <code>onSaveInstanceState</code>: el contador se pierde al girar, pero <code>savedInstanceState</code> nos lo devuelve intacto.*
 
 === "Código 4 — El Bundle que sube al ático (Activity dedicada, escena `--ei escena 4`)"
 
@@ -221,10 +220,9 @@ Y la distinción que hay que tener clara desde el minuto uno: <span style="backg
 
 Pulsamos cualquier tarjeta de la lista y `MainActivity` lanza `FichaActivity` **a dedo**, nombrándola:
 
-<figure>
-<img src="./assets/capturas-codigo5-ficha.png" alt="FichaActivity mostrando el nombre y teléfono recibidos por extras">
-<figcaption>Figura 5. FichaActivity: los datos viajaron dentro del intent como <em>extras</em> (parejas clave→valor) y aquí los leemos y pintamos.</figcaption>
-</figure>
+![FichaActivity mostrando el nombre y teléfono recibidos por extras](assets/capturas-codigo5-ficha.png)
+
+*Figura 5. FichaActivity: los datos viajaron dentro del intent como <em>extras</em> (parejas clave→valor) y aquí los leemos y pintamos.*
 
 === "Código 5 — El sobre (emisor) y la carta (receptor)"
 
@@ -263,10 +261,9 @@ Las extras son un Bundle con nombre: <span style="background-color:#a5d6a7;paddi
 
 `FichaActivity` tiene tres botones que **no saben** qué app los responderá:
 
-<figure>
-<img src="./assets/capturas-codigo6-marcador.png" alt="Marcador del sistema abierto con el número del contacto listo para llamar">
-<figcaption>Figura 7. ACTION_DIAL: nuestro intent decía «marcador con este número»; el Dialer del emulador se ofreció y lo abrió. Ojo: DIAL no llama, deja el número escrito — para disparar la llamada hace falta ACTION_CALL… y permiso.</figcaption>
-</figure>
+![Marcador del sistema abierto con el número del contacto listo para llamar](assets/capturas-codigo6-marcador.png)
+
+*Figura 7. ACTION_DIAL: nuestro intent decía «marcador con este número»; el Dialer del emulador se ofreció y lo abrió. Ojo: DIAL no llama, deja el número escrito — para disparar la llamada hace falta ACTION_CALL… y permiso.*
 
 === "Código 6 — Llamar sin conocer al marcador"
 
@@ -282,10 +279,9 @@ Las extras son un Bundle con nombre: <span style="background-color:#a5d6a7;paddi
 
 Compartir es igual de delegón: construimos el intent, le metemos el texto, y `createChooser` fuerza **nuestro** diálogo de elección (sin él, Android recuerda tu última app y ya no te pregunta más, que es una UX muy borde):
 
-<figure>
-<img src="./assets/capturas-codigo7-chooser.png" alt="Diálogo Compartir ficha con… mostrando las apps capaces de recibir texto">
-<figcaption>Figura 8. <code>ACTION_SEND</code> + <code>createChooser</code>: el sistema busca quién declara poder recibir <code>text/plain</code> y deja al usuario elegir SIEMPRE.</figcaption>
-</figure>
+![Diálogo Compartir ficha con… mostrando las apps capaces de recibir texto](assets/capturas-codigo7-chooser.png)
+
+*Figura 8. <code>ACTION_SEND</code> + <code>createChooser</code>: el sistema busca quién declara poder recibir <code>text/plain</code> y deja al usuario elegir SIEMPRE.*
 
 === "Código 7 — Compartir (ACTION_SEND + chooser)"
 
@@ -334,10 +330,9 @@ El tercero pide una foto a la galería con el lanzador moderno (nada de `startAc
     }
     ```
 
-<figure>
-<img src="./assets/capturas-codigo8b-picker.png" alt="El selector de fotos del sistema con la imagen de prueba disponible">
-<figcaption>Figura 10. El selector del sistema con nuestra playa de prueba en DCIM. Con <code>GetContent</code> no hacen falta permisos: préstamo de acceso puntual sobre ESE fichero — la filosofía de Android en miniatura.</figcaption>
-</figure>
+![El selector de fotos del sistema con la imagen de prueba disponible](assets/capturas-codigo8b-picker.png)
+
+*Figura 10. El selector del sistema con nuestra playa de prueba en DCIM. Con <code>GetContent</code> no hacen falta permisos: préstamo de acceso puntual sobre ESE fichero — la filosofía de Android en miniatura.*
 
 ## 7. Intent filter: cuando el mundo te llama a ti
 
@@ -379,10 +374,9 @@ Tres verdades del filtro: <span style="background-color:#a5d6a7;padding:0 3px;bo
 
 A veces quien dispara el intent **no eres tú**: es el sistema, minutos después, cuando el usuario toca tu notificación. No puedes pasarle un `Intent` cualquiera (lo manejaría otro proceso con tus permisos… peligroso); le pasas un **PendingIntent**: "cuando toque, ejecuta ESTO, y con mi identidad".
 
-<figure>
-<img src="./assets/capturas-codigo10-notif.png" alt="Notificación desplegada «Toca esto» creada por la escena 5">
-<figcaption>Figura 12. La escena 5 crea canal, notifica con id 42 y su <code>setContentIntent(tap)</code>: al tocar, el sistema dispara nuestro getActivity (y la notificación se auto-quita).</figcaption>
-</figure>
+![Notificación desplegada «Toca esto» creada por la escena 5](assets/capturas-codigo10-notif.png)
+
+*Figura 12. La escena 5 crea canal, notifica con id 42 y su <code>setContentIntent(tap)</code>: al tocar, el sistema dispara nuestro getActivity (y la notificación se auto-quita).*
 
 === "Código 10 — Notificación con testigo (escena `--ei escena 5`)"
 
@@ -412,10 +406,9 @@ A veces quien dispara el intent **no eres tú**: es el sistema, minutos después
     }
     ```
 
-<figure>
-<img src="./assets/capturas-codigo10b-landing.png" alt="Escena 6 de bienvenida: llegada desde la notificación">
-<figcaption>Figura 13. El destino del PendingIntent: MainActivity con la extra escena=6. La notificación fue el mensajero; el intent lo ejecutó el sistema.</figcaption>
-</figure>
+![Escena 6 de bienvenida: llegada desde la notificación](assets/capturas-codigo10b-landing.png)
+
+*Figura 13. El destino del PendingIntent: MainActivity con la extra escena=6. La notificación fue el mensajero; el intent lo ejecutó el sistema.*
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Desde Android 12 los PendingIntent son `FLAG_IMMUTABLE` por defecto obligatorio: sin esa flag el emisor pierde el derecho de decir quién puede modificar el intent, y un receptor malicioso podría reescribirlo</span>. Y desde Android 13, notificar exige el permiso runtime `POST_NOTIFICATIONS` — lo pediremos de verdad cuando montemos notificaciones de verdad (práctica 2.3).
 
@@ -442,4 +435,4 @@ A veces quien dispara el intent **no eres tú**: es el sistema, minutos después
 >> Porque las extras no garantizadas llegan null y el `!!` convierte el null en excepción. Con nulabilidad en el sitio de lectura: `?: "Desconocido"` — tal como hacemos en el Código 5.
 
 ---
-**Materiales**: [Documentación oficial de Activities](https://developer.android.com/guide/components/activities/intro-activities) · [Referencia de Intents y filtros](https://developer.android.com/guide/components/intents-filters) · **Presentación**: [diapositivas del tema 2.2](https://revilofe.github.io/slides/section5-pmdm/PM-U2.2.-ActividadesIntents.html) · Siguiente: [2.3 — La app Compose: Scaffold, listas Lazy y formulario](./PMDM-U2.3.-AppComposeListasYFormulario.md)
+**Materiales**: [Documentación oficial de Activities](https://developer.android.com/guide/components/activities/intro-activities) · [Referencia de Intents y filtros](https://developer.android.com/guide/components/intents-filters) · **Presentación**: [diapositivas del tema 2.2](https://revilofe.github.io/slides/section1-pmdm/PM-U2.2.-ActividadesIntents.html) · Siguiente: [2.3 — La app Compose: Scaffold, listas Lazy y formulario](./PMDM-U2.3.-AppComposeListasYFormulario.md)

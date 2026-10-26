@@ -30,6 +30,7 @@ Hasta ahora los datos vivían en memoria: al cerrar la app, adiós. **Room** es 
 
 === "Código 1 — Entidad `FichaEntity`"
 
+    ```kotlin
     @Entity(tableName = "fichas")                               // esta clase es una tabla llamada fichas
     data class FichaEntity(
         @PrimaryKey(autoGenerate = true) val id: Long = 0,      // id autonumérico: lo pone SQLite
@@ -37,6 +38,7 @@ Hasta ahora los datos vivían en memoria: al cerrar la app, adiós. **Room** es 
         val telefono: String,                                   // columna teléfono
         val categoria: String                                   // columna categoría
     )
+    ```
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`@PrimaryKey(autoGenerate = true)` deja que SQLite asigne el id (1, 2, 3…). Si pones tú el id, tienes que garantizar que no se repite.</span>
 
@@ -44,6 +46,7 @@ Hasta ahora los datos vivían en memoria: al cerrar la app, adiós. **Room** es 
 
 === "Código 2 — DAO con Flow y funciones suspend"
 
+    ```kotlin
     @Dao                                                        // interfaz de acceso a datos
     interface FichaDao {
         @Query("SELECT * FROM fichas ORDER BY nombre")          // SQL que devuelve todas las fichas
@@ -55,6 +58,7 @@ Hasta ahora los datos vivían en memoria: al cerrar la app, adiós. **Room** es 
         @Query("DELETE FROM fichas")                            // borra todas las filas
         suspend fun borrarTodo()
     }
+    ```
 
 Dos decisiones que hay que saber justificar:
 
@@ -67,6 +71,7 @@ Dos decisiones que hay que saber justificar:
 
 === "Código 3 — `AgendaDatabase` con singleton"
 
+    ```kotlin
     @Database(entities = [FichaEntity::class], version = 1)     // base de datos con una tabla y versión 1
     abstract class AgendaDatabase : RoomDatabase() {
         abstract fun fichas(): FichaDao                         // Room implementa este DAO por nosotros
@@ -83,6 +88,7 @@ Dos decisiones que hay que saber justificar:
                 }
         }
     }
+    ```
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La base de datos se crea UNA vez en toda la app: abrir varias instancias del mismo archivo provoca bloqueos y corrupción. De ahí el `@Volatile` + `synchronized`.</span>
 
@@ -108,6 +114,7 @@ Sin esa línea el build falla con *«Using kotlin.sourceSets DSL to add Kotlin s
 
 === "Código 4 — Leer, insertar y vaciar desde Compose"
 
+    ```kotlin
     fun EscenaRoom() {                                          // 3.3: leer y escribir en la base de datos
         val contexto = LocalContext.current                      // contexto para abrir la BD
         val dao = remember { AgendaDatabase.obtener(contexto).fichas() } // DAO una sola vez
@@ -146,21 +153,19 @@ Sin esa línea el build falla con *«Using kotlin.sourceSets DSL to add Kotlin s
             }
         }
     }
+    ```
 
-<figure>
-<img src="./assets/capturas-room1-vacia.png" alt="Pantalla Room con el contador a cero y sin fichas">
-<figcaption>Figura 1. Base de datos recién creada: «Fichas en la base de datos: 0». El archivo `agenda.db` ya existe en el móvil.</figcaption>
-</figure>
+![Pantalla Room con el contador a cero y sin fichas](assets/capturas-room1-vacia.png)
 
-<figure>
-<img src="./assets/capturas-room2-tres.png" alt="Pantalla Room con tres fichas insertadas y el contador a tres">
-<figcaption>Figura 2. Tres inserciones: el contador sube a 3 y las tarjetas aparecen **sin refrescar nada a mano** — el `Flow` del DAO avisa a Compose.</figcaption>
-</figure>
+*Figura 1. Base de datos recién creada: «Fichas en la base de datos: 0». El archivo `agenda.db` ya existe en el móvil.*
 
-<figure>
-<img src="./assets/capturas-room3-persiste.png" alt="La misma pantalla con las tres fichas tras cerrar y reabrir la aplicación">
-<figcaption>Figura 3. Prueba de persistencia: se cierra la app por completo (`am force-stop`) y se vuelve a abrir. Las tres fichas siguen ahí: están en disco, no en memoria.</figcaption>
-</figure>
+![Pantalla Room con tres fichas insertadas y el contador a tres](assets/capturas-room2-tres.png)
+
+*Figura 2. Tres inserciones: el contador sube a 3 y las tarjetas aparecen **sin refrescar nada a mano** — el `Flow` del DAO avisa a Compose.*
+
+![La misma pantalla con las tres fichas tras cerrar y reabrir la aplicación](assets/capturas-room3-persiste.png)
+
+*Figura 3. Prueba de persistencia: se cierra la app por completo (`am force-stop`) y se vuelve a abrir. Las tres fichas siguen ahí: están en disco, no en memoria.*
 
 ## 6. Migraciones: cambiar la tabla sin perder datos
 
