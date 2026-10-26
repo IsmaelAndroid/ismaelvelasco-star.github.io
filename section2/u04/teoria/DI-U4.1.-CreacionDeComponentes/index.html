@@ -1,0 +1,3161 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Crear componentes propios en Jetpack Compose: parámetros y valores por defecto, previews, DrawScope, imágenes, pruebas unitarias, documentación y empaquetado en un módulo de librería (RA3).">
+      
+      
+        <meta name="author" content="Ismael Velasco">
+      
+      
+        <link rel="canonical" href="https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u04/teoria/DI-U4.1.-CreacionDeComponentes/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>4.1.-Creación de componentes visuales - Aula 2º DAM - Ismael Velasco</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#41-creacion-de-componentes-visuales" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../../.." title="Aula 2º DAM - Ismael Velasco" class="md-header__button md-logo" aria-label="Aula 2º DAM - Ismael Velasco" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Aula 2º DAM - Ismael Velasco
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4.1.-Creación de componentes visuales
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ismaelvelasco-star/ismaelvelasco-star.github.io" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ismaelvelasco-star/ismaelvelasco-star.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    
+  
+  Principal
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../section1/" class="md-tabs__link">
+          
+  
+  
+  PMDM
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Aula 2º DAM - Ismael Velasco" class="md-nav__button md-logo" aria-label="Aula 2º DAM - Ismael Velasco" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Aula 2º DAM - Ismael Velasco
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ismaelvelasco-star/ismaelvelasco-star.github.io" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ismaelvelasco-star/ismaelvelasco-star.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Principal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PMDM
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PMDM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programación Multimedia y Dispositivos Móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U1: Análisis de tecnologías para dispositivos móviles
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U1: Análisis de tecnologías para dispositivos móviles
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u01/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - Análisis de tecnologías para aplicaciones móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u01/teoria/PMDM-U1.1.-AnalisisTecnologiasDispositivosMoviles/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Análisis de tecnologías para dispositivos móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u01/practica/PMDM-U1.-Practica001/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.1: Explorando Android Studio y sus plantillas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u01/practica/PMDM-U1.-Practica002/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.2: Emuladores y perfiles de dispositivo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u01/practica/PMDM-U1.-Practica003/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.3: ADB y el administrador de aplicaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U2: Programación en Android: IU con Jetpack Compose
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U2: Programación en Android: IU con Jetpack Compose
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u02/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 2 - Programación en Android: IU con Jetpack Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u02/teoria/PMDM-U2.1.-FundamentosLenguajeKotlin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1.-Fundamentos del lenguaje Kotlin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u02/teoria/PMDM-U2.2.-ActividadesEIntents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2.-Actividades e Intents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u02/teoria/PMDM-U2.3.-AppComposeListasYFormulario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3.-La app Compose: listas y formulario
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u02/practica/PMDM-U2.-MiniProyectoContactos/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 2.1: Mini-proyecto de la libreta
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U3: Gestión de datos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U3: Gestión de datos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 3 - Programación en Android: gestión de datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/teoria/PMDM-U3.1.-NavegacionGrafoArgumentosYDeepLinks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1.-Navegación: grafo, argumentos y deep links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/teoria/PMDM-U3.2.-EstadoYFormularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2.-Estado y formularios: ViewModel y validación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/teoria/PMDM-U3.3.-RoomPersistenciaLocal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.-Room: persistencia local
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/teoria/PMDM-U3.4.-RetrofitRedYErrores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4.-Retrofit: red, DTOs y errores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/teoria/PMDM-U3.5.-TallerIntegradorSesionYPruebas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5.-Taller integrador: sesión y pruebas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/practica/PMDM-U3.-AgendaConDatos/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3.1: La agenda con datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U4: Motores de juegos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U4: Motores de juegos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 4 - Selección y prueba de motores de juegos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/teoria/PMDM-U4.1.-ArquitecturaDeUnJuego2DY3D/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1.-Arquitectura de un juego 2D y 3D
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/teoria/PMDM-U4.2.-ComponentesDeUnMotorDeJuegos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2.-Componentes de un motor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/teoria/PMDM-U4.3.-EntornosYComparativaDeMotores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3.-Entornos y comparativa de motores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/teoria/PMDM-U4.4.-TallerPrimerProyectoEjecutarYDepurar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4.-Taller: ejecutar y depurar
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/practica/PMDM-U4.-AnatomiaDeUnJuego/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 4.1: Anatomía de un juego
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U5: Contenidos multimedia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U5: Contenidos multimedia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 16V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2m-11-4 2.03 2.71L16 11l4 5H8M2 6v14a2 2 0 0 0 2 2h14v-2H4V6"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 5 - Contenidos multimedia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/teoria/PMDM-U5.1.-FormatosYEntornosMultimedia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1.-Formatos y entornos multimedia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/teoria/PMDM-U5.2.-CapturaYProcesamientoEnAndroid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2.-Captura y procesamiento en Android
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/teoria/PMDM-U5.3.-ReproduccionDeAudioYVideo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3.-Reproducción de audio y vídeo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/teoria/PMDM-U5.4.-Animaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4.-Animaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/practica/PMDM-U5.-MiAppMultimedia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica: Mi app multimedia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U6: Desarrollo de juegos 2D y 3D
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U6: Desarrollo de juegos 2D y 3D
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidad 6 - Desarrollo de juegos 2D y 3D
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/teoria/PMDM-U6.1.-DelPrototipoAlJuego/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1.-Del prototipo al juego
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/teoria/PMDM-U6.2.-Juego2DMovimientoColisiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.2.-Juego 2D: movimiento y colisiones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/teoria/PMDM-U6.3.-Juego3DMaterialesFisicas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.3.-Juego 3D: materiales y físicas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/teoria/PMDM-U6.4.-PruebasOptimizacionYDespliegue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.4.-Pruebas, optimización y despliegue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/practica/PMDM-U6.-MiPrimerJuego/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica: Mi primer juego
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#resultado-de-aprendizaje-que-trabaja-esta-unidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resultado de aprendizaje que trabaja esta unidad
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion-y-contextualizacion-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introducción y contextualización práctica
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-desarrollo-de-software-en-componentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Desarrollo de software en componentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-concepto-de-componente-y-caracteristicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Concepto de componente y características
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-propiedades-y-atributos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Propiedades y atributos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Propiedades y atributos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-javabean-por-que-se-menciona-y-por-que-ya-no-se-escribe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. JavaBean: por qué se menciona y por qué ya no se escribe
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-el-proyecto-donde-vive-todo-el-tema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. El proyecto donde vive todo el tema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-creacion-de-un-nuevo-componente-badgeestado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Creación de un nuevo componente: BadgeEstado
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Creación de un nuevo componente: BadgeEstado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-el-enum-que-trae-las-propiedades-puestas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1. El enum que trae las propiedades puestas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-el-componente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2. El componente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-un-componente-con-evento-selectormes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3. Un componente con evento: SelectorMes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-herramientas-para-disenar-y-probar-componentes-ce-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Herramientas para diseñar y probar componentes (CE a)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-integracion-y-empaquetado-del-componente-ce-g" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Integración y empaquetado del componente (CE g)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-dibujar-sobre-la-interfaz-graphics-drawscope-ce-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Dibujar sobre la interfaz: Graphics → DrawScope (CE b)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-imagenes-en-el-componente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Imágenes en el componente
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-caso-practico-1-interfaz-del-metro-adaptado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Caso práctico 1: “Interfaz del metro” (adaptado)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-pruebas-unitarias-del-componente-ce-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Pruebas unitarias del componente (CE e)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-documentar-componentes-ce-f" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Documentar componentes (CE f)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-caso-practico-2-formas-basicas-con-drawscope-adaptado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Caso práctico 2: “Formas básicas con DrawScope” (adaptado)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-errores-tipicos-al-crear-componentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Errores típicos al crear componentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Resumen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bibliografia-y-fuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bibliografía y fuentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="41-creacion-de-componentes-visuales">4.1 — Creación de componentes visuales</h1>
+<blockquote>
+<p><strong>Del libro de texto:</strong> tema 4, <em>Creación de componentes</em>.
+El libro lo resuelve con JavaBeans, <code>Graphics</code> y un JAR que se mete a mano en la paleta de Eclipse.
+Aquí hacemos <strong>exactamente el mismo trabajo de ingeniería</strong> —crear una pieza nueva, darle propiedades,
+probarla, documentarla y empaquetarla para reutilizarla— pero con las herramientas de 2026:
+<strong>Jetpack Compose</strong>, un <strong>módulo de librería</strong> y <strong>pruebas instrumentadas</strong>.</p>
+<p>Como en las unidades anteriores, <strong>cada bloque marcado como <code>Código N</code> es el fichero completo que se
+compiló y se ejecutó</strong>: lo que lees es el código real del proyecto <code>IsmaelUIKit</code>, comentado línea a línea.</p>
+</blockquote>
+<h2 id="resultado-de-aprendizaje-que-trabaja-esta-unidad">Resultado de aprendizaje que trabaja esta unidad</h2>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><strong>RA3. Crea componentes visuales valorando y empleando herramientas específicas</strong> (RD 405/2023, módulo 0488)</span>.</p>
+<table>
+<thead>
+<tr>
+<th>CE</th>
+<th>Criterio de evaluación</th>
+<th>Dónde se trabaja</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>Se han identificado las herramientas para diseño y prueba de componentes.</td>
+<td>§7 previews, §9 herramientas</td>
+</tr>
+<tr>
+<td>b</td>
+<td>Se han creado componentes visuales.</td>
+<td>§6 <code>BadgeEstado</code>, §10 <code>LienzoFiguras</code></td>
+</tr>
+<tr>
+<td>c</td>
+<td>Se han definido sus métodos y propiedades con asignación de valores por defecto.</td>
+<td>§4 y §6, parámetros con defecto</td>
+</tr>
+<tr>
+<td>d</td>
+<td>Se han determinado los eventos a los que debe responder el componente y se les han asociado las acciones correspondientes.</td>
+<td>§6.3 <code>SelectorMes</code>, §15 caso del abono</td>
+</tr>
+<tr>
+<td>e</td>
+<td>Se han realizado pruebas unitarias sobre los componentes desarrollados.</td>
+<td>§12 <code>BadgeEstadoTest</code></td>
+</tr>
+<tr>
+<td>f</td>
+<td>Se han documentado los componentes creados.</td>
+<td>§13 KDoc y previews</td>
+</tr>
+<tr>
+<td>g</td>
+<td>Se han empaquetado componentes.</td>
+<td>§8 módulo <code>:ui</code> y su AAR</td>
+</tr>
+<tr>
+<td>h</td>
+<td>Se han programado aplicaciones cuyo interfaz gráfico utiliza los componentes creados.</td>
+<td>app <code>IsmaelUIKit.demo</code> (las tres escenas)</td>
+</tr>
+</tbody>
+</table>
+<div style="background-color:#a5d6a7; border-radius:8px; padding:10px 14px; margin:14px 0;">
+<strong>🟢 Leyenda de repaso obligatorio:</strong> los textos con <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">este fondo verde</span> son imprescindibles para crear componentes: hay que repasarlos <strong>cada semana</strong>, porque entrarán en todas las evaluaciones del módulo.</div>
+
+<h2 id="1-introduccion-y-contextualizacion-practica">1. Introducción y contextualización práctica</h2>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Hasta ahora has <strong>usado</strong> componentes: <code>Button</code>, <code>TextField</code>, <code>Card</code>… Los ponías, les cambiabas</span>
+propiedades y les conectabas eventos. Este tema da el paso siguiente: <strong>fabricar tus propios
+componentes</strong>, los que la librería estándar no trae, con el mismo rigor con el que un fabricante de
+componentes diseña los suyos.</p>
+<figure>
+<p><img alt="Diagrama de flujo: tres pantallas distintas reutilizan el mismo componente BadgeEstado desde el modulo :ui" src="../assets/diagrama-componentes.svg" /></p>
+<figcaption>Figura 1. El mismo componente, tres contextos. Escribirlo una vez y reutilizarlo diez es todo el sentido del tema.</figcaption>
+</figure>
+<p>¿Cuándo se crea un componente y no se copia y pega el código? La regla práctica:</p>
+<ul>
+<li>Aparece <strong>dos veces</strong> en la aplicación con el mismo aspecto → componente.</li>
+<li>Cambia <strong>el color, el texto o el tamaño</strong>, pero no la estructura → componente con <strong>parámetros</strong>.</li>
+<li>Lo necesita <strong>otro equipo u otro proyecto</strong> → componente en un <strong>módulo de librería aparte</strong> (§8).</li>
+</ul>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un componente es código probado y reutilizable que se comunica con el resto a través de su interfaz pública: sus parámetros de entrada y sus eventos de salida</span>. Todo lo que no esté en esa interfaz es interno y puede cambiar sin romper a nadie.</p>
+<h2 id="2-desarrollo-de-software-en-componentes">2. Desarrollo de software en componentes</h2>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El libro lo explica con historia: programar “en componentes” significa <strong>ensamblar</strong> piezas hechas en vez</span>
+de escribirlo todo. Las ventajas son siempre las mismas:</p>
+<table>
+<thead>
+<tr>
+<th>Ventaja</th>
+<th>Qué significa en el día a día</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reutilización</td>
+<td>Escribes la pieza una vez; la usas en todas las pantallas y proyectos.</td>
+</tr>
+<tr>
+<td>Fiabilidad</td>
+<td>El componente ya se probó una vez; no se vuelve a probar desde cero.</td>
+</tr>
+<tr>
+<td>Coste y plazo</td>
+<td>Montar pantallas pasa de “escribir” a “componer”.</td>
+</tr>
+<tr>
+<td>Consistencia</td>
+<td>Si el botón de “aceptar” es uno solo, se ve igual en toda la app.</td>
+</tr>
+<tr>
+<td>Mantenimiento</td>
+<td>Cambiar el verde de “Completado” es tocar una línea, no veinte pantallas.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cómo se empaquetaba antes y cómo se empaqueta hoy:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Concepto del libro (2020)</th>
+<th>Equivalente en 2026</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clase JavaBean en un <code>.jar</code></td>
+<td><code>@Composable</code> en un <strong>módulo de librería</strong> Android</td>
+</tr>
+<tr>
+<td>Añadir el JAR a la paleta de Eclipse</td>
+<td><code>implementation(project(":ui"))</code> en <code>build.gradle.kts</code></td>
+</tr>
+<tr>
+<td><code>.jar</code> (solo clases)</td>
+<td><strong><code>.aar</code></strong> (clases + recursos + manifiesto)</td>
+</tr>
+<tr>
+<td>“Proyecto de componente”</td>
+<td>Módulo <code>:ui</code> dentro del mismo proyecto Gradle, o repositorio aparte</td>
+</tr>
+<tr>
+<td>Publicarlo a un compañero copiándole el JAR</td>
+<td>Publicarlo a un repositorio Maven (Maven Local, GitHub Packages, Artifacts)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-concepto-de-componente-y-caracteristicas">3. Concepto de componente y características</h2>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un <strong>componente de interfaz</strong> es una pieza de código que dibuja una parte de la pantalla y se comporta</span>
+de forma predecible. Para que merezca ese nombre, se le piden seis cosas:</p>
+<ol>
+<li><strong>Interfaz pública clara</strong>: parámetros con tipos y nombres que se entienden sin leer el interior.</li>
+<li><strong>Valores por defecto sensatos</strong>: quien lo usa puede llamarlo con lo mínimo (<code>BadgeEstado(Estado.OK)</code>).</li>
+<li><strong>Sin efectos surprises</strong>: no guarda datos “en un sitio raro”, no escribe ficheros, no lanza redes.</li>
+<li><strong>Comunicación por eventos</strong>: informa de lo que pasa con <em>lambda</em>s (<code>onSeleccion</code>), no rebuscando en la pantalla.</li>
+<li><strong>Aislado y portable</strong>: no depende de una Activity concreta ni de un paquete de la aplicación.</li>
+<li><strong>Documentado y probado</strong>: trae explicación, previsualizaciones y al menos una prueba.</li>
+</ol>
+<p>En Compose, un componente <strong>es una función <code>@Composable</code></strong>. No hay que heredar de ninguna clase base ni
+registrarla en ninguna paleta: si es <code>@Composable</code>, el editor la entiende, la previsualiza y Layout
+Inspector la muestra.</p>
+<h2 id="4-propiedades-y-atributos">4. Propiedades y atributos</h2>
+<div class="admonition definition">
+<p class="admonition-title">Definición del libro</p>
+<p><strong>Las propiedades</strong> de un componente definen los datos públicos que forman la apariencia y el
+comportamiento del objeto, y se consultan o modifican mediante métodos.</p>
+</div>
+<p>En Java eso se materializaba en el patrón <strong>JavaBean</strong>: campo privado + <code>getX()</code>/<code>setX()</code>. En Compose las
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><strong>propiedades son parámetros de la función</strong>, y el “valor por defecto” es directamente el valor por</span>
+defecto del parámetro:</p>
+<table>
+<thead>
+<tr>
+<th>Concepto JavaBean (libro)</th>
+<th>Equivalente Compose</th>
+<th>Ejemplo real de esta unidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Propiedad <code>font</code> con getter/setter</td>
+<td>Parámetro <code>style: TextStyle</code></td>
+<td><code>MaterialTheme.typography.labelLarge</code></td>
+</tr>
+<tr>
+<td>Valor por defecto en el setter</td>
+<td>Valor por defecto del parámetro</td>
+<td><code>texto: String = estado.etiqueta</code></td>
+</tr>
+<tr>
+<td>Propiedad opcional booleana</td>
+<td><code>Boolean</code> con defecto</td>
+<td><code>conPunto: Boolean = true</code></td>
+</tr>
+<tr>
+<td>Propiedad de color con cálculo</td>
+<td>Expresión en el defecto</td>
+<td><code>relleno = estado.acento.copy(alpha = 0.15f)</code></td>
+</tr>
+<tr>
+<td>Método <code>paintComponent(...)</code></td>
+<td>Cuerpo de la <code>@Composable</code></td>
+<td>El <code>Row { ... }</code> que dibuja la píldora</td>
+</tr>
+<tr>
+<td>Evento con <code>ActionListener</code></td>
+<td>Parámetro lambda</td>
+<td><code>onSeleccion: (Int) -&gt; Unit</code></td>
+</tr>
+</tbody>
+</table>
+<p>Tres detalles que se preguntan en el examen y que deciden si un componente es bueno:</p>
+<ul>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>modifier: Modifier = Modifier</code> SIEMPRE como primer parámetro opcional: es lo que permite a quien te llama colocar y dar tamaño a tu componente sin tocarte el código</span>.</li>
+<li>Un parámetro con valor por defecto <strong>es documentación</strong>: dice qué es opcional y cuál es el comportamiento normal.</li>
+<li>Si una propiedad se calcula a partir de otra, calcúlala en el defecto (<code>estado.acento.copy(alpha = 0.15f)</code>) en vez de obligar a quien te llama a repetirlo.</li>
+</ul>
+<h3 id="41-javabean-por-que-se-menciona-y-por-que-ya-no-se-escribe">4.1. JavaBean: por qué se menciona y por qué ya no se escribe</h3>
+<p>El libro dedica un apartado entero a <strong>JavaBean</strong>: clase pública con constructor sin argumentos,
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">que implementa <code>Serializable</code>, con propiedades privadas accesibles por <code>getX()</code>/<code>setX()</code> y eventos por</span>
+escucha. Con esas reglas, los componentes se podían instanciar por reflexión desde el editor visual.</p>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">De JavaBean nos queda la idea —datos públicos bien definidos, constructor sencillo, comportamiento predecible— y nos sobra la sintaxis: Kotlin convierte cada propiedad en getter/setter automáticamente</span>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// El mismo dato en las tres generaciones de lenguaje que vas a ver en el ciclo.</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1">// 1) JavaBean clásico: 8 lineas para un solo dato</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Badge</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">private</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">texto</span><span class="p">;</span><span class="w">              </span><span class="c1">// propiedad privada</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="n">public</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">getTexto</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">texto</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">    </span><span class="c1">// getter</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">public</span><span class="w"> </span><span class="n">void</span><span class="w"> </span><span class="n">setTexto</span><span class="p">(</span><span class="kt">String</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">texto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// setter</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">}</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1">// 2) Kotlin: la propiedad, el getter y el setter caben en una linea</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="kd">class</span><span class="w"> </span><span class="nc">Badge</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">texto</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1">// 3) Compose: la propiedad es un parametro de la funcion que dibuja</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="nd">@Composable</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">Badge</span><span class="p">(</span><span class="n">texto</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">""</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>Y hay un motivo técnico para el cambio de modelo: en Compose <strong>no existe una instancia viva del
+componente</strong> a la que “ponerle” un valor. Cada vez que cambia un dato, la función se vuelve a ejecutar y
+produce la nueva pantalla. Por eso las propiedades son parámetros de entrada, y las “modificaciones” se
+devuelven al llamador con un evento.</p>
+<h2 id="5-el-proyecto-donde-vive-todo-el-tema">5. El proyecto donde vive todo el tema</h2>
+<p>El tema se trabaja en el proyecto <strong><code>IsmaelUIKit</code></strong>, con dos módulos. Esta estructura es el equivalente
+moderno al “proyecto de componente + proyecto de aplicación” del libro:</p>
+<pre class="mermaid"><code>flowchart TD
+    A["modulo :app&lt;br/&gt;com.example.uikit.demo&lt;br/&gt;la aplicacion de ejemplo"] --&gt;|implementation project(:ui)| B["modulo :ui&lt;br/&gt;com.example.uikit&lt;br/&gt;el kit de componentes"]
+    B --&gt; C["BadgeEstado&lt;br/&gt;pildora de estado"]
+    B --&gt; D["SelectorMes&lt;br/&gt;desplegable con evento"]
+    B --&gt; E["LienzoFiguras&lt;br/&gt;dibujo con DrawScope"]
+    B --&gt; F["Estado&lt;br/&gt;enum con color y texto"]
+    B --&gt; G["Pruebas: BadgeEstadoTest"]</code></pre>
+<p>El fichero que declara los módulos (<code>settings.gradle.kts</code>) y la configuración del módulo de librería
+son los que hacen de “ Añadir a la paleta” del libro:</p>
+<div class="highlight"><span class="filename">settings.gradle.kts</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">rootProject</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"IsmaelUIKit"</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">include</span><span class="p">(</span><span class="s">":app"</span><span class="p">)</span><span class="w">   </span><span class="c1">// la aplicacion de demostracion</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">include</span><span class="p">(</span><span class="s">":ui"</span><span class="p">)</span><span class="w">    </span><span class="c1">// el kit de componentes: aqui viven los componentes creados en clase</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">ui/build.gradle.kts (el empaquetado, explicado en el apartado 8)</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">alias</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">plugins</span><span class="p">.</span><span class="na">android</span><span class="p">.</span><span class="na">library</span><span class="p">)</span><span class="w">     </span><span class="c1">// &lt;-- libreria, no aplicacion</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">alias</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">plugins</span><span class="p">.</span><span class="na">kotlin</span><span class="p">.</span><span class="na">compose</span><span class="p">)</span><span class="w">      </span><span class="c1">// procesador de @Composable</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">}</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">android</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="n">namespace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"com.example.uikit"</span><span class="w">         </span><span class="c1">// paquete raiz del componente</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="n">compileSdk</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">release</span><span class="p">(</span><span class="m">37</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="n">defaultConfig</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="n">minSdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">24</span><span class="w">                         </span><span class="c1">// desde aqui hacia arriba sabe funcionar el kit</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="n">testInstrumentationRunner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"androidx.test.runner.AndroidJUnitRunner"</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="n">buildFeatures</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="p">}</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="n">api</span><span class="p">(</span><span class="n">platform</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">compose</span><span class="p">.</span><span class="na">bom</span><span class="p">))</span><span class="w">        </span><span class="c1">// api: quien nos use ve Compose</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="n">api</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">compose</span><span class="p">.</span><span class="na">foundation</span><span class="p">)</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="n">api</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">compose</span><span class="p">.</span><span class="na">material3</span><span class="p">)</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="n">api</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">compose</span><span class="p">.</span><span class="na">ui</span><span class="p">)</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="n">api</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">compose</span><span class="p">.</span><span class="na">ui</span><span class="p">.</span><span class="na">graphics</span><span class="p">)</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">compose</span><span class="p">.</span><span class="na">ui</span><span class="p">.</span><span class="na">tooling</span><span class="p">.</span><span class="na">preview</span><span class="p">)</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="n">debugImplementation</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">compose</span><span class="p">.</span><span class="na">ui</span><span class="p">.</span><span class="na">tooling</span><span class="p">)</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">    </span><span class="n">androidTestImplementation</span><span class="p">(</span><span class="n">platform</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">compose</span><span class="p">.</span><span class="na">bom</span><span class="p">))</span><span class="w">   </span><span class="c1">// pruebas en dispositivo</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">    </span><span class="n">androidTestImplementation</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">compose</span><span class="p">.</span><span class="na">ui</span><span class="p">.</span><span class="na">test</span><span class="p">.</span><span class="na">junit4</span><span class="p">)</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">    </span><span class="n">androidTestImplementation</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">junit</span><span class="p">)</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">    </span><span class="n">androidTestImplementation</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">espresso</span><span class="p">.</span><span class="na">core</span><span class="p">)</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">    </span><span class="n">debugImplementation</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">compose</span><span class="p">.</span><span class="na">ui</span><span class="p">.</span><span class="na">test</span><span class="p">.</span><span class="na">manifest</span><span class="p">)</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="6-creacion-de-un-nuevo-componente-badgeestado">6. Creación de un nuevo componente: <code>BadgeEstado</code></h2>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Empezamos por el caso más simple que cumple todas las reglas: una píldora de estado con un punto de color</span>
+y un texto. El libro seguía la misma ruta: <strong>partir de un componente existente y añadirle lo que le falta</strong>
+(aquí partimos de <code>Row</code>, <code>Text</code> y <code>Box</code> de Material 3).</p>
+<h3 id="61-el-enum-que-trae-las-propiedades-puestas">6.1. El enum que trae las propiedades puestas</h3>
+<div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/Estado.kt</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">package</span><span class="w"> </span><span class="nn">com.example.uikit</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.graphics.Color</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="cm">/**</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="cm"> * Los tres estados que sabe representar el kit.</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="cm"> *</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="cm"> * Es un `enum class` con datos: cada valor se construye con las **propiedades** que el</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="cm"> * componente necesita para pintarse. Así el color y el mensaje viajan *dentro* del estado</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="cm"> * y no repartidos por las pantallas: cambiar el verde de "Completado" es tocar una línea.</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="cm"> *</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="cm"> * @param etiqueta texto que ve el usuario en el componente</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="cm"> * @param acento color de referencia (punto, texto y borde) del estado</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="cm"> * @param mensaje frase larga para los sitios donde el estado se explica, no se sólo pinta</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="cm"> */</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="kd">enum</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Estado</span><span class="p">(</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">etiqueta</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">acento</span><span class="p">:</span><span class="w"> </span><span class="n">Color</span><span class="p">,</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">mensaje</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="n">OK</span><span class="p">(</span><span class="s">"Completado"</span><span class="p">,</span><span class="w"> </span><span class="n">Color</span><span class="p">(</span><span class="m">0</span><span class="n">xFF1B5E20L</span><span class="p">),</span><span class="w"> </span><span class="s">"Todo en orden"</span><span class="p">),</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">    </span><span class="n">AVISO</span><span class="p">(</span><span class="s">"Revisa"</span><span class="p">,</span><span class="w"> </span><span class="n">Color</span><span class="p">(</span><span class="m">0</span><span class="n">xFFB26A00L</span><span class="p">),</span><span class="w"> </span><span class="s">"Hay algo que conviene mirar"</span><span class="p">),</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="n">ERROR</span><span class="p">(</span><span class="s">"Fallido"</span><span class="p">,</span><span class="w"> </span><span class="n">Color</span><span class="p">(</span><span class="m">0</span><span class="n">xFFB00020L</span><span class="p">),</span><span class="w"> </span><span class="s">"Algo no ha funcionado"</span><span class="p">),</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="62-el-componente">6.2. El componente</h3>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><strong>Código 1.</strong> Fichero completo de <code>BadgeEstado</code>, incluido su <code>@Preview</code>. Es el código que produjo la</span>
+Figura 2.</p>
+<div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/BadgeEstado.kt</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">package</span><span class="w"> </span><span class="nn">com.example.uikit</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.background</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.Arrangement</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.Box</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.Row</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.padding</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.size</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.shape.CircleShape</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.shape.RoundedCornerShape</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material3.MaterialTheme</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material3.Text</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.Composable</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.Alignment</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.Modifier</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.draw.clip</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.graphics.Color</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.platform.testTag</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.tooling.preview.Preview</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.unit.dp</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="cm">/**</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="cm"> * Componente: chivato de estado con punto de color y texto.</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="cm"> *</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="cm"> * Cada parametro es una **propiedad** del componente (lo que el libro resolvia con</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="cm"> * getters y setters del JavaBean, aqui son parametros con valor por defecto).</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="cm"> *</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="cm"> * @param estado unico dato obligatorio: de el salen color, punto y texto por defecto</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="cm"> * @param texto permite sustituir la etiqueta del estado sin crear otro componente</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="cm"> * @param modifier hereda la posicion y el tamano que decida quien nos llama</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="cm"> * @param conPunto apaga el punto de color para las listas donde ya sobra</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="cm"> * @param relleno color de fondo; por defecto el acento del estado al 15% de opacidad</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="cm"> */</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="nd">@Composable</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">BadgeEstado</span><span class="p">(</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="w">    </span><span class="n">estado</span><span class="p">:</span><span class="w"> </span><span class="n">Estado</span><span class="p">,</span>
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="w">    </span><span class="n">texto</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">estado</span><span class="p">.</span><span class="na">etiqueta</span><span class="p">,</span>
+<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="w">    </span><span class="n">modifier</span><span class="p">:</span><span class="w"> </span><span class="n">Modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">,</span>
+<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="w">    </span><span class="n">conPunto</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a><span class="w">    </span><span class="n">relleno</span><span class="p">:</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">estado</span><span class="p">.</span><span class="na">acento</span><span class="p">.</span><span class="na">copy</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.15f</span><span class="p">),</span>
+<a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a><span class="w">    </span><span class="n">Row</span><span class="p">(</span>
+<a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a><span class="w">        </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">modifier</span>
+<a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a><span class="w">            </span><span class="p">.</span><span class="na">testTag</span><span class="p">(</span><span class="s">"badge_"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">estado</span><span class="p">.</span><span class="na">name</span><span class="p">)</span><span class="w">          </span><span class="c1">// nombre estable para las pruebas</span>
+<a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a><span class="w">            </span><span class="p">.</span><span class="na">clip</span><span class="p">(</span><span class="n">RoundedCornerShape</span><span class="p">(</span><span class="n">percent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">50</span><span class="p">))</span><span class="w">    </span><span class="c1">// recorte en "pastilla": esquinas al 50%</span>
+<a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a><span class="w">            </span><span class="p">.</span><span class="na">background</span><span class="p">(</span><span class="n">relleno</span><span class="p">)</span><span class="w">                       </span><span class="c1">// fondo del color del estado, apagado</span>
+<a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a><span class="w">            </span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="n">horizontal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12.</span><span class="n">dp</span><span class="p">,</span><span class="w"> </span><span class="n">vertical</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6.</span><span class="n">dp</span><span class="p">),</span>
+<a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a><span class="w">        </span><span class="n">verticalAlignment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="na">CenterVertically</span><span class="p">,</span><span class="w"> </span><span class="c1">// punto y texto, centrados en su fila</span>
+<a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a><span class="w">        </span><span class="n">horizontalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">8.</span><span class="n">dp</span><span class="p">),</span>
+<a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">conPunto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a><span class="w">            </span><span class="n">Box</span><span class="p">(</span>
+<a id="__codelineno-4-53" name="__codelineno-4-53" href="#__codelineno-4-53"></a><span class="w">                </span><span class="n">Modifier</span>
+<a id="__codelineno-4-54" name="__codelineno-4-54" href="#__codelineno-4-54"></a><span class="w">                    </span><span class="p">.</span><span class="na">size</span><span class="p">(</span><span class="m">10.</span><span class="n">dp</span><span class="p">)</span><span class="w">                       </span><span class="c1">// diametro del punto</span>
+<a id="__codelineno-4-55" name="__codelineno-4-55" href="#__codelineno-4-55"></a><span class="w">                    </span><span class="p">.</span><span class="na">clip</span><span class="p">(</span><span class="n">CircleShape</span><span class="p">)</span><span class="w">                 </span><span class="c1">// caja cuadrada -&gt; circulo</span>
+<a id="__codelineno-4-56" name="__codelineno-4-56" href="#__codelineno-4-56"></a><span class="w">                    </span><span class="p">.</span><span class="na">background</span><span class="p">(</span><span class="n">estado</span><span class="p">.</span><span class="na">acento</span><span class="p">),</span><span class="w">        </span><span class="c1">// el color puro del estado</span>
+<a id="__codelineno-4-57" name="__codelineno-4-57" href="#__codelineno-4-57"></a><span class="w">            </span><span class="p">)</span>
+<a id="__codelineno-4-58" name="__codelineno-4-58" href="#__codelineno-4-58"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-4-59" name="__codelineno-4-59" href="#__codelineno-4-59"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span>
+<a id="__codelineno-4-60" name="__codelineno-4-60" href="#__codelineno-4-60"></a><span class="w">            </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">texto</span><span class="p">,</span>
+<a id="__codelineno-4-61" name="__codelineno-4-61" href="#__codelineno-4-61"></a><span class="w">            </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">estado</span><span class="p">.</span><span class="na">acento</span><span class="p">,</span>
+<a id="__codelineno-4-62" name="__codelineno-4-62" href="#__codelineno-4-62"></a><span class="w">            </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">labelLarge</span><span class="p">,</span><span class="w"> </span><span class="c1">// la tipografia la decide el tema, no el componente</span>
+<a id="__codelineno-4-63" name="__codelineno-4-63" href="#__codelineno-4-63"></a><span class="w">        </span><span class="p">)</span>
+<a id="__codelineno-4-64" name="__codelineno-4-64" href="#__codelineno-4-64"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-65" name="__codelineno-4-65" href="#__codelineno-4-65"></a><span class="p">}</span>
+<a id="__codelineno-4-66" name="__codelineno-4-66" href="#__codelineno-4-66"></a>
+<a id="__codelineno-4-67" name="__codelineno-4-67" href="#__codelineno-4-67"></a><span class="cm">/** Documentacion viva: la propia pantalla de diseno ensena como se ve el componente. */</span>
+<a id="__codelineno-4-68" name="__codelineno-4-68" href="#__codelineno-4-68"></a><span class="nd">@Preview</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"BadgeEstado · tres estados"</span><span class="p">,</span><span class="w"> </span><span class="n">showBackground</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<a id="__codelineno-4-69" name="__codelineno-4-69" href="#__codelineno-4-69"></a><span class="nd">@Composable</span>
+<a id="__codelineno-4-70" name="__codelineno-4-70" href="#__codelineno-4-70"></a><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">VistaPreviaBadge</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-71" name="__codelineno-4-71" href="#__codelineno-4-71"></a><span class="w">    </span><span class="n">Row</span><span class="p">(</span><span class="n">horizontalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">8.</span><span class="n">dp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-72" name="__codelineno-4-72" href="#__codelineno-4-72"></a><span class="w">        </span><span class="n">BadgeEstado</span><span class="p">(</span><span class="n">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Estado</span><span class="p">.</span><span class="na">OK</span><span class="p">)</span>
+<a id="__codelineno-4-73" name="__codelineno-4-73" href="#__codelineno-4-73"></a><span class="w">        </span><span class="n">BadgeEstado</span><span class="p">(</span><span class="n">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Estado</span><span class="p">.</span><span class="na">AVISO</span><span class="p">)</span>
+<a id="__codelineno-4-74" name="__codelineno-4-74" href="#__codelineno-4-74"></a><span class="w">        </span><span class="n">BadgeEstado</span><span class="p">(</span><span class="n">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Estado</span><span class="p">.</span><span class="na">ERROR</span><span class="p">,</span><span class="w"> </span><span class="n">conPunto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<a id="__codelineno-4-75" name="__codelineno-4-75" href="#__codelineno-4-75"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-76" name="__codelineno-4-76" href="#__codelineno-4-76"></a><span class="p">}</span>
+</code></pre></div>
+<figure>
+<p><img alt="Pantalla Catalogo del kit con tres pildoras: Completado en verde con punto, Caducado en ambar con punto y Fallido en rosa sin punto" src="../assets/captura-catalogo-kit.png" /></p>
+<figcaption>Figura 2. El Código 1 en ejecución: las tres llamadas del `@Preview`, ejecutadas en la app de demostración. La primera usa todos los valores por defecto; la segunda solo cambia `texto`; la tercera apaga el punto con `conPunto = false`.</figcaption>
+</figure>
+<p>Fíjate en lo que <strong>no</strong> hace el componente: no sabe en qué pantalla está, no sabe qué idioma habla, no
+crea estado propio. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un componente sin estado propio es más fácil de reutilizar: el estado lo decide quien lo usa, y el componente solo dibuja lo que le cuentan</span>.</p>
+<h3 id="63-un-componente-con-evento-selectormes">6.3. Un componente con evento: <code>SelectorMes</code></h3>
+<p>El libro usaba un <code>JMonthChooser</code> de terceros y lo añadía a la paleta. Nosotros lo escribimos: el
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">desplegable de meses es el mismo componente, con la diferencia de que <strong>devuelve información</strong> a la</span>
+pantalla.</p>
+<p><strong>Código 2.</strong> Fichero completo, con sus dos <code>@Preview</code>. El botón «Elige un mes» de la Figura 5 lo pinta este código.</p>
+<div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/SelectorMes.kt</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">package</span><span class="w"> </span><span class="nn">com.example.uikit</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.Box</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material3.DropdownMenu</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material3.DropdownMenuItem</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material3.OutlinedButton</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material3.Text</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.Composable</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.getValue</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.mutableIntStateOf</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.remember</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.setValue</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.Modifier</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.platform.testTag</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.tooling.preview.Preview</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="cm">/** Los doce meses: la lista es una propiedad mas, se puede sustituir por otro calendario. */</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="kd">val</span><span class="w"> </span><span class="nv">MESES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">    </span><span class="s">"Enero"</span><span class="p">,</span><span class="w"> </span><span class="s">"Febrero"</span><span class="p">,</span><span class="w"> </span><span class="s">"Marzo"</span><span class="p">,</span><span class="w"> </span><span class="s">"Abril"</span><span class="p">,</span><span class="w"> </span><span class="s">"Mayo"</span><span class="p">,</span><span class="w"> </span><span class="s">"Junio"</span><span class="p">,</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span><span class="s">"Julio"</span><span class="p">,</span><span class="w"> </span><span class="s">"Agosto"</span><span class="p">,</span><span class="w"> </span><span class="s">"Septiembre"</span><span class="p">,</span><span class="w"> </span><span class="s">"Octubre"</span><span class="p">,</span><span class="w"> </span><span class="s">"Noviembre"</span><span class="p">,</span><span class="w"> </span><span class="s">"Diciembre"</span><span class="p">,</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="p">)</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="cm">/**</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="cm"> * Componente: desplegable de meses con estado interno.</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="cm"> *</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="cm"> * El libro hacia esto con un `JMonthChooser` de Swing y lo pintaba a mano con Graphics.</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="cm"> * Aqui el componente se guarda solo si esta abierto el menu (estado interno) y **avisa**</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="cm"> * al exterior por un evento: `onSeleccion`, la pareja moderna de "asociar acciones al evento".</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="cm"> *</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="cm"> * @param mesSeleccionado 1..12: el control es "controlado", manda quien nos usa</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="cm"> * @param onSeleccion evento: se dispara con el numero de mes cuando el usuario elige uno</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="cm"> * @param modifier posicion y tamano decididos por la pantalla</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="cm"> * @param textoVacio etiqueta del boton cuando aun no hay eleccion</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="cm"> */</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="nd">@Composable</span>
+<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">SelectorMes</span><span class="p">(</span>
+<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="w">    </span><span class="n">mesSeleccionado</span><span class="p">:</span><span class="w"> </span><span class="kt">Int?</span><span class="p">,</span>
+<a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a><span class="w">    </span><span class="n">onSeleccion</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="kt">Int</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span><span class="p">,</span>
+<a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a><span class="w">    </span><span class="n">modifier</span><span class="p">:</span><span class="w"> </span><span class="n">Modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">,</span>
+<a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a><span class="w">    </span><span class="n">textoVacio</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Elige un mes"</span><span class="p">,</span>
+<a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">abierto</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableIntStateOf</span><span class="p">(</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// 0 = cerrado, 1 = abierto (estado interno)</span>
+<a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a><span class="w">    </span><span class="n">Box</span><span class="p">(</span><span class="n">modifier</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a><span class="w">        </span><span class="n">OutlinedButton</span><span class="p">(</span>
+<a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a><span class="w">            </span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">abierto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">},</span><span class="w">                  </span><span class="c1">// evento de apertura</span>
+<a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a><span class="w">            </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">testTag</span><span class="p">(</span><span class="s">"selector_mes"</span><span class="p">),</span>
+<a id="__codelineno-5-47" name="__codelineno-5-47" href="#__codelineno-5-47"></a><span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a><span class="w">            </span><span class="n">Text</span><span class="p">(</span><span class="n">mesSeleccionado</span><span class="o">?.</span><span class="na">let</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">MESES</span><span class="o">[</span><span class="nb">it</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="o">]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="n">textoVacio</span><span class="p">)</span>
+<a id="__codelineno-5-49" name="__codelineno-5-49" href="#__codelineno-5-49"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-5-50" name="__codelineno-5-50" href="#__codelineno-5-50"></a><span class="w">        </span><span class="n">DropdownMenu</span><span class="p">(</span><span class="n">expanded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">abierto</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">onDismissRequest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">abierto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-51" name="__codelineno-5-51" href="#__codelineno-5-51"></a><span class="w">            </span><span class="n">MESES</span><span class="p">.</span><span class="na">forEachIndexed</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">indice</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-5-52" name="__codelineno-5-52" href="#__codelineno-5-52"></a><span class="w">                </span><span class="n">DropdownMenuItem</span><span class="p">(</span>
+<a id="__codelineno-5-53" name="__codelineno-5-53" href="#__codelineno-5-53"></a><span class="w">                    </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-5-54" name="__codelineno-5-54" href="#__codelineno-5-54"></a><span class="w">                    </span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">                          </span><span class="c1">// el evento propaga el numero, no el nombre:</span>
+<a id="__codelineno-5-55" name="__codelineno-5-55" href="#__codelineno-5-55"></a><span class="w">                        </span><span class="n">abierto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w">                      </span><span class="c1">// la pantalla decide que hacer con el mes</span>
+<a id="__codelineno-5-56" name="__codelineno-5-56" href="#__codelineno-5-56"></a><span class="w">                        </span><span class="n">onSeleccion</span><span class="p">(</span><span class="n">indice</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<a id="__codelineno-5-57" name="__codelineno-5-57" href="#__codelineno-5-57"></a><span class="w">                    </span><span class="p">},</span>
+<a id="__codelineno-5-58" name="__codelineno-5-58" href="#__codelineno-5-58"></a><span class="w">                    </span><span class="n">trailingIcon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">indice</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">mesSeleccionado</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-59" name="__codelineno-5-59" href="#__codelineno-5-59"></a><span class="w">                        </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"ok"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">                   </span><span class="c1">// marca la opcion activa</span>
+<a id="__codelineno-5-60" name="__codelineno-5-60" href="#__codelineno-5-60"></a><span class="w">                    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-61" name="__codelineno-5-61" href="#__codelineno-5-61"></a><span class="w">                        </span><span class="kc">null</span>
+<a id="__codelineno-5-62" name="__codelineno-5-62" href="#__codelineno-5-62"></a><span class="w">                    </span><span class="p">},</span>
+<a id="__codelineno-5-63" name="__codelineno-5-63" href="#__codelineno-5-63"></a><span class="w">                </span><span class="p">)</span>
+<a id="__codelineno-5-64" name="__codelineno-5-64" href="#__codelineno-5-64"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-5-65" name="__codelineno-5-65" href="#__codelineno-5-65"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-5-66" name="__codelineno-5-66" href="#__codelineno-5-66"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-67" name="__codelineno-5-67" href="#__codelineno-5-67"></a><span class="p">}</span>
+<a id="__codelineno-5-68" name="__codelineno-5-68" href="#__codelineno-5-68"></a>
+<a id="__codelineno-5-69" name="__codelineno-5-69" href="#__codelineno-5-69"></a><span class="nd">@Preview</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"SelectorMes · sin elegir"</span><span class="p">,</span><span class="w"> </span><span class="n">showBackground</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<a id="__codelineno-5-70" name="__codelineno-5-70" href="#__codelineno-5-70"></a><span class="nd">@Composable</span>
+<a id="__codelineno-5-71" name="__codelineno-5-71" href="#__codelineno-5-71"></a><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">VistaPreviaSelectorVacio</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-72" name="__codelineno-5-72" href="#__codelineno-5-72"></a><span class="w">    </span><span class="n">SelectorMes</span><span class="p">(</span><span class="n">mesSeleccionado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="n">onSeleccion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{})</span>
+<a id="__codelineno-5-73" name="__codelineno-5-73" href="#__codelineno-5-73"></a><span class="p">}</span>
+<a id="__codelineno-5-74" name="__codelineno-5-74" href="#__codelineno-5-74"></a>
+<a id="__codelineno-5-75" name="__codelineno-5-75" href="#__codelineno-5-75"></a><span class="nd">@Preview</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"SelectorMes · con eleccion"</span><span class="p">,</span><span class="w"> </span><span class="n">showBackground</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<a id="__codelineno-5-76" name="__codelineno-5-76" href="#__codelineno-5-76"></a><span class="nd">@Composable</span>
+<a id="__codelineno-5-77" name="__codelineno-5-77" href="#__codelineno-5-77"></a><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">VistaPreviaSelectorElegido</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-78" name="__codelineno-5-78" href="#__codelineno-5-78"></a><span class="w">    </span><span class="n">SelectorMes</span><span class="p">(</span><span class="n">mesSeleccionado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">onSeleccion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{})</span>
+<a id="__codelineno-5-79" name="__codelineno-5-79" href="#__codelineno-5-79"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Dos estados, dos previsualizaciones.</strong> Es la costumbre que separa un componente bien hecho de uno
+aceptable: todo componente con aspecto distinto según su estado trae un <code>@Preview</code> por estado. Cuando
+los estados dependen de una lista de datos, se usa <code>@PreviewParameter</code> y un proveedor:</p>
+<div class="highlight"><span class="filename">Variante con todos los estados a la vez (no requiere emulador)</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">ProveedorEstado</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">PreviewParameterProvider</span><span class="o">&lt;</span><span class="n">Estado</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">values</span><span class="p">:</span><span class="w"> </span><span class="n">Sequence</span><span class="o">&lt;</span><span class="n">Estado</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sequenceOf</span><span class="p">(</span><span class="n">Estado</span><span class="p">.</span><span class="na">OK</span><span class="p">,</span><span class="w"> </span><span class="n">Estado</span><span class="p">.</span><span class="na">AVISO</span><span class="p">,</span><span class="w"> </span><span class="n">Estado</span><span class="p">.</span><span class="na">ERROR</span><span class="p">)</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">}</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nd">@Preview</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"BadgeEstado · parametrizado"</span><span class="p">)</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nd">@Composable</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">VistaPreviaParametrizada</span><span class="p">(</span><span class="nd">@PreviewParameter</span><span class="p">(</span><span class="n">ProveedorEstado</span><span class="o">::</span><span class="n">class</span><span class="p">)</span><span class="w"> </span><span class="n">estado</span><span class="p">:</span><span class="w"> </span><span class="n">Estado</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="n">BadgeEstado</span><span class="p">(</span><span class="n">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">estado</span><span class="p">)</span><span class="w">          </span><span class="c1">// el editor genera una fila por cada valor de la lista</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="7-herramientas-para-disenar-y-probar-componentes-ce-a">7. Herramientas para diseñar y probar componentes (CE a)</h2>
+<p>El libro comparaba editores de imágenes (Photoshop, GIMP, Paint.NET, Inkscape). Esas siguen: se usan para
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><strong>crear el material gráfico</strong>. Para diseñar y probar el componente en sí, las de 2026 son estas</span>:</p>
+<table>
+<thead>
+<tr>
+<th>Herramienta</th>
+<th>Qué hace</th>
+<th>Cuándo se usa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@Preview</code> y sus variantes</td>
+<td>Dibuja el componente en el editor, sin arrancar el móvil.</td>
+<td>Cada vez que cambias una propiedad.</td>
+</tr>
+<tr>
+<td><code>@PreviewParameter</code></td>
+<td>Genera una preview por cada valor de prueba.</td>
+<td>Componentes con estados o listas.</td>
+</tr>
+<tr>
+<td><code>@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)</code></td>
+<td>Preview en tema oscuro.</td>
+<td>Comprobar contraste sin tocar el móvil.</td>
+</tr>
+<tr>
+<td>Layout Inspector</td>
+<td>Árbol real de la interfaz: medidas, colores, orden de composición.</td>
+<td>Cuando algo no se ve donde debía.</td>
+</tr>
+<tr>
+<td>Compose Testing (<code>createComposeRule</code>)</td>
+<td>Busca nodos por <code>testTag</code> o texto y comprueba lo que se ve.</td>
+<td>Pruebas automáticas (CE e).</td>
+</tr>
+<tr>
+<td><code>lint</code> / Detekt</td>
+<td>Avisos de estilo y errores típicos de Compose.</td>
+<td>En el build y en la CI.</td>
+</tr>
+<tr>
+<td>Figma, Inkscape, vector asset studio</td>
+<td>Material gráfico (iconos, logos) que se convierte a <code>ImageVector</code>.</td>
+<td>Antes de escribir el componente.</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<p><img alt="Diagrama de las dos mitades del ciclo de un componente: disenar (Figma, ImageVector, @Preview) y probar (Layout Inspector, Compose Test, lint)" src="../assets/diagrama-herramientas.svg" /></p>
+<figcaption>Figura 3. El ciclo de trabajo de un componente: diseñar, previsualizar, ejecutar, medir, probar. Ninguna de las cuatro primeras fases necesita un dispositivo.</figcaption>
+</figure>
+<h2 id="8-integracion-y-empaquetado-del-componente-ce-g">8. Integración y empaquetado del componente (CE g)</h2>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El libro empaquetaba en un <code>.jar</code> y lo añadía a la paleta. Aquí el paquete es un <strong>módulo de librería</strong> y</span>
+la “paleta” es el <code>dependencies</code> de Gradle:</p>
+<ol>
+<li><strong>Módulo <code>:ui</code></strong> con <code>com.android.library</code>: produce un <strong><code>.aar</code></strong> (Android Archive), que a diferencia del <code>.jar</code>
+   también lleva recursos, drawables y su manifiesto.</li>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Quien consume el kit escribe <code>implementation(project(":ui"))</code> y ya tiene sus componentes: no copia ficheros y no pega el código</span>.</li>
+<li>Dentro del módulo, las dependencias se declaran con <code>api</code> y no con <code>implementation</code>: <strong><code>api</code> filtra la
+   dependencia a quien te usa</strong>, <code>implementation</code> la esconde. Un kit de UI usa <code>api</code> para Compose, porque
+   quien consume el componente también compila contra Compose.</li>
+<li>Para compartirlo con otro proyecto se publica a un repositorio Maven:</li>
+</ol>
+<div class="highlight"><span class="filename">Publicar el kit a Maven Local para usarlo desde otro proyecto</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">"maven-publish"</span><span class="p">)</span><span class="w">                        </span><span class="c1">// plugin de publicacion de Gradle</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">}</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">publishing</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="n">publications</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="n">create</span><span class="o">&lt;</span><span class="n">MavenPublication</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"release"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">            </span><span class="n">groupId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"com.example"</span><span class="w">            </span><span class="c1">// se escribe a mano: es tu "marca"</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">            </span><span class="n">artifactId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"uikit"</span><span class="w">               </span><span class="c1">// nombre del paquete</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">            </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"1.0.0"</span><span class="w">                  </span><span class="c1">// versionado semantico: mayor.menor.parche</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">            </span><span class="n">from</span><span class="p">(</span><span class="n">components</span><span class="o">[</span><span class="s">"release"</span><span class="o">]</span><span class="p">)</span><span class="w">        </span><span class="c1">// el AAR ya construido por el modulo</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="p">}</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="c1">// Orden:  ./gradlew :ui:publishToMavenLocal</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="c1">// Y en el otro proyecto:  implementation("com.example:uikit:1.0.0")</span>
+</code></pre></div>
+<p><strong>Comprobación de que el empaquetado es real:</strong> el build genera dos artefactos.</p>
+<div class="highlight"><span class="filename">Salida real del build del tema</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$ ./gradlew :app:assembleDebug :ui:assembleDebugAndroidTest
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>&gt; Task :ui:compileDebugKotlin
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>&gt; Task :app:processDebugResources
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>BUILD SUCCESSFUL in 33s
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>app/build/outputs/apk/debug/app-debug.apk
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>ui/build/outputs/apk/androidTest/debug/ui-debug-androidTest.apk
+</code></pre></div>
+<h2 id="9-dibujar-sobre-la-interfaz-graphics-drawscope-ce-b">9. Dibujar sobre la interfaz: <code>Graphics</code> → <code>DrawScope</code> (CE b)</h2>
+<p><code>java.awt.Graphics</code> (1996) sigue siendo la idea de referencia: un lienzo, un color, coordenadas y figuras.
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">En Compose ese lienzo se llama <strong><code>DrawScope</code></strong> y está disponible dentro de <code>Canvas { }</code> o de</span>
+<code>Modifier.drawBehind { }</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Libro (<code>Graphics</code>)</th>
+<th>Compose (<code>DrawScope</code>)</th>
+<th>Notas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>paint(Graphics g)</code> sobre escrito</td>
+<td><code>Canvas { ... }</code> / <code>Modifier.drawBehind { ... }</code></td>
+<td>No hay <code>update()</code> ni <code>repaint()</code>: al cambiar el estado se vuelve a dibujar.</td>
+</tr>
+<tr>
+<td><code>g.setColor(Color.green)</code></td>
+<td><code>color = Color(0xFF2E7D32L)</code> en cada figura</td>
+<td>El color es un argumento, no un estado del pincel.</td>
+</tr>
+<tr>
+<td><code>g.fillOval(150, 70, 50, 70)</code></td>
+<td><code>drawOval(color, topLeft = Offset(150f, 70f), size = Size(50f, 70f))</code></td>
+<td>Mismas coordenadas, mismo resultado.</td>
+</tr>
+<tr>
+<td><code>g.fillRect(350, 70, 50, 70)</code></td>
+<td><code>drawRect(color, topLeft = Offset(350f, 70f), size = Size(50f, 70f))</code></td>
+<td>Ídem.</td>
+</tr>
+<tr>
+<td><code>g.fillPolygon(xs, ys, 3)</code></td>
+<td><code>Path().apply { moveTo(); lineTo(); close() }</code> + <code>drawPath(...)</code></td>
+<td>El polígono se construye con un <code>Path</code>.</td>
+</tr>
+<tr>
+<td><code>g.drawImage(img, x, y, this)</code></td>
+<td><code>drawImage(image, offset, alpha)</code></td>
+<td>Ver apartado 11.</td>
+</tr>
+<tr>
+<td><code>Stroke</code>/pluma gruesa</td>
+<td><code>style = Stroke(width = 10f, cap = StrokeCap.Round)</code></td>
+<td>Trazos redondeados y degradados con <code>Brush</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Código 3.</strong> Fichero completo del componente de dibujo. Es el código que produjo la Figura 4.</p>
+<div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/LienzoFiguras.kt</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">package</span><span class="w"> </span><span class="nn">com.example.uikit</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.Canvas</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.background</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.fillMaxSize</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.Composable</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.Modifier</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.geometry.Offset</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.geometry.Size</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.graphics.Brush</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.graphics.Color</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.graphics.Path</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.graphics.StrokeCap</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.graphics.drawscope.Stroke</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.tooling.preview.Preview</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="cm">/**</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="cm"> * Componente: las figuras del libro dibujadas con `DrawScope`.</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="cm"> *</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="cm"> * `Graphics` (AWT, 1996) se sustituye por el bloque de dibujo de Compose: dentro de `Canvas`</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="cm"> * tienes un `DrawScope` con las mismas operaciones de siempre y coordenadas en pixeles.</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="cm"> * Mismas cifras que el caso practico 2 del libro: ovalo verde en (150, 70) de 50x70,</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="cm"> * rectangulo amarillo en (350, 70) de 50x70 y triangulo naranja debajo.</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="cm"> */</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="nd">@Composable</span>
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">LienzoFiguras</span><span class="p">(</span><span class="n">modifier</span><span class="p">:</span><span class="w"> </span><span class="n">Modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="w">    </span><span class="n">Canvas</span><span class="p">(</span><span class="n">modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">().</span><span class="na">background</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="na">White</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="w">        </span><span class="c1">// 1. Ovalo: caja imaginaria de 50x70 en (150, 70) -&gt; drawOval, el fillOval del libro</span>
+<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="w">        </span><span class="n">drawOval</span><span class="p">(</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="w">            </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">(</span><span class="m">0</span><span class="n">xFF2E7D32L</span><span class="p">),</span>
+<a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a><span class="w">            </span><span class="n">topLeft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Offset</span><span class="p">(</span><span class="m">150f</span><span class="p">,</span><span class="w"> </span><span class="m">70f</span><span class="p">),</span>
+<a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a><span class="w">            </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Size</span><span class="p">(</span><span class="m">50f</span><span class="p">,</span><span class="w"> </span><span class="m">70f</span><span class="p">),</span>
+<a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a><span class="w">        </span><span class="p">)</span>
+<a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a><span class="w">        </span><span class="c1">// 2. Rectangulo relleno: mismo tamano, 200 px mas a la derecha</span>
+<a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a><span class="w">        </span><span class="n">drawRect</span><span class="p">(</span>
+<a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a><span class="w">            </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">(</span><span class="m">0</span><span class="n">xFFF9A825L</span><span class="p">),</span>
+<a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a><span class="w">            </span><span class="n">topLeft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Offset</span><span class="p">(</span><span class="m">350f</span><span class="p">,</span><span class="w"> </span><span class="m">70f</span><span class="p">),</span>
+<a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a><span class="w">            </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Size</span><span class="p">(</span><span class="m">50f</span><span class="p">,</span><span class="w"> </span><span class="m">70f</span><span class="p">),</span>
+<a id="__codelineno-9-39" name="__codelineno-9-39" href="#__codelineno-9-39"></a><span class="w">        </span><span class="p">)</span>
+<a id="__codelineno-9-40" name="__codelineno-9-40" href="#__codelineno-9-40"></a><span class="w">        </span><span class="c1">// 3. Triangulo: el fillPolygon del libro se construye con un Path de tres vertices</span>
+<a id="__codelineno-9-41" name="__codelineno-9-41" href="#__codelineno-9-41"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">triangulo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">().</span><span class="na">apply</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-42" name="__codelineno-9-42" href="#__codelineno-9-42"></a><span class="w">            </span><span class="n">moveTo</span><span class="p">(</span><span class="m">250f</span><span class="p">,</span><span class="w"> </span><span class="m">200f</span><span class="p">)</span>
+<a id="__codelineno-9-43" name="__codelineno-9-43" href="#__codelineno-9-43"></a><span class="w">            </span><span class="n">lineTo</span><span class="p">(</span><span class="m">300f</span><span class="p">,</span><span class="w"> </span><span class="m">270f</span><span class="p">)</span>
+<a id="__codelineno-9-44" name="__codelineno-9-44" href="#__codelineno-9-44"></a><span class="w">            </span><span class="n">lineTo</span><span class="p">(</span><span class="m">200f</span><span class="p">,</span><span class="w"> </span><span class="m">270f</span><span class="p">)</span>
+<a id="__codelineno-9-45" name="__codelineno-9-45" href="#__codelineno-9-45"></a><span class="w">            </span><span class="n">close</span><span class="p">()</span><span class="w">                                     </span><span class="c1">// cierra el vertice con el origen</span>
+<a id="__codelineno-9-46" name="__codelineno-9-46" href="#__codelineno-9-46"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-9-47" name="__codelineno-9-47" href="#__codelineno-9-47"></a><span class="w">        </span><span class="n">drawPath</span><span class="p">(</span><span class="n">triangulo</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">(</span><span class="m">0</span><span class="n">xFFEF6C00L</span><span class="p">))</span>
+<a id="__codelineno-9-48" name="__codelineno-9-48" href="#__codelineno-9-48"></a>
+<a id="__codelineno-9-49" name="__codelineno-9-49" href="#__codelineno-9-49"></a><span class="w">        </span><span class="c1">// 4. Y una linea de metro: trazo redondeado con degradado y estaciones en blanco</span>
+<a id="__codelineno-9-50" name="__codelineno-9-50" href="#__codelineno-9-50"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">via</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">().</span><span class="na">apply</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-51" name="__codelineno-9-51" href="#__codelineno-9-51"></a><span class="w">            </span><span class="n">moveTo</span><span class="p">(</span><span class="m">60f</span><span class="p">,</span><span class="w"> </span><span class="m">360f</span><span class="p">)</span>
+<a id="__codelineno-9-52" name="__codelineno-9-52" href="#__codelineno-9-52"></a><span class="w">            </span><span class="n">lineTo</span><span class="p">(</span><span class="m">320f</span><span class="p">,</span><span class="w"> </span><span class="m">360f</span><span class="p">)</span>
+<a id="__codelineno-9-53" name="__codelineno-9-53" href="#__codelineno-9-53"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-9-54" name="__codelineno-9-54" href="#__codelineno-9-54"></a><span class="w">        </span><span class="n">drawPath</span><span class="p">(</span>
+<a id="__codelineno-9-55" name="__codelineno-9-55" href="#__codelineno-9-55"></a><span class="w">            </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">via</span><span class="p">,</span>
+<a id="__codelineno-9-56" name="__codelineno-9-56" href="#__codelineno-9-56"></a><span class="w">            </span><span class="n">brush</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Brush</span><span class="p">.</span><span class="na">linearGradient</span><span class="p">(</span>
+<a id="__codelineno-9-57" name="__codelineno-9-57" href="#__codelineno-9-57"></a><span class="w">                </span><span class="n">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="n">Color</span><span class="p">(</span><span class="m">0</span><span class="n">xFF0277BDL</span><span class="p">),</span><span class="w"> </span><span class="n">Color</span><span class="p">(</span><span class="m">0</span><span class="n">xFF4FC3F7L</span><span class="p">)),</span>
+<a id="__codelineno-9-58" name="__codelineno-9-58" href="#__codelineno-9-58"></a><span class="w">                </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Offset</span><span class="p">(</span><span class="m">60f</span><span class="p">,</span><span class="w"> </span><span class="m">360f</span><span class="p">),</span>
+<a id="__codelineno-9-59" name="__codelineno-9-59" href="#__codelineno-9-59"></a><span class="w">                </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Offset</span><span class="p">(</span><span class="m">320f</span><span class="p">,</span><span class="w"> </span><span class="m">360f</span><span class="p">),</span>
+<a id="__codelineno-9-60" name="__codelineno-9-60" href="#__codelineno-9-60"></a><span class="w">            </span><span class="p">),</span>
+<a id="__codelineno-9-61" name="__codelineno-9-61" href="#__codelineno-9-61"></a><span class="w">            </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stroke</span><span class="p">(</span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10f</span><span class="p">,</span><span class="w"> </span><span class="n">cap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StrokeCap</span><span class="p">.</span><span class="na">Round</span><span class="p">),</span>
+<a id="__codelineno-9-62" name="__codelineno-9-62" href="#__codelineno-9-62"></a><span class="w">        </span><span class="p">)</span>
+<a id="__codelineno-9-63" name="__codelineno-9-63" href="#__codelineno-9-63"></a><span class="w">        </span><span class="n">listOf</span><span class="p">(</span><span class="m">60f</span><span class="p">,</span><span class="w"> </span><span class="m">190f</span><span class="p">,</span><span class="w"> </span><span class="m">320f</span><span class="p">).</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">          </span><span class="c1">// estaciones: circulos con borde</span>
+<a id="__codelineno-9-64" name="__codelineno-9-64" href="#__codelineno-9-64"></a><span class="w">            </span><span class="n">drawCircle</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="na">White</span><span class="p">,</span><span class="w"> </span><span class="n">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10f</span><span class="p">,</span><span class="w"> </span><span class="n">center</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Offset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="m">360f</span><span class="p">))</span>
+<a id="__codelineno-9-65" name="__codelineno-9-65" href="#__codelineno-9-65"></a><span class="w">            </span><span class="n">drawCircle</span><span class="p">(</span>
+<a id="__codelineno-9-66" name="__codelineno-9-66" href="#__codelineno-9-66"></a><span class="w">                </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">(</span><span class="m">0</span><span class="n">xFF0277BDL</span><span class="p">),</span>
+<a id="__codelineno-9-67" name="__codelineno-9-67" href="#__codelineno-9-67"></a><span class="w">                </span><span class="n">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10f</span><span class="p">,</span>
+<a id="__codelineno-9-68" name="__codelineno-9-68" href="#__codelineno-9-68"></a><span class="w">                </span><span class="n">center</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Offset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="m">360f</span><span class="p">),</span>
+<a id="__codelineno-9-69" name="__codelineno-9-69" href="#__codelineno-9-69"></a><span class="w">                </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stroke</span><span class="p">(</span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4f</span><span class="p">),</span>
+<a id="__codelineno-9-70" name="__codelineno-9-70" href="#__codelineno-9-70"></a><span class="w">            </span><span class="p">)</span>
+<a id="__codelineno-9-71" name="__codelineno-9-71" href="#__codelineno-9-71"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-9-72" name="__codelineno-9-72" href="#__codelineno-9-72"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-73" name="__codelineno-9-73" href="#__codelineno-9-73"></a><span class="p">}</span>
+<a id="__codelineno-9-74" name="__codelineno-9-74" href="#__codelineno-9-74"></a>
+<a id="__codelineno-9-75" name="__codelineno-9-75" href="#__codelineno-9-75"></a><span class="nd">@Preview</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"LienzoFiguras"</span><span class="p">,</span><span class="w"> </span><span class="n">showBackground</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="n">widthDp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">380</span><span class="p">,</span><span class="w"> </span><span class="n">heightDp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">420</span><span class="p">)</span>
+<a id="__codelineno-9-76" name="__codelineno-9-76" href="#__codelineno-9-76"></a><span class="nd">@Composable</span>
+<a id="__codelineno-9-77" name="__codelineno-9-77" href="#__codelineno-9-77"></a><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">VistaPreviaLienzo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-78" name="__codelineno-9-78" href="#__codelineno-9-78"></a><span class="w">    </span><span class="n">LienzoFiguras</span><span class="p">()</span>
+<a id="__codelineno-9-79" name="__codelineno-9-79" href="#__codelineno-9-79"></a><span class="p">}</span>
+</code></pre></div>
+<figure>
+<p><img alt="Pantalla Figuras con DrawScope: ovalo verde, rectangulo amarillo, triangulo naranja y una linea azul con tres estaciones blancas" src="../assets/captura-figuras-drawscope.png" /></p>
+<figcaption>Figura 4. El Código 3 en ejecución: las tres figuras del caso práctico 2 del libro (mismas coordenadas y colores) más una línea de metro con degradado y estaciones.</figcaption>
+</figure>
+<h2 id="10-imagenes-en-el-componente">10. Imágenes en el componente</h2>
+<p>El libro cargaba imágenes con <code>paint</code> porque los contenedores no tenían fondo por URL. Hoy separamos tres
+casos y cada uno tiene su herramienta:</p>
+<table>
+<thead>
+<tr>
+<th>Caso</th>
+<th>Cómo se hace</th>
+<th>Claves</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Icono o logotipo <strong>vectorial</strong> del componente</td>
+<td><code>ImageVector</code> (creado desde SVG, tema 3) o <code>vector asset studio</code></td>
+<td>Escala sin pixelar y pesa cientos de bytes.</td>
+</tr>
+<tr>
+<td>Imagen <strong>incluida en el paquete</strong> (PNG, WebP)</td>
+<td><code>painterResource(R.drawable.nombre)</code> dentro de <code>Image(...)</code></td>
+<td>Vive en el módulo: va dentro del <code>.aar</code>.</td>
+</tr>
+<tr>
+<td>Imagen <strong>remota</strong> (la que el libro cargaba por URL)</td>
+<td>librería de carga asíncrona (Coil <code>AsyncImage</code>, o <code>Fresco</code>)</td>
+<td>Ocupa el hueco mientras carga y muestra un error si falla.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><span class="filename">Los tres casos, en el mismo componente</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nd">@Composable</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">CabeceraConLogo</span><span class="p">(</span><span class="n">modifier</span><span class="p">:</span><span class="w"> </span><span class="n">Modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">,</span><span class="w"> </span><span class="n">urlLogo</span><span class="p">:</span><span class="w"> </span><span class="kt">String?</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="n">Row</span><span class="p">(</span><span class="n">modifier</span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">),</span><span class="w"> </span><span class="n">verticalAlignment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="na">CenterVertically</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">urlLogo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">            </span><span class="n">Image</span><span class="p">(</span><span class="w">                                        </span><span class="c1">// 1 y 2: imagen que viaja en el paquete</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">                </span><span class="n">painter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">painterResource</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">drawable</span><span class="p">.</span><span class="na">ic_logo</span><span class="p">),</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">                </span><span class="n">contentDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Logo de la aplicación"</span><span class="p">,</span><span class="w">  </span><span class="c1">// obligatoria: la lee el lector de pantalla</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">                </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">size</span><span class="p">(</span><span class="m">40.</span><span class="n">dp</span><span class="p">),</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">            </span><span class="p">)</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">            </span><span class="n">AsyncImage</span><span class="p">(</span><span class="w">                                   </span><span class="c1">// 3: imagen remota (Coil)</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">                </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">urlLogo</span><span class="p">,</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">                </span><span class="n">contentDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Logo de la aplicación"</span><span class="p">,</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">                </span><span class="n">placeholder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">painterResource</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">drawable</span><span class="p">.</span><span class="na">ic_hueco</span><span class="p">),</span><span class="w">  </span><span class="c1">// hueco mientras carga</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="w">                </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">painterResource</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">drawable</span><span class="p">.</span><span class="na">ic_error</span><span class="p">),</span><span class="w">        </span><span class="c1">// y aviso si falla</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="w">                </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">size</span><span class="p">(</span><span class="m">40.</span><span class="n">dp</span><span class="p">),</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="w">            </span><span class="p">)</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="w">        </span><span class="n">Spacer</span><span class="p">(</span><span class="n">Modifier</span><span class="p">.</span><span class="na">width</span><span class="p">(</span><span class="m">12.</span><span class="n">dp</span><span class="p">))</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">"Recarga del abono"</span><span class="p">,</span><span class="w"> </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">titleMedium</span><span class="p">)</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="p">}</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Accesibilidad de las imágenes</p>
+<p><code>contentDescription = null</code> es correcto <strong>solo</strong> en imágenes decorativas. En cuanto la imagen informa
+de algo (un estado, un precio, un avatar), el texto es obligatorio: sin él el componente no pasa una
+revisión de accesibilidad, y accesibilidad se evalúa en RA4.</p>
+</div>
+<h2 id="11-caso-practico-1-interfaz-del-metro-adaptado">11. Caso práctico 1: “Interfaz del metro” (adaptado)</h2>
+<p><strong>Enunciado (como en el libro).</strong> La Red de Transporte Regional quiere una pantalla para recargar el abono
+mensual. Hace falta un desplegable con los doce meses y que la interfaz confirme la recarga elegida.</p>
+<p><strong>Montaje con el kit.</strong> La pantalla no dibuja nada “a mano”: compone piezas del módulo <code>:ui</code>.</p>
+<div class="highlight"><span class="filename">app/src/main/java/com/example/uikit/demo/MainActivity.kt (escena 3)</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="cm">/** Escena 3: caso practico 1 (recarga de abono). El evento del componente alimenta la pantalla. */</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nd">@Composable</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">EscenaAbono</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">mes</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="o">&lt;</span><span class="kt">Int?</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// estado de la PANTALLA, no del componente</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="n">Column</span><span class="p">(</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">        </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">().</span><span class="na">verticalScroll</span><span class="p">(</span><span class="n">rememberScrollState</span><span class="p">()).</span><span class="na">padding</span><span class="p">(</span><span class="m">24.</span><span class="n">dp</span><span class="p">),</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">        </span><span class="n">verticalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">),</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">"Recarga del abono"</span><span class="p">,</span><span class="w"> </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">headlineSmall</span><span class="p">)</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">        </span><span class="n">SelectorMes</span><span class="p">(</span><span class="w">                                      </span><span class="c1">// componente del kit: no sabe nada de abonos</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">            </span><span class="n">mesSeleccionado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mes</span><span class="p">,</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">            </span><span class="n">onSeleccion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">elegido</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">mes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elegido</span><span class="w"> </span><span class="p">},</span><span class="w">   </span><span class="c1">// el evento sube el numero de mes</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">        </span><span class="p">)</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">        </span><span class="n">Card</span><span class="p">(</span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxWidth</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">            </span><span class="n">Column</span><span class="p">(</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">                </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">),</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="w">                </span><span class="n">verticalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">8.</span><span class="n">dp</span><span class="p">),</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="w">            </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="w">                </span><span class="n">Text</span><span class="p">(</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mes</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="s">"Selecciona el mes que quieres recargar"</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="s">"Recargado: </span><span class="si">${</span><span class="n">com</span><span class="p">.</span><span class="na">example</span><span class="p">.</span><span class="na">uikit</span><span class="p">.</span><span class="na">MESES</span><span class="o">[</span><span class="n">mes</span><span class="o">!!</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="o">]</span><span class="si">}</span><span class="s"> · 20,00 EUR"</span><span class="p">,</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="w">                </span><span class="p">)</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="w">                </span><span class="n">BadgeEstado</span><span class="p">(</span>
+<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="w">                    </span><span class="n">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mes</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="n">Estado</span><span class="p">.</span><span class="na">AVISO</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">Estado</span><span class="p">.</span><span class="na">OK</span><span class="p">,</span>
+<a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="w">                    </span><span class="n">texto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mes</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="s">"Falta el mes"</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">Estado</span><span class="p">.</span><span class="na">OK</span><span class="p">.</span><span class="na">etiqueta</span><span class="p">,</span>
+<a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="w">                </span><span class="p">)</span>
+<a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">"ESCENA 3 - abono"</span><span class="p">)</span>
+<a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a><span class="p">}</span>
+</code></pre></div>
+<figure>
+<p><img alt="Pantalla Recarga del abono con el boton Elige un mes, una tarjeta que pide seleccionar el mes y una pildora de aviso Falta el mes" src="../assets/captura-abono-sin-mes.png" /></p>
+<figcaption>Figura 5. El caso práctico con el estado inicial: `mes == null`, así que la tarjeta pide el mes y el badge se pinta en ámbar. Al elegir uno, el evento `onSeleccion` cambia el estado y la misma pantalla pasa a “Recargado: Marzo · 20,00 EUR” con el badge verde.</figcaption>
+</figure>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El detalle con nota: <strong>el componente no sabe qué es un abono</strong>. <code>SelectorMes</code> solo sabe de meses; la</span>
+lógica del precio y de la confirmación es de la pantalla. Ese reparto es lo que permite reutilizar el
+desplegable en una cita médica, una reserva o un formulario de matrícula.</p>
+<h2 id="12-pruebas-unitarias-del-componente-ce-e">12. Pruebas unitarias del componente (CE e)</h2>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Una prueba de un componente no comprueba “que el código se ejecuta”, sino <strong>que el usuario ve lo correcto</strong></span>.
+En Compose se hace con <code>createComposeRule</code>: se monta el componente, se busca por su <code>testTag</code> o por su
+texto y se afirma sobre lo visible.</p>
+<p><strong>Código 4.</strong> Fichero de pruebas, ejecutado sobre el emulador.</p>
+<div class="highlight"><span class="filename">ui/src/androidTest/java/com/example/uikit/BadgeEstadoTest.kt</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">package</span><span class="w"> </span><span class="nn">com.example.uikit</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.test.assertIsDisplayed</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.test.junit4.createComposeRule</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.test.onNodeWithTag</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.test.onNodeWithText</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="k">import</span><span class="w"> </span><span class="nn">org.junit.Rule</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="k">import</span><span class="w"> </span><span class="nn">org.junit.Test</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="cm">/** Pruebas del componente (criterio de evaluacion 3e): se comprueba lo que ve el usuario. */</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="kd">class</span><span class="w"> </span><span class="nc">BadgeEstadoTest</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">    </span><span class="nd">@get</span><span class="p">:</span><span class="n">Rule</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">regla</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createComposeRule</span><span class="p">()</span><span class="w">               </span><span class="c1">// arranca un compose host en el dispositivo</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="w">    </span><span class="nd">@Test</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">muestraLaEtiquetaDeSuEstado</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="w">        </span><span class="n">regla</span><span class="p">.</span><span class="na">setContent</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">BadgeEstado</span><span class="p">(</span><span class="n">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Estado</span><span class="p">.</span><span class="na">OK</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="w">        </span><span class="n">regla</span><span class="p">.</span><span class="na">onNodeWithTag</span><span class="p">(</span><span class="s">"badge_OK"</span><span class="p">).</span><span class="na">assertIsDisplayed</span><span class="p">()</span><span class="w">      </span><span class="c1">// existe y esta en pantalla</span>
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="w">        </span><span class="n">regla</span><span class="p">.</span><span class="na">onNodeWithText</span><span class="p">(</span><span class="s">"Completado"</span><span class="p">).</span><span class="na">assertIsDisplayed</span><span class="p">()</span><span class="w">   </span><span class="c1">// y pinta la etiqueta del estado</span>
+<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>
+<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="w">    </span><span class="nd">@Test</span>
+<a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">elTextoPersonalizadoGanaALaEtiqueta</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="w">        </span><span class="n">regla</span><span class="p">.</span><span class="na">setContent</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">BadgeEstado</span><span class="p">(</span><span class="n">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Estado</span><span class="p">.</span><span class="na">ERROR</span><span class="p">,</span><span class="w"> </span><span class="n">texto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Caducado"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="w">        </span><span class="n">regla</span><span class="p">.</span><span class="na">onNodeWithText</span><span class="p">(</span><span class="s">"Caducado"</span><span class="p">).</span><span class="na">assertIsDisplayed</span><span class="p">()</span><span class="w">     </span><span class="c1">// la propiedad texto manda</span>
+<a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="w">        </span><span class="n">regla</span><span class="p">.</span><span class="na">onNodeWithText</span><span class="p">(</span><span class="s">"Fallido"</span><span class="p">).</span><span class="na">assertDoesNotExist</span><span class="p">()</span><span class="w">     </span><span class="c1">// y la etiqueta base desaparece</span>
+<a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">Resultado real de la ejecucion</span><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>INSTRUMENTATION_RESULT: stream=...
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>com.example.uikit.BadgeEstadoTest:..
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>Time: 1.461
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>OK (2 tests)
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Cómo leer la salida de las pruebas</p>
+<p>El <code>..</code> después del nombre de la clase son las dos pruebas: cada letra es una prueba que pasó; una
+<code>F</code> sería un fallo. Que <code>Fallido</code> (la etiqueta por defecto del estado <code>ERROR</code>) <strong>no</strong> aparezca cuando
+se le sustituye el texto es la prueba de que la propiedad funciona: es más útil afirmar la ausencia
+que contar píxeles.</p>
+</div>
+<h2 id="13-documentar-componentes-ce-f">13. Documentar componentes (CE f)</h2>
+<p>Tres niveles, y los dos primeros no cuestan trabajo porque ya los estás escribiendo:</p>
+<ol>
+<li><strong>KDoc en la declaración</strong> (<code>/** ... */</code> con <code>@param</code>): es la ayuda que ve quien usa el componente al
+   escribir, en el autocompletado. Por eso el Código 1 documenta <strong>cada propiedad</strong>.
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">2. <strong>Previews como documentación viva</strong>: un <code>@Preview</code> por estado vale más que un párrafo; el editor las</span>
+   pinta sin compilar la aplicación.</li>
+<li><strong>Documentación publicada</strong>: con el plugin <strong>Dokka</strong> los KDoc se exportan a HTML o Markdown, igual que
+   Javadoc/Javadoc.io en el mundo Java.</li>
+</ol>
+<div class="highlight"><span class="filename">El mismo nivel de detalle que pide el libro: documentar el componente, no la app</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="cm">/**</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="cm"> * Componente: chivato de estado con punto de color y texto.</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="cm"> *</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="cm"> * Cada parametro es una **propiedad** del componente...</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="cm"> *</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="cm"> * @param estado unico dato obligatorio: de el salen color, punto y texto por defecto</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="cm"> * @param texto permite sustituir la etiqueta del estado sin crear otro componente</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="cm"> * @param conPunto apaga el punto de color para las listas donde ya sobra</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="cm"> */</span>
+</code></pre></div>
+<h2 id="14-caso-practico-2-formas-basicas-con-drawscope-adaptado">14. Caso práctico 2: “Formas básicas con DrawScope” (adaptado)</h2>
+<p>El libro pedía sobrescribir <code>paint</code>, llamar a <code>super.paint(g)</code> y encadenar <code>setColor</code> + <code>fillOval</code> +
+<code>fillRect</code> + <code>fillPolygon</code>. Aquí el equivalente es el <strong>Código 3</strong> de esta unidad, con las mismas cifras:</p>
+<table>
+<thead>
+<tr>
+<th>Paso del libro</th>
+<th>Paso en Compose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Sobrescribir <code>paint</code></td>
+<td>Abrir el bloque <code>Canvas { }</code> (o <code>Modifier.drawBehind</code>).</td>
+</tr>
+<tr>
+<td>2. Llamar al <code>paint</code> de la superclase</td>
+<td>No hace falta: el fondo se pone con <code>Modifier.background(Color.White)</code>.</td>
+</tr>
+<tr>
+<td>3-4. Verde y <code>fillOval(150, 70, 50, 70)</code></td>
+<td><code>drawOval(Color(0xFF2E7D32L), Offset(150f, 70f), Size(50f, 70f))</code>.</td>
+</tr>
+<tr>
+<td>5-6. Amarillo y <code>fillRect(350, 70, 50, 70)</code></td>
+<td><code>drawRect(Color(0xFFF9A825L), Offset(350f, 70f), Size(50f, 70f))</code>.</td>
+</tr>
+<tr>
+<td>7-8. Naranja y <code>fillPolygon</code></td>
+<td><code>Path</code> de tres vértices + <code>drawPath(...)</code> (en el Código 3, <code>triángulo</code>).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Resultado:</strong> la Figura 4 de esta página, ejecutada en el emulador.</p>
+<h2 id="15-errores-tipicos-al-crear-componentes">15. Errores típicos al crear componentes</h2>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Síntoma</th>
+<th>Solución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No aceptar <code>modifier</code></td>
+<td>El llamador no puede colocar tu componente; se pone donde tú quisiste.</td>
+<td>Primer parámetro opcional: <code>modifier: Modifier = Modifier</code> y aplicarlo al contenedor raíz.</td>
+</tr>
+<tr>
+<td>Meter <code>padding</code> “porque queda bien”</td>
+<td>El componente se descoloca al cambiar de pantalla.</td>
+<td>El espacio exterior lo pone el <code>modifier</code> del llamador; dentro usa <code>Arrangement.spacedBy</code>.</td>
+</tr>
+<tr>
+<td>Guardar estado que no es tuyo</td>
+<td>El componente “se acuerda” de cosas y se contradice al girar la pantalla.</td>
+<td>Estado interno solo para lo interno (si el menú está abierto). Lo demás, parámetro + evento.</td>
+</tr>
+<tr>
+<td><code>implementation</code> donde toca <code>api</code></td>
+<td>Quien usa el kit tiene que volver a declarar Compose.</td>
+<td><code>api</code> para lo que forma parte de la interfaz pública del componente.</td>
+</tr>
+<tr>
+<td>Sin <code>testTag</code></td>
+<td>Las pruebas van buscando textos que cambian con el idioma.</td>
+<td><code>testTag</code> estables + afirmaciones por etiqueta y, solo de apoyo, por texto.</td>
+</tr>
+<tr>
+<td>Depender de una clase de la app</td>
+<td>El módulo <code>:ui</code> no compila solo.</td>
+<td>El kit no importa nada de <code>:app</code>; si hace falta, se pasa como parámetro.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="16-resumen">16. Resumen</h2>
+<ul>
+<li><strong>Componente</strong> = pieza de código reutilizable con interfaz pública: parámetros de entrada, eventos de salida. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">En Compose un componente es una función <code>@Composable</code>: no hay clase base que heredar ni paleta en la que registrarlo</span>.</li>
+<li><strong>Propiedades</strong> = parámetros, y los <strong>valores por defecto</strong> sustituyen a los setters con defecto del JavaBean. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>modifier: Modifier = Modifier</code> siempre, para que decida el llamador</span>.</li>
+<li><strong>Diseño y prueba sin móvil</strong>: <code>@Preview</code>, <code>@PreviewParameter</code>, <code>uiMode</code>, Layout Inspector. Y <strong>prueba automática con <code>createComposeRule</code></strong>, afirmando sobre lo visible.</li>
+<li><strong>Dibujar a mano</strong> sigue existiendo: <code>Canvas { }</code> y <code>DrawScope</code> son la versión actual de <code>Graphics</code> (óvalo, rectángulo, <code>Path</code>, trazos y degradados).</li>
+<li><strong>Imágenes</strong>: <code>ImageVector</code> desde SVG (tema 3), <code>painterResource</code> para lo empaquetado, carga asíncrona para lo remoto, y <code>contentDescription</code> en todo lo que informe de algo.</li>
+<li><strong>Empaquetar</strong>: módulo de librería → <strong><code>.aar</code></strong> → <code>implementation(project(":ui"))</code> o publicación Maven. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>api</code> filtra la dependencia a quien te usa; <code>implementation</code> la esconde</span>.</li>
+<li><strong>Documentar</strong>: KDoc en cada propiedad + un <code>@Preview</code> por estado + Dokka si hay que publicarlo.</li>
+</ul>
+<h2 id="bibliografia-y-fuentes">Bibliografía y fuentes</h2>
+<p>Sin libros de editorial: el material se apoya en las especificaciones y documentaciones oficiales
+del software que se usa en clase.</p>
+<p><strong>Documentación oficial de Android y de las herramientas</strong></p>
+<ul>
+<li>Android Developers. <em>Jetpack Compose — documentación principal</em>. <a href="https://developer.android.com/develop/ui/compose">https://developer.android.com/develop/ui/compose</a></li>
+<li>Android Developers. <em>Crear composables y pasar datos (parametros, slots, <code>Modifier</code>)</em>. <a href="https://developer.android.com/develop/ui/compose/tutorial">https://developer.android.com/develop/ui/compose/tutorial</a></li>
+<li>Android Developers. <code>@Preview</code> <a href="https://developer.android.com/develop/ui/compose/tooling/previews">https://developer.android.com/develop/ui/compose/tooling/previews</a> y <em>Layout Inspector</em> <a href="https://developer.android.com/studio/debug/layout-inspector">https://developer.android.com/studio/debug/layout-inspector</a></li>
+<li>Android Developers. <em>Pruebas de interfaz con Compose Testing</em>. <a href="https://developer.android.com/develop/ui/compose/testing">https://developer.android.com/develop/ui/compose/testing</a></li>
+<li>Android Developers. <em>Dibujo con <code>DrawScope</code> y <code>Modifier.drawBehind</code></em>. <a href="https://developer.android.com/develop/ui/compose/graphics/draw">https://developer.android.com/develop/ui/compose/graphics/draw</a></li>
+<li>Android Developers. <em>Gráficos vectoriales (vector drawables) e imágenes</em>. <a href="https://developer.android.com/develop/ui/views/graphics/vector-drawable-resources">https://developer.android.com/develop/ui/views/graphics/vector-drawable-resources</a></li>
+<li>Android Developers. <em>Módulos de librería y formatos AAR</em>. <a href="https://developer.android.com/studio/projects/android-library">https://developer.android.com/studio/projects/android-library</a></li>
+<li>Android Developers. <em>Dependencias de la declaración de proyectos de Gradle</em> (<code>api</code> frente a <code>implementation</code>). <a href="https://developer.android.com/build/gradle-dependency-catalog">https://developer.android.com/build/gradle-dependency-catalog</a></li>
+<li>Gradle. <em>Publicación de componentes (plugin <code>maven-publish</code>)</em>. <a href="https://docs.gradle.org/current/userguide/publishing_maven.html">https://docs.gradle.org/current/userguide/publishing_maven.html</a></li>
+<li>JetBrains. <em>Dokka, generación de documentación Kotlin</em>. <a href="https://kotlinlang.org/docs/dokka-introduction.html">https://kotlinlang.org/docs/dokka-introduction.html</a></li>
+<li>Kotlin Foundation. <em>Enumerations</em> y <em>Properties and accessors</em>. <a href="https://kotlinlang.org/docs/enums.html">https://kotlinlang.org/docs/enums.html</a></li>
+</ul>
+<p><strong>Espejo histórico del tema (para situar el vocabulario del libro)</strong></p>
+<ul>
+<li>Oracle. <em>JavaBeans Focus Guide</em> (especificación JavaBeans). <a href="https://docs.oracle.com/javase/tutorial/javabeans/">https://docs.oracle.com/javase/tutorial/javabeans/</a></li>
+<li>Oracle. <em>Clase <code>java.awt.Graphics</code></em> (API de Java SE). <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/java/awt/Graphics.html">https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/java/awt/Graphics.html</a></li>
+</ul>
+<p><strong>Normativa del módulo</strong></p>
+<ul>
+<li>Real Decreto 405/2023, de 29 de mayo (BOE-A-2023-13221). Módulo profesional 0488 <em>Desarrollo de interfaces</em>:
+  <strong>RA3</strong> y sus criterios de evaluación a) a h), que son los que ordenan este tema.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>
