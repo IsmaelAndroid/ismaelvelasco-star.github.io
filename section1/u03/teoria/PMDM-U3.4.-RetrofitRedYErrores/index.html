@@ -2194,12 +2194,13 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Código 1 — DTO serializable</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>@Serializable                                               // genera el parser a partir de la clase
-data class UsuarioRemoto(                                   // lo que devuelve el servidor
-    val id: Int,                                            // campo id del JSON
-    val login: String,                                      // campo login del JSON
-    val html_url: String                                    // campo html_url del JSON
-)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@Serializable</span><span class="w">                                               </span><span class="c1">// genera el parser a partir de la clase</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">UsuarioRemoto</span><span class="p">(</span><span class="w">                                   </span><span class="c1">// lo que devuelve el servidor</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">id</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span><span class="w">                                            </span><span class="c1">// campo id del JSON</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">login</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w">                                      </span><span class="c1">// campo login del JSON</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">html_url</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w">                                    </span><span class="c1">// campo html_url del JSON</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2208,10 +2209,11 @@ data class UsuarioRemoto(                                   // lo que devuelve e
 <div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Código 2 — Interfaz con <code>suspend</code></label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>interface AgendaApi {                                       // contrato del servidor
-    @GET("users")                                           // GET https://api.github.com/users
-    suspend fun usuarios(): List<UsuarioRemoto>              // suspend: la llamada no bloquea la UI
-}</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">interface</span><span class="w"> </span><span class="nc">AgendaApi</span><span class="w"> </span><span class="p">{</span><span class="w">                                       </span><span class="c1">// contrato del servidor</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nd">@GET</span><span class="p">(</span><span class="s">"users"</span><span class="p">)</span><span class="w">                                           </span><span class="c1">// GET https://api.github.com/users</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">usuarios</span><span class="p">():</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">UsuarioRemoto</span><span class="o">&gt;</span><span class="w">              </span><span class="c1">// suspend: la llamada no bloquea la UI</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">}</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2220,14 +2222,15 @@ data class UsuarioRemoto(                                   // lo que devuelve e
 <div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Código 3 — Construcción del cliente</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>object RetrofitCliente {                                    // una sola instancia del cliente
-    private val json = Json { ignoreUnknownKeys = true }     // si el servidor añade campos, no revienta
-    private val retrofit = Retrofit.Builder()
-        .baseUrl("https://api.github.com/")                 // URL base (termina en /)
-        .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
-        .build()
-    val api: AgendaApi = retrofit.create(AgendaApi::class.java) // implementación generada
-}</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">object</span><span class="w"> </span><span class="nc">RetrofitCliente</span><span class="w"> </span><span class="p">{</span><span class="w">                                    </span><span class="c1">// una sola instancia del cliente</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Json</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">ignoreUnknownKeys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">     </span><span class="c1">// si el servidor añade campos, no revienta</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">retrofit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Retrofit</span><span class="p">.</span><span class="na">Builder</span><span class="p">()</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="p">.</span><span class="na">baseUrl</span><span class="p">(</span><span class="s">"https://api.github.com/"</span><span class="p">)</span><span class="w">                 </span><span class="c1">// URL base (termina en /)</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="p">.</span><span class="na">addConverterFactory</span><span class="p">(</span><span class="n">json</span><span class="p">.</span><span class="na">asConverterFactory</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">.</span><span class="na">toMediaType</span><span class="p">()))</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">api</span><span class="p">:</span><span class="w"> </span><span class="n">AgendaApi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">retrofit</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">AgendaApi</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">)</span><span class="w"> </span><span class="c1">// implementación generada</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">}</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2238,7 +2241,7 @@ data class UsuarioRemoto(                                   // lo que devuelve e
 </ul>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>Json {{ ignoreUnknownKeys = true }}</code> es la diferencia entre aguantar un cambio del servidor y crashear en producción.</span></p>
 <h3 id="permisos-sin-esto-no-hay-red">Permisos: sin esto no hay red</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&lt;uses-permission</span><span class="w"> </span><span class="na">android:name=</span><span class="s">"android.permission.INTERNET"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">&lt;uses-permission</span><span class="w"> </span><span class="na">android:name=</span><span class="s">"android.permission.INTERNET"</span><span class="w"> </span><span class="nt">/&gt;</span>
 </code></pre></div>
 <p>Sin esa línea, cualquier petición falla con <code>EPERM (Operation not permitted)</code> en <code>getaddrinfo</code> — un error que parece de red y en realidad es de permisos.</p>
 <h2 id="5-la-pantalla-tres-estados-no-uno">5. La pantalla: tres estados, no uno</h2>
@@ -2246,81 +2249,73 @@ data class UsuarioRemoto(                                   // lo que devuelve e
 <div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Código 4 — Estados de carga, error y datos</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>fun EscenaApi() {                                           // 3.4: pedir datos a un servidor
-    val alcance = rememberCoroutineScope()
-    var usuarios by remember { mutableStateOf&lt;List<UsuarioRemoto>&gt;(emptyList()) }
-    var error by remember { mutableStateOf<String?>(null) }
-    var cargando by remember { mutableStateOf(false) }
-    Scaffold(topBar = { TopAppBar(title = { Text("IsmaelAgenda · API") }) }) { relleno -&gt;
-        Column(
-            Modifier.fillMaxSize().padding(relleno).padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                Button(onClick = {
-                    alcance.launch {
-                        cargando = true; error = null             // estado de carga
-                        try {
-                            usuarios = RetrofitCliente.api.usuarios() // llamada real por HTTPS
-                        } catch (e: Exception) {                  // sin red, timeout, 404...
-                            error = e.message ?: "Error desconocido"
-                        } finally {
-                            cargando = false                      // pase lo que pase, quita la rueda
-                        }
-                    }
-                }) { Text("Cargar usuarios") }
-                Button(onClick = {
-                    alcance.launch {
-                        cargando = true; error = null
-                        try {
-                            usuarios = Retrofit.Builder()        // cliente MAL configurado a propósito
-                                .baseUrl("https://api.github.com/noexiste/")
-                                .addConverterFactory(json2().asConverterFactory("application/json".toMediaType()))
-                                .build()
-                                .create(AgendaApi::class.java)
-                                .usuarios()
-                        } catch (e: Exception) {
-                            error = e.message ?: "Error desconocido" // 404 del servidor
-                        } finally {
-                            cargando = false
-                        }
-                    }
-                }) { Text("Provocar error") }
-            }
-            if (cargando) CircularProgressIndicator()          // rueda mientras espera
-            error?.let { Text("ERROR: $it", color = MaterialTheme.colorScheme.error) }
-            Text("Usuarios recibidos: ${usuarios.size}", style = MaterialTheme.typography.titleMedium)
-            LazyColumn(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                items(usuarios) { u -&gt;
-                    Card(Modifier.fillMaxWidth()) {
-                        Column(Modifier.padding(12.dp)) {
-                            Text("${u.id} · ${u.login}", style = MaterialTheme.typography.titleMedium)
-                            Text(u.html_url, style = MaterialTheme.typography.bodyMedium)
-                        }
-                    }
-                }
-            }
-        }
-    }
-}</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">EscenaApi</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">                                           </span><span class="c1">// 3.4: pedir datos a un servidor</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">alcance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rememberCoroutineScope</span><span class="p">()</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">usuarios</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">UsuarioRemoto</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">emptyList</span><span class="p">())</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">error</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="o">&lt;</span><span class="kt">String?</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">cargando</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="n">Scaffold</span><span class="p">(</span><span class="n">topBar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">TopAppBar</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"IsmaelAgenda · API"</span><span class="p">)</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">relleno</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="n">Column</span><span class="p">(</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">            </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">().</span><span class="na">padding</span><span class="p">(</span><span class="n">relleno</span><span class="p">).</span><span class="na">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">),</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">            </span><span class="n">verticalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">12.</span><span class="n">dp</span><span class="p">)</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">            </span><span class="n">Row</span><span class="p">(</span><span class="n">horizontalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">12.</span><span class="n">dp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">                </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">                    </span><span class="n">alcance</span><span class="p">.</span><span class="na">launch</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">                        </span><span class="n">cargando</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="w">             </span><span class="c1">// estado de carga</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">                        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">                            </span><span class="n">usuarios</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RetrofitCliente</span><span class="p">.</span><span class="na">api</span><span class="p">.</span><span class="na">usuarios</span><span class="p">()</span><span class="w"> </span><span class="c1">// llamada real por HTTPS</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">                        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">:</span><span class="w"> </span><span class="n">Exception</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                  </span><span class="c1">// sin red, timeout, 404...</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">                            </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">message</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="s">"Error desconocido"</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">                        </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">                            </span><span class="n">cargando</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">                      </span><span class="c1">// pase lo que pase, quita la rueda</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">                        </span><span class="p">}</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">                    </span><span class="p">}</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">                </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"Cargar usuarios"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">                </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">                    </span><span class="n">alcance</span><span class="p">.</span><span class="na">launch</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">                        </span><span class="n">cargando</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">                        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">                            </span><span class="n">usuarios</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Retrofit</span><span class="p">.</span><span class="na">Builder</span><span class="p">()</span><span class="w">        </span><span class="c1">// cliente MAL configurado a propósito</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">                                </span><span class="p">.</span><span class="na">baseUrl</span><span class="p">(</span><span class="s">"https://api.github.com/noexiste/"</span><span class="p">)</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">                                </span><span class="p">.</span><span class="na">addConverterFactory</span><span class="p">(</span><span class="n">json2</span><span class="p">().</span><span class="na">asConverterFactory</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">.</span><span class="na">toMediaType</span><span class="p">()))</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="w">                                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="w">                                </span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">AgendaApi</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">)</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="w">                                </span><span class="p">.</span><span class="na">usuarios</span><span class="p">()</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="w">                        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">:</span><span class="w"> </span><span class="n">Exception</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="w">                            </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">message</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="s">"Error desconocido"</span><span class="w"> </span><span class="c1">// 404 del servidor</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="w">                        </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="w">                            </span><span class="n">cargando</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="w">                        </span><span class="p">}</span>
+<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="w">                    </span><span class="p">}</span>
+<a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a><span class="w">                </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"Provocar error"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cargando</span><span class="p">)</span><span class="w"> </span><span class="n">CircularProgressIndicator</span><span class="p">()</span><span class="w">          </span><span class="c1">// rueda mientras espera</span>
+<a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a><span class="w">            </span><span class="n">error</span><span class="o">?.</span><span class="na">let</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"ERROR: </span><span class="si">$</span><span class="n">it</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">colorScheme</span><span class="p">.</span><span class="na">error</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a><span class="w">            </span><span class="n">Text</span><span class="p">(</span><span class="s">"Usuarios recibidos: </span><span class="si">${</span><span class="n">usuarios</span><span class="p">.</span><span class="na">size</span><span class="si">}</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">titleMedium</span><span class="p">)</span>
+<a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a><span class="w">            </span><span class="n">LazyColumn</span><span class="p">(</span><span class="n">Modifier</span><span class="p">.</span><span class="na">weight</span><span class="p">(</span><span class="m">1f</span><span class="p">),</span><span class="w"> </span><span class="n">verticalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">8.</span><span class="n">dp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a><span class="w">                </span><span class="n">items</span><span class="p">(</span><span class="n">usuarios</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a><span class="w">                    </span><span class="n">Card</span><span class="p">(</span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxWidth</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a><span class="w">                        </span><span class="n">Column</span><span class="p">(</span><span class="n">Modifier</span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="m">12.</span><span class="n">dp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a><span class="w">                            </span><span class="n">Text</span><span class="p">(</span><span class="s">"</span><span class="si">${</span><span class="n">u</span><span class="p">.</span><span class="na">id</span><span class="si">}</span><span class="s"> · </span><span class="si">${</span><span class="n">u</span><span class="p">.</span><span class="na">login</span><span class="si">}</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">titleMedium</span><span class="p">)</span>
+<a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a><span class="w">                            </span><span class="n">Text</span><span class="p">(</span><span class="n">u</span><span class="p">.</span><span class="na">html_url</span><span class="p">,</span><span class="w"> </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">bodyMedium</span><span class="p">)</span>
+<a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a><span class="w">                        </span><span class="p">}</span>
+<a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a><span class="w">                    </span><span class="p">}</span>
+<a id="__codelineno-4-53" name="__codelineno-4-53" href="#__codelineno-4-53"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-4-54" name="__codelineno-4-54" href="#__codelineno-4-54"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-4-55" name="__codelineno-4-55" href="#__codelineno-4-55"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-4-56" name="__codelineno-4-56" href="#__codelineno-4-56"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-57" name="__codelineno-4-57" href="#__codelineno-4-57"></a><span class="p">}</span>
+</code></pre></div>
 </div>
 </div>
 </div>
-<figure>
-<img src="./assets/capturas-api1-inicial.png" alt="Pantalla API antes de pedir nada, con el contador a cero y sin error">
-<figcaption>Figura 1. Estado inicial: sin petición, «Usuarios recibidos: 0», sin error.</figcaption>
-</figure>
-
-<figure>
-<img src="./assets/capturas-api2-lista.png" alt="Pantalla API con 30 usuarios cargados por HTTPS desde la API de GitHub">
-<figcaption>Figura 2. Petición correcta por HTTPS: **30 usuarios** y la lista pintada. El `try/catch` no ha tenido nada que atrapar.</figcaption>
-</figure>
-
-<figure>
-<img src="./assets/capturas-api3-error.png" alt="Pantalla API con el mensaje ERROR: HTTP 404 y la lista anterior conservada">
-<figcaption>Figura 3. Error controlado: el servidor responde **404**, la app lo muestra en rojo y **no pierde** los datos que ya tenía. Eso es manejo de errores, no un crash.</figcaption>
-</figure>
-
+<p><img alt="Pantalla API antes de pedir nada, con el contador a cero y sin error" src="../assets/capturas-api1-inicial.png" /></p>
+<p><em>Figura 1. Estado inicial: sin petición, «Usuarios recibidos: 0», sin error.</em></p>
+<p><img alt="Pantalla API con 30 usuarios cargados por HTTPS desde la API de GitHub" src="../assets/capturas-api2-lista.png" /></p>
+<p><em>Figura 2. Petición correcta por HTTPS: <strong>30 usuarios</strong> y la lista pintada. El <code>try/catch</code> no ha tenido nada que atrapar.</em></p>
+<p><img alt="Pantalla API con el mensaje ERROR: HTTP 404 y la lista anterior conservada" src="../assets/capturas-api3-error.png" /></p>
+<p><em>Figura 3. Error controlado: el servidor responde <strong>404</strong>, la app lo muestra en rojo y <strong>no pierde</strong> los datos que ya tenía. Eso es manejo de errores, no un crash.</em></p>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un error de red no es una excepción que se ignora: es un estado más de la pantalla. Se muestra, se explica y se permite reintentar.</span></p>
 <h2 id="6-los-fallos-reales-los-que-me-pasaron-a-mi">6. Los fallos reales (los que me pasaron a mí)</h2>
 <table>

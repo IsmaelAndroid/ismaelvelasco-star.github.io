@@ -2158,11 +2158,8 @@
 <p>Fíjate en <code>android:exported</code>: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>exported="true"</code> significa "cualquier app (o el launcher o el navegador) puede lanzar esta Activity"; <code>exported="false"</code> significa "solo yo misma"</span>. Es la primera línea de seguridad de tu app: nada que no necesites hacia fuera, expuesto.</p>
 <p>El código que <em>pinta</em> esa pantalla de casa (la verás entera y comentada en el <a href="../PMDM-U2.3.-AppComposeListasYFormulario/">apartado 2.3</a>): <code>MainActivity</code> extiende <code>ComponentActivity</code>, y en <code>onCreate</code> llama a <code>setContent { ... }</code> — el punto exacto donde Android le cede el micro a Compose.</p>
 <h2 id="2-el-ciclo-de-vida-las-siete-estaciones">2. El ciclo de vida: las siete estaciones</h2>
-<figure>
-<img src="./assets/capturas-codigo2-ciclo.png" alt="Panel del vigía del ciclo de vida con los eventos apuntados tras volver de Ajustes">
-<figcaption>Figura 2. La escena «vigía» anotando el ciclo en vivo: nací (onCreate → onStart → onResume), el usuario abrió Ajustes (onPause → onStop) y volvió con ATRÁS (onRestart → onStart → onResume).</figcaption>
-</figure>
-
+<p><img alt="Panel del vigía del ciclo de vida con los eventos apuntados tras volver de Ajustes" src="../assets/capturas-codigo2-ciclo.png" /></p>
+<p><em>Figura 2. La escena «vigía» anotando el ciclo en vivo: nací (onCreate → onStart → onResume), el usuario abrió Ajustes (onPause → onStop) y volvió con ATRÁS (onRestart → onStart → onResume).</em></p>
 <p><code>MainActivity</code> no vive a su aire: el sistema la va llamando por teléfono en cada cambio de estado. El orden canónico — <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">y pregunta fija de examen — es:</span></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>nace ──▶ onCreate ▶ onStart ▶ onResume ──▶ (interactuando)
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>al tapar otra app ─▶ onPause ▶ onStop ─ (⚫ en segundo plano)
@@ -2243,12 +2240,9 @@
 <p>Practica con esto hasta que lo sientas: abre Ajustes, vuelve, gira el emulador. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>onPause</code> salta SIEMPRE que pierdes la interacción (diálogo, notificación desplegada); <code>onStop</code> solo si dejas de ser visible</span>. Y recuerda que <code>onDestroy</code> no es una promesa: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Android puede matar tu proceso sin avisar desde <code>onStop</code>; todo lo guardable se guarda ANTES de que te pregunten</span>.</p>
 <h2 id="3-sobrevivir-a-la-rotacion-remember-no-es-suficiente">3. Sobrevivir a la rotación: <code>remember</code> no es suficiente</h2>
 <p>Gira el emulador (Ctrl+↑) y miramos qué pasa con dos contadores:</p>
-<figure>
-<img src="./assets/capturas-codigo3-rotacion-antes.png" alt="Dos contadores a 3 antes de rotar">
-<img src="./assets/capturas-codigo3-rotacion-despues.png" alt="Tras rotar, ambos contadores vuelven a 0: la Activity se recreó entera">
-<figcaption>Figura 3. Antes y después de rotar: <code>remember</code> sobrevive a recomposiciones, pero la rotación <strong>recrea la Activity entera</strong> — y los dos contadores vuelven a nacer a 0.</figcaption>
-</figure>
-
+<p><img alt="Dos contadores a 3 antes de rotar" src="../assets/capturas-codigo3-rotacion-antes.png" /></p>
+<p><img alt="Tras rotar, ambos contadores vuelven a 0: la Activity se recreó entera" src="../assets/capturas-codigo3-rotacion-despues.png" /></p>
+<p><em>Figura 3. Antes y después de rotar: <code>remember</code> sobrevive a recomposiciones, pero la rotación <strong>recrea la Activity entera</strong> — y los dos contadores vuelven a nacer a 0.</em></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Código 3 — Dos contadores, el mismo destino (escena <code>--ei escena 3</code>)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2270,12 +2264,9 @@
 </div>
 </div>
 <p>La rotación (o que te coman la memoria) dispara <strong>destrucción + creación completa</strong>: <code>onDestroy</code> → <code>onCreate</code>. ¿Dónde se guarda lo importante entonces? En el <strong>Bundle</strong> — un paquetito clave→valor que el sistema te devuelve en el <code>onCreate</code> siguiente:</p>
-<figure>
-<img src="./assets/capturas-codigo4-bundle-antes.png" alt="Contador del Bundle a 4 antes de rotar">
-<img src="./assets/capturas-codigo4-bundle-despues.png" alt="Tras rotar, el contador recuperado del Bundle sigue a 4">
-<figcaption>Figura 4. Con <code>onSaveInstanceState</code>: el contador se pierde al girar, pero <code>savedInstanceState</code> nos lo devuelve intacto.</figcaption>
-</figure>
-
+<p><img alt="Contador del Bundle a 4 antes de rotar" src="../assets/capturas-codigo4-bundle-antes.png" /></p>
+<p><img alt="Tras rotar, el contador recuperado del Bundle sigue a 4" src="../assets/capturas-codigo4-bundle-despues.png" /></p>
+<p><em>Figura 4. Con <code>onSaveInstanceState</code>: el contador se pierde al girar, pero <code>savedInstanceState</code> nos lo devuelve intacto.</em></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Código 4 — El Bundle que sube al ático (Activity dedicada, escena <code>--ei escena 4</code>)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2347,11 +2338,8 @@
 <p>Y la distinción que hay que tener clara desde el minuto uno: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">un intent EXPLÍCITO nombra a quién se lo mandas (una clase de Activity tuya); un intent IMPLÍCITO solo describe la acción y deja que el sistema busque quién la sabe hacer</span>.</p>
 <h2 id="5-intent-explicito-tu-pantalla-llama-a-la-tuya">5. Intent explícito: tu pantalla llama a la tuya</h2>
 <p>Pulsamos cualquier tarjeta de la lista y <code>MainActivity</code> lanza <code>FichaActivity</code> <strong>a dedo</strong>, nombrándola:</p>
-<figure>
-<img src="./assets/capturas-codigo5-ficha.png" alt="FichaActivity mostrando el nombre y teléfono recibidos por extras">
-<figcaption>Figura 5. FichaActivity: los datos viajaron dentro del intent como <em>extras</em> (parejas clave→valor) y aquí los leemos y pintamos.</figcaption>
-</figure>
-
+<p><img alt="FichaActivity mostrando el nombre y teléfono recibidos por extras" src="../assets/capturas-codigo5-ficha.png" /></p>
+<p><em>Figura 5. FichaActivity: los datos viajaron dentro del intent como <em>extras</em> (parejas clave→valor) y aquí los leemos y pintamos.</em></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Código 5 — El sobre (emisor) y la carta (receptor)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2386,11 +2374,8 @@
 <p>Las extras son un Bundle con nombre: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">viajan tipos primitivos yParcelable (el heredero moderno de Serializable, serializado de verdad); y se leen SIEMPRE con nulabilidad obligada — <code>getStringExtra(...) ?: default</code> — porque si te saltan la Activity a mano con adb, las extras simplemente no están</span>. Compruébalo: <code>adb shell am start -n com.example.fumetocontactos/.FichaActivity</code> → verás la ficha de "Desconocido".</p>
 <h2 id="6-intent-implicito-que-lo-haga-quien-sepa">6. Intent implícito: que lo haga quien sepa</h2>
 <p><code>FichaActivity</code> tiene tres botones que <strong>no saben</strong> qué app los responderá:</p>
-<figure>
-<img src="./assets/capturas-codigo6-marcador.png" alt="Marcador del sistema abierto con el número del contacto listo para llamar">
-<figcaption>Figura 7. ACTION_DIAL: nuestro intent decía «marcador con este número»; el Dialer del emulador se ofreció y lo abrió. Ojo: DIAL no llama, deja el número escrito — para disparar la llamada hace falta ACTION_CALL… y permiso.</figcaption>
-</figure>
-
+<p><img alt="Marcador del sistema abierto con el número del contacto listo para llamar" src="../assets/capturas-codigo6-marcador.png" /></p>
+<p><em>Figura 7. ACTION_DIAL: nuestro intent decía «marcador con este número»; el Dialer del emulador se ofreció y lo abrió. Ojo: DIAL no llama, deja el número escrito — para disparar la llamada hace falta ACTION_CALL… y permiso.</em></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Código 6 — Llamar sin conocer al marcador</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2406,11 +2391,8 @@
 </div>
 </div>
 <p>Compartir es igual de delegón: construimos el intent, le metemos el texto, y <code>createChooser</code> fuerza <strong>nuestro</strong> diálogo de elección (sin él, Android recuerda tu última app y ya no te pregunta más, que es una UX muy borde):</p>
-<figure>
-<img src="./assets/capturas-codigo7-chooser.png" alt="Diálogo Compartir ficha con… mostrando las apps capaces de recibir texto">
-<figcaption>Figura 8. <code>ACTION_SEND</code> + <code>createChooser</code>: el sistema busca quién declara poder recibir <code>text/plain</code> y deja al usuario elegir SIEMPRE.</figcaption>
-</figure>
-
+<p><img alt="Diálogo Compartir ficha con… mostrando las apps capaces de recibir texto" src="../assets/capturas-codigo7-chooser.png" /></p>
+<p><em>Figura 8. <code>ACTION_SEND</code> + <code>createChooser</code>: el sistema busca quién declara poder recibir <code>text/plain</code> y deja al usuario elegir SIEMPRE.</em></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Código 7 — Compartir (ACTION_SEND + chooser)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2459,11 +2441,8 @@
 </div>
 </div>
 </div>
-<figure>
-<img src="./assets/capturas-codigo8b-picker.png" alt="El selector de fotos del sistema con la imagen de prueba disponible">
-<figcaption>Figura 10. El selector del sistema con nuestra playa de prueba en DCIM. Con <code>GetContent</code> no hacen falta permisos: préstamo de acceso puntual sobre ESE fichero — la filosofía de Android en miniatura.</figcaption>
-</figure>
-
+<p><img alt="El selector de fotos del sistema con la imagen de prueba disponible" src="../assets/capturas-codigo8b-picker.png" /></p>
+<p><em>Figura 10. El selector del sistema con nuestra playa de prueba en DCIM. Con <code>GetContent</code> no hacen falta permisos: préstamo de acceso puntual sobre ESE fichero — la filosofía de Android en miniatura.</em></p>
 <h2 id="7-intent-filter-cuando-el-mundo-te-llama-a-ti">7. Intent filter: cuando el mundo te llama a ti</h2>
 <p>Hasta aquí nosotros llamábamos. Un <code>&lt;intent-filter&gt;</code> es <strong>publicarse en las páginas amarillas del móvil</strong>: "si alguien quiere VIEW esta URL, aquí tiene quién". Nuestra <code>FichaWebActivity</code> se apunta a <code>https://fumeto.dev</code>:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Código 9 — Recibir una URL y interpretarla</label></div>
@@ -2499,11 +2478,8 @@
 <p>Tres verdades del filtro: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">un filtro coincide si la action, las categories y el data del intent encajan TODOS; la categoría DEFAULT es obligatoria en filtros que no sean MAIN/LAUNCHER (sin ella tu app aparece en la lista pero nadie puede lanzarla); y dos apps con el mismo filtro pelean con un chooser — por eso tu dominio (o App Links verificados, tema 4) es tu territorio</span>.</p>
 <h2 id="8-pendingintent-un-intent-con-reserva">8. PendingIntent: un intent con reserva</h2>
 <p>A veces quien dispara el intent <strong>no eres tú</strong>: es el sistema, minutos después, cuando el usuario toca tu notificación. No puedes pasarle un <code>Intent</code> cualquiera (lo manejaría otro proceso con tus permisos… peligroso); le pasas un <strong>PendingIntent</strong>: "cuando toque, ejecuta ESTO, y con mi identidad".</p>
-<figure>
-<img src="./assets/capturas-codigo10-notif.png" alt="Notificación desplegada «Toca esto» creada por la escena 5">
-<figcaption>Figura 12. La escena 5 crea canal, notifica con id 42 y su <code>setContentIntent(tap)</code>: al tocar, el sistema dispara nuestro getActivity (y la notificación se auto-quita).</figcaption>
-</figure>
-
+<p><img alt="Notificación desplegada «Toca esto» creada por la escena 5" src="../assets/capturas-codigo10-notif.png" /></p>
+<p><em>Figura 12. La escena 5 crea canal, notifica con id 42 y su <code>setContentIntent(tap)</code>: al tocar, el sistema dispara nuestro getActivity (y la notificación se auto-quita).</em></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Código 10 — Notificación con testigo (escena <code>--ei escena 5</code>)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2534,11 +2510,8 @@
 </div>
 </div>
 </div>
-<figure>
-<img src="./assets/capturas-codigo10b-landing.png" alt="Escena 6 de bienvenida: llegada desde la notificación">
-<figcaption>Figura 13. El destino del PendingIntent: MainActivity con la extra escena=6. La notificación fue el mensajero; el intent lo ejecutó el sistema.</figcaption>
-</figure>
-
+<p><img alt="Escena 6 de bienvenida: llegada desde la notificación" src="../assets/capturas-codigo10b-landing.png" /></p>
+<p><em>Figura 13. El destino del PendingIntent: MainActivity con la extra escena=6. La notificación fue el mensajero; el intent lo ejecutó el sistema.</em></p>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Desde Android 12 los PendingIntent son <code>FLAG_IMMUTABLE</code> por defecto obligatorio: sin esa flag el emisor pierde el derecho de decir quién puede modificar el intent, y un receptor malicioso podría reescribirlo</span>. Y desde Android 13, notificar exige el permiso runtime <code>POST_NOTIFICATIONS</code> — lo pediremos de verdad cuando montemos notificaciones de verdad (práctica 2.3).</p>
 <h2 id="9-autoevaluacion">9. Autoevaluación</h2>
 <blockquote>
@@ -2569,7 +2542,7 @@ Porque las extras no garantizadas llegan null y el <code>!!</code> convierte el 
 </blockquote>
 </blockquote>
 <hr />
-<p><strong>Materiales</strong>: <a href="https://developer.android.com/guide/components/activities/intro-activities">Documentación oficial de Activities</a> · <a href="https://developer.android.com/guide/components/intents-filters">Referencia de Intents y filtros</a> · <strong>Presentación</strong>: <a href="https://revilofe.github.io/slides/section5-pmdm/PM-U2.2.-ActividadesIntents.html">diapositivas del tema 2.2</a> · Siguiente: <a href="../PMDM-U2.3.-AppComposeListasYFormulario/">2.3 — La app Compose: Scaffold, listas Lazy y formulario</a></p>
+<p><strong>Materiales</strong>: <a href="https://developer.android.com/guide/components/activities/intro-activities">Documentación oficial de Activities</a> · <a href="https://developer.android.com/guide/components/intents-filters">Referencia de Intents y filtros</a> · <strong>Presentación</strong>: <a href="https://revilofe.github.io/slides/section1-pmdm/PM-U2.2.-ActividadesIntents.html">diapositivas del tema 2.2</a> · Siguiente: <a href="../PMDM-U2.3.-AppComposeListasYFormulario/">2.3 — La app Compose: Scaffold, listas Lazy y formulario</a></p>
 
 
 

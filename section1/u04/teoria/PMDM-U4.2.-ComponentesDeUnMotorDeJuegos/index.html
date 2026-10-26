@@ -1332,17 +1332,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#escena-de-senales-un-timer-emite-y-este-script-recibe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Escena de senales: un Timer emite y este script recibe.
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#5-donde-se-ve-cada-componente-en-el-arbol" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2031,17 +2020,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#escena-de-senales-un-timer-emite-y-este-script-recibe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Escena de senales: un Timer emite y este script recibe.
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#5-donde-se-ve-cada-componente-en-el-arbol" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2208,16 +2186,17 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Código 1 — escena_senales.tscn (fragmento de nodos)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>[node name="EscenaSenales" type="Node2D"]
-script = ExtResource("1_main")
-[node name="Fondo" type="ColorRect" parent="."]
-[node name="Boton" type="ColorRect" parent="."]
-[node name="Reloj" type="Timer" parent="."]
-wait_time = 0.8
-autostart = true
-[node name="HUD" type="CanvasLayer" parent="."]
-[node name="Titulo" type="Label" parent="HUD"]
-[node name="Info" type="Label" parent="HUD"]</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>[node name="EscenaSenales" type="Node2D"]
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>script = ExtResource("1_main")
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>[node name="Fondo" type="ColorRect" parent="."]
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>[node name="Boton" type="ColorRect" parent="."]
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>[node name="Reloj" type="Timer" parent="."]
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>wait_time = 0.8
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>autostart = true
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>[node name="HUD" type="CanvasLayer" parent="."]
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>[node name="Titulo" type="Label" parent="HUD"]
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>[node name="Info" type="Label" parent="HUD"]
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2228,34 +2207,35 @@ autostart = true
 <div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Código 2 — main_senales.gd</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>extends Node2D</p>
-<h2 id="escena-de-senales-un-timer-emite-y-este-script-recibe">Escena de senales: un Timer emite y este script recibe.</h2>
-<p>var pulsaciones := 0                                  # contador de senales recibidas</p>
-<p>func _ready() -&gt; void:
-    $Reloj.timeout.connect(_on_reloj_timeout)         # conecta la senal timeout
-    await get_tree().create_timer(2.5).timeout        # deja pasar tres pulsos
-    await RenderingServer.frame_post_draw
-    get_viewport().get_texture().get_image().save_png("res://capturas/senales.png")
-    get_tree().quit()</p>
-<p>func _on_reloj_timeout() -&gt; void:                     # se ejecuta en cada pulso
-    pulsaciones += 1
-    $HUD/Info.text = "pulsaciones: %d  |  senal timeout recibida" % pulsaciones
-    print("senal recibida: ", pulsaciones)             # deja rastro en la consola</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">extends</span><span class="w"> </span><span class="n">Node2D</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">## Escena de senales: un Timer emite y este script recibe.</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">var</span><span class="w"> </span><span class="n">pulsaciones</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">                                  </span><span class="c1"># contador de senales recibidas</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="o">$</span><span class="n">Reloj</span><span class="o">.</span><span class="n">timeout</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_on_reloj_timeout</span><span class="p">)</span><span class="w">         </span><span class="c1"># conecta la senal timeout</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="n">await</span><span class="w"> </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">create_timer</span><span class="p">(</span><span class="mf">2.5</span><span class="p">)</span><span class="o">.</span><span class="n">timeout</span><span class="w">        </span><span class="c1"># deja pasar tres pulsos</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="n">await</span><span class="w"> </span><span class="n">RenderingServer</span><span class="o">.</span><span class="n">frame_post_draw</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="n">get_viewport</span><span class="p">()</span><span class="o">.</span><span class="n">get_texture</span><span class="p">()</span><span class="o">.</span><span class="n">get_image</span><span class="p">()</span><span class="o">.</span><span class="n">save_png</span><span class="p">(</span><span class="s2">"res://capturas/senales.png"</span><span class="p">)</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="k">func</span><span class="w"> </span><span class="n">_on_reloj_timeout</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span><span class="w">                     </span><span class="c1"># se ejecuta en cada pulso</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="n">pulsaciones</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="o">$</span><span class="n">HUD</span><span class="o">/</span><span class="n">Info</span><span class="o">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"pulsaciones: </span><span class="si">%d</span><span class="s2">  |  senal timeout recibida"</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">pulsaciones</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">"senal recibida: "</span><span class="p">,</span><span class="w"> </span><span class="n">pulsaciones</span><span class="p">)</span><span class="w">             </span><span class="c1"># deja rastro en la consola</span>
+</code></pre></div>
 </div>
 </div>
 </div>
-<figure>
-<img src="./assets/capturas-senales.png" alt="Escena de señales en ejecución con el botón verde y el contador de pulsaciones a 3">
-<figcaption>Figura 1. La escena de señales ejecutándose: el <code>Timer</code> ha emitido tres veces y el contador lo refleja (<strong>pulsaciones: 3</strong>).</figcaption>
-</figure>
-
+<p><img alt="Escena de señales en ejecución con el botón verde y el contador de pulsaciones a 3" src="../assets/capturas-senales.png" /></p>
+<p><em>Figura 1. La escena de señales ejecutándose: el <code>Timer</code> ha emitido tres veces y el contador lo refleja (<strong>pulsaciones: 3</strong>).</em></p>
 <p>Y esto es lo que escribe en la consola, tal cual, al ejecutarla desde terminal:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>OpenGL API 3.3.0 NVIDIA 610.88 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 5070
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>senal recibida: 1
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>senal recibida: 2
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>senal recibida: 3
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>OpenGL API 3.3.0 NVIDIA 610.88 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 5070
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>senal recibida: 1
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>senal recibida: 2
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>senal recibida: 3
 </code></pre></div>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>connect()</code> une una señal a una función: <code>$Reloj.timeout.connect(_on_reloj_timeout)</code>. Si no conectas, el aviso se emite y nadie lo escucha.</span></p>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Las señales desacoplan: el <code>Timer</code> no sabe qué hace el receptor, y el receptor no sabe quién avisa. Se pueden cambiar las piezas sin tocar las demás.</span></p>

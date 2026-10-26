@@ -2177,130 +2177,123 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Código 1 — El grafo con una ruta que lleva argumento</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>val nav = rememberNavController()                       // mando de navegación que sobrevive a recomposiciones
-Scaffold(                                              // andamio Material: barra + contenido
-    topBar = { TopAppBar(title = { Text("IsmaelAgenda · navegación") }) }
-) { relleno -&gt;                                        // relleno = hueco que ocupa la barra
-    NavHost(                                           // aquí se declaran todas las pantallas
-        navController = nav,                           // el mando
-        startDestination = "inicio",                    // primera pantalla al abrir
-        modifier = Modifier.padding(relleno)            // respeta la barra superior
-    ) {
-        composable("inicio") {                          // pantalla de la lista
-            PantallaInicio(nav)                         // recibe el mando para poder navegar
-        }
-        composable(                                     // pantalla de detalle con argumento
-            route = "detalle/{id}",                     // {id} es el hueco del argumento
-            arguments = listOf(navArgument("id") { type = NavType.IntType }), // se exige entero
-            deepLinks = listOf(navDeepLink { uriPattern = "ismaelagenda://ficha/{id}" }) // enlace externo
-        ) { entrada -&gt;                                  // entrada = back stack entry de esta pantalla
-            val id = entrada.arguments?.getInt("id") ?: 0 // argumento leído con valor por defecto
-            PantallaDetalle(nav, id)                    // pinta la ficha pedida
-        }
-        composable("acerca") {                          // pantalla estática sin argumentos
-            PantallaAcerca(nav)                         // demuestra que también se navega a lo simple
-        }
-    }
-}</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">nav</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rememberNavController</span><span class="p">()</span><span class="w">                       </span><span class="c1">// mando de navegación que sobrevive a recomposiciones</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">Scaffold</span><span class="p">(</span><span class="w">                                              </span><span class="c1">// andamio Material: barra + contenido</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">topBar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">TopAppBar</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"IsmaelAgenda · navegación"</span><span class="p">)</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">relleno</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">                                        </span><span class="c1">// relleno = hueco que ocupa la barra</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">NavHost</span><span class="p">(</span><span class="w">                                           </span><span class="c1">// aquí se declaran todas las pantallas</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="n">navController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nav</span><span class="p">,</span><span class="w">                           </span><span class="c1">// el mando</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="n">startDestination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"inicio"</span><span class="p">,</span><span class="w">                    </span><span class="c1">// primera pantalla al abrir</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="n">relleno</span><span class="p">)</span><span class="w">            </span><span class="c1">// respeta la barra superior</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="n">composable</span><span class="p">(</span><span class="s">"inicio"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                          </span><span class="c1">// pantalla de la lista</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">            </span><span class="n">PantallaInicio</span><span class="p">(</span><span class="n">nav</span><span class="p">)</span><span class="w">                         </span><span class="c1">// recibe el mando para poder navegar</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="n">composable</span><span class="p">(</span><span class="w">                                     </span><span class="c1">// pantalla de detalle con argumento</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">            </span><span class="n">route</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"detalle/{id}"</span><span class="p">,</span><span class="w">                     </span><span class="c1">// {id} es el hueco del argumento</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">            </span><span class="n">arguments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="n">navArgument</span><span class="p">(</span><span class="s">"id"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NavType</span><span class="p">.</span><span class="na">IntType</span><span class="w"> </span><span class="p">}),</span><span class="w"> </span><span class="c1">// se exige entero</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">            </span><span class="n">deepLinks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="n">navDeepLink</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">uriPattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"ismaelagenda://ficha/{id}"</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="c1">// enlace externo</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">entrada</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">                                  </span><span class="c1">// entrada = back stack entry de esta pantalla</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">entrada</span><span class="p">.</span><span class="na">arguments</span><span class="o">?.</span><span class="na">getInt</span><span class="p">(</span><span class="s">"id"</span><span class="p">)</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="c1">// argumento leído con valor por defecto</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">            </span><span class="n">PantallaDetalle</span><span class="p">(</span><span class="n">nav</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w">                    </span><span class="c1">// pinta la ficha pedida</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">        </span><span class="n">composable</span><span class="p">(</span><span class="s">"acerca"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                          </span><span class="c1">// pantalla estática sin argumentos</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">            </span><span class="n">PantallaAcerca</span><span class="p">(</span><span class="n">nav</span><span class="p">)</span><span class="w">                         </span><span class="c1">// demuestra que también se navega a lo simple</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="p">}</span>
+</code></pre></div>
 </div>
 </div>
 </div>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>navArgument("id") {{ type = NavType.IntType }}</code> obliga a que el argumento sea un entero: si llega otra cosa, la navegación falla en vez de reventar dentro de la pantalla.</span></p>
 <p>Al pulsar una ficha navegamos metiendo el id <strong>dentro de la ruta</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">.</span><span class="na">clickable</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">nav</span><span class="p">.</span><span class="na">navigate</span><span class="p">(</span><span class="s">"detalle/</span><span class="si">${</span><span class="n">ficha</span><span class="p">.</span><span class="na">id</span><span class="si">}</span><span class="s">"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">.</span><span class="na">clickable</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">nav</span><span class="p">.</span><span class="na">navigate</span><span class="p">(</span><span class="s">"detalle/</span><span class="si">${</span><span class="n">ficha</span><span class="p">.</span><span class="na">id</span><span class="si">}</span><span class="s">"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-<figure>
-<img src="./assets/capturas-nav1-inicio.png" alt="Pantalla de inicio de IsmaelAgenda con la lista de fichas y el botón Acerca de IsmaelAgenda">
-<figcaption>Figura 1. El inicio de IsmaelAgenda: cada tarjeta es un `clickable` que navega a `detalle/{id}` con el id de esa ficha.</figcaption>
-</figure>
-
-<figure>
-<img src="./assets/capturas-nav2-detalle.png" alt="Pantalla de detalle con el texto Argumento recibido: id = 1 y la ficha de Alé Soto">
-<figcaption>Figura 2. El detalle recibiendo el argumento: `id = 1` y, con ese id, la ficha de Alé Soto. La ruta llevaba el dato; la pantalla no ha consultado nada global.</figcaption>
-</figure>
-
+<p><img alt="Pantalla de inicio de IsmaelAgenda con la lista de fichas y el botón Acerca de IsmaelAgenda" src="../assets/capturas-nav1-inicio.png" /></p>
+<p><em>Figura 1. El inicio de IsmaelAgenda: cada tarjeta es un <code>clickable</code> que navega a <code>detalle/{id}</code> con el id de esa ficha.</em></p>
+<p><img alt="Pantalla de detalle con el texto Argumento recibido: id = 1 y la ficha de Alé Soto" src="../assets/capturas-nav2-detalle.png" /></p>
+<p><em>Figura 2. El detalle recibiendo el argumento: <code>id = 1</code> y, con ese id, la ficha de Alé Soto. La ruta llevaba el dato; la pantalla no ha consultado nada global.</em></p>
 <h2 id="3-la-pila-empujar-y-desapilar">3. La pila: empujar y desapilar</h2>
 <p>Cada <code>navigate()</code> <strong>empuja</strong> una entrada en la pila (back stack) y <code>popBackStack()</code> <strong>desapila</strong> la de arriba. El botón Atrás del sistema hace exactamente eso: por eso tu app "vuelve" sin que programes nada.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Código 2 — Leer la pila en vivo y empujar/desapilar a mano</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>fun EscenaPila() {                                         // 3.1b: la pila de navegación
-    val nav = rememberNavController()                       // mando de navegación
-    val pila by nav.currentBackStack.collectAsState()      // lista viva de entradas de la pila
-    Scaffold(topBar = { TopAppBar(title = { Text("Pila de navegación") }) }) { relleno -&gt;
-        Column(
-            Modifier.fillMaxSize().padding(relleno).padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            Text("Pantallas en la pila: ${pila.size}", style = MaterialTheme.typography.headlineSmall)
-            Text(
-                pila.joinToString(" &gt; ") { it.destination.route ?: "?" }, // ruta de cada entrada
-                style = MaterialTheme.typography.bodyMedium
-            )
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                Button(onClick = { nav.navigate("detalle/3") }) { Text("Empujar detalle/3") }
-                Button(onClick = { nav.popBackStack() }) { Text("Desapilar") }
-            }
-            NavHost(                                        // el grafo real: sin él, navegar revienta
-                navController = nav,
-                startDestination = "inicio",
-                modifier = Modifier.weight(1f)              // ocupa el resto de la pantalla
-            ) {
-                composable("inicio") {                      // pantalla inicial del grafo
-                    Text("Estás en inicio. Pulsa Empujar detalle/3.")
-                }
-                composable(
-                    route = "detalle/{id}",
-                    arguments = listOf(navArgument("id") { type = NavType.IntType })
-                ) { entrada -&gt;
-                    val id = entrada.arguments?.getInt("id") ?: 0
-                    Text("Detalle $id dentro del grafo", style = MaterialTheme.typography.titleMedium)
-                }
-            }
-        }
-    }
-}</p>
-<p>@OptIn(ExperimentalMaterial3Api::class)
-@Composable</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">EscenaPila</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">                                         </span><span class="c1">// 3.1b: la pila de navegación</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">nav</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rememberNavController</span><span class="p">()</span><span class="w">                       </span><span class="c1">// mando de navegación</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">pila</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">nav</span><span class="p">.</span><span class="na">currentBackStack</span><span class="p">.</span><span class="na">collectAsState</span><span class="p">()</span><span class="w">      </span><span class="c1">// lista viva de entradas de la pila</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">Scaffold</span><span class="p">(</span><span class="n">topBar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">TopAppBar</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"Pila de navegación"</span><span class="p">)</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">relleno</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="n">Column</span><span class="p">(</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">            </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">().</span><span class="na">padding</span><span class="p">(</span><span class="n">relleno</span><span class="p">).</span><span class="na">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">),</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">            </span><span class="n">verticalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">12.</span><span class="n">dp</span><span class="p">)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">            </span><span class="n">Text</span><span class="p">(</span><span class="s">"Pantallas en la pila: </span><span class="si">${</span><span class="n">pila</span><span class="p">.</span><span class="na">size</span><span class="si">}</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">headlineSmall</span><span class="p">)</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">            </span><span class="n">Text</span><span class="p">(</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">                </span><span class="n">pila</span><span class="p">.</span><span class="na">joinToString</span><span class="p">(</span><span class="s">" &gt; "</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">destination</span><span class="p">.</span><span class="na">route</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="s">"?"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="c1">// ruta de cada entrada</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">                </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">bodyMedium</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">            </span><span class="p">)</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">            </span><span class="n">Row</span><span class="p">(</span><span class="n">horizontalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">12.</span><span class="n">dp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">                </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">nav</span><span class="p">.</span><span class="na">navigate</span><span class="p">(</span><span class="s">"detalle/3"</span><span class="p">)</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"Empujar detalle/3"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">                </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">nav</span><span class="p">.</span><span class="na">popBackStack</span><span class="p">()</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"Desapilar"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">            </span><span class="n">NavHost</span><span class="p">(</span><span class="w">                                        </span><span class="c1">// el grafo real: sin él, navegar revienta</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">                </span><span class="n">navController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nav</span><span class="p">,</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">                </span><span class="n">startDestination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"inicio"</span><span class="p">,</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">                </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">weight</span><span class="p">(</span><span class="m">1f</span><span class="p">)</span><span class="w">              </span><span class="c1">// ocupa el resto de la pantalla</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">            </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">                </span><span class="n">composable</span><span class="p">(</span><span class="s">"inicio"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                      </span><span class="c1">// pantalla inicial del grafo</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">                    </span><span class="n">Text</span><span class="p">(</span><span class="s">"Estás en inicio. Pulsa Empujar detalle/3."</span><span class="p">)</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">                </span><span class="n">composable</span><span class="p">(</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">                    </span><span class="n">route</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"detalle/{id}"</span><span class="p">,</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">                    </span><span class="n">arguments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="n">navArgument</span><span class="p">(</span><span class="s">"id"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NavType</span><span class="p">.</span><span class="na">IntType</span><span class="w"> </span><span class="p">})</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">                </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">entrada</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">                    </span><span class="kd">val</span><span class="w"> </span><span class="nv">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">entrada</span><span class="p">.</span><span class="na">arguments</span><span class="o">?.</span><span class="na">getInt</span><span class="p">(</span><span class="s">"id"</span><span class="p">)</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">                    </span><span class="n">Text</span><span class="p">(</span><span class="s">"Detalle </span><span class="si">$</span><span class="n">id</span><span class="s"> dentro del grafo"</span><span class="p">,</span><span class="w"> </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">titleMedium</span><span class="p">)</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="p">}</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="nd">@OptIn</span><span class="p">(</span><span class="n">ExperimentalMaterial3Api</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="nd">@Composable</span>
+</code></pre></div>
 </div>
 </div>
 </div>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>nav.currentBackStack</code> es un Flow: con <code>collectAsState()</code> la pantalla se redibuja sola cada vez que la pila cambia. Es la forma de depurar navegación sin adivinar.</span></p>
-<figure>
-<img src="./assets/capturas-nav3-pila.png" alt="Pantalla de pila de navegación mostrando Pantallas en la pila: 2 y las rutas separadas por mayor que">
-<figcaption>Figura 3. La pila en vivo: dos entradas (el grafo y `inicio`) con sus rutas. Al empujar `detalle/3`, el contador sube a 3; al desapilar, baja.</figcaption>
-</figure>
-
+<p><img alt="Pantalla de pila de navegación mostrando Pantallas en la pila: 2 y las rutas separadas por mayor que" src="../assets/capturas-nav3-pila.png" /></p>
+<p><em>Figura 3. La pila en vivo: dos entradas (el grafo y <code>inicio</code>) con sus rutas. Al empujar <code>detalle/3</code>, el contador sube a 3; al desapilar, baja.</em></p>
 <h2 id="4-argumentos-que-no-existen-nulabilidad">4. Argumentos que no existen: nulabilidad</h2>
 <p>Un deep link, un test o un compañero pueden navegar a <code>detalle/99</code>. Si tu código hace <code>AGENDA[99]</code>, la app <strong>revienta</strong>. La regla es la misma del Tema 2: <strong>toda extra y todo argumento se leen con valor por defecto</strong>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Código 3 — Leer el argumento y resolver la ficha sin reventar</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>fun PantallaDetalle(nav: NavController, id: Int) {          // detalle: recibe el id de la ruta
-    val ficha = AGENDA.firstOrNull { it.id == id }          // busca la ficha o null si el id no existe
-    Column(Modifier.fillMaxSize().padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        Text(                                              // el argumento, tal cual llegó
-            "Argumento recibido: id = $id",
-            style = MaterialTheme.typography.labelLarge
-        )
-        Text(
-            ficha?.nombre ?: "No existe ninguna ficha con id $id", // valor por defecto si no hay ficha
-            style = MaterialTheme.typography.headlineSmall
-        )
-        ficha?.let { Text(it.telefono, style = MaterialTheme.typography.bodyLarge) }
-        Button(onClick = { nav.popBackStack() }) { Text("Volver (popBackStack)") } // desapila
-    }
-}</p>
-<p>@Composable</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">PantallaDetalle</span><span class="p">(</span><span class="n">nav</span><span class="p">:</span><span class="w"> </span><span class="n">NavController</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">          </span><span class="c1">// detalle: recibe el id de la ruta</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">ficha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AGENDA</span><span class="p">.</span><span class="na">firstOrNull</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="p">}</span><span class="w">          </span><span class="c1">// busca la ficha o null si el id no existe</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">Column</span><span class="p">(</span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">().</span><span class="na">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">),</span><span class="w"> </span><span class="n">verticalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">12.</span><span class="n">dp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="w">                                              </span><span class="c1">// el argumento, tal cual llegó</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">            </span><span class="s">"Argumento recibido: id = </span><span class="si">$</span><span class="n">id</span><span class="s">"</span><span class="p">,</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">            </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">labelLarge</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="p">)</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">            </span><span class="n">ficha</span><span class="o">?.</span><span class="na">nombre</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="s">"No existe ninguna ficha con id </span><span class="si">$</span><span class="n">id</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="c1">// valor por defecto si no hay ficha</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">            </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">headlineSmall</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="p">)</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="n">ficha</span><span class="o">?.</span><span class="na">let</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="nb">it</span><span class="p">.</span><span class="na">telefono</span><span class="p">,</span><span class="w"> </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">bodyLarge</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">nav</span><span class="p">.</span><span class="na">popBackStack</span><span class="p">()</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"Volver (popBackStack)"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// desapila</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="p">}</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="nd">@Composable</span>
+</code></pre></div>
 </div>
 </div>
 </div>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>entrada.arguments?.getInt("id") ?: 0</code> y <code>firstOrNull {{ it.id == id }}</code> son las dos barreras: si el id no existe, la pantalla informa en vez de cerrarse.</span></p>
-<figure>
-<img src="./assets/capturas-nav4-inexistente.png" alt="Pantalla de detalle con id 99 y el mensaje No existe ninguna ficha con id 99">
-<figcaption>Figura 4. `detalle/99`: el argumento llegó, la ficha no existe y la app lo cuenta en pantalla. Ni un crash ni una pantalla en blanco.</figcaption>
-</figure>
-
+<p><img alt="Pantalla de detalle con id 99 y el mensaje No existe ninguna ficha con id 99" src="../assets/capturas-nav4-inexistente.png" /></p>
+<p><em>Figura 4. <code>detalle/99</code>: el argumento llegó, la ficha no existe y la app lo cuenta en pantalla. Ni un crash ni una pantalla en blanco.</em></p>
 <h2 id="5-deep-links-que-la-app-se-abra-desde-fuera">5. Deep links: que la app se abra desde fuera</h2>
 <p>Un <strong>deep link</strong> es una URL que abre tu app en una pantalla concreta. Se declaran en dos sitios: en el <code>AndroidManifest.xml</code> (para que Android sepa que tu app responde a ese esquema) y en el grafo (<code>navDeepLink</code>, para que Navigation sepa a qué pantalla llevarla).</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Código 4 — El intent-filter del Manifest: la app responde a ismaelagenda://ficha/…</label><label for="__tabbed_4_2">Código 5 — La Activity que declara ese filtro</label></div>
@@ -2335,11 +2328,8 @@ Scaffold(                                              // andamio Material: barr
 </div>
 </div>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El esquema <code>ismaelagenda</code> y el host <code>ficha</code> son un contrato público: cualquier app, QR o correo puede abrir <code>ismaelagenda://ficha/3</code> y aterrizar en tu pantalla de detalle.</span></p>
-<figure>
-<img src="./assets/capturas-nav5-deeplink.png" alt="Pantalla de detalle abierta por deep link con id 3 y la ficha de Manolo Alcántara">
-<figcaption>Figura 5. `adb shell am start -a android.intent.action.VIEW -d ismaelagenda://ficha/3`: la app se abre directamente en Manolo Alcántara, sin pasar por la lista.</figcaption>
-</figure>
-
+<p><img alt="Pantalla de detalle abierta por deep link con id 3 y la ficha de Manolo Alcántara" src="../assets/capturas-nav5-deeplink.png" /></p>
+<p><em>Figura 5. <code>adb shell am start -a android.intent.action.VIEW -d ismaelagenda://ficha/3</code>: la app se abre directamente en Manolo Alcántara, sin pasar por la lista.</em></p>
 <h2 id="6-rutas-type-safe-el-siguiente-escalon">6. Rutas type-safe: el siguiente escalón</h2>
 <p>Desde Navigation 2.8 puedes declarar las rutas como <strong>clases serializables</strong> en vez de cadenas: <code>@Serializable object Inicio</code> y <code>composable&lt;Inicio&gt; { }</code>. Ventajas: el compilador te avisa si un argumento no encaja y desaparecen los <code>"detalle/${id}"</code> escritos a mano.</p>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">En este tema usamos rutas de texto porque son las que funcionan en cualquier versión y las que te vas a encontrar en proyectos reales; las type-safe son la evolución, no un requisito para aprobar.</span></p>

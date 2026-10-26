@@ -2198,13 +2198,14 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Código 1 — Entidad <code>FichaEntity</code></label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>@Entity(tableName = "fichas")                               // esta clase es una tabla llamada fichas
-data class FichaEntity(
-    @PrimaryKey(autoGenerate = true) val id: Long = 0,      // id autonumérico: lo pone SQLite
-    val nombre: String,                                     // columna nombre
-    val telefono: String,                                   // columna teléfono
-    val categoria: String                                   // columna categoría
-)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@Entity</span><span class="p">(</span><span class="n">tableName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"fichas"</span><span class="p">)</span><span class="w">                               </span><span class="c1">// esta clase es una tabla llamada fichas</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">FichaEntity</span><span class="p">(</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nd">@PrimaryKey</span><span class="p">(</span><span class="n">autoGenerate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">id</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w">      </span><span class="c1">// id autonumérico: lo pone SQLite</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">nombre</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w">                                     </span><span class="c1">// columna nombre</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">telefono</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w">                                   </span><span class="c1">// columna teléfono</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">categoria</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w">                                   </span><span class="c1">// columna categoría</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">)</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2213,17 +2214,18 @@ data class FichaEntity(
 <div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Código 2 — DAO con Flow y funciones suspend</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>@Dao                                                        // interfaz de acceso a datos
-interface FichaDao {
-    @Query("SELECT * FROM fichas ORDER BY nombre")          // SQL que devuelve todas las fichas
-    fun observar(): Flow&lt;List<FichaEntity>&gt;                 // Flow: la lista se refresca sola al cambiar la tabla</p>
-<div class="highlight"><pre><span></span><code>@Insert                                                 // INSERT generado por Room
-suspend fun insertar(ficha: FichaEntity): Long          // suspend: no bloquea el hilo principal
-
-@Query("DELETE FROM fichas")                            // borra todas las filas
-suspend fun borrarTodo()
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nd">@Dao</span><span class="w">                                                        </span><span class="c1">// interfaz de acceso a datos</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">interface</span><span class="w"> </span><span class="nc">FichaDao</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nd">@Query</span><span class="p">(</span><span class="s">"SELECT * FROM fichas ORDER BY nombre"</span><span class="p">)</span><span class="w">          </span><span class="c1">// SQL que devuelve todas las fichas</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">observar</span><span class="p">():</span><span class="w"> </span><span class="n">Flow</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">FichaEntity</span><span class="o">&gt;&gt;</span><span class="w">                 </span><span class="c1">// Flow: la lista se refresca sola al cambiar la tabla</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nd">@Insert</span><span class="w">                                                 </span><span class="c1">// INSERT generado por Room</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">insertar</span><span class="p">(</span><span class="n">ficha</span><span class="p">:</span><span class="w"> </span><span class="n">FichaEntity</span><span class="p">):</span><span class="w"> </span><span class="kt">Long</span><span class="w">          </span><span class="c1">// suspend: no bloquea el hilo principal</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="nd">@Query</span><span class="p">(</span><span class="s">"DELETE FROM fichas"</span><span class="p">)</span><span class="w">                            </span><span class="c1">// borra todas las filas</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">borrarTodo</span><span class="p">()</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">}</span>
 </code></pre></div>
-<p>}</p>
 </div>
 </div>
 </div>
@@ -2237,104 +2239,97 @@ suspend fun borrarTodo()
 <div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Código 3 — <code>AgendaDatabase</code> con singleton</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>@Database(entities = [FichaEntity::class], version = 1)     // base de datos con una tabla y versión 1
-abstract class AgendaDatabase : RoomDatabase() {
-    abstract fun fichas(): FichaDao                         // Room implementa este DAO por nosotros</p>
-<div class="highlight"><pre><span></span><code>companion object {
-    @Volatile private var instancia: AgendaDatabase? = null // una sola instancia en toda la app
-    fun obtener(contexto: Context): AgendaDatabase =        // patrón singleton
-        instancia ?: synchronized(this) {                   // doble comprobación
-            instancia ?: Room.databaseBuilder(              // crea el archivo agenda.db
-                contexto.applicationContext,                // contexto de aplicación (no de Activity)
-                AgendaDatabase::class.java,
-                "agenda.db"
-            ).build().also { instancia = it }               // guarda la instancia
-        }
-}
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nd">@Database</span><span class="p">(</span><span class="n">entities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">FichaEntity</span><span class="o">::</span><span class="n">class</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">     </span><span class="c1">// base de datos con una tabla y versión 1</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">AgendaDatabase</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">RoomDatabase</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="kd">abstract</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">fichas</span><span class="p">():</span><span class="w"> </span><span class="n">FichaDao</span><span class="w">                         </span><span class="c1">// Room implementa este DAO por nosotros</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kd">companion</span><span class="w"> </span><span class="kd">object</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="nd">@Volatile</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">instancia</span><span class="p">:</span><span class="w"> </span><span class="n">AgendaDatabase?</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="c1">// una sola instancia en toda la app</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="kd">fun</span><span class="w"> </span><span class="nf">obtener</span><span class="p">(</span><span class="n">contexto</span><span class="p">:</span><span class="w"> </span><span class="n">Context</span><span class="p">):</span><span class="w"> </span><span class="n">AgendaDatabase</span><span class="w"> </span><span class="o">=</span><span class="w">        </span><span class="c1">// patrón singleton</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">            </span><span class="n">instancia</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="n">synchronized</span><span class="p">(</span><span class="k">this</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                   </span><span class="c1">// doble comprobación</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">                </span><span class="n">instancia</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="na">databaseBuilder</span><span class="p">(</span><span class="w">              </span><span class="c1">// crea el archivo agenda.db</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">                    </span><span class="n">contexto</span><span class="p">.</span><span class="na">applicationContext</span><span class="p">,</span><span class="w">                </span><span class="c1">// contexto de aplicación (no de Activity)</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">                    </span><span class="n">AgendaDatabase</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">,</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">                    </span><span class="s">"agenda.db"</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">                </span><span class="p">).</span><span class="na">build</span><span class="p">().</span><span class="na">also</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">instancia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="p">}</span><span class="w">               </span><span class="c1">// guarda la instancia</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="p">}</span>
 </code></pre></div>
-<p>}</p>
 </div>
 </div>
 </div>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La base de datos se crea UNA vez en toda la app: abrir varias instancias del mismo archivo provoca bloqueos y corrupción. De ahí el <code>@Volatile</code> + <code>synchronized</code>.</span></p>
 <h3 id="requisitos-en-gradle-esto-te-lo-vas-a-encontrar">Requisitos en Gradle (esto te lo vas a encontrar)</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// app/build.gradle.kts</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">implementation</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">room</span><span class="p">.</span><span class="na">runtime</span><span class="p">)</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">implementation</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">room</span><span class="p">.</span><span class="na">ktx</span><span class="p">)</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">ksp</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">room</span><span class="p">.</span><span class="na">compiler</span><span class="p">)</span><span class="w">      </span><span class="c1">// KSP genera el código de Room</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// app/build.gradle.kts</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">implementation</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">room</span><span class="p">.</span><span class="na">runtime</span><span class="p">)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">implementation</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">room</span><span class="p">.</span><span class="na">ktx</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">ksp</span><span class="p">(</span><span class="n">libs</span><span class="p">.</span><span class="na">androidx</span><span class="p">.</span><span class="na">room</span><span class="p">.</span><span class="na">compiler</span><span class="p">)</span><span class="w">      </span><span class="c1">// KSP genera el código de Room</span>
 </code></pre></div>
 <p>Y si tu proyecto usa AGP 9 o superior, KSP necesita permiso para registrar sus carpetas generadas:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># gradle.properties</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="na">android.disallowKotlinSourceSets</span><span class="o">=</span><span class="s">false</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># gradle.properties</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="na">android.disallowKotlinSourceSets</span><span class="o">=</span><span class="s">false</span>
 </code></pre></div>
 <p>Sin esa línea el build falla con <em>«Using kotlin.sourceSets DSL to add Kotlin sources is not allowed with built-in Kotlin»</em>.</p>
 <h2 id="5-la-pantalla-que-observa-la-base-de-datos">5. La pantalla que observa la base de datos</h2>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Código 4 — Leer, insertar y vaciar desde Compose</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>fun EscenaRoom() {                                          // 3.3: leer y escribir en la base de datos
-    val contexto = LocalContext.current                      // contexto para abrir la BD
-    val dao = remember { AgendaDatabase.obtener(contexto).fichas() } // DAO una sola vez
-    val fichas by dao.observar().collectAsState(initial = emptyList()) // lista viva desde Room
-    val alcance = rememberCoroutineScope()                   // para lanzar las escrituras
-    Scaffold(topBar = { TopAppBar(title = { Text("IsmaelAgenda · Room") }) }) { relleno -&gt;
-        Column(
-            Modifier.fillMaxSize().padding(relleno).padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            Text("Fichas en la base de datos: ${fichas.size}", style = MaterialTheme.typography.headlineSmall)
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                Button(onClick = {
-                    alcance.launch {                         // las escrituras van en corrutina
-                        dao.insertar(
-                            FichaEntity(
-                                nombre = "Ficha ${fichas.size + 1}",
-                                telefono = "95600000${fichas.size + 1}",
-                                categoria = "Familia"
-                            )
-                        )
-                    }
-                }) { Text("Insertar ficha") }
-                Button(onClick = { alcance.launch { dao.borrarTodo() } }) { Text("Vaciar") }
-            }
-            LazyColumn(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                items(fichas) { ficha -&gt;                     // una fila por ficha de la BD
-                    Card(Modifier.fillMaxWidth()) {
-                        Column(Modifier.padding(12.dp)) {
-                            Text("${ficha.id} · ${ficha.nombre}", style = MaterialTheme.typography.titleMedium)
-                            Text("${ficha.telefono} · ${ficha.categoria}", style = MaterialTheme.typography.bodyMedium)
-                        }
-                    }
-                }
-            }
-        }
-    }
-}</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">EscenaRoom</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">                                          </span><span class="c1">// 3.3: leer y escribir en la base de datos</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">contexto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalContext</span><span class="p">.</span><span class="na">current</span><span class="w">                      </span><span class="c1">// contexto para abrir la BD</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">dao</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">AgendaDatabase</span><span class="p">.</span><span class="na">obtener</span><span class="p">(</span><span class="n">contexto</span><span class="p">).</span><span class="na">fichas</span><span class="p">()</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// DAO una sola vez</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">fichas</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">dao</span><span class="p">.</span><span class="na">observar</span><span class="p">().</span><span class="na">collectAsState</span><span class="p">(</span><span class="n">initial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">emptyList</span><span class="p">())</span><span class="w"> </span><span class="c1">// lista viva desde Room</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">alcance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rememberCoroutineScope</span><span class="p">()</span><span class="w">                   </span><span class="c1">// para lanzar las escrituras</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="n">Scaffold</span><span class="p">(</span><span class="n">topBar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">TopAppBar</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"IsmaelAgenda · Room"</span><span class="p">)</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">relleno</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="n">Column</span><span class="p">(</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">            </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">().</span><span class="na">padding</span><span class="p">(</span><span class="n">relleno</span><span class="p">).</span><span class="na">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">),</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">            </span><span class="n">verticalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">12.</span><span class="n">dp</span><span class="p">)</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">            </span><span class="n">Text</span><span class="p">(</span><span class="s">"Fichas en la base de datos: </span><span class="si">${</span><span class="n">fichas</span><span class="p">.</span><span class="na">size</span><span class="si">}</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">headlineSmall</span><span class="p">)</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">            </span><span class="n">Row</span><span class="p">(</span><span class="n">horizontalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">12.</span><span class="n">dp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">                </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">                    </span><span class="n">alcance</span><span class="p">.</span><span class="na">launch</span><span class="w"> </span><span class="p">{</span><span class="w">                         </span><span class="c1">// las escrituras van en corrutina</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">                        </span><span class="n">dao</span><span class="p">.</span><span class="na">insertar</span><span class="p">(</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">                            </span><span class="n">FichaEntity</span><span class="p">(</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">                                </span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Ficha </span><span class="si">${</span><span class="n">fichas</span><span class="p">.</span><span class="na">size</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="si">}</span><span class="s">"</span><span class="p">,</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">                                </span><span class="n">telefono</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"95600000</span><span class="si">${</span><span class="n">fichas</span><span class="p">.</span><span class="na">size</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="si">}</span><span class="s">"</span><span class="p">,</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">                                </span><span class="n">categoria</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Familia"</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">                            </span><span class="p">)</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">                        </span><span class="p">)</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">                    </span><span class="p">}</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">                </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"Insertar ficha"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">                </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">alcance</span><span class="p">.</span><span class="na">launch</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">dao</span><span class="p">.</span><span class="na">borrarTodo</span><span class="p">()</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"Vaciar"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">            </span><span class="n">LazyColumn</span><span class="p">(</span><span class="n">Modifier</span><span class="p">.</span><span class="na">weight</span><span class="p">(</span><span class="m">1f</span><span class="p">),</span><span class="w"> </span><span class="n">verticalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">8.</span><span class="n">dp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">                </span><span class="n">items</span><span class="p">(</span><span class="n">fichas</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">ficha</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">                     </span><span class="c1">// una fila por ficha de la BD</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">                    </span><span class="n">Card</span><span class="p">(</span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxWidth</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">                        </span><span class="n">Column</span><span class="p">(</span><span class="n">Modifier</span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="m">12.</span><span class="n">dp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">                            </span><span class="n">Text</span><span class="p">(</span><span class="s">"</span><span class="si">${</span><span class="n">ficha</span><span class="p">.</span><span class="na">id</span><span class="si">}</span><span class="s"> · </span><span class="si">${</span><span class="n">ficha</span><span class="p">.</span><span class="na">nombre</span><span class="si">}</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">titleMedium</span><span class="p">)</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">                            </span><span class="n">Text</span><span class="p">(</span><span class="s">"</span><span class="si">${</span><span class="n">ficha</span><span class="p">.</span><span class="na">telefono</span><span class="si">}</span><span class="s"> · </span><span class="si">${</span><span class="n">ficha</span><span class="p">.</span><span class="na">categoria</span><span class="si">}</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">bodyMedium</span><span class="p">)</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">                        </span><span class="p">}</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">                    </span><span class="p">}</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a><span class="p">}</span>
+</code></pre></div>
 </div>
 </div>
 </div>
-<figure>
-<img src="./assets/capturas-room1-vacia.png" alt="Pantalla Room con el contador a cero y sin fichas">
-<figcaption>Figura 1. Base de datos recién creada: «Fichas en la base de datos: 0». El archivo `agenda.db` ya existe en el móvil.</figcaption>
-</figure>
-
-<figure>
-<img src="./assets/capturas-room2-tres.png" alt="Pantalla Room con tres fichas insertadas y el contador a tres">
-<figcaption>Figura 2. Tres inserciones: el contador sube a 3 y las tarjetas aparecen **sin refrescar nada a mano** — el `Flow` del DAO avisa a Compose.</figcaption>
-</figure>
-
-<figure>
-<img src="./assets/capturas-room3-persiste.png" alt="La misma pantalla con las tres fichas tras cerrar y reabrir la aplicación">
-<figcaption>Figura 3. Prueba de persistencia: se cierra la app por completo (`am force-stop`) y se vuelve a abrir. Las tres fichas siguen ahí: están en disco, no en memoria.</figcaption>
-</figure>
-
+<p><img alt="Pantalla Room con el contador a cero y sin fichas" src="../assets/capturas-room1-vacia.png" /></p>
+<p><em>Figura 1. Base de datos recién creada: «Fichas en la base de datos: 0». El archivo <code>agenda.db</code> ya existe en el móvil.</em></p>
+<p><img alt="Pantalla Room con tres fichas insertadas y el contador a tres" src="../assets/capturas-room2-tres.png" /></p>
+<p><em>Figura 2. Tres inserciones: el contador sube a 3 y las tarjetas aparecen <strong>sin refrescar nada a mano</strong> — el <code>Flow</code> del DAO avisa a Compose.</em></p>
+<p><img alt="La misma pantalla con las tres fichas tras cerrar y reabrir la aplicación" src="../assets/capturas-room3-persiste.png" /></p>
+<p><em>Figura 3. Prueba de persistencia: se cierra la app por completo (<code>am force-stop</code>) y se vuelve a abrir. Las tres fichas siguen ahí: están en disco, no en memoria.</em></p>
 <h2 id="6-migraciones-cambiar-la-tabla-sin-perder-datos">6. Migraciones: cambiar la tabla sin perder datos</h2>
 <p>Cuando añadas una columna, sube <code>version</code> y escribe la migración:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">MIGRACION_1_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">object</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nc">Migration</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">migrate</span><span class="p">(</span><span class="n">db</span><span class="p">:</span><span class="w"> </span><span class="n">SupportSQLiteDatabase</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="n">db</span><span class="p">.</span><span class="na">execSQL</span><span class="p">(</span><span class="s">"ALTER TABLE fichas ADD COLUMN email TEXT NOT NULL DEFAULT ''"</span><span class="p">)</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">MIGRACION_1_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">object</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nc">Migration</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">migrate</span><span class="p">(</span><span class="n">db</span><span class="p">:</span><span class="w"> </span><span class="n">SupportSQLiteDatabase</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="n">db</span><span class="p">.</span><span class="na">execSQL</span><span class="p">(</span><span class="s">"ALTER TABLE fichas ADD COLUMN email TEXT NOT NULL DEFAULT ''"</span><span class="p">)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">}</span>
 </code></pre></div>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Nunca uses <code>fallbackToDestructiveMigration()</code> en una app real: borra la base de datos del usuario cuando cambias la versión. Se usa en clase y en prototipos, no en producción.</span></p>
 <h2 id="7-errores-tipicos">7. Errores típicos</h2>

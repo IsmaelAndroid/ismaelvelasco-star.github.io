@@ -2024,73 +2024,69 @@
 
 <h2 id="1-scaffold-el-andamio-estandar-de-una-pantalla-android">1. Scaffold: el andamio estándar de una pantalla Android</h2>
 <p>Toda app "seria" que habéis instalado (WhatsApp, Spotify…) usa la misma estructura: barra arriba, contenido en medio y un botón de acción principal flotando. Material 3 lo llama <strong>Scaffold</strong> y no es decoración: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">el lambda de contenido recibe un <code>PaddingValues</code> (el hueco que ocupan barra y FAB) que ESTÁ OBLIGADO aplicarse; si lo ignoras, tu primera fila nace escondida debajo de la barra</span>.</p>
-<figure>
-<img src="./assets/capturas-codigo1-casa.png" alt="Pantalla de casa de FumetoContactos con TopAppBar, tarjetas y FAB con más">
-<figcaption>Figura 1. La casa de FumetoContactos: TopAppBar, lista de contactos y FAB que alterna lista ⇄ formulario. Todo ello montado por un solo Scaffold.</figcaption>
-</figure>
-
+<p><img alt="Pantalla de casa de FumetoContactos con TopAppBar, tarjetas y FAB con más" src="../assets/capturas-codigo1-casa.png" /></p>
+<p><em>Figura 1. La casa de FumetoContactos: TopAppBar, lista de contactos y FAB que alterna lista ⇄ formulario. Todo ello montado por un solo Scaffold.</em></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Código 1 — La pantalla de casa (función completa, tal cual compila)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>```kotlin
-@OptIn(ExperimentalMaterial3Api::class)                  // TopAppBar es API experimental en M3</p>
-</div>
-</div>
-</div>
-<p>@Composable
-fun EscenaCasa() {                                          // la home de la app: estructura Scaffold
-    var nombreFormulario by remember { mutableStateOf("Escribe un nombre…") } // texto del campo (C12)
-    var telefonoFormulario by remember { mutableStateOf("") }                 // teléfono (C12)
-    val lista = remember { mutableStateListOf(*contactosIniciales.toTypedArray()) } // lista mutable en memoria
-    var escena by remember { mutableStateOf(0) }            // 0 = lista | 1 = alta
-    val contexto = LocalContext.current                     // para lanzar otras Activities</p>
-<div class="highlight"><pre><span></span><code>Scaffold(                                               // andamio Material: barra + contenido + FAB
-    topBar = {                                          // la barra de arriba
-        TopAppBar(                                      // barra de título Material 3
-            title = { Text("FumetoContactos") }         // nombre que ve el usuario
-        )
-    },
-    floatingActionButton = {                            // el botón redondo flotante
-        FloatingActionButton(                           // FAB de Material
-            onClick = { escena = if (escena == 0) 1 else 0 }   // alterna lista ⇄ formulario
-        ) {                                             // dentro del botón va su contenido
-            Text(text = if (escena == 0) "+" else "✕",   // "+" para alta, "✕" para volver
-                 fontSize = 28.sp)                        // grande y centrado
-        }
-    }
-) { margen -&gt;                                           // 'margen' = huecos que dejan barra y FAB
-    when (escena) {
-        1 -&gt; FormularioAlta(                            // la pantalla de alta (C12)
-            nombre = nombreFormulario,                  // estado del campo nombre
-            telefono = telefonoFormulario,              // estado del campo teléfono
-            onNombre = { nombreFormulario = it },        // el formulario NO posee el dato
-            onTelefono = { telefonoFormulario = it },   // solo informa de cambios (hoisting)
-            alGuardar = {                               // al pulsar Guardar:
-                lista.add(0, Contacto(nombreFormulario, telefonoFormulario)) // nuevo arriba
-                nombreFormulario = "Escribe un nombre…"  // limpiamos campos
-                telefonoFormulario = ""                  // y volvemos a la lista
-                escena = 0                               // pantalla de lista otra vez
-            },
-            margen = margen                             // respetamos el hueco de la barra
-        )
-        else -&gt; ListaContactos(                         // la libreta (C10 y C11)
-            lista = lista,                              // la pintamos desde el estado
-            alMarcar = { i -&gt; lista[i] = lista[i].copy(favorita = !lista[i].favorita) }, // toggle estrella
-            alBorrar = { i -&gt; lista.removeAt(i) },      // borrar de la lista = desaparece
-            alAbrir = { c -&gt;                            // C5: intent EXPLÍCITO a mi propia Activity
-                contexto.startActivity(                 // "quién" lo arreglo yo, sin preguntas
-                    Intent(contexto, FichaActivity::class.java)   // destino: clase concreta
-                        .putExtra(FichaActivity.EXTRA_NOMBRE, c.nombre)     // extra del nombre
-                        .putExtra(FichaActivity.EXTRA_TELEFONO, c.telefono) // extra del teléfono
-                )
-            },
-            margen = margen
-        )
-    }
-}
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="nd">@OptIn</span><span class="p">(</span><span class="n">ExperimentalMaterial3Api</span><span class="o">::</span><span class="n">class</span><span class="p">)</span><span class="w">                  </span><span class="c1">// TopAppBar es API experimental en M3</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nd">@Composable</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">EscenaCasa</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">                                          </span><span class="c1">// la home de la app: estructura Scaffold</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">nombreFormulario</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="s">"Escribe un nombre…"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// texto del campo (C12)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">telefonoFormulario</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="s">""</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">                 </span><span class="c1">// teléfono (C12)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">lista</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateListOf</span><span class="p">(</span><span class="o">*</span><span class="n">contactosIniciales</span><span class="p">.</span><span class="na">toTypedArray</span><span class="p">())</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// lista mutable en memoria</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">escena</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">            </span><span class="c1">// 0 = lista | 1 = alta</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">contexto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalContext</span><span class="p">.</span><span class="na">current</span><span class="w">                     </span><span class="c1">// para lanzar otras Activities</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="n">Scaffold</span><span class="p">(</span><span class="w">                                               </span><span class="c1">// andamio Material: barra + contenido + FAB</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="n">topBar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">                                          </span><span class="c1">// la barra de arriba</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">            </span><span class="n">TopAppBar</span><span class="p">(</span><span class="w">                                      </span><span class="c1">// barra de título Material 3</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">                </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"FumetoContactos"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">         </span><span class="c1">// nombre que ve el usuario</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">            </span><span class="p">)</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="p">},</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="n">floatingActionButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">                            </span><span class="c1">// el botón redondo flotante</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">            </span><span class="n">FloatingActionButton</span><span class="p">(</span><span class="w">                           </span><span class="c1">// FAB de Material</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">                </span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">escena</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">escena</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// alterna lista ⇄ formulario</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">            </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                                             </span><span class="c1">// dentro del botón va su contenido</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">                </span><span class="n">Text</span><span class="p">(</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">escena</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="s">"+"</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s">"✕"</span><span class="p">,</span><span class="w">   </span><span class="c1">// "+" para alta, "✕" para volver</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">                     </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">28.</span><span class="n">sp</span><span class="p">)</span><span class="w">                        </span><span class="c1">// grande y centrado</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">margen</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">                                           </span><span class="c1">// 'margen' = huecos que dejan barra y FAB</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">        </span><span class="k">when</span><span class="w"> </span><span class="p">(</span><span class="n">escena</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">            </span><span class="m">1</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">FormularioAlta</span><span class="p">(</span><span class="w">                            </span><span class="c1">// la pantalla de alta (C12)</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">                </span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombreFormulario</span><span class="p">,</span><span class="w">                  </span><span class="c1">// estado del campo nombre</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">                </span><span class="n">telefono</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">telefonoFormulario</span><span class="p">,</span><span class="w">              </span><span class="c1">// estado del campo teléfono</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">                </span><span class="n">onNombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">nombreFormulario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="p">},</span><span class="w">        </span><span class="c1">// el formulario NO posee el dato</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">                </span><span class="n">onTelefono</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">telefonoFormulario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="p">},</span><span class="w">   </span><span class="c1">// solo informa de cambios (hoisting)</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">                </span><span class="n">alGuardar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">                               </span><span class="c1">// al pulsar Guardar:</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">                    </span><span class="n">lista</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">Contacto</span><span class="p">(</span><span class="n">nombreFormulario</span><span class="p">,</span><span class="w"> </span><span class="n">telefonoFormulario</span><span class="p">))</span><span class="w"> </span><span class="c1">// nuevo arriba</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">                    </span><span class="n">nombreFormulario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Escribe un nombre…"</span><span class="w">  </span><span class="c1">// limpiamos campos</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">                    </span><span class="n">telefonoFormulario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">""</span><span class="w">                  </span><span class="c1">// y volvemos a la lista</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">                    </span><span class="n">escena</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w">                               </span><span class="c1">// pantalla de lista otra vez</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">                </span><span class="p">},</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">                </span><span class="n">margen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">margen</span><span class="w">                             </span><span class="c1">// respetamos el hueco de la barra</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">            </span><span class="p">)</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">ListaContactos</span><span class="p">(</span><span class="w">                         </span><span class="c1">// la libreta (C10 y C11)</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">                </span><span class="n">lista</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lista</span><span class="p">,</span><span class="w">                              </span><span class="c1">// la pintamos desde el estado</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">                </span><span class="n">alMarcar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">lista</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lista</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="na">copy</span><span class="p">(</span><span class="n">favorita</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">lista</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="na">favorita</span><span class="p">)</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="c1">// toggle estrella</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">                </span><span class="n">alBorrar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">lista</span><span class="p">.</span><span class="na">removeAt</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">},</span><span class="w">      </span><span class="c1">// borrar de la lista = desaparece</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">                </span><span class="n">alAbrir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">                            </span><span class="c1">// C5: intent EXPLÍCITO a mi propia Activity</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">                    </span><span class="n">contexto</span><span class="p">.</span><span class="na">startActivity</span><span class="p">(</span><span class="w">                 </span><span class="c1">// "quién" lo arreglo yo, sin preguntas</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">                        </span><span class="n">Intent</span><span class="p">(</span><span class="n">contexto</span><span class="p">,</span><span class="w"> </span><span class="n">FichaActivity</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">)</span><span class="w">   </span><span class="c1">// destino: clase concreta</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">                            </span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="n">FichaActivity</span><span class="p">.</span><span class="na">EXTRA_NOMBRE</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="na">nombre</span><span class="p">)</span><span class="w">     </span><span class="c1">// extra del nombre</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">                            </span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="n">FichaActivity</span><span class="p">.</span><span class="na">EXTRA_TELEFONO</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="na">telefono</span><span class="p">)</span><span class="w"> </span><span class="c1">// extra del teléfono</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">                    </span><span class="p">)</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">                </span><span class="p">},</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">                </span><span class="n">margen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">margen</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">            </span><span class="p">)</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="p">}</span>
 </code></pre></div>
-<p>}
-    ```</p>
+</div>
+</div>
+</div>
 <p>Tres cosas de esta función que son de examen:</p>
 <ol>
 <li><strong><code>mutableStateListOf</code></strong> guarda la lista como estado observable: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">añadir o borrar un elemento recompongo solo las filas afectadas — no un <code>List</code> normal dentro de un <code>var</code>, que no avisa a nadie</span>.</li>
@@ -2099,117 +2095,106 @@ fun EscenaCasa() {                                          // la home de la app
 </ol>
 <h2 id="2-lazycolumn-la-lista-que-no-se-lo-traga-todo">2. LazyColumn: la lista que no se lo traga todo</h2>
 <p>Con 6 contactos da igual todo. Con 6.000, una <code>Column</code> con <code>verticalScroll</code> se muere: compone las 6.000 filas al nacer. <code>LazyColumn</code> compone <strong>solo las visibles</strong> y recicla al hacer scroll.</p>
-<figure>
-<img src="./assets/capturas-codigo2-lista.png" alt="Lista de contactos con tarjetas, switches y botones papelera">
-<figcaption>Figura 2. La libreta: cada tarjeta se genera con <code>items()</code>; al hacer scroll, las filas que salen de pantalla se reciclan.</figcaption>
-</figure>
-
+<p><img alt="Lista de contactos con tarjetas, switches y botones papelera" src="../assets/capturas-codigo2-lista.png" /></p>
+<p><em>Figura 2. La libreta: cada tarjeta se genera con <code>items()</code>; al hacer scroll, las filas que salen de pantalla se reciclan.</em></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Código 2 — La libreta Lazy (función completa)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>```kotlin
-@Composable</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">    </span><span class="nd">@Composable</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">ListaContactos</span><span class="p">(</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">lista</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Contacto</span><span class="o">&gt;</span><span class="p">,</span><span class="w">                                  </span><span class="c1">// desde fuera: solo lectura</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">alMarcar</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="kt">Int</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span><span class="p">,</span><span class="w">                                </span><span class="c1">// callback: "me han marcado la i"</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="n">alBorrar</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="kt">Int</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span><span class="p">,</span><span class="w">                                </span><span class="c1">// callback: "han borrado la i"</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="n">alAbrir</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">Contacto</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span><span class="p">,</span><span class="w">                            </span><span class="c1">// callback: "quiero la ficha de este"</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="n">margen</span><span class="p">:</span><span class="w"> </span><span class="n">PaddingValues</span><span class="w">                                   </span><span class="c1">// el margen del Scaffold</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="n">LazyColumn</span><span class="p">(</span><span class="w">                                             </span><span class="c1">// LA lista: pinta solo lo que cabe en pantalla</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">().</span><span class="na">padding</span><span class="p">(</span><span class="n">margen</span><span class="p">),</span><span class="w">  </span><span class="c1">// ocupa todo + respeta barra/FAB</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="n">contentPadding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PaddingValues</span><span class="p">(</span><span class="m">12.</span><span class="n">dp</span><span class="p">),</span><span class="w">              </span><span class="c1">// aire alrededor del contenido</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="n">verticalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">8.</span><span class="n">dp</span><span class="p">)</span><span class="w">    </span><span class="c1">// separación entre tarjetas</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="n">items</span><span class="p">(</span><span class="n">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lista</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">telefono</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">  </span><span class="c1">// una fila por contacto; clave = teléfono</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">            </span><span class="n">Card</span><span class="p">(</span><span class="w">                                           </span><span class="c1">// tarjeta Material con sombra</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">                </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="w">                         </span><span class="c1">// el traje de la tarjeta:</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">                    </span><span class="p">.</span><span class="na">fillMaxWidth</span><span class="p">()</span><span class="w">                         </span><span class="c1">// ancha como la pantalla</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">                    </span><span class="p">.</span><span class="na">clickable</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">alAbrir</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">               </span><span class="c1">// y pulsable por TODO: abre la ficha</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">            </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">                </span><span class="n">Row</span><span class="p">(</span><span class="w">                                        </span><span class="c1">// dentro: fila nombre+teléfono | acciones</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">                    </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="m">12.</span><span class="n">dp</span><span class="p">),</span><span class="w">     </span><span class="c1">// aire interior de la tarjeta</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">                    </span><span class="n">verticalAlignment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="na">CenterVertically</span><span class="w"> </span><span class="c1">// centrado vertical</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">                </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">                    </span><span class="n">Column</span><span class="p">(</span><span class="n">Modifier</span><span class="p">.</span><span class="na">weight</span><span class="p">(</span><span class="m">1f</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">           </span><span class="c1">// columna que ocupa el espacio que sobra</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">                        </span><span class="n">Text</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="na">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">fontWeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FontWeight</span><span class="p">.</span><span class="na">Bold</span><span class="p">)</span><span class="w">          </span><span class="c1">// nombre en negrita</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">                        </span><span class="n">Text</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="na">telefono</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="na">Gray</span><span class="p">,</span><span class="w"> </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">13.</span><span class="n">sp</span><span class="p">)</span><span class="w"> </span><span class="c1">// teléfono discreto</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">                    </span><span class="p">}</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">                    </span><span class="n">Switch</span><span class="p">(</span><span class="w">                                 </span><span class="c1">// la estrella en modo interruptor</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">                        </span><span class="n">checked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="na">favorita</span><span class="p">,</span><span class="w">               </span><span class="c1">// refleja el estado del dato</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">                        </span><span class="n">onCheckedChange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">alMarcar</span><span class="p">(</span><span class="n">lista</span><span class="p">.</span><span class="na">indexOf</span><span class="p">(</span><span class="n">c</span><span class="p">))</span><span class="w"> </span><span class="p">}</span><span class="w">      </span><span class="c1">// avisa a la dueña del estado</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">                    </span><span class="p">)</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">                    </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">alBorrar</span><span class="p">(</span><span class="n">lista</span><span class="p">.</span><span class="na">indexOf</span><span class="p">(</span><span class="n">c</span><span class="p">))</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">        </span><span class="c1">// botón borrar</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">                        </span><span class="n">Text</span><span class="p">(</span><span class="s">"🗑"</span><span class="p">)</span><span class="w">                                            </span><span class="c1">// papelera, sin letra</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">                    </span><span class="p">}</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="p">}</span>
+</code></pre></div>
 </div>
 </div>
 </div>
-<p>fun ListaContactos(
-    lista: List<Contacto>,                                  // desde fuera: solo lectura
-    alMarcar: (Int) -&gt; Unit,                                // callback: "me han marcado la i"
-    alBorrar: (Int) -&gt; Unit,                                // callback: "han borrado la i"
-    alAbrir: (Contacto) -&gt; Unit,                            // callback: "quiero la ficha de este"
-    margen: PaddingValues                                   // el margen del Scaffold
-) {
-    LazyColumn(                                             // LA lista: pinta solo lo que cabe en pantalla
-        modifier = Modifier.fillMaxSize().padding(margen),  // ocupa todo + respeta barra/FAB
-        contentPadding = PaddingValues(12.dp),              // aire alrededor del contenido
-        verticalArrangement = Arrangement.spacedBy(8.dp)    // separación entre tarjetas
-    ) {
-        items(items = lista, key = { it.telefono }) { c -&gt;  // una fila por contacto; clave = teléfono
-            Card(                                           // tarjeta Material con sombra
-                modifier = Modifier                         // el traje de la tarjeta:
-                    .fillMaxWidth()                         // ancha como la pantalla
-                    .clickable { alAbrir(c) }               // y pulsable por TODO: abre la ficha
-            ) {
-                Row(                                        // dentro: fila nombre+teléfono | acciones
-                    modifier = Modifier.padding(12.dp),     // aire interior de la tarjeta
-                    verticalAlignment = Alignment.CenterVertically // centrado vertical
-                ) {
-                    Column(Modifier.weight(1f)) {           // columna que ocupa el espacio que sobra
-                        Text(c.nombre, fontWeight = FontWeight.Bold)          // nombre en negrita
-                        Text(c.telefono, color = Color.Gray, fontSize = 13.sp) // teléfono discreto
-                    }
-                    Switch(                                 // la estrella en modo interruptor
-                        checked = c.favorita,               // refleja el estado del dato
-                        onCheckedChange = { alMarcar(lista.indexOf(c)) }      // avisa a la dueña del estado
-                    )
-                    Button(onClick = { alBorrar(lista.indexOf(c)) }) {        // botón borrar
-                        Text("🗑")                                            // papelera, sin letra
-                    }
-                }
-            }
-        }
-    }
-}
-    ```</p>
 <p>Detalles de producción, no de juguete:</p>
 <ul>
 <li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>key = { it.telefono }</code> identifica cada fila entre recomposiciones: sin clave, al borrar una fila el sistema "descoloca" los estados internos (switches que cambian de dueño) y el scroll se vuelve loco</span>. Es el error más caro de esta pantalla.</li>
 <li><code>contentPadding</code> (dentro de Lazy) ≠ <code>padding</code> (fuera): el primero deja aire <strong>dentro del área scroll</strong>, el segundo recorta el sitio donde puede pintar. Con <code>PaddingValues(12.dp)</code> la última tarjeta no se pega al FAB.</li>
 <li>La tarjeta entera es <code>clickable</code> (abre la ficha → 2.2) <strong>y encima</strong> hay switches/botones: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">un hijo clicable consume el evento antes que el padre — por eso el Switch hace su <code>onCheckedChange</code> sin abrir la ficha de rebote</span>.</li>
 </ul>
-<figure>
-<img src="./assets/capturas-codigo3-interaccion.png" alt="Tras pulsar switches y una papelera: una tarjeta desaparecida y otra con el switch activo">
-<figcaption>Figura 3. Interacción real: la favorita marcada y un contacto borrado de la lista (que es el estado, no la captura: al volver de la ficha la lista sigue sin él).</figcaption>
-</figure>
-
+<p><img alt="Tras pulsar switches y una papelera: una tarjeta desaparecida y otra con el switch activo" src="../assets/capturas-codigo3-interaccion.png" /></p>
+<p><em>Figura 3. Interacción real: la favorita marcada y un contacto borrado de la lista (que es el estado, no la captura: al volver de la ficha la lista sigue sin él).</em></p>
 <h2 id="3-formulario-validar-en-una-linea-habilitar-en-otra">3. Formulario: validar en una línea, habilitar en otra</h2>
-<figure>
-<img src="./assets/capturas-codigo4-formulario.png" alt="Formulario de alta con nombre tecleado, teléfono corto marcado en rojo y botón Guardar deshabilitado">
-<figcaption>Figura 4. Alta con <code>adjustResize</code>: el teclado sube, el formulario se recoloca y el botón sigue alcanzable. El teléfono corto se marca en rojo y el botón, apagado.</figcaption>
-</figure>
-
+<p><img alt="Formulario de alta con nombre tecleado, teléfono corto marcado en rojo y botón Guardar deshabilitado" src="../assets/capturas-codigo4-formulario.png" /></p>
+<p><em>Figura 4. Alta con <code>adjustResize</code>: el teclado sube, el formulario se recoloca y el botón sigue alcanzable. El teléfono corto se marca en rojo y el botón, apagado.</em></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Código 3 — El formulario de alta (función completa)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>```kotlin
-@Composable</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span><span class="nd">@Composable</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">FormularioAlta</span><span class="p">(</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">nombre</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w">                                         </span><span class="c1">// el texto actual del campo</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">telefono</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w">                                       </span><span class="c1">// el texto del teléfono</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="n">onNombre</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span><span class="p">,</span><span class="w">                             </span><span class="c1">// "el usuario ha tecleado X"</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="n">onTelefono</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span><span class="p">,</span><span class="w">                           </span><span class="c1">// ídem teléfono</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="n">alGuardar</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span><span class="p">,</span><span class="w">                                  </span><span class="c1">// pulsar Guardar</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="n">margen</span><span class="p">:</span><span class="w"> </span><span class="n">PaddingValues</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">telefonoValido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">telefono</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">9</span><span class="w">               </span><span class="c1">// validación de una frase: 9 dígitos mínimo</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="n">Column</span><span class="p">(</span><span class="w">                                                 </span><span class="c1">// campos apilados</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">().</span><span class="na">padding</span><span class="p">(</span><span class="n">margen</span><span class="p">).</span><span class="na">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">)</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">            </span><span class="p">.</span><span class="na">verticalScroll</span><span class="p">(</span><span class="n">rememberScrollState</span><span class="p">()),</span><span class="w">         </span><span class="c1">// por si el teclado tapa algo</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="n">verticalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">12.</span><span class="n">dp</span><span class="p">)</span><span class="w">   </span><span class="c1">// respiro entre campos</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="s">"Nueva ficha"</span><span class="p">,</span><span class="w"> </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">headlineSmall</span><span class="p">)</span><span class="w"> </span><span class="c1">// cabecera del alta</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="n">OutlinedTextField</span><span class="p">(</span><span class="w">                                  </span><span class="c1">// campo con borde, estilo Material</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">            </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w">                                 </span><span class="c1">// controlado por el estado de fuera</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">            </span><span class="n">onValueChange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">onNombre</span><span class="p">,</span><span class="w">                       </span><span class="c1">// cada tecla avisa</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">            </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"Nombre"</span><span class="p">)</span><span class="w"> </span><span class="p">},</span><span class="w">                     </span><span class="c1">// flotante por defecto</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">            </span><span class="n">isError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">.</span><span class="na">isBlank</span><span class="p">()</span><span class="w">                      </span><span class="c1">// rojo si está vacío (sin sermones)</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">        </span><span class="p">)</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">        </span><span class="n">OutlinedTextField</span><span class="p">(</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">            </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">telefono</span><span class="p">,</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">            </span><span class="n">onValueChange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">onTelefono</span><span class="p">,</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">            </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"Teléfono"</span><span class="p">)</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">            </span><span class="n">isError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">telefono</span><span class="p">.</span><span class="na">isNotEmpty</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">telefonoValido</span><span class="w"> </span><span class="c1">// solo riñe si han escrito algo mal</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">        </span><span class="p">)</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">        </span><span class="n">Button</span><span class="p">(</span><span class="w">                                             </span><span class="c1">// el disparo del alta</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">            </span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alGuardar</span><span class="p">,</span><span class="w">                            </span><span class="c1">// pide permiso a la dueña de la lista</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">            </span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">.</span><span class="na">isNotBlank</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">telefonoValido</span><span class="w"> </span><span class="c1">// sin nombre o teléfono corto: apagado</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"Guardar contacto"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="p">}</span>
+</code></pre></div>
 </div>
 </div>
 </div>
-<p>fun FormularioAlta(
-    nombre: String,                                         // el texto actual del campo
-    telefono: String,                                       // el texto del teléfono
-    onNombre: (String) -&gt; Unit,                             // "el usuario ha tecleado X"
-    onTelefono: (String) -&gt; Unit,                           // ídem teléfono
-    alGuardar: () -&gt; Unit,                                  // pulsar Guardar
-    margen: PaddingValues
-) {
-    val telefonoValido = telefono.length &gt;= 9               // validación de una frase: 9 dígitos mínimo
-    Column(                                                 // campos apilados
-        modifier = Modifier.fillMaxSize().padding(margen).padding(16.dp)
-            .verticalScroll(rememberScrollState()),         // por si el teclado tapa algo
-        verticalArrangement = Arrangement.spacedBy(12.dp)   // respiro entre campos
-    ) {
-        Text("Nueva ficha", style = MaterialTheme.typography.headlineSmall) // cabecera del alta
-        OutlinedTextField(                                  // campo con borde, estilo Material
-            value = nombre,                                 // controlado por el estado de fuera
-            onValueChange = onNombre,                       // cada tecla avisa
-            label = { Text("Nombre") },                     // flotante por defecto
-            isError = nombre.isBlank()                      // rojo si está vacío (sin sermones)
-        )
-        OutlinedTextField(
-            value = telefono,
-            onValueChange = onTelefono,
-            label = { Text("Teléfono") },
-            isError = telefono.isNotEmpty() &amp;&amp; !telefonoValido // solo riñe si han escrito algo mal
-        )
-        Button(                                             // el disparo del alta
-            onClick = alGuardar,                            // pide permiso a la dueña de la lista
-            enabled = nombre.isNotBlank() &amp;&amp; telefonoValido // sin nombre o teléfono corto: apagado
-        ) { Text("Guardar contacto") }
-    }
-}
-    ```</p>
 <p>Decisiones de diseño con nombre y apellidos:</p>
 <ul>
 <li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>isError</code> en el campo + <code>enabled</code> en el botón es la pareja canónica de validación: el campo informa, el botón decide. Nunca un <code>Toast</code> que grita cuando alguien pulsa "Guardar" a medias</span>.</li>
@@ -2284,7 +2269,7 @@ Cuando la pantalla nueva deba tener su propia entrada en el historial de BACK o 
 </blockquote>
 <hr />
 <p><strong>Cumplimiento</strong>: este apartado trabaja los criterios RA2.a (estructura de clases de la aplicación), RA2.b (clases que modelan ventanas, menús, alertas y controles) y RA2.g (pruebas de interacción usuario-aplicación en emulador) del RD 405/2023 — el resto de RA2 se cierra con la práctica del mini-proyecto y el tema 3.</p>
-<p><strong>Materiales</strong>: <a href="https://developer.android.com/develop/ui/compose/layouts">Docs de Scaffold y listas</a> · <strong>Presentación</strong>: <a href="https://revilofe.github.io/slides/section5-pmdm/PM-U2.3.-AppComposeListasYFormulario.html">diapositivas del tema 2.3</a> · Anterior: <a href="../PMDM-U2.2.-ActividadesEIntents/">2.2 — Actividades e Intents</a> · Práctica: <a href="../../practica/PMDM-U2.-MiniProyectoContactos/">2.4 — Mini-proyecto</a></p>
+<p><strong>Materiales</strong>: <a href="https://developer.android.com/develop/ui/compose/layouts">Docs de Scaffold y listas</a> · <strong>Presentación</strong>: <a href="https://revilofe.github.io/slides/section1-pmdm/PM-U2.3.-AppComposeListasYFormulario.html">diapositivas del tema 2.3</a> · Anterior: <a href="../PMDM-U2.2.-ActividadesEIntents/">2.2 — Actividades e Intents</a> · Práctica: <a href="../../practica/PMDM-U2.-MiniProyectoContactos/">2.4 — Mini-proyecto</a></p>
 
 
 

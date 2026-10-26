@@ -2135,18 +2135,20 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Código 1 — Repositorio de sesión con DataStore</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>val Context.almacenSesion: DataStore<Preferences> by preferencesDataStore(name = "sesion") // un archivo por nombre
-val CLAVE_TOKEN = stringPreferencesKey("token")             // clave del token dentro del archivo</p>
-<p>class SesionRepositorio(private val contexto: Context) {    // acceso a la sesión
-    suspend fun guardar(token: String) {                    // guarda el token en disco
-        contexto.almacenSesion.edit { it[CLAVE_TOKEN] = token }
-    }
-    fun observar(): Flow<String?> =                         // lee el token y avisa de cambios
-        contexto.almacenSesion.data.map { it[CLAVE_TOKEN] }
-    suspend fun borrar() {                                  // cierra sesión
-        contexto.almacenSesion.edit { it.remove(CLAVE_TOKEN) }
-    }
-}</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">val</span><span class="w"> </span><span class="nv">Context</span><span class="p">.</span><span class="na">almacenSesion</span><span class="p">:</span><span class="w"> </span><span class="n">DataStore</span><span class="o">&lt;</span><span class="n">Preferences</span><span class="o">&gt;</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">preferencesDataStore</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"sesion"</span><span class="p">)</span><span class="w"> </span><span class="c1">// un archivo por nombre</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">CLAVE_TOKEN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stringPreferencesKey</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span><span class="w">             </span><span class="c1">// clave del token dentro del archivo</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kd">class</span><span class="w"> </span><span class="nc">SesionRepositorio</span><span class="p">(</span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">contexto</span><span class="p">:</span><span class="w"> </span><span class="n">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">    </span><span class="c1">// acceso a la sesión</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">guardar</span><span class="p">(</span><span class="n">token</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                    </span><span class="c1">// guarda el token en disco</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="n">contexto</span><span class="p">.</span><span class="na">almacenSesion</span><span class="p">.</span><span class="na">edit</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="o">[</span><span class="n">CLAVE_TOKEN</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">token</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">observar</span><span class="p">():</span><span class="w"> </span><span class="n">Flow</span><span class="o">&lt;</span><span class="kt">String?</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w">                         </span><span class="c1">// lee el token y avisa de cambios</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="n">contexto</span><span class="p">.</span><span class="na">almacenSesion</span><span class="p">.</span><span class="na">data</span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="o">[</span><span class="n">CLAVE_TOKEN</span><span class="o">]</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">borrar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">                                  </span><span class="c1">// cierra sesión</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="n">contexto</span><span class="p">.</span><span class="na">almacenSesion</span><span class="p">.</span><span class="na">edit</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">CLAVE_TOKEN</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">}</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2154,103 +2156,95 @@ val CLAVE_TOKEN = stringPreferencesKey("token")             // clave del token d
 <div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Código 2 — Pantalla de sesión</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>fun EscenaSesion() {                                        // 3.5: la sesión sobrevive a cerrar la app
-    val contexto = LocalContext.current
-    val repositorio = remember { SesionRepositorio(contexto) } // una sola instancia
-    val token by repositorio.observar().collectAsState(initial = null) // token vivo
-    val alcance = rememberCoroutineScope()
-    Scaffold(topBar = { TopAppBar(title = { Text("IsmaelAgenda · sesión") }) }) { relleno -&gt;
-        Column(
-            Modifier.fillMaxSize().padding(relleno).padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            Text(
-                if (token == null) "Sin sesión iniciada" else "Sesión activa",
-                style = MaterialTheme.typography.headlineSmall
-            )
-            Text("Token: ${token ?: "—"}", style = MaterialTheme.typography.bodyMedium)
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                Button(onClick = {
-                    alcance.launch { repositorio.guardar("token-demo-2026") } // escribe en disco
-                }) { Text("Iniciar sesión") }
-                Button(onClick = { alcance.launch { repositorio.borrar() } }) { Text("Cerrar sesión") }
-            }
-            Text(
-                "Cierra la app y vuelve a abrirla: si sigue activa, el token está en disco.",
-                style = MaterialTheme.typography.bodyMedium
-            )
-        }
-    }
-}</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">EscenaSesion</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">                                        </span><span class="c1">// 3.5: la sesión sobrevive a cerrar la app</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">contexto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalContext</span><span class="p">.</span><span class="na">current</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">repositorio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">SesionRepositorio</span><span class="p">(</span><span class="n">contexto</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// una sola instancia</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">token</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">repositorio</span><span class="p">.</span><span class="na">observar</span><span class="p">().</span><span class="na">collectAsState</span><span class="p">(</span><span class="n">initial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="c1">// token vivo</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">alcance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rememberCoroutineScope</span><span class="p">()</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="n">Scaffold</span><span class="p">(</span><span class="n">topBar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">TopAppBar</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"IsmaelAgenda · sesión"</span><span class="p">)</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">relleno</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="n">Column</span><span class="p">(</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">            </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">().</span><span class="na">padding</span><span class="p">(</span><span class="n">relleno</span><span class="p">).</span><span class="na">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">),</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">            </span><span class="n">verticalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">12.</span><span class="n">dp</span><span class="p">)</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">            </span><span class="n">Text</span><span class="p">(</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">token</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="s">"Sin sesión iniciada"</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s">"Sesión activa"</span><span class="p">,</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">                </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">headlineSmall</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">            </span><span class="p">)</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">            </span><span class="n">Text</span><span class="p">(</span><span class="s">"Token: </span><span class="si">${</span><span class="n">token</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="s">"</span><span class="err">—</span><span class="s">"</span><span class="si">}</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">bodyMedium</span><span class="p">)</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">            </span><span class="n">Row</span><span class="p">(</span><span class="n">horizontalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">12.</span><span class="n">dp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">                </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">                    </span><span class="n">alcance</span><span class="p">.</span><span class="na">launch</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">repositorio</span><span class="p">.</span><span class="na">guardar</span><span class="p">(</span><span class="s">"token-demo-2026"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// escribe en disco</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">                </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"Iniciar sesión"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">                </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">alcance</span><span class="p">.</span><span class="na">launch</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">repositorio</span><span class="p">.</span><span class="na">borrar</span><span class="p">()</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"Cerrar sesión"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">            </span><span class="n">Text</span><span class="p">(</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">                </span><span class="s">"Cierra la app y vuelve a abrirla: si sigue activa, el token está en disco."</span><span class="p">,</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">                </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">bodyMedium</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">            </span><span class="p">)</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="p">}</span>
+</code></pre></div>
 </div>
 </div>
 </div>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>observar()</code> devuelve un <code>Flow</code>: si el token cambia desde otra pantalla, esta se entera sola. No hay que refrescar ni preguntar.</span></p>
-<figure>
-<img src="./assets/capturas-sesion1-sin.png" alt="Pantalla de sesión sin sesión iniciada y token vacío">
-<figcaption>Figura 1. Sin sesión: «Sin sesión iniciada» y el token a «—».</figcaption>
-</figure>
-
-<figure>
-<img src="./assets/capturas-sesion2-activa.png" alt="Pantalla de sesión con la sesión activa y el token token-demo-2026">
-<figcaption>Figura 2. Tras pulsar «Iniciar sesión»: el token se escribe en disco y la pantalla lo refleja.</figcaption>
-</figure>
-
-<figure>
-<img src="./assets/capturas-sesion3-persiste.png" alt="La misma pantalla con la sesión activa después de cerrar y volver a abrir la aplicación">
-<figcaption>Figura 3. Se cierra la app del todo (`am force-stop`) y se vuelve a abrir: **la sesión sigue activa**. Eso es DataStore: el token está en disco, no en memoria.</figcaption>
-</figure>
-
+<p><img alt="Pantalla de sesión sin sesión iniciada y token vacío" src="../assets/capturas-sesion1-sin.png" /></p>
+<p><em>Figura 1. Sin sesión: «Sin sesión iniciada» y el token a «—».</em></p>
+<p><img alt="Pantalla de sesión con la sesión activa y el token token-demo-2026" src="../assets/capturas-sesion2-activa.png" /></p>
+<p><em>Figura 2. Tras pulsar «Iniciar sesión»: el token se escribe en disco y la pantalla lo refleja.</em></p>
+<p><img alt="La misma pantalla con la sesión activa después de cerrar y volver a abrir la aplicación" src="../assets/capturas-sesion3-persiste.png" /></p>
+<p><em>Figura 3. Se cierra la app del todo (<code>am force-stop</code>) y se vuelve a abrir: <strong>la sesión sigue activa</strong>. Eso es DataStore: el token está en disco, no en memoria.</em></p>
 <h2 id="3-pruebas-demostrar-que-la-validacion-funciona">3. Pruebas: demostrar que la validación funciona</h2>
 <p>Una prueba unitaria comprueba la lógica <strong>sin emulador</strong>, en milisegundos. Se ejecuta con <code>gradlew test</code>. Aquí probamos las cuatro reglas del formulario del tema 3.2:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Código 3 — Pruebas de la validación</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>@Test
-fun `nombre vacio produce error y no guarda`() {          // regla 1
-    val vm = FormularioViewModel()
-    vm.cambiarTelefono("956123456")                        // teléfono correcto
-    val guardado = vm.guardar()                            // nombre vacío
-    assertFalse("no debe guardar sin nombre", guardado)
-    assertEquals("El nombre no puede estar vacío", vm.estado.value.errorNombre)
-}
-
-@Test
-fun `telefono de ocho digitos produce error`() {          // regla 2
-    val vm = FormularioViewModel()
-    vm.cambiarNombre("Nerea Ruiz")
-    vm.cambiarTelefono("95612345")                         // 8 dígitos
-    val guardado = vm.guardar()
-    assertFalse("no debe guardar con 8 dígitos", guardado)
-    assertEquals("El teléfono debe tener 9 dígitos", vm.estado.value.errorTelefono)
-}
-
-@Test
-fun `datos correctos guardan y limpian errores`() {       // regla 3
-    val vm = FormularioViewModel()
-    vm.cambiarNombre("Nerea Ruiz")
-    vm.cambiarTelefono("956123456")
-    val guardado = vm.guardar()
-    assertTrue("debe guardar con datos correctos", guardado)
-    assertNull(vm.estado.value.errorNombre)
-    assertNull(vm.estado.value.errorTelefono)
-}
-
-@Test
-fun `el telefono filtra lo que no son digitos`() {        // regla 4
-    val vm = FormularioViewModel()
-    vm.cambiarTelefono("956-12-34-56")
-    assertEquals("956123456", vm.estado.value.telefono)
-}
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span><span class="nd">@Test</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">`nombre vacio produce error y no guarda`</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">          </span><span class="c1">// regla 1</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FormularioViewModel</span><span class="p">()</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="n">vm</span><span class="p">.</span><span class="na">cambiarTelefono</span><span class="p">(</span><span class="s">"956123456"</span><span class="p">)</span><span class="w">                        </span><span class="c1">// teléfono correcto</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">guardado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vm</span><span class="p">.</span><span class="na">guardar</span><span class="p">()</span><span class="w">                            </span><span class="c1">// nombre vacío</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="n">assertFalse</span><span class="p">(</span><span class="s">"no debe guardar sin nombre"</span><span class="p">,</span><span class="w"> </span><span class="n">guardado</span><span class="p">)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="n">assertEquals</span><span class="p">(</span><span class="s">"El nombre no puede estar vacío"</span><span class="p">,</span><span class="w"> </span><span class="n">vm</span><span class="p">.</span><span class="na">estado</span><span class="p">.</span><span class="na">value</span><span class="p">.</span><span class="na">errorNombre</span><span class="p">)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="nd">@Test</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">`telefono de ocho digitos produce error`</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">          </span><span class="c1">// regla 2</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FormularioViewModel</span><span class="p">()</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">        </span><span class="n">vm</span><span class="p">.</span><span class="na">cambiarNombre</span><span class="p">(</span><span class="s">"Nerea Ruiz"</span><span class="p">)</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="n">vm</span><span class="p">.</span><span class="na">cambiarTelefono</span><span class="p">(</span><span class="s">"95612345"</span><span class="p">)</span><span class="w">                         </span><span class="c1">// 8 dígitos</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">guardado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vm</span><span class="p">.</span><span class="na">guardar</span><span class="p">()</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">        </span><span class="n">assertFalse</span><span class="p">(</span><span class="s">"no debe guardar con 8 dígitos"</span><span class="p">,</span><span class="w"> </span><span class="n">guardado</span><span class="p">)</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="n">assertEquals</span><span class="p">(</span><span class="s">"El teléfono debe tener 9 dígitos"</span><span class="p">,</span><span class="w"> </span><span class="n">vm</span><span class="p">.</span><span class="na">estado</span><span class="p">.</span><span class="na">value</span><span class="p">.</span><span class="na">errorTelefono</span><span class="p">)</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="nd">@Test</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">`datos correctos guardan y limpian errores`</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">       </span><span class="c1">// regla 3</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FormularioViewModel</span><span class="p">()</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">        </span><span class="n">vm</span><span class="p">.</span><span class="na">cambiarNombre</span><span class="p">(</span><span class="s">"Nerea Ruiz"</span><span class="p">)</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">        </span><span class="n">vm</span><span class="p">.</span><span class="na">cambiarTelefono</span><span class="p">(</span><span class="s">"956123456"</span><span class="p">)</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">guardado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vm</span><span class="p">.</span><span class="na">guardar</span><span class="p">()</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">        </span><span class="n">assertTrue</span><span class="p">(</span><span class="s">"debe guardar con datos correctos"</span><span class="p">,</span><span class="w"> </span><span class="n">guardado</span><span class="p">)</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">        </span><span class="n">assertNull</span><span class="p">(</span><span class="n">vm</span><span class="p">.</span><span class="na">estado</span><span class="p">.</span><span class="na">value</span><span class="p">.</span><span class="na">errorNombre</span><span class="p">)</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">        </span><span class="n">assertNull</span><span class="p">(</span><span class="n">vm</span><span class="p">.</span><span class="na">estado</span><span class="p">.</span><span class="na">value</span><span class="p">.</span><span class="na">errorTelefono</span><span class="p">)</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">    </span><span class="nd">@Test</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">`el telefono filtra lo que no son digitos`</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">        </span><span class="c1">// regla 4</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FormularioViewModel</span><span class="p">()</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">        </span><span class="n">vm</span><span class="p">.</span><span class="na">cambiarTelefono</span><span class="p">(</span><span class="s">"956-12-34-56"</span><span class="p">)</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">        </span><span class="n">assertEquals</span><span class="p">(</span><span class="s">"956123456"</span><span class="p">,</span><span class="w"> </span><span class="n">vm</span><span class="p">.</span><span class="na">estado</span><span class="p">.</span><span class="na">value</span><span class="p">.</span><span class="na">telefono</span><span class="p">)</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">    </span><span class="p">}</span>
 </code></pre></div>
 </div>
 </div>
 </div>
 <p>Resultado real de la ejecución en el proyecto:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>BUILD SUCCESSFUL in 22s
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>BUILD SUCCESSFUL in 22s
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">&lt;testsuite</span><span class="w"> </span><span class="na">name=</span><span class="s">"com.example.ismaelagenda.ValidacionTest"</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">           </span><span class="na">tests=</span><span class="s">"4"</span><span class="w"> </span><span class="na">skipped=</span><span class="s">"0"</span><span class="w"> </span><span class="na">failures=</span><span class="s">"0"</span><span class="w"> </span><span class="na">errors=</span><span class="s">"0"</span><span class="w"> </span><span class="na">time=</span><span class="s">"0.017"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">&lt;testsuite</span><span class="w"> </span><span class="na">name=</span><span class="s">"com.example.ismaelagenda.ValidacionTest"</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">           </span><span class="na">tests=</span><span class="s">"4"</span><span class="w"> </span><span class="na">skipped=</span><span class="s">"0"</span><span class="w"> </span><span class="na">failures=</span><span class="s">"0"</span><span class="w"> </span><span class="na">errors=</span><span class="s">"0"</span><span class="w"> </span><span class="na">time=</span><span class="s">"0.017"</span><span class="nt">&gt;</span>
 </code></pre></div>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Una prueba unitaria no necesita emulador ni servidor: si la lógica está en el ViewModel, se prueba en la JVM en 17 milisegundos. Si está dentro del <code>onClick</code>, no se puede probar.</span></p>
 <h2 id="4-inyeccion-de-dependencias-de-los-singletons-a-hilt">4. Inyección de dependencias: de los singletons a Hilt</h2>

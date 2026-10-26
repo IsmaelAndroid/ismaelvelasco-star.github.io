@@ -1326,32 +1326,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#jugador-2d-se-mueve-con-las-flechas-y-choca-con-los-obstaculos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Jugador 2D: se mueve con las flechas y choca con los obstaculos.
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#7-el-codigo-del-bucle-y-del-hud" class="md-nav__link">
     <span class="md-ellipsis">
       
         7. El código del bucle y del HUD
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#escena-2d-bucle-de-juego-hud-con-fps-y-captura-automatica" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Escena 2D: bucle de juego, HUD con FPS y captura automatica.
       
     </span>
   </a>
@@ -1370,32 +1348,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#escena-3d-cubo-girando-camara-y-luz-direccional" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Escena 3D: cubo girando, camara y luz direccional.
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#9-el-script-que-vuelca-el-arbol" class="md-nav__link">
     <span class="md-ellipsis">
       
         9. El script que vuelca el árbol
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vuelca-por-consola-el-arbol-de-nodos-de-una-escena-diagnostico" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Vuelca por consola el arbol de nodos de una escena (diagnostico).
       
     </span>
   </a>
@@ -2130,32 +2086,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#jugador-2d-se-mueve-con-las-flechas-y-choca-con-los-obstaculos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Jugador 2D: se mueve con las flechas y choca con los obstaculos.
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#7-el-codigo-del-bucle-y-del-hud" class="md-nav__link">
     <span class="md-ellipsis">
       
         7. El código del bucle y del HUD
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#escena-2d-bucle-de-juego-hud-con-fps-y-captura-automatica" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Escena 2D: bucle de juego, HUD con FPS y captura automatica.
       
     </span>
   </a>
@@ -2174,32 +2108,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#escena-3d-cubo-girando-camara-y-luz-direccional" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Escena 3D: cubo girando, camara y luz direccional.
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#9-el-script-que-vuelca-el-arbol" class="md-nav__link">
     <span class="md-ellipsis">
       
         9. El script que vuelca el árbol
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vuelca-por-consola-el-arbol-de-nodos-de-una-escena-diagnostico" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Vuelca por consola el arbol de nodos de una escena (diagnostico).
       
     </span>
   </a>
@@ -2318,11 +2230,8 @@
 </code></pre></div>
 <p>Léelo así: <strong><code>Escena2D</code></strong> es la raíz; <code>Fondo</code>, <code>Suelo</code>, <code>Muro</code>, <code>Jugador</code>, <code>Camara</code> y <code>HUD</code> son hijos suyos; <code>Muro</code> y <code>Jugador</code> tienen a su vez dos hijos (<code>Forma</code> para la colisión y <code>Pintura</code> para lo que se ve).</p>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un nodo hijo hereda la posición de su padre: si mueves <code>Muro</code>, su <code>Forma</code> y su <code>Pintura</code> se mueven con él. Por eso la colisión y el dibujo van como hijos del mismo nodo.</span></p>
-<figure>
-<img src="./assets/capturas-editor-arbol.png" alt="Editor de Godot con el panel Escena mostrando el árbol de nodos y la vista 2D de la escena">
-<figcaption>Figura 1. El árbol de nodos en el panel <em>Escena</em> del editor, con la escena 2D dibujada en el centro y el sistema de archivos del proyecto abajo a la izquierda.</figcaption>
-</figure>
-
+<p><img alt="Editor de Godot con el panel Escena mostrando el árbol de nodos y la vista 2D de la escena" src="../assets/capturas-editor-arbol.png" /></p>
+<p><em>Figura 1. El árbol de nodos en el panel <em>Escena</em> del editor, con la escena 2D dibujada en el centro y el sistema de archivos del proyecto abajo a la izquierda.</em></p>
 <h2 id="4-que-cambia-entre-2d-y-3d">4. Qué cambia entre 2D y 3D</h2>
 <p>La arquitectura es la misma (bucle + escena + nodos). Lo que cambia es el <strong>tipo de nodos</strong> y el <strong>espacio</strong> en el que se colocan:</p>
 <table>
@@ -2380,19 +2289,26 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Código 1 — project.godot</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>; Engine configuration file.
-config_version=5</p>
-<p>[application]</p>
-<p>config/name="IsmaelArcade"
-run/main_scene="res://escena_2d.tscn"
-config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"</p>
-<p>[display]</p>
-<p>window/size/viewport_width=1152
-window/size/viewport_height=648</p>
-<p>[rendering]</p>
-<p>renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">; Engine configuration file.</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="na">config_version</span><span class="o">=</span><span class="s">5</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">[application]</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="na">config/name</span><span class="o">=</span><span class="s">"IsmaelArcade"</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="na">run/main_scene</span><span class="o">=</span><span class="s">"res://escena_2d.tscn"</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="na">config/features</span><span class="o">=</span><span class="s">PackedStringArray("4.7", "GL Compatibility")</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="na">config/icon</span><span class="o">=</span><span class="s">"res://icon.svg"</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="k">[display]</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="na">window/size/viewport_width</span><span class="o">=</span><span class="s">1152</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="na">window/size/viewport_height</span><span class="o">=</span><span class="s">648</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="k">[rendering]</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="na">renderer/rendering_method</span><span class="o">=</span><span class="s">"gl_compatibility"</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="na">renderer/rendering_method.mobile</span><span class="o">=</span><span class="s">"gl_compatibility"</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2402,21 +2318,24 @@ renderer/rendering_method.mobile="gl_compatibility"</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Código 2 — jugador.gd</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>extends CharacterBody2D</p>
-<h2 id="jugador-2d-se-mueve-con-las-flechas-y-choca-con-los-obstaculos">Jugador 2D: se mueve con las flechas y choca con los obstaculos.</h2>
-<p>@export var velocidad: float = 320.0      # pixeles por segundo (editable en el inspector)</p>
-<p>func _physics_process(_delta: float) -&gt; void:
-    var direccion := Vector2.ZERO                        # vector de entrada
-    if Input.is_action_pressed("ui_right"):
-        direccion.x += 1.0
-    if Input.is_action_pressed("ui_left"):
-        direccion.x -= 1.0
-    if Input.is_action_pressed("ui_down"):
-        direccion.y += 1.0
-    if Input.is_action_pressed("ui_up"):
-        direccion.y -= 1.0
-    velocity = direccion.normalized() * velocidad        # normalizar evita la diagonal rapida
-    move_and_slide()                                     # mueve y resuelve colisiones</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">extends</span><span class="w"> </span><span class="n">CharacterBody2D</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">## Jugador 2D: se mueve con las flechas y choca con los obstaculos.</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="err">@</span><span class="k">export</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">velocidad</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">float</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">320.0</span><span class="w">      </span><span class="c1"># pixeles por segundo (editable en el inspector)</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">func</span><span class="w"> </span><span class="n">_physics_process</span><span class="p">(</span><span class="n">_delta</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">float</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">direccion</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">Vector2</span><span class="o">.</span><span class="n">ZERO</span><span class="w">                        </span><span class="c1"># vector de entrada</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s2">"ui_right"</span><span class="p">):</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="n">direccion</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">1.0</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s2">"ui_left"</span><span class="p">):</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="n">direccion</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mf">1.0</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s2">"ui_down"</span><span class="p">):</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">        </span><span class="n">direccion</span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">1.0</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">Input</span><span class="o">.</span><span class="n">is_action_pressed</span><span class="p">(</span><span class="s2">"ui_up"</span><span class="p">):</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">        </span><span class="n">direccion</span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mf">1.0</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="n">velocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">direccion</span><span class="o">.</span><span class="n">normalized</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">velocidad</span><span class="w">        </span><span class="c1"># normalizar evita la diagonal rapida</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="n">move_and_slide</span><span class="p">()</span><span class="w">                                     </span><span class="c1"># mueve y resuelve colisiones</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2426,19 +2345,23 @@ renderer/rendering_method.mobile="gl_compatibility"</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Código 3 — main2d.gd</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>extends Node2D</p>
-<h2 id="escena-2d-bucle-de-juego-hud-con-fps-y-captura-automatica">Escena 2D: bucle de juego, HUD con FPS y captura automatica.</h2>
-<p>var _tiempo := 0.0</p>
-<p>func _process(delta: float) -&gt; void:
-    _tiempo += delta
-    var j := $Jugador as CharacterBody2D
-    $HUD/Info.text = "FPS %d  |  pos %.0f, %.0f  |  t %.1f s  |  nodos %d" % [
-        Engine.get_frames_per_second(), j.position.x, j.position.y, _tiempo, get_child_count()]</p>
-<p>func _ready() -&gt; void:
-    await get_tree().create_timer(2.5).timeout          # deja que el juego corra
-    await RenderingServer.frame_post_draw               # espera el frame dibujado
-    get_viewport().get_texture().get_image().save_png("res://capturas/escena2d.png")
-    get_tree().quit()</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">extends</span><span class="w"> </span><span class="n">Node2D</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1">## Escena 2D: bucle de juego, HUD con FPS y captura automatica.</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">var</span><span class="w"> </span><span class="n">_tiempo</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">func</span><span class="w"> </span><span class="n">_process</span><span class="p">(</span><span class="n">delta</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">float</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="n">_tiempo</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">delta</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">Jugador</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">CharacterBody2D</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="o">$</span><span class="n">HUD</span><span class="o">/</span><span class="n">Info</span><span class="o">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"FPS </span><span class="si">%d</span><span class="s2">  |  pos </span><span class="si">%.0f</span><span class="s2">, </span><span class="si">%.0f</span><span class="s2">  |  t </span><span class="si">%.1f</span><span class="s2"> s  |  nodos </span><span class="si">%d</span><span class="s2">"</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="n">Engine</span><span class="o">.</span><span class="n">get_frames_per_second</span><span class="p">(),</span><span class="w"> </span><span class="n">j</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">_tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">get_child_count</span><span class="p">()]</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="n">await</span><span class="w"> </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">create_timer</span><span class="p">(</span><span class="mf">2.5</span><span class="p">)</span><span class="o">.</span><span class="n">timeout</span><span class="w">          </span><span class="c1"># deja que el juego corra</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="n">await</span><span class="w"> </span><span class="n">RenderingServer</span><span class="o">.</span><span class="n">frame_post_draw</span><span class="w">               </span><span class="c1"># espera el frame dibujado</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="n">get_viewport</span><span class="p">()</span><span class="o">.</span><span class="n">get_texture</span><span class="p">()</span><span class="o">.</span><span class="n">get_image</span><span class="p">()</span><span class="o">.</span><span class="n">save_png</span><span class="p">(</span><span class="s2">"res://capturas/escena2d.png"</span><span class="p">)</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2448,61 +2371,61 @@ renderer/rendering_method.mobile="gl_compatibility"</p>
 <li><code>Engine.get_frames_per_second()</code> devuelve los FPS reales que está consiguiendo el juego.</li>
 <li>La captura se guarda con <code>get_viewport().get_texture().get_image().save_png(...)</code>: es el propio juego el que se fotografía, sin herramientas externas.</li>
 </ul>
-<figure>
-<img src="./assets/capturas-juego2d.png" alt="Escena 2D en ejecución con el HUD mostrando FPS, posición, tiempo y número de nodos">
-<figcaption>Figura 2. La escena 2D ejecutándose: <strong>FPS 60 · pos 300,536 · t 2.5 s · nodos 6</strong>. El jugador (cuadrado verde) está apoyado sobre el suelo y el muro marrón queda a su derecha.</figcaption>
-</figure>
-
+<p><img alt="Escena 2D en ejecución con el HUD mostrando FPS, posición, tiempo y número de nodos" src="../assets/capturas-juego2d.png" /></p>
+<p><em>Figura 2. La escena 2D ejecutándose: <strong>FPS 60 · pos 300,536 · t 2.5 s · nodos 6</strong>. El jugador (cuadrado verde) está apoyado sobre el suelo y el muro marrón queda a su derecha.</em></p>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El HUD no es decoración: es el instrumento de medida. Sin ver los FPS y la posición no puedes saber si el juego va bien o va a tirones.</span></p>
 <h2 id="8-la-misma-arquitectura-en-3d">8. La misma arquitectura en 3D</h2>
 <p>El script 3D es casi idéntico: cambian el tipo de nodo y las tres dimensiones.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Código 4 — main3d.gd</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>extends Node3D</p>
-<h2 id="escena-3d-cubo-girando-camara-y-luz-direccional">Escena 3D: cubo girando, camara y luz direccional.</h2>
-<p>var _angulo := 0.0</p>
-<p>func _process(delta: float) -&gt; void:
-    _angulo += delta * 0.8
-    $Cubo.rotation.y = _angulo                        # giro del cubo
-    $Cubo.rotation.x = _angulo * 0.5
-    var mallas := 0                                      # cuenta de mallas reales en la escena
-    for n in get_children():
-        if n is MeshInstance3D:
-            mallas += 1
-    $HUD/Info.text = "FPS %d  |  rotacion Y %.2f rad  |  mallas %d  |  nodos %d" % [
-        Engine.get_frames_per_second(), _angulo, mallas, get_child_count()]</p>
-<p>func _ready() -&gt; void:
-    await get_tree().create_timer(2.5).timeout
-    await RenderingServer.frame_post_draw
-    get_viewport().get_texture().get_image().save_png("res://capturas/escena3d.png")
-    get_tree().quit()</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">extends</span><span class="w"> </span><span class="n">Node3D</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1">## Escena 3D: cubo girando, camara y luz direccional.</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">var</span><span class="w"> </span><span class="n">_angulo</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="k">func</span><span class="w"> </span><span class="n">_process</span><span class="p">(</span><span class="n">delta</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">float</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="n">_angulo</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">delta</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.8</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="o">$</span><span class="n">Cubo</span><span class="o">.</span><span class="n">rotation</span><span class="o">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_angulo</span><span class="w">                        </span><span class="c1"># giro del cubo</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="o">$</span><span class="n">Cubo</span><span class="o">.</span><span class="n">rotation</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_angulo</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.5</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">mallas</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">                                      </span><span class="c1"># cuenta de mallas reales en la escena</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">get_children</span><span class="p">():</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">MeshInstance3D</span><span class="p">:</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">            </span><span class="n">mallas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="o">$</span><span class="n">HUD</span><span class="o">/</span><span class="n">Info</span><span class="o">.</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"FPS </span><span class="si">%d</span><span class="s2">  |  rotacion Y </span><span class="si">%.2f</span><span class="s2"> rad  |  mallas </span><span class="si">%d</span><span class="s2">  |  nodos </span><span class="si">%d</span><span class="s2">"</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">        </span><span class="n">Engine</span><span class="o">.</span><span class="n">get_frames_per_second</span><span class="p">(),</span><span class="w"> </span><span class="n">_angulo</span><span class="p">,</span><span class="w"> </span><span class="n">mallas</span><span class="p">,</span><span class="w"> </span><span class="n">get_child_count</span><span class="p">()]</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="n">await</span><span class="w"> </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">create_timer</span><span class="p">(</span><span class="mf">2.5</span><span class="p">)</span><span class="o">.</span><span class="n">timeout</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="n">await</span><span class="w"> </span><span class="n">RenderingServer</span><span class="o">.</span><span class="n">frame_post_draw</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="n">get_viewport</span><span class="p">()</span><span class="o">.</span><span class="n">get_texture</span><span class="p">()</span><span class="o">.</span><span class="n">get_image</span><span class="p">()</span><span class="o">.</span><span class="n">save_png</span><span class="p">(</span><span class="s2">"res://capturas/escena3d.png"</span><span class="p">)</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="n">get_tree</span><span class="p">()</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</code></pre></div>
 </div>
 </div>
 </div>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un nodo 3D sin cámara no se ve: la cámara decide qué parte del espacio se proyecta en la pantalla. Y sin luz, todo se ve negro.</span></p>
-<figure>
-<img src="./assets/capturas-juego3d.png" alt="Escena 3D en ejecución con un cubo iluminado, suelo en perspectiva y HUD con FPS, rotación y número de mallas">
-<figcaption>Figura 3. La escena 3D ejecutándose: <strong>FPS 60 · rotación Y 2.01 rad · mallas 2 · nodos 5</strong>. Se distinguen las caras del cubo con distinta iluminación y el suelo en perspectiva.</figcaption>
-</figure>
-
+<p><img alt="Escena 3D en ejecución con un cubo iluminado, suelo en perspectiva y HUD con FPS, rotación y número de mallas" src="../assets/capturas-juego3d.png" /></p>
+<p><em>Figura 3. La escena 3D ejecutándose: <strong>FPS 60 · rotación Y 2.01 rad · mallas 2 · nodos 5</strong>. Se distinguen las caras del cubo con distinta iluminación y el suelo en perspectiva.</em></p>
 <h2 id="9-el-script-que-vuelca-el-arbol">9. El script que vuelca el árbol</h2>
 <p>Para comprobar la arquitectura sin abrir el editor usamos un script de diagnóstico de cinco líneas:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Código 5 — dump_arbol.gd</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>extends SceneTree</p>
-<h2 id="vuelca-por-consola-el-arbol-de-nodos-de-una-escena-diagnostico">Vuelca por consola el arbol de nodos de una escena (diagnostico).</h2>
-<p>func _init() -&gt; void:
-    var empaquetada: PackedScene = load("res://escena_2d.tscn")   # carga el fichero .tscn
-    var escena: Node = empaquetada.instantiate()                  # crea los nodos en memoria
-    escena.print_tree_pretty()                                    # imprime el arbol con sangria
-    quit()                                                        # termina sin abrir ventana</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">extends</span><span class="w"> </span><span class="n">SceneTree</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1">## Vuelca por consola el arbol de nodos de una escena (diagnostico).</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">func</span><span class="w"> </span><span class="n">_init</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">empaquetada</span><span class="p">:</span><span class="w"> </span><span class="n">PackedScene</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">load</span><span class="p">(</span><span class="s2">"res://escena_2d.tscn"</span><span class="p">)</span><span class="w">   </span><span class="c1"># carga el fichero .tscn</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">escena</span><span class="p">:</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">empaquetada</span><span class="o">.</span><span class="n">instantiate</span><span class="p">()</span><span class="w">                  </span><span class="c1"># crea los nodos en memoria</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="n">escena</span><span class="o">.</span><span class="n">print_tree_pretty</span><span class="p">()</span><span class="w">                                    </span><span class="c1"># imprime el arbol con sangria</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="n">quit</span><span class="p">()</span><span class="w">                                                        </span><span class="c1"># termina sin abrir ventana</span>
+</code></pre></div>
 </div>
 </div>
 </div>
 <p>Se ejecuta así, sin ventana:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>godot<span class="w"> </span>--headless<span class="w"> </span>--path<span class="w"> </span>IsmaelArcade<span class="w"> </span>--script<span class="w"> </span>dump_arbol.gd
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>godot<span class="w"> </span>--headless<span class="w"> </span>--path<span class="w"> </span>IsmaelArcade<span class="w"> </span>--script<span class="w"> </span>dump_arbol.gd
 </code></pre></div>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>--headless</code> ejecuta el motor sin ventana: sirve para comprobar escenas y scripts en una máquina sin pantalla o desde un servidor.</span></p>
 <h2 id="10-lo-que-tienes-que-llevarte-de-este-apartado">10. Lo que tienes que llevarte de este apartado</h2>
