@@ -20,7 +20,11 @@ Este curso el módulo se imparte íntegramente con **Kotlin y Jetpack Compose**,
 | # | Unidad | Estado |
 |---|--------|--------|
 | 1 | Introducción a la confección de interfaces | ✅ Publicada |
-| 2+ | En construcción (tema a tema) | 🚧 |
+| 2 | Clases y componentes | ✅ Publicada |
+| 3 | Generación de interfaces con XML | ✅ Publicada |
+| 4 | Creación de componentes propios | ✅ Publicada |
+| 5 | Explotación de componentes (eventos, estado, pruebas) | ✅ Publicada |
+| 6+ | En construcción (tema a tema) | 🚧 |
 
 ## Presentaciones
 
