@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 430" width="1000" height="430" role="img" aria-label="Los cinco tipos de ayuda: ayuda en linea, ayuda contextual, tutorial, manual de usuario y guia de referencia">
+<defs><marker id="punta" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#37474f"/></marker></defs>
+<rect width="1000" height="430" fill="#ffffff"/>
+<text x="24" y="30" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#37474f">Cinco tipos de ayuda, ordenados por lo cerca que están del usuario</text>
+<rect x="24" y="120" width="152" height="118" rx="8" fill="#e8f5e9" stroke="#1b5e20" stroke-width="1.5"/>
+<text x="36" y="143" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#1b5e20">1. Ayuda en línea</text>
+<text x="36" y="164" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">un texto al lado del campo</text>
+<text x="36" y="181" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">o un icono de información</text>
+<text x="36" y="198" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">«qué es esto» en 10 palabras</text>
+<rect x="224" y="120" width="152" height="118" rx="8" fill="#e8f1f8" stroke="#1a4d7a" stroke-width="1.5"/>
+<text x="236" y="143" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#1a4d7a">2. Ayuda contextual</text>
+<text x="236" y="164" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">la pantalla sabe dónde estás</text>
+<text x="236" y="181" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">cambia según lo que ves</text>
+<text x="236" y="198" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">«qué hago aquí»</text>
+<rect x="424" y="120" width="152" height="118" rx="8" fill="#fff4e0" stroke="#8a5a00" stroke-width="1.5"/>
+<text x="436" y="143" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#8a5a00">3. Tutorial</text>
+<text x="436" y="164" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">la primera vez que entras</text>
+<text x="436" y="181" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">pasos guiados, se puede</text>
+<text x="436" y="198" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">saltar y no volver a verlo</text>
+<rect x="624" y="120" width="152" height="118" rx="8" fill="#ede7f6" stroke="#4527a0" stroke-width="1.5"/>
+<text x="636" y="143" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#4527a0">4. Manual de usuario</text>
+<text x="636" y="164" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">todo lo que se puede hacer</text>
+<text x="636" y="181" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">con capturas y ejemplos</text>
+<text x="636" y="198" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">se consulta, no se lee</text>
+<rect x="824" y="120" width="152" height="118" rx="8" fill="#eceff1" stroke="#37474f" stroke-width="1.5"/>
+<text x="836" y="143" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#37474f">5. Referencia</text>
+<text x="836" y="164" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">cada campo y cada error</text>
+<text x="836" y="181" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">cómo se instala y configura</text>
+<text x="836" y="198" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">para el técnico, no el usuario</text>
+<line x1="176" y1="179" x2="222" y2="179" stroke="#37474f" stroke-width="1.8" marker-end="url(#punta)"/>
+<line x1="376" y1="179" x2="422" y2="179" stroke="#37474f" stroke-width="1.8" marker-end="url(#punta)"/>
+<line x1="576" y1="179" x2="622" y2="179" stroke="#37474f" stroke-width="1.8" marker-end="url(#punta)"/>
+<line x1="776" y1="179" x2="822" y2="179" stroke="#37474f" stroke-width="1.8" marker-end="url(#punta)"/>
+<text x="24" y="284" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">Cuanto más cerca del usuario está la ayuda, más corta es y menos veces se lee: la de al lado del campo se lee siempre,</text>
+<text x="24" y="304" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">el manual casi nunca. Por eso la ayuda contextual es la que más se usa y la que menos se documenta.</text>
+<rect x="24" y="322" width="952" height="88" rx="8" fill="#ede7f6" stroke="#4527a0" stroke-width="1.5"/>
+<text x="36" y="345" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#4527a0">Donde entra la IA, y dónde no</text>
+<text x="36" y="366" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">Escribe el manual, el tutorial y los textos de ayuda en minutos, y hasta los traduce a cinco idiomas.</text>
+<text x="36" y="383" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">Lo que no sabe: qué hace TU app de verdad. Los permisos, la versión, qué se guarda y dónde se guarda se leen del</text>
+<text x="36" y="400" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">código y se prueban en el móvil. Un manual generado sin comprobar es una lista de mentiras bien escritas.</text>
+</svg>

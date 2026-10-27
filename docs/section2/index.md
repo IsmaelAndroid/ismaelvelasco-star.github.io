@@ -27,7 +27,8 @@ Este curso el módulo se imparte íntegramente con **Kotlin y Jetpack Compose**,
 | 6 | Usabilidad y accesibilidad (WCAG, contraste, toques, pruebas) | ✅ Publicada |
 | 7 | Interfaces naturales (voz, sensores, ML Kit y realidad aumentada) | ✅ Publicada |
 | 8 | Informes: filtros, totales, gráficos y exportación a PDF y CSV | ✅ Publicada |
-| 9+ | En construcción (tema a tema) | 🚧 |
+| 9 | Documentación y ayudas: ayuda contextual, esquema de datos y manual generado | ✅ Publicada |
+| 10+ | En construcción (tema a tema) | 🚧 |
 
 ## Presentaciones
 
