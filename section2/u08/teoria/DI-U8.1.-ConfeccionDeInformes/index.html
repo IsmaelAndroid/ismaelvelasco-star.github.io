@@ -1,0 +1,2859 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Informes dentro de la aplicación: estructura, filtros, cálculos, gráficos propios y exportación real a PDF y CSV con lo que se usa hoy en las empresas (RA5 completo).">
+      
+      
+        <meta name="author" content="Ismael Velasco">
+      
+      
+        <link rel="canonical" href="https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u08/teoria/DI-U8.1.-ConfeccionDeInformes/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>8.1.-Confección de informes - Aula 2º DAM - Ismael Velasco</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#81-confeccion-de-informes" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../../.." title="Aula 2º DAM - Ismael Velasco" class="md-header__button md-logo" aria-label="Aula 2º DAM - Ismael Velasco" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Aula 2º DAM - Ismael Velasco
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              8.1.-Confección de informes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ismaelvelasco-star/ismaelvelasco-star.github.io" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ismaelvelasco-star/ismaelvelasco-star.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    
+  
+  Principal
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../section1/" class="md-tabs__link">
+          
+  
+  
+  PMDM
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Aula 2º DAM - Ismael Velasco" class="md-nav__button md-logo" aria-label="Aula 2º DAM - Ismael Velasco" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Aula 2º DAM - Ismael Velasco
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ismaelvelasco-star/ismaelvelasco-star.github.io" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ismaelvelasco-star/ismaelvelasco-star.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Principal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PMDM
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PMDM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programación Multimedia y Dispositivos Móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U1: Análisis de tecnologías para dispositivos móviles
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U1: Análisis de tecnologías para dispositivos móviles
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u01/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - Análisis de tecnologías para aplicaciones móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u01/teoria/PMDM-U1.1.-AnalisisTecnologiasDispositivosMoviles/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Análisis de tecnologías para dispositivos móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u01/practica/PMDM-U1.-Practica001/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.1: Explorando Android Studio y sus plantillas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u01/practica/PMDM-U1.-Practica002/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.2: Emuladores y perfiles de dispositivo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u01/practica/PMDM-U1.-Practica003/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.3: ADB y el administrador de aplicaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U2: Programación en Android: IU con Jetpack Compose
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U2: Programación en Android: IU con Jetpack Compose
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u02/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 2 - Programación en Android: IU con Jetpack Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u02/teoria/PMDM-U2.1.-FundamentosLenguajeKotlin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1.-Fundamentos del lenguaje Kotlin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u02/teoria/PMDM-U2.2.-ActividadesEIntents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2.-Actividades e Intents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u02/teoria/PMDM-U2.3.-AppComposeListasYFormulario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3.-La app Compose: listas y formulario
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u02/practica/PMDM-U2.-MiniProyectoContactos/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 2.1: Mini-proyecto de la libreta
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U3: Gestión de datos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U3: Gestión de datos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 3 - Programación en Android: gestión de datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/teoria/PMDM-U3.1.-NavegacionGrafoArgumentosYDeepLinks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1.-Navegación: grafo, argumentos y deep links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/teoria/PMDM-U3.2.-EstadoYFormularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2.-Estado y formularios: ViewModel y validación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/teoria/PMDM-U3.3.-RoomPersistenciaLocal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.-Room: persistencia local
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/teoria/PMDM-U3.4.-RetrofitRedYErrores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4.-Retrofit: red, DTOs y errores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/teoria/PMDM-U3.5.-TallerIntegradorSesionYPruebas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5.-Taller integrador: sesión y pruebas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/practica/PMDM-U3.-AgendaConDatos/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3.1: La agenda con datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U4: Motores de juegos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U4: Motores de juegos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 4 - Selección y prueba de motores de juegos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/teoria/PMDM-U4.1.-ArquitecturaDeUnJuego2DY3D/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1.-Arquitectura de un juego 2D y 3D
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/teoria/PMDM-U4.2.-ComponentesDeUnMotorDeJuegos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2.-Componentes de un motor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/teoria/PMDM-U4.3.-EntornosYComparativaDeMotores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3.-Entornos y comparativa de motores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/teoria/PMDM-U4.4.-TallerPrimerProyectoEjecutarYDepurar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4.-Taller: ejecutar y depurar
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/practica/PMDM-U4.-AnatomiaDeUnJuego/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 4.1: Anatomía de un juego
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U5: Contenidos multimedia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U5: Contenidos multimedia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 16V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2m-11-4 2.03 2.71L16 11l4 5H8M2 6v14a2 2 0 0 0 2 2h14v-2H4V6"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 5 - Contenidos multimedia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/teoria/PMDM-U5.1.-FormatosYEntornosMultimedia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1.-Formatos y entornos multimedia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/teoria/PMDM-U5.2.-CapturaYProcesamientoEnAndroid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2.-Captura y procesamiento en Android
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/teoria/PMDM-U5.3.-ReproduccionDeAudioYVideo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3.-Reproducción de audio y vídeo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/teoria/PMDM-U5.4.-Animaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4.-Animaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/practica/PMDM-U5.-MiAppMultimedia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica: Mi app multimedia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U6: Desarrollo de juegos 2D y 3D
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U6: Desarrollo de juegos 2D y 3D
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidad 6 - Desarrollo de juegos 2D y 3D
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/teoria/PMDM-U6.1.-DelPrototipoAlJuego/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1.-Del prototipo al juego
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/teoria/PMDM-U6.2.-Juego2DMovimientoColisiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.2.-Juego 2D: movimiento y colisiones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/teoria/PMDM-U6.3.-Juego3DMaterialesFisicas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.3.-Juego 3D: materiales y físicas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/teoria/PMDM-U6.4.-PruebasOptimizacionYDespliegue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.4.-Pruebas, optimización y despliegue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/practica/PMDM-U6.-MiPrimerJuego/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica: Mi primer juego
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#resultado-de-aprendizaje-que-trabaja-esta-unidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resultado de aprendizaje que trabaja esta unidad
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-un-informe-y-que-no" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Qué es un informe (y qué no)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-la-estructura-del-informe-criterio-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. La estructura del informe (criterio a)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-de-donde-salen-los-datos-y-como-se-filtran-criterios-b-y-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. De dónde salen los datos y cómo se filtran (criterios b y c)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. De dónde salen los datos y cómo se filtran (criterios b y c)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-la-fuente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 La fuente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-el-modelo-y-el-filtro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 El modelo y el filtro
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-los-calculos-del-pie-criterio-d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Los cálculos del pie (criterio d)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-el-grafico-criterio-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. El gráfico (criterio e)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-del-asistente-al-codigo-criterios-f-y-g" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Del asistente al código (criterios f y g)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Del asistente al código (criterios f y g)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-lo-que-hace-un-asistente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Lo que hace un asistente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-la-modificacion-el-codigo-de-la-exportacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 La modificación: el código de la exportación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-el-informe-incrustado-criterio-h" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. El informe incrustado (criterio h)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-lo-que-usan-las-empresas-y-que-hace-la-ia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Lo que usan las empresas (y qué hace la IA)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-lo-que-se-ha-probado-29-pruebas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Lo que se ha probado (29 pruebas)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-errores-tipicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Errores típicos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Resumen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bibliografia-y-fuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bibliografía y fuentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="81-confeccion-de-informes">8.1 — Confección de informes</h1>
+<blockquote>
+<p><strong>El trabajo de ingeniería:</strong> convertir datos en una decisión. Un informe no es un adorno al final
+de la app: es la pantalla donde alguien mira cuánto se ha gastado, cuánto se ha vendido o qué está
+fallando. Y tiene una trampa que se lleva por delante a muchos proyectos:
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">si la pantalla y el PDF calculan por separado, tarde o temprano dan números distintos</span>. En esta
+unidad se construye el informe del <code>IsmaelUIKit</code> —filtros, totales, gráfico y exportación a PDF y
+CSV— con una sola función que hace la cuenta, y se prueba con seis pruebas automáticas.</p>
+</blockquote>
+<h2 id="resultado-de-aprendizaje-que-trabaja-esta-unidad">Resultado de aprendizaje que trabaja esta unidad</h2>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><strong>RA5. Crea informes evaluando y utilizando herramientas gráficas</strong></span> (RD 405/2023, módulo 0488
+<em>Desarrollo de interfaces</em>). La unidad lo trabaja <strong>completo</strong>: los ocho criterios, de la <code>a</code> a la <code>h</code>.</p>
+<table>
+<thead>
+<tr>
+<th>CE</th>
+<th>Criterio de evaluación (texto literal del real decreto)</th>
+<th>Dónde se trabaja</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RA5 a</td>
+<td>Se ha establecido la estructura del informe.</td>
+<td>§2, las siete partes</td>
+</tr>
+<tr>
+<td>RA5 b</td>
+<td>Se han generado informes básicos a partir de diferentes fuentes de datos mediante asistentes.</td>
+<td>§3 y §6, de la fuente al asistente</td>
+</tr>
+<tr>
+<td>RA5 c</td>
+<td>Se han establecido filtros sobre los valores a presentar en los informes.</td>
+<td>§3, <code>filtrar()</code></td>
+</tr>
+<tr>
+<td>RA5 d</td>
+<td>Se han incluido valores calculados, recuentos y totales.</td>
+<td>§4, <code>resumir()</code></td>
+</tr>
+<tr>
+<td>RA5 e</td>
+<td>Se han incluido gráficos generados a partir de los datos.</td>
+<td>§5, <code>GraficoBarras</code></td>
+</tr>
+<tr>
+<td>RA5 f</td>
+<td>Se han utilizado herramientas para generar el código correspondiente a los informes de una aplicación.</td>
+<td>§6, qué genera un asistente</td>
+</tr>
+<tr>
+<td>RA5 g</td>
+<td>Se ha modificado el código correspondiente a los informes.</td>
+<td>§6, <code>ExportaInforme</code></td>
+</tr>
+<tr>
+<td>RA5 h</td>
+<td>Se ha desarrollado una aplicación que incluye informes incrustados.</td>
+<td>§7, la escena 9</td>
+</tr>
+</tbody>
+</table>
+<div style="background-color:#a5d6a7; border-radius:8px; padding:10px 14px; margin:14px 0;">
+<strong>🟢 Leyenda de repaso obligatorio:</strong> los textos con <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">este fondo verde</span> son los datos que se preguntan en examen y los que se usan en el trabajo real.</div>
+
+<h2 id="1-que-es-un-informe-y-que-no">1. Qué es un informe (y qué no)</h2>
+<p>Un <strong>informe</strong> es una vista de datos preparada para que alguien <strong>decida</strong>: lleva un título que dice
+qué se está mirando, unos filtros que dicen de qué trozo de la realidad se habla, una tabla con los
+datos, unos totales y, si ayuda, un gráfico.</p>
+<p>No es un informe:</p>
+<ul>
+<li>una lista de todos los registros sin filtrar (eso es un volcado);</li>
+<li>una pantalla bonita sin cifras (eso es un escaparate);</li>
+<li>un PDF que se genera con otros números que los de la pantalla (eso es un problema).</li>
+</ul>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La regla que ordena toda la unidad: los datos se filtran y se cuentan <strong>una vez</strong>, y ese resultado lo
+usan la pantalla, el PDF y el CSV</span>. Si hay dos caminos de cálculo, hay dos verdades.</p>
+<figure>
+<p><img alt="Cinco pasos encadenados: datos, filtro, resumen, vista y salida en PDF o CSV" src="../assets/diagrama-flujo-informe.svg" /></p>
+<figcaption>Figura 1. El camino del informe. El paso 3 (resumen) es el único que calcula; el 4 y el 5 solo pintan lo que devuelve.</figcaption>
+</figure>
+<h2 id="2-la-estructura-del-informe-criterio-a">2. La estructura del informe (criterio a)</h2>
+<p>Un informe se lee de arriba abajo, y cada parte responde a una pregunta:</p>
+<figure>
+<p><img alt="Hoja de informe con siete bandas: cabecera, filtros, cabecera de tabla, filas, totales, gráfico y pie, cada una con su criterio" src="../assets/diagrama-anatomia-informe.svg" /></p>
+<figcaption>Figura 2. Las siete partes de un informe. Las bandas de la izquierda son la hoja; a la derecha, el criterio de evaluación que cubre cada una.</figcaption>
+</figure>
+<table>
+<thead>
+<tr>
+<th>Parte</th>
+<th>Qué lleva</th>
+<th>La pregunta que responde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cabecera</strong></td>
+<td>Título, fecha y quién lo genera</td>
+<td>¿Qué estoy mirando y de cuándo es?</td>
+</tr>
+<tr>
+<td><strong>Filtros</strong></td>
+<td>Categoría, fechas, usuario</td>
+<td>¿De qué trozo de los datos habla?</td>
+</tr>
+<tr>
+<td><strong>Cabecera de tabla</strong></td>
+<td>Nombres de las columnas</td>
+<td>¿Qué significa cada número?</td>
+</tr>
+<tr>
+<td><strong>Filas</strong></td>
+<td>Un dato por línea</td>
+<td>¿Qué hay dentro?</td>
+</tr>
+<tr>
+<td><strong>Totales</strong></td>
+<td>Recuento, suma, media</td>
+<td>¿Cuánto, en total?</td>
+</tr>
+<tr>
+<td><strong>Gráfico</strong></td>
+<td>Barras, líneas o tarta</td>
+<td>¿Cómo se reparte?</td>
+</tr>
+<tr>
+<td><strong>Pie</strong></td>
+<td>Página y fecha de generación</td>
+<td>¿Se ha cortado alguna hoja?</td>
+</tr>
+</tbody>
+</table>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Los filtros van escritos en el informe, no solo aplicados</span>. Un PDF con «Total: 1.880,35 €» y sin
+decir «solo Servicios, del 1 al 15» es un número sin contexto: quien lo recibe no puede comprobarlo.</p>
+<div class="admonition note">
+<p class="admonition-title">Los criterios f y g no son una parte visible</p>
+<p>Generar el código del informe y modificarlo (CE f y g) no se ve en la hoja: es el <strong>código</strong> que
+dibuja la hoja. Se trabaja en el apartado 6.</p>
+</div>
+<h2 id="3-de-donde-salen-los-datos-y-como-se-filtran-criterios-b-y-c">3. De dónde salen los datos y cómo se filtran (criterios b y c)</h2>
+<h3 id="31-la-fuente">3.1 La fuente</h3>
+<table>
+<thead>
+<tr>
+<th>Fuente</th>
+<th>Ejemplo</th>
+<th>Cuidado con…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base de datos</td>
+<td>PostgreSQL, SQLite, Room</td>
+<td>El informe no debe traerse la tabla entera para contar en el móvil</td>
+</tr>
+<tr>
+<td>API REST</td>
+<td>Un endpoint que devuelve JSON</td>
+<td>Que el servidor filtre, no el cliente</td>
+</tr>
+<tr>
+<td>Fichero</td>
+<td>CSV de una exportación, Excel</td>
+<td>Codificación (UTF-8) y separador (<code>;</code> o <code>,</code>)</td>
+</tr>
+<tr>
+<td>La propia app</td>
+<td>Los datos que el usuario ha ido guardando</td>
+<td>Es la fuente más pequeña y la más fácil de probar</td>
+</tr>
+</tbody>
+</table>
+<p>En esta unidad la fuente es la propia app: una lista de gastos del mes. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Da igual de dónde vengan:
+el modelo de datos es el mismo</span>, y por eso se puede probar sin servidor.</p>
+<h3 id="32-el-modelo-y-el-filtro">3.2 El modelo y el filtro</h3>
+<div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/Informe.kt</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">package</span><span class="w"> </span><span class="nn">com.example.uikit</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cm">/**</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cm"> * Modelo de un informe: las filas, el filtro que aplica el usuario y los totales del pie.</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="cm"> *</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="cm"> * Aquí no hay nada de Android: son funciones puras (entran datos, salen números), y por eso se</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="cm"> * pueden probar sin emulador. La pantalla solo pinta lo que devuelven estas funciones.</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="cm"> */</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="cm">/** Una fila del informe. El día es el día del mes (1..31): suficiente para filtrar por fechas. */</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">FilaInforme</span><span class="p">(</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">concepto</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">categoria</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">importe</span><span class="p">:</span><span class="w"> </span><span class="kt">Double</span><span class="p">,</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">dia</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="p">)</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="cm">/** Lo que el usuario elige antes de ver el informe. Categoría nula significa "todas". */</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">FiltroInforme</span><span class="p">(</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">categoria</span><span class="p">:</span><span class="w"> </span><span class="kt">String?</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">desde</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">hasta</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">31</span><span class="p">,</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="p">)</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="cm">/** Los totales que van al pie: cuántas filas, cuánto suman, cuánto de media y cuánto por categoría. */</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">ResumenInforme</span><span class="p">(</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">numero</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">total</span><span class="p">:</span><span class="w"> </span><span class="kt">Double</span><span class="p">,</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">media</span><span class="p">:</span><span class="w"> </span><span class="kt">Double</span><span class="p">,</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">porCategoria</span><span class="p">:</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="kt">Double</span><span class="o">&gt;</span><span class="p">,</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">    </span><span class="cm">/**</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="cm">     * Porcentaje que representa una categoría sobre el total.</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="cm">     * Si el total es cero devuelve 0: dividir entre cero no es un informe, es un error.</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="cm">     */</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">porcentaje</span><span class="p">(</span><span class="n">categoria</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="kt">Double</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">total</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0.0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="m">0.0</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">porCategoria</span><span class="o">[</span><span class="n">categoria</span><span class="o">]</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="m">0.0</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">100.0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">total</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="p">}</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="kd">object</span><span class="w"> </span><span class="nc">Informe</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">    </span><span class="cm">/** Aplica categoría y rango de días. Un filtro vacío devuelve todas las filas. */</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">filtrar</span><span class="p">(</span><span class="n">filas</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">FilaInforme</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">filtro</span><span class="p">:</span><span class="w"> </span><span class="n">FiltroInforme</span><span class="p">):</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">FilaInforme</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">        </span><span class="n">filas</span><span class="p">.</span><span class="na">filter</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">fila</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">deCategoria</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">filtro</span><span class="p">.</span><span class="na">categoria</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">fila</span><span class="p">.</span><span class="na">categoria</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">filtro</span><span class="p">.</span><span class="na">categoria</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">deFecha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fila</span><span class="p">.</span><span class="na">dia</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">filtro</span><span class="p">.</span><span class="na">desde</span><span class="p">..</span><span class="na">filtro</span><span class="p">.</span><span class="na">hasta</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">            </span><span class="n">deCategoria</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">deFecha</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">    </span><span class="cm">/** Recuento, suma, media y suma por categoría. La media se calcula sobre las filas que hay. */</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">resumir</span><span class="p">(</span><span class="n">filas</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">FilaInforme</span><span class="o">&gt;</span><span class="p">):</span><span class="w"> </span><span class="n">ResumenInforme</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">filas</span><span class="p">.</span><span class="na">sumOf</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">importe</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ResumenInforme</span><span class="p">(</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="w">            </span><span class="n">numero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">filas</span><span class="p">.</span><span class="na">size</span><span class="p">,</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="w">            </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">total</span><span class="p">,</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="w">            </span><span class="n">media</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">filas</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="m">0.0</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">filas</span><span class="p">.</span><span class="na">size</span><span class="p">,</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">            </span><span class="n">porCategoria</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">filas</span><span class="p">.</span><span class="na">groupBy</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">categoria</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="w">                </span><span class="p">.</span><span class="na">mapValues</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">grupo</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">grupo</span><span class="p">.</span><span class="na">sumOf</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">importe</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="w">        </span><span class="p">)</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="w">    </span><span class="cm">/**</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="cm">     * El informe en CSV, con punto y coma como separador (el que espera una hoja de cálculo en</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="cm">     * español). Los campos que llevan separador, comillas o salto de línea van entrecomillados.</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="cm">     */</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">aCsv</span><span class="p">(</span><span class="n">filas</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">FilaInforme</span><span class="o">&gt;</span><span class="p">):</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">cabecera</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Concepto;Categoría;Importe;Día"</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">cuerpo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">filas</span><span class="p">.</span><span class="na">joinToString</span><span class="p">(</span><span class="s">"\n"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">fila</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="w">            </span><span class="n">listOf</span><span class="p">(</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a><span class="w">                </span><span class="n">escapar</span><span class="p">(</span><span class="n">fila</span><span class="p">.</span><span class="na">concepto</span><span class="p">),</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="w">                </span><span class="n">escapar</span><span class="p">(</span><span class="n">fila</span><span class="p">.</span><span class="na">categoria</span><span class="p">),</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a><span class="w">                </span><span class="kt">String</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Locale</span><span class="p">.</span><span class="na">US</span><span class="p">,</span><span class="w"> </span><span class="s">"%.2f"</span><span class="p">,</span><span class="w"> </span><span class="n">fila</span><span class="p">.</span><span class="na">importe</span><span class="p">),</span>
+<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a><span class="w">                </span><span class="n">fila</span><span class="p">.</span><span class="na">dia</span><span class="p">.</span><span class="na">toString</span><span class="p">(),</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a><span class="w">            </span><span class="p">).</span><span class="na">joinToString</span><span class="p">(</span><span class="s">";"</span><span class="p">)</span>
+<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cabecera</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"\n"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cuerpo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"\n"</span>
+<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>
+<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a><span class="w">    </span><span class="cm">/** Entrecomilla un campo solo si lo necesita, y duplica las comillas que ya lleva dentro. */</span>
+<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">escapar</span><span class="p">(</span><span class="n">campo</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">necesita</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">campo</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="sc">';'</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">campo</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="sc">'"'</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">campo</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="sc">'\n'</span><span class="p">)</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">necesita</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">campo</span>
+<a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">"\""</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">campo</span><span class="p">.</span><span class="na">replace</span><span class="p">(</span><span class="s">"\""</span><span class="p">,</span><span class="w"> </span><span class="s">"\"\""</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"\""</span>
+<a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a><span class="p">}</span>
+</code></pre></div>
+<p>Tres decisiones que están en el código y que se preguntan:</p>
+<ol>
+<li><strong>El filtro es un dato, no un <code>if</code> suelto</strong> (<code>FiltroInforme</code>): se puede guardar, mandar al servidor
+   o enseñar en el informe. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un filtro que no se puede reconstruir es un filtro que no se puede
+   auditar</span>.</li>
+<li><strong>Categoría nula significa «todas»</strong>: no hay un valor mágico tipo <code>"TODAS"</code> que choque con una
+   categoría real.</li>
+<li><strong>El rango de días es inclusivo</strong> (<code>dia in desde..hasta</code>): del 1 al 15 incluye el 15. Es la fuente
+   de la mitad de los errores de los informes de verdad.</li>
+</ol>
+<h2 id="4-los-calculos-del-pie-criterio-d">4. Los cálculos del pie (criterio d)</h2>
+<p>El resumen no es «sumar una columna»: son cuatro números y una decisión.</p>
+<table>
+<thead>
+<tr>
+<th>Cálculo</th>
+<th>Cómo se hace</th>
+<th>Error típico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recuento</td>
+<td><code>filas.size</code></td>
+<td>Contar filas antes de filtrar</td>
+</tr>
+<tr>
+<td>Suma</td>
+<td><code>sumOf { it.importe }</code></td>
+<td>Sumar texto ya formateado con comas</td>
+</tr>
+<tr>
+<td>Media</td>
+<td><code>total / numero</code></td>
+<td><strong>Media de medias</strong> (ver abajo)</td>
+</tr>
+<tr>
+<td>Por categoría</td>
+<td><code>groupBy { categoria }</code> + <code>sumOf</code></td>
+<td>Sumar con <code>Double</code> para dinero</td>
+</tr>
+</tbody>
+</table>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La media de medias está mal</span>: si una categoría tiene 3 filas y otra tiene 30, la media de las
+dos medias no es la media del total. Se suma todo y se divide entre <strong>todas</strong> las filas, que es lo que
+hace <code>resumir()</code>.</p>
+<p>Y un aviso de dinero: <code>Double</code> sirve para aprender, pero <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">para facturar se usan enteros en céntimos o
+<code>BigDecimal</code></span>, porque <code>0.1 + 0.2</code> no da exactamente <code>0.3</code> en coma flotante.</p>
+<h2 id="5-el-grafico-criterio-e">5. El gráfico (criterio e)</h2>
+<p>Un gráfico de barras es un rectángulo cuya altura es proporcional al valor. Lo único que hay que
+calcular bien es la <strong>escala</strong>: el valor mayor ocupa el alto disponible y el resto se reparte.</p>
+<div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/GraficoBarras.kt (lo esencial)</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// ...</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">val</span><span class="w"> </span><span class="nv">maximo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">datos</span><span class="p">.</span><span class="na">maxOfOrNull</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">second</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="m">0.0</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1">// ...</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">Canvas</span><span class="p">(</span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxWidth</span><span class="p">().</span><span class="na">height</span><span class="p">(</span><span class="n">altura</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">datos</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">maximo</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">0.0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="nd">@Canvas</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="c1">// Dos huecos por barra: uno para la barra y otro para separarla de la siguiente.</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">ancho</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="p">.</span><span class="na">width</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">datos</span><span class="p">.</span><span class="na">size</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">2f</span><span class="p">)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="n">datos</span><span class="p">.</span><span class="na">forEachIndexed</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">indice</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">alto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">valor</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">maximo</span><span class="p">).</span><span class="na">toFloat</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="na">height</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">2f</span><span class="p">)</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ancho</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="m">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">indice</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">0.5f</span><span class="p">)</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="n">drawRect</span><span class="p">(</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">            </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">,</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">            </span><span class="n">topLeft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Offset</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">.</span><span class="na">height</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">alto</span><span class="p">),</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">            </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Size</span><span class="p">(</span><span class="n">ancho</span><span class="p">,</span><span class="w"> </span><span class="n">alto</span><span class="p">),</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="p">)</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="p">}</span>
+</code></pre></div>
+<p>Dos detalles que separan un gráfico de juguete de uno usable:</p>
+<ul>
+<li><strong>Las etiquetas son texto, no dibujo</strong>: así se leen en voz alta y crecen con el tamaño de fuente del
+  sistema (lo que pedía el RA4).</li>
+<li><strong><code>contentDescription</code> con los valores</strong>: un gráfico que no se puede leer con un lector de pantalla
+  es un gráfico que la mitad de los usuarios no tiene.</li>
+</ul>
+<figure>
+<p><img alt="La escena del informe en el emulador: filtros, tabla de doce filas, totales y gráfico de barras por categoría" src="../assets/captura-informe.png" /></p>
+<figcaption>Figura 3. La escena 9 en el emulador: 12 filas, total 1880.35 y media 156.70. El gráfico reparte Servicios 1015.00, Software 441.00 y Hardware 424.35, que suman exactamente el total.</figcaption>
+</figure>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La comprobación que hay que hacer siempre: las barras tienen que sumar el total</span>. Si no suma, o
+el gráfico o los totales están mal, y el informe miente.</p>
+<h2 id="6-del-asistente-al-codigo-criterios-f-y-g">6. Del asistente al código (criterios f y g)</h2>
+<h3 id="61-lo-que-hace-un-asistente">6.1 Lo que hace un asistente</h3>
+<p>Un <strong>asistente</strong> de informes es la pantalla que te lleva de la fuente al informe sin escribir el
+código a mano: eliges la conexión, arrastras los campos, pones la agrupación y él genera la consulta y
+la plantilla. Es el CE f, y hoy se hace con herramientas de verdad:</p>
+<table>
+<thead>
+<tr>
+<th>Herramienta</th>
+<th>Qué es</th>
+<th>Dónde se usa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>JasperReports + Jaspersoft Studio</strong></td>
+<td>Motor de informes Java con asistente visual</td>
+<td>Banca, seguros, administración</td>
+</tr>
+<tr>
+<td><strong>Power BI</strong></td>
+<td>Cuadros de mando con orígenes de datos</td>
+<td>Empresas con Microsoft 365</td>
+</tr>
+<tr>
+<td><strong>Looker Studio</strong></td>
+<td>Informes web conectados a datos</td>
+<td>Marketing, analítica</td>
+</tr>
+<tr>
+<td><strong>Metabase / Superset</strong></td>
+<td>Consultas y paneles sobre la base de datos</td>
+<td>Equipos técnicos pequeños</td>
+</tr>
+<tr>
+<td><strong>Apache POI / OpenPDF / iText</strong></td>
+<td>Librerías para escribir Excel y PDF desde código</td>
+<td>Cuando el informe lo genera la app</td>
+</tr>
+</tbody>
+</table>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El asistente genera el esqueleto; el criterio g es saber tocarlo después</span>. Todo lo que genera
+lleva consultas, filtros y formato que hay que adaptar: nombres de columnas, importes con dos
+decimales, la fila de totales, el pie con la página.</p>
+<h3 id="62-la-modificacion-el-codigo-de-la-exportacion">6.2 La modificación: el código de la exportación</h3>
+<div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/ExportaInforme.kt</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">package</span><span class="w"> </span><span class="nn">com.example.uikit</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">android.content.Context</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">import</span><span class="w"> </span><span class="nn">android.graphics.Canvas</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">import</span><span class="w"> </span><span class="nn">android.graphics.Paint</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">import</span><span class="w"> </span><span class="nn">android.graphics.pdf.PdfDocument</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">import</span><span class="w"> </span><span class="nn">java.io.File</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">import</span><span class="w"> </span><span class="nn">java.text.SimpleDateFormat</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">import</span><span class="w"> </span><span class="nn">java.util.Date</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="k">import</span><span class="w"> </span><span class="nn">java.util.Locale</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="cm">/**</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="cm"> * Exportación del informe: CSV para la hoja de cálculo y PDF para enviar o imprimir.</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="cm"> *</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="cm"> * El PDF se dibuja a mano con PdfDocument, que viene dentro de Android: no hay que añadir</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="cm"> * ninguna librería. Una hoja A4 en puntos mide 595 x 842. Si las filas no caben, se abre otra</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="cm"> * página.</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="cm"> */</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="kd">object</span><span class="w"> </span><span class="nc">ExportaInforme</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="cm">/** Escribe el CSV en la carpeta privada de la app y devuelve el fichero. */</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">aCsv</span><span class="p">(</span><span class="n">contexto</span><span class="p">:</span><span class="w"> </span><span class="n">Context</span><span class="p">,</span><span class="w"> </span><span class="n">filas</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">FilaInforme</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"informe.csv"</span><span class="p">):</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">fichero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="n">contexto</span><span class="p">.</span><span class="na">filesDir</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">        </span><span class="n">fichero</span><span class="p">.</span><span class="na">writeText</span><span class="p">(</span><span class="n">Informe</span><span class="p">.</span><span class="na">aCsv</span><span class="p">(</span><span class="n">filas</span><span class="p">),</span><span class="w"> </span><span class="n">Charsets</span><span class="p">.</span><span class="na">UTF_8</span><span class="p">)</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">fichero</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">    </span><span class="cm">/** Genera el PDF del informe y devuelve el fichero escrito. */</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">aPdf</span><span class="p">(</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">        </span><span class="n">contexto</span><span class="p">:</span><span class="w"> </span><span class="n">Context</span><span class="p">,</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">        </span><span class="n">titulo</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">        </span><span class="n">filas</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">FilaInforme</span><span class="o">&gt;</span><span class="p">,</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">        </span><span class="n">nombre</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"informe.pdf"</span><span class="p">,</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">    </span><span class="p">):</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">resumen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Informe</span><span class="p">.</span><span class="na">resumir</span><span class="p">(</span><span class="n">filas</span><span class="p">)</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">documento</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PdfDocument</span><span class="p">()</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nv">numeroPagina</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nv">pagina</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">documento</span><span class="p">.</span><span class="na">startPage</span><span class="p">(</span><span class="n">pagina</span><span class="p">(</span><span class="n">numeroPagina</span><span class="p">))</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nv">lienzo</span><span class="p">:</span><span class="w"> </span><span class="n">Canvas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pagina</span><span class="p">.</span><span class="na">canvas</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">60f</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">tinta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Paint</span><span class="p">().</span><span class="na">apply</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">isAntiAlias</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">gris</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Paint</span><span class="p">().</span><span class="na">apply</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">isAntiAlias</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="n">xFF666666</span><span class="p">.</span><span class="na">toInt</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a>
+<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="w">        </span><span class="c1">// Cabecera: título del informe y fecha de generación.</span>
+<a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a><span class="w">        </span><span class="n">tinta</span><span class="p">.</span><span class="na">textSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">18f</span>
+<a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a><span class="w">        </span><span class="n">tinta</span><span class="p">.</span><span class="na">isFakeBoldText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a><span class="w">        </span><span class="n">lienzo</span><span class="p">.</span><span class="na">drawText</span><span class="p">(</span><span class="n">titulo</span><span class="p">,</span><span class="w"> </span><span class="m">40f</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">tinta</span><span class="p">)</span>
+<a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="m">18f</span>
+<a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a><span class="w">        </span><span class="n">tinta</span><span class="p">.</span><span class="na">textSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10f</span>
+<a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a><span class="w">        </span><span class="n">tinta</span><span class="p">.</span><span class="na">isFakeBoldText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">fecha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SimpleDateFormat</span><span class="p">(</span><span class="s">"dd/MM/yyyy HH:mm"</span><span class="p">,</span><span class="w"> </span><span class="n">Locale</span><span class="p">.</span><span class="na">getDefault</span><span class="p">()).</span><span class="na">format</span><span class="p">(</span><span class="n">Date</span><span class="p">())</span>
+<a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a><span class="w">        </span><span class="n">lienzo</span><span class="p">.</span><span class="na">drawText</span><span class="p">(</span><span class="s">"Generado el </span><span class="si">$</span><span class="n">fecha</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="m">40f</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">gris</span><span class="p">)</span>
+<a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a><span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="m">28f</span>
+<a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a>
+<a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a><span class="w">        </span><span class="c1">// Cabecera de la tabla.</span>
+<a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a><span class="w">        </span><span class="n">tinta</span><span class="p">.</span><span class="na">textSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">11f</span>
+<a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a><span class="w">        </span><span class="n">tinta</span><span class="p">.</span><span class="na">isFakeBoldText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a><span class="w">        </span><span class="n">lienzo</span><span class="p">.</span><span class="na">drawText</span><span class="p">(</span><span class="s">"Concepto"</span><span class="p">,</span><span class="w"> </span><span class="m">40f</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">tinta</span><span class="p">)</span>
+<a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a><span class="w">        </span><span class="n">lienzo</span><span class="p">.</span><span class="na">drawText</span><span class="p">(</span><span class="s">"Categoría"</span><span class="p">,</span><span class="w"> </span><span class="m">300f</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">tinta</span><span class="p">)</span>
+<a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a><span class="w">        </span><span class="n">lienzo</span><span class="p">.</span><span class="na">drawText</span><span class="p">(</span><span class="s">"Día"</span><span class="p">,</span><span class="w"> </span><span class="m">420f</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">tinta</span><span class="p">)</span>
+<a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a><span class="w">        </span><span class="n">lienzo</span><span class="p">.</span><span class="na">drawText</span><span class="p">(</span><span class="s">"Importe"</span><span class="p">,</span><span class="w"> </span><span class="m">480f</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">tinta</span><span class="p">)</span>
+<a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a><span class="w">        </span><span class="n">tinta</span><span class="p">.</span><span class="na">isFakeBoldText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a><span class="w">        </span><span class="n">lienzo</span><span class="p">.</span><span class="na">drawLine</span><span class="p">(</span><span class="m">40f</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">6f</span><span class="p">,</span><span class="w"> </span><span class="m">555f</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">6f</span><span class="p">,</span><span class="w"> </span><span class="n">gris</span><span class="p">)</span>
+<a id="__codelineno-2-65" name="__codelineno-2-65" href="#__codelineno-2-65"></a><span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="m">24f</span>
+<a id="__codelineno-2-66" name="__codelineno-2-66" href="#__codelineno-2-66"></a>
+<a id="__codelineno-2-67" name="__codelineno-2-67" href="#__codelineno-2-67"></a><span class="w">        </span><span class="c1">// Una línea por fila. Si se acaba el papel, se abre la página siguiente.</span>
+<a id="__codelineno-2-68" name="__codelineno-2-68" href="#__codelineno-2-68"></a><span class="w">        </span><span class="n">filas</span><span class="p">.</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">fila</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-2-69" name="__codelineno-2-69" href="#__codelineno-2-69"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">760f</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-70" name="__codelineno-2-70" href="#__codelineno-2-70"></a><span class="w">                </span><span class="n">documento</span><span class="p">.</span><span class="na">finishPage</span><span class="p">(</span><span class="n">pagina</span><span class="p">)</span>
+<a id="__codelineno-2-71" name="__codelineno-2-71" href="#__codelineno-2-71"></a><span class="w">                </span><span class="n">numeroPagina</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-2-72" name="__codelineno-2-72" href="#__codelineno-2-72"></a><span class="w">                </span><span class="n">pagina</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">documento</span><span class="p">.</span><span class="na">startPage</span><span class="p">(</span><span class="n">pagina</span><span class="p">(</span><span class="n">numeroPagina</span><span class="p">))</span>
+<a id="__codelineno-2-73" name="__codelineno-2-73" href="#__codelineno-2-73"></a><span class="w">                </span><span class="n">lienzo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pagina</span><span class="p">.</span><span class="na">canvas</span>
+<a id="__codelineno-2-74" name="__codelineno-2-74" href="#__codelineno-2-74"></a><span class="w">                </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">60f</span>
+<a id="__codelineno-2-75" name="__codelineno-2-75" href="#__codelineno-2-75"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-2-76" name="__codelineno-2-76" href="#__codelineno-2-76"></a><span class="w">            </span><span class="n">lienzo</span><span class="p">.</span><span class="na">drawText</span><span class="p">(</span><span class="n">fila</span><span class="p">.</span><span class="na">concepto</span><span class="p">,</span><span class="w"> </span><span class="m">40f</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">tinta</span><span class="p">)</span>
+<a id="__codelineno-2-77" name="__codelineno-2-77" href="#__codelineno-2-77"></a><span class="w">            </span><span class="n">lienzo</span><span class="p">.</span><span class="na">drawText</span><span class="p">(</span><span class="n">fila</span><span class="p">.</span><span class="na">categoria</span><span class="p">,</span><span class="w"> </span><span class="m">300f</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">tinta</span><span class="p">)</span>
+<a id="__codelineno-2-78" name="__codelineno-2-78" href="#__codelineno-2-78"></a><span class="w">            </span><span class="n">lienzo</span><span class="p">.</span><span class="na">drawText</span><span class="p">(</span><span class="n">fila</span><span class="p">.</span><span class="na">dia</span><span class="p">.</span><span class="na">toString</span><span class="p">(),</span><span class="w"> </span><span class="m">420f</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">tinta</span><span class="p">)</span>
+<a id="__codelineno-2-79" name="__codelineno-2-79" href="#__codelineno-2-79"></a><span class="w">            </span><span class="n">lienzo</span><span class="p">.</span><span class="na">drawText</span><span class="p">(</span><span class="n">importe</span><span class="p">(</span><span class="n">fila</span><span class="p">.</span><span class="na">importe</span><span class="p">),</span><span class="w"> </span><span class="m">480f</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">tinta</span><span class="p">)</span>
+<a id="__codelineno-2-80" name="__codelineno-2-80" href="#__codelineno-2-80"></a><span class="w">            </span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="m">18f</span>
+<a id="__codelineno-2-81" name="__codelineno-2-81" href="#__codelineno-2-81"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-2-82" name="__codelineno-2-82" href="#__codelineno-2-82"></a>
+<a id="__codelineno-2-83" name="__codelineno-2-83" href="#__codelineno-2-83"></a><span class="w">        </span><span class="c1">// Totales al pie de la última tabla.</span>
+<a id="__codelineno-2-84" name="__codelineno-2-84" href="#__codelineno-2-84"></a><span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="m">10f</span>
+<a id="__codelineno-2-85" name="__codelineno-2-85" href="#__codelineno-2-85"></a><span class="w">        </span><span class="n">lienzo</span><span class="p">.</span><span class="na">drawLine</span><span class="p">(</span><span class="m">40f</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="m">555f</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">gris</span><span class="p">)</span>
+<a id="__codelineno-2-86" name="__codelineno-2-86" href="#__codelineno-2-86"></a><span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="m">20f</span>
+<a id="__codelineno-2-87" name="__codelineno-2-87" href="#__codelineno-2-87"></a><span class="w">        </span><span class="n">tinta</span><span class="p">.</span><span class="na">isFakeBoldText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-2-88" name="__codelineno-2-88" href="#__codelineno-2-88"></a><span class="w">        </span><span class="n">lienzo</span><span class="p">.</span><span class="na">drawText</span><span class="p">(</span><span class="s">"Filas: </span><span class="si">${</span><span class="n">resumen</span><span class="p">.</span><span class="na">numero</span><span class="si">}</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="m">40f</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">tinta</span><span class="p">)</span>
+<a id="__codelineno-2-89" name="__codelineno-2-89" href="#__codelineno-2-89"></a><span class="w">        </span><span class="n">lienzo</span><span class="p">.</span><span class="na">drawText</span><span class="p">(</span><span class="s">"Total: </span><span class="si">${</span><span class="n">importe</span><span class="p">(</span><span class="n">resumen</span><span class="p">.</span><span class="na">total</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="m">300f</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">tinta</span><span class="p">)</span>
+<a id="__codelineno-2-90" name="__codelineno-2-90" href="#__codelineno-2-90"></a><span class="w">        </span><span class="n">lienzo</span><span class="p">.</span><span class="na">drawText</span><span class="p">(</span><span class="s">"Media: </span><span class="si">${</span><span class="n">importe</span><span class="p">(</span><span class="n">resumen</span><span class="p">.</span><span class="na">media</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="m">440f</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">tinta</span><span class="p">)</span>
+<a id="__codelineno-2-91" name="__codelineno-2-91" href="#__codelineno-2-91"></a>
+<a id="__codelineno-2-92" name="__codelineno-2-92" href="#__codelineno-2-92"></a><span class="w">        </span><span class="n">documento</span><span class="p">.</span><span class="na">finishPage</span><span class="p">(</span><span class="n">pagina</span><span class="p">)</span>
+<a id="__codelineno-2-93" name="__codelineno-2-93" href="#__codelineno-2-93"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">fichero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="n">contexto</span><span class="p">.</span><span class="na">filesDir</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span>
+<a id="__codelineno-2-94" name="__codelineno-2-94" href="#__codelineno-2-94"></a><span class="w">        </span><span class="n">fichero</span><span class="p">.</span><span class="na">outputStream</span><span class="p">().</span><span class="na">use</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">documento</span><span class="p">.</span><span class="na">writeTo</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-2-95" name="__codelineno-2-95" href="#__codelineno-2-95"></a><span class="w">        </span><span class="n">documento</span><span class="p">.</span><span class="na">close</span><span class="p">()</span>
+<a id="__codelineno-2-96" name="__codelineno-2-96" href="#__codelineno-2-96"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">fichero</span>
+<a id="__codelineno-2-97" name="__codelineno-2-97" href="#__codelineno-2-97"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-98" name="__codelineno-2-98" href="#__codelineno-2-98"></a>
+<a id="__codelineno-2-99" name="__codelineno-2-99" href="#__codelineno-2-99"></a><span class="w">    </span><span class="cm">/** La hoja A4 en puntos: 595 de ancho por 842 de alto. */</span>
+<a id="__codelineno-2-100" name="__codelineno-2-100" href="#__codelineno-2-100"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">pagina</span><span class="p">(</span><span class="n">numero</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">):</span><span class="w"> </span><span class="n">PdfDocument</span><span class="p">.</span><span class="na">PageInfo</span><span class="w"> </span><span class="o">=</span>
+<a id="__codelineno-2-101" name="__codelineno-2-101" href="#__codelineno-2-101"></a><span class="w">        </span><span class="n">PdfDocument</span><span class="p">.</span><span class="na">PageInfo</span><span class="p">.</span><span class="na">Builder</span><span class="p">(</span><span class="m">595</span><span class="p">,</span><span class="w"> </span><span class="m">842</span><span class="p">,</span><span class="w"> </span><span class="n">numero</span><span class="p">).</span><span class="na">create</span><span class="p">()</span>
+<a id="__codelineno-2-102" name="__codelineno-2-102" href="#__codelineno-2-102"></a>
+<a id="__codelineno-2-103" name="__codelineno-2-103" href="#__codelineno-2-103"></a><span class="w">    </span><span class="cm">/** Importe con dos decimales y el separador decimal del idioma del móvil. */</span>
+<a id="__codelineno-2-104" name="__codelineno-2-104" href="#__codelineno-2-104"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">importe</span><span class="p">(</span><span class="n">valor</span><span class="p">:</span><span class="w"> </span><span class="kt">Double</span><span class="p">):</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">String</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">Locale</span><span class="p">.</span><span class="na">getDefault</span><span class="p">(),</span><span class="w"> </span><span class="s">"%.2f"</span><span class="p">,</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span>
+<a id="__codelineno-2-105" name="__codelineno-2-105" href="#__codelineno-2-105"></a><span class="p">}</span>
+</code></pre></div>
+<p>Aquí está el criterio g en estado puro: el PDF no lo hace una librería externa, lo dibuja la app con
+<code>PdfDocument</code>, que viene en Android.</p>
+<table>
+<thead>
+<tr>
+<th>Pieza</th>
+<th>Para qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PdfDocument.PageInfo.Builder(595, 842, n)</code></td>
+<td>Una hoja A4 en puntos (72 ppp)</td>
+</tr>
+<tr>
+<td><code>Paint</code> con <code>textSize</code></td>
+<td>El «bolígrafo»: tamaño, negrita, color</td>
+</tr>
+<tr>
+<td><code>drawText</code>, <code>drawLine</code></td>
+<td>Escribir y separar secciones</td>
+</tr>
+<tr>
+<td><code>finishPage</code> + <code>writeTo</code></td>
+<td>Cerrar la hoja y escribir el fichero</td>
+</tr>
+<tr>
+<td><code>y &gt; 760f</code> → página nueva</td>
+<td>Paginación: un informe largo no se corta</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-el-informe-incrustado-criterio-h">7. El informe incrustado (criterio h)</h2>
+<p>Incrustado significa <strong>dentro de la app</strong>, no en un servidor: el usuario filtra, ve el resultado y se
+lo lleva. En la escena 9, los dos botones escriben en la carpeta privada de la app:</p>
+<figure>
+<p><img alt="La escena tras pulsar Exportar PDF: el aviso &quot;PDF: informe.pdf (57663 bytes)&quot; debajo de los botones" src="../assets/captura-exportacion.png" /></p>
+<figcaption>Figura 4. La exportación hecha desde la app: el aviso dice el nombre y el tamaño del fichero generado.</figcaption>
+</figure>
+<figure>
+<p><img alt="El PDF generado abierto: cabecera con fecha, tabla de doce filas y fila de totales" src="../assets/captura-pdf.png" /></p>
+<figcaption>Figura 5. El PDF que ha escrito la app, abierto en el ordenador: cabecera, doce filas y totales. Es el mismo fichero que se ha sacado del emulador.</figcaption>
+</figure>
+<p>Y el CSV, tal cual sale del móvil:</p>
+<div class="highlight"><span class="filename">informe.csv (fichero real generado por la app)</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Concepto;Categoría;Importe;Día
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Licencia IDE;Software;129.00;2
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Monitor 27 pulgadas;Hardware;249.90;3
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Soporte anual;Servicios;180.00;5
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Copias de seguridad;Servicios;60.00;7
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>Teclado;Hardware;45.50;9
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>Repositorio privado;Software;48.00;11
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>Formación del equipo;Servicios;320.00;14
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>Ratón ergonómico;Hardware;39.95;16
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>Certificado SSL;Servicios;55.00;18
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>Herramienta de diseño;Software;264.00;21
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>Disco externo;Hardware;89.00;24
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>Auditoría de accesibilidad;Servicios;400.00;27
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">El CSV y la hoja de cálculo</p>
+<p>Se usa <strong>punto y coma</strong> porque es el separador que espera una hoja de cálculo en español. Si el
+campo lleva el separador dentro («Curso; avanzado»), va entrecomillado; si lleva comillas, se
+duplican. Sin eso, el fichero se descoloca en cuanto un concepto tiene un <code>;</code>.</p>
+</div>
+<h2 id="8-lo-que-usan-las-empresas-y-que-hace-la-ia">8. Lo que usan las empresas (y qué hace la IA)</h2>
+<table>
+<thead>
+<tr>
+<th>Necesidad</th>
+<th>Lo que se usa hoy</th>
+<th>Lo que aporta la app</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Informe para enviar o firmar</td>
+<td>JasperReports, iText, OpenPDF</td>
+<td><code>PdfDocument</code></td>
+</tr>
+<tr>
+<td>Cuadro de mando que se actualiza solo</td>
+<td>Power BI, Looker Studio, Metabase</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Datos para Excel</td>
+<td>Apache POI, CSV</td>
+<td><code>Informe.aCsv</code></td>
+</tr>
+<tr>
+<td>Gráfico dentro de la app</td>
+<td>Vico, MPAndroidChart, Compose Canvas</td>
+<td><code>GraficoBarras</code></td>
+</tr>
+<tr>
+<td>Informe grande con miles de filas</td>
+<td>Se genera en el servidor, no en el móvil</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La IA escribe este código en segundos</span>: la consulta, el <code>groupBy</code>, el PDF, el CSV. Lo que la
+IA <strong>no</strong> decide es lo que hace útil un informe:</p>
+<ul>
+<li><strong>qué se filtra</strong> (y qué se deja fuera a propósito);</li>
+<li><strong>qué significa cada cifra</strong> y quién puede verla;</li>
+<li><strong>si el dato es correcto</strong>: la IA no sabe que ese «400,00» era una auditoría mal imputada;</li>
+<li><strong>la estructura</strong>: qué va arriba y qué es lo que el jefe mira primero.</li>
+</ul>
+<p>Por eso el examen no pregunta cómo se escribe un <code>for</code>: pregunta <strong>qué se cuenta, cómo se filtra y
+dónde se comprueba</strong>. Eso no lo escribe la IA.</p>
+<h2 id="9-lo-que-se-ha-probado-29-pruebas">9. Lo que se ha probado (29 pruebas)</h2>
+<p>Las seis pruebas de la unidad van sobre el modelo, que es donde está la cuenta:</p>
+<table>
+<thead>
+<tr>
+<th>Prueba</th>
+<th>Qué demuestra</th>
+<th>Criterio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>elFiltroPorCategoriaDejaSoloEsaCategoria</code></td>
+<td>Filtrar por categoría deja solo esas filas</td>
+<td>c</td>
+</tr>
+<tr>
+<td><code>elFiltroPorDiasRecortaElRango</code></td>
+<td>El rango de días es inclusivo y recorta</td>
+<td>c</td>
+</tr>
+<tr>
+<td><code>elResumenCuentaSumaYHaceLaMedia</code></td>
+<td>Recuento, suma y media sobre lo filtrado</td>
+<td>d</td>
+</tr>
+<tr>
+<td><code>losPorcentajesSumanCien</code></td>
+<td>Los porcentajes de las categorías suman 100</td>
+<td>d, e</td>
+</tr>
+<tr>
+<td><code>elCsvLlevaCabeceraYUnaLineaPorFila</code></td>
+<td>Cabecera + una línea por fila</td>
+<td>g</td>
+</tr>
+<tr>
+<td><code>elCsvEntrecomillaLoQueLlevaSeparador</code></td>
+<td>Un <code>;</code> dentro del campo no descoloca el CSV</td>
+<td>g</td>
+</tr>
+</tbody>
+</table>
+<p>Y la salida real, al lanzarlas:</p>
+<div class="highlight"><span class="filename">salida real de am instrument</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>com.example.uikit.InformeTest:......
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Time: 29.461
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>OK (29 tests)
+</code></pre></div>
+<p><strong>29 pruebas en verde</strong> en total (las 23 de las unidades anteriores más las 6 de esta).</p>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La prueba que más vale es <code>losPorcentajesSumanCien</code></span>: si los porcentajes no suman 100, el
+gráfico de tarta miente aunque cada barra esté bien calculada.</p>
+<h2 id="10-errores-tipicos">10. Errores típicos</h2>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Por qué está mal</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Calcular en la pantalla y otra vez en el PDF</td>
+<td>Dos verdades distintas</td>
+<td>Una función de resumen, dos formatos</td>
+</tr>
+<tr>
+<td>Contar antes de filtrar</td>
+<td>«12 filas» cuando se ven 4</td>
+<td>Filtrar primero, resumir después</td>
+</tr>
+<tr>
+<td>Media de medias</td>
+<td>No es la media del total</td>
+<td>Sumar todo y dividir entre todas las filas</td>
+</tr>
+<tr>
+<td><code>Double</code> para dinero</td>
+<td><code>0.1 + 0.2</code> no da <code>0.3</code></td>
+<td>Enteros en céntimos o <code>BigDecimal</code></td>
+</tr>
+<tr>
+<td>CSV con comas en español</td>
+<td>La hoja descoloca las columnas</td>
+<td>Punto y coma + entrecomillar</td>
+</tr>
+<tr>
+<td>PDF sin paginar</td>
+<td>Las filas de abajo desaparecen</td>
+<td>Nueva página al pasar del margen</td>
+</tr>
+<tr>
+<td>Gráfico sin escala</td>
+<td>Barras que se salen del lienzo</td>
+<td>Dividir por el valor máximo</td>
+</tr>
+<tr>
+<td>Informe sin filtros escritos</td>
+<td>Nadie puede comprobar la cifra</td>
+<td>Imprimir los filtros aplicados</td>
+</tr>
+<tr>
+<td>Gráfico sin descripción</td>
+<td>Ilegible con lector de pantalla</td>
+<td><code>contentDescription</code> con los valores</td>
+</tr>
+</tbody>
+</table>
+<h2 id="11-resumen">11. Resumen</h2>
+<ul>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un informe sirve para decidir</span>: cabecera, filtros, tabla, totales, gráfico y pie.</li>
+<li><strong>Estructura</strong> (a): siete partes, y los filtros se <strong>escriben</strong> en el informe, no solo se aplican.</li>
+<li><strong>Fuentes y filtros</strong> (b, c): el filtro es un dato (<code>FiltroInforme</code>), no un <code>if</code> suelto.</li>
+<li><strong>Cálculos</strong> (d): recuento, suma, media y por categoría. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Nunca la media de medias</span>.</li>
+<li><strong>Gráficos</strong> (e): una barra es un rectángulo escalado; las etiquetas, texto accesible.</li>
+<li><strong>Asistentes y código</strong> (f, g): JasperReports, Power BI, Looker Studio generan el esqueleto;
+  <code>ExportaInforme</code> lo adapta y lo escribe en PDF y CSV.</li>
+<li><strong>Incrustado</strong> (h): la app filtra, resume y exporta sin servidor.</li>
+<li><strong>Pruebas</strong>: 6 nuevas, <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">29 en total, <code>Time: 29.461</code></span>.</li>
+<li><strong>La IA</strong> escribe el código; las decisiones (qué se cuenta, qué se filtra, qué significa) siguen
+  siendo del que hace el informe.</li>
+</ul>
+<h2 id="bibliografia-y-fuentes">Bibliografía y fuentes</h2>
+<p>Todo el material se apoya en la documentación oficial de las herramientas que se usan en clase.</p>
+<p><strong>Informes y PDF en Android</strong></p>
+<ul>
+<li>Android Developers. <em>PdfDocument</em> — crear PDF desde la app. <a href="https://developer.android.com/reference/android/graphics/pdf/PdfDocument">https://developer.android.com/reference/android/graphics/pdf/PdfDocument</a></li>
+<li>Android Developers. <em>Canvas y DrawScope en Compose</em>. <a href="https://developer.android.com/develop/ui/compose/graphics/draw/overview">https://developer.android.com/develop/ui/compose/graphics/draw/overview</a></li>
+<li>Android Developers. <em>Guardar ficheros en el almacenamiento interno</em>. <a href="https://developer.android.com/training/data-storage/app-specific">https://developer.android.com/training/data-storage/app-specific</a></li>
+</ul>
+<p><strong>Herramientas de informes</strong></p>
+<ul>
+<li>Eclipse Foundation. <em>JasperReports</em> — motor de informes. <a href="https://community.jaspersoft.com/project/jasperreports-library">https://community.jaspersoft.com/project/jasperreports-library</a></li>
+<li>Jaspersoft. <em>Jaspersoft Studio</em> — el asistente de diseño. <a href="https://community.jaspersoft.com/project/jaspersoft-studio">https://community.jaspersoft.com/project/jaspersoft-studio</a></li>
+<li>Microsoft. <em>Power BI — documentación</em>. <a href="https://learn.microsoft.com/power-bi/">https://learn.microsoft.com/power-bi/</a></li>
+<li>Google. <em>Looker Studio — ayuda</em>. <a href="https://support.google.com/looker-studio">https://support.google.com/looker-studio</a></li>
+<li>Metabase. <em>Documentación oficial</em>. <a href="https://www.metabase.com/docs/latest/">https://www.metabase.com/docs/latest/</a></li>
+<li>Apache Software Foundation. <em>Apache POI</em> — leer y escribir Excel y Word. <a href="https://poi.apache.org/">https://poi.apache.org/</a></li>
+<li>iText. <em>iText 7 — documentación</em>. <a href="https://itextpdf.com/products/itext">https://itextpdf.com/products/itext</a></li>
+<li>Apache Software Foundation. <em>Apache PDFBox</em>. <a href="https://pdfbox.apache.org/">https://pdfbox.apache.org/</a></li>
+</ul>
+<p><strong>Datos y formatos</strong></p>
+<ul>
+<li>RFC 4180. <em>Common Format and MIME Type for CSV Files</em>. <a href="https://www.rfc-editor.org/rfc/rfc4180">https://www.rfc-editor.org/rfc/rfc4180</a></li>
+<li>Unión Europea. <em>Reglamento (UE) 2016/679 (RGPD)</em> — datos personales que pueden aparecer en un informe. <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj">https://eur-lex.europa.eu/eli/reg/2016/679/oj</a></li>
+<li>W3C. <em>WCAG 2.2</em> — alternativas textuales para gráficos (criterio 1.1.1). <a href="https://www.w3.org/TR/WCAG22/">https://www.w3.org/TR/WCAG22/</a></li>
+</ul>
+<p><strong>Normativa</strong></p>
+<ul>
+<li><strong>Real Decreto 405/2023, de 29 de mayo</strong> (BOE-A-2023-13221), por el que se establecen los títulos de
+  Técnico y Técnico Superior en Sistemas Microinformáticos y Redes y se fijan sus enseñanzas mínimas:
+  currículo del módulo 0488 <em>Desarrollo de interfaces</em>, <strong>RA5 y sus ocho criterios de evaluación</strong>.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>
