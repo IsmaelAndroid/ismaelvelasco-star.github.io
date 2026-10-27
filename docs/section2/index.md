@@ -24,7 +24,8 @@ Este curso el módulo se imparte íntegramente con **Kotlin y Jetpack Compose**,
 | 3 | Generación de interfaces con XML | ✅ Publicada |
 | 4 | Creación de componentes propios | ✅ Publicada |
 | 5 | Explotación de componentes (eventos, estado, pruebas) | ✅ Publicada |
-| 6+ | En construcción (tema a tema) | 🚧 |
+| 6 | Usabilidad y accesibilidad (WCAG, contraste, toques, pruebas) | ✅ Publicada |
+| 7+ | En construcción (tema a tema) | 🚧 |
 
 ## Presentaciones
 

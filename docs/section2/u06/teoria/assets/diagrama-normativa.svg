@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 560" width="980" height="560" role="img" aria-label="Mapa de la normativa de usabilidad y accesibilidad">
+<defs><marker id="punta" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#37474f"/></marker></defs>
+<rect width="980" height="560" fill="#ffffff"/>
+<text x="24" y="30" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#37474f">De dónde sale cada regla que se audita</text>
+<text x="24" y="62" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#1a4d7a">ISO / IEC</text>
+<rect x="24" y="72" width="300" height="96" rx="8" fill="#e8f1f8" stroke="#1a4d7a" stroke-width="1.5"/>
+<text x="36" y="94" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1a4d7a">ISO/IEC 9241 (ergonomía)</text>
+<text x="36" y="114" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">10 diálogo · 11 uso · 12 información</text>
+<text x="36" y="131" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">13 ayudas · 14 menús · 15 órdenes</text>
+<text x="36" y="148" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">16 manipulación directa · 17 formularios</text>
+<rect x="24" y="178" width="300" height="62" rx="8" fill="#e8f1f8" stroke="#1a4d7a" stroke-width="1.5"/>
+<text x="36" y="200" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1a4d7a">ISO/IEC 9126-1</text>
+<text x="36" y="220" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">calidad del producto software</text>
+<rect x="24" y="250" width="300" height="62" rx="8" fill="#e8f1f8" stroke="#1a4d7a" stroke-width="1.5"/>
+<text x="36" y="272" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1a4d7a">ISO 14915 · IEC TR 61997</text>
+<text x="36" y="292" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">interfaz multimedia</text>
+<rect x="24" y="322" width="300" height="62" rx="8" fill="#e8f1f8" stroke="#1a4d7a" stroke-width="1.5"/>
+<text x="36" y="344" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1a4d7a">ISO 13407 · ISO/TR 16982</text>
+<text x="36" y="364" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">diseño centrado en el usuario</text>
+<text x="36" y="381" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">métodos ergonómicos</text>
+<text x="352" y="62" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#1b5e20">W3C · CEN</text>
+<rect x="352" y="72" width="290" height="96" rx="8" fill="#e8f5e9" stroke="#1b5e20" stroke-width="1.5"/>
+<text x="364" y="94" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1b5e20">WCAG 2.2</text>
+<text x="364" y="114" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">4 principios: perceptible, operable,</text>
+<text x="364" y="131" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">comprensible, robusto</text>
+<text x="364" y="148" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">niveles A · AA · AAA</text>
+<rect x="352" y="178" width="290" height="62" rx="8" fill="#e8f5e9" stroke="#1b5e20" stroke-width="1.5"/>
+<text x="364" y="200" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1b5e20">EN 301 549</text>
+<text x="364" y="220" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">la norma europea que hace</text>
+<text x="364" y="237" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">obligatorias las WCAG</text>
+<rect x="352" y="250" width="290" height="62" rx="8" fill="#e8f5e9" stroke="#1b5e20" stroke-width="1.5"/>
+<text x="364" y="272" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1b5e20">UNE-EN ISO 9241-11:2018</text>
+<text x="364" y="292" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">definición oficial de usabilidad</text>
+<text x="670" y="62" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#8a5a00">Android</text>
+<rect x="670" y="72" width="286" height="96" rx="8" fill="#fff4e0" stroke="#8a5a00" stroke-width="1.5"/>
+<text x="682" y="94" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#8a5a00">Guías de accesibilidad</text>
+<text x="682" y="114" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">48 x 48 dp de área de toque</text>
+<text x="682" y="131" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">contentDescription en lo que no</text>
+<text x="682" y="148" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">se lee solo</text>
+<rect x="670" y="178" width="286" height="62" rx="8" fill="#fff4e0" stroke="#8a5a00" stroke-width="1.5"/>
+<text x="682" y="200" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#8a5a00">Material 3</text>
+<text x="682" y="220" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">roles de color y tipografía</text>
+<text x="682" y="237" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">escalable en sp</text>
+<rect x="670" y="250" width="286" height="62" rx="8" fill="#fff4e0" stroke="#8a5a00" stroke-width="1.5"/>
+<text x="682" y="272" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#8a5a00">Accessibility Scanner</text>
+<text x="682" y="292" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">auditoría automática del APK</text>
+<rect x="300" y="430" width="380" height="92" rx="8" fill="#eceff1" stroke="#37474f" stroke-width="1.5"/>
+<text x="312" y="452" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#37474f">Interfaz usable y accesible</text>
+<text x="312" y="472" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#37474f">lo que se audita en la UD6 y lo que</text>
+<text x="312" y="489" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#37474f">se mide en la app: contraste, toques,</text>
+<text x="312" y="506" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#37474f">lectura con lector de pantalla</text>
+<line x1="174" y1="384" x2="392" y2="426" stroke="#37474f" stroke-width="1.6" marker-end="url(#punta)"/>
+<line x1="497" y1="312" x2="490" y2="426" stroke="#37474f" stroke-width="1.6" marker-end="url(#punta)"/>
+<line x1="813" y1="312" x2="588" y2="426" stroke="#37474f" stroke-width="1.6" marker-end="url(#punta)"/>
+</svg>
