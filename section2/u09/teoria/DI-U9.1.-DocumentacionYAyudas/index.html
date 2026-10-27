@@ -1,0 +1,2813 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentar la aplicación: ayuda contextual, estructura de los datos que se guardan, manual de usuario, guía de instalación y tutoriales, generados desde el propio código con las herramientas que se usan hoy (RA6 completo).">
+      
+      
+        <meta name="author" content="Ismael Velasco">
+      
+      
+        <link rel="canonical" href="https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u09/teoria/DI-U9.1.-DocumentacionYAyudas/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>9.1.-Documentación y ayudas - Aula 2º DAM - Ismael Velasco</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#91-documentacion-y-ayudas" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../../.." title="Aula 2º DAM - Ismael Velasco" class="md-header__button md-logo" aria-label="Aula 2º DAM - Ismael Velasco" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Aula 2º DAM - Ismael Velasco
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              9.1.-Documentación y ayudas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ismaelvelasco-star/ismaelvelasco-star.github.io" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ismaelvelasco-star/ismaelvelasco-star.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    
+  
+  Principal
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../section1/" class="md-tabs__link">
+          
+  
+  
+  PMDM
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Aula 2º DAM - Ismael Velasco" class="md-nav__button md-logo" aria-label="Aula 2º DAM - Ismael Velasco" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Aula 2º DAM - Ismael Velasco
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ismaelvelasco-star/ismaelvelasco-star.github.io" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ismaelvelasco-star/ismaelvelasco-star.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Principal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PMDM
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PMDM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programación Multimedia y Dispositivos Móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U1: Análisis de tecnologías para dispositivos móviles
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U1: Análisis de tecnologías para dispositivos móviles
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u01/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - Análisis de tecnologías para aplicaciones móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u01/teoria/PMDM-U1.1.-AnalisisTecnologiasDispositivosMoviles/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Análisis de tecnologías para dispositivos móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u01/practica/PMDM-U1.-Practica001/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.1: Explorando Android Studio y sus plantillas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u01/practica/PMDM-U1.-Practica002/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.2: Emuladores y perfiles de dispositivo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u01/practica/PMDM-U1.-Practica003/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.3: ADB y el administrador de aplicaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U2: Programación en Android: IU con Jetpack Compose
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U2: Programación en Android: IU con Jetpack Compose
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u02/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 2 - Programación en Android: IU con Jetpack Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u02/teoria/PMDM-U2.1.-FundamentosLenguajeKotlin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1.-Fundamentos del lenguaje Kotlin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u02/teoria/PMDM-U2.2.-ActividadesEIntents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2.-Actividades e Intents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u02/teoria/PMDM-U2.3.-AppComposeListasYFormulario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3.-La app Compose: listas y formulario
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u02/practica/PMDM-U2.-MiniProyectoContactos/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 2.1: Mini-proyecto de la libreta
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U3: Gestión de datos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U3: Gestión de datos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 3 - Programación en Android: gestión de datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/teoria/PMDM-U3.1.-NavegacionGrafoArgumentosYDeepLinks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1.-Navegación: grafo, argumentos y deep links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/teoria/PMDM-U3.2.-EstadoYFormularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2.-Estado y formularios: ViewModel y validación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/teoria/PMDM-U3.3.-RoomPersistenciaLocal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.-Room: persistencia local
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/teoria/PMDM-U3.4.-RetrofitRedYErrores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4.-Retrofit: red, DTOs y errores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/teoria/PMDM-U3.5.-TallerIntegradorSesionYPruebas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5.-Taller integrador: sesión y pruebas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/practica/PMDM-U3.-AgendaConDatos/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3.1: La agenda con datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U4: Motores de juegos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U4: Motores de juegos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 4 - Selección y prueba de motores de juegos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/teoria/PMDM-U4.1.-ArquitecturaDeUnJuego2DY3D/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1.-Arquitectura de un juego 2D y 3D
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/teoria/PMDM-U4.2.-ComponentesDeUnMotorDeJuegos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2.-Componentes de un motor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/teoria/PMDM-U4.3.-EntornosYComparativaDeMotores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3.-Entornos y comparativa de motores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/teoria/PMDM-U4.4.-TallerPrimerProyectoEjecutarYDepurar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4.-Taller: ejecutar y depurar
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/practica/PMDM-U4.-AnatomiaDeUnJuego/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 4.1: Anatomía de un juego
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U5: Contenidos multimedia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U5: Contenidos multimedia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 16V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2m-11-4 2.03 2.71L16 11l4 5H8M2 6v14a2 2 0 0 0 2 2h14v-2H4V6"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 5 - Contenidos multimedia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/teoria/PMDM-U5.1.-FormatosYEntornosMultimedia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1.-Formatos y entornos multimedia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/teoria/PMDM-U5.2.-CapturaYProcesamientoEnAndroid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2.-Captura y procesamiento en Android
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/teoria/PMDM-U5.3.-ReproduccionDeAudioYVideo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3.-Reproducción de audio y vídeo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/teoria/PMDM-U5.4.-Animaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4.-Animaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/practica/PMDM-U5.-MiAppMultimedia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica: Mi app multimedia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U6: Desarrollo de juegos 2D y 3D
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U6: Desarrollo de juegos 2D y 3D
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidad 6 - Desarrollo de juegos 2D y 3D
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/teoria/PMDM-U6.1.-DelPrototipoAlJuego/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1.-Del prototipo al juego
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/teoria/PMDM-U6.2.-Juego2DMovimientoColisiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.2.-Juego 2D: movimiento y colisiones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/teoria/PMDM-U6.3.-Juego3DMaterialesFisicas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.3.-Juego 3D: materiales y físicas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/teoria/PMDM-U6.4.-PruebasOptimizacionYDespliegue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.4.-Pruebas, optimización y despliegue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/practica/PMDM-U6.-MiPrimerJuego/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica: Mi primer juego
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#resultado-de-aprendizaje-que-trabaja-esta-unidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resultado de aprendizaje que trabaja esta unidad
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-documentar-y-que-no" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Qué es documentar (y qué no)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-los-cinco-tipos-de-ayuda-criterio-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Los cinco tipos de ayuda (criterio a)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-los-formatos-habituales-criterio-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Los formatos habituales (criterio b)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-la-ayuda-sensible-al-contexto-criterio-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. La ayuda sensible al contexto (criterio c)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-la-estructura-de-la-informacion-persistente-criterio-d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. La estructura de la información persistente (criterio d)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-el-manual-de-usuario-y-la-guia-de-referencia-criterio-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. El manual de usuario y la guía de referencia (criterio e)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-instalacion-configuracion-y-administracion-criterio-f" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Instalación, configuración y administración (criterio f)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-los-tutoriales-criterio-g" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Los tutoriales (criterio g)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-lo-que-usan-las-empresas-y-que-hace-la-ia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Lo que usan las empresas (y qué hace la IA)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-lo-que-se-ha-probado-35-pruebas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Lo que se ha probado (35 pruebas)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-errores-tipicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Errores típicos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Resumen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bibliografia-y-fuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bibliografía y fuentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="91-documentacion-y-ayudas">9.1 — Documentación y ayudas</h1>
+<blockquote>
+<p><strong>El trabajo de ingeniería:</strong> que otra persona pueda usar y mantener lo que tú has hecho. La
+documentación no es el PDF que se entrega el último día: es lo que evita que el usuario llame al
+soporte, que el compañero nuevo rompa el proyecto y que dentro de seis meses no te acuerdes de por
+qué filtraste así. Y tiene una trampa clásica:
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">un manual escrito a mano se queda viejo el día que cambia un permiso</span>. En esta unidad se
+construye la documentación del <code>IsmaelUIKit</code> <strong>desde el propio código</strong> —ayuda contextual, esquema de
+datos y manual generado— y se prueba con seis pruebas automáticas más.</p>
+</blockquote>
+<h2 id="resultado-de-aprendizaje-que-trabaja-esta-unidad">Resultado de aprendizaje que trabaja esta unidad</h2>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><strong>RA6. Documenta aplicaciones seleccionando y utilizando herramientas específicas</strong></span>
+(RD 405/2023, módulo 0488 <em>Desarrollo de interfaces</em>). La unidad lo trabaja <strong>completo</strong>: los siete
+criterios, de la <code>a</code> a la <code>g</code>.</p>
+<table>
+<thead>
+<tr>
+<th>CE</th>
+<th>Criterio de evaluación (texto literal del real decreto)</th>
+<th>Dónde se trabaja</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RA6 a</td>
+<td>Se han identificado sistemas de generación de ayudas.</td>
+<td>§2, los cinco tipos y las herramientas</td>
+</tr>
+<tr>
+<td>RA6 b</td>
+<td>Se han generado ayudas en los formatos habituales.</td>
+<td>§3, la tabla de formatos</td>
+</tr>
+<tr>
+<td>RA6 c</td>
+<td>Se han generado ayudas sensibles al contexto.</td>
+<td>§4, <code>Ayuda.para()</code> y la escena 10</td>
+</tr>
+<tr>
+<td>RA6 d</td>
+<td>Se ha documentado la estructura de la información persistente.</td>
+<td>§5, <code>EsquemaDatos</code></td>
+</tr>
+<tr>
+<td>RA6 e</td>
+<td>Se han confeccionado el manual de usuario y la guía de referencia.</td>
+<td>§6, <code>Manual.generar()</code></td>
+</tr>
+<tr>
+<td>RA6 f</td>
+<td>Se han confeccionado los manuales de instalación, configuración y administración.</td>
+<td>§7, la ficha real de la app</td>
+</tr>
+<tr>
+<td>RA6 g</td>
+<td>Se han confeccionado tutoriales.</td>
+<td>§8, el tutorial que sí se lee</td>
+</tr>
+</tbody>
+</table>
+<div style="background-color:#a5d6a7; border-radius:8px; padding:10px 14px; margin:14px 0;">
+<strong>🟢 Leyenda de repaso obligatorio:</strong> los textos con <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">este fondo verde</span> son los datos que se preguntan en examen y los que se usan en el trabajo real.</div>
+
+<h2 id="1-que-es-documentar-y-que-no">1. Qué es documentar (y qué no)</h2>
+<p>Documentar es <strong>dejar por escrito lo que otra persona necesita para usar, instalar o mantener la
+aplicación</strong>. No es contar lo que has hecho ni lo bien que ha quedado.</p>
+<p>No es documentación: un comentario que repite lo que ya dice el código (<code>// suma uno</code> encima de
+<code>i++</code>), un manual de 80 páginas que nadie ha abierto, una captura de una versión que ya no existe o un
+PDF con los permisos copiados de otro proyecto.</p>
+<p>La documentación se divide en tres grupos, y cada uno se escribe distinto:</p>
+<table>
+<thead>
+<tr>
+<th>Grupo</th>
+<th>Qué incluye</th>
+<th>Quién lo lee</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Documentación de pruebas</strong></td>
+<td>Los escenarios que se van a probar (<em>de entrada</em>) y los informes con los resultados (<em>de salida</em>)</td>
+<td>El equipo de calidad</td>
+</tr>
+<tr>
+<td><strong>Documentación técnica interna</strong></td>
+<td>Los comentarios del código: qué hace cada módulo, cada función y cada dato</td>
+<td>Otro programador (o tú en marzo)</td>
+</tr>
+<tr>
+<td><strong>Documentación técnica externa</strong></td>
+<td>El manual del programador: arquitectura, dependencias, cómo se compila y se despliega</td>
+<td>El que mantiene la app</td>
+</tr>
+</tbody>
+</table>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La documentación interna no se escribe en un Word aparte: se escribe en el código</span>, con
+KDoc en Kotlin o Javadoc en Java, y una herramienta la convierte en una web. Un comentario lejos del
+código se queda viejo sin que nadie lo note.</p>
+<h2 id="2-los-cinco-tipos-de-ayuda-criterio-a">2. Los cinco tipos de ayuda (criterio a)</h2>
+<p>Antes de escribir nada hay que decidir <strong>qué tipo de ayuda</strong> necesita cada cosa. No es lo mismo
+explicar un campo que explicar la app entera.</p>
+<p><img alt="Cinco tipos de ayuda, ordenados por lo cerca que están del usuario" src="../assets/diagrama-tipos-ayuda.svg" /></p>
+<p><em>Figura 1. Los cinco tipos de ayuda y para qué sirve cada uno.</em></p>
+<p>En el kit: la ayuda en línea son los textos bajo los filtros, la contextual es la tarjeta de la
+escena 10, el tutorial son los tres pasos del informe y el manual es el <code>manual.md</code> de la §6.</p>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Los sistemas de generación de ayudas son las herramientas que convierten esos textos en algo
+consultable</span>: un índice, un buscador y una web. Los que se usan hoy en las empresas:</p>
+<ul>
+<li><strong>Documentación como código</strong> (docs-as-code): el texto en <strong>Markdown</strong> dentro del mismo repositorio,
+  publicado con <strong>MkDocs Material</strong>, <strong>Docusaurus</strong>, <strong>Sphinx</strong> o <strong>VitePress</strong>. Es lo que se usa en
+  GitHub y GitLab. Esta misma página es un ejemplo.</li>
+<li><strong>Generadores de API</strong>: <strong>Dokka</strong> (Kotlin), <strong>Javadoc</strong> (Java), <strong>JSDoc</strong>, <strong>Sphinx</strong>. Leen los
+  comentarios del código y escriben la referencia solos.</li>
+<li><strong>Wikis y bases de conocimiento</strong>: <strong>Confluence</strong>, <strong>Notion</strong>, <strong>BookStack</strong>, para cuando escriben
+  también los que no programan.</li>
+<li><strong>Centros de ayuda de producto</strong>: <strong>Zendesk</strong>, <strong>Intercom</strong>, <strong>Help Scout</strong>, con buscador y
+  métricas de qué se consulta.</li>
+<li><strong>Ayuda dentro de la app</strong>: la de esta unidad. Es la única que el usuario ve sin salir.</li>
+</ul>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La IA escribe los cinco tipos en minutos</span>, y hasta los traduce. Lo que no sabe es qué
+hace <em>tu</em> app: los permisos, la versión y los datos que se guardan se leen del paquete instalado y se
+prueban. Un manual generado sin comprobar es una lista de mentiras bien escritas.</p>
+<h2 id="3-los-formatos-habituales-criterio-b">3. Los formatos habituales (criterio b)</h2>
+<table>
+<thead>
+<tr>
+<th>Formato</th>
+<th>Extensión</th>
+<th>Para qué sirve</th>
+<th>¿Se usa hoy?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Markdown</td>
+<td><code>.md</code></td>
+<td>Escribir la documentación y publicarla como web</td>
+<td><strong>Sí, es el estándar</strong></td>
+</tr>
+<tr>
+<td>HTML</td>
+<td><code>.html</code></td>
+<td>La web de ayuda que ve el usuario</td>
+<td>Sí, generado desde Markdown</td>
+</tr>
+<tr>
+<td>PDF</td>
+<td><code>.pdf</code></td>
+<td>Entregar, imprimir, firmar</td>
+<td>Sí, para entregas y manuales</td>
+</tr>
+<tr>
+<td>EPUB</td>
+<td><code>.epub</code></td>
+<td>Leer en un ebook</td>
+<td>Poco, para manuales largos</td>
+</tr>
+<tr>
+<td>Texto dentro de la app</td>
+<td>Compose</td>
+<td>La ayuda contextual</td>
+<td>Sí, y es la que más se usa</td>
+</tr>
+<tr>
+<td>CHM / HLP</td>
+<td><code>.chm</code>, <code>.hlp</code></td>
+<td>La ayuda de Windows de los 2000</td>
+<td><strong>No</strong>: retirados</td>
+</tr>
+<tr>
+<td>JavaHelp</td>
+<td><code>.hs</code>, <code>.jar</code></td>
+<td>La ayuda de aplicaciones Java de escritorio</td>
+<td>Solo en proyectos antiguos</td>
+</tr>
+</tbody>
+</table>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">CHM y HLP se preguntan en examen y no se usan en ningún proyecto nuevo</span>: eran la ayuda
+compilada de Windows, con un fichero <code>.cnt</code> para el índice y RTF o HTML dentro. Hoy el mismo trabajo
+se hace con Markdown y una web, y sale mejor.</p>
+<p>La regla práctica: si el usuario está <strong>dentro</strong> de la app, la ayuda va <strong>dentro</strong> de la app; si es
+quien instala o mantiene, va un <strong>documento</strong>; si hay que firmar o entregar, PDF. Y el mismo texto no
+se escribe dos veces: se escribe en Markdown y se genera lo demás.</p>
+<h2 id="4-la-ayuda-sensible-al-contexto-criterio-c">4. La ayuda sensible al contexto (criterio c)</h2>
+<p>La ayuda contextual es la que <strong>sabe en qué pantalla está el usuario</strong> y le responde a «¿qué hago
+aquí?». No es un manual con un buscador: es un texto corto que cambia según dónde estés.</p>
+<p>En el kit se resuelve con una lista de pantallas y una función que devuelve la que toca:</p>
+<div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/Ayuda.kt</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">package</span><span class="w"> </span><span class="nn">com.example.uikit</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cm">/**</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cm"> * La ayuda de cada pantalla del kit.</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="cm"> *</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="cm"> * La ayuda contextual no es un texto único al final del manual: es la respuesta a «¿qué hago</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="cm"> * aquí?» en la pantalla en la que está el usuario. Por eso cada pantalla tiene su clave, su</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="cm"> * resumen y sus pasos, y la app pide la ayuda con la misma clave con la que navega.</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="cm"> */</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="cm">/** La ayuda de una pantalla: qué es, para qué sirve y qué pasos seguir. */</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">AyudaPantalla</span><span class="p">(</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">clave</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">titulo</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">resumen</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">pasos</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">,</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="p">)</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="kd">object</span><span class="w"> </span><span class="nc">Ayuda</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="cm">/** La ayuda general: se devuelve cuando la pantalla no tiene una propia. */</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">general</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AyudaPantalla</span><span class="p">(</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">        </span><span class="n">clave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"general"</span><span class="p">,</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">        </span><span class="n">titulo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Ayuda general"</span><span class="p">,</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">        </span><span class="n">resumen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"El kit reúne los componentes y las pantallas que se han construido en el módulo."</span><span class="p">,</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">        </span><span class="n">pasos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">            </span><span class="s">"Elige una pantalla en la lista para ver su ayuda."</span><span class="p">,</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">            </span><span class="s">"Cada tarjeta de la pantalla se puede probar por separado."</span><span class="p">,</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">            </span><span class="s">"Los datos que guarda la app están documentados en la estructura de datos."</span><span class="p">,</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">        </span><span class="p">),</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">    </span><span class="p">)</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">    </span><span class="cm">/** Una entrada por pantalla. La clave es la misma que usa la app para navegar. */</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">pantallas</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">AyudaPantalla</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">        </span><span class="n">AyudaPantalla</span><span class="p">(</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">            </span><span class="n">clave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"catalogo"</span><span class="p">,</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">            </span><span class="n">titulo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Catálogo de componentes"</span><span class="p">,</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">            </span><span class="n">resumen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Muestra los componentes del kit tal cual, sin tocarlos."</span><span class="p">,</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">            </span><span class="n">pasos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">                </span><span class="s">"Pulsa un componente para ver su estado."</span><span class="p">,</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">                </span><span class="s">"Los estados posibles son correcto, aviso y error."</span><span class="p">,</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">            </span><span class="p">),</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">        </span><span class="p">),</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">        </span><span class="n">AyudaPantalla</span><span class="p">(</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">            </span><span class="n">clave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"informe"</span><span class="p">,</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">            </span><span class="n">titulo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Informe de gastos"</span><span class="p">,</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">            </span><span class="n">resumen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Filtra los gastos del mes y los resume en una tabla, un gráfico y un fichero."</span><span class="p">,</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">            </span><span class="n">pasos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">                </span><span class="s">"Elige la categoría y la quincena en los filtros."</span><span class="p">,</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">                </span><span class="s">"Comprueba que las barras del gráfico suman el total."</span><span class="p">,</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">                </span><span class="s">"Pulsa Exportar CSV o Exportar PDF para llevarte el informe."</span><span class="p">,</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">            </span><span class="p">),</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">        </span><span class="p">),</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="w">        </span><span class="n">AyudaPantalla</span><span class="p">(</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">            </span><span class="n">clave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"documentacion"</span><span class="p">,</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="w">            </span><span class="n">titulo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Documentación y ayuda"</span><span class="p">,</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="w">            </span><span class="n">resumen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Explica la pantalla en la que estás y documenta lo que la app guarda."</span><span class="p">,</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="w">            </span><span class="n">pasos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">                </span><span class="s">"Elige una pantalla para leer su ayuda."</span><span class="p">,</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="w">                </span><span class="s">"Revisa la tabla de la estructura de datos."</span><span class="p">,</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="w">                </span><span class="s">"Genera el manual para llevarte toda la documentación junta."</span><span class="p">,</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="w">            </span><span class="p">),</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="w">        </span><span class="p">),</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="w">    </span><span class="p">)</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="w">    </span><span class="cm">/** La ayuda de una pantalla. Si la clave no existe, devuelve la ayuda general. */</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">para</span><span class="p">(</span><span class="n">clave</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="n">AyudaPantalla</span><span class="w"> </span><span class="o">=</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="w">        </span><span class="n">pantallas</span><span class="p">.</span><span class="na">firstOrNull</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">clave</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">clave</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="n">general</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="p">}</span>
+</code></pre></div>
+<p>Dos decisiones que importan: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">la clave de la ayuda es la misma que usa la app para navegar</span>
+(así no hay dos listas que se desincronicen) y, si la pantalla no tiene ayuda propia, <strong>no se deja
+vacío</strong>: se devuelve la ayuda general. Un hueco es peor que una ayuda genérica.</p>
+<p>La escena 10 pide la ayuda con la clave elegida (los chips cambian <code>clave</code>) y la pinta:</p>
+<div class="highlight"><span class="filename">app/src/main/java/com/example/uikit/demo/MainActivity.kt (extracto de la escena 10)</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">EscenaDocumentacion</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">contexto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalContext</span><span class="p">.</span><span class="na">current</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">claves</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Ayuda</span><span class="p">.</span><span class="na">pantallas</span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">clave</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">clave</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">rememberSaveable</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="n">claves</span><span class="p">.</span><span class="na">first</span><span class="p">())</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">aviso</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">rememberSaveable</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="s">""</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">ayuda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Ayuda</span><span class="p">.</span><span class="na">para</span><span class="p">(</span><span class="n">clave</span><span class="p">)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="c1">// ...</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="n">Card</span><span class="p">(</span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxWidth</span><span class="p">().</span><span class="na">testTag</span><span class="p">(</span><span class="s">"ayuda-pantalla"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">            </span><span class="n">Column</span><span class="p">(</span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="m">12.</span><span class="n">dp</span><span class="p">),</span><span class="w"> </span><span class="n">verticalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">spacedBy</span><span class="p">(</span><span class="m">6.</span><span class="n">dp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">                </span><span class="n">Text</span><span class="p">(</span><span class="n">ayuda</span><span class="p">.</span><span class="na">titulo</span><span class="p">,</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">testTag</span><span class="p">(</span><span class="s">"ayuda-titulo"</span><span class="p">),</span><span class="w"> </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">titleSmall</span><span class="p">)</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">                </span><span class="n">Text</span><span class="p">(</span><span class="n">ayuda</span><span class="p">.</span><span class="na">resumen</span><span class="p">,</span><span class="w"> </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">bodySmall</span><span class="p">)</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">                </span><span class="n">ayuda</span><span class="p">.</span><span class="na">pasos</span><span class="p">.</span><span class="na">forEachIndexed</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">indice</span><span class="p">,</span><span class="w"> </span><span class="n">paso</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">                    </span><span class="n">Text</span><span class="p">(</span><span class="s">"</span><span class="si">${</span><span class="n">indice</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="si">}</span><span class="s">. </span><span class="si">$</span><span class="n">paso</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">testTag</span><span class="p">(</span><span class="s">"ayuda-pasos"</span><span class="p">),</span><span class="w"> </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">bodySmall</span><span class="p">)</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">        </span><span class="p">}</span>
+</code></pre></div>
+<p><img alt="La escena 10 con la ayuda del catálogo" src="../assets/captura-documentacion.png" /></p>
+<p><em>Figura 2. La escena 10: selector de pantalla, ayuda contextual, tabla del esquema y botón del manual.</em></p>
+<p>Al cambiar de chip cambia el texto, sin salir de la pantalla y sin cargar nada:</p>
+<p><img alt="La misma pantalla con la ayuda del informe" src="../assets/captura-ayuda-contextual.png" /></p>
+<p><em>Figura 3. La misma escena con otra pantalla elegida: la ayuda es la del informe, con sus tres pasos.</em></p>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La ayuda contextual es la que más se usa y la que menos se documenta</span>: el usuario la lee
+sin darse cuenta y el equipo casi nunca la escribe porque «ya se entiende». No se entiende.</p>
+<h2 id="5-la-estructura-de-la-informacion-persistente-criterio-d">5. La estructura de la información persistente (criterio d)</h2>
+<p>Este es el criterio que más se suspende, porque se confunde con enseñar las tablas de la base de
+datos. Documentar la información persistente es responder, <strong>para cada dato</strong>, a cuatro preguntas:</p>
+<ol>
+<li>¿Dónde está? (fichero, base de datos, memoria)</li>
+<li>¿De qué tipo es?</li>
+<li>¿Para qué sirve?</li>
+<li><strong>¿Cuándo se borra?</strong></li>
+</ol>
+<p><img alt="Qué guarda la app, dónde está y cuándo desaparece" src="../assets/diagrama-estructura-datos.svg" /></p>
+<p><em>Figura 4. Los datos del kit: en disco, en memoria y lo que no se guarda.</em></p>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La cuarta pregunta es la que casi nadie documenta</span> y la que evita que un usuario pierda
+su trabajo. En el kit queda en código, para poder generar la tabla:</p>
+<div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/EsquemaDatos.kt</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">package</span><span class="w"> </span><span class="nn">com.example.uikit</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="cm">/**</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="cm"> * La estructura de la información que la app guarda (criterio d del RA6).</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="cm"> *</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="cm"> * Documentar los datos no es enseñar las tablas de la base de datos: es decir, para cada dato,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="cm"> * **dónde está, de qué tipo es, para qué sirve y cuándo desaparece**. Sin la última columna nadie</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="cm"> * sabe si puede borrarlo, y sin la primera nadie lo encuentra.</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="cm"> */</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="cm">/** Un dato que la app guarda: dónde vive, de qué tipo es y cuándo deja de existir. */</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">CampoPersistido</span><span class="p">(</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">clave</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">tipo</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">almacen</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">descripcion</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">seBorra</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="p">)</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="kd">object</span><span class="w"> </span><span class="nc">EsquemaDatos</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">    </span><span class="cm">/** Los datos reales que guarda el kit, con el almacén en el que están. */</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">campos</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">CampoPersistido</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">        </span><span class="n">CampoPersistido</span><span class="p">(</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">            </span><span class="n">clave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"informe.csv"</span><span class="p">,</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">            </span><span class="n">tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"fichero de texto (UTF-8, separador ;)"</span><span class="p">,</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">            </span><span class="n">almacen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"filesDir (almacenamiento interno)"</span><span class="p">,</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">            </span><span class="n">descripcion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"El informe de gastos en formato de hoja de cálculo."</span><span class="p">,</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">            </span><span class="n">seBorra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"al desinstalar la app o al sobrescribirlo"</span><span class="p">,</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">        </span><span class="p">),</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">        </span><span class="n">CampoPersistido</span><span class="p">(</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">            </span><span class="n">clave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"informe.pdf"</span><span class="p">,</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">            </span><span class="n">tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"fichero PDF (A4, 595 x 842 puntos)"</span><span class="p">,</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">            </span><span class="n">almacen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"filesDir (almacenamiento interno)"</span><span class="p">,</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">            </span><span class="n">descripcion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"El mismo informe listo para enviar o imprimir."</span><span class="p">,</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">            </span><span class="n">seBorra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"al desinstalar la app o al sobrescribirlo"</span><span class="p">,</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">        </span><span class="p">),</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="w">        </span><span class="n">CampoPersistido</span><span class="p">(</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="w">            </span><span class="n">clave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"manual.md"</span><span class="p">,</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="w">            </span><span class="n">tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"fichero Markdown (UTF-8)"</span><span class="p">,</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="w">            </span><span class="n">almacen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"filesDir (almacenamiento interno)"</span><span class="p">,</span>
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="w">            </span><span class="n">descripcion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"El manual de usuario generado por la propia app."</span><span class="p">,</span>
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="w">            </span><span class="n">seBorra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"al desinstalar la app o al regenerarlo"</span><span class="p">,</span>
+<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="w">        </span><span class="p">),</span>
+<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="w">        </span><span class="n">CampoPersistido</span><span class="p">(</span>
+<a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a><span class="w">            </span><span class="n">clave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"config_puntero"</span><span class="p">,</span>
+<a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a><span class="w">            </span><span class="n">tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"objeto ConfigPuntero (tamaño y color)"</span><span class="p">,</span>
+<a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a><span class="w">            </span><span class="n">almacen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"rememberSaveable + Saver"</span><span class="p">,</span>
+<a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="w">            </span><span class="n">descripcion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"La configuración del puntero que el usuario elige."</span><span class="p">,</span>
+<a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a><span class="w">            </span><span class="n">seBorra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"al cerrar la app (no se guarda entre sesiones)"</span><span class="p">,</span>
+<a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a><span class="w">        </span><span class="p">),</span>
+<a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a><span class="w">        </span><span class="n">CampoPersistido</span><span class="p">(</span>
+<a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a><span class="w">            </span><span class="n">clave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"sacudidas"</span><span class="p">,</span>
+<a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a><span class="w">            </span><span class="n">tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"entero"</span><span class="p">,</span>
+<a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a><span class="w">            </span><span class="n">almacen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"estado de Compose (rememberSaveable)"</span><span class="p">,</span>
+<a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a><span class="w">            </span><span class="n">descripcion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"El contador de sacudidas de la pantalla de interfaz natural."</span><span class="p">,</span>
+<a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a><span class="w">            </span><span class="n">seBorra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"al cerrar la pantalla"</span><span class="p">,</span>
+<a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a><span class="w">        </span><span class="p">),</span>
+<a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a><span class="w">    </span><span class="p">)</span>
+<a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a>
+<a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a><span class="w">    </span><span class="cm">/** La tabla en Markdown, para pegarla en el manual o en la web del módulo. */</span>
+<a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">aMarkdown</span><span class="p">():</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">cabecera</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"| Clave | Tipo | Almacén | Para qué sirve | Se borra |\n"</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a><span class="w">            </span><span class="s">"| ----- | ---- | ------- | -------------- | -------- |"</span>
+<a id="__codelineno-2-65" name="__codelineno-2-65" href="#__codelineno-2-65"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">filas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">campos</span><span class="p">.</span><span class="na">joinToString</span><span class="p">(</span><span class="s">"\n"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">campo</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-2-66" name="__codelineno-2-66" href="#__codelineno-2-66"></a><span class="w">            </span><span class="s">"| </span><span class="si">${</span><span class="n">campo</span><span class="p">.</span><span class="na">clave</span><span class="si">}</span><span class="s"> | </span><span class="si">${</span><span class="n">campo</span><span class="p">.</span><span class="na">tipo</span><span class="si">}</span><span class="s"> | </span><span class="si">${</span><span class="n">campo</span><span class="p">.</span><span class="na">almacen</span><span class="si">}</span><span class="s"> | </span><span class="si">${</span><span class="n">campo</span><span class="p">.</span><span class="na">descripcion</span><span class="si">}</span><span class="s"> | </span><span class="si">${</span><span class="n">campo</span><span class="p">.</span><span class="na">seBorra</span><span class="si">}</span><span class="s"> |"</span>
+<a id="__codelineno-2-67" name="__codelineno-2-67" href="#__codelineno-2-67"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-2-68" name="__codelineno-2-68" href="#__codelineno-2-68"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cabecera</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"\n"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">filas</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"\n"</span>
+<a id="__codelineno-2-69" name="__codelineno-2-69" href="#__codelineno-2-69"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-70" name="__codelineno-2-70" href="#__codelineno-2-70"></a>
+<a id="__codelineno-2-71" name="__codelineno-2-71" href="#__codelineno-2-71"></a><span class="w">    </span><span class="cm">/**</span>
+<a id="__codelineno-2-72" name="__codelineno-2-72" href="#__codelineno-2-72"></a><span class="cm">     * El mismo esquema en JSON, para que lo pueda leer otra herramienta.</span>
+<a id="__codelineno-2-73" name="__codelineno-2-73" href="#__codelineno-2-73"></a><span class="cm">     * Se construye a mano para no depender de ninguna librería y poder probarlo sin Android.</span>
+<a id="__codelineno-2-74" name="__codelineno-2-74" href="#__codelineno-2-74"></a><span class="cm">     */</span>
+<a id="__codelineno-2-75" name="__codelineno-2-75" href="#__codelineno-2-75"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">aJson</span><span class="p">():</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-76" name="__codelineno-2-76" href="#__codelineno-2-76"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">objetos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">campos</span><span class="p">.</span><span class="na">joinToString</span><span class="p">(</span><span class="s">",\n"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">campo</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-2-77" name="__codelineno-2-77" href="#__codelineno-2-77"></a><span class="w">            </span><span class="s">"    {\n"</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-2-78" name="__codelineno-2-78" href="#__codelineno-2-78"></a><span class="w">                </span><span class="s">"      \"clave\": \"</span><span class="si">${</span><span class="n">escapar</span><span class="p">(</span><span class="n">campo</span><span class="p">.</span><span class="na">clave</span><span class="p">)</span><span class="si">}</span><span class="s">\",\n"</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-2-79" name="__codelineno-2-79" href="#__codelineno-2-79"></a><span class="w">                </span><span class="s">"      \"tipo\": \"</span><span class="si">${</span><span class="n">escapar</span><span class="p">(</span><span class="n">campo</span><span class="p">.</span><span class="na">tipo</span><span class="p">)</span><span class="si">}</span><span class="s">\",\n"</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-2-80" name="__codelineno-2-80" href="#__codelineno-2-80"></a><span class="w">                </span><span class="s">"      \"almacen\": \"</span><span class="si">${</span><span class="n">escapar</span><span class="p">(</span><span class="n">campo</span><span class="p">.</span><span class="na">almacen</span><span class="p">)</span><span class="si">}</span><span class="s">\",\n"</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-2-81" name="__codelineno-2-81" href="#__codelineno-2-81"></a><span class="w">                </span><span class="s">"      \"descripcion\": \"</span><span class="si">${</span><span class="n">escapar</span><span class="p">(</span><span class="n">campo</span><span class="p">.</span><span class="na">descripcion</span><span class="p">)</span><span class="si">}</span><span class="s">\",\n"</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-2-82" name="__codelineno-2-82" href="#__codelineno-2-82"></a><span class="w">                </span><span class="s">"      \"seBorra\": \"</span><span class="si">${</span><span class="n">escapar</span><span class="p">(</span><span class="n">campo</span><span class="p">.</span><span class="na">seBorra</span><span class="p">)</span><span class="si">}</span><span class="s">\"\n"</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-2-83" name="__codelineno-2-83" href="#__codelineno-2-83"></a><span class="w">                </span><span class="s">"    }"</span>
+<a id="__codelineno-2-84" name="__codelineno-2-84" href="#__codelineno-2-84"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-2-85" name="__codelineno-2-85" href="#__codelineno-2-85"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">"{\n  \"campos\": [\n</span><span class="si">$</span><span class="n">objetos</span><span class="s">\n  ]\n}\n"</span>
+<a id="__codelineno-2-86" name="__codelineno-2-86" href="#__codelineno-2-86"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-87" name="__codelineno-2-87" href="#__codelineno-2-87"></a>
+<a id="__codelineno-2-88" name="__codelineno-2-88" href="#__codelineno-2-88"></a><span class="w">    </span><span class="cm">/** Comillas y barras invertidas dentro de un texto rompen el JSON: hay que escaparlas. */</span>
+<a id="__codelineno-2-89" name="__codelineno-2-89" href="#__codelineno-2-89"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">escapar</span><span class="p">(</span><span class="n">texto</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span>
+<a id="__codelineno-2-90" name="__codelineno-2-90" href="#__codelineno-2-90"></a><span class="w">        </span><span class="n">texto</span><span class="p">.</span><span class="na">replace</span><span class="p">(</span><span class="s">"\\"</span><span class="p">,</span><span class="w"> </span><span class="s">"\\\\"</span><span class="p">).</span><span class="na">replace</span><span class="p">(</span><span class="s">"\""</span><span class="p">,</span><span class="w"> </span><span class="s">"\\\""</span><span class="p">)</span>
+<a id="__codelineno-2-91" name="__codelineno-2-91" href="#__codelineno-2-91"></a><span class="p">}</span>
+</code></pre></div>
+<p>Y esta es la tabla que produce <code>aMarkdown()</code>, tal cual:</p>
+<table>
+<thead>
+<tr>
+<th>Clave</th>
+<th>Tipo</th>
+<th>Almacén</th>
+<th>Para qué sirve</th>
+<th>Se borra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>informe.csv</td>
+<td>fichero de texto (UTF-8, separador ;)</td>
+<td>filesDir (almacenamiento interno)</td>
+<td>El informe de gastos en formato de hoja de cálculo.</td>
+<td>al desinstalar la app o al sobrescribirlo</td>
+</tr>
+<tr>
+<td>informe.pdf</td>
+<td>fichero PDF (A4, 595 x 842 puntos)</td>
+<td>filesDir (almacenamiento interno)</td>
+<td>El mismo informe listo para enviar o imprimir.</td>
+<td>al desinstalar la app o al sobrescribirlo</td>
+</tr>
+<tr>
+<td>manual.md</td>
+<td>fichero Markdown (UTF-8)</td>
+<td>filesDir (almacenamiento interno)</td>
+<td>El manual de usuario generado por la propia app.</td>
+<td>al desinstalar la app o al regenerarlo</td>
+</tr>
+<tr>
+<td>config_puntero</td>
+<td>objeto ConfigPuntero (tamaño y color)</td>
+<td>rememberSaveable + Saver</td>
+<td>La configuración del puntero que el usuario elige.</td>
+<td>al cerrar la app (no se guarda entre sesiones)</td>
+</tr>
+<tr>
+<td>sacudidas</td>
+<td>entero</td>
+<td>estado de Compose (rememberSaveable)</td>
+<td>El contador de sacudidas de la pantalla de interfaz natural.</td>
+<td>al cerrar la pantalla</td>
+</tr>
+</tbody>
+</table>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El mismo esquema se publica en JSON</span> para que lo lea otra herramienta. Se construye a
+mano, sin librerías, y por eso se puede probar sin Android: es <code>aJson()</code>.</p>
+<p>Un detalle que solo se ve mirando la app: <strong>los permisos no son solo los que escribe su autor</strong>. En el
+kit aparecen <code>INTERNET</code> y <code>ACCESS_NETWORK_STATE</code> sin que nadie los pidiera: los añaden las librerías de
+AndroidX. Por eso el manual se genera leyendo el paquete instalado.</p>
+<h2 id="6-el-manual-de-usuario-y-la-guia-de-referencia-criterio-e">6. El manual de usuario y la guía de referencia (criterio e)</h2>
+<p>El manual de usuario cuenta <strong>qué se puede hacer y cómo</strong>; la guía de referencia cuenta <strong>qué
+significa cada cosa</strong> (cada campo, cada mensaje de error, cada botón). En el kit los dos salen del
+mismo sitio: el código.</p>
+<div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/Manual.kt</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">package</span><span class="w"> </span><span class="nn">com.example.uikit</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">android.content.Context</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">import</span><span class="w"> </span><span class="nn">android.content.pm.PackageManager</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">import</span><span class="w"> </span><span class="nn">java.io.File</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="cm">/**</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="cm"> * El manual de usuario y la guía de instalación, generados por la propia app (RA6 e, f y g).</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="cm"> *</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="cm"> * No se escribe a mano: se lee de la app instalada (paquete, versión, mínimo de Android y</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="cm"> * permisos que declara) y de la ayuda y el esquema que ya están en el código. Así el manual no</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="cm"> * puede quedarse viejo: si cambia un permiso, cambia el manual.</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="cm"> */</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="kd">object</span><span class="w"> </span><span class="nc">Manual</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="cm">/** El manual completo en Markdown, con los datos reales de esta instalación. */</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">generar</span><span class="p">(</span><span class="n">contexto</span><span class="p">:</span><span class="w"> </span><span class="n">Context</span><span class="p">):</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">paquete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contexto</span><span class="p">.</span><span class="na">packageName</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">datosDeInstalacion</span><span class="p">(</span><span class="n">contexto</span><span class="p">)</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">lineas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutableListOf</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">()</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"# Manual de IsmaelUIKit"</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">""</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"Aplicación de ejemplo del módulo de Desarrollo de Interfaces: reúne los componentes,"</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"las pantallas y las pruebas que se han construido a lo largo del curso."</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">""</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">        </span><span class="c1">// 1. Ficha de la instalación: datos leídos del paquete, no escritos a mano.</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"## 1. Ficha de la instalación"</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">""</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"| Dato | Valor |"</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"| ---- | ----- |"</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"| Paquete | `</span><span class="si">$</span><span class="n">paquete</span><span class="s">` |"</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"| Versión | </span><span class="si">${</span><span class="n">info</span><span class="p">.</span><span class="na">version</span><span class="si">}</span><span class="s"> |"</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"| Android mínimo | </span><span class="si">${</span><span class="n">info</span><span class="p">.</span><span class="na">minSdk</span><span class="si">}</span><span class="s"> |"</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"| Android objetivo | </span><span class="si">${</span><span class="n">info</span><span class="p">.</span><span class="na">targetSdk</span><span class="si">}</span><span class="s"> |"</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"| Permisos declarados | </span><span class="si">${</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">info</span><span class="p">.</span><span class="na">permisos</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="s">"</span><span class="n">ninguno</span><span class="s">"</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">info</span><span class="p">.</span><span class="na">permisos</span><span class="p">.</span><span class="na">joinToString</span><span class="p">(</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="s">"</span><span class="p">)</span><span class="si">}</span><span class="s"> |"</span>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">""</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a>
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a><span class="w">        </span><span class="c1">// 2. Las pantallas y su ayuda: la misma que ve el usuario en la app.</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"## 2. Pantallas y ayuda"</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">""</span>
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a><span class="w">        </span><span class="n">Ayuda</span><span class="p">.</span><span class="na">pantallas</span><span class="p">.</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pantalla</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a><span class="w">            </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"### </span><span class="si">${</span><span class="n">pantalla</span><span class="p">.</span><span class="na">titulo</span><span class="si">}</span><span class="s">"</span>
+<a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a><span class="w">            </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">""</span>
+<a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a><span class="w">            </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">pantalla</span><span class="p">.</span><span class="na">resumen</span>
+<a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a><span class="w">            </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">""</span>
+<a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a><span class="w">            </span><span class="n">pantalla</span><span class="p">.</span><span class="na">pasos</span><span class="p">.</span><span class="na">forEachIndexed</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">indice</span><span class="p">,</span><span class="w"> </span><span class="n">paso</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"</span><span class="si">${</span><span class="n">indice</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="si">}</span><span class="s">. </span><span class="si">$</span><span class="n">paso</span><span class="s">"</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a><span class="w">            </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">""</span>
+<a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-51" name="__codelineno-3-51" href="#__codelineno-3-51"></a>
+<a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a><span class="w">        </span><span class="c1">// 3. La estructura de los datos que guarda.</span>
+<a id="__codelineno-3-53" name="__codelineno-3-53" href="#__codelineno-3-53"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"## 3. Estructura de la información que guarda"</span>
+<a id="__codelineno-3-54" name="__codelineno-3-54" href="#__codelineno-3-54"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">""</span>
+<a id="__codelineno-3-55" name="__codelineno-3-55" href="#__codelineno-3-55"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">EsquemaDatos</span><span class="p">.</span><span class="na">aMarkdown</span><span class="p">()</span>
+<a id="__codelineno-3-56" name="__codelineno-3-56" href="#__codelineno-3-56"></a>
+<a id="__codelineno-3-57" name="__codelineno-3-57" href="#__codelineno-3-57"></a><span class="w">        </span><span class="c1">// 4. Instalación y configuración.</span>
+<a id="__codelineno-3-58" name="__codelineno-3-58" href="#__codelineno-3-58"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"## 4. Instalación y configuración"</span>
+<a id="__codelineno-3-59" name="__codelineno-3-59" href="#__codelineno-3-59"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">""</span>
+<a id="__codelineno-3-60" name="__codelineno-3-60" href="#__codelineno-3-60"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"1. Compila el proyecto con Gradle: `gradlew :app:assembleDebug`."</span>
+<a id="__codelineno-3-61" name="__codelineno-3-61" href="#__codelineno-3-61"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"2. Instala el APK en el móvil o en el emulador: `adb install -r app-debug.apk`."</span>
+<a id="__codelineno-3-62" name="__codelineno-3-62" href="#__codelineno-3-62"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"3. Abre la app y elige la pantalla en el menú de inicio."</span>
+<a id="__codelineno-3-63" name="__codelineno-3-63" href="#__codelineno-3-63"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"4. No hace falta configurar nada: la app no pide permisos ni se conecta a ningún servidor."</span>
+<a id="__codelineno-3-64" name="__codelineno-3-64" href="#__codelineno-3-64"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">""</span>
+<a id="__codelineno-3-65" name="__codelineno-3-65" href="#__codelineno-3-65"></a>
+<a id="__codelineno-3-66" name="__codelineno-3-66" href="#__codelineno-3-66"></a><span class="w">        </span><span class="c1">// 5. Cómo se ha generado este manual.</span>
+<a id="__codelineno-3-67" name="__codelineno-3-67" href="#__codelineno-3-67"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"## 5. Cómo se ha generado este manual"</span>
+<a id="__codelineno-3-68" name="__codelineno-3-68" href="#__codelineno-3-68"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">""</span>
+<a id="__codelineno-3-69" name="__codelineno-3-69" href="#__codelineno-3-69"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"Este fichero lo ha escrito la app con `Manual.generar()`, a partir de su propio paquete"</span>
+<a id="__codelineno-3-70" name="__codelineno-3-70" href="#__codelineno-3-70"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"instalado, de la ayuda de cada pantalla y del esquema de datos. No hay texto duplicado:"</span>
+<a id="__codelineno-3-71" name="__codelineno-3-71" href="#__codelineno-3-71"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"si cambia la app, cambia el manual."</span>
+<a id="__codelineno-3-72" name="__codelineno-3-72" href="#__codelineno-3-72"></a><span class="w">        </span><span class="n">lineas</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">""</span>
+<a id="__codelineno-3-73" name="__codelineno-3-73" href="#__codelineno-3-73"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">lineas</span><span class="p">.</span><span class="na">joinToString</span><span class="p">(</span><span class="s">"\n"</span><span class="p">)</span>
+<a id="__codelineno-3-74" name="__codelineno-3-74" href="#__codelineno-3-74"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-75" name="__codelineno-3-75" href="#__codelineno-3-75"></a>
+<a id="__codelineno-3-76" name="__codelineno-3-76" href="#__codelineno-3-76"></a><span class="w">    </span><span class="cm">/** Escribe el manual en la carpeta privada de la app y devuelve el fichero. */</span>
+<a id="__codelineno-3-77" name="__codelineno-3-77" href="#__codelineno-3-77"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">aFichero</span><span class="p">(</span><span class="n">contexto</span><span class="p">:</span><span class="w"> </span><span class="n">Context</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"manual.md"</span><span class="p">):</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-78" name="__codelineno-3-78" href="#__codelineno-3-78"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">fichero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="n">contexto</span><span class="p">.</span><span class="na">filesDir</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span>
+<a id="__codelineno-3-79" name="__codelineno-3-79" href="#__codelineno-3-79"></a><span class="w">        </span><span class="n">fichero</span><span class="p">.</span><span class="na">writeText</span><span class="p">(</span><span class="n">generar</span><span class="p">(</span><span class="n">contexto</span><span class="p">),</span><span class="w"> </span><span class="n">Charsets</span><span class="p">.</span><span class="na">UTF_8</span><span class="p">)</span>
+<a id="__codelineno-3-80" name="__codelineno-3-80" href="#__codelineno-3-80"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">fichero</span>
+<a id="__codelineno-3-81" name="__codelineno-3-81" href="#__codelineno-3-81"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-82" name="__codelineno-3-82" href="#__codelineno-3-82"></a>
+<a id="__codelineno-3-83" name="__codelineno-3-83" href="#__codelineno-3-83"></a><span class="w">    </span><span class="cm">/** Los datos de la instalación: lo que el móvil sabe de la app, no lo que uno recuerda. */</span>
+<a id="__codelineno-3-84" name="__codelineno-3-84" href="#__codelineno-3-84"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Instalacion</span><span class="p">(</span>
+<a id="__codelineno-3-85" name="__codelineno-3-85" href="#__codelineno-3-85"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">version</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+<a id="__codelineno-3-86" name="__codelineno-3-86" href="#__codelineno-3-86"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">minSdk</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+<a id="__codelineno-3-87" name="__codelineno-3-87" href="#__codelineno-3-87"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">targetSdk</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+<a id="__codelineno-3-88" name="__codelineno-3-88" href="#__codelineno-3-88"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">permisos</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">,</span>
+<a id="__codelineno-3-89" name="__codelineno-3-89" href="#__codelineno-3-89"></a><span class="w">    </span><span class="p">)</span>
+<a id="__codelineno-3-90" name="__codelineno-3-90" href="#__codelineno-3-90"></a>
+<a id="__codelineno-3-91" name="__codelineno-3-91" href="#__codelineno-3-91"></a><span class="w">    </span><span class="nd">@Suppress</span><span class="p">(</span><span class="s">"DEPRECATION"</span><span class="p">)</span>
+<a id="__codelineno-3-92" name="__codelineno-3-92" href="#__codelineno-3-92"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">datosDeInstalacion</span><span class="p">(</span><span class="n">contexto</span><span class="p">:</span><span class="w"> </span><span class="n">Context</span><span class="p">):</span><span class="w"> </span><span class="n">Instalacion</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-93" name="__codelineno-3-93" href="#__codelineno-3-93"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">paquete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contexto</span><span class="p">.</span><span class="na">packageManager</span><span class="p">.</span><span class="na">getPackageInfo</span><span class="p">(</span>
+<a id="__codelineno-3-94" name="__codelineno-3-94" href="#__codelineno-3-94"></a><span class="w">            </span><span class="n">contexto</span><span class="p">.</span><span class="na">packageName</span><span class="p">,</span>
+<a id="__codelineno-3-95" name="__codelineno-3-95" href="#__codelineno-3-95"></a><span class="w">            </span><span class="n">PackageManager</span><span class="p">.</span><span class="na">GET_PERMISSIONS</span><span class="p">,</span>
+<a id="__codelineno-3-96" name="__codelineno-3-96" href="#__codelineno-3-96"></a><span class="w">        </span><span class="p">)</span>
+<a id="__codelineno-3-97" name="__codelineno-3-97" href="#__codelineno-3-97"></a><span class="w">        </span><span class="c1">// applicationInfo puede no venir: si falta, se dice "desconocido" en vez de mentir.</span>
+<a id="__codelineno-3-98" name="__codelineno-3-98" href="#__codelineno-3-98"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">aplicacion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paquete</span><span class="p">.</span><span class="na">applicationInfo</span>
+<a id="__codelineno-3-99" name="__codelineno-3-99" href="#__codelineno-3-99"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Instalacion</span><span class="p">(</span>
+<a id="__codelineno-3-100" name="__codelineno-3-100" href="#__codelineno-3-100"></a><span class="w">            </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"</span><span class="si">${</span><span class="n">paquete</span><span class="p">.</span><span class="na">versionName</span><span class="si">}</span><span class="s"> (código </span><span class="si">${</span><span class="n">paquete</span><span class="p">.</span><span class="na">longVersionCode</span><span class="si">}</span><span class="s">)"</span><span class="p">,</span>
+<a id="__codelineno-3-101" name="__codelineno-3-101" href="#__codelineno-3-101"></a><span class="w">            </span><span class="n">minSdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aplicacion</span><span class="o">?.</span><span class="na">minSdkVersion</span><span class="o">?.</span><span class="na">let</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"API </span><span class="si">$</span><span class="n">it</span><span class="s">"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="s">"desconocido"</span><span class="p">,</span>
+<a id="__codelineno-3-102" name="__codelineno-3-102" href="#__codelineno-3-102"></a><span class="w">            </span><span class="n">targetSdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aplicacion</span><span class="o">?.</span><span class="na">targetSdkVersion</span><span class="o">?.</span><span class="na">let</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"API </span><span class="si">$</span><span class="n">it</span><span class="s">"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="s">"desconocido"</span><span class="p">,</span>
+<a id="__codelineno-3-103" name="__codelineno-3-103" href="#__codelineno-3-103"></a><span class="w">            </span><span class="n">permisos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paquete</span><span class="p">.</span><span class="na">requestedPermissions</span><span class="o">?.</span><span class="na">toList</span><span class="p">()</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="n">emptyList</span><span class="p">(),</span>
+<a id="__codelineno-3-104" name="__codelineno-3-104" href="#__codelineno-3-104"></a><span class="w">        </span><span class="p">)</span>
+<a id="__codelineno-3-105" name="__codelineno-3-105" href="#__codelineno-3-105"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-106" name="__codelineno-3-106" href="#__codelineno-3-106"></a><span class="p">}</span>
+</code></pre></div>
+<p>Lo que hace especial a este manual es de dónde salen sus datos: el <strong>paquete, la versión y el Android
+mínimo</strong> se leen con <code>PackageManager</code> de la app instalada; los <strong>permisos</strong> son los que declara el APK;
+las <strong>pantallas y sus pasos</strong> son los mismos <code>AyudaPantalla</code> que ve el usuario; y la <strong>estructura de
+datos</strong> es la tabla de <code>EsquemaDatos</code>.</p>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Si cambia la app, cambia el manual</span>: no hay dos textos que mantener. El fichero se
+escribe en la carpeta privada de la app (<code>filesDir</code>) y ocupa menos de 3 KB.</p>
+<p><img alt="El manual que ha generado la app" src="../assets/captura-manual.png" /></p>
+<p><em>Figura 5. El <code>manual.md</code> de 2.909 bytes que escribió la app, abierto en el navegador.</em></p>
+<p>Y así se comprueba que existe de verdad, sin salir del móvil:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>adb<span class="w"> </span>shell<span class="w"> </span>run-as<span class="w"> </span>com.example.uikit.demo<span class="w"> </span>cat<span class="w"> </span>files/manual.md
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a># Manual de IsmaelUIKit
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>## 1. Ficha de la instalación
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>| Dato | Valor |
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>| ---- | ----- |
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>| Paquete | `com.example.uikit.demo` |
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>| Versión | 1.0 (código 1) |
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>| Android mínimo | API 24 |
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>| Android objetivo | API 37 |
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>| Permisos declarados | android.permission.INTERNET, ... |
+</code></pre></div>
+<h2 id="7-instalacion-configuracion-y-administracion-criterio-f">7. Instalación, configuración y administración (criterio f)</h2>
+<p>El manual de instalación no se escribe para el usuario: se escribe para <strong>quien tiene que poner la
+app en marcha</strong>. Y tiene que responder a lo de siempre, con datos y no con vaguedades:</p>
+<table>
+<thead>
+<tr>
+<th>Apartado</th>
+<th>Qué dice en el kit</th>
+<th>De dónde sale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requisitos</td>
+<td>Android 7.0 o superior (API 24)</td>
+<td><code>minSdkVersion</code> del APK</td>
+</tr>
+<tr>
+<td>Compilación</td>
+<td><code>gradlew :app:assembleDebug</code></td>
+<td>El proyecto Gradle</td>
+</tr>
+<tr>
+<td>Instalación</td>
+<td><code>adb install -r app-debug.apk</code></td>
+<td>El APK de depuración</td>
+</tr>
+<tr>
+<td>Configuración</td>
+<td>Ninguna: no hay servidor ni cuenta</td>
+<td>El código no tiene ajustes</td>
+</tr>
+<tr>
+<td>Desinstalación</td>
+<td>Borra <code>informe.csv</code>, <code>informe.pdf</code> y <code>manual.md</code></td>
+<td>El esquema de datos</td>
+</tr>
+<tr>
+<td>Administración</td>
+<td>No hay: la app no tiene servidor ni usuarios</td>
+<td>El alcance del proyecto</td>
+</tr>
+</tbody>
+</table>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un manual de instalación sin los requisitos y sin la desinstalación está a medias</span>: el
+que lo usa necesita saber si le vale su móvil y qué se lleva por delante al borrarlo.</p>
+<h2 id="8-los-tutoriales-criterio-g">8. Los tutoriales (criterio g)</h2>
+<p>Un tutorial no es un manual corto: es <strong>una secuencia de pasos para conseguir algo la primera vez</strong>.
+Se escribe en segunda persona, con una tarea concreta y un resultado que se pueda comprobar.</p>
+<p>El tutorial del kit, que es también el de la escena 10:</p>
+<ol>
+<li>Abre la app y elige <strong>Informe de gastos</strong>.</li>
+<li>Deja la categoría en <strong>Todas</strong> y la quincena en <strong>Todas</strong>.</li>
+<li>Comprueba que el total del pie coincide con la suma de las filas.</li>
+<li>Pulsa <strong>Exportar CSV</strong> y abre el fichero en una hoja de cálculo.</li>
+<li>Vuelve, filtra por <strong>Formación</strong> y comprueba que el total baja.</li>
+</ol>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un tutorial se prueba haciéndolo con alguien que no lo ha escrito</span>. Si esa persona se
+pierde, el tutorial está mal, no la persona.</p>
+<p>Y un aviso que vale para los tres documentos: <strong>capturas actualizadas o ninguna</strong>. Una captura de una
+versión vieja es peor que un texto, porque el usuario busca un botón que ya no está.</p>
+<h2 id="9-lo-que-usan-las-empresas-y-que-hace-la-ia">9. Lo que usan las empresas (y qué hace la IA)</h2>
+<ul>
+<li><strong>Documentación como código</strong>: el Markdown vive en el repositorio, se revisa en el <em>pull request</em> y
+  se publica solo con GitHub Pages o GitLab Pages.</li>
+<li><strong>Referencia de API generada</strong>: Dokka y Javadoc escriben la documentación desde los comentarios.
+  <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Si el comentario falta, la referencia sale vacía: se nota</span>.</li>
+<li><strong>Bases de conocimiento</strong>: Confluence o Notion para el equipo; Zendesk o Intercom para el cliente.</li>
+<li><strong>IA</strong>: escribe el borrador, traduce y resume el <em>changelog</em>. Lo que <strong>no</strong> hace es comprobar que lo
+  que dice sea verdad; por eso en el kit el manual sale de los datos de la app y no de un prompt.</li>
+</ul>
+<h2 id="10-lo-que-se-ha-probado-35-pruebas">10. Lo que se ha probado (35 pruebas)</h2>
+<table>
+<thead>
+<tr>
+<th>Prueba</th>
+<th>Qué comprueba</th>
+<th>CE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cadaPantallaTieneSuAyudaConPasos</code></td>
+<td>Toda pantalla tiene ayuda y no está vacía</td>
+<td>c</td>
+</tr>
+<tr>
+<td><code>unaPantallaDesconocidaDevuelveLaAyudaGeneral</code></td>
+<td>No hay huecos: sin ayuda propia, la general</td>
+<td>c</td>
+</tr>
+<tr>
+<td><code>cadaCampoDelEsquemaDiceDondeEstaYCuandoSeBorra</code></td>
+<td>Los cinco campos tienen almacén, descripción y borrado</td>
+<td>d</td>
+</tr>
+<tr>
+<td><code>elEsquemaEnMarkdownTieneCabeceraYUnaFilaPorCampo</code></td>
+<td>La tabla tiene una fila por campo, ni una más</td>
+<td>d, e</td>
+</tr>
+<tr>
+<td><code>elEsquemaEnJsonLlevaTodosLosCampos</code></td>
+<td>El JSON es válido y no pierde ningún campo</td>
+<td>d</td>
+</tr>
+<tr>
+<td><code>elManualLlevaLaVersionYLosPermisosDeLaAppInstalada</code></td>
+<td>El manual sale de la app instalada, no de una constante</td>
+<td>e, f</td>
+</tr>
+</tbody>
+</table>
+<p>Salida real de la instrumentación en el emulador:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>OK (35 tests)
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Time: 47.621
+</code></pre></div>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">35 pruebas en verde: las 29 anteriores más las 6 de documentación</span>. Ninguna prueba
+comprueba que el texto sea bonito; comprueban que <strong>no falte</strong>.</p>
+<h2 id="11-errores-tipicos">11. Errores típicos</h2>
+<ul>
+<li><strong>Documentar al final.</strong> El manual se escribe el último día, con prisa, y ya no se corresponde con
+  la app. Solución: generarlo del código, como en el kit.</li>
+<li><strong>Confundir el manual de usuario con el de instalación.</strong> El usuario no necesita saber el <code>minSdk</code>;
+  el técnico no necesita los pasos del informe.</li>
+<li><strong>Olvidar el «cuándo se borra».</strong> Es la pregunta que hace el usuario cuando ha perdido el trabajo.</li>
+<li><strong>Copiar los permisos de otro proyecto.</strong> Se leen del APK: en el kit hay dos que nadie escribió.</li>
+<li><strong>Un manual escrito por la IA sin probar.</strong> Suena perfecto y dice cosas que la app no hace.</li>
+</ul>
+<h2 id="12-resumen">12. Resumen</h2>
+<ul>
+<li><strong>Documentar</strong> es dejar por escrito lo que otro necesita para usar, instalar o mantener la app.</li>
+<li><strong>Tipos de ayuda</strong> (a): en línea, contextual, tutorial, manual y referencia; los sistemas actuales
+  son docs-as-code (Markdown + MkDocs o Docusaurus), Dokka/Javadoc, wikis y centros de ayuda.</li>
+<li><strong>Formatos</strong> (b): Markdown y HTML hoy; PDF para entregar; CHM y HLP retirados.</li>
+<li><strong>Ayuda contextual</strong> (c): <code>Ayuda.para(clave)</code>, con la misma clave que usa la navegación y con ayuda
+  general de respaldo.</li>
+<li><strong>Estructura de los datos</strong> (d): <code>EsquemaDatos</code>, con almacén, tipo, descripción y borrado, en tabla
+  y en JSON.</li>
+<li><strong>Manual y referencia</strong> (e): <code>Manual.generar()</code> lee el paquete instalado, la ayuda y el esquema.</li>
+<li><strong>Instalación y administración</strong> (f): requisitos, compilación, instalación, permisos y
+  desinstalación, con datos reales.</li>
+<li><strong>Tutoriales</strong> (g): pasos para una tarea concreta, probados con alguien que no los ha escrito.</li>
+<li><strong>Pruebas</strong>: 6 nuevas, <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">35 en total, <code>Time: 47.621</code></span>.</li>
+<li><strong>La IA</strong> escribe el borrador en segundos; la verdad sobre la app se lee del código y se prueba.</li>
+</ul>
+<h2 id="bibliografia-y-fuentes">Bibliografía y fuentes</h2>
+<p>Todo el material se apoya en la documentación oficial de las herramientas que se usan en clase.</p>
+<p><strong>Documentación en Android</strong></p>
+<ul>
+<li>Android Developers. <em>Guía de documentación de Kotlin (KDoc)</em>. <a href="https://kotlinlang.org/docs/kotlin-doc.html">https://kotlinlang.org/docs/kotlin-doc.html</a></li>
+<li>Kotlin. <em>Dokka — generador de documentación</em>. <a href="https://kotlinlang.org/docs/dokka-introduction.html">https://kotlinlang.org/docs/dokka-introduction.html</a></li>
+<li>Android Developers. <em>PackageManager</em> — versión, permisos y datos de la app instalada. <a href="https://developer.android.com/reference/android/content/pm/PackageManager">https://developer.android.com/reference/android/content/pm/PackageManager</a></li>
+<li>Android Developers. <em>Almacenamiento interno de la app (filesDir)</em>. <a href="https://developer.android.com/training/data-storage/app-specific">https://developer.android.com/training/data-storage/app-specific</a></li>
+<li>Android Developers. <em>Accesibilidad: etiquetas y descripciones</em>. <a href="https://developer.android.com/guide/topics/ui/accessibility/apps">https://developer.android.com/guide/topics/ui/accessibility/apps</a></li>
+</ul>
+<p><strong>Documentación como código</strong></p>
+<ul>
+<li>MkDocs. <em>Documentación oficial de MkDocs</em>. <a href="https://www.mkdocs.org/">https://www.mkdocs.org/</a></li>
+<li>Material for MkDocs. <em>Documentación oficial</em>. <a href="https://squidfunk.github.io/mkdocs-material/">https://squidfunk.github.io/mkdocs-material/</a></li>
+<li>Docusaurus. <em>Documentación oficial</em>. <a href="https://docusaurus.io/docs">https://docusaurus.io/docs</a></li>
+<li>Sphinx. <em>Documentación oficial</em>. <a href="https://www.sphinx-doc.org/en/master/">https://www.sphinx-doc.org/en/master/</a></li>
+<li>Oracle. <em>Javadoc Tool</em>. <a href="https://docs.oracle.com/en/java/javase/21/javadoc/">https://docs.oracle.com/en/java/javase/21/javadoc/</a></li>
+<li>GitHub. <em>GitHub Pages — publicar documentación desde un repositorio</em>. <a href="https://docs.github.com/pages">https://docs.github.com/pages</a></li>
+</ul>
+<p><strong>Herramientas de ayuda y bases de conocimiento</strong></p>
+<ul>
+<li>Atlassian. <em>Confluence — documentación oficial</em>. <a href="https://support.atlassian.com/confluence-cloud/">https://support.atlassian.com/confluence-cloud/</a></li>
+<li>Zendesk. <em>Documentación de Help Center</em>. <a href="https://support.zendesk.com/hc/en-us">https://support.zendesk.com/hc/en-us</a></li>
+</ul>
+<p><strong>Formatos y estándares</strong></p>
+<ul>
+<li>John Gruber. <em>Markdown: sintaxis oficial</em>. <a href="https://daringfireball.net/projects/markdown/">https://daringfireball.net/projects/markdown/</a></li>
+<li>CommonMark. <em>Especificación de Markdown</em>. <a href="https://spec.commonmark.org/">https://spec.commonmark.org/</a></li>
+<li>W3C. <em>WCAG 2.2</em> — documentación y ayuda accesibles (criterio 1.1.1). <a href="https://www.w3.org/TR/WCAG22/">https://www.w3.org/TR/WCAG22/</a></li>
+</ul>
+<p><strong>Normativa</strong></p>
+<ul>
+<li><strong>Real Decreto 405/2023, de 29 de mayo</strong> (BOE-A-2023-13221), por el que se establecen los títulos de
+  Técnico y Técnico Superior en Sistemas Microinformáticos y Redes y se fijan sus enseñanzas mínimas:
+  currículo del módulo 0488 <em>Desarrollo de interfaces</em>, <strong>RA6 y sus siete criterios de evaluación</strong>.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>

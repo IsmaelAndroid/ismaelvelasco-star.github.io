@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" width="1000" height="470" role="img" aria-label="Estructura de la informacion persistente: ficheros en disco, estado en memoria y lo que no se guarda">
+<defs><marker id="punta" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#37474f"/></marker></defs>
+<rect width="1000" height="470" fill="#ffffff"/>
+<text x="24" y="30" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#37474f">Qué guarda la app, dónde está y cuándo desaparece</text>
+<rect x="24" y="56" width="300" height="250" rx="10" fill="#e8f1f8" stroke="#1a4d7a" stroke-width="1.5"/>
+<text x="40" y="82" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1a4d7a">En disco (filesDir)</text>
+<text x="40" y="102" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#37474f">Sobrevive al cierre de la app</text>
+<rect x="38" y="122" width="272" height="46" rx="6" fill="#ffffff" stroke="#90a4ae" stroke-width="1"/>
+<text x="50" y="142" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1a4d7a">informe.csv</text>
+<text x="50" y="159" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">el informe para la hoja de cálculo</text>
+<rect x="38" y="178" width="272" height="46" rx="6" fill="#ffffff" stroke="#90a4ae" stroke-width="1"/>
+<text x="50" y="198" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1a4d7a">informe.pdf</text>
+<text x="50" y="215" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">el mismo informe para enviar</text>
+<rect x="38" y="234" width="272" height="46" rx="6" fill="#ffffff" stroke="#90a4ae" stroke-width="1"/>
+<text x="50" y="254" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1a4d7a">manual.md</text>
+<text x="50" y="271" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">el manual que genera la app</text>
+<text x="40" y="296" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#b71c1c">Se borra al desinstalar</text>
+<rect x="350" y="56" width="300" height="250" rx="10" fill="#fff4e0" stroke="#8a5a00" stroke-width="1.5"/>
+<text x="366" y="82" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#8a5a00">En memoria (estado de Compose)</text>
+<text x="366" y="102" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#37474f">Se pierde al cerrar</text>
+<rect x="364" y="122" width="272" height="46" rx="6" fill="#ffffff" stroke="#90a4ae" stroke-width="1"/>
+<text x="376" y="142" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#8a5a00">config_puntero</text>
+<text x="376" y="159" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">tamaño y color del puntero</text>
+<rect x="364" y="178" width="272" height="46" rx="6" fill="#ffffff" stroke="#90a4ae" stroke-width="1"/>
+<text x="376" y="198" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#8a5a00">sacudidas</text>
+<text x="376" y="215" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">el contador de la pantalla</text>
+<text x="366" y="296" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#b71c1c">Se borra al cerrar la app</text>
+<rect x="676" y="56" width="300" height="250" rx="10" fill="#eceff1" stroke="#37474f" stroke-width="1.5"/>
+<text x="692" y="82" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#37474f">Lo que NO se guarda</text>
+<text x="692" y="102" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#37474f">Y también hay que decirlo</text>
+<text x="692" y="126" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#37474f">· los filtros elegidos en el informe</text>
+<text x="692" y="166" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#37474f">· el texto escrito en los campos</text>
+<text x="692" y="206" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#37474f">· las pantallas por las que has pasado</text>
+<text x="692" y="246" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" fill="#37474f">· ningún dato personal sale del móvil</text>
+<text x="692" y="296" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#1a4d7a">Nada sale del dispositivo</text>
+<line x1="174" y1="306" x2="174" y2="344" stroke="#37474f" stroke-width="1.8" marker-end="url(#punta)"/>
+<line x1="500" y1="306" x2="500" y2="344" stroke="#37474f" stroke-width="1.8" marker-end="url(#punta)"/>
+<line x1="826" y1="306" x2="826" y2="344" stroke="#37474f" stroke-width="1.8" marker-end="url(#punta)"/>
+<rect x="24" y="352" width="952" height="96" rx="8" fill="#e8f1f8" stroke="#1a4d7a" stroke-width="1.5"/>
+<text x="36" y="375" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#1a4d7a">Y esto se escribe en tres sitios, con el mismo texto</text>
+<text x="36" y="396" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">Tabla del esquema (EsquemaDatos)  →  manual.md que genera la app  →  página del módulo. Si cambia un campo,</text>
+<text x="36" y="413" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">se cambia una vez y se regenera: por eso el esquema está en el código y no en un documento aparte.</text>
+<text x="36" y="430" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">La columna «se borra» es la que casi nadie documenta, y es la que evita que un usuario pierda su trabajo.</text>
+</svg>
