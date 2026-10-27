@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Índice de la unidad 3: teoría, práctica, ejercicios y solucionario de XML y su papel en el Android moderno con Kotlin y Jetpack Compose.">
+        <meta name="description" content="Índice de la unidad 3: del XML (XHTML, GML, RSS, SVG…) al código declarativo de Jetpack Compose, con eventos, herramientas y previews.">
       
       
         <meta name="author" content="Ismael Velasco">
@@ -25,7 +25,7 @@
     
     
       
-        <title>UD 3 - Generación de interfaces a partir de documentos XML - Aula 2º DAM - Ismael Velasco</title>
+        <title>UD 3 - Generación de interfaces desde documentos de descripción - Aula 2º DAM - Ismael Velasco</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ud-3-generacion-de-interfaces-a-partir-de-documentos-xml" class="md-skip">
+        <a href="#ud-3-generacion-de-interfaces-desde-documentos-de-descripcion" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              UD 3 - Generación de interfaces a partir de documentos XML
+              UD 3 - Generación de interfaces desde documentos de descripción
             
           </span>
         </div>
@@ -1821,6 +1821,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#presentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Presentación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#que-aprenderas" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1851,22 +1862,25 @@
   
 
 
-<h1 id="ud-3-generacion-de-interfaces-a-partir-de-documentos-xml">UD 3 — Generación de interfaces a partir de documentos XML</h1>
-<p>La unidad que explica por qué XML sigue vivo en un mundo Compose: recursos, drawables vectoriales, documentos de datos y eventos — y cómo conectar todo con Kotlin.</p>
+<h1 id="ud-3-generacion-de-interfaces-desde-documentos-de-descripcion">UD 3 — Generación de interfaces desde documentos de descripción</h1>
+<p>La unidad que explica de dónde viene tu interfaz: los lenguajes que <strong>describen</strong> pantallas y datos en
+XML (XHTML, GML, MathML, RSS, XSLT, SVG) y su heredero directo, el código declarativo de Jetpack Compose,
+donde describir y programar pasan a ser la misma cosa.</p>
 <h2 id="contenido">Contenido</h2>
 <ul>
-<li><a href="teoria/DI-U3.1.-GeneracionInterfacesXML/">Teoría 3.1 — Generación de interfaces a partir de documentos XML</a></li>
-<li><a href="practica/DI-U3.-Practica/">Práctica UD 3: XML vivo en tu app Compose</a></li>
-<li><a href="ejercicios/DI-U3.-Ejercicios/">Ejercicios UD 3</a></li>
-<li><a href="ejercicios/DI-U3.-Solucionario/">Solucionario UD 3</a></li>
+<li><a href="teoria/DI-U3.1.-GeneracionInterfacesXML/">Teoría 3.1 — Generación de interfaces a partir de documentos de descripción</a></li>
+</ul>
+<h2 id="presentacion">Presentación</h2>
+<ul>
+<li><a href="https://revilofe.github.io/slides/section6-di/DI-U3.1.-GeneracionInterfacesXML.html">DI-U3.1 - Generación de interfaces desde documentos de descripción</a></li>
 </ul>
 <h2 id="que-aprenderas">Qué aprenderás</h2>
 <ul>
-<li>Leer, validar y editar cualquier documento XML de un proyecto Android (manifest, strings, drawables, datos).</li>
-<li>El flujo moderno del gráfico vectorial: SVG → Vector Asset → clase R → <code>painterResource</code> en Compose.</li>
-<li>Los lenguajes derivados de XML que importan hoy (SVG, RSS, XSLT como idea de transformación) y los que fueron historia (editores dedicados, WYSIWYG).</li>
-<li>Eventos clásicos frente a Compose: de <code>android:onClick</code> en XML a <code>onClick = { }</code> verificado por el compilador.</li>
-<li>Parsear documentos XML de datos con <code>XmlPullParser</code> y pintarlos en una <code>LazyColumn</code>.</li>
+<li>Los seis lenguajes de descripción basados en XML y dónde siguen vivos hoy, <strong>cada uno con su escena
+  ejecutándose en el emulador</strong>: GML, MathML, RSS y XSLT incluidos.</li>
+<li>La equivalencia exacta: etiqueta ↔ composable, atributo ↔ parámetro, evento ↔ lambda.</li>
+<li>Por qué Compose <strong>es</strong> la generación de interfaces: <code>@Preview</code>, variantes de configuración y Layout Inspector.</li>
+<li>Un logo vectorial SVG convertido a <code>ImageVector</code> y una ficha GML editable, ejecutados en el emulador.</li>
 </ul>
 
 

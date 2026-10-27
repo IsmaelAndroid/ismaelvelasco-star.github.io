@@ -2080,7 +2080,8 @@
 
 <h1 id="31-generacion-de-interfaces-a-partir-de-documentos-de-descripcion">3.1 — Generación de interfaces a partir de documentos de descripción</h1>
 <blockquote>
-<p><strong>Del libro de texto:</strong> tema 3, <em>Generación de interfaces a partir de documentos XML</em>.
+<p><strong>El trabajo de ingeniería:</strong> describir una interfaz en un documento de texto y generar la
+pantalla a partir de él.
 Este curso damos el salto a <strong>Jetpack Compose</strong>, así que vamos a hacer dos cosas a la vez: entender el
 XML que describe interfaces (sigue estando en todas partes: webs, feeds, documentos, Android clásico)
 y aprender su equivalente moderno en Compose, donde <strong>la descripción de la interfaz es código Kotlin</strong>.</p>
@@ -2115,10 +2116,10 @@ etiquetas ↔ composables, atributos ↔ parámetros, eventos ↔ lambdas.</p>
 
 <h2 id="2-lenguajes-de-descripcion-de-interfaces-basados-en-xml">2. Lenguajes de descripción de interfaces basados en XML</h2>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">XML es metalenguaje: no describe nada por sí mismo, pero permite definir lenguajes que sí lo hacen</span>.
-El libro los recorre; nosotros los traducimos a cómo se ven desde Compose en 2026. Cada apartado trae
+Son conceptos de manual; aquí los traducimos a cómo se ven desde Compose en 2026. Cada apartado trae
 su documento y <strong>su escena real ejecutándose en el emulador</strong>.</p>
 <figure>
-<p><img alt="Esquema con los seis lenguajes basados en XML alrededor de un documento XML central." src="assets/lenguajes-xml.svg" /></p>
+<p><img alt="Esquema con los seis lenguajes basados en XML alrededor de un documento XML central." src="../assets/lenguajes-xml.svg" /></p>
 <figcaption>Figura 1. Los seis lenguajes de descripción basados en XML que estudia el tema, hoy en día.</figcaption>
 </figure>
 <h3 id="21-xhtml">2.1. XHTML</h3>
@@ -2138,7 +2139,7 @@ describe la interfaz web y el navegador la genera.</p>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">}</span>
 </code></pre></div>
 <div style="background:#e1bee7; border-radius:6px; padding:8px 12px; margin:12px 0;">
-<strong>⚠️ Importante (del libro)</strong>: XHTML obliga a documentos <em>well-formed</em>: toda etiqueta
+<strong>⚠️ Importante</strong>: XHTML obliga a documentos <em>well-formed</em>: toda etiqueta
 cerrada, atributos entrecomillados y un único nodo raíz. Un HTML antiguo podía ser un desastre tolerado;
 un XHTML no.
 </div>
@@ -2148,7 +2149,7 @@ un XHTML no.
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">documentos XML. En una app de turismo de Chipiona, la ficha de un mirador <strong>es</strong> un documento GML</span>:
 coordenadas, nombre, descripción. Y la pantalla que lo muestra se genera a partir de él:</p>
 <p><strong>Código 2.</strong> El documento GML de la Figura 3 entra como texto y la interfaz de la tarjeta se construye
-a partir de sus datos. Es el mini-caso práctico 2 del libro (XML → interfaz) en miniatura:</p>
+a partir de sus datos. Es el mini-caso práctico de siempre (XML → interfaz) en miniatura:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nd">@Composable</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">GmlAInterfaz</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">                                       </span><span class="c1">// pantalla 'documento → interfaz'</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">gml</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"""                                          // EL DOCUMENTO: fragmento GML real</span>
@@ -2188,7 +2189,7 @@ a partir de sus datos. Es el mini-caso práctico 2 del libro (XML → interfaz) 
 <a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="p">}</span>
 </code></pre></div>
 <figure>
-<p><img alt="Pantalla con un fragmento de documento GML en una tarjeta de código y debajo la ficha generada del mirador." src="assets/captura-codigo2-gml.png" /></p>
+<p><img alt="Pantalla con un fragmento de documento GML en una tarjeta de código y debajo la ficha generada del mirador." src="../assets/captura-codigo2-gml.png" /></p>
 <figcaption>Figura 3. Un documento GML (arriba) y la interfaz que se genera de él (abajo), en el emulador.</figcaption>
 </figure>
 <h3 id="23-mathml">2.3. MathML</h3>
@@ -2224,7 +2225,7 @@ maquete. Mira la escena completa:</p>
 <a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="p">}</span>
 </code></pre></div>
 <figure>
-<p><img alt="Pantalla con la derivada d/dx(x²+3x)=2x+3 renderizada en grande dentro de un bloque gris claro." src="assets/captura-codigo3-mathml.png" /></p>
+<p><img alt="Pantalla con la derivada d/dx(x²+3x)=2x+3 renderizada en grande dentro de un bloque gris claro." src="../assets/captura-codigo3-mathml.png" /></p>
 <figcaption>Figura 4. La fórmula MathML, renderizada por el motor de un WebView dentro de Compose.</figcaption>
 </figure>
 <h3 id="24-rss">2.4. RSS</h3>
@@ -2261,7 +2262,7 @@ sobre los ítems parseados. La escena lee tres ítems de un canal y los pinta co
 <a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="p">}</span>
 </code></pre></div>
 <figure>
-<p><img alt="Tres tarjetas de noticias con su pubDate en monoespaciada bajo el título, como un lector RSS." src="assets/captura-codigo4-rss.png" /></p>
+<p><img alt="Tres tarjetas de noticias con su pubDate en monoespaciada bajo el título, como un lector RSS." src="../assets/captura-codigo4-rss.png" /></p>
 <figcaption>Figura 5. Un canal RSS de tres ítems generado como lista de tarjetas: el feed XML, hecho interfaz.</figcaption>
 </figure>
 <h3 id="25-xslt">2.5. XSLT</h3>
@@ -2313,7 +2314,7 @@ y la hoja en medio:</p>
 <a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="p">}</span>
 </code></pre></div>
 <figure>
-<p><img alt="Pantalla partida en dos: a la izquierda el documento XML en monoespaciada, a la derecha la tarjeta con la salida transformada." src="assets/captura-codigo5-xslt.png" /></p>
+<p><img alt="Pantalla partida en dos: a la izquierda el documento XML en monoespaciada, a la derecha la tarjeta con la salida transformada." src="../assets/captura-codigo5-xslt.png" /></p>
 <figcaption>Figura 6. Entrada XML, flecha «hoja XSL», salida transformada: la idea de XSLT hecha pantalla.</figcaption>
 </figure>
 <h3 id="26-svg">2.6. SVG</h3>
@@ -2322,7 +2323,7 @@ un mapa de bits, es una lista de trazados. Android los adopta como <em>Vector Dr
 Compose los dibujamos directamente con <code>ImageVector</code>. Mira cómo el <code>path</code> del SVG se convierte en un
 componible, línea a línea:</p>
 <figure>
-<p><img alt="Comparativa: a la izquierda el fragmento SVG de una estrella; a la derecha el ImageVector componible equivalente, y la estrella renderizada al fondo." src="assets/svg-a-compose.svg" /></p>
+<p><img alt="Comparativa: a la izquierda el fragmento SVG de una estrella; a la derecha el ImageVector componible equivalente, y la estrella renderizada al fondo." src="../assets/svg-a-compose.svg" /></p>
 <figcaption>Figura 7. Del <code>&lt;path d="…"&gt;</code> del SVG al ImageVector componible: mismo trazado, dos mundos.</figcaption>
 </figure>
 <p><strong>Código 6.</strong> El logo de la unidad, tal cual se ejecutó para la Figura 8:</p>
@@ -2370,14 +2371,14 @@ componible, línea a línea:</p>
 </code></pre></div>
 <p>Y así queda, ejecutado en el emulador:</p>
 <figure>
-<p><img alt="Pantalla de la app con el logo: estrella amarilla sobre caja con degradado azul, bajo una barra que pone DI-U3 · Código 6." src="assets/captura-codigo6-logo.png" /></p>
+<p><img alt="Pantalla de la app con el logo: estrella amarilla sobre caja con degradado azul, bajo una barra que pone DI-U3 · Código 6." src="../assets/captura-codigo6-logo.png" /></p>
 <figcaption>Figura 8. El logo SVG ejecutándose en el emulador (Google Pixel 4, Android 13).</figcaption>
 </figure>
 <h2 id="3-el-documento-xml-analisis-y-edicion">3. El documento XML: análisis y edición</h2>
-<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un documento XML se lee con tres conceptos. El libro los define para el documento; nosotros los ponemos</span>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un documento XML se lee con tres conceptos. Se definen para el documento; aquí los ponemos</span>
 en paralelo con Compose porque <strong>un composable es un documento XML convertido en función</strong>:</p>
 <figure>
-<p><img alt="Tabla comparativa: etiqueta ↔ composable, atributo ↔ parámetro, valor ↔ argumento, anidamiento ↔ slots de contenido." src="assets/xml-compose-paralelo.svg" /></p>
+<p><img alt="Tabla comparativa: etiqueta ↔ composable, atributo ↔ parámetro, valor ↔ argumento, anidamiento ↔ slots de contenido." src="../assets/xml-compose-paralelo.svg" /></p>
 <figcaption>Figura 9. Equivalencia mental: cada concepto del XML tiene su gemelo exacto en Compose.</figcaption>
 </figure>
 <h3 id="31-etiquetas">3.1. Etiquetas</h3>
@@ -2397,7 +2398,7 @@ funda: los parámetros Kotlin admiten <strong>expresiones</strong>, no solo lite
 llamar a una función, un parámetro sí.</p>
 <h3 id="33-valores">3.3. Valores</h3>
 <p>Un valor puede ser un literal (<code>23,5</code>) o una <strong>referencia a recurso</strong> (<code>@string/temperatura</code>). La
-regla de oro del libro — "en un proyecto real, nada de valores mágicos en el layout" — sigue viva en
+regla de oro — "en un proyecto real, nada de valores mágicos en el layout" — sigue viva en
 Compose con <code>stringResource(R.string.…)</code> y los colores del <code>MaterialTheme</code>:</p>
 <p><strong>Código 7.</strong> Literales frente a recursos, la escena completa de la Figura 10:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nd">@Composable</span>
@@ -2435,7 +2436,7 @@ Compose con <code>stringResource(R.string.…)</code> y los colores del <code>Ma
 <a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a><span class="p">}</span>
 </code></pre></div>
 <figure>
-<p><img alt="Dos tarjetas apiladas: la de arriba con un color literal hardcodeado; la de abajo con el color del tema." src="assets/captura-codigo7-recursos.png" /></p>
+<p><img alt="Dos tarjetas apiladas: la de arriba con un color literal hardcodeado; la de abajo con el color del tema." src="../assets/captura-codigo7-recursos.png" /></p>
 <figcaption>Figura 10. Literales frente a recursos: el recurso centraliza y permite re-tematizar toda la app.</figcaption>
 </figure>
 <h2 id="4-eventos">4. Eventos</h2>
@@ -2471,7 +2472,7 @@ estado que cambia vive junto a él con <code>remember/mutableStateOf</code>, que
 <a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">                                                             </span><span class="c1">// la función y la pantalla se re-pinta sola</span>
 </code></pre></div>
 <figure>
-<p><img alt="Pantalla con contador grande 'Pulsaciones: 3' y tres botones +1, −1 y Reset bajo el texto objetivo." src="assets/captura-codigo8-eventos.png" /></p>
+<p><img alt="Pantalla con contador grande 'Pulsaciones: 3' y tres botones +1, −1 y Reset bajo el texto objetivo." src="../assets/captura-codigo8-eventos.png" /></p>
 <figcaption>Figura 11. Eventos por lambda: tocar un botón muta el estado y la pantalla se re-pinta sola.</figcaption>
 </figure>
 <p>Y el diálogo de confirmación — que en Android clásico era un <code>AlertDialog.Builder</code> conectado a los
@@ -2511,11 +2512,11 @@ botones del layout — es hoy un composable más del árbol, que aparece y desap
 <a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a><span class="p">}</span>
 </code></pre></div>
 <figure>
-<p><img alt="Pantalla con un Switch, el texto de la opción marcada y un diálogo modal de confirmación con Aceptar y Cancelar." src="assets/captura-codigo9-dialogo.png" /></p>
+<p><img alt="Pantalla con un Switch, el texto de la opción marcada y un diálogo modal de confirmación con Aceptar y Cancelar." src="../assets/captura-codigo9-dialogo.png" /></p>
 <figcaption>Figura 12. El diálogo como parte del árbol de composición: se muestra porque el estado dice que sí.</figcaption>
 </figure>
 <h2 id="5-herramientas-para-la-creacion-de-interfaces-multiplataforma">5. Herramientas para la creación de interfaces multiplataforma</h2>
-<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El libro compara editores de documentos XML. Te los resumimos tal cual (entran en el examen tipo test)</span>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La comparativa de editores de documentos XML, resumida tal cual (entran en el examen tipo test)</span>
 y luego te contamos cuál es la nuestra de verdad:</p>
 <table>
 <thead>
@@ -2554,7 +2555,7 @@ y luego te contamos cuál es la nuestra de verdad:</p>
 </tbody>
 </table>
 <figure>
-<p><img alt="Rejilla de cuatro recuadros con las cuatro herramientas del libro y la quinta destacada (Android Studio)." src="assets/herramientas-editores.svg" /></p>
+<p><img alt="Rejilla de cuatro recuadros con las cuatro herramientas clásicas y la quinta destacada (Android Studio)." src="../assets/herramientas-editores.svg" /></p>
 <figcaption>Figura 13. El arsenal del tema: de los editores de documentos al IDE que renderiza tu interfaz mientras escribes.</figcaption>
 </figure>
 <h3 id="51-preview-el-generador-de-interfaces-integrado">5.1. <code>@Preview</code>: el generador de interfaces integrado</h3>
@@ -2575,7 +2576,7 @@ documento", pero el documento ya es código.</p>
 árbol de composición en vivo sobre la app en ejecución — el equivalente exacto del "análisis del
 documento XML" del apartado 3, pero del documento vivo.</p>
 <h2 id="6-generacion-de-codigo-para-diferentes-plataformas">6. Generación de código para diferentes plataformas</h2>
-<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El libro explica cómo de un mismo documento XML se generaba código para Java, C++ o web. La equivalencia</span>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">De un mismo documento XML se puede generar código para Java, C++ o web. La equivalencia</span>
 moderna tiene dos lecturas, y ambas son ciertas:</p>
 <ol>
 <li><strong>La interfaz se "genera" sola desde el código</strong>: Compose interpreta tus composables y emite el árbol
@@ -2635,20 +2636,20 @@ moderna tiene dos lecturas, y ambas son ciertas:</p>
 <a id="__codelineno-12-47" name="__codelineno-12-47" href="#__codelineno-12-47"></a><span class="p">}</span>
 </code></pre></div>
 <figure>
-<p><img alt="Pantalla en modo oscuro: switch 'Modo oscuro' activado, slider de brillo al 30 % y panel ámbar tenue." src="assets/captura-codigo10-config.png" /></p>
+<p><img alt="Pantalla en modo oscuro: switch 'Modo oscuro' activado, slider de brillo al 30 % y panel ámbar tenue." src="../assets/captura-codigo10-config.png" /></p>
 <figcaption>Figura 14. El mismo composable en modo oscuro, switch activado y brillo al 30 %: el estado decide la configuración de la interfaz.</figcaption>
 </figure>
 <h2 id="7-caso-practico-1-generacion-de-un-logo-con-graficos-vectoriales-escalables">7. Caso práctico 1: "Generación de un logo con gráficos vectoriales escalables"</h2>
-<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><strong>Enunciado (adaptado del libro)</strong>: partiendo del trazado de una estrella en SVG, construir el logo de la</span>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><strong>Enunciado del caso práctico</strong>: partiendo del trazado de una estrella en SVG, construir el logo de la</span>
 aplicación como recurso vectorial y colocarlo en la cabecera de la pantalla.</p>
 <p><strong>Solución paso a paso</strong>:</p>
 <ol>
 <li>Copiamos el atributo <code>d</code> del SVG como <code>pathData</code> y lo parseamos con <code>addPathNodes</code> (Código 6).</li>
 <li>Montamos el <code>ImageVector</code> con el <code>fill</code> original del SVG en <code>SolidColor</code>.</li>
 <li>Lo presentamos con <code>Image</code> dentro de una <code>Box</code> con degradado (el equivalente Compose del contenedor
-   <code>frame</code> del mockup del libro).</li>
+   <code>frame</code> del mockup).</li>
 <li>Comprobamos escalabilidad: probamos el logo a 40, 140 y 400 dp. Al ser trazados, no pixelea nunca —
-   la ventaja del SVG/XML vectorial que el libro defendía ya en 2012, intacta.</li>
+   la ventaja del SVG/XML vectorial, intacta.</li>
 </ol>
 <blockquote>
 <p>El resultado ejecutándose es la <strong>Figura 8</strong> de este tema.</p>
@@ -2698,7 +2699,7 @@ mismo sitio</strong> es justo la lección del tema:</p>
 <a id="__codelineno-13-36" name="__codelineno-13-36" href="#__codelineno-13-36"></a><span class="p">}</span>
 </code></pre></div>
 <figure>
-<p><img alt="Pantalla con dos campos de texto etiquetados tag: title y tag: description y debajo una tarjeta con la ficha renderizada en vivo." src="assets/captura-codigo11-ficha.png" /></p>
+<p><img alt="Pantalla con dos campos de texto etiquetados tag: title y tag: description y debajo una tarjeta con la ficha renderizada en vivo." src="../assets/captura-codigo11-ficha.png" /></p>
 <figcaption>Figura 15. Editar la descripción y ver la interfaz generada al instante: la idea del XML, pero en vivo.</figcaption>
 </figure>
 <h2 id="9-resumen-y-resolucion-del-caso-practico-de-la-unidad">9. Resumen y resolución del caso práctico de la unidad</h2>
@@ -2715,7 +2716,7 @@ mismo sitio</strong> es justo la lección del tema:</p>
   <strong>saber que Compose es su heredero</strong> es el objetivo de este tema.</li>
 </ul>
 <h2 id="bibliografia-y-fuentes">Bibliografía y fuentes</h2>
-<p>Sin libros de editorial: el material se apoya en las especificaciones y documentaciones oficiales
+<p>Todo el material se apoya en las especificaciones y documentaciones oficiales
 del software que se usa en clase.</p>
 <p><strong>Especificaciones originales (W3C / OASIS / IETF)</strong></p>
 <ul>

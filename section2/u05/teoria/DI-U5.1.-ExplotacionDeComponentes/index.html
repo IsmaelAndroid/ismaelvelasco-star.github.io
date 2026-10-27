@@ -1894,10 +1894,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-que-eventos-tiene-cada-componente-el-mismo-analisis-del-libro" class="md-nav__link">
+  <a href="#41-que-eventos-tiene-cada-componente-el-analisis-de-siempre" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1 Qué eventos tiene cada componente (el mismo análisis del libro)
+        4.1 Qué eventos tiene cada componente (el análisis de siempre)
       
     </span>
   </a>
@@ -1910,10 +1910,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-los-listeners-del-libro-traducidos-uno-a-uno" class="md-nav__link">
+  <a href="#5-los-listeners-de-swing-traducidos-uno-a-uno" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Los listeners del libro, traducidos uno a uno
+        5. Los listeners de Swing, traducidos uno a uno
       
     </span>
   </a>
@@ -2041,9 +2041,9 @@
 
 <h1 id="51-explotacion-de-componentes-visuales">5.1 — Explotación de componentes visuales</h1>
 <blockquote>
-<p><strong>Del libro de texto:</strong> tema 5, <em>Explotación de componentes visuales</em>.
-El libro lo resuelve con <code>MouseListener</code>, <code>KeyListener</code>, <code>ActionListener</code>, <code>FocusListener</code>, JUnit en
-Eclipse y dos casos prácticos (configuración del ratón con <code>JSpinner</code> y teclado de piano con JFugue).
+<p><strong>El trabajo de ingeniería:</strong> capturar lo que hace el usuario, convertirlo en acciones, conservar el
+estado del componente y probarlo. En Java Swing eso se resolvía con <code>MouseListener</code>, <code>KeyListener</code>,
+<code>ActionListener</code>, <code>FocusListener</code>, JUnit en Eclipse y dos casos prácticos (configuración del ratón con <code>JSpinner</code> y teclado de piano con JFugue).
 Aquí se hace <strong>el mismo trabajo</strong>: decidir a qué eventos responde cada pieza, conectarles la acción,
 guardar el estado, probarlo y documentarlo. Cambian las herramientas:
 <strong>Jetpack Compose</strong>, <code>rememberSaveable</code> con <code>Saver</code> propio y <strong>pruebas instrumentadas</strong> con
@@ -2105,12 +2105,12 @@ pruebas automáticas que demuestran que funcionan.</p>
 <li><strong>Se prueba</strong>: tiene pruebas que fallan si algo se rompe, antes de que lo descubra el usuario.</li>
 </ol>
 <figure>
-<p><img alt="Diagrama de dos carriles: el modelo fuente-objeto de evento-listener-accion del libro, y el modelo gesto-modifier-lambda-estado de Compose" src="../assets/diagrama-eventos.svg" /></p>
-<figcaption>Figura 1. El mismo viaje, dos épocas. Arriba, el modelo que explica el libro; abajo, cómo se recorre hoy. Ninguna de las dos ideas es nueva: en ambas, un componente detecta, avisa y alguien actúa.</figcaption>
+<p><img alt="Diagrama de dos carriles: el modelo fuente-objeto de evento-listener-accion de Swing, y el modelo gesto-modifier-lambda-estado de Compose" src="../assets/diagrama-eventos.svg" /></p>
+<figcaption>Figura 1. El mismo viaje, dos épocas. Arriba, el modelo de Java/Swing; abajo, cómo se recorre hoy. Ninguna de las dos ideas es nueva: en ambas, un componente detecta, avisa y alguien actúa.</figcaption>
 </figure>
 <h2 id="2-caracteristicas-fundamentales-del-componente-explotado">2. Características fundamentales del componente explotado</h2>
 <h3 id="21-introspeccion-y-reflexion">2.1 Introspección y reflexión</h3>
-<p>El libro abre el tema hablando de <strong>introspección</strong> (el componente sabe qué propiedades tiene) y
+<p>El tema arranca con la <strong>introspección</strong> (el componente sabe qué propiedades tiene) y
 <strong>reflexión</strong> (el entorno descubre esas propiedades sin saber de qué clase es). De ahí salía todo: la
 paleta de Eclipse, el inspector de propiedades, la serialización.</p>
 <div class="admonition note">
@@ -2128,7 +2128,7 @@ estado de selección, si es togglable, si está enfocado.</p>
 <p>Y se puede ver desde fuera del proceso. Con una sola línea puesta en la raíz de la interfaz,</p>
 <div class="highlight"><span class="filename">app/src/main/java/com/example/uikit/demo/MainActivity.kt</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">androidx</span><span class="p">.</span><span class="na">compose</span><span class="p">.</span><span class="na">foundation</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">Box</span><span class="p">(</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">androidx</span><span class="p">.</span><span class="na">compose</span><span class="p">.</span><span class="na">ui</span><span class="p">.</span><span class="na">Modifier</span><span class="p">.</span><span class="na">semantics</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">testTagsAsResourceId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* la escena */</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </code></pre></div>
 <p>los <code>testTag</code> que pusiste para las pruebas salen como <code>resource-id</code> en el volcado de <code>uiautomator</code>.
 Volcado real de la escena del panel del puntero, sacado con <code>adb shell uiautomator dump</code>:</p>
@@ -2148,17 +2148,17 @@ pantalla). En la escena del piano el volcado además describe cada tecla:</p>
 </code></pre></div>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un componente sin <code>contentDescription</code> en lo que informa de algo es un componente invisible para un usuario con lector de pantalla</span>. En los botones del panel no hizo falta ponerlo: el hijo <code>Text</code> ya aporta la etiqueta. En la tecla, que se pinta a sí misma, sí.</p>
 <h3 id="22-persistencia-del-componente">2.2 Persistencia del componente</h3>
-<p>Segundo pilar del tema en el libro: el componente tiene que poder <strong>guardar y recuperar su estado</strong>
+<p>Segundo pilar del tema: el componente tiene que poder <strong>guardar y recuperar su estado</strong>
 (serializar, <code>persistState</code>). En Android eso no es un lujo: al girar el móvil, el sistema destruye la
 actividad y la vuelve a crear. Si no guardas nada, la pantalla vuelve en blanco.</p>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">En Compose hay dos memoriales y la diferencia importa: <code>remember</code> vive mientras vive la composición; <code>rememberSaveable</code> sobrevive a la destrucción de la actividad porque viaja en el <code>Bundle</code> del sistema</span>.</p>
-<div class="highlight"><span class="filename">app/src/main/java/com/example/uikit/demo/MainActivity.kt (escena 6)</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">var</span><span class="w"> </span><span class="nv">sobrevive</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">rememberSaveable</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="s">""</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// pasa por el Bundle: resucita al girar</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">var</span><span class="w"> </span><span class="nv">sePierde</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="s">""</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">            </span><span class="c1">// muere con la composicion</span>
+<div class="highlight"><span class="filename">app/src/main/java/com/example/uikit/demo/MainActivity.kt (escena 6)</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">sobrevive</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">rememberSaveable</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="s">""</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">        </span><span class="c1">// pasa por el Bundle</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">sePierde</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="s">""</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">                 </span><span class="c1">// vive solo en la composicion</span>
 </code></pre></div>
 <p><code>rememberSaveable</code> solo sabe guardar tipos que caben en un <code>Bundle</code> (números, texto, <code>Parcelable</code>,
 listas de esas cosas). Un tipo de dominio propio hay que enseñarle a guardarse, y eso se hace con un
 <code>Saver</code>: dos funciones, una que reduce el objeto a algo serializable y otra que lo reconstruye (§9,
-<code>SaverConfigPuntero</code>). Es exactamente el papel que en el libro jugaba <code>Serializable</code> / <code>persistState</code>,
+<code>SaverConfigPuntero</code>). Es exactamente el papel que jugaba <code>Serializable</code> / <code>persistState()</code> en AWT,
 pero escrito una vez junto al tipo de dato y no en una interfaz que hay que implementar.</p>
 <p><strong>Comprobado en el emulador</strong>, girando el dispositivo con <code>adb shell settings put system user_rotation 1</code>.
 Mismo volcado de <code>uiautomator</code>, antes y después del giro:</p>
@@ -2182,7 +2182,7 @@ bitmap descargado, el contenido de la base de datos. Para eso están <code>ViewM
 rotación, no al proceso) y la capa de datos — que es lo que trata PMDM, no este módulo.</p>
 </div>
 <h2 id="3-pruebas-unitarias-donde-se-escriben-y-que-se-prueba">3. Pruebas unitarias: dónde se escriben y qué se prueba</h2>
-<p>El libro monta las pruebas con JUnit en Eclipse: clase de prueba, métodos anotados, aserciones y
+<p>Las pruebas clásicas se montaban con JUnit en Eclipse: clase de prueba, métodos anotados, aserciones y
 comprobación de errores. El esquema no ha cambiado nada; han cambiado la ubicación y el alcance.</p>
 <table>
 <thead>
@@ -2221,7 +2221,7 @@ comprobación de errores. El esquema no ha cambiado nada; han cambiado la ubicac
 </tbody>
 </table>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Regla para no equivocarse de carpeta: si la prueba necesita ver la pantalla o tocar algo, va a <code>androidTest</code>; si solo necesita pensar, va a <code>test</code></span>. Y un componente con lógica <strong>dentro</strong> del composable no se puede probar sin dispositivo: por eso el <code>Saver</code> y el parser <code>deVelocidad</code> del §10 son funciones normales, probables en JVM.</p>
-<p>Las anotaciones y aserciones del libro siguen siendo las mismas (<code>@Test</code>, <code>@Before</code>, <code>@After</code>,
+<p>Las anotaciones y aserciones siguen siendo las mismas (<code>@Test</code>, <code>@Before</code>, <code>@After</code>,
 <code>assertEquals</code>, <code>assertThrows</code>). Lo nuevo es el vocabulario de Compose:</p>
 <table>
 <thead>
@@ -2353,7 +2353,7 @@ comprobación de errores. El esquema no ha cambiado nada; han cambiado la ubicac
 <a id="__codelineno-5-93" name="__codelineno-5-93" href="#__codelineno-5-93"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-5-94" name="__codelineno-5-94" href="#__codelineno-5-94"></a><span class="p">}</span>
 <a id="__codelineno-5-95" name="__codelineno-5-95" href="#__codelineno-5-95"></a>
-<a id="__codelineno-5-96" name="__codelineno-5-96" href="#__codelineno-5-96"></a><span class="cm">/** Pruebas de la logica suelta (apartado 3.4 del tema): tambien de los errores. */</span>
+<a id="__codelineno-5-96" name="__codelineno-5-96" href="#__codelineno-5-96"></a><span class="cm">/** Pruebas de la logica suelta (§3.4): tambien de los errores. */</span>
 <a id="__codelineno-5-97" name="__codelineno-5-97" href="#__codelineno-5-97"></a><span class="kd">class</span><span class="w"> </span><span class="nc">ConfigPunteroTest</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-5-98" name="__codelineno-5-98" href="#__codelineno-5-98"></a>
 <a id="__codelineno-5-99" name="__codelineno-5-99" href="#__codelineno-5-99"></a><span class="w">    </span><span class="nd">@Test</span>
@@ -2378,10 +2378,10 @@ comprobación de errores. El esquema no ha cambiado nada; han cambiado la ubicac
 <ul>
 <li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>@get:Rule val regla = createComposeRule()</code> levanta el <code>ComposeTestRule</code>: sin eso no hay composición donde mirar</span>.</li>
 <li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Se afirma sobre la etiqueta y sobre el estado, no sobre píxeles</span>. Una captura que cambia de tamaño no rompe la prueba; un <code>assertTrue</code> sobre <code>null</code> sí.</li>
-<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>assertThrows</code> también prueba el mensaje</span>: el apartado 3.4 del libro («comprobación de errores») es exactamente esto, y es lo que salva una app cuando el usuario escribe <code>75</code> donde valían 0, 25 o 50.</li>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>assertThrows</code> también prueba el mensaje</span>: el apartado de «comprobación de errores» es exactamente esto, y es lo que salva una app cuando el usuario escribe <code>75</code> donde valían 0, 25 o 50.</li>
 </ul>
 <h2 id="4-eventos-clases-componentes-y-metodos">4. Eventos: clases, componentes y métodos</h2>
-<p>El libro desmonta la «programación basada en eventos» en tres piezas: <strong>fuente</strong> (el componente que
+<p>La programación basada en eventos se desmonta en tres piezas: <strong>fuente</strong> (el componente que
 genera), <strong>objeto de evento</strong> (lo que se envía) y <strong>listener</strong> (quien lo escucha). Y añade una tabla de
 qué componente emite qué evento. Esa taxonomía sigue siendo la forma correcta de pensar una interfaz,
 porque lo que se decide es <strong>el contrato</strong>: a qué responde cada pieza y qué hace cuando responde.</p>
@@ -2390,7 +2390,7 @@ porque lo que se decide es <strong>el contrato</strong>: a qué responde cada pi
 </code></pre></div>
 <p>Con esa línea ya está dicho todo: el componente <strong>no</strong> cambia nada por dentro, <strong>devuelve</strong> la
 configuración completa cuando el usuario toca, y no sabe ni le importa qué hará el llamador con ella.</p>
-<h3 id="41-que-eventos-tiene-cada-componente-el-mismo-analisis-del-libro">4.1 Qué eventos tiene cada componente (el mismo análisis del libro)</h3>
+<h3 id="41-que-eventos-tiene-cada-componente-el-analisis-de-siempre">4.1 Qué eventos tiene cada componente (el análisis de siempre)</h3>
 <table>
 <thead>
 <tr>
@@ -2453,14 +2453,14 @@ configuración completa cuando el usuario toca, y no sabe ni le importa qué har
 metes estado dentro, introduces una segunda fuente de verdad y aparece la incoherencia entre lo que
 el usuario eligió y lo que se pinta. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Cuanta más lógica de presentación esté en componentes que solo reciben parámetros, menos pruebas hacen falta y menos fallos hay</span>.</p>
 </div>
-<h2 id="5-los-listeners-del-libro-traducidos-uno-a-uno">5. Los listeners del libro, traducidos uno a uno</h2>
-<p>El apartado 6 del libro dedica su espacio a <code>KeyListener</code> y <code>ActionListener</code>. Su traducción es directa,
+<h2 id="5-los-listeners-de-swing-traducidos-uno-a-uno">5. Los listeners de Swing, traducidos uno a uno</h2>
+<p>En Swing, <code>KeyListener</code> y <code>ActionListener</code> se llevan casi todo el protagonismo. Su traducción es directa,
 y conviene tenerla memorizada porque cae en las dos direcciones («¿cómo se hace hoy esto?» y «¿esto de
 qué evento viene?»).</p>
 <table>
 <thead>
 <tr>
-<th>Del libro (Swing / JavaBeans)</th>
+<th>Swing / JavaBeans</th>
 <th>Método que se sobrescribía</th>
 <th>Equivalente en Compose</th>
 <th>Notas</th>
@@ -2520,7 +2520,7 @@ interfaz con cinco métodos vacíos.</p>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="cm">/**</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="cm"> * Datos del teclado del caso práctico 2.</span>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="cm"> *</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="cm"> * El libro usaba siete `JButton` con la nota inglesa dentro del `actionCommand`. Aquí la nota es un</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="cm"> * En Swing eran siete `JButton` con la nota inglesa dentro del `actionCommand`. Aquí la nota es un</span>
 <a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="cm"> * tipo de dato: nombre en español (lo que ve el alumno), letra inglesa (lo que se envía al sinte) y</span>
 <a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="cm"> * frecuencia real, que es lo que necesita `AudioTrack` para generar el sonido.</span>
 <a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="cm"> */</span>
@@ -2569,9 +2569,9 @@ interfaz con cinco métodos vacíos.</p>
 <a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.unit.sp</span>
 <a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a>
 <a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a><span class="cm">/**</span>
-<a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a><span class="cm"> * Una tecla del piano: caso práctico 2 del libro, sin `JButton`.</span>
+<a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a><span class="cm"> * Una tecla del piano: el caso practico del teclado, sin `JButton`.</span>
 <a id="__codelineno-8-34" name="__codelineno-8-34" href="#__codelineno-8-34"></a><span class="cm"> *</span>
-<a id="__codelineno-8-35" name="__codelineno-8-35" href="#__codelineno-8-35"></a><span class="cm"> * El libro se apoyaba en `ActionListener` del botón. Un componente propio no tiene botón debajo,</span>
+<a id="__codelineno-8-35" name="__codelineno-8-35" href="#__codelineno-8-35"></a><span class="cm"> * En Swing eso caia en el `ActionListener` del botón. Un componente propio no tiene botón debajo,</span>
 <a id="__codelineno-8-36" name="__codelineno-8-36" href="#__codelineno-8-36"></a><span class="cm"> * así que el gesto se detecta con `pointerInput`: es el **`MouseListener` de 2026**, pero en versión</span>
 <a id="__codelineno-8-37" name="__codelineno-8-37" href="#__codelineno-8-37"></a><span class="cm"> * de suspend (`awaitEachGesture`) en lugar de interfaz con seis métodos vacíos.</span>
 <a id="__codelineno-8-38" name="__codelineno-8-38" href="#__codelineno-8-38"></a><span class="cm"> *</span>
@@ -2642,18 +2642,18 @@ interfaz con cinco métodos vacíos.</p>
 <p>Dentro del <code>pointerInput</code> hay un mini-protocolo que es bueno saber leer:</p>
 <ul>
 <li><code>awaitEachGesture { }</code> — bucle: se reactiva con cada gesto nuevo sobre el componente.</li>
-<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>awaitFirstDown()</code> espera a que el dedo toque (el <code>mousePressed</code> del libro) y <code>waitForUpOrCancellation()</code> espera a que se levante (el <code>mouseReleased</code>)</span>. Entre las dos, el componente está «pulsado».</li>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>awaitFirstDown()</code> espera a que el dedo toque (el <code>mousePressed</code> de Swing) y <code>waitForUpOrCancellation()</code> espera a que se levante (el <code>mouseReleased</code>)</span>. Entre las dos, el componente está «pulsado».</li>
 <li>El bloque es <em>suspend</em>: <strong>se pausa sin bloquear el hilo de la interfaz</strong>. En Swing, hacer algo lento dentro de <code>actionPerformed</code> congelaba la ventana (el <em>EDT</em>); aquí eso no ocurre mientras no llames a algo bloqueante, y para eso está el hilo de <code>tocarNota</code> (§10).</li>
 <li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>pointerInput(nota)</code> lleva una clave: si la nota cambia, el bloque se reinicia y deja de escuchar el gesto viejo</span>. Sin clave, los closures se quedan apuntando al valor con el que se compusieron la primera vez, que es la fuente de bugs de eventos más frecuente en Compose.</li>
 </ul>
 <h2 id="6-raton-foco-y-teclado-fisico">6. Ratón, foco y teclado físico</h2>
-<p>El libro incluye <code>MouseListener</code> y <code>FocusListener</code> porque en escritorio hay ratón y hay teclado. En un
+<p>En escritorio hacen falta <code>MouseListener</code> y <code>FocusListener</code> porque hay ratón y hay teclado. En un
 móvil el primero casi no se usa, pero <strong>el foco sí</strong>: mando de consola, teclado Bluetooth, accesibilidad
 y navegación por controles. Las tres piezas que hay que conocer:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">var</span><span class="w"> </span><span class="nv">foco</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">Box</span><span class="p">(</span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="n">Modifier</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">        </span><span class="p">.</span><span class="na">onFocusEvent</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">evento</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">foco</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">evento</span><span class="p">.</span><span class="na">hasFocus</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// el focusGained/focusLost del libro</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">        </span><span class="p">.</span><span class="na">onFocusEvent</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">evento</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">foco</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">evento</span><span class="p">.</span><span class="na">hasFocus</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// el `focusGained`/`focusLost` de Swing</span>
 <a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">        </span><span class="p">.</span><span class="na">onPreviewKeyEvent</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">evento</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">                        </span><span class="c1">// antes de que el campo se lo coma</span>
 <a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">evento</span><span class="p">.</span><span class="na">key</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Key</span><span class="p">.</span><span class="na">Enter</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">evento</span><span class="p">.</span><span class="na">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">KeyEventType</span><span class="p">.</span><span class="na">KeyUp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">                </span><span class="n">onPulsar</span><span class="p">(</span><span class="n">nota</span><span class="p">);</span><span class="w"> </span><span class="kc">true</span><span class="w">                          </span><span class="c1">// true = me lo he quedado</span>
@@ -2669,7 +2669,7 @@ y navegación por controles. Las tres piezas que hay que conocer:</p>
 <li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un componente propio que no declara <code>contentDescription</code> ni acepta foco es invisible para media clase: la otra mitad no lo puede usar sin ratón</span>.</li>
 </ul>
 <h2 id="7-asociacion-de-acciones-a-eventos">7. Asociación de acciones a eventos</h2>
-<p>El apartado 9 del libro pide un flujo ordenado para asociar una acción a un evento. Funciona igual en
+<p>Asociar una acción a un evento pide un flujo ordenado para asociar una acción a un evento. Funciona igual en
 2026, con otros nombres:</p>
 <pre class="mermaid"><code>flowchart LR
     A[1. Detectar&lt;br/&gt;Modifier de gesto] --&gt; B[2. Interpretar&lt;br/&gt;lambda con datos ya procesados]
@@ -2681,7 +2681,7 @@ y navegación por controles. Las tres piezas que hay que conocer:</p>
 <thead>
 <tr>
 <th>Paso</th>
-<th>En el libro</th>
+<th>En Swing</th>
 <th>Aquí</th>
 </tr>
 </thead>
@@ -2713,7 +2713,7 @@ y navegación por controles. Las tres piezas que hay que conocer:</p>
 </tr>
 </tbody>
 </table>
-<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El error de concepto que hay que arrancar: la acción de un evento <strong>no repinta</strong>, cambia el estado. Quien repinta es el sistema de composición</span>. Todo lo que en el libro era «y al final llamo a <code>repaint()</code>» aquí es escribir una variable observada.</p>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El error de concepto que hay que arrancar: la acción de un evento <strong>no repinta</strong>, cambia el estado. Quien repinta es el sistema de composición</span>. Todo lo que en Swing era «y al final llamo a <code>repaint()</code>» aquí es escribir una variable observada.</p>
 <div class="admonition warning">
 <p class="admonition-title">Cuatro antipatrones que se ven en los exámenes</p>
 <table>
@@ -2750,7 +2750,7 @@ dominio, y la forma de cambiarla es <strong>inmutable</strong>:</p>
 </code></pre></div>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Con objetos inmutables, el evento puede entregar la configuración completa: no hay ambigüedad sobre qué ha cambiado ni quién lo cambió, y el <code>Saver</code> puede serializar el objeto entero de golpe</span>. Las ventajas colaterales son las de siempre: un <code>data class</code> da <code>equals</code> (Compose puede comparar y no repintar de más), <code>copy</code> (actualizaciones parciales) y <code>toString</code> (un volcado legible en el log).</p>
 <h2 id="9-caso-practico-1-configuracion-del-puntero">9. Caso práctico 1: «Configuración del puntero»</h2>
-<p><strong>Planteamiento del libro.</strong> Interfaz para configurar la velocidad del ratón y el botón principal, con
+<p><strong>Caso práctico 1.</strong> Interfaz para configurar la velocidad del ratón y el botón principal, con
 <code>JSpinner</code> (0, 25, 50), <code>JComboBox</code> (izquierdo/derecho), una barra de progreso pintada a mano (0 → 20 px
 roja, 25 → 40 px naranja, 50 → 60 px verde) y un ratón dibujado donde se resalta el botón elegido
 (<code>fillRect(215,120,60,60)</code> o <code>(275,120,60,60)</code>). Los eventos: <code>ChangeListener</code> en el spinner,
@@ -2759,7 +2759,7 @@ roja, 25 → 40 px naranja, 50 → 60 px verde) y un ratón dibujado donde se re
 <table>
 <thead>
 <tr>
-<th>Del libro</th>
+<th>En Swing</th>
 <th>Aquí</th>
 <th>Por qué</th>
 </tr>
@@ -2802,7 +2802,7 @@ roja, 25 → 40 px naranja, 50 → 60 px verde) y un ratón dibujado donde se re
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.saveable.Saver</span>
 <a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="cm">/** Qué botón del ratón hace de principal: la pareja moderna del `JComboBox` del libro. */</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="cm">/** Qué botón del ratón hace de principal: la pareja moderna del `JComboBox` de Swing. */</span>
 <a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="kd">enum</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">BotonRaton</span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">etiqueta</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span><span class="n">IZQUIERDO</span><span class="p">(</span><span class="s">"Izquierdo"</span><span class="p">),</span>
 <a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="n">DERECHO</span><span class="p">(</span><span class="s">"Derecho"</span><span class="p">),</span>
@@ -2846,7 +2846,7 @@ roja, 25 → 40 px naranja, 50 → 60 px verde) y un ratón dibujado donde se re
 <a id="__codelineno-11-46" name="__codelineno-11-46" href="#__codelineno-11-46"></a><span class="cm"> *</span>
 <a id="__codelineno-11-47" name="__codelineno-11-47" href="#__codelineno-11-47"></a><span class="cm"> * `rememberSaveable` no sabe qué es un `ConfigPuntero`: hay que decirle cómo reducirlo a algo</span>
 <a id="__codelineno-11-48" name="__codelineno-11-48" href="#__codelineno-11-48"></a><span class="cm"> * que quepa en el `Bundle` (aqui un `IntArray` de 3: velocidad, boton, animacion) y cómo</span>
-<a id="__codelineno-11-49" name="__codelineno-11-49" href="#__codelineno-11-49"></a><span class="cm"> * reconstruirlo. Eso es un `Saver`, el equivalente a la persistencia del componente del libro.</span>
+<a id="__codelineno-11-49" name="__codelineno-11-49" href="#__codelineno-11-49"></a><span class="cm"> * reconstruirlo. Eso es un `Saver`, el equivalente a `Serializable` y `persistState()` de AWT.</span>
 <a id="__codelineno-11-50" name="__codelineno-11-50" href="#__codelineno-11-50"></a><span class="cm"> */</span>
 <a id="__codelineno-11-51" name="__codelineno-11-51" href="#__codelineno-11-51"></a><span class="kd">val</span><span class="w"> </span><span class="nv">SaverConfigPuntero</span><span class="p">:</span><span class="w"> </span><span class="n">Saver</span><span class="o">&lt;</span><span class="n">ConfigPuntero</span><span class="p">,</span><span class="w"> </span><span class="n">IntArray</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Saver</span><span class="p">(</span>
 <a id="__codelineno-11-52" name="__codelineno-11-52" href="#__codelineno-11-52"></a><span class="w">    </span><span class="n">save</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">-&gt;</span>
@@ -2866,7 +2866,7 @@ roja, 25 → 40 px naranja, 50 → 60 px verde) y un ratón dibujado donde se re
 <a id="__codelineno-11-66" name="__codelineno-11-66" href="#__codelineno-11-66"></a><span class="p">)</span>
 </code></pre></div>
 <p><strong>Código 2 y Código 3.</strong> El componente, en dos mitades del mismo fichero: la primera pinta y emite
-eventos, la segunda dibuja el ratón con <code>DrawScope</code> (el <code>paint(Graphics g)</code> del libro).</p>
+eventos, la segunda dibuja el ratón con <code>DrawScope</code> (el <code>paint(Graphics g)</code> de AWT).</p>
 <div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/PanelPuntero.kt (primera parte)</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">package</span><span class="w"> </span><span class="nn">com.example.uikit</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.Canvas</span>
@@ -2896,9 +2896,9 @@ eventos, la segunda dibuja el ratón con <code>DrawScope</code> (el <code>paint(
 <a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.unit.dp</span>
 <a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a>
 <a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="cm">/**</span>
-<a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a><span class="cm"> * Panel de configuración del puntero — versión 2026 del caso práctico 1 del libro.</span>
+<a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a><span class="cm"> * Panel de configuración del puntero — versión 2026 del caso practico del puntero.</span>
 <a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a><span class="cm"> *</span>
-<a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a><span class="cm"> * El libro usaba `JSpinner` + `JComboBox` + `ChangeListener` + `ItemListener`. Aqui hay dos botones</span>
+<a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a><span class="cm"> * En Swing eran `JSpinner` + `JComboBox` + `ChangeListener` + `ItemListener`. Aqui hay dos botones</span>
 <a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a><span class="cm"> * por opción y una `Switch`: **cada control dispara el mismo evento** `onCambio` con la configuración</span>
 <a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a><span class="cm"> * completa, porque el componente es inmutable y no se toca a si mismo.</span>
 <a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a><span class="cm"> *</span>
@@ -2974,9 +2974,9 @@ eventos, la segunda dibuja el ratón con <code>DrawScope</code> (el <code>paint(
 <div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/PanelPuntero.kt (segunda parte)</span><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="cm">/**</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="cm"> * Ratón dibujado a mano (caso práctico 1) con `DrawScope`.</span>
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="cm"> *</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="cm"> * El libro dibujaba con `g.fillRect(215,120,60,60)` en píxeles del formulario. Aquí son las mismas</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="cm"> * En AWT se dibujaba con `g.fillRect(215,120,60,60)` en píxeles del formulario. Aquí son las mismas</span>
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="cm"> * figuras, en **dp**: se ven igual en un móvil de 300 dpi y en uno de 450 dpi.</span>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="cm"> * La barra reproduce la correspondencia del libro: 0 → 20 dp rojo, 25 → 40 dp naranja, 50 → 60 dp verde.</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="cm"> * La barra reproduce la correspondencia del enunciado: 0 → 20 dp rojo, 25 → 40 dp naranja, 50 → 60 dp verde.</span>
 <a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="cm"> */</span>
 <a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="nd">@Composable</span>
 <a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">FiguraRaton</span><span class="p">(</span><span class="n">configuracion</span><span class="p">:</span><span class="w"> </span><span class="n">ConfigPuntero</span><span class="p">,</span><span class="w"> </span><span class="n">modifier</span><span class="p">:</span><span class="w"> </span><span class="n">Modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -2994,7 +2994,7 @@ eventos, la segunda dibuja el ratón con <code>DrawScope</code> (el <code>paint(
 <a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="w">            </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Size</span><span class="p">(</span><span class="m">120f</span><span class="p">.</span><span class="na">dp</span><span class="p">.</span><span class="na">toPx</span><span class="p">(),</span><span class="w"> </span><span class="m">140f</span><span class="p">.</span><span class="na">dp</span><span class="p">.</span><span class="na">toPx</span><span class="p">()),</span>
 <a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="w">            </span><span class="n">cornerRadius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CornerRadius</span><span class="p">(</span><span class="m">60f</span><span class="p">.</span><span class="na">dp</span><span class="p">.</span><span class="na">toPx</span><span class="p">()),</span>
 <a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="w">        </span><span class="p">)</span>
-<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="w">        </span><span class="c1">// 2) los dos botones; el elegido se pinta claro (era el fillRect(215..) o (275..) del libro)</span>
+<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="w">        </span><span class="c1">// 2) los dos botones; el elegido se pinta claro (era el `fillRect(215..)` o `(275..)` de AWT)</span>
 <a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">anchoBoton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">50f</span><span class="p">.</span><span class="na">dp</span><span class="p">.</span><span class="na">toPx</span><span class="p">()</span>
 <a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">xIzquierda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cx</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">54f</span><span class="p">.</span><span class="na">dp</span><span class="p">.</span><span class="na">toPx</span><span class="p">()</span>
 <a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">xDerecha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">4f</span><span class="p">.</span><span class="na">dp</span><span class="p">.</span><span class="na">toPx</span><span class="p">()</span>
@@ -3029,7 +3029,7 @@ eventos, la segunda dibuja el ratón con <code>DrawScope</code> (el <code>paint(
 animación apagada.</p>
 <figure>
 <p><img alt="Pantalla Configuracion del puntero con el boton 50 y el boton Derecho seleccionados, el interruptor apagado, un raton dibujado con el boton derecho en amarillo y una barra verde de 60 dp" src="../assets/captura-config-puntero.png" /></p>
-<figcaption>Figura 4. El caso práctico 1 del libro, ejecutado. El dibujo es el mismo que salió del <code>fillRect/fillOval</code> del libro: cuerpo, dos botones, rueda, y la barra de velocidad con la correspondencia 0 → 20 rojo, 25 → 40 naranja, 50 → 60 verde. Las líneas <code>Barra: 60 dp</code> y <code>Guardado: 50 · Derecho</code> salen del estado real del componente.</figcaption>
+<figcaption>Figura 4. El caso práctico 1, ejecutado. El dibujo es el mismo que saldría del <code>fillRect/fillOval</code> de AWT: cuerpo, dos botones, rueda, y la barra de velocidad con la correspondencia 0 → 20 rojo, 25 → 40 naranja, 50 → 60 verde. Las líneas <code>Barra: 60 dp</code> y <code>Guardado: 50 · Derecho</code> salen del estado real del componente.</figcaption>
 </figure>
 <p>Lista de comprobación de los criterios:</p>
 <ul>
@@ -3039,10 +3039,9 @@ animación apagada.</p>
 <li><strong>RA3 e</strong> — <code>PanelPunteroTest</code> y <code>ConfigPunteroTest</code> (§3, salida en §12).</li>
 </ul>
 <h2 id="10-caso-practico-2-teclado-de-piano">10. Caso práctico 2: «Teclado de piano»</h2>
-<p><strong>Planteamiento del libro.</strong> Siete <code>JButton</code> a modo de teclas, librería JFugue, <code>Player.play(nota)</code>
+<p><strong>Caso práctico 2.</strong> Siete <code>JButton</code> a modo de teclas, librería JFugue, <code>Player.play(nota)</code>
 dentro del <code>actionPerformed</code> de cada botón, con la nota inglesa en el comando de cada botón.</p>
-<p><strong>Traducción.</strong> El componente <code>Tecla</code> del §5 hace de <code>JButton</code> y además distingue pulsar de soltar (el
-libro no lo pedía; un piano sin «nota soltada» no es un piano). El sonido es un listado aparte:</p>
+<p><strong>Traducción.</strong> El componente <code>Tecla</code> del §5 hace de <code>JButton</code> y además distingue pulsar de soltar (un piano sin «nota soltada» no es un piano). El sonido es un listado aparte:</p>
 <div class="highlight"><span class="filename">app/src/main/java/com/example/uikit/demo/NotaReproductor.kt</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">package</span><span class="w"> </span><span class="nn">com.example.uikit.demo</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
 <a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="k">import</span><span class="w"> </span><span class="nn">kotlin.concurrent.thread</span>
@@ -3053,7 +3052,7 @@ libro no lo pedía; un piano sin «nota soltada» no es un piano). El sonido es 
 <a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="k">import</span><span class="w"> </span><span class="nn">android.media.AudioTrack</span>
 <a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
 <a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="cm">/**</span>
-<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="cm"> * Nota senoidal generada al vuelo: el equivalente a `player.play("C4")` de JFugue del libro.</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="cm"> * Nota senoidal generada al vuelo: el equivalente a `player.play("C4")` de JFugue (Swing).</span>
 <a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="cm"> *</span>
 <a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="cm"> * Android no trae un sintetizador de notas sueltas, así que se calcula la onda y se manda a</span>
 <a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="cm"> * `AudioTrack`. Se lanza en un hilo aparte para no bloquear la interfaz mientras suena.</span>
@@ -3130,7 +3129,7 @@ evento, porque el sonido no se ve en una captura:</p>
 <p class="admonition-title">Sobre el sonido</p>
 <p>El emulador se lanza con <code>-no-audio</code>, así que el <code>AudioTrack</code> se ejecuta pero no se oye. En el móvil
 suena: 261,63 Hz es un do de octavo 4. Que una captura no pueda enseñar el sonido no significa que el
-código sobre: es el equivalente exacto del <code>player.play("C4")</code> del libro, y si algún año hay examen
+código sobre: es el equivalente exacto del <code>player.play("C4")</code> de JFugue, y si algún año hay examen
 con móvil real, ahí estará.</p>
 </div>
 <h2 id="11-errores-tipicos-al-explotar-componentes">11. Errores típicos al explotar componentes</h2>
@@ -3194,7 +3193,7 @@ Compilación:</p>
 <a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>com.example.uikit.PanelPunteroTest:...
 <a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>com.example.uikit.TeclaEventosTest:...
 <a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>
-<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>Time: 15.239
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>Time: 13.919
 <a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>
 <a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>OK (11 tests)
 </code></pre></div>
@@ -3245,12 +3244,12 @@ escritas, cuando no se han instalado.</p>
 <li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un componente explotado responde, recuerda, se deja inspeccionar y tiene pruebas</span>. Las cuatro cosas, no dos.</li>
 <li><strong>Introspección y reflexión</strong>: hoy se llaman <strong>árbol de semántica</strong>. <code>testTagsAsResourceId = true</code> en la raíz, y <code>uiautomator</code> te enseña nombre, caja y estado de cada pieza.</li>
 <li><strong>Persistencia</strong>: <code>remember</code> para lo interno de la pantalla, <code>rememberSaveable</code> para lo que el usuario escribió, y <code>Saver</code> para tipos propios. En el <code>Bundle</code> solo lo que no se pueda volver a pedir.</li>
-<li><strong>Eventos</strong>: el modelo fuente → evento → oyente → acción del libro se mantiene; el oyente es ahora un <strong>parámetro de la función</strong> y el <code>Modifier</code> de gesto hace de registro. <code>pointerInput</code> + <code>awaitEachGesture</code> es el <code>MouseListener</code>; <code>onKeyEvent</code>, el <code>KeyListener</code>; <code>onFocusEvent</code>, el <code>FocusListener</code>.</li>
+<li><strong>Eventos</strong>: el modelo fuente → evento → oyente → acción se mantiene; el oyente es ahora un <strong>parámetro de la función</strong> y el <code>Modifier</code> de gesto hace de registro. <code>pointerInput</code> + <code>awaitEachGesture</code> es el <code>MouseListener</code>; <code>onKeyEvent</code>, el <code>KeyListener</code>; <code>onFocusEvent</code>, el <code>FocusListener</code>.</li>
 <li><strong>Acciones</strong>: un evento <strong>cambia el estado</strong>; el sistema de composición repinta. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Nunca al revés</span>.</li>
-<li><strong>Pruebas</strong>: lógica en <code>src/test</code>, interfaz en <code>src/androidTest</code>; <code>createComposeRule</code>, <code>onNodeWithTag</code>, <code>performClick</code>, <code>performTouchInput</code>, <code>assertThrows</code>. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">11 pruebas en verde, <code>Time: 15.239</code></span> — no «a ojo se ve bien».</li>
+<li><strong>Pruebas</strong>: lógica en <code>src/test</code>, interfaz en <code>src/androidTest</code>; <code>createComposeRule</code>, <code>onNodeWithTag</code>, <code>performClick</code>, <code>performTouchInput</code>, <code>assertThrows</code>. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">11 pruebas en verde, <code>Time: 13.919</code></span> — no «a ojo se ve bien».</li>
 </ul>
 <h2 id="bibliografia-y-fuentes">Bibliografía y fuentes</h2>
-<p>Sin libros de editorial ni material de centro: el tema se apoya en las especificaciones y
+<p>Todo el material del tema se apoya en las especificaciones y
 documentaciones oficiales del software que se usa en clase.</p>
 <p><strong>Documentación oficial de Android</strong></p>
 <ul>
