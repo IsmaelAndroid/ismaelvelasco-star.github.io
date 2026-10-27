@@ -28,7 +28,7 @@ pruebas, su documentación y su paquete reutilizable.
 
 - Convertir un trocito de interfaz que se repite en un **componente reutilizable** con parámetros y
   valores por defecto bien elegidos.
-- Qué es una **propiedad** y cómo se traduce el patrón JavaBean del libro a parámetros de un
+- Qué es una **propiedad** y cómo se traduce el patrón JavaBean a parámetros de un
   `@Composable`.
 - A pintar a mano con **`DrawScope`** (el `Graphics` de toda la vida: óvalo, rectángulo, `Path`, trazos
   y degradados) y a meter imágenes vectoriales, empaquetadas y remotas.

@@ -16,8 +16,9 @@ tags:
 
 # 4.1 — Creación de componentes visuales
 
-> **Del libro de texto:** tema 4, *Creación de componentes*.
-> El libro lo resuelve con JavaBeans, `Graphics` y un JAR que se mete a mano en la paleta de Eclipse.
+> **El trabajo de ingeniería:** crear una pieza nueva, darle propiedades, probarla, documentarla y
+> empaquetarla. En Java Swing se resolvía con JavaBeans, `Graphics` y un JAR metido a mano en la paleta
+> de Eclipse.
 > Aquí hacemos **exactamente el mismo trabajo de ingeniería** —crear una pieza nueva, darle propiedades,
 > probarla, documentarla y empaquetarla para reutilizarla— pero con las herramientas de 2026:
 > **Jetpack Compose**, un **módulo de librería** y **pruebas instrumentadas**.
@@ -65,7 +66,7 @@ componentes diseña los suyos.
 
 ## 2. Desarrollo de software en componentes
 
-<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El libro lo explica con historia: programar “en componentes” significa **ensamblar** piezas hechas en vez</span>
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El modelo de componentes nació con historia: programar “en componentes” significa **ensamblar** piezas hechas en vez</span>
 de escribirlo todo. Las ventajas son siempre las mismas:
 
 | Ventaja | Qué significa en el día a día |
@@ -78,7 +79,7 @@ de escribirlo todo. Las ventajas son siempre las mismas:
 
 **Cómo se empaquetaba antes y cómo se empaqueta hoy:**
 
-| Concepto del libro (2020) | Equivalente en 2026 |
+| Concepto clásico (Java/Swing) | Equivalente en 2026 |
 | ------------------------- | ------------------- |
 | Clase JavaBean en un `.jar` | `@Composable` en un **módulo de librería** Android |
 | Añadir el JAR a la paleta de Eclipse | `implementation(project(":ui"))` en `build.gradle.kts` |
@@ -104,7 +105,7 @@ Inspector la muestra.
 
 ## 4. Propiedades y atributos
 
-!!! definition "Definición del libro"
+!!! definition "Definición clásica de componente (JavaBeans, 1997)"
     **Las propiedades** de un componente definen los datos públicos que forman la apariencia y el
     comportamiento del objeto, y se consultan o modifican mediante métodos.
 
@@ -112,7 +113,7 @@ En Java eso se materializaba en el patrón **JavaBean**: campo privado + `getX()
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**propiedades son parámetros de la función**, y el “valor por defecto” es directamente el valor por</span>
 defecto del parámetro:
 
-| Concepto JavaBean (libro) | Equivalente Compose | Ejemplo real de esta unidad |
+| Concepto JavaBean | Equivalente Compose | Ejemplo real de esta unidad |
 | ------------------------- | ------------------- | --------------------------- |
 | Propiedad `font` con getter/setter | Parámetro `style: TextStyle` | `MaterialTheme.typography.labelLarge` |
 | Valor por defecto en el setter | Valor por defecto del parámetro | `texto: String = estado.etiqueta` |
@@ -129,7 +130,7 @@ Tres detalles que se preguntan en el examen y que deciden si un componente es bu
 
 ### 4.1. JavaBean: por qué se menciona y por qué ya no se escribe
 
-El libro dedica un apartado entero a **JavaBean**: clase pública con constructor sin argumentos,
+La especificación **JavaBean** dedica un apartado entero a: clase pública con constructor sin argumentos,
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">que implementa `Serializable`, con propiedades privadas accesibles por `getX()`/`setX()` y eventos por</span>
 escucha. Con esas reglas, los componentes se podían instanciar por reflexión desde el editor visual.
 
@@ -160,7 +161,7 @@ devuelven al llamador con un evento.
 ## 5. El proyecto donde vive todo el tema
 
 El tema se trabaja en el proyecto **`IsmaelUIKit`**, con dos módulos. Esta estructura es el equivalente
-moderno al “proyecto de componente + proyecto de aplicación” del libro:
+moderno al par «módulo de componente + módulo de aplicación»:
 
 ```mermaid
 flowchart TD
@@ -173,7 +174,7 @@ flowchart TD
 ```
 
 El fichero que declara los módulos (`settings.gradle.kts`) y la configuración del módulo de librería
-son los que hacen de “ Añadir a la paleta” del libro:
+son los que hacen hoy de “Añadir a la paleta”:
 
 ```kotlin title="settings.gradle.kts"
 rootProject.name = "IsmaelUIKit"
@@ -182,23 +183,32 @@ include(":ui")    // el kit de componentes: aqui viven los componentes creados e
 ```
 
 ```kotlin title="ui/build.gradle.kts (el empaquetado, explicado en el apartado 8)"
+// Modulo de libreria :ui: el "jar" de toda la vida, hoy convertido en AAR.
 plugins {
-    alias(libs.plugins.android.library)     // <-- libreria, no aplicacion
-    alias(libs.plugins.kotlin.compose)      // procesador de @Composable
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
-    namespace = "com.example.uikit"         // paquete raiz del componente
+    namespace = "com.example.uikit"     // paquete raiz del componente; sustituye al package del manifest
     compileSdk { version = release(37) }
+
     defaultConfig {
-        minSdk = 24                         // desde aqui hacia arriba sabe funcionar el kit
+        minSdk = 24
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-    buildFeatures { compose = true }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    buildFeatures {
+        compose = true
+    }
 }
 
 dependencies {
-    api(platform(libs.androidx.compose.bom))        // api: quien nos use ve Compose
+    // api, no implementation: quien consuma :ui debe ver Compose sin declararlo el tambien
+    api(platform(libs.androidx.compose.bom))
     api(libs.androidx.compose.foundation)
     api(libs.androidx.compose.material3)
     api(libs.androidx.compose.ui)
@@ -206,7 +216,8 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     debugImplementation(libs.androidx.compose.ui.tooling)
 
-    androidTestImplementation(platform(libs.androidx.compose.bom))   // pruebas en dispositivo
+    // Pruebas unitarias del componente (criterio de evaluacion 3e)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -214,10 +225,16 @@ dependencies {
 }
 ```
 
+<figure markdown>
+  ![Fichero `ui/build.gradle.kts` tal como esta en el proyecto: el modulo de libreria que produce el AAR reutilizable.](assets/codigo-build-gradle.png)
+  <figcaption>Figura 2. El `build.gradle.kts` del módulo `:ui`, tal cual está en el proyecto. De estas 27 líneas sale el AAR reutilizable (CE g).</figcaption>
+</figure>
+
+
 ## 6. Creación de un nuevo componente: `BadgeEstado`
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Empezamos por el caso más simple que cumple todas las reglas: una píldora de estado con un punto de color</span>
-y un texto. El libro seguía la misma ruta: **partir de un componente existente y añadirle lo que le falta**
+y un texto. La ruta clásica era la misma: **partir de un componente existente y añadirle lo que le falta**
 (aquí partimos de `Row`, `Text` y `Box` de Material 3).
 
 ### 6.1. El enum que trae las propiedades puestas
@@ -231,12 +248,12 @@ import androidx.compose.ui.graphics.Color
  * Los tres estados que sabe representar el kit.
  *
  * Es un `enum class` con datos: cada valor se construye con las **propiedades** que el
- * componente necesita para pintarse. Así el color y el mensaje viajan *dentro* del estado
- * y no repartidos por las pantallas: cambiar el verde de "Completado" es tocar una línea.
+ * componente necesita para pintarse. Asi el color y el mensaje viajan *dentro* del estado
+ * y no repartidos por las pantallas: cambiar el verde de "Completado" es tocar una linea.
  *
  * @param etiqueta texto que ve el usuario en el componente
  * @param acento color de referencia (punto, texto y borde) del estado
- * @param mensaje frase larga para los sitios donde el estado se explica, no se sólo pinta
+ * @param mensaje frase larga para los sitios donde el estado se explica, no se solo pinta
  */
 enum class Estado(
     val etiqueta: String,
@@ -252,7 +269,7 @@ enum class Estado(
 ### 6.2. El componente
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**Código 1.** Fichero completo de `BadgeEstado`, incluido su `@Preview`. Es el código que produjo la</span>
-Figura 2.
+Figura 4.
 
 ```kotlin title="ui/src/main/java/com/example/uikit/BadgeEstado.kt"
 package com.example.uikit
@@ -279,7 +296,7 @@ import androidx.compose.ui.unit.dp
 /**
  * Componente: chivato de estado con punto de color y texto.
  *
- * Cada parametro es una **propiedad** del componente (lo que el libro resolvia con
+ * Cada parametro es una **propiedad** del componente (lo que JavaBeans resolvia con
  * getters y setters del JavaBean, aqui son parametros con valor por defecto).
  *
  * @param estado unico dato obligatorio: de el salen color, punto y texto por defecto
@@ -334,8 +351,14 @@ private fun VistaPreviaBadge() {
 ```
 
 <figure markdown>
+  ![El fichero `BadgeEstado.kt` en el editor, con su KDoc de propiedades y el cuerpo del componente.](assets/codigo-badge-estado.png)
+  <figcaption>Figura 3. El fichero `BadgeEstado.kt` en el editor (las 45 líneas del componente). Es el mismo listado del §6.2, sin recortar.</figcaption>
+</figure>
+
+
+<figure markdown>
 ![Pantalla Catalogo del kit con tres pildoras: Completado en verde con punto, Caducado en ambar con punto y Fallido en rosa sin punto](assets/captura-catalogo-kit.png)
-<figcaption>Figura 2. El Código 1 en ejecución: las tres llamadas del `@Preview`, ejecutadas en la app de demostración. La primera usa todos los valores por defecto; la segunda solo cambia `texto`; la tercera apaga el punto con `conPunto = false`.</figcaption>
+<figcaption>Figura 4. El Código 1 en ejecución: las tres llamadas del `@Preview`, ejecutadas en la app de demostración. La primera usa todos los valores por defecto; la segunda solo cambia `texto`; la tercera apaga el punto con `conPunto = false`.</figcaption>
 </figure>
 
 Fíjate en lo que **no** hace el componente: no sabe en qué pantalla está, no sabe qué idioma habla, no
@@ -343,11 +366,11 @@ crea estado propio. <span style="background-color:#a5d6a7;padding:0 3px;border-r
 
 ### 6.3. Un componente con evento: `SelectorMes`
 
-El libro usaba un `JMonthChooser` de terceros y lo añadía a la paleta. Nosotros lo escribimos: el
+En Swing se compraba un `JMonthChooser` de terceros y se añadía a la paleta. Nosotros lo escribimos: el
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">desplegable de meses es el mismo componente, con la diferencia de que **devuelve información** a la</span>
 pantalla.
 
-**Código 2.** Fichero completo, con sus dos `@Preview`. El botón «Elige un mes» de la Figura 5 lo pinta este código.
+**Código 2.** Fichero completo, con sus dos `@Preview`. El botón «Elige un mes» de la Figura 8 lo pinta este código.
 
 ```kotlin title="ui/src/main/java/com/example/uikit/SelectorMes.kt"
 package com.example.uikit
@@ -375,7 +398,7 @@ val MESES = listOf(
 /**
  * Componente: desplegable de meses con estado interno.
  *
- * El libro hacia esto con un `JMonthChooser` de Swing y lo pintaba a mano con Graphics.
+ * En Swing esto se hacia con un `JMonthChooser` de terceros pintado a mano con `Graphics`.
  * Aqui el componente se guarda solo si esta abierto el menu (estado interno) y **avisa**
  * al exterior por un evento: `onSeleccion`, la pareja moderna de "asociar acciones al evento".
  *
@@ -431,6 +454,12 @@ private fun VistaPreviaSelectorElegido() {
 }
 ```
 
+<figure markdown>
+  ![El fichero `SelectorMes.kt` en el editor, con el evento `onSeleccion` documentado.](assets/codigo-selector-mes.png)
+  <figcaption>Figura 5. `SelectorMes.kt` en el editor: el componente que guarda su estado y **dispara un evento** (CE d).</figcaption>
+</figure>
+
+
 **Dos estados, dos previsualizaciones.** Es la costumbre que separa un componente bien hecho de uno
 aceptable: todo componente con aspecto distinto según su estado trae un `@Preview` por estado. Cuando
 los estados dependen de una lista de datos, se usa `@PreviewParameter` y un proveedor:
@@ -449,7 +478,7 @@ private fun VistaPreviaParametrizada(@PreviewParameter(ProveedorEstado::class) e
 
 ## 7. Herramientas para diseñar y probar componentes (CE a)
 
-El libro comparaba editores de imágenes (Photoshop, GIMP, Paint.NET, Inkscape). Esas siguen: se usan para
+La comparación de editores de imágenes (Photoshop, GIMP, Paint.NET, Inkscape) es de manual. Esas siguen: se usan para
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**crear el material gráfico**. Para diseñar y probar el componente en sí, las de 2026 son estas</span>:
 
 | Herramienta | Qué hace | Cuándo se usa |
@@ -464,12 +493,12 @@ El libro comparaba editores de imágenes (Photoshop, GIMP, Paint.NET, Inkscape).
 
 <figure markdown>
 ![Diagrama de las dos mitades del ciclo de un componente: disenar (Figma, ImageVector, @Preview) y probar (Layout Inspector, Compose Test, lint)](assets/diagrama-herramientas.svg)
-<figcaption>Figura 3. El ciclo de trabajo de un componente: diseñar, previsualizar, ejecutar, medir, probar. Ninguna de las cuatro primeras fases necesita un dispositivo.</figcaption>
+<figcaption>Figura 6. El ciclo de trabajo de un componente: diseñar, previsualizar, ejecutar, medir, probar. Ninguna de las cuatro primeras fases necesita un dispositivo.</figcaption>
 </figure>
 
 ## 8. Integración y empaquetado del componente (CE g)
 
-<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El libro empaquetaba en un `.jar` y lo añadía a la paleta. Aquí el paquete es un **módulo de librería** y</span>
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">En Java se empaquetaba en un `.jar` y se añadía a la paleta. Aquí el paquete es un **módulo de librería** y</span>
 la “paleta” es el `dependencies` de Gradle:
 
 1. **Módulo `:ui`** con `com.android.library`: produce un **`.aar`** (Android Archive), que a diferencia del `.jar`
@@ -517,7 +546,7 @@ ui/build/outputs/apk/androidTest/debug/ui-debug-androidTest.apk
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">En Compose ese lienzo se llama **`DrawScope`** y está disponible dentro de `Canvas { }` o de</span>
 `Modifier.drawBehind { }`.
 
-| Libro (`Graphics`) | Compose (`DrawScope`) | Notas |
+| Java `Graphics` | Compose `DrawScope` | Notas |
 | ------------------ | --------------------- | ----- |
 | `paint(Graphics g)` sobre escrito | `Canvas { ... }` / `Modifier.drawBehind { ... }` | No hay `update()` ni `repaint()`: al cambiar el estado se vuelve a dibujar. |
 | `g.setColor(Color.green)` | `color = Color(0xFF2E7D32L)` en cada figura | El color es un argumento, no un estado del pincel. |
@@ -527,7 +556,7 @@ ui/build/outputs/apk/androidTest/debug/ui-debug-androidTest.apk
 | `g.drawImage(img, x, y, this)` | `drawImage(image, offset, alpha)` | Ver apartado 11. |
 | `Stroke`/pluma gruesa | `style = Stroke(width = 10f, cap = StrokeCap.Round)` | Trazos redondeados y degradados con `Brush`. |
 
-**Código 3.** Fichero completo del componente de dibujo. Es el código que produjo la Figura 4.
+**Código 3.** Fichero completo del componente de dibujo. Es el código que produjo la Figura 7.
 
 ```kotlin title="ui/src/main/java/com/example/uikit/LienzoFiguras.kt"
 package com.example.uikit
@@ -547,17 +576,17 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.tooling.preview.Preview
 
 /**
- * Componente: las figuras del libro dibujadas con `DrawScope`.
+ * Componente: las figuras clasicas de `java.awt.Graphics`, dibujadas con `DrawScope`.
  *
  * `Graphics` (AWT, 1996) se sustituye por el bloque de dibujo de Compose: dentro de `Canvas`
  * tienes un `DrawScope` con las mismas operaciones de siempre y coordenadas en pixeles.
- * Mismas cifras que el caso practico 2 del libro: ovalo verde en (150, 70) de 50x70,
+ * Mismas cifras que el ejercicio clasico de AWT: ovalo verde en (150, 70) de 50x70,
  * rectangulo amarillo en (350, 70) de 50x70 y triangulo naranja debajo.
  */
 @Composable
 fun LienzoFiguras(modifier: Modifier = Modifier) {
     Canvas(modifier.fillMaxSize().background(Color.White)) {
-        // 1. Ovalo: caja imaginaria de 50x70 en (150, 70) -> drawOval, el fillOval del libro
+        // 1. Ovalo: caja imaginaria de 50x70 en (150, 70) -> drawOval, el `fillOval` de AWT
         drawOval(
             color = Color(0xFF2E7D32L),
             topLeft = Offset(150f, 70f),
@@ -569,7 +598,7 @@ fun LienzoFiguras(modifier: Modifier = Modifier) {
             topLeft = Offset(350f, 70f),
             size = Size(50f, 70f),
         )
-        // 3. Triangulo: el fillPolygon del libro se construye con un Path de tres vertices
+        // 3. Triangulo: el `fillPolygon` de AWT se construye con un Path de tres vertices
         val triangulo = Path().apply {
             moveTo(250f, 200f)
             lineTo(300f, 270f)
@@ -613,19 +642,19 @@ private fun VistaPreviaLienzo() {
 
 <figure markdown>
 ![Pantalla Figuras con DrawScope: ovalo verde, rectangulo amarillo, triangulo naranja y una linea azul con tres estaciones blancas](assets/captura-figuras-drawscope.png)
-<figcaption>Figura 4. El Código 3 en ejecución: las tres figuras del caso práctico 2 del libro (mismas coordenadas y colores) más una línea de metro con degradado y estaciones.</figcaption>
+<figcaption>Figura 7. El Código 3 en ejecución: las tres figuras del ejercicio clásico (mismas coordenadas y colores) más una línea de metro con degradado y estaciones.</figcaption>
 </figure>
 
 ## 10. Imágenes en el componente
 
-El libro cargaba imágenes con `paint` porque los contenedores no tenían fondo por URL. Hoy separamos tres
+En AWT se cargaban imágenes con `paint` porque los contenedores no tenían fondo por URL. Hoy separamos tres
 casos y cada uno tiene su herramienta:
 
 | Caso | Cómo se hace | Claves |
 | ---- | ------------ | ------ |
 | Icono o logotipo **vectorial** del componente | `ImageVector` (creado desde SVG, tema 3) o `vector asset studio` | Escala sin pixelar y pesa cientos de bytes. |
 | Imagen **incluida en el paquete** (PNG, WebP) | `painterResource(R.drawable.nombre)` dentro de `Image(...)` | Vive en el módulo: va dentro del `.aar`. |
-| Imagen **remota** (la que el libro cargaba por URL) | librería de carga asíncrona (Coil `AsyncImage`, o `Fresco`) | Ocupa el hueco mientras carga y muestra un error si falla. |
+| Imagen **remota** (la que AWT cargaba por URL) | librería de carga asíncrona (Coil `AsyncImage`, o `Fresco`) | Ocupa el hueco mientras carga y muestra un error si falla. |
 
 ```kotlin title="Los tres casos, en el mismo componente"
 @Composable
@@ -659,7 +688,7 @@ fun CabeceraConLogo(modifier: Modifier = Modifier, urlLogo: String? = null) {
 
 ## 11. Caso práctico 1: “Interfaz del metro” (adaptado)
 
-**Enunciado (como en el libro).** La Red de Transporte Regional quiere una pantalla para recargar el abono
+**Enunciado del caso práctico.** La Red de Transporte Regional quiere una pantalla para recargar el abono
 mensual. Hace falta un desplegable con los doce meses y que la interfaz confirme la recarga elegida.
 
 **Montaje con el kit.** La pantalla no dibuja nada “a mano”: compone piezas del módulo `:ui`.
@@ -700,7 +729,7 @@ private fun EscenaAbono() {
 
 <figure markdown>
 ![Pantalla Recarga del abono con el boton Elige un mes, una tarjeta que pide seleccionar el mes y una pildora de aviso Falta el mes](assets/captura-abono-sin-mes.png)
-<figcaption>Figura 5. El caso práctico con el estado inicial: `mes == null`, así que la tarjeta pide el mes y el badge se pinta en ámbar. Al elegir uno, el evento `onSeleccion` cambia el estado y la misma pantalla pasa a “Recargado: Marzo · 20,00 EUR” con el badge verde.</figcaption>
+<figcaption>Figura 8. El caso práctico con el estado inicial: `mes == null`, así que la tarjeta pide el mes y el badge se pinta en ámbar. Al elegir uno, el evento `onSeleccion` cambia el estado y la misma pantalla pasa a “Recargado: Marzo · 20,00 EUR” con el badge verde.</figcaption>
 </figure>
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El detalle con nota: **el componente no sabe qué es un abono**. `SelectorMes` solo sabe de meses; la</span>
@@ -747,6 +776,12 @@ class BadgeEstadoTest {
 }
 ```
 
+<figure markdown>
+  ![El fichero de pruebas `BadgeEstadoTest.kt` completo, con la regla de Compose y tres metodos de prueba.](assets/codigo-pruebas.png)
+  <figcaption>Figura 9. El fichero de pruebas completo: tres comprobaciones sobre lo que ve el usuario, ejecutadas en el emulador (CE e).</figcaption>
+</figure>
+
+
 ```text title="Resultado real de la ejecucion"
 INSTRUMENTATION_RESULT: stream=...
 com.example.uikit.BadgeEstadoTest:..
@@ -773,7 +808,7 @@ Tres niveles, y los dos primeros no cuestan trabajo porque ya los estás escribi
 3. **Documentación publicada**: con el plugin **Dokka** los KDoc se exportan a HTML o Markdown, igual que
    Javadoc/Javadoc.io en el mundo Java.
 
-```kotlin title="El mismo nivel de detalle que pide el libro: documentar el componente, no la app"
+```kotlin title="Documentar el componente, no la app"
 /**
  * Componente: chivato de estado con punto de color y texto.
  *
@@ -787,10 +822,10 @@ Tres niveles, y los dos primeros no cuestan trabajo porque ya los estás escribi
 
 ## 14. Caso práctico 2: “Formas básicas con DrawScope” (adaptado)
 
-El libro pedía sobrescribir `paint`, llamar a `super.paint(g)` y encadenar `setColor` + `fillOval` +
+En Swing había que sobrescribir `paint`, llamar a `super.paint(g)` y encadenar `setColor` + `fillOval` +
 `fillRect` + `fillPolygon`. Aquí el equivalente es el **Código 3** de esta unidad, con las mismas cifras:
 
-| Paso del libro | Paso en Compose |
+| Paso en Swing | Paso en Compose |
 | -------------- | --------------- |
 | 1. Sobrescribir `paint` | Abrir el bloque `Canvas { }` (o `Modifier.drawBehind`). |
 | 2. Llamar al `paint` de la superclase | No hace falta: el fondo se pone con `Modifier.background(Color.White)`. |
@@ -798,7 +833,7 @@ El libro pedía sobrescribir `paint`, llamar a `super.paint(g)` y encadenar `set
 | 5-6. Amarillo y `fillRect(350, 70, 50, 70)` | `drawRect(Color(0xFFF9A825L), Offset(350f, 70f), Size(50f, 70f))`. |
 | 7-8. Naranja y `fillPolygon` | `Path` de tres vértices + `drawPath(...)` (en el Código 3, `triángulo`). |
 
-**Resultado:** la Figura 4 de esta página, ejecutada en el emulador.
+**Resultado:** la Figura 7 de esta página, ejecutada en el emulador.
 
 ## 15. Errores típicos al crear componentes
 
@@ -823,7 +858,7 @@ El libro pedía sobrescribir `paint`, llamar a `super.paint(g)` y encadenar `set
 
 ## Bibliografía y fuentes
 
-Sin libros de editorial: el material se apoya en las especificaciones y documentaciones oficiales
+Todo el material se apoya en las especificaciones y documentaciones oficiales
 del software que se usa en clase.
 
 **Documentación oficial de Android y de las herramientas**
@@ -840,7 +875,7 @@ del software que se usa en clase.
 - JetBrains. *Dokka, generación de documentación Kotlin*. <https://kotlinlang.org/docs/dokka-introduction.html>
 - Kotlin Foundation. *Enumerations* y *Properties and accessors*. <https://kotlinlang.org/docs/enums.html>
 
-**Espejo histórico del tema (para situar el vocabulario del libro)**
+**Espejo histórico: vocabulario de Swing y su equivalente actual**
 
 - Oracle. *JavaBeans Focus Guide* (especificación JavaBeans). <https://docs.oracle.com/javase/tutorial/javabeans/>
 - Oracle. *Clase `java.awt.Graphics`* (API de Java SE). <https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/java/awt/Graphics.html>

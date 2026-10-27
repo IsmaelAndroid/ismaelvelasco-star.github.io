@@ -16,7 +16,8 @@ tags:
 
 # 3.1 — Generación de interfaces a partir de documentos de descripción
 
-> **Del libro de texto:** tema 3, *Generación de interfaces a partir de documentos XML*.
+> **El trabajo de ingeniería:** describir una interfaz en un documento de texto y generar la
+> pantalla a partir de él.
 > Este curso damos el salto a **Jetpack Compose**, así que vamos a hacer dos cosas a la vez: entender el
 > XML que describe interfaces (sigue estando en todas partes: webs, feeds, documentos, Android clásico)
 > y aprender su equivalente moderno en Compose, donde **la descripción de la interfaz es código Kotlin**.
@@ -56,7 +57,7 @@ etiquetas ↔ composables, atributos ↔ parámetros, eventos ↔ lambdas.</p>
 ## 2. Lenguajes de descripción de interfaces basados en XML
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">XML es metalenguaje: no describe nada por sí mismo, pero permite definir lenguajes que sí lo hacen</span>.
-El libro los recorre; nosotros los traducimos a cómo se ven desde Compose en 2026. Cada apartado trae
+Son conceptos de manual; aquí los traducimos a cómo se ven desde Compose en 2026. Cada apartado trae
 su documento y **su escena real ejecutándose en el emulador**.
 
 <figure markdown>
@@ -86,7 +87,7 @@ WebView(context).apply {                               // Creamos un WebView y l
 ```
 
 <div style="background:#e1bee7; border-radius:6px; padding:8px 12px; margin:12px 0;">
-<strong>⚠️ Importante (del libro)</strong>: XHTML obliga a documentos <em>well-formed</em>: toda etiqueta
+<strong>⚠️ Importante</strong>: XHTML obliga a documentos <em>well-formed</em>: toda etiqueta
 cerrada, atributos entrecomillados y un único nodo raíz. Un HTML antiguo podía ser un desastre tolerado;
 un XHTML no.
 </div>
@@ -98,7 +99,7 @@ un XHTML no.
 coordenadas, nombre, descripción. Y la pantalla que lo muestra se genera a partir de él:
 
 **Código 2.** El documento GML de la Figura 3 entra como texto y la interfaz de la tarjeta se construye
-a partir de sus datos. Es el mini-caso práctico 2 del libro (XML → interfaz) en miniatura:
+a partir de sus datos. Es el mini-caso práctico de siempre (XML → interfaz) en miniatura:
 
 ```kotlin
 @Composable
@@ -355,7 +356,7 @@ Y así queda, ejecutado en el emulador:
 
 ## 3. El documento XML: análisis y edición
 
-<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un documento XML se lee con tres conceptos. El libro los define para el documento; nosotros los ponemos</span>
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un documento XML se lee con tres conceptos. Se definen para el documento; aquí los ponemos</span>
 en paralelo con Compose porque **un composable es un documento XML convertido en función**:
 
 <figure markdown>
@@ -390,7 +391,7 @@ llamar a una función, un parámetro sí.
 ### 3.3. Valores
 
 Un valor puede ser un literal (`23,5`) o una **referencia a recurso** (`@string/temperatura`). La
-regla de oro del libro — "en un proyecto real, nada de valores mágicos en el layout" — sigue viva en
+regla de oro — "en un proyecto real, nada de valores mágicos en el layout" — sigue viva en
 Compose con `stringResource(R.string.…)` y los colores del `MaterialTheme`:
 
 **Código 7.** Literales frente a recursos, la escena completa de la Figura 10:
@@ -526,7 +527,7 @@ fun DialogoPorEstado() {                                     // pantalla con di�
 
 ## 5. Herramientas para la creación de interfaces multiplataforma
 
-<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El libro compara editores de documentos XML. Te los resumimos tal cual (entran en el examen tipo test)</span>
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">La comparativa de editores de documentos XML, resumida tal cual (entran en el examen tipo test)</span>
 y luego te contamos cuál es la nuestra de verdad:
 
 | Herramienta | Tipo | Para qué sirve hoy |
@@ -538,7 +539,7 @@ y luego te contamos cuál es la nuestra de verdad:
 | **Android Studio** | IDE Android | La nuestra: edita código **y a la vez genera la interfaz** en tiempo real con `@Preview`. |
 
 <figure markdown>
-![Rejilla de cuatro recuadros con las cuatro herramientas del libro y la quinta destacada (Android Studio).](assets/herramientas-editores.svg)
+![Rejilla de cuatro recuadros con las cuatro herramientas clásicas y la quinta destacada (Android Studio).](assets/herramientas-editores.svg)
 <figcaption>Figura 13. El arsenal del tema: de los editores de documentos al IDE que renderiza tu interfaz mientras escribes.</figcaption>
 </figure>
 
@@ -568,7 +569,7 @@ documento XML" del apartado 3, pero del documento vivo.
 
 ## 6. Generación de código para diferentes plataformas
 
-<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El libro explica cómo de un mismo documento XML se generaba código para Java, C++ o web. La equivalencia</span>
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">De un mismo documento XML se puede generar código para Java, C++ o web. La equivalencia</span>
 moderna tiene dos lecturas, y ambas son ciertas:
 
 1. **La interfaz se "genera" sola desde el código**: Compose interpreta tus composables y emite el árbol
@@ -637,7 +638,7 @@ fun AjustesPorEstado(oscuroInicial: Boolean = false) {       // escena de ajuste
 
 ## 7. Caso práctico 1: "Generación de un logo con gráficos vectoriales escalables"
 
-<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**Enunciado (adaptado del libro)**: partiendo del trazado de una estrella en SVG, construir el logo de la</span>
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**Enunciado del caso práctico**: partiendo del trazado de una estrella en SVG, construir el logo de la</span>
 aplicación como recurso vectorial y colocarlo en la cabecera de la pantalla.
 
 **Solución paso a paso**:
@@ -645,9 +646,9 @@ aplicación como recurso vectorial y colocarlo en la cabecera de la pantalla.
 1. Copiamos el atributo `d` del SVG como `pathData` y lo parseamos con `addPathNodes` (Código 6).
 2. Montamos el `ImageVector` con el `fill` original del SVG en `SolidColor`.
 3. Lo presentamos con `Image` dentro de una `Box` con degradado (el equivalente Compose del contenedor
-   `frame` del mockup del libro).
+   `frame` del mockup).
 4. Comprobamos escalabilidad: probamos el logo a 40, 140 y 400 dp. Al ser trazados, no pixelea nunca —
-   la ventaja del SVG/XML vectorial que el libro defendía ya en 2012, intacta.
+   la ventaja del SVG/XML vectorial, intacta.
 
 > El resultado ejecutándose es la **Figura 8** de este tema.
 
@@ -721,7 +722,7 @@ fun FichaEditable() {                                        // la ficha GML/RSS
 
 ## Bibliografía y fuentes
 
-Sin libros de editorial: el material se apoya en las especificaciones y documentaciones oficiales
+Todo el material se apoya en las especificaciones y documentaciones oficiales
 del software que se usa en clase.
 
 **Especificaciones originales (W3C / OASIS / IETF)**

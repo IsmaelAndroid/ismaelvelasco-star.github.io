@@ -32,7 +32,7 @@ De manera tradicional se ha establecido una clasificación entre lenguajes de **
 
 <figure markdown>
 ![Diagrama de lenguajes de alto y bajo nivel y el proceso de compilación.](assets/compilacion.png)
-<figcaption>Fig. 1. Diagrama de lenguajes de alto y bajo nivel. Fuente: temario del módulo.</figcaption>
+<figcaption>Fig. 1. Diagrama de lenguajes de alto y bajo nivel. Fuente: material del módulo.</figcaption>
 </figure>
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**Kotlin**, el lenguaje que usaremos en este módulo, es de alto nivel: compila a bytecode que ejecuta la máquina virtual (JVM o ART en Android).</span>
@@ -81,21 +81,21 @@ Tabla 1. Tabla comparativa de las herramientas de edición de interfaces (selecc
 
 <figure markdown>
 ![Interfaz de la aplicación MonoDevelop con su diseñador visual.](assets/monodevelop.png)
-<figcaption>Fig. 2. Interfaz de la aplicación MonoDevelop. Fuente: temario del módulo.</figcaption>
+<figcaption>Fig. 2. Interfaz de la aplicación MonoDevelop. Fuente: material del módulo.</figcaption>
 </figure>
 
 **4.2. Glade.** Este programa ayuda a la creación de interfaces gráficas de usuario y es muy utilizado en entornos XML, también para interfaces basadas en C, C++, C#, Java o Python. Su interfaz es bastante intuitiva y se domina invirtiendo poco tiempo. La principal diferencia respecto a las demás propuestas es que está diseñada pensando especialmente en GNU/Linux.
 
 <figure markdown>
 ![Interfaz de la aplicación Glade con su paleta de componentes y propiedades.](assets/glade.png)
-<figcaption>Fig. 3. Interfaz de la aplicación Glade. Fuente: temario del módulo.</figcaption>
+<figcaption>Fig. 3. Interfaz de la aplicación Glade. Fuente: material del módulo.</figcaption>
 </figure>
 
 **4.3. Android Studio.** <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Es el IDE oficial para el desarrollo Android: gratuito, libre y multiplataforma, basado en IntelliJ IDEA.</span> Reúne las virtudes de los anteriores (editor con autocompletado y detección de errores en tiempo real, depuración paso a paso, integración con Git/GitHub) y añade lo que da nombre al módulo moderno: la vista de diseño en vivo para **Jetpack Compose** (previsualización sin ejecutar la app), el emulador de dispositivos Android integrado y el soporte completo de **Kotlin**. Para completar esta asignatura vamos a utilizar **Android Studio**, puesto que su uso es el estándar profesional actual en el desarrollo de interfaces móviles.
 
 <figure markdown>
 ![Burbujas con lenguajes de programación de alto nivel, entre ellos Kotlin.](assets/lenguajes.png)
-<figcaption>Fig. 4. Lenguajes de programación de alto nivel. Fuente: temario del módulo.</figcaption>
+<figcaption>Fig. 4. Lenguajes de programación de alto nivel. Fuente: material del módulo.</figcaption>
 </figure>
 
 ## 5. Librerías. Jetpack Compose
@@ -485,4 +485,5 @@ En este tema hemos visto que la librería **Jetpack Compose** contiene todas las
 - JetBrains. *Kotlin Multiplatform — asistente de proyecto*. <https://kmp.jetbrains.com/>
 - JetBrains. *Compose Multiplatform*. <https://www.jetbrains.com/compose/multiplatform/>
 - Real Decreto 405/2023, de 29 de mayo (BOE-A-2023-13221). Módulo profesional 0488 Desarrollo de interfaces.
-- Temario del módulo como base conceptual de la adaptación.
+- Material Design 3, especificación de diseño. <https://m3.material.io/>
+- Real Decreto 405/2023, anexo I, módulo 0488: resultados de aprendizaje y criterios de evaluación que ordenan el tema.

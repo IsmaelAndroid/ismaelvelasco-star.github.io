@@ -19,7 +19,7 @@ tags:
 
 En la UD4 fabricaste componentes. Aquí se **explotan**: que respondan a los eventos que les corresponden,
 que su estado sobreviva a girar el móvil, que se puedan inspeccionar desde fuera y que haya pruebas
-automáticas que avisen antes de que lo descubra el usuario. Los dos casos prácticos del libro —la
+automáticas que avisen antes de que lo descubra el usuario. Los dos casos prácticos —la
 configuración del ratón y el teclado de piano— llegan resueltos con `pointerInput`, `rememberSaveable` y
 Compose Testing.
 
@@ -30,7 +30,7 @@ Compose Testing.
 ## Qué aprenderás
 
 - Desmontar un evento en sus piezas (fuente, objeto, oyente, acción) y **traducir** cada listener del
-  libro a su equivalente de 2026: `MouseListener` → `pointerInput`, `KeyListener` → `onKeyEvent`,
+  Java/Swing a su equivalente de 2026: `MouseListener` → `pointerInput`, `KeyListener` → `onKeyEvent`,
   `FocusListener` → `onFocusEvent`, `ChangeListener` → `onValueChange`.
 - Decidir **a qué eventos responde** cada componente y a cuáles no (un componente de dibujo no responde
   a ninguno: solo recibe), y associar a cada uno una acción.

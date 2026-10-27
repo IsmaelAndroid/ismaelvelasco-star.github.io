@@ -17,9 +17,9 @@ tags:
 
 # 5.1 — Explotación de componentes visuales
 
-> **Del libro de texto:** tema 5, *Explotación de componentes visuales*.
-> El libro lo resuelve con `MouseListener`, `KeyListener`, `ActionListener`, `FocusListener`, JUnit en
-> Eclipse y dos casos prácticos (configuración del ratón con `JSpinner` y teclado de piano con JFugue).
+> **El trabajo de ingeniería:** capturar lo que hace el usuario, convertirlo en acciones, conservar el
+> estado del componente y probarlo. En Java Swing eso se resolvía con `MouseListener`, `KeyListener`,
+> `ActionListener`, `FocusListener`, JUnit en Eclipse y dos casos prácticos (configuración del ratón con `JSpinner` y teclado de piano con JFugue).
 > Aquí se hace **el mismo trabajo**: decidir a qué eventos responde cada pieza, conectarles la acción,
 > guardar el estado, probarlo y documentarlo. Cambian las herramientas:
 > **Jetpack Compose**, `rememberSaveable` con `Saver` propio y **pruebas instrumentadas** con
@@ -57,15 +57,15 @@ Un componente «explotado» cumple cuatro cosas:
 4. **Se prueba**: tiene pruebas que fallan si algo se rompe, antes de que lo descubra el usuario.
 
 <figure markdown>
-![Diagrama de dos carriles: el modelo fuente-objeto de evento-listener-accion del libro, y el modelo gesto-modifier-lambda-estado de Compose](assets/diagrama-eventos.svg)
-<figcaption>Figura 1. El mismo viaje, dos épocas. Arriba, el modelo que explica el libro; abajo, cómo se recorre hoy. Ninguna de las dos ideas es nueva: en ambas, un componente detecta, avisa y alguien actúa.</figcaption>
+![Diagrama de dos carriles: el modelo fuente-objeto de evento-listener-accion de Swing, y el modelo gesto-modifier-lambda-estado de Compose](assets/diagrama-eventos.svg)
+<figcaption>Figura 1. El mismo viaje, dos épocas. Arriba, el modelo de Java/Swing; abajo, cómo se recorre hoy. Ninguna de las dos ideas es nueva: en ambas, un componente detecta, avisa y alguien actúa.</figcaption>
 </figure>
 
 ## 2. Características fundamentales del componente explotado
 
 ### 2.1 Introspección y reflexión
 
-El libro abre el tema hablando de **introspección** (el componente sabe qué propiedades tiene) y
+El tema arranca con la **introspección** (el componente sabe qué propiedades tiene) y
 **reflexión** (el entorno descubre esas propiedades sin saber de qué clase es). De ahí salía todo: la
 paleta de Eclipse, el inspector de propiedades, la serialización.
 
@@ -87,7 +87,7 @@ Y se puede ver desde fuera del proceso. Con una sola línea puesta en la raíz d
 ```kotlin title="app/src/main/java/com/example/uikit/demo/MainActivity.kt"
 androidx.compose.foundation.layout.Box(
     modifier = androidx.compose.ui.Modifier.semantics { testTagsAsResourceId = true },
-) { /* la escena */ }
+) {
 ```
 
 los `testTag` que pusiste para las pruebas salen como `resource-id` en el volcado de `uiautomator`.
@@ -116,21 +116,21 @@ pantalla). En la escena del piano el volcado además describe cada tecla:
 
 ### 2.2 Persistencia del componente
 
-Segundo pilar del tema en el libro: el componente tiene que poder **guardar y recuperar su estado**
+Segundo pilar del tema: el componente tiene que poder **guardar y recuperar su estado**
 (serializar, `persistState`). En Android eso no es un lujo: al girar el móvil, el sistema destruye la
 actividad y la vuelve a crear. Si no guardas nada, la pantalla vuelve en blanco.
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">En Compose hay dos memoriales y la diferencia importa: `remember` vive mientras vive la composición; `rememberSaveable` sobrevive a la destrucción de la actividad porque viaja en el `Bundle` del sistema</span>.
 
 ```kotlin title="app/src/main/java/com/example/uikit/demo/MainActivity.kt (escena 6)"
-var sobrevive by rememberSaveable { mutableStateOf("") }   // pasa por el Bundle: resucita al girar
-var sePierde by remember { mutableStateOf("") }            // muere con la composicion
+    var sobrevive by rememberSaveable { mutableStateOf("") }        // pasa por el Bundle
+    var sePierde by remember { mutableStateOf("") }                 // vive solo en la composicion
 ```
 
 `rememberSaveable` solo sabe guardar tipos que caben en un `Bundle` (números, texto, `Parcelable`,
 listas de esas cosas). Un tipo de dominio propio hay que enseñarle a guardarse, y eso se hace con un
 `Saver`: dos funciones, una que reduce el objeto a algo serializable y otra que lo reconstruye (§9,
-`SaverConfigPuntero`). Es exactamente el papel que en el libro jugaba `Serializable` / `persistState`,
+`SaverConfigPuntero`). Es exactamente el papel que jugaba `Serializable` / `persistState()` en AWT,
 pero escrito una vez junto al tipo de dato y no en una interfaz que hay que implementar.
 
 **Comprobado en el emulador**, girando el dispositivo con `adb shell settings put system user_rotation 1`.
@@ -160,7 +160,7 @@ DESPUES   campo-sobrevive  text="Sigo despues del giro"      campo-se-pierde  te
 
 ## 3. Pruebas unitarias: dónde se escriben y qué se prueba
 
-El libro monta las pruebas con JUnit en Eclipse: clase de prueba, métodos anotados, aserciones y
+Las pruebas clásicas se montaban con JUnit en Eclipse: clase de prueba, métodos anotados, aserciones y
 comprobación de errores. El esquema no ha cambiado nada; han cambiado la ubicación y el alcance.
 
 | | Pruebas **JVM** (`src/test`) | Pruebas **instrumentadas** (`src/androidTest`) |
@@ -173,7 +173,7 @@ comprobación de errores. El esquema no ha cambiado nada; han cambiado la ubicac
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Regla para no equivocarse de carpeta: si la prueba necesita ver la pantalla o tocar algo, va a `androidTest`; si solo necesita pensar, va a `test`</span>. Y un componente con lógica **dentro** del composable no se puede probar sin dispositivo: por eso el `Saver` y el parser `deVelocidad` del §10 son funciones normales, probables en JVM.
 
-Las anotaciones y aserciones del libro siguen siendo las mismas (`@Test`, `@Before`, `@After`,
+Las anotaciones y aserciones siguen siendo las mismas (`@Test`, `@Before`, `@After`,
 `assertEquals`, `assertThrows`). Lo nuevo es el vocabulario de Compose:
 
 | Quiero | Cómo |
@@ -283,7 +283,7 @@ class PanelPunteroTest {
     }
 }
 
-/** Pruebas de la logica suelta (apartado 3.4 del tema): tambien de los errores. */
+/** Pruebas de la logica suelta (§3.4): tambien de los errores. */
 class ConfigPunteroTest {
 
     @Test
@@ -310,11 +310,11 @@ Tres detalles que valen punto en el examen:
 
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`@get:Rule val regla = createComposeRule()` levanta el `ComposeTestRule`: sin eso no hay composición donde mirar</span>.
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Se afirma sobre la etiqueta y sobre el estado, no sobre píxeles</span>. Una captura que cambia de tamaño no rompe la prueba; un `assertTrue` sobre `null` sí.
-- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`assertThrows` también prueba el mensaje</span>: el apartado 3.4 del libro («comprobación de errores») es exactamente esto, y es lo que salva una app cuando el usuario escribe `75` donde valían 0, 25 o 50.
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`assertThrows` también prueba el mensaje</span>: el apartado de «comprobación de errores» es exactamente esto, y es lo que salva una app cuando el usuario escribe `75` donde valían 0, 25 o 50.
 
 ## 4. Eventos: clases, componentes y métodos
 
-El libro desmonta la «programación basada en eventos» en tres piezas: **fuente** (el componente que
+La programación basada en eventos se desmonta en tres piezas: **fuente** (el componente que
 genera), **objeto de evento** (lo que se envía) y **listener** (quien lo escucha). Y añade una tabla de
 qué componente emite qué evento. Esa taxonomía sigue siendo la forma correcta de pensar una interfaz,
 porque lo que se decide es **el contrato**: a qué responde cada pieza y qué hace cuando responde.
@@ -328,7 +328,7 @@ fun PanelPuntero(configuracion: ConfigPuntero, onCambio: (ConfigPuntero) -> Unit
 Con esa línea ya está dicho todo: el componente **no** cambia nada por dentro, **devuelve** la
 configuración completa cuando el usuario toca, y no sabe ni le importa qué hará el llamador con ella.
 
-### 4.1 Qué eventos tiene cada componente (el mismo análisis del libro)
+### 4.1 Qué eventos tiene cada componente (el análisis de siempre)
 
 | Componente | Evento(s) que le interesan | Acción razonable |
 | ---------- | -------------------------- | ---------------- |
@@ -348,13 +348,13 @@ configuración completa cuando el usuario toca, y no sabe ni le importa qué har
     el usuario eligió y lo que se pinta. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Cuanta más lógica de presentación esté en componentes que solo reciben parámetros, menos pruebas hacen falta y menos fallos hay</span>.
 
 
-## 5. Los listeners del libro, traducidos uno a uno
+## 5. Los listeners de Swing, traducidos uno a uno
 
-El apartado 6 del libro dedica su espacio a `KeyListener` y `ActionListener`. Su traducción es directa,
+En Swing, `KeyListener` y `ActionListener` se llevan casi todo el protagonismo. Su traducción es directa,
 y conviene tenerla memorizada porque cae en las dos direcciones («¿cómo se hace hoy esto?» y «¿esto de
 qué evento viene?»).
 
-| Del libro (Swing / JavaBeans) | Método que se sobrescribía | Equivalente en Compose | Notas |
+| Swing / JavaBeans | Método que se sobrescribía | Equivalente en Compose | Notas |
 | ----------------------------- | -------------------------- | ---------------------- | ----- |
 | `ActionListener` | `actionPerformed(ActionEvent)` | `onClick = { ... }` de `clickable`/`Button` | El `ActionEvent` no llega: ya sabes qué control has tocado porque la lambda está en ese componente. |
 | `KeyListener` | `keyPressed` / `keyReleased` / `keyTyped` | `Modifier.onPreviewKeyEvent { }` / `onKeyEvent { }` | Devuelve `true` si te lo quedas, `false` para que siga subiendo. `onPreview` se ejecuta antes que el componente. |
@@ -376,7 +376,7 @@ package com.example.uikit
 /**
  * Datos del teclado del caso práctico 2.
  *
- * El libro usaba siete `JButton` con la nota inglesa dentro del `actionCommand`. Aquí la nota es un
+ * En Swing eran siete `JButton` con la nota inglesa dentro del `actionCommand`. Aquí la nota es un
  * tipo de dato: nombre en español (lo que ve el alumno), letra inglesa (lo que se envía al sinte) y
  * frecuencia real, que es lo que necesita `AudioTrack` para generar el sonido.
  */
@@ -428,9 +428,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 /**
- * Una tecla del piano: caso práctico 2 del libro, sin `JButton`.
+ * Una tecla del piano: el caso practico del teclado, sin `JButton`.
  *
- * El libro se apoyaba en `ActionListener` del botón. Un componente propio no tiene botón debajo,
+ * En Swing eso caia en el `ActionListener` del botón. Un componente propio no tiene botón debajo,
  * así que el gesto se detecta con `pointerInput`: es el **`MouseListener` de 2026**, pero en versión
  * de suspend (`awaitEachGesture`) en lugar de interfaz con seis métodos vacíos.
  *
@@ -503,13 +503,13 @@ fun TecladoPiano(
 Dentro del `pointerInput` hay un mini-protocolo que es bueno saber leer:
 
 - `awaitEachGesture { }` — bucle: se reactiva con cada gesto nuevo sobre el componente.
-- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`awaitFirstDown()` espera a que el dedo toque (el `mousePressed` del libro) y `waitForUpOrCancellation()` espera a que se levante (el `mouseReleased`)</span>. Entre las dos, el componente está «pulsado».
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`awaitFirstDown()` espera a que el dedo toque (el `mousePressed` de Swing) y `waitForUpOrCancellation()` espera a que se levante (el `mouseReleased`)</span>. Entre las dos, el componente está «pulsado».
 - El bloque es *suspend*: **se pausa sin bloquear el hilo de la interfaz**. En Swing, hacer algo lento dentro de `actionPerformed` congelaba la ventana (el *EDT*); aquí eso no ocurre mientras no llames a algo bloqueante, y para eso está el hilo de `tocarNota` (§10).
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`pointerInput(nota)` lleva una clave: si la nota cambia, el bloque se reinicia y deja de escuchar el gesto viejo</span>. Sin clave, los closures se quedan apuntando al valor con el que se compusieron la primera vez, que es la fuente de bugs de eventos más frecuente en Compose.
 
 ## 6. Ratón, foco y teclado físico
 
-El libro incluye `MouseListener` y `FocusListener` porque en escritorio hay ratón y hay teclado. En un
+En escritorio hacen falta `MouseListener` y `FocusListener` porque hay ratón y hay teclado. En un
 móvil el primero casi no se usa, pero **el foco sí**: mando de consola, teclado Bluetooth, accesibilidad
 y navegación por controles. Las tres piezas que hay que conocer:
 
@@ -517,7 +517,7 @@ y navegación por controles. Las tres piezas que hay que conocer:
 var foco by remember { mutableStateOf(false) }
 Box(
     Modifier
-        .onFocusEvent { evento -> foco = evento.hasFocus }   // el focusGained/focusLost del libro
+        .onFocusEvent { evento -> foco = evento.hasFocus }   // el `focusGained`/`focusLost` de Swing
         .onPreviewKeyEvent { evento ->                        // antes de que el campo se lo coma
             if (evento.key == Key.Enter && evento.type == KeyEventType.KeyUp) {
                 onPulsar(nota); true                          // true = me lo he quedado
@@ -534,7 +534,7 @@ Box(
 
 ## 7. Asociación de acciones a eventos
 
-El apartado 9 del libro pide un flujo ordenado para asociar una acción a un evento. Funciona igual en
+Asociar una acción a un evento pide un flujo ordenado para asociar una acción a un evento. Funciona igual en
 2026, con otros nombres:
 
 ```mermaid
@@ -546,7 +546,7 @@ flowchart LR
     E -.el usuario ve el cambio.-> A
 ```
 
-| Paso | En el libro | Aquí |
+| Paso | En Swing | Aquí |
 | ---- | ----------- | ---- |
 | 1. Crear el escuchador y registrarlo | `spinner1.addChangeListener(...)` | `onClick`/`onValueChange` en el propio componente |
 | 2. Averiguar qué ha pasado | `e.getSource()`, `spinner1.getValue()` | el valor llega por parámetro de la lambda |
@@ -554,7 +554,7 @@ flowchart LR
 | 4. Cambiar el modelo | mutar campos del `JFrame` y llamar a `repaint()` | `config = config.copy(...)`; la recomposición es automática |
 | 5. Refrescar la vista | `repaint()` a mano | nada: Compose observa el `MutableState` |
 
-<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El error de concepto que hay que arrancar: la acción de un evento **no repinta**, cambia el estado. Quien repinta es el sistema de composición</span>. Todo lo que en el libro era «y al final llamo a `repaint()`» aquí es escribir una variable observada.
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">El error de concepto que hay que arrancar: la acción de un evento **no repinta**, cambia el estado. Quien repinta es el sistema de composición</span>. Todo lo que en Swing era «y al final llamo a `repaint()`» aquí es escribir una variable observada.
 
 !!! warning "Cuatro antipatrones que se ven en los exámenes"
     | Antipatrón | Por qué se rompe |
@@ -577,7 +577,7 @@ configuracion.copy(velocidad = 50)        // objeto NUEVO; el anterior sigue int
 
 ## 9. Caso práctico 1: «Configuración del puntero»
 
-**Planteamiento del libro.** Interfaz para configurar la velocidad del ratón y el botón principal, con
+**Caso práctico 1.** Interfaz para configurar la velocidad del ratón y el botón principal, con
 `JSpinner` (0, 25, 50), `JComboBox` (izquierdo/derecho), una barra de progreso pintada a mano (0 → 20 px
 roja, 25 → 40 px naranja, 50 → 60 px verde) y un ratón dibujado donde se resalta el botón elegido
 (`fillRect(215,120,60,60)` o `(275,120,60,60)`). Los eventos: `ChangeListener` en el spinner,
@@ -585,7 +585,7 @@ roja, 25 → 40 px naranja, 50 → 60 px verde) y un ratón dibujado donde se re
 
 **Traducción.** Mismo planteamiento, mismos números, mismos dos eventos:
 
-| Del libro | Aquí | Por qué |
+| En Swing | Aquí | Por qué |
 | --------- | ---- | ------- |
 | `JSpinner` con 0/25/50 | tres botones (0, 25, 50) | en móvil un spinner es un dolor de dedos; tres opciones se eligen a un toque |
 | `ChangeListener.stateChanged` | `onClick` de cada botón | el valor entra ya validado: no existe la velocidad 37 |
@@ -601,7 +601,7 @@ package com.example.uikit
 
 import androidx.compose.runtime.saveable.Saver
 
-/** Qué botón del ratón hace de principal: la pareja moderna del `JComboBox` del libro. */
+/** Qué botón del ratón hace de principal: la pareja moderna del `JComboBox` de Swing. */
 enum class BotonRaton(val etiqueta: String) {
     IZQUIERDO("Izquierdo"),
     DERECHO("Derecho"),
@@ -645,7 +645,7 @@ data class ConfigPuntero(
  *
  * `rememberSaveable` no sabe qué es un `ConfigPuntero`: hay que decirle cómo reducirlo a algo
  * que quepa en el `Bundle` (aqui un `IntArray` de 3: velocidad, boton, animacion) y cómo
- * reconstruirlo. Eso es un `Saver`, el equivalente a la persistencia del componente del libro.
+ * reconstruirlo. Eso es un `Saver`, el equivalente a `Serializable` y `persistState()` de AWT.
  */
 val SaverConfigPuntero: Saver<ConfigPuntero, IntArray> = Saver(
     save = { config ->
@@ -667,7 +667,7 @@ val SaverConfigPuntero: Saver<ConfigPuntero, IntArray> = Saver(
 ```
 
 **Código 2 y Código 3.** El componente, en dos mitades del mismo fichero: la primera pinta y emite
-eventos, la segunda dibuja el ratón con `DrawScope` (el `paint(Graphics g)` del libro).
+eventos, la segunda dibuja el ratón con `DrawScope` (el `paint(Graphics g)` de AWT).
 
 ```kotlin title="ui/src/main/java/com/example/uikit/PanelPuntero.kt (primera parte)"
 package com.example.uikit
@@ -699,9 +699,9 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 
 /**
- * Panel de configuración del puntero — versión 2026 del caso práctico 1 del libro.
+ * Panel de configuración del puntero — versión 2026 del caso practico del puntero.
  *
- * El libro usaba `JSpinner` + `JComboBox` + `ChangeListener` + `ItemListener`. Aqui hay dos botones
+ * En Swing eran `JSpinner` + `JComboBox` + `ChangeListener` + `ItemListener`. Aqui hay dos botones
  * por opción y una `Switch`: **cada control dispara el mismo evento** `onCambio` con la configuración
  * completa, porque el componente es inmutable y no se toca a si mismo.
  *
@@ -780,9 +780,9 @@ private fun coloresElegido(elegido: Boolean) = ButtonDefaults.buttonColors(
 /**
  * Ratón dibujado a mano (caso práctico 1) con `DrawScope`.
  *
- * El libro dibujaba con `g.fillRect(215,120,60,60)` en píxeles del formulario. Aquí son las mismas
+ * En AWT se dibujaba con `g.fillRect(215,120,60,60)` en píxeles del formulario. Aquí son las mismas
  * figuras, en **dp**: se ven igual en un móvil de 300 dpi y en uno de 450 dpi.
- * La barra reproduce la correspondencia del libro: 0 → 20 dp rojo, 25 → 40 dp naranja, 50 → 60 dp verde.
+ * La barra reproduce la correspondencia del enunciado: 0 → 20 dp rojo, 25 → 40 dp naranja, 50 → 60 dp verde.
  */
 @Composable
 fun FiguraRaton(configuracion: ConfigPuntero, modifier: Modifier = Modifier) {
@@ -800,7 +800,7 @@ fun FiguraRaton(configuracion: ConfigPuntero, modifier: Modifier = Modifier) {
             size = Size(120f.dp.toPx(), 140f.dp.toPx()),
             cornerRadius = CornerRadius(60f.dp.toPx()),
         )
-        // 2) los dos botones; el elegido se pinta claro (era el fillRect(215..) o (275..) del libro)
+        // 2) los dos botones; el elegido se pinta claro (era el `fillRect(215..)` o `(275..)` de AWT)
         val anchoBoton = 50f.dp.toPx()
         val xIzquierda = cx - 54f.dp.toPx()
         val xDerecha = cx + 4f.dp.toPx()
@@ -838,7 +838,7 @@ animación apagada.
 
 <figure markdown>
 ![Pantalla Configuracion del puntero con el boton 50 y el boton Derecho seleccionados, el interruptor apagado, un raton dibujado con el boton derecho en amarillo y una barra verde de 60 dp](assets/captura-config-puntero.png)
-<figcaption>Figura 4. El caso práctico 1 del libro, ejecutado. El dibujo es el mismo que salió del <code>fillRect/fillOval</code> del libro: cuerpo, dos botones, rueda, y la barra de velocidad con la correspondencia 0 → 20 rojo, 25 → 40 naranja, 50 → 60 verde. Las líneas <code>Barra: 60 dp</code> y <code>Guardado: 50 · Derecho</code> salen del estado real del componente.</figcaption>
+<figcaption>Figura 4. El caso práctico 1, ejecutado. El dibujo es el mismo que saldría del <code>fillRect/fillOval</code> de AWT: cuerpo, dos botones, rueda, y la barra de velocidad con la correspondencia 0 → 20 rojo, 25 → 40 naranja, 50 → 60 verde. Las líneas <code>Barra: 60 dp</code> y <code>Guardado: 50 · Derecho</code> salen del estado real del componente.</figcaption>
 </figure>
 
 Lista de comprobación de los criterios:
@@ -850,11 +850,10 @@ Lista de comprobación de los criterios:
 
 ## 10. Caso práctico 2: «Teclado de piano»
 
-**Planteamiento del libro.** Siete `JButton` a modo de teclas, librería JFugue, `Player.play(nota)`
+**Caso práctico 2.** Siete `JButton` a modo de teclas, librería JFugue, `Player.play(nota)`
 dentro del `actionPerformed` de cada botón, con la nota inglesa en el comando de cada botón.
 
-**Traducción.** El componente `Tecla` del §5 hace de `JButton` y además distingue pulsar de soltar (el
-libro no lo pedía; un piano sin «nota soltada» no es un piano). El sonido es un listado aparte:
+**Traducción.** El componente `Tecla` del §5 hace de `JButton` y además distingue pulsar de soltar (un piano sin «nota soltada» no es un piano). El sonido es un listado aparte:
 
 ```kotlin title="app/src/main/java/com/example/uikit/demo/NotaReproductor.kt"
 package com.example.uikit.demo
@@ -867,7 +866,7 @@ import android.media.AudioFormat
 import android.media.AudioTrack
 
 /**
- * Nota senoidal generada al vuelo: el equivalente a `player.play("C4")` de JFugue del libro.
+ * Nota senoidal generada al vuelo: el equivalente a `player.play("C4")` de JFugue (Swing).
  *
  * Android no trae un sintetizador de notas sueltas, así que se calcula la onda y se manda a
  * `AudioTrack`. Se lanza en un hilo aparte para no bloquear la interfaz mientras suena.
@@ -951,7 +950,7 @@ private fun EscenaPiano() {
 !!! note "Sobre el sonido"
     El emulador se lanza con `-no-audio`, así que el `AudioTrack` se ejecuta pero no se oye. En el móvil
     suena: 261,63 Hz es un do de octavo 4. Que una captura no pueda enseñar el sonido no significa que el
-    código sobre: es el equivalente exacto del `player.play("C4")` del libro, y si algún año hay examen
+    código sobre: es el equivalente exacto del `player.play("C4")` de JFugue, y si algún año hay examen
     con móvil real, ahí estará.
 
 ## 11. Errores típicos al explotar componentes
@@ -986,7 +985,7 @@ com.example.uikit.ConfigPunteroTest:...
 com.example.uikit.PanelPunteroTest:...
 com.example.uikit.TeclaEventosTest:...
 
-Time: 15.239
+Time: 13.919
 
 OK (11 tests)
 ```
@@ -1022,13 +1021,13 @@ adb shell am instrument -w com.example.uikit.test/androidx.test.runner.AndroidJU
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un componente explotado responde, recuerda, se deja inspeccionar y tiene pruebas</span>. Las cuatro cosas, no dos.
 - **Introspección y reflexión**: hoy se llaman **árbol de semántica**. `testTagsAsResourceId = true` en la raíz, y `uiautomator` te enseña nombre, caja y estado de cada pieza.
 - **Persistencia**: `remember` para lo interno de la pantalla, `rememberSaveable` para lo que el usuario escribió, y `Saver` para tipos propios. En el `Bundle` solo lo que no se pueda volver a pedir.
-- **Eventos**: el modelo fuente → evento → oyente → acción del libro se mantiene; el oyente es ahora un **parámetro de la función** y el `Modifier` de gesto hace de registro. `pointerInput` + `awaitEachGesture` es el `MouseListener`; `onKeyEvent`, el `KeyListener`; `onFocusEvent`, el `FocusListener`.
+- **Eventos**: el modelo fuente → evento → oyente → acción se mantiene; el oyente es ahora un **parámetro de la función** y el `Modifier` de gesto hace de registro. `pointerInput` + `awaitEachGesture` es el `MouseListener`; `onKeyEvent`, el `KeyListener`; `onFocusEvent`, el `FocusListener`.
 - **Acciones**: un evento **cambia el estado**; el sistema de composición repinta. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Nunca al revés</span>.
-- **Pruebas**: lógica en `src/test`, interfaz en `src/androidTest`; `createComposeRule`, `onNodeWithTag`, `performClick`, `performTouchInput`, `assertThrows`. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">11 pruebas en verde, `Time: 15.239`</span> — no «a ojo se ve bien».
+- **Pruebas**: lógica en `src/test`, interfaz en `src/androidTest`; `createComposeRule`, `onNodeWithTag`, `performClick`, `performTouchInput`, `assertThrows`. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">11 pruebas en verde, `Time: 13.919`</span> — no «a ojo se ve bien».
 
 ## Bibliografía y fuentes
 
-Sin libros de editorial ni material de centro: el tema se apoya en las especificaciones y
+Todo el material del tema se apoya en las especificaciones y
 documentaciones oficiales del software que se usa en clase.
 
 **Documentación oficial de Android**

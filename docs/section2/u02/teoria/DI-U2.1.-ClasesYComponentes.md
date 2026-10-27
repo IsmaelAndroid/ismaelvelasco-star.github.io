@@ -1130,4 +1130,5 @@ En próximos temas se verá con más detalle el análisis de eventos y estado av
 - Android Developers. *Layouts in Compose*. <https://developer.android.com/develop/ui/compose/layouts>
 - Kotlin Foundation. *Kotlin docs — Classes*. <https://kotlinlang.org/docs/classes.html>
 - Real Decreto 405/2023, de 29 de mayo (BOE-A-2023-13221). Módulo profesional 0488 Desarrollo de interfaces.
-- Temario del módulo como base conceptual de la adaptación.
+- Material Design 3, especificación de diseño. <https://m3.material.io/>
+- Real Decreto 405/2023, anexo I, módulo 0488: resultados de aprendizaje y criterios de evaluación que ordenan el tema.
