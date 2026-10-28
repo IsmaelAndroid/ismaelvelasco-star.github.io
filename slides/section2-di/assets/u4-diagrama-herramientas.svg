@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" font-family="Segoe UI, Arial, sans-serif" font-size="15">
+  <rect width="900" height="300" fill="#ffffff"/>
+  <text x="450" y="30" text-anchor="middle" font-size="19" font-weight="bold" fill="#1a237e">Ciclo de trabajo de un componente</text>
+  <g>
+    <rect x="30" y="90" width="150" height="76" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+    <text x="105" y="120" text-anchor="middle" font-weight="bold" fill="#0d47a1">1. Disenar</text>
+    <text x="105" y="142" text-anchor="middle" font-size="12" fill="#0d47a1">Figma · Inkscape</text>
+  </g>
+  <g>
+    <rect x="215" y="90" width="150" height="76" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+    <text x="290" y="120" text-anchor="middle" font-weight="bold" fill="#1b5e20">2. Previsualizar</text>
+    <text x="290" y="142" text-anchor="middle" font-size="12" fill="#1b5e20">@Preview · PreviewParameter</text>
+  </g>
+  <g>
+    <rect x="400" y="90" width="150" height="76" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2"/>
+    <text x="475" y="120" text-anchor="middle" font-weight="bold" fill="#e65100">3. Ejecutar</text>
+    <text x="475" y="142" text-anchor="middle" font-size="12" fill="#e65100">emulador o dispositivo</text>
+  </g>
+  <g>
+    <rect x="585" y="90" width="150" height="76" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2"/>
+    <text x="660" y="120" text-anchor="middle" font-weight="bold" fill="#4a148c">4. Medir</text>
+    <text x="660" y="142" text-anchor="middle" font-size="12" fill="#4a148c">Layout Inspector</text>
+  </g>
+  <g>
+    <rect x="720" y="195" width="150" height="76" rx="10" fill="#ffebee" stroke="#b00020" stroke-width="2"/>
+    <text x="795" y="225" text-anchor="middle" font-weight="bold" fill="#b00020">5. Probar</text>
+    <text x="795" y="247" text-anchor="middle" font-size="12" fill="#b00020">Compose Test · lint</text>
+  </g>
+  <defs><marker id="g" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+    <path d="M0,0 L9,4.5 L0,9 z" fill="#90a4ae"/></marker></defs>
+  <path d="M180 128 h28" stroke="#90a4ae" stroke-width="2" marker-end="url(#g)"/>
+  <path d="M365 128 h28" stroke="#90a4ae" stroke-width="2" marker-end="url(#g)"/>
+  <path d="M550 128 h28" stroke="#90a4ae" stroke-width="2" marker-end="url(#g)"/>
+  <path d="M735 128 h30 v60" stroke="#90a4ae" stroke-width="2" marker-end="url(#g)"/>
+  <path d="M720 233 C400 290 200 220 118 170" fill="none" stroke="#90a4ae" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#g)"/>
+  <text x="450" y="285" text-anchor="middle" font-size="13" fill="#616161">los cuatro primeros pasos no necesitan movil: por eso se iteran tan rapido</text>
+</svg>
