@@ -29,6 +29,9 @@ viejos: si cambia la app, cambia el manual.
 
 - [Teoría 9.1 — Documentación y ayudas](teoria/DI-U9.1.-DocumentacionYAyudas.md)
 
+## Presentación
+
+- [DI-U9.1 - Documentación y ayudas](https://revilofe.github.io/slides/section6-di/DI-U9.1.-DocumentacionYAyudas.html)
 ## Qué aprenderás
 
 - Los **cinco tipos de ayuda** —en línea, contextual, tutorial, manual y referencia— y para qué sirve

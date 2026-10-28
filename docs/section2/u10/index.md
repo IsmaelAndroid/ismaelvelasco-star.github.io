@@ -30,6 +30,9 @@ al pasar el control, la build de publicación **suspende dos de las seis comprob
 
 - [Teoría 10.1 — Distribución y publicación](teoria/DI-U10.1.-DistribucionYPublicacion.md)
 
+## Presentación
+
+- [DI-U10.1 - Distribución y publicación](https://revilofe.github.io/slides/section6-di/DI-U10.1.-DistribucionYPublicacion.html)
 ## Qué aprenderás
 
 - La diferencia real entre **debug y release**: firma, flag `DEBUGGABLE`, R8 y para qué sirve cada una.

@@ -30,6 +30,9 @@ pendiente.
 
 - [Teoría 11.1 — Evaluación del funcionamiento: pruebas](teoria/DI-U11.1.-EvaluacionDelFuncionamiento.md)
 
+## Presentación
+
+- [DI-U11.1 - Evaluación del funcionamiento: pruebas](https://revilofe.github.io/slides/section6-di/DI-U11.1.-EvaluacionDelFuncionamiento.html)
 ## Qué aprenderás
 
 - Escribir una **estrategia de pruebas** como datos: tipos, preguntas, herramienta y si el caso es
@@ -62,7 +65,7 @@ El mismo `IsmaelUIKit`, ahora con tanda de pruebas integrada en la propia aplica
 | pruebas | `com.example.uikit` (androidTest) | Las 41 anteriores + `PruebasSistemaTest` con 7 pruebas nuevas — **48 pruebas en verde** |
 
 Todo el código de la teoría es el código real de ese proyecto: la salida `OK (48 tests)` ·
-`Time: 37.96` es la que devolvió `am instrument` en el emulador, la línea base
+`Time: 23.719` es la que devolvió `am instrument` en el emulador, la línea base
 `5abf86fa…1374829` es la huella SHA-256 de una ejecución real, y las cifras del informe (755 ms y
 51.552 KB para un año completo de registros) están leídas del fichero que la app escribió en
 `filesDir` y se sacó con `run-as`.
