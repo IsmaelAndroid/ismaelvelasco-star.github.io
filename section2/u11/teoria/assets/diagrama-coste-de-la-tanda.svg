@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 430" width="1000" height="430" role="img" aria-label="Lo que costo la tanda de pruebas: milisegundos y memoria por caso, con los numeros que declaro la propia aplicacion">
+<defs><marker id="punta" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#37474f"/></marker></defs>
+<rect width="1000" height="430" fill="#ffffff"/>
+<text x="24" y="30" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#37474f">Lo que declaró la tanda: el coste lo mide la app, no lo contamos nosotros</text>
+<rect x="24" y="62" width="228" height="96" rx="8" fill="#e8f1f8" stroke="#1a4d7a" stroke-width="1.5"/>
+<text x="36" y="85" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#1a4d7a">P-01 · unitaria</text>
+<text x="36" y="106" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">1.000 filas, filtro</text>
+<text x="36" y="123" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">0 ms · 96 KB</text>
+<text x="36" y="140" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">lo que cuesta mirar 1.000 filas</text>
+<rect x="268" y="62" width="228" height="96" rx="8" fill="#e8f5e9" stroke="#1b5e20" stroke-width="1.5"/>
+<text x="280" y="85" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#1b5e20">P-03 · regresión</text>
+<text x="280" y="106" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">CSV + huella SHA-256</text>
+<text x="280" y="123" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">8 ms · 1.888 KB</text>
+<text x="280" y="140" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">el precio de la comprobación</text>
+<rect x="512" y="62" width="228" height="96" rx="8" fill="#fff4e0" stroke="#8a5a00" stroke-width="1.5"/>
+<text x="524" y="85" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#8a5a00">P-05 · estrés</text>
+<text x="524" y="106" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">100 pasadas de 10.000</text>
+<text x="524" y="123" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">114 ms · 5.088 KB</text>
+<text x="524" y="140" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">primera 3 ms, última 0 ms</text>
+<rect x="756" y="62" width="228" height="96" rx="8" fill="#ede7f6" stroke="#4527a0" stroke-width="1.5"/>
+<text x="768" y="85" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#4527a0">P-07 · recursos</text>
+<text x="768" y="106" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">año: 100.000 filas</text>
+<text x="768" y="123" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">755 ms · 51.552 KB</text>
+<text x="768" y="140" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">3.459.220 caracteres de CSV</text>
+<text x="24" y="200" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#37474f">Tiempo declarado por caso (ms)</text>
+<text x="24" y="231" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">P-01 unitaria</text>
+<rect x="190" y="218" width="3" height="16" rx="3" fill="#1a4d7a"/>
+<text x="203" y="231" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">0 ms</text>
+<text x="24" y="256" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">P-02 integración</text>
+<rect x="190" y="243" width="3" height="16" rx="3" fill="#1a4d7a"/>
+<text x="203" y="256" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">0 ms</text>
+<text x="24" y="281" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">P-03 regresión</text>
+<rect x="190" y="268" width="7" height="16" rx="3" fill="#1b5e20"/>
+<text x="207" y="281" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">8 ms</text>
+<text x="24" y="306" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">P-04 volumen 1.000</text>
+<rect x="190" y="293" width="3" height="16" rx="3" fill="#8a5a00"/>
+<text x="203" y="306" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">0 ms</text>
+<text x="24" y="331" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">P-05 estrés</text>
+<rect x="190" y="318" width="105" height="16" rx="3" fill="#8a5a00"/>
+<text x="305" y="331" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">114 ms</text>
+<text x="24" y="356" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">P-06 seguridad</text>
+<rect x="190" y="343" width="3" height="16" rx="3" fill="#4527a0"/>
+<text x="203" y="356" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">0 ms</text>
+<text x="24" y="381" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">P-07 recursos</text>
+<rect x="190" y="368" width="700" height="16" rx="3" fill="#4527a0"/>
+<text x="900" y="381" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">755 ms</text>
+<rect x="24" y="396" width="952" height="4" fill="#eceff1"/>
+<text x="24" y="418" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#b71c1c">El 86 % del tiempo y casi toda la memoria están en un solo caso: optimizar lo demás es adornarse.</text>
+</svg>

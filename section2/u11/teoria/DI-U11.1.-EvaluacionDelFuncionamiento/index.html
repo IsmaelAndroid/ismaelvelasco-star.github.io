@@ -1,0 +1,2846 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="PMDM (0489) y Desarrollo de Interfaces (0488) con Kotlin, Android y Jetpack Compose">
+      
+      
+        <meta name="author" content="Ismael Velasco">
+      
+      
+        <link rel="canonical" href="https://ismaelvelasco-star.github.io/di-desarrollo-interfaces/section2/u11/teoria/DI-U11.1.-EvaluacionDelFuncionamiento/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>UD11. Evalúa el funcionamiento de la aplicación: pruebas - Aula 2º DAM - Ismael Velasco</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ud11-evalua-el-funcionamiento-de-la-aplicacion-pruebas" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../../.." title="Aula 2º DAM - Ismael Velasco" class="md-header__button md-logo" aria-label="Aula 2º DAM - Ismael Velasco" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Aula 2º DAM - Ismael Velasco
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UD11. Evalúa el funcionamiento de la aplicación: pruebas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ismaelvelasco-star/ismaelvelasco-star.github.io" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ismaelvelasco-star/ismaelvelasco-star.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    
+  
+  Principal
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../section1/" class="md-tabs__link">
+          
+  
+  
+  PMDM
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Aula 2º DAM - Ismael Velasco" class="md-nav__button md-logo" aria-label="Aula 2º DAM - Ismael Velasco" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Aula 2º DAM - Ismael Velasco
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ismaelvelasco-star/ismaelvelasco-star.github.io" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ismaelvelasco-star/ismaelvelasco-star.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Principal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PMDM
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PMDM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programación Multimedia y Dispositivos Móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U1: Análisis de tecnologías para dispositivos móviles
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U1: Análisis de tecnologías para dispositivos móviles
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u01/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1 .91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99 1.04 0 1.88.08 2.5.24z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 1 - Análisis de tecnologías para aplicaciones móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u01/teoria/PMDM-U1.1.-AnalisisTecnologiasDispositivosMoviles/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.-Análisis de tecnologías para dispositivos móviles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u01/practica/PMDM-U1.-Practica001/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.1: Explorando Android Studio y sus plantillas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u01/practica/PMDM-U1.-Practica002/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.2: Emuladores y perfiles de dispositivo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u01/practica/PMDM-U1.-Practica003/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4v-1.91L12.09 18H6v-2h8.09l2-2H6v-2h12.09L20 10.09V8l-6-6zm7 1.5L18.5 9H13zm7.15 9.5a.55.55 0 0 0-.4.16l-1.02 1.02 2.09 2.08 1.02-1.01c.21-.22.21-.58 0-.79l-1.3-1.3a.54.54 0 0 0-.39-.16m-2.01 1.77L12 20.92V23h2.08l6.15-6.15z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1.3: ADB y el administrador de aplicaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U2: Programación en Android: IU con Jetpack Compose
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U2: Programación en Android: IU con Jetpack Compose
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u02/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2h7v5h5v11H6zm2 8v2h8v-2zm0 4v2h5v-2z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 2 - Programación en Android: IU con Jetpack Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u02/teoria/PMDM-U2.1.-FundamentosLenguajeKotlin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1.-Fundamentos del lenguaje Kotlin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u02/teoria/PMDM-U2.2.-ActividadesEIntents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2.-Actividades e Intents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u02/teoria/PMDM-U2.3.-AppComposeListasYFormulario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3.-La app Compose: listas y formulario
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u02/practica/PMDM-U2.-MiniProyectoContactos/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 2.1: Mini-proyecto de la libreta
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U3: Gestión de datos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U3: Gestión de datos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 3 - Programación en Android: gestión de datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/teoria/PMDM-U3.1.-NavegacionGrafoArgumentosYDeepLinks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1.-Navegación: grafo, argumentos y deep links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/teoria/PMDM-U3.2.-EstadoYFormularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2.-Estado y formularios: ViewModel y validación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/teoria/PMDM-U3.3.-RoomPersistenciaLocal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.-Room: persistencia local
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/teoria/PMDM-U3.4.-RetrofitRedYErrores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4.-Retrofit: red, DTOs y errores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/teoria/PMDM-U3.5.-TallerIntegradorSesionYPruebas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5.-Taller integrador: sesión y pruebas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u03/practica/PMDM-U3.-AgendaConDatos/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3.1: La agenda con datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U4: Motores de juegos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U4: Motores de juegos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 4 - Selección y prueba de motores de juegos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/teoria/PMDM-U4.1.-ArquitecturaDeUnJuego2DY3D/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1.-Arquitectura de un juego 2D y 3D
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/teoria/PMDM-U4.2.-ComponentesDeUnMotorDeJuegos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2.-Componentes de un motor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/teoria/PMDM-U4.3.-EntornosYComparativaDeMotores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3.-Entornos y comparativa de motores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/teoria/PMDM-U4.4.-TallerPrimerProyectoEjecutarYDepurar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4.-Taller: ejecutar y depurar
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u04/practica/PMDM-U4.-AnatomiaDeUnJuego/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 4.1: Anatomía de un juego
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U5: Contenidos multimedia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U5: Contenidos multimedia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 16V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2m-11-4 2.03 2.71L16 11l4 5H8M2 6v14a2 2 0 0 0 2 2h14v-2H4V6"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    UD 5 - Contenidos multimedia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/teoria/PMDM-U5.1.-FormatosYEntornosMultimedia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1.-Formatos y entornos multimedia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/teoria/PMDM-U5.2.-CapturaYProcesamientoEnAndroid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2.-Captura y procesamiento en Android
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/teoria/PMDM-U5.3.-ReproduccionDeAudioYVideo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3.-Reproducción de audio y vídeo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/teoria/PMDM-U5.4.-Animaciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4.-Animaciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u05/practica/PMDM-U5.-MiAppMultimedia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica: Mi app multimedia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U6: Desarrollo de juegos 2D y 3D
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    U6: Desarrollo de juegos 2D y 3D
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidad 6 - Desarrollo de juegos 2D y 3D
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/teoria/PMDM-U6.1.-DelPrototipoAlJuego/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1.-Del prototipo al juego
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/teoria/PMDM-U6.2.-Juego2DMovimientoColisiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.2.-Juego 2D: movimiento y colisiones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/teoria/PMDM-U6.3.-Juego3DMaterialesFisicas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.3.-Juego 3D: materiales y físicas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/teoria/PMDM-U6.4.-PruebasOptimizacionYDespliegue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.4.-Pruebas, optimización y despliegue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../section1/u06/practica/PMDM-U6.-MiPrimerJuego/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica: Mi primer juego
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-probar-no-es-pulsar-cosas-hasta-que-funcione" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Probar no es pulsar cosas hasta que funcione
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-donde-se-ejecuta-cada-prueba-y-por-que-importa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Dónde se ejecuta cada prueba (y por qué importa)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-pruebas-unitarias-y-de-integracion-criterio-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Pruebas unitarias y de integración (criterio b)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-regresion-congelar-la-salida-buena-criterio-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Regresión: congelar la salida buena (criterio c)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-volumen-y-estres-el-lote-grande-y-la-centesima-repeticion-criterio-d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Volumen y estrés: el lote grande y la centésima repetición (criterio d)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-seguridad-lo-que-la-app-deja-en-el-telefono-criterio-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Seguridad: lo que la app deja en el teléfono (criterio e)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-uso-de-recursos-memoria-y-tiempo-criterio-f" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Uso de recursos: memoria y tiempo (criterio f)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-documentar-la-estrategia-y-los-resultados-criterio-g" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Documentar la estrategia y los resultados (criterio g)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-la-escena-12-la-app-se-prueba-a-si-misma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. La escena 12: la app se prueba a sí misma
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-manuales-automaticas-y-las-herramientas-del-sector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Manuales, automáticas y las herramientas del sector
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-lo-que-se-rompe-casi-siempre-y-como-se-ve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Lo que se rompe casi siempre (y cómo se ve)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-resumen-de-la-unidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Resumen de la unidad
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-ejercicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Ejercicios
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#para-saber-mas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para saber más
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="ud11-evalua-el-funcionamiento-de-la-aplicacion-pruebas">UD11. Evalúa el funcionamiento de la aplicación: pruebas</h1>
+<p>Unidad 11 del módulo <strong>Desarrollo de Interfaces</strong> (ciclo DAM, RD 405/2023, BOE 29 de mayo de 2023). Es la última unidad del módulo y la que decide si todo lo anterior de este curso se puede enseñar a otra persona sin tener que estar detrás.</p>
+<p>El resultado de aprendizaje del que sale todo esto es, literal del BOE:</p>
+<blockquote>
+<p><span style="background-color:#a5d6a7">8. Evalúa el funcionamiento de aplicaciones diseñando y ejecutando pruebas.</span></p>
+</blockquote>
+<p>Y sus siete criterios de evaluación:</p>
+<table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Qué hay que poder demostrar</th>
+<th>Dónde se ve en el kit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>Se ha establecido una estrategia de pruebas</td>
+<td><code>Pruebas.kt</code>: el plan está escrito como datos</td>
+</tr>
+<tr>
+<td>b</td>
+<td>Se han realizado pruebas de integración de los distintos elementos</td>
+<td>P-02, filtrar + resumir, y el pase de la tanda</td>
+</tr>
+<tr>
+<td>c</td>
+<td>Se han realizado pruebas de regresión</td>
+<td>P-03, huella SHA-256 del CSV contra línea base</td>
+</tr>
+<tr>
+<td>d</td>
+<td>Se han realizado pruebas de volumen y estrés</td>
+<td>P-04 y P-05 sobre el banco sintético</td>
+</tr>
+<tr>
+<td>e</td>
+<td>Se han realizado pruebas de seguridad</td>
+<td>P-06, auditoría de lo que la app escribe en el teléfono</td>
+</tr>
+<tr>
+<td>f</td>
+<td>Se han realizado pruebas de uso de recursos por parte de la aplicación</td>
+<td>P-07, memoria del montículo y tiempo del lote grande</td>
+</tr>
+<tr>
+<td>g</td>
+<td>Se ha documentado la estrategia de pruebas y los resultados obtenidos</td>
+<td>el informe Markdown que escribe la propia app</td>
+</tr>
+</tbody>
+</table>
+<p>El bloque de contenidos que el real decreto dedica a esta parte del módulo también es literales, y conviene leerlo antes de montar nada:</p>
+<ul>
+<li><span style="background-color:#a5d6a7">Objetivo, importancia y limitaciones del proceso de prueba. Estrategias.</span></li>
+<li><span style="background-color:#a5d6a7">Pruebas de integración: ascendentes y descendentes.</span></li>
+<li><span style="background-color:#a5d6a7">Pruebas de sistema: configuración, recuperación, entre otras.</span></li>
+<li><span style="background-color:#a5d6a7">Pruebas de uso de recursos.</span></li>
+<li><span style="background-color:#a5d6a7">Pruebas de seguridad.</span></li>
+<li><span style="background-color:#a5d6a7">Pruebas manuales y automáticas. Herramientas software para la realización de pruebas.</span></li>
+</ul>
+<p>El módulo completo tiene <span style="background-color:#a5d6a7">80 horas</span>, y esta unidad se lleva las últimas cinco o seis de esas ochenta: no es relleno, es el filtro por el que pasa todo lo que se ha construido en las diez unidades anteriores.</p>
+<hr />
+<h2 id="1-probar-no-es-pulsar-cosas-hasta-que-funcione">1. Probar no es pulsar cosas hasta que funcione</h2>
+<p>La diferencia entre un desarrollador que prueba y un usuario que trastalla está en la palabra <strong>antes</strong>. El usuario pulsa y mira. El desarrollador escribe qué preguntas hay que contestar, con qué se contesta cada una y quién la firma, y solo después pulsa.</p>
+<p>El criterio <strong>a)</strong> dice «se ha establecido una estrategia de pruebas», y una estrategia que está en la cabeza de alguien no se puede auditar ni heredar: se va del proyecto cuando se va esa persona. En el kit la estrategia está escrita en el código, en una lista:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Pruebas.kt: el plan, sus presupuestos</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<p><div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/Pruebas.kt</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">object</span><span class="w"> </span><span class="nc">Estrategia</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="cm">/** Los niveles de volumen que se prueban, en filas del informe. */</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">niveles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="m">1</span><span class="n">_000</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="n">_000</span><span class="p">,</span><span class="w"> </span><span class="m">100</span><span class="n">_000</span><span class="p">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="cm">/** El tiempo máximo aceptable para el lote grande, en milisegundos. */</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">LIMITE_MILISEGUNDOS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="n">_000L</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="cm">/** Lo que se acepta como memoria extra antes de considerar que la app se hincha. */</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">LIMITE_KILOBYTES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">200</span><span class="n">_000L</span>
+</code></pre></div>
+<span style="background-color:#a5d6a7">Los tres presupuestos del plan</span>: los niveles de volumen que se prueban (1.000, 10.000 y 100.000 filas), el tiempo máximo aceptable para el lote grande (4.000 ms) y la memoria extra que se tolera antes de considerar que la aplicación se hincha (200.000 KB, unos 200 MB). Un plan sin presupuestos es una opinión: «va rápido» no lo aprueba ni lo suspende nada.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Pruebas.kt: los ocho casos del plan</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<p><div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/Pruebas.kt</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">        </span><span class="n">CasoPrueba</span><span class="p">(</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">            </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"P-01"</span><span class="p">,</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">            </span><span class="n">pregunta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"El filtro por categoría deja fuera lo que no es de esa categoría"</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">            </span><span class="n">tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TipoPrueba</span><span class="p">.</span><span class="na">Unitaria</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">            </span><span class="n">como</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"JUnit en el módulo :ui"</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="p">),</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="n">CasoPrueba</span><span class="p">(</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">            </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"P-02"</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">            </span><span class="n">pregunta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Las totales del pie cuadran con la suma de las filas filtradas"</span><span class="p">,</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">            </span><span class="n">tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TipoPrueba</span><span class="p">.</span><span class="na">Integracion</span><span class="p">,</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">            </span><span class="n">como</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"InformeTest sobre filtrar + resumir"</span><span class="p">,</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="p">),</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="n">CasoPrueba</span><span class="p">(</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">            </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"P-03"</span><span class="p">,</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">            </span><span class="n">pregunta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"El CSV generado es idéntico al aprobado (no hay regresión)"</span><span class="p">,</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">            </span><span class="n">tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TipoPrueba</span><span class="p">.</span><span class="na">Regresion</span><span class="p">,</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">            </span><span class="n">como</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"huella SHA-256 del CSV normalizado"</span><span class="p">,</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">        </span><span class="p">),</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="n">CasoPrueba</span><span class="p">(</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">            </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"P-04"</span><span class="p">,</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">            </span><span class="n">pregunta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Un año de registros se filtra y se resume en un tiempo útil"</span><span class="p">,</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">            </span><span class="n">tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TipoPrueba</span><span class="p">.</span><span class="na">Volumen</span><span class="p">,</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">            </span><span class="n">como</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"SuitePruebas.volumen con 1.000, 10.000 y 100.000 filas"</span><span class="p">,</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">        </span><span class="p">),</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">        </span><span class="n">CasoPrueba</span><span class="p">(</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">            </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"P-05"</span><span class="p">,</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">            </span><span class="n">pregunta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Doscientas repeticiones seguidas no degradan ni revientan la app"</span><span class="p">,</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">            </span><span class="n">tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TipoPrueba</span><span class="p">.</span><span class="na">Estres</span><span class="p">,</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">            </span><span class="n">como</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"SuitePruebas.estres con el lote mediano"</span><span class="p">,</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">        </span><span class="p">),</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">        </span><span class="n">CasoPrueba</span><span class="p">(</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">            </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"P-06"</span><span class="p">,</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">            </span><span class="n">pregunta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Los ficheros que escribe la app no llevan credenciales en claro"</span><span class="p">,</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">            </span><span class="n">tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TipoPrueba</span><span class="p">.</span><span class="na">Seguridad</span><span class="p">,</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">            </span><span class="n">como</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"SuitePruebas.seguridad sobre lo que hay en filesDir"</span><span class="p">,</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">        </span><span class="p">),</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">        </span><span class="n">CasoPrueba</span><span class="p">(</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">            </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"P-07"</span><span class="p">,</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">            </span><span class="n">pregunta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"El lote grande no pide más memoria de la que admite el presupuesto"</span><span class="p">,</span>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">            </span><span class="n">tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TipoPrueba</span><span class="p">.</span><span class="na">Recursos</span><span class="p">,</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="w">            </span><span class="n">como</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"SuitePruebas.recursos midiendo el montículo antes y después"</span><span class="p">,</span>
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">        </span><span class="p">),</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">        </span><span class="n">CasoPrueba</span><span class="p">(</span>
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">            </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"P-08"</span><span class="p">,</span>
+<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">            </span><span class="n">pregunta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"La pantalla del informe se entiende sin explicaciones"</span><span class="p">,</span>
+<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">            </span><span class="n">tipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TipoPrueba</span><span class="p">.</span><span class="na">Integracion</span><span class="p">,</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">            </span><span class="n">como</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"revisión en pantalla, con dos compañeros"</span><span class="p">,</span>
+<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="w">            </span><span class="n">manual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="w">        </span><span class="p">),</span>
+<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="w">    </span><span class="p">)</span>
+</code></pre></div>
+Fíjate en tres decisiones que están dentro de esa lista y que no son decorativas:</p>
+<ul>
+<li><span style="background-color:#a5d6a7">La pregunta de cada caso va en singular</span>: un caso que pregunta dos cosas no sabe decir cuál ha fallado, y un fallo que no se puede señalar es un fallo que no se puede arreglar.</li>
+<li><span style="background-color:#a5d6a7">El campo <code>manual</code> existe</span>: el caso P-08 (que la pantalla del informe se entienda) no lo puede juzgar ninguna máquina. Marcarlo como manual y dejarlo sin ejecutar en el informe es más honesto que simular que alguien lo ha comprobado.</li>
+<li><span style="background-color:#a5d6a7">Los casos viven en el código</span>: el informe del criterio g) se genera desde esa lista, así que nadie puede escribir a mano un «todo correcto» que no se corresponda con nada ejecutado.</li>
+</ul>
+<p>El objeto también lleva la contabilidad de la estrategia: cuántos casos hay de cada tipo, cuáles faltan por ejecutar, cuántos pasan y cuánto ha costado todo eso.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Pruebas.kt: cobertura, pendientes, aprobados y coste</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/Pruebas.kt</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cm">/** Cuántos casos hay de cada tipo: la foto de la estrategia antes de ejecutar nada. */</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">cobertura</span><span class="p">():</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">TipoPrueba</span><span class="p">,</span><span class="w"> </span><span class="kt">Int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">casos</span><span class="p">.</span><span class="na">groupingBy</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">tipo</span><span class="w"> </span><span class="p">}.</span><span class="na">eachCount</span><span class="p">()</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="cm">/** Los casos que aún no tienen resultado: lo que falta por ejecutar. */</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">pendientes</span><span class="p">(</span><span class="n">ejecutados</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Resultado</span><span class="o">&gt;</span><span class="p">):</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">CasoPrueba</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">hechas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ejecutados</span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="p">}.</span><span class="na">toSet</span><span class="p">()</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">casos</span><span class="p">.</span><span class="na">filter</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="k">!in</span><span class="w"> </span><span class="n">hechas</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="cm">/** Cuántos casos pasan. */</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">aprobados</span><span class="p">(</span><span class="n">ejecutados</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Resultado</span><span class="o">&gt;</span><span class="p">):</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ejecutados</span><span class="p">.</span><span class="na">count</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">correcta</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="cm">/** Cuánto cuesta lo ejecutado en total, en milisegundos. */</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">costeTotal</span><span class="p">(</span><span class="n">ejecutados</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Resultado</span><span class="o">&gt;</span><span class="p">):</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ejecutados</span><span class="p">.</span><span class="na">sumOf</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">milisegundos</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p><img alt="El plan de pruebas del kit" src="../assets/diagrama-plan-de-pruebas.svg" /></p>
+<p><em>Cada tipo de prueba contesta una pregunta y cubre un criterio. El criterio g) no es un octavo tipo: es el informe que sale de ejecutar los otros siete.</em></p>
+<hr />
+<h2 id="2-donde-se-ejecuta-cada-prueba-y-por-que-importa">2. Dónde se ejecuta cada prueba (y por qué importa)</h2>
+<p>En Android hay dos mundos, y una prueba mal puesta en uno de los dos cuesta minutos de más en cada ejecución o, peor, no prueba lo que dice probar.</p>
+<table>
+<thead>
+<tr>
+<th>Mundo</th>
+<th>Dónde corre</th>
+<th>Qué puede tocar</th>
+<th>Cuánto tarda</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>De JVM (<code>:ui/src/test</code>)</td>
+<td>el portátil, sin Android</td>
+<td>lógica pura: filtros, cálculos, generadores</td>
+<td>segundos</td>
+</tr>
+<tr>
+<td>Instrumentada (<code>:ui/src/androidTest</code>)</td>
+<td>el emulador o el móvil, con Android de verdad</td>
+<td>contexto, ficheros, Compose, permisos</td>
+<td>decenas de segundos</td>
+</tr>
+</tbody>
+</table>
+<p>Las siete pruebas del plan están en el segundo mundo: se compilan contra la aplicación instalada y se lanzan con <code>adb shell am instrument</code>. El comando, desde la raíz del proyecto:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>gradlew.bat assembleDebug :ui:assembleDebugAndroidTest
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>adb install -r app\build\outputs\apk\debug\app-debug.apk
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>adb install -r -t ui\build\outputs\apk\androidTest\debug\ui-debug-androidTest.apk
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>adb shell am instrument -w com.example.uikit.test/androidx.test.runner.AndroidJUnitRunner
+</code></pre></div>
+<p>El detalle que más veces se atraganta en clase: <span style="background-color:#a5d6a7">el APK de instrumentación vive en el módulo <code>:ui</code>, no en <code>:app</code></span>, porque las pruebas están en <code>:ui</code>. Se instalan los dos APK y luego se lanza la instrumentación. La salida de una tanda completa, tal cual salió por consola:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>com.example.uikit.PruebasSistemaTest:.......
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Tests run: 48, Failures: 0, Errors: 0, Skipped: 0
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>OK (48 tests)
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>Time: 37.96
+</code></pre></div>
+<p>Las siete pruebas nuevas de esta unidad se suman a las 41 que había al final de la UD10. Que las 41 anteriores sigan verdes después de tocar la escena de documentación, el esquema de datos y la pantalla nueva <span style="background-color:#a5d6a7">es la primera prueba de regresión del día</span>, y no hay que ejecutarla: la ejecuta el propio <code>gradlew</code>.</p>
+<hr />
+<h2 id="3-pruebas-unitarias-y-de-integracion-criterio-b">3. Pruebas unitarias y de integración (criterio b)</h2>
+<p>La unidad mínima es la <span style="background-color:#a5d6a7">prueba unitaria</span>: una pieza de lógica, aislada, sin pantalla ni ficheros, contestando una pregunta. La nuestra es la del filtro del informe, y necesita algo que filtrar: el banco de datos.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">EjecutaPruebas.kt: P-01, la unitaria</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<p><div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/EjecutaPruebas.kt</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cm">/** P-01: el filtro por categoría, aislado, sobre el banco de datos. */</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">unitaria</span><span class="p">(</span><span class="n">banco</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">FilaInforme</span><span class="o">&gt;</span><span class="p">):</span><span class="w"> </span><span class="n">Resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ejecuta</span><span class="p">(</span><span class="n">caso</span><span class="p">(</span><span class="s">"P-01"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">categoria</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">banco</span><span class="p">.</span><span class="na">first</span><span class="p">().</span><span class="na">categoria</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">filtradas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Informe</span><span class="p">.</span><span class="na">filtrar</span><span class="p">(</span><span class="n">banco</span><span class="p">,</span><span class="w"> </span><span class="n">FiltroInforme</span><span class="p">(</span><span class="n">categoria</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">categoria</span><span class="p">))</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">intrusas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">filtradas</span><span class="p">.</span><span class="na">count</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">categoria</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">categoria</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">filtradas</span><span class="p">.</span><span class="na">isNotEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"el filtro ha dejado el informe vacío"</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">intrusas</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"</span><span class="si">$</span><span class="n">intrusas</span><span class="s"> filas de otra categoría han colado"</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="s">"filtro por «</span><span class="si">$</span><span class="n">categoria</span><span class="s">»: </span><span class="si">${</span><span class="n">filtradas</span><span class="p">.</span><span class="na">size</span><span class="si">}</span><span class="s"> de </span><span class="si">${</span><span class="n">banco</span><span class="p">.</span><span class="na">size</span><span class="si">}</span><span class="s"> filas, 0 intrusas"</span>
+</code></pre></div>
+La pregunta es tan simple que casi da vergüenza: <span style="background-color:#a5d6a7">¿el filtro mete filas que no son de su categoría?</span>. Eso es exactamente lo que se persigue en una prueba unitaria. No se prueba «el filtro funciona», que no se puede afirmar ni negar con una máquina.</p>
+<p>Lo que rodea a la prueba también es contenido del BOE: los dobles de prueba. Aquí el doble es el banco sintético: un sustituto del dato real, barato, rápido y sobre todo previsible.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">BancoPruebas.kt: generador congruencial lineal, determinista</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<p><div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/BancoPruebas.kt</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">object</span><span class="w"> </span><span class="nc">BancoPruebas</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="cm">/** Las categorías del kit de demostración: las mismas que usa la pantalla de informe. */</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">categorias</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="s">"Consultas"</span><span class="p">,</span><span class="w"> </span><span class="s">"Urgencias"</span><span class="p">,</span><span class="w"> </span><span class="s">"Derivaciones"</span><span class="p">,</span><span class="w"> </span><span class="s">"Vacunación"</span><span class="p">)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="cm">/** Semilla congelada: cambiarla es cambiar el banco, y por tanto la línea base. */</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">SEMILLA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20261028L</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="cm">/**</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="cm">     * Genera `cuantas` filas con un generador congruencial lineal.</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="cm">     *</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="cm">     * No se usa `Random(semilla)` de la biblioteca para que el banco sea idéntico en la JVM del</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="cm">     * portátil, en el emulador y en el móvil del alumno: si la secuencia depende de la</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="cm">     * implementación, la regresión se vuelve una lotería.</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="cm">     */</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">filas</span><span class="p">(</span><span class="n">cuantas</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="n">semilla</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SEMILLA</span><span class="p">):</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">FilaInforme</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nv">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">semilla</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">salida</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">FilaInforme</span><span class="o">&gt;</span><span class="p">(</span><span class="n">cuantas</span><span class="p">)</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">numero</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1.</span><span class="p">.</span><span class="na">cuantas</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">            </span><span class="n">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">estado</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">6364136223846793005L</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1442695040888963407L</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">primero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">estado</span><span class="w"> </span><span class="n">ushr</span><span class="w"> </span><span class="m">33</span><span class="p">)</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="m">0</span><span class="n">x7FFFFFFFL</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">            </span><span class="n">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">estado</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">6364136223846793005L</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1442695040888963407L</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">segundo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">estado</span><span class="w"> </span><span class="n">ushr</span><span class="w"> </span><span class="m">33</span><span class="p">)</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="m">0</span><span class="n">x7FFFFFFFL</span>
+</code></pre></div>
+Hay una decisión de proyecto dentro de ese comentario y es de examen: <span style="background-color:#a5d6a7">no se usa el <code>Random(semilla)</code> de la biblioteca</span>. Su algoritmo es correcto, pero es de la implementación concreta de la JDK; un cambio de versión de Java y el banco es otro, y entonces la regresión salta sin que nadie haya tocado nada. Con un generador propio de cuarenta líneas, la secuencia es idéntica en la JVM del portátil, en el emulador y en el móvil del alumno. <span style="background-color:#a5d6a7">Una regresión debe acusar un cambio de código, no el azar</span>.</p>
+<p>La prueba de integración sube un peldaño: ya no se mira una función, se mira <span style="background-color:#a5d6a7">la costura</span>. Nuestro caso P-02 comprueba que lo que filtra el filtro y lo que suma el pie del informe son el mismo número de filas y la misma cantidad de dinero.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">EjecutaPruebas.kt: P-02, la integración</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<p><div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/EjecutaPruebas.kt</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="cm">/** P-02: filtrar y resumir encajan: el total del pie es la suma de lo que se ha filtrado. */</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">integracion</span><span class="p">(</span><span class="n">banco</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">FilaInforme</span><span class="o">&gt;</span><span class="p">):</span><span class="w"> </span><span class="n">Resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ejecuta</span><span class="p">(</span><span class="n">caso</span><span class="p">(</span><span class="s">"P-02"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">filtradas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Informe</span><span class="p">.</span><span class="na">filtrar</span><span class="p">(</span><span class="n">banco</span><span class="p">,</span><span class="w"> </span><span class="n">FiltroInforme</span><span class="p">(</span><span class="n">desde</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">hasta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">15</span><span class="p">))</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">resumen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Informe</span><span class="p">.</span><span class="na">resumir</span><span class="p">(</span><span class="n">filtradas</span><span class="p">)</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">sumaDirecta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">filtradas</span><span class="p">.</span><span class="na">sumOf</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">importe</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">resumen</span><span class="p">.</span><span class="na">numero</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">filtradas</span><span class="p">.</span><span class="na">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">            </span><span class="s">"el pie cuenta </span><span class="si">${</span><span class="n">resumen</span><span class="p">.</span><span class="na">numero</span><span class="si">}</span><span class="s">, no </span><span class="si">${</span><span class="n">filtradas</span><span class="p">.</span><span class="na">size</span><span class="si">}</span><span class="s">"</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">kotlin</span><span class="p">.</span><span class="na">math</span><span class="p">.</span><span class="na">abs</span><span class="p">(</span><span class="n">resumen</span><span class="p">.</span><span class="na">total</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">sumaDirecta</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.01</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"el pie no cuadra"</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">        </span><span class="s">"media quincena: </span><span class="si">${</span><span class="n">resumen</span><span class="p">.</span><span class="na">numero</span><span class="si">}</span><span class="s"> filas, total </span><span class="si">${</span><span class="n">resumen</span><span class="p">.</span><span class="na">total</span><span class="si">}</span><span class="s">"</span>
+</code></pre></div>
+El BOE pide explícitamente integración <span style="background-color:#a5d6a7">ascendente y descendente</span>. Significa esto: ascendente es probar de abajo hacia arriba (primero el filtro, luego filtro + pie, luego todo el informe), y descendente es empezar por el informe completo y sustituir por dobles las piezas de abajo. Nuestro plan hace las dos cosas sin drama: P-01 y P-02 son ascendentes (una pieza, luego dos), y la tanda <code>todas()</code> —que ejecuta el informe completo sobre un banco doblado— es descendente. En un proyecto mediano esto se decide por presupuesto: la ascendente es más barata de mantener; la descendente avisa antes de que el fallo esté arriba del todo.</p>
+<hr />
+<h2 id="4-regresion-congelar-la-salida-buena-criterio-c">4. Regresión: congelar la salida buena (criterio c)</h2>
+<p>"Se han realizado pruebas de regresión" significa, en la práctica, tener una <span style="background-color:#a5d6a7">línea base</span>: una salida buena, aprobada, congelada, contra la que comparar cada vez que alguien toca algo. En el sector eso se llama <strong><span style="background-color:#a5d6a7">golden file</span></strong>: hay un fichero de referencia y el test compara la salida actual contra él, total o parcialmente.</p>
+<p>Aquí la comparación es por huella: se genera el CSV del banco, se normaliza (fuera comentarios y marcas de tiempo, que cambian sin que cambie el código) y se saca su SHA-256.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">EjecutaPruebas.kt: P-03, la regresión</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<p><div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/EjecutaPruebas.kt</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="cm">/** Quita cabeceras y marcas de tiempo: lo ajeno al código no puede ser regresión. */</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">normaliza</span><span class="p">(</span><span class="n">csv</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">        </span><span class="n">csv</span><span class="p">.</span><span class="na">lines</span><span class="p">().</span><span class="na">filterNot</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">isBlank</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">startsWith</span><span class="p">(</span><span class="s">"#"</span><span class="p">)</span><span class="w"> </span><span class="p">}.</span><span class="na">joinToString</span><span class="p">(</span><span class="s">"\n"</span><span class="p">)</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="cm">/** P-03: la huella del CSV contra la referencia congelada. */</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">regresion</span><span class="p">(</span><span class="n">banco</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">FilaInforme</span><span class="o">&gt;</span><span class="p">):</span><span class="w"> </span><span class="n">Resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ejecuta</span><span class="p">(</span><span class="n">caso</span><span class="p">(</span><span class="s">"P-03"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">observada</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">huella</span><span class="p">(</span><span class="n">normaliza</span><span class="p">(</span><span class="n">Informe</span><span class="p">.</span><span class="na">aCsv</span><span class="p">(</span><span class="n">banco</span><span class="p">)))</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">observada</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">LINEA_BASE_CSV</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">            </span><span class="s">"regresión: la huella es </span><span class="si">$</span><span class="n">observada</span><span class="s">, la referencia termina en "</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">                </span><span class="n">LINEA_BASE_CSV</span><span class="p">.</span><span class="na">takeLast</span><span class="p">(</span><span class="m">8</span><span class="p">)</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">        </span><span class="s">"CSV idéntico a la referencia (</span><span class="si">$</span><span class="n">observada</span><span class="s">)"</span>
+</code></pre></div>
+La constante <code>LINEA_BASE_CSV</code> tiene <span style="background-color:#a5d6a7">64 dígitos hexadecimales</span>, que es lo que devuelve SHA-256, y la prueba de estilo <code>laLineaBaseTienePintaDeHuellaSha256</code> exige un <code>Regex("^[0-9a-f]{64}$")</code> para que nadie ponga de referencia la palabra <code>TODO</code> y se quede tan ancho.</p>
+<p>Cómo se obtuvo esa constante es la parte que más vale de esta unidad, porque es lo que pasa de verdad. Escribí la constante con un marcador, lancé la tanda y el fallo devolvió la huella de la ejecución real:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>casos caídos: [P-03: regresión: la huella es
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>5abf86fa62e4bd0274f130c50f0a33b34482a8e59334d5551e89167481374829,
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>la referencia termina en capturar]
+</code></pre></div>
+<p>Ese es el procedimiento honesto: <span style="background-color:#a5d6a7">la línea base se captura, no se inventa</span>. Se mira la salida de una ejecución controlada, se congela, y a partir de ahí cualquier cambio en el exportador o en el modelo salta solo. Cuando el cambio es legítimo, se recalcula a mano y se explica en el commit. <span style="background-color:#a5d6a7">Actualizar la referencia para que la prueba pase es la forma más elegante de mentir</span>, y en una empresa se audita por el historial del fichero.</p>
+<p>Y la prueba que impide que la línea base sea decorativa:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">PruebasSistemaTest.kt: la regresión tiene que morder</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<p><div class="highlight"><span class="filename">ui/src/androidTest/java/com/example/uikit/PruebasSistemaTest.kt</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="w">    </span><span class="nd">@Test</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">unCambioEnLosDatosSaltaComoRegresion</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">limpio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BancoPruebas</span><span class="p">.</span><span class="na">filas</span><span class="p">(</span><span class="m">1</span><span class="n">_000</span><span class="p">)</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">tocado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">limpio</span><span class="p">.</span><span class="na">mapIndexed</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">fila</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="n">fila</span><span class="p">.</span><span class="na">copy</span><span class="p">(</span><span class="n">importe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fila</span><span class="p">.</span><span class="na">importe</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">0.01</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">fila</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EjecutaPruebas</span><span class="p">.</span><span class="na">regresion</span><span class="p">(</span><span class="n">tocado</span><span class="p">)</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">        </span><span class="n">assertTrue</span><span class="p">(</span><span class="s">"un céntimo de más no debería colarse"</span><span class="p">,</span><span class="w"> </span><span class="o">!</span><span class="n">resultado</span><span class="p">.</span><span class="na">correcta</span><span class="p">)</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">        </span><span class="n">assertTrue</span><span class="p">(</span><span class="s">"el fallo debería decir la huella: </span><span class="si">${</span><span class="n">resultado</span><span class="p">.</span><span class="na">detalle</span><span class="si">}</span><span class="s">"</span><span class="p">,</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">            </span><span class="n">resultado</span><span class="p">.</span><span class="na">detalle</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="s">"regresión"</span><span class="p">))</span>
+</code></pre></div>
+Un céntimo de más en el primer asiento y la prueba debe caer. Si la comparación estuviera mal escrita (por ejemplo, comparando solo la longitud del CSV), ese céntimo se colaría y todos contentos.</p>
+<hr />
+<h2 id="5-volumen-y-estres-el-lote-grande-y-la-centesima-repeticion-criterio-d">5. Volumen y estrés: el lote grande y la centésima repetición (criterio d)</h2>
+<p>Las dos pruebas van juntas en el criterio pero preguntan cosas distintas. <span style="background-color:#a5d6a7">Volumen</span> pregunta si la aplicación aguanta el lote que le va a tocar en producción. <span style="background-color:#a5d6a7">Estrés</span> pregunta si, después de muchas repeticiones seguidas, sigue igual de bien: si se hincha, si se degrada o si revienta.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">EjecutaPruebas.kt: P-04, volumen por niveles</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/EjecutaPruebas.kt</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="cm">/** P-04: el mismo cálculo con lotes cada vez más grandes. */</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">volumen</span><span class="p">(</span><span class="n">niveles</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Estrategia</span><span class="p">.</span><span class="na">niveles</span><span class="p">):</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Resultado</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">        </span><span class="n">niveles</span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">nivel</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">banco</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BancoPruebas</span><span class="p">.</span><span class="na">filas</span><span class="p">(</span><span class="n">nivel</span><span class="p">)</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">            </span><span class="n">ejecuta</span><span class="p">(</span><span class="n">caso</span><span class="p">(</span><span class="s">"P-04"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">                </span><span class="kd">val</span><span class="w"> </span><span class="nv">inicio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">()</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">                </span><span class="kd">val</span><span class="w"> </span><span class="nv">resumen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Informe</span><span class="p">.</span><span class="na">resumir</span><span class="p">(</span><span class="n">Informe</span><span class="p">.</span><span class="na">filtrar</span><span class="p">(</span><span class="n">banco</span><span class="p">,</span><span class="w"> </span><span class="n">FiltroInforme</span><span class="p">()))</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">                </span><span class="kd">val</span><span class="w"> </span><span class="nv">ms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">inicio</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">1</span><span class="n">_000_000L</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">                </span><span class="n">assert</span><span class="p">(</span><span class="n">resumen</span><span class="p">.</span><span class="na">numero</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">nivel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">                    </span><span class="s">"con </span><span class="si">$</span><span class="n">nivel</span><span class="s"> filas el pie cuenta </span><span class="si">${</span><span class="n">resumen</span><span class="p">.</span><span class="na">numero</span><span class="si">}</span><span class="s">"</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">                </span><span class="n">assert</span><span class="p">(</span><span class="n">ms</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Estrategia</span><span class="p">.</span><span class="na">LIMITE_MILISEGUNDOS</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">                    </span><span class="s">"</span><span class="si">$</span><span class="n">nivel</span><span class="s"> filas tardan </span><span class="si">$</span><span class="n">ms</span><span class="s"> ms, presupuesto </span><span class="si">${</span><span class="n">Estrategia</span><span class="p">.</span><span class="na">LIMITE_MILISEGUNDOS</span><span class="si">}</span><span class="s"> ms"</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">                </span><span class="s">"</span><span class="si">$</span><span class="n">nivel</span><span class="s"> filas en </span><span class="si">$</span><span class="n">ms</span><span class="s"> ms: </span><span class="si">${</span><span class="n">resumen</span><span class="p">.</span><span class="na">porcentaje</span><span class="p">(</span><span class="s">"</span><span class="n">Urgencias</span><span class="s">"</span><span class="p">)</span><span class="si">}</span><span class="s"> % de urgencias"</span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">EjecutaPruebas.kt: P-05, estrés</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<p><div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/EjecutaPruebas.kt</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="cm">/** P-05: cien pasadas del informe completo buscando degradación o fugas. */</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">estres</span><span class="p">(</span><span class="n">filas</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="n">_000</span><span class="p">,</span><span class="w"> </span><span class="n">pasadas</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">):</span><span class="w"> </span><span class="n">Resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ejecuta</span><span class="p">(</span><span class="n">caso</span><span class="p">(</span><span class="s">"P-05"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">banco</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BancoPruebas</span><span class="p">.</span><span class="na">filas</span><span class="p">(</span><span class="n">filas</span><span class="p">)</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nv">primerPaso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="m">1.0</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nv">ultimaPaso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.0</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="n">until</span><span class="w"> </span><span class="n">pasadas</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">t0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">()</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">resumen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Informe</span><span class="p">.</span><span class="na">resumir</span><span class="p">(</span><span class="n">Informe</span><span class="p">.</span><span class="na">filtrar</span><span class="p">(</span><span class="n">banco</span><span class="p">,</span><span class="w"> </span><span class="n">FiltroInforme</span><span class="p">()))</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">ms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">t0</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">1</span><span class="n">_000_000</span><span class="p">.</span><span class="m">0</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">primerPaso</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="n">primerPaso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ms</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">            </span><span class="n">ultimaPaso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ms</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">            </span><span class="n">assert</span><span class="p">(</span><span class="n">resumen</span><span class="p">.</span><span class="na">numero</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">filas</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"la pasada </span><span class="si">$</span><span class="n">p</span><span class="s"> ha perdido filas"</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">ultimaPaso</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">primerPaso</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">50</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="w">            </span><span class="s">"degradación: la pasada final cuesta </span><span class="si">${</span><span class="n">ultimaPaso</span><span class="p">.</span><span class="na">toLong</span><span class="p">()</span><span class="si">}</span><span class="s"> ms y la primera "</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="w">                </span><span class="n">primerPaso</span><span class="p">.</span><span class="na">toLong</span><span class="p">()</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="w">        </span><span class="s">"</span><span class="si">$</span><span class="n">pasadas</span><span class="s"> pasadas de </span><span class="si">$</span><span class="n">filas</span><span class="s"> filas: primera </span><span class="si">${</span><span class="n">primerPaso</span><span class="p">.</span><span class="na">toLong</span><span class="p">()</span><span class="si">}</span><span class="s"> ms, "</span><span class="w"> </span><span class="o">+</span>
+</code></pre></div>
+La comprobación del estrés tiene trampa si se hace mal: un pico suelto en la pasada 60 no es nada, y una degradación que va subiendo de a poco sí es algo. Por eso se comparan primera y última pasada con un margen, no dos pasadas cualesquiera: <span style="background-color:#a5d6a7">la última no puede costar más de cinco veces la primera más 50 ms</span>. Una fuga de memoria o una cachorra que se va llenando se ven ahí mucho antes de que las vea el usuario.</p>
+<p>Lo que la app declaró al ejecutar la tanda en el emulador, palabra por palabra del informe que ella misma escribió:</p>
+<table>
+<thead>
+<tr>
+<th>Caso</th>
+<th>Qué hizo</th>
+<th>Tiempo</th>
+<th>Memoria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P-04</td>
+<td>1.000 filas filtradas y resumidas</td>
+<td>0 ms</td>
+<td>64 KB</td>
+</tr>
+<tr>
+<td>P-05</td>
+<td>100 pasadas de un lote de 10.000 filas (primera 0 ms, última 0 ms)</td>
+<td>114 ms</td>
+<td>5.088 KB</td>
+</tr>
+<tr>
+<td>P-07</td>
+<td>año completo: 100.000 filas, CSV de 3.459.220 caracteres</td>
+<td>755 ms</td>
+<td>51.552 KB</td>
+</tr>
+</tbody>
+</table>
+<p>Los niveles del plan son 1.000, 10.000 y 100.000 filas; la tanda solo ejecuta uno de ellos (un <code>take(1)</code> en <code>todas()</code>, <span style="background-color:#a5d6a7">el de 1.000</span>) y deja los otros dos para la tanda larga, porque ejecutar los tres cada vez que uno cambia una línea es la forma más rápida de conseguir que nadie ejecute las pruebas. En un proyecto real eso se resuelve con dos perfiles: tanda rápida en cada commit, tanda completa cada noche.</p>
+<p><img alt="Lo que declaró la tanda" src="../assets/diagrama-coste-de-la-tanda.svg" /></p>
+<p><em>Cuatro casos representativos y las barras de tiempo. El 86 % del tiempo y casi toda la memoria están en el lote grande.</em></p>
+<hr />
+<h2 id="6-seguridad-lo-que-la-app-deja-en-el-telefono-criterio-e">6. Seguridad: lo que la app deja en el teléfono (criterio e)</h2>
+<p>En este módulo la prueba de seguridad no es un escáner de penetración: es algo mucho más barato y mucho más olvidado. <span style="background-color:#a5d6a7">Se trata de mirar qué escribe la aplicación fuera de su propia memoria y comprobar que no se está dejando allí lo que no debe</span>. En Android, ese fuera es <code>filesDir</code>, que cualquier herramienta con permisos de depuración puede leer del teléfono raiz.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">EjecutaPruebas.kt: P-06, auditoría de ficheros</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<p><div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/EjecutaPruebas.kt</span><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="w">    </span><span class="cm">/** Las claves que no deben aparecer nunca en un fichero que escribe la app. */</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">Sospechosas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="s">"password"</span><span class="p">,</span><span class="w"> </span><span class="s">"passwd"</span><span class="p">,</span><span class="w"> </span><span class="s">"token"</span><span class="p">,</span><span class="w"> </span><span class="s">"secreto"</span><span class="p">,</span><span class="w"> </span><span class="s">"api-key"</span><span class="p">,</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">        </span><span class="s">"apikey"</span><span class="p">)</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="cm">/** P-06: lo que la app escribe en el teléfono no puede llevar credenciales en claro. */</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">seguridad</span><span class="p">(</span><span class="n">ficheros</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Pair</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="kt">String</span><span class="o">&gt;&gt;</span><span class="p">):</span><span class="w"> </span><span class="n">Resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ejecuta</span><span class="p">(</span><span class="n">caso</span><span class="p">(</span><span class="s">"P-06"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">sucios</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutableListOf</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">()</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">((</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">contenido</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">ficheros</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">bajo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contenido</span><span class="p">.</span><span class="na">lowercase</span><span class="p">()</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">encontradas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sospechosas</span><span class="p">.</span><span class="na">filter</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">bajo</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">encontradas</span><span class="p">.</span><span class="na">isNotEmpty</span><span class="p">())</span><span class="w"> </span><span class="n">sucios</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"</span><span class="si">$</span><span class="n">nombre</span><span class="s"> (</span><span class="si">${</span><span class="n">encontradas</span><span class="p">.</span><span class="na">joinToString</span><span class="p">(</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="s">"</span><span class="p">)</span><span class="si">}</span><span class="s">)"</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">ficheros</span><span class="p">.</span><span class="na">isNotEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"no hay ficheros que auditar"</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">sucios</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"credenciales en claro en </span><span class="si">${</span><span class="n">sucios</span><span class="p">.</span><span class="na">joinToString</span><span class="p">(</span><span class="s">"</span><span class="p">;</span><span class="w"> </span><span class="s">"</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">unidad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ficheros</span><span class="p">.</span><span class="na">size</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="s">"fichero auditado"</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s">"ficheros auditados"</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="w">        </span><span class="s">"</span><span class="si">${</span><span class="n">ficheros</span><span class="p">.</span><span class="na">size</span><span class="si">}</span><span class="s"> </span><span class="si">$</span><span class="n">unidad</span><span class="s">, ninguna clave en claro"</span>
+</code></pre></div>
+La lista de palabras sospechosas es corta a propósito: <span style="background-color:#a5d6a7">password, passwd, token, secreto, api-key, apikey</span>. Es un filtro tonto y funciona: un fichero que dice <code>password: sietecabras</code> no pasa, y eso es un fallo real que en producción se paga en reunión. Lo que no pretende es ser un análisis estático de verdad, y en la empresa esta prueba se complementa con la revisión del manifiesto, los permisos y el almacenamiento cifrado.</p>
+<p>Hay dos decisiones didácticas dentro del caso que conviene explicar:</p>
+<ul>
+<li><span style="background-color:#a5d6a7">La prueba protesta si no hay nada que auditar</span>: <code>no hay ficheros que auditar</code>. Una prueba que pasa porque no ha encontrado nada es peor que no tener prueba, así que un informe limpio con cero ficheros es un fallo, no un aprobado.</li>
+<li><span style="background-color:#a5d6a7">Se auditan solo ficheros de texto</span> (<code>.csv</code> y <code>.md</code>). Un PDF no es un sitio donde buscar palabras sueltas, y fingir que sí produce falsos negativos.</li>
+</ul>
+<p>La tanda de esta unidad auditó <span style="background-color:#a5d6a7">dos ficheros</span>: <code>informe.csv</code> (el exportador de la UD8) y <code>informe-pruebas.md</code> (el de esta unidad). Que una prueba de seguridad revise los ficheros que la propia app escribe es la parte de <span style="background-color:#a5d6a7">pruebas de sistema: configuración y recuperación</span> que pide el BOE, y es la razón por la que la escena espera a que existan esos ficheros.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">PruebasSistemaTest.kt: el doble limpio y el caso sucio</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><span class="filename">ui/src/androidTest/java/com/example/uikit/PruebasSistemaTest.kt</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="cm">/** Dos ficheros limpios, como los que la app deja en filesDir. */</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">ficherosLimpios</span><span class="p">():</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Pair</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="kt">String</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">        </span><span class="s">"informe.csv"</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="s">"concepto,categoria,importe,dia\nasiento-000001,Consultas,12.5,3\n"</span><span class="p">,</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">        </span><span class="s">"manual.md"</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="s">"# Manual del Kit de interfaces\n\nVersión 1.0 (código 1).\n"</span><span class="p">,</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">    </span><span class="p">)</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">    </span><span class="nd">@Test</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">unSecritoEnUnFicheroSeDetecta</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">sucios</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="s">"manual.md"</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="s">"# Manual\n\npassword: sietecabras\n"</span><span class="p">)</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EjecutaPruebas</span><span class="p">.</span><span class="na">seguridad</span><span class="p">(</span><span class="n">sucios</span><span class="p">)</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">        </span><span class="n">assertTrue</span><span class="p">(</span><span class="s">"había una contraseña en claro"</span><span class="p">,</span><span class="w"> </span><span class="o">!</span><span class="n">resultado</span><span class="p">.</span><span class="na">correcta</span><span class="p">)</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">        </span><span class="n">assertTrue</span><span class="p">(</span><span class="s">"el detalle debería nombrar el fichero: </span><span class="si">${</span><span class="n">resultado</span><span class="p">.</span><span class="na">detalle</span><span class="si">}</span><span class="s">"</span><span class="p">,</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">            </span><span class="n">resultado</span><span class="p">.</span><span class="na">detalle</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="s">"manual.md"</span><span class="p">))</span>
+</code></pre></div>
+<hr />
+<h2 id="7-uso-de-recursos-memoria-y-tiempo-criterio-f">7. Uso de recursos: memoria y tiempo (criterio f)</h2>
+<p>Las diez unidades anteriores han consumido memoria sin mirarla. Esta unidad la mira. La medida es la de siempre y está en la propia app: <code>Runtime.getRuntime()</code> da la memoria total reservada por el proceso y la libre, y la diferencia es lo que está ocupado. Se mide antes y después del trabajo, con un <code>gc()</code> previo para no imputar al lote lo que ya estaba pendiente de recoger.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">EjecutaPruebas.kt: la medidora común de tiempo y memoria</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<p><div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/EjecutaPruebas.kt</span><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">memoriaKb</span><span class="p">():</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">runtime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Runtime</span><span class="p">.</span><span class="na">getRuntime</span><span class="p">()</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">runtime</span><span class="p">.</span><span class="na">totalMemory</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">runtime</span><span class="p">.</span><span class="na">freeMemory</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">1024L</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="cm">/** Ejecuta un bloque midiendo tiempo y memoria; un fallo es un resultado negativo. */</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">ejecuta</span><span class="p">(</span><span class="n">caso</span><span class="p">:</span><span class="w"> </span><span class="n">CasoPrueba</span><span class="p">,</span><span class="w"> </span><span class="n">bloque</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="n">Resultado</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">runtime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Runtime</span><span class="p">.</span><span class="na">getRuntime</span><span class="p">()</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">        </span><span class="n">runtime</span><span class="p">.</span><span class="na">gc</span><span class="p">()</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">antes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">memoriaKb</span><span class="p">()</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">inicio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">()</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">detalle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bloque</span><span class="p">()</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">ms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">inicio</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">1</span><span class="n">_000_000L</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="w">            </span><span class="n">Resultado</span><span class="p">(</span><span class="n">caso</span><span class="p">.</span><span class="na">id</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="n">detalle</span><span class="p">,</span><span class="w"> </span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="n">kotlin</span><span class="p">.</span><span class="na">math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="m">0L</span><span class="p">,</span><span class="w"> </span><span class="n">memoriaKb</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">antes</span><span class="p">))</span>
+</code></pre></div>
+<span style="background-color:#a5d6a7">La medidora es la misma para los siete casos</span> y eso no es estética: si cada caso midiera su tiempo a su manera, el total del informe no se podría sumar, y un total que no se puede sumar es un dato que no sirve para decidir.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">EjecutaPruebas.kt: P-07, recursos</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<p><div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/EjecutaPruebas.kt</span><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="cm">/** P-07: el lote grande contra el presupuesto de memoria del plan. */</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">recursos</span><span class="p">():</span><span class="w"> </span><span class="n">Resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ejecuta</span><span class="p">(</span><span class="n">caso</span><span class="p">(</span><span class="s">"P-07"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">runtime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Runtime</span><span class="p">.</span><span class="na">getRuntime</span><span class="p">()</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">        </span><span class="n">runtime</span><span class="p">.</span><span class="na">gc</span><span class="p">()</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">antes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">memoriaKb</span><span class="p">()</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">banco</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BancoPruebas</span><span class="p">.</span><span class="na">filas</span><span class="p">(</span><span class="n">BancoPruebas</span><span class="p">.</span><span class="na">ANIO_COMPLETO</span><span class="p">)</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">resumen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Informe</span><span class="p">.</span><span class="na">resumir</span><span class="p">(</span><span class="n">Informe</span><span class="p">.</span><span class="na">filtrar</span><span class="p">(</span><span class="n">banco</span><span class="p">,</span><span class="w"> </span><span class="n">FiltroInforme</span><span class="p">()))</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">csv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Informe</span><span class="p">.</span><span class="na">aCsv</span><span class="p">(</span><span class="n">banco</span><span class="p">)</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">gastado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kotlin</span><span class="p">.</span><span class="na">math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="m">0L</span><span class="p">,</span><span class="w"> </span><span class="n">memoriaKb</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">antes</span><span class="p">)</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">resumen</span><span class="p">.</span><span class="na">numero</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">BancoPruebas</span><span class="p">.</span><span class="na">ANIO_COMPLETO</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"el lote no se ha procesado"</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">gastado</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Estrategia</span><span class="p">.</span><span class="na">LIMITE_KILOBYTES</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="w">            </span><span class="s">"un año pide </span><span class="si">${</span><span class="n">gastado</span><span class="si">}</span><span class="s"> KB, presupuesto </span><span class="si">${</span><span class="n">Estrategia</span><span class="p">.</span><span class="na">LIMITE_KILOBYTES</span><span class="si">}</span><span class="s"> KB"</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="w">        </span><span class="s">"año completo: </span><span class="si">${</span><span class="n">csv</span><span class="p">.</span><span class="na">length</span><span class="si">}</span><span class="s"> caracteres de CSV, </span><span class="si">${</span><span class="n">gastado</span><span class="si">}</span><span class="s"> KB de montículo"</span>
+</code></pre></div>
+El resultado real: un año completo de registros pide <span style="background-color:#a5d6a7">51.552 KB de montículo</span> (unos 50 MB) y produce un CSV de <span style="background-color:#a5d6a7">3.459.220 caracteres</span>. Contra el presupuesto del plan (200 MB) va sobrado, pero hay dos cosas que este número dice y que no se ven en ninguna otra pantalla:</p>
+<ul>
+<li>El caso P-07 <span style="background-color:#a5d6a7">se lleva el 86 % del tiempo de la tanda</span> (755 ms de 877 ms) y casi toda la memoria (51.552 KB de 58.624 KB). Optimizar lo demás es adornarse.</li>
+<li><span style="background-color:#a5d6a7">El coste es lineal con el número de filas</span>: lo sabemos porque el mismo cálculo con 1.000 filas cuesta 0 ms y con 100.000, 755 ms. Si algún día los 100.000 cuestan 9.000 ms, el problema no es Android: es que alguien ha metido algo cuadrático en el filtro.</li>
+</ul>
+<p>En un proyecto Android de verdad, esta prueba se complementa con el profiler de Android Studio (memoria, CPU, red, frames), con LeakCanary en depuración para detectar Activitys que no se liberan, y con el <code>gfxinfo</code> o <code>meminfo</code> por adb para ver qué está ocupando el proceso desde fuera.</p>
+<hr />
+<h2 id="8-documentar-la-estrategia-y-los-resultados-criterio-g">8. Documentar la estrategia y los resultados (criterio g)</h2>
+<p>El último criterio del RA8 es el que convierte una tanda de pruebas en un entregable. Y tiene una trampa: es el criterio que más fácil se cumple mintiendo, porque un informe escrito a mano siempre dice lo que quien lo escribe quiere que diga.</p>
+<p>La regla del kit: <span style="background-color:#a5d6a7">el informe se genera, no se redacta</span>. La función <code>informe()</code> recibe los resultados ejecutados y escupe el Markdown con el plan, los resultados, lo que queda pendiente y el coste total.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Pruebas.kt: el generador del informe</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<p><div class="highlight"><span class="filename">ui/src/main/java/com/example/uikit/Pruebas.kt</span><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="w">    </span><span class="cm">/**</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="cm">     * El informe de pruebas en Markdown (CE g): la estrategia, los resultados y el veredicto.</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="cm">     *</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="cm">     * Se genera desde los datos ejecutados, no escrito a mano: un informe copiado y pegado</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="cm">     * envejece fatal en cuanto cambia una línea de código.</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="cm">     */</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">informe</span><span class="p">(</span><span class="n">ejecutados</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Resultado</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">aparato</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"emulador"</span><span class="p">):</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StringBuilder</span><span class="p">()</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">        </span><span class="n">base</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">"# Informe de pruebas del Kit de interfaces\n\n"</span><span class="p">)</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">        </span><span class="n">base</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">"Estrategia ejecutada en "</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">aparato</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">". "</span><span class="p">)</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">        </span><span class="n">base</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">casos</span><span class="p">.</span><span class="na">size</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">" casos planificados, "</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">ejecutados</span><span class="p">.</span><span class="na">size</span><span class="p">)</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">        </span><span class="n">base</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">" ejecutados, "</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">aprobados</span><span class="p">(</span><span class="n">ejecutados</span><span class="p">)).</span><span class="na">append</span><span class="p">(</span><span class="s">" aprobados.\n\n"</span><span class="p">)</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="w">        </span><span class="n">base</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">"## Plan\n\n"</span><span class="p">)</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="w">        </span><span class="n">base</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">"| Caso | Pregunta | Tipo | CE | Cómo |\n|---|---|---|---|---|\n"</span><span class="p">)</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">caso</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">casos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="w">            </span><span class="n">base</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">"| "</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">caso</span><span class="p">.</span><span class="na">id</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">" | "</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">caso</span><span class="p">.</span><span class="na">pregunta</span><span class="p">)</span>
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="w">            </span><span class="n">base</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">" | "</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">caso</span><span class="p">.</span><span class="na">tipo</span><span class="p">.</span><span class="na">etiqueta</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">" | "</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">caso</span><span class="p">.</span><span class="na">tipo</span><span class="p">.</span><span class="na">criterio</span><span class="p">)</span>
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="w">            </span><span class="n">base</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">" | "</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">caso</span><span class="p">.</span><span class="na">como</span><span class="p">)</span>
+<a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">caso</span><span class="p">.</span><span class="na">manual</span><span class="p">)</span><span class="w"> </span><span class="n">base</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">" (manual)"</span><span class="p">)</span>
+<a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a><span class="w">            </span><span class="n">base</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">" |\n"</span><span class="p">)</span>
+<a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a><span class="w">        </span><span class="n">base</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">"\n## Resultados\n\n"</span><span class="p">)</span>
+<a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a><span class="w">        </span><span class="n">base</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">"| Caso | Estado | Detalle | ms | KB |\n|---|---|---|---|---|\n"</span><span class="p">)</span>
+<a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">ejecutados</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-25" name="__codelineno-17-25" href="#__codelineno-17-25"></a><span class="w">            </span><span class="n">base</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">"| "</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="na">id</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">" | "</span><span class="p">)</span>
+<a id="__codelineno-17-26" name="__codelineno-17-26" href="#__codelineno-17-26"></a><span class="w">            </span><span class="n">base</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="na">correcta</span><span class="p">)</span><span class="w"> </span><span class="s">"✅"</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s">"❌"</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">" | "</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="na">detalle</span><span class="p">)</span>
+<a id="__codelineno-17-27" name="__codelineno-17-27" href="#__codelineno-17-27"></a><span class="w">            </span><span class="n">base</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">" | "</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="na">milisegundos</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">" | "</span><span class="p">)</span>
+<a id="__codelineno-17-28" name="__codelineno-17-28" href="#__codelineno-17-28"></a><span class="w">            </span><span class="n">base</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="na">kilobytes</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">" |\n"</span><span class="p">)</span>
+<a id="__codelineno-17-29" name="__codelineno-17-29" href="#__codelineno-17-29"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-17-30" name="__codelineno-17-30" href="#__codelineno-17-30"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">falta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pendientes</span><span class="p">(</span><span class="n">ejecutados</span><span class="p">)</span>
+<a id="__codelineno-17-31" name="__codelineno-17-31" href="#__codelineno-17-31"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">falta</span><span class="p">.</span><span class="na">isNotEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-32" name="__codelineno-17-32" href="#__codelineno-17-32"></a><span class="w">            </span><span class="n">base</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">"\nSin ejecutar: "</span><span class="p">)</span>
+<a id="__codelineno-17-33" name="__codelineno-17-33" href="#__codelineno-17-33"></a><span class="w">            </span><span class="n">base</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">falta</span><span class="p">.</span><span class="na">joinToString</span><span class="p">(</span><span class="s">", "</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="p">})</span>
+<a id="__codelineno-17-34" name="__codelineno-17-34" href="#__codelineno-17-34"></a><span class="w">            </span><span class="n">base</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">".\n"</span><span class="p">)</span>
+<a id="__codelineno-17-35" name="__codelineno-17-35" href="#__codelineno-17-35"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-17-36" name="__codelineno-17-36" href="#__codelineno-17-36"></a><span class="w">        </span><span class="n">base</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">"\nCoste total de la tanda: "</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">costeTotal</span><span class="p">(</span><span class="n">ejecutados</span><span class="p">)).</span><span class="na">append</span><span class="p">(</span><span class="s">" ms.\n"</span><span class="p">)</span>
+</code></pre></div>
+Esto conecta con la UD9: allí la documentación era la ayuda de cada pantalla y el manual generado; aquí se añade un fichero más al mismo esquema de persistencia (<code>informe-pruebas.md</code>, en <code>filesDir</code>, se borra al desinstalar o al guardarlo otra vez), y la escena de documentación lo lista en la tabla igual que los demás.</p>
+<p>Esto es lo que la aplicación escribió en el teléfono. Es el fichero tal cual, sacado con <code>adb exec-out run-as com.example.uikit.demo cat files/informe-pruebas.md</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="gh"># Informe de pruebas del Kit de interfaces</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>Estrategia ejecutada en emulador. 8 casos planificados, 7 ejecutados, 7 aprobados.
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="gu">## Plan</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>| Caso | Pregunta | Tipo | CE | Cómo |
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>|---|---|---|---|---|
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>| P-01 | El filtro por categoría deja fuera lo que no es de esa categoría | unitaria | b | JUnit en el módulo :ui |
+</code></pre></div>
+<p>Y las filas de resultados del informe, que son las mismas que se ven en la captura de la escena:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>| P-01 | El filtro por categoría deja fuera lo que no es de esa categoría | unitaria | b | JUnit en el módulo :ui |
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>| P-02 | Las totales del pie cuadran con la suma de las filas filtradas | integración | b | InformeTest sobre filtrar + resumir |
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>| P-03 | El CSV generado es idéntico al aprobado (no hay regresión) | regresión | c | huella SHA-256 del CSV normalizado |
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>| P-04 | Un año de registros se filtra y se resume en un tiempo útil | volumen | d | SuitePruebas.volumen con 1.000, 10.000 y 100.000 filas |
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>| P-05 | Doscientas repeticiones seguidas no degradan ni revientan la app | estrés | d | SuitePruebas.estres con el lote mediano |
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>| P-06 | Los ficheros que escribe la app no llevan credenciales en claro | seguridad | e | SuitePruebas.seguridad sobre lo que hay en filesDir |
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>| P-07 | El lote grande no pide más memoria de la que admite el presupuesto | recursos | f | SuitePruebas.recursos midiendo el montículo antes y después |
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>| P-08 | La pantalla del informe se entiende sin explicaciones | integración | b | revisión en pantalla, con dos compañeros (manual) |
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>| P-01 | ✅ | filtro por «Derivaciones»: 265 de 1000 filas, 0 intrusas | 0 | 96 |
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>| P-02 | ✅ | media quincena: 499 filas, total 22515.54999999997 | 0 | 96 |
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>| P-03 | ✅ | CSV idéntico a la referencia (5abf86fa62e4bd0274f130c50f0a33b34482a8e59334d5551e89167481374829) | 8 | 1888 |
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>| P-04 | ✅ | 1000 filas en 0 ms: 21.79260590389677 % de urgencias | 0 | 64 |
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>| P-05 | ✅ | 100 pasadas de 10000 filas: primera 0 ms, última 0 ms | 114 | 5088 |
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>| P-06 | ✅ | 2 ficheros auditados, ninguna clave en claro | 0 | 96 |
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>| P-07 | ✅ | año completo: 3459220 caracteres de CSV, 51552 KB de montículo | 755 | 51552 |
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>Sin ejecutar: P-08.
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a>Coste total de la tanda: 877 ms.
+</code></pre></div>
+<p>El detalle honesto del informe, y que conviene que los alumnos lean: aparece <span style="background-color:#a5d6a7">«Sin ejecutar: P-08»</span>. La revisión en pantalla de la que habla el plan es manual y nadie la ha firmado: el informe lo dice en lugar de inflar el porcentaje de aprobados.</p>
+<hr />
+<h2 id="9-la-escena-12-la-app-se-prueba-a-si-misma">9. La escena 12: la app se prueba a sí misma</h2>
+<p>La escena 12 existe para que las pruebas se puedan enseñar sin abrir Android Studio: es una pantalla más, con un botón, que ejecuta la tanda y escribe el informe. Sirve de demo en clase y, en un proyecto real, de pantalla interna de diagnóstico para soporte.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:1"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">MainActivity.kt: qué se audita desde la escena</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><span class="filename">app/src/main/java/com/example/uikit/demo/MainActivity.kt</span><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="w">    </span><span class="c1">// Solo se auditan los ficheros de texto: un PDF no es un sitio donde buscar palabras.</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">ficherosDeTexto</span><span class="p">():</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Pair</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="kt">String</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">ficheros</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contexto</span><span class="p">.</span><span class="na">filesDir</span><span class="p">.</span><span class="na">listFiles</span><span class="p">()</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">emptyList</span><span class="p">()</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ficheros</span><span class="p">.</span><span class="na">filter</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">name</span><span class="p">.</span><span class="na">endsWith</span><span class="p">(</span><span class="s">".csv"</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">name</span><span class="p">.</span><span class="na">endsWith</span><span class="p">(</span><span class="s">".md"</span><span class="p">)</span><span class="w"> </span><span class="p">}.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">            </span><span class="nb">it</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p">(</span><span class="n">runCatching</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">readText</span><span class="p">()</span><span class="w"> </span><span class="p">}.</span><span class="na">getOrDefault</span><span class="p">(</span><span class="s">""</span><span class="p">))</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:1"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">MainActivity.kt: el botón que ejecuta la tanda</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<p><div class="highlight"><span class="filename">app/src/main/java/com/example/uikit/demo/MainActivity.kt</span><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="w">        </span><span class="n">Button</span><span class="p">(</span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">resultados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EjecutaPruebas</span><span class="p">.</span><span class="na">todas</span><span class="p">(</span><span class="n">ficherosDeTexto</span><span class="p">())</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">            </span><span class="n">recuento</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"</span><span class="si">${</span><span class="n">Estrategia</span><span class="p">.</span><span class="na">aprobados</span><span class="p">(</span><span class="n">resultados</span><span class="p">)</span><span class="si">}</span><span class="s"> de </span><span class="si">${</span><span class="n">resultados</span><span class="p">.</span><span class="na">size</span><span class="si">}</span><span class="s"> aprobados"</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">                </span><span class="s">" · </span><span class="si">${</span><span class="n">Estrategia</span><span class="p">.</span><span class="na">costeTotal</span><span class="p">(</span><span class="n">resultados</span><span class="p">)</span><span class="si">}</span><span class="s"> ms"</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">            </span><span class="n">lineas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">resultados</span><span class="p">.</span><span class="na">joinToString</span><span class="p">(</span><span class="s">"\n"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">                </span><span class="kd">val</span><span class="w"> </span><span class="nv">marca</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">resultado</span><span class="p">.</span><span class="na">correcta</span><span class="p">)</span><span class="w"> </span><span class="s">"✅"</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s">"❌"</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="w">                </span><span class="s">"</span><span class="si">$</span><span class="n">marca</span><span class="s"> </span><span class="si">${</span><span class="n">resultado</span><span class="p">.</span><span class="na">id</span><span class="si">}</span><span class="s"> — </span><span class="si">${</span><span class="n">resultado</span><span class="p">.</span><span class="na">detalle</span><span class="si">}</span><span class="s"> "</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="w">                    </span><span class="s">"(</span><span class="si">${</span><span class="n">resultado</span><span class="p">.</span><span class="na">milisegundos</span><span class="si">}</span><span class="s"> ms, </span><span class="si">${</span><span class="n">resultado</span><span class="p">.</span><span class="na">kilobytes</span><span class="si">}</span><span class="s"> KB)"</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="w">            </span><span class="n">informe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Estrategia</span><span class="p">.</span><span class="na">informe</span><span class="p">(</span><span class="n">resultados</span><span class="p">)</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="w">        </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"Ejecutar la tanda"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+La cobertura se pinta antes de ejecutar nada, para que se pueda ver el plan sin tener que confiar en la palabra de nadie:</p>
+<p><img alt="La escena 12 antes de ejecutar" src="../assets/u11-01-plan.png" /></p>
+<p><em>Los siete tipos del plan, su criterio y su pregunta, con el botón de ejecutar debajo. La escena 10 lista ya el informe de pruebas en la tabla de persistencia.</em></p>
+<p>Y esto es lo que pinta después de pulsar:</p>
+<p><img alt="La tanda ejecutada en el emulador" src="../assets/u11-02-tanda.png" /></p>
+<p><em>Siete de siete, con el detalle, el tiempo y la memoria de cada caso. El recuento es de 877 ms, que es exactamente la suma de los tiempos declarados: 0 + 0 + 8 + 0 + 114 + 0 + 755.</em></p>
+<p>Pulsar <strong>Guardar el informe</strong> escribe <code>informe-pruebas.md</code> en el almacenamiento interno:</p>
+<p><img alt="El informe escrito en el teléfono" src="../assets/u11-03-guardado.png" /></p>
+<p><em>El aviso de guardado y la escena de documentación enseñando el fichero nuevo.</em></p>
+<p>La escena de documentación (UD9 y UD10) ya lo conoce y lo enseña en su tabla de persistencia junto a <code>informe.csv</code>, <code>informe.pdf</code> y <code>manual.md</code>:</p>
+<p><img alt="La escena 10 con el informe de pruebas" src="../assets/u11-04-ayuda.png" /></p>
+<p><em>La tabla de persistencia ha crecido con el fichero de esta unidad. Los chips de encima son claves de filtro, no prosa: «catalogo» o «distribucion» sin tilde porque son las cadenas con las que el código compara.</em></p>
+<hr />
+<h2 id="10-manuales-automaticas-y-las-herramientas-del-sector">10. Manuales, automáticas y las herramientas del sector</h2>
+<p>El BOE cierra el bloque de contenidos con «pruebas manuales y automáticas, herramientas software para la realización de pruebas». La clasificación es fácil, pero hay que saber dónde está la frontera:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Automáticas</th>
+<th>Manuales</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Qué sirve</td>
+<td>cálculos, ficheros, huellas, volúmenes, tiempos, memoria</td>
+<td>usabilidad, comprensión, aspecto, sensaciones</td>
+</tr>
+<tr>
+<td>Cuándo</td>
+<td>en cada commit, todas las veces que haga falta</td>
+<td>antes de enseñar a nadie, y en cada versión grande</td>
+</tr>
+<tr>
+<td>Quién las ejecuta</td>
+<td>la máquina (JUnit, Espresso, Gradle, CI)</td>
+<td>dos personas distintas de quien las ha escrito</td>
+</tr>
+<tr>
+<td>Qué producen</td>
+<td>un informe que se puede releer</td>
+<td>un listado de impresiones, que hay que convertir en casos para la próxima vez</td>
+</tr>
+</tbody>
+</table>
+<p><span style="background-color:#a5d6a7">Lo manual se planifica, no se improvisa</span>: el caso P-08 del plan dice «con dos compañeros», que es la forma barata de una prueba con usuarios. Y lo que those dos compañeros digan se convierte en casos nuevos para la siguiente tanda, que es como un plan de pruebas deja de ser un documento decorativo.</p>
+<p>Lo que hay que conocer del entorno profesional, con su nombre, para poder leer una oferta de trabajo o un <code>build.gradle</code> ajeno:</p>
+<table>
+<thead>
+<tr>
+<th>Herramienta</th>
+<th>Para qué</th>
+<th>Dónde encaja con lo que hemos hecho</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>JUnit 4</strong> (<code>org.junit</code>) — <a href="https://junit.org/junit4/">docs</a></td>
+<td>esqueleto de las pruebas y aserciones</td>
+<td>todo <code>PruebasSistemaTest</code></td>
+</tr>
+<tr>
+<td><strong>AndroidX Test / <code>AndroidJUnitRunner</code></strong> — <a href="https://developer.android.com/training/testing">docs</a></td>
+<td>lanzar pruebas dentro del dispositivo</td>
+<td>el <code>am instrument</code> de arriba</td>
+</tr>
+<tr>
+<td><strong>Compose UI Test</strong> (<code>createAndroidComposeRule</code>) — <a href="https://developer.android.com/develop/ui/compose/testing">docs</a></td>
+<td>pulsar, escribir y comprobar nodos por <code>testTag</code></td>
+<td>los <code>testTag</code> que ya están puestos en la escena 12</td>
+</tr>
+<tr>
+<td><strong>Espresso</strong> — <a href="https://developer.android.com/training/testing/espresso">docs</a></td>
+<td>interacción en vistas clásicas y sincronización con la interfaz</td>
+<td>heredero natural de lo anterior si el proyecto usa Views</td>
+</tr>
+<tr>
+<td><strong>Robolectric</strong> — <a href="https://robolectric.org/">docs</a></td>
+<td>pruebas de Android sin dispositivo, en la JVM</td>
+<td>aceleraría los casos que no necesitan pantalla</td>
+</tr>
+<tr>
+<td><strong>MockK</strong> — <a href="https://mockk.io/">docs</a></td>
+<td>dobles de objetos (el banco de datos, el almacén)</td>
+<td>sustituiría a nuestro <code>BancoPruebas</code> en proyectos con dependencias</td>
+</tr>
+<tr>
+<td><strong>Paparazzi</strong> — <a href="https://square.github.io/paparazzi/">docs</a></td>
+<td>pruebas de captura de pantalla sin emulador</td>
+<td>detecta cambios visuales, que es lo que P-08 hace a mano</td>
+</tr>
+<tr>
+<td><strong>Roborazzi</strong> — <a href="https://github.com/takahirom/roborazzi">docs</a></td>
+<td>lo mismo sobre Robolectric</td>
+<td>la alternativa cuando el proyecto ya usa Robolectric</td>
+</tr>
+<tr>
+<td><strong>LeakCanary</strong> — <a href="https://square.github.io/leakcanary/">docs</a></td>
+<td>fugas de memoria en depuración</td>
+<td>compañero natural del caso P-07</td>
+</tr>
+<tr>
+<td><strong>Android Profiler</strong> — <a href="https://developer.android.com/studio/profile">docs</a></td>
+<td>memoria, CPU, red, frames</td>
+<td>la versión gráfica y continua de nuestra medidora</td>
+</tr>
+<tr>
+<td><strong>Firebase Test Lab</strong> — <a href="https://firebase.google.com/docs/test-lab">docs</a></td>
+<td>la tanda en granjas de dispositivos reales</td>
+<td>el paso siguiente a nuestro emulador</td>
+</tr>
+<tr>
+<td><strong>Android Lint</strong> / <strong>detekt</strong> — <a href="https://developer.android.com/studio/write/lint">docs1</a> · <a href="https://github.com/detekt/detekt">docs2</a></td>
+<td>análisis estático del código, no ejecuta nada</td>
+<td>complementan, no sustituyen: un análisis estático no sabe si el pie del informe cuadra</td>
+</tr>
+</tbody>
+</table>
+<p>Una advertencia final sobre las herramientas: en este módulo se confunde <strong>prueba</strong> con <strong>análisis estático</strong>. El lint y detekt no ejecutan la aplicación, así que no pueden decir si el total del informe cuadra; y nuestras pruebas no pueden decir si el código está bien escrito. Las dos cosas se hacen y se documentan aparte.</p>
+<hr />
+<h2 id="11-lo-que-se-rompe-casi-siempre-y-como-se-ve">11. Lo que se rompe casi siempre (y cómo se ve)</h2>
+<ul>
+<li><span style="background-color:#a5d6a7">La línea base se actualiza para que la prueba pase</span>. Síntoma: la prueba de regresión lleva tres meses sin fallar y el CSV ha cambiado dos veces. Diagnóstico: mira el historial de la constante.</li>
+<li><span style="background-color:#a5d6a7">Una prueba que pasa con cero elementos</span>. Nuestro P-06 protesta si no hay ficheros; si el directorio estuviera vacío, sin ese <code>assert</code> el informe diría «ninguna clave en claro» y sería mentira por vacío.</li>
+<li>Probar dos cosas en un caso. Cuando falla, no sabes cuál, y pierdes la mañana en el depurador.</li>
+<li>Dobles con datos aleatorios sin semilla. La prueba falla a veces: es la forma más eficaz de conseguir que el equipo aprenda a ignorar el rojo.</li>
+<li>Medir el tiempo sin congelar el montículo (sin <code>gc()</code> previo) y con el portátil de fondo. El número sale y no significa nada; es mejor declarar un presupuesto y comprobarlo.</li>
+<li>Meterlo todo en pruebas instrumentadas. Cuesta medio minuto por tanda y se deja de ejecutar; la lógica pura va a la JVM, que es gratis.</li>
+<li><span style="background-color:#a5d6a7">Olvidar el criterio g</span>. Es el único criterio que alguien puede cumplir sin haber probado nada, y el primero que se pide en una auditoría.</li>
+<li>Confiar en que «en mi móvil va bien». El caso P-07 existe porque el lote que importa no es el de la demo.</li>
+</ul>
+<hr />
+<h2 id="12-resumen-de-la-unidad">12. Resumen de la unidad</h2>
+<ol>
+<li>Una estrategia de pruebas es un documento que dice <strong>qué preguntas</strong> se contestan, con <strong>qué</strong> y con <strong>qué presupuesto</strong>. En el kit está en <code>Pruebas.kt</code>, como datos (CE a).</li>
+<li>Pruebas unitarias y de integración (CE b): la unitaria mira una pieza aislada, la de integración mira una costura. El BOE distingue ascendente y descendente.</li>
+<li>Regresión (CE c): congelar una salida buena (golden file) y compararla por huella. La referencia se captura de una ejecución real y se cambia a mano y explicado.</li>
+<li>Volumen y estrés (CE d): el lote que tocará en producción y la centésima repetición. Presupuestos de tiempo y margen de degradación.</li>
+<li>Seguridad (CE e): auditar lo que la app escribe fuera, protestar si no hay nada que auditar.</li>
+<li>Uso de recursos (CE f): medir memoria y tiempo con la misma medidora para todos los casos.</li>
+<li>Documentación (CE g): el informe se genera desde los resultados ejecutados, incluye lo manual como pendiente, y se guarda en el esquema de persistencia de la UD9.</li>
+</ol>
+<hr />
+<h2 id="13-ejercicios">13. Ejercicios</h2>
+<ol>
+<li><strong>Añade un caso al plan.</strong> Escribe P-09 para el botón de compartir de la UD8 (pregunta única, tipo, herramienta y si es manual), ejecútalo y comprueba que aparece en el informe sin tocar el generador.</li>
+<li><strong>Rompe la línea base a mano.</strong> Cambia el ancho de columna del CSV en <code>Informe.aCsv</code> y anota la huella que devuelve el fallo. Vuelve a dejarla como estaba y explica, en el mensaje de commit, por qué se actualiza (o no) <code>LINEA_BASE_CSV</code>.</li>
+<li><strong>Sube un nivel de volumen.</strong> Quita el <code>take(1)</code> de <code>todas()</code> para que la tanda ejecute los tres niveles, mide y apunta los tres tiempos. ¿El crecimiento es lineal? Justifica con tus números.</li>
+<li><strong>Endurece la prueba de seguridad.</strong> Añade la palabra <code>secret</code> a la lista de sospechosas y añade un caso nuevo que escriba un fichero con una clave y exija que la tanda caiga. Piensa: ¿no debería caer <strong>la tanda</strong> y no solo el caso?</li>
+<li><strong>Casilla de verificación del criterio g.</strong> Entrega el <code>informe-pruebas.md</code> de tu ejecución y, junto a él, media cara explicando qué haría falta para que ese informe lo pudiera leer alguien que no estaba en clase (fecha, aparato, versión, quién ejecuta).</li>
+</ol>
+<hr />
+<h2 id="para-saber-mas">Para saber más</h2>
+<p>Documentación oficial de las herramientas que se han usado o se han citado en la unidad, y la norma del real decreto:</p>
+<ul>
+<li>Real Decreto 405/2023, de 29 de mayo, del módulo Desarrollo de Interfaces — <a href="https://www.boe.es/eli/es/rd/2023-05-29/405/con">BOE</a></li>
+<li>Fundamentos de las pruebas en Android — <a href="https://developer.android.com/training/testing">developer.android.com</a></li>
+<li>Pruebas de interfaz en Compose (<code>createAndroidComposeRule</code>, <code>onNodeWithContentDescription</code>) — <a href="https://developer.android.com/develop/ui/compose/testing">developer.android.com</a></li>
+<li>Espresso — <a href="https://developer.android.com/training/testing/espresso">developer.android.com</a></li>
+<li>Pruebas instrumentadas y <code>adb shell am instrument</code> — <a href="https://developer.android.com/training/testing/instrumented-tests">developer.android.com</a></li>
+<li>Android Profiler (memoria, CPU, energía, red) — <a href="https://developer.android.com/studio/profile">developer.android.com</a></li>
+<li>Depuración de memoria — <a href="https://developer.android.com/studio/profile/memory-profiler">developer.android.com</a></li>
+<li>Android Lint — <a href="https://developer.android.com/studio/write/lint">developer.android.com</a></li>
+<li>JUnit 4 — <a href="https://junit.org/junit4/">junit.org</a></li>
+<li><code>MessageDigest</code> y SHA-256 (clase de la JDK) — <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/MessageDigest.html">docs.oracle.com</a></li>
+<li><code>java.util.Random</code> y su generador congruencial — <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Random.html">docs.oracle.com</a></li>
+<li>FIPS 180-4, la norma que define SHA-256 — <a href="https://csrc.nist.gov/pubs/fips/180-4/final/">csrc.nist.gov</a></li>
+<li>LeakCanary — <a href="https://square.github.io/leakcanary/">square.github.io</a></li>
+<li>Paparazzi — <a href="https://square.github.io/paparazzi/">square.github.io</a></li>
+<li>Roborazzi — <a href="https://github.com/takahirom/roborazzi">github.com/takahirom/roborazzi</a></li>
+<li>MockK — <a href="https://mockk.io/">mockk.io</a></li>
+<li>Robolectric — <a href="https://robolectric.org/">robolectric.org</a></li>
+<li>detekt — <a href="https://github.com/detekt/detekt">github.com/detekt/detekt</a></li>
+<li>Firebase Test Lab — <a href="https://firebase.google.com/docs/test-lab">firebase.google.com</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>
