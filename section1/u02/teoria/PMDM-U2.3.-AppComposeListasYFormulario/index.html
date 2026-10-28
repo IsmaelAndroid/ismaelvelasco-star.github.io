@@ -2145,7 +2145,7 @@
 </div>
 <p>Detalles de producción, no de juguete:</p>
 <ul>
-<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>key = { it.telefono }</code> identifica cada fila entre recomposiciones: sin clave, al borrar una fila el sistema "descoloca" los estados internos (switches que cambian de dueño) y el scroll se vuelve loco</span>. Es el error más caro de esta pantalla.</li>
+<li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>key = { it.telefono }</code> identifica cada fila entre recomposiciones: sin clave, al borrar una fila el sistema "descoloca" los estados internos (switches que cambian de dueño) y el scroll se vuelve loco</span>. Es el error más caro de esta pantalla. Ojo: la clave tiene que ser <strong>única</strong>; si dos contactos comparten teléfono, la app se cierra con <code>IllegalArgumentException</code>. En una app real se usa un <code>id</code> propio del contacto.</li>
 <li><code>contentPadding</code> (dentro de Lazy) ≠ <code>padding</code> (fuera): el primero deja aire <strong>dentro del área scroll</strong>, el segundo recorta el sitio donde puede pintar. Con <code>PaddingValues(12.dp)</code> la última tarjeta no se pega al FAB.</li>
 <li>La tarjeta entera es <code>clickable</code> (abre la ficha → 2.2) <strong>y encima</strong> hay switches/botones: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">un hijo clicable consume el evento antes que el padre — por eso el Switch hace su <code>onCheckedChange</code> sin abrir la ficha de rebote</span>.</li>
 </ul>
@@ -2153,7 +2153,7 @@
 <p><em>Figura 3. Interacción real: la favorita marcada y un contacto borrado de la lista (que es el estado, no la captura: al volver de la ficha la lista sigue sin él).</em></p>
 <h2 id="3-formulario-validar-en-una-linea-habilitar-en-otra">3. Formulario: validar en una línea, habilitar en otra</h2>
 <p><img alt="Formulario de alta con nombre tecleado, teléfono corto marcado en rojo y botón Guardar deshabilitado" src="../assets/capturas-codigo4-formulario.png" /></p>
-<p><em>Figura 4. Alta con <code>adjustResize</code>: el teclado sube, el formulario se recoloca y el botón sigue alcanzable. El teléfono corto se marca en rojo y el botón, apagado.</em></p>
+<p><em>Figura 4. Alta con el teclado abierto: el teclado sube, el formulario se recoloca y el botón sigue alcanzable. El teléfono corto se marca en rojo y el botón, apagado.</em></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Código 3 — El formulario de alta (función completa)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2199,7 +2199,7 @@
 <ul>
 <li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>isError</code> en el campo + <code>enabled</code> en el botón es la pareja canónica de validación: el campo informa, el botón decide. Nunca un <code>Toast</code> que grita cuando alguien pulsa "Guardar" a medias</span>.</li>
 <li>La validación es <strong>de una frase</strong> (9 dígitos): a partir de ahí, dominio (DNI, email oficial) se trata en su módulo, no aquí.</li>
-<li>El <code>Manifest</code> declara <code>android:windowSoftInputMode="adjustResize"</code>: eso, y no un parche de Compose, <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">es lo que hace que el teclado no tape el botón. Es configuración de la Activity — territorio PMDM, no de DI</span>.</li>
+<li>Para que el teclado no tape el botón, <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">la Activity se dibuja de borde a borde (<code>enableEdgeToEdge()</code>, obligatorio desde Android 15) y el formulario reserva el hueco del teclado con <code>Modifier.imePadding()</code>. Es una decisión de cómo se configura la ventana de la Activity — territorio PMDM, no de DI</span>. El antiguo <code>android:windowSoftInputMode="adjustResize"</code> del Manifest ya no basta con edge-to-edge.</li>
 </ul>
 <h2 id="4-lo-que-este-tema-no-es-de-desarrollo-de-interfaces">4. Lo que este tema NO es de Desarrollo de Interfaces</h2>
 <p>Para que nadie (ni el tribunal) se confunda:</p>
@@ -2264,7 +2264,7 @@ Cuando la pantalla nueva deba tener su propia entrada en el historial de BACK o 
 <p><strong>[!] Pregunta 4</strong> — Sin <code>verticalScroll</code> en el formulario, con teclado abierto el botón queda inalcanzable. ¿Dos arreglos y cuál es el de producción?</p>
 <blockquote>
 <p>[!answer]
-<code>verticalScroll(rememberScrollState())</code> en la Column y <code>windowSoftInputMode="adjustResize"</code> en el Manifest (o <code>enableEdgeToEdge</code> + insets modernos). El de producción es el Manifest: lo resuelve el sistema para todas las pantallas, no parche a parche.</p>
+<code>verticalScroll(rememberScrollState())</code> en la Column y <code>Modifier.imePadding()</code> con la Activity en <code>enableEdgeToEdge()</code>. El de producción es el segundo: desde Android 15 todas las apps se dibujan de borde a borde y <code>adjustResize</code> en el Manifest ya no basta.</p>
 </blockquote>
 </blockquote>
 <hr />

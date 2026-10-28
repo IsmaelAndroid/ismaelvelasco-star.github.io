@@ -756,10 +756,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejemplo-2-el-contador-que-sobrevive-a-reinicios-el-model-guarda-en-disco" class="md-nav__link">
+  <a href="#ejemplo-2-el-contador-que-sobrevive-al-giro-y-a-reinicios-cuando-el-model-guarda-en-disco" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejemplo 2 — El contador que sobrevive a reinicios (el Model guarda en disco)
+        Ejemplo 2 — El contador que sobrevive al giro (y a reinicios cuando el Model guarda en disco)
       
     </span>
   </a>
@@ -2351,10 +2351,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejemplo-2-el-contador-que-sobrevive-a-reinicios-el-model-guarda-en-disco" class="md-nav__link">
+  <a href="#ejemplo-2-el-contador-que-sobrevive-al-giro-y-a-reinicios-cuando-el-model-guarda-en-disco" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejemplo 2 — El contador que sobrevive a reinicios (el Model guarda en disco)
+        Ejemplo 2 — El contador que sobrevive al giro (y a reinicios cuando el Model guarda en disco)
       
     </span>
   </a>
@@ -2623,7 +2623,7 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Aclaración</p>
-<p>Hoy hay más de 5 millones de aplicaciones repartidas entre los grandes repositorios (Play Store, App Store y otras). Las descargas anuales superaban los 40 billones en 2020 (15% juegos) y los 250 billones en 2024 (un 34% juegos): el mercado justifica el esfuerzo de conocerlo bien.</p>
+<p>Hoy hay más de 5 millones de aplicaciones repartidas entre los grandes repositorios (Play Store, App Store y otras). Las descargas anuales rondaban los 218.000 millones en 2020 y superaron los 250.000 millones en 2024 (un 34% juegos): el mercado justifica el esfuerzo de conocerlo bien.</p>
 </div>
 <figure>
   <img alt="Tiendas de aplicaciones" src="../assets/tiendas-apps.png" />
@@ -2652,10 +2652,10 @@
 </tr>
 <tr>
 <td>1G</td>
-<td>1977</td>
+<td>1979-1983</td>
 <td>AMPS (EE. UU.), NMT (Escandinavia)</td>
 <td>Solo voz, analógica</td>
-<td>Primera red celular en Chicago; equipos grandes y pesados, baja seguridad</td>
+<td>Primera red celular comercial en Tokio (1979); en EE. UU., Chicago (1983); equipos grandes y pesados, baja seguridad</td>
 </tr>
 <tr>
 <td>2G</td>
@@ -2701,7 +2701,7 @@
 </tr>
 <tr>
 <td>5G</td>
-<td>2017 (MWC Barcelona)</td>
+<td>2019 (estándar en 2018)</td>
 <td>NR</td>
 <td><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">1-10 Gbps</span></td>
 <td>Antenas mejoradas; IoT, WSN, AR/VR comunicada</td>
@@ -2736,7 +2736,7 @@
 <li><strong>Gestor de aplicaciones.</strong> <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Aplicaciones nativas o multiplataforma.</span></li>
 </ol>
 <h4 id="android">Android</h4>
-<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Es el sistema operativo líder en el mercado. Fue lanzado por la Open Handset Alliance (OHA) en 2007, a través de una agrupación de 78 compañías lideradas por Google.</span> Sus capas, de abajo arriba:</p>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Es el sistema operativo líder en el mercado. Fue presentado en 2007 por la Open Handset Alliance (OHA), una agrupación fundada por 34 compañías lideradas por Google; el primer móvil Android salió en 2008.</span> Sus capas, de abajo arriba:</p>
 <ol>
 <li><strong>Kernel de Linux.</strong></li>
 <li><strong>Capa de abstracción de hardware (HAL).</strong></li>
@@ -2754,7 +2754,7 @@
 <p>Fue desarrollado por Apple, se llamó originalmente iPhone OS y es un derivado de Mac OS X. Su principal punto fuerte es la combinación excelente entre hardware y software, así como el uso de pantalla multitáctil desde sus comienzos. Solo funciona en los dispositivos de la propia empresa (iPhone, iPad), lo que le permite una integración total entre hardware y software y actualizaciones simultáneas para toda su gama. Sus aplicaciones se desarrollan en <strong>Swift</strong> (o el veterano Objective-C) con Xcode, y se distribuyen exclusivamente a través de la App Store, cuyo proceso de revisión es más estricto que el de otras tiendas.</p>
 <h4 id="otros-sistemas-operativos-moviles">Otros sistemas operativos móviles</h4>
 <ul>
-<li><strong>Windows Phone.</strong> Desarrollado por Microsoft y lanzado en 2010.</li>
+<li><strong>Windows Phone.</strong> Desarrollado por Microsoft y lanzado en 2010; sin soporte desde 2020.</li>
 <li><strong>BlackBerry OS.</strong></li>
 <li><strong>Symbian.</strong></li>
 <li><strong>Firefox OS.</strong> Desarrollado por Mozilla, con núcleo Linux y basado en HTML5, pensado en dispositivos de gama baja.</li>
@@ -2783,10 +2783,10 @@
 </tr>
 <tr>
 <td>iOS</td>
-<td>Objective-C, Swift, Cocoa Touch</td>
+<td>Objective-C, Swift (interfaz con UIKit/Cocoa Touch o SwiftUI)</td>
 </tr>
 <tr>
-<td>Windows Phone</td>
+<td>Windows Phone (descontinuado)</td>
 <td>C# + XAML</td>
 </tr>
 </tbody>
@@ -2794,23 +2794,25 @@
 <h4 id="desarrollo-multiplataforma">Desarrollo multiplataforma</h4>
 <p>Distinguimos dos tipos:</p>
 <ul>
-<li><strong>Compilado a nativo.</strong> <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Usa una plataforma intermedia, como <strong>Xamarin</strong>, que con un único lenguaje (C# sobre .NET) puede programar para varias plataformas. Las aplicaciones se compilan después en código nativo, lo que le da el mismo rendimiento que el desarrollo nativo.</span></li>
-<li><strong>Basado en HTML5.</strong> <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Utilización de herramientas basadas en HTML5 que generan aplicaciones para todas las plataformas, como <strong>PhoneGap/Cordova</strong> o <strong>Ionic</strong>. No tienen el mismo rendimiento que las aplicaciones nativas.</span></li>
+<li><strong>Compilado a nativo.</strong> <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Usa una plataforma intermedia que con un único lenguaje programa para varias plataformas: <strong>Flutter</strong> (Dart), <strong>Kotlin Multiplatform</strong>, <strong>React Native</strong> (JavaScript con componentes nativos) o <strong>.NET MAUI</strong> (C#, sucesor de Xamarin, que dejó de tener soporte en mayo de 2024). El resultado se ejecuta como código nativo, con un rendimiento cercano al del desarrollo nativo.</span></li>
+<li><strong>Basado en HTML5.</strong> <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Utilización de herramientas basadas en HTML5 que generan aplicaciones para todas las plataformas, como <strong>Apache Cordova</strong> (PhoneGap, su versión de Adobe, cerró en 2020) o <strong>Ionic</strong> con Capacitor. No tienen el mismo rendimiento que las aplicaciones nativas.</span></li>
 </ul>
 <h4 id="lenguajes-y-entornos-destacados">Lenguajes y entornos destacados</h4>
-<p><strong>Kotlin.</strong> Fue desarrollado por JetBrains en 2016. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Dentro del desarrollo nativo Android está tomando gran fuerza por encima de Java, al ser señalado por Google como lenguaje principal. Corre sobre la máquina virtual de Java.</span> Sus ventajas: simplicidad, más seguro que Java, robusto y orientado a objetos, con acceso a gran número de librerías, sintaxis más limpia (necesita menos código) y coexistencia simultánea con Java.</p>
+<p><strong>Kotlin.</strong> Lo desarrolla JetBrains (versión 1.0 en 2016). <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Google lo admite oficialmente en Android desde 2017 y desde 2019 es su lenguaje preferido («Kotlin-first»), por encima de Java. Corre sobre la máquina virtual de Java.</span> Sus ventajas: simplicidad, más seguro que Java, robusto y orientado a objetos, con acceso a gran número de librerías, sintaxis más limpia (necesita menos código) y coexistencia simultánea con Java.</p>
 <p><strong>Java.</strong> Es el lenguaje nativo original para Android. Paralelo a Java es necesario conocer bien XML para el desarrollo de aplicaciones. Herramienta de desarrollo: Android Studio, un IDE basado en IntelliJ IDEA que se lanzó para reemplazar a Eclipse.</p>
 <p><strong>Ionic.</strong> Permite desarrollar y desplegar aplicaciones híbridas que funcionan en múltiples plataformas (iOS, Android, escritorio y web como PWA) con una única base de código. Ofrece un diseño limpio, sencillo y funcional. Está construido sobre tecnologías web (HTML, CSS y JavaScript) y se puede usar con los frameworks frontend más populares: Angular, React y Vue.</p>
 <p><strong>Flutter.</strong> SDK de Google para crear aplicaciones Android e iOS, para móvil, web y escritorio, desde una única base de código. Su lenguaje es <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><strong>Dart</strong></span> y se caracteriza por el desarrollo rápido gracias a <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><strong>Hot Reload</strong>: se pueden hacer cambios sin parar y arrancar la aplicación, reduciendo las esperas.</span></p>
-<p><strong>Xamarin.</strong> Entorno de desarrollo creado por Microsoft que permite crear aplicaciones Android e iOS en C#. Es gratuito y va integrado en Visual Studio. Pese a no desarrollar para Android en Java, permite crear una aplicación nativa que asegura una buena experiencia de usuario.</p>
+<p><strong>.NET MAUI.</strong> Framework de Microsoft para crear aplicaciones Android, iOS y escritorio en C# desde una única base de código. Es el sucesor de <strong>Xamarin</strong>, que dejó de tener soporte en mayo de 2024. Es gratuito y va integrado en Visual Studio.</p>
+<p><strong>Kotlin Multiplatform.</strong> Tecnología de JetBrains para compartir la lógica (y, con Compose Multiplatform, también la interfaz) entre Android, iOS, escritorio y web, escribiendo en el mismo Kotlin que usamos en este módulo.</p>
+<p><strong>React Native.</strong> Framework de Meta: se programa en JavaScript o TypeScript con React y dibuja componentes nativos de cada plataforma.</p>
 <p><strong>NativeScript.</strong> Entorno de desarrollo de código abierto para crear aplicaciones móviles Android e iOS. Lenguajes: Angular, Vue.js, TypeScript o JavaScript. Su principal ventaja es el rendimiento nativo: defines una vez y se adapta para ejecutarse en todas partes, adaptando la interfaz a dispositivos y pantallas concretos.</p>
 <div class="admonition example">
 <p class="admonition-title">Ejemplo</p>
-<p>Para una app corporativa interna que deba salir ya para Android e iOS con un equipo pequeño, Flutter o Xamarin reducen a la mitad el esfuerzo. Para una app de realidad aumentada con máximo rendimiento gráfico, el camino razonable es nativo: Kotlin en Android, Swift en iOS.</p>
+<p>Para una app corporativa interna que deba salir ya para Android e iOS con un equipo pequeño, Flutter o Kotlin Multiplatform reducen a la mitad el esfuerzo. Para una app de realidad aumentada con máximo rendimiento gráfico, el camino razonable es nativo: Kotlin en Android, Swift en iOS.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Aclaración</p>
-<p>Unity3D es un ejemplo de entorno <strong>específico para videojuegos</strong>, frente a entornos de carácter general como Android Studio. En este módulo nos centraremos en el entorno Android Studio + Kotlin.</p>
+<p>Unity3D es un ejemplo de entorno <strong>específico para videojuegos</strong>, frente a entornos de carácter general como Android Studio. En este módulo las apps se programan con Android Studio + Kotlin; para los temas de juegos usaremos un motor específico, Godot.</p>
 </div>
 <h4 id="instalacion-de-android-studio">Instalación de Android Studio</h4>
 <ul>
@@ -3055,34 +3057,36 @@
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Meteoro</span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">ciudad</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">grados</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">icono</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w">  </span><span class="c1">// [M] dato puro</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kd">class</span><span class="w"> </span><span class="nc">MeteoroRepository</span><span class="w"> </span><span class="p">{</span><span class="w">                       </span><span class="c1">// [M] única puerta de entrada</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">getMeteoro</span><span class="p">(</span><span class="n">c</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="n">Meteoro</span><span class="w"> </span><span class="o">=</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="n">apiRest</span><span class="p">.</span><span class="na">getMeteoro</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w">                   </span><span class="c1">// [M] hoy llama a red; mañana a caché</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span><span class="w">                                               </span><span class="c1">// [M] y la View ni se entera del cambio</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1">// ── VIEWMODEL (el camarero) ────────────────────────────────────</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="kd">class</span><span class="w"> </span><span class="nc">MeteoroViewModel</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ViewModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">          </span><span class="c1">// [VM] cerebro de esta pantalla</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">repo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MeteoroRepository</span><span class="p">()</span><span class="w">      </span><span class="c1">// [VM] solo habla con la cocina</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">_meteoro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MutableStateFlow</span><span class="o">&lt;</span><span class="n">Meteoro?</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span><span class="w">     </span><span class="c1">// [VM] el estado</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">meteoro</span><span class="p">:</span><span class="w"> </span><span class="n">StateFlow</span><span class="o">&lt;</span><span class="n">Meteoro?</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_meteoro</span><span class="p">.</span><span class="na">asStateFlow</span><span class="p">()</span><span class="w">   </span><span class="c1">// [VM] lo que la View observa</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="k">init</span><span class="w"> </span><span class="p">{</span><span class="w">                                      </span><span class="c1">// [VM] al nacer la pantalla…</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="n">viewModelScope</span><span class="p">.</span><span class="na">launch</span><span class="w"> </span><span class="p">{</span><span class="w">                 </span><span class="c1">// [VM] …pedimos el dato a la cocina</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">            </span><span class="n">_meteoro</span><span class="p">.</span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repo</span><span class="p">.</span><span class="na">getMeteoro</span><span class="p">(</span><span class="s">"Cádiz"</span><span class="p">)</span><span class="w">           </span><span class="c1">// [VM] y lo guardamos</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="p">}</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="c1">// ── VISTA (el comedor) ─────────────────────────────────────────</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="nd">@Composable</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">ClimaCard</span><span class="p">(</span><span class="n">vm</span><span class="p">:</span><span class="w"> </span><span class="n">MeteoroViewModel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">           </span><span class="c1">// [V] la pantalla</span>
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">m</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">vm</span><span class="p">.</span><span class="na">meteoro</span><span class="p">.</span><span class="na">collectAsState</span><span class="p">()</span><span class="w">        </span><span class="c1">// [V] OBSERVA el estado</span>
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span><span class="n">m</span><span class="o">?.</span><span class="na">let</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"</span><span class="si">${</span><span class="nb">it</span><span class="p">.</span><span class="na">icono</span><span class="si">}</span><span class="s"> </span><span class="si">${</span><span class="nb">it</span><span class="p">.</span><span class="na">ciudad</span><span class="si">}</span><span class="s"> · </span><span class="si">${</span><span class="nb">it</span><span class="p">.</span><span class="na">grados</span><span class="si">}</span><span class="s">°"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// [V] y lo PINTA</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="p">}</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">apiRest</span><span class="p">:</span><span class="w"> </span><span class="n">MeteoroApi</span><span class="w"> </span><span class="o">=</span><span class="w">           </span><span class="c1">// [M] cliente HTTP (Retrofit, tema 3)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="n">retrofit</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">MeteoroApi</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">getMeteoro</span><span class="p">(</span><span class="n">c</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="n">Meteoro</span><span class="w"> </span><span class="o">=</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="n">apiRest</span><span class="p">.</span><span class="na">getMeteoro</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w">                   </span><span class="c1">// [M] hoy llama a red; mañana a caché</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">}</span><span class="w">                                               </span><span class="c1">// [M] y la View ni se entera del cambio</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1">// ── VIEWMODEL (el camarero) ────────────────────────────────────</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="kd">class</span><span class="w"> </span><span class="nc">MeteoroViewModel</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ViewModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">          </span><span class="c1">// [VM] cerebro de esta pantalla</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">repo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MeteoroRepository</span><span class="p">()</span><span class="w">      </span><span class="c1">// [VM] solo habla con la cocina</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">_meteoro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MutableStateFlow</span><span class="o">&lt;</span><span class="n">Meteoro?</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span><span class="w">     </span><span class="c1">// [VM] el estado</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">meteoro</span><span class="p">:</span><span class="w"> </span><span class="n">StateFlow</span><span class="o">&lt;</span><span class="n">Meteoro?</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_meteoro</span><span class="p">.</span><span class="na">asStateFlow</span><span class="p">()</span><span class="w">   </span><span class="c1">// [VM] lo que la View observa</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="k">init</span><span class="w"> </span><span class="p">{</span><span class="w">                                      </span><span class="c1">// [VM] al nacer la pantalla…</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">        </span><span class="n">viewModelScope</span><span class="p">.</span><span class="na">launch</span><span class="w"> </span><span class="p">{</span><span class="w">                 </span><span class="c1">// [VM] …pedimos el dato a la cocina</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">            </span><span class="n">_meteoro</span><span class="p">.</span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repo</span><span class="p">.</span><span class="na">getMeteoro</span><span class="p">(</span><span class="s">"Cádiz"</span><span class="p">)</span><span class="w">           </span><span class="c1">// [VM] y lo guardamos</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="p">}</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="c1">// ── VISTA (el comedor) ─────────────────────────────────────────</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="nd">@Composable</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">ClimaCard</span><span class="p">(</span><span class="n">vm</span><span class="p">:</span><span class="w"> </span><span class="n">MeteoroViewModel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">           </span><span class="c1">// [V] la pantalla</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">m</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">vm</span><span class="p">.</span><span class="na">meteoro</span><span class="p">.</span><span class="na">collectAsState</span><span class="p">()</span><span class="w">        </span><span class="c1">// [V] OBSERVA el estado</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">    </span><span class="n">m</span><span class="o">?.</span><span class="na">let</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Text</span><span class="p">(</span><span class="s">"</span><span class="si">${</span><span class="nb">it</span><span class="p">.</span><span class="na">icono</span><span class="si">}</span><span class="s"> </span><span class="si">${</span><span class="nb">it</span><span class="p">.</span><span class="na">ciudad</span><span class="si">}</span><span class="s"> · </span><span class="si">${</span><span class="nb">it</span><span class="p">.</span><span class="na">grados</span><span class="si">}</span><span class="s">°"</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// [V] y lo PINTA</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p><strong>Veredicto:</strong> el <strong>Model</strong> es <code>Meteoro</code> + <code>MeteoroRepository</code> (sabe de JSON y de red, no sabe que existe <code>Text</code>). El <strong>ViewModel</strong> es <code>MeteoroViewModel</code> (guarda el <code>Meteoro?</code> y lo carga al nacer). La <strong>View</strong> es <code>ClimaCard</code> (no sabe que hay una API: solo ve un dato nullable y lo pinta cuando llega).</p>
 </blockquote>
-<h4 id="ejemplo-2-el-contador-que-sobrevive-a-reinicios-el-model-guarda-en-disco">Ejemplo 2 — El contador que sobrevive a reinicios (el Model guarda en disco)</h4>
+<h4 id="ejemplo-2-el-contador-que-sobrevive-al-giro-y-a-reinicios-cuando-el-model-guarda-en-disco">Ejemplo 2 — El contador que sobrevive al giro (y a reinicios cuando el Model guarda en disco)</h4>
 <pre class="mermaid"><code>flowchart LR
     V["🟩 Button +1 y Text&lt;br/&gt;'3 pulsaciones'"] -.-&gt;|"evento SUBE"| VM["🟦 ContadorViewModel&lt;br/&gt;incrementar()"]
     VM --&gt;|"guardar"| M["⬛ PrefsStore&lt;br/&gt;SharedPreferences"]
@@ -3092,7 +3096,7 @@
     style M fill:#4a5568,color:#fff</code></pre>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// ── MODELO: el número vive aquí, no en la pantalla ─────────────</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">object</span><span class="w"> </span><span class="nc">PrefsStore</span><span class="w"> </span><span class="p">{</span><span class="w">                             </span><span class="c1">// [M] la despensa: persistencia</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">guardado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w">                    </span><span class="c1">// [M] en la vida real: SharedPreferences</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">guardado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w">                    </span><span class="c1">// [M] simulado en memoria; en la vida real: DataStore</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">leer</span><span class="p">():</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">guardado</span><span class="w">                  </span><span class="c1">// [M]</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">escribir</span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">guardado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">}</span><span class="w">       </span><span class="c1">// [M]</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">}</span>
@@ -3104,7 +3108,7 @@
 <a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
 <a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">incrementar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">                         </span><span class="c1">// [VM] el camarero apunta el pedido</span>
 <a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="n">_cuenta</span><span class="p">.</span><span class="na">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="m">1</span><span class="w">                      </span><span class="c1">// [VM] actualiza el estado → la pantalla se redibuja</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">        </span><span class="n">PrefsStore</span><span class="p">.</span><span class="na">escribir</span><span class="p">(</span><span class="n">_cuenta</span><span class="p">.</span><span class="na">value</span><span class="p">)</span><span class="w">      </span><span class="c1">// [VM] y avisa a la cocina: guarda en disco</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">        </span><span class="n">PrefsStore</span><span class="p">.</span><span class="na">escribir</span><span class="p">(</span><span class="n">_cuenta</span><span class="p">.</span><span class="na">value</span><span class="p">)</span><span class="w">      </span><span class="c1">// [VM] y avisa a la cocina: que lo guarde</span>
 <a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="p">}</span>
 <a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
@@ -3119,7 +3123,7 @@
 <a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="p">}</span>
 </code></pre></div>
 <blockquote>
-<p><strong>Veredicto:</strong> el <strong>Model</strong> es <code>PrefsStore</code> (el número VIVE ahí; por eso sobrevive a reinicios). El <strong>ViewModel</strong> es <code>ContadorViewModel</code> (la única regla: +1, avisar a la View y pedir guarda). La <strong>View</strong> es <code>Contador</code> (no sabe si el número está en memoria, en disco o en Marte). Si mañana el contador se guarda en una API, solo tocas el Model: <code>vm.incrementar()</code> y el <code>Text</code> no cambian ni una letra.</p>
+<p><strong>Veredicto:</strong> el <strong>Model</strong> es <code>PrefsStore</code> (el número VIVE ahí, no en la pantalla; tal como está, en memoria, sobrevive al giro pero no a cerrar la app: para eso <code>PrefsStore</code> debe escribir en disco con DataStore, que se ve en el tema 3). El <strong>ViewModel</strong> es <code>ContadorViewModel</code> (la única regla: +1, avisar a la View y pedir guarda). La <strong>View</strong> es <code>Contador</code> (no sabe si el número está en memoria, en disco o en Marte). Si mañana el contador se guarda en una API, solo tocas el Model: <code>vm.incrementar()</code> y el <code>Text</code> no cambian ni una letra.</p>
 </blockquote>
 <h4 id="ejemplo-3-la-lista-de-la-compra-compartida-la-cadena-completa">Ejemplo 3 — La lista de la compra compartida: la cadena completa</h4>
 <p>Cada pieza de la cadena:</p>
@@ -3251,7 +3255,7 @@
 <li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>onResume</code> no significa "reanudar después de una pausa": significa <strong>"la app está ahora interactiva"</strong>.</span> Es el último en ejecutarse al arrancar.</li>
 <li><strong>¿La app está corriendo/activa?</strong> → cuando se ha ejecutado <code>onResume()</code> y aún no ha llegado <code>onPause()</code>.</li>
 <li><strong>¿Cómo lo veo yo, el programador?</strong> → con <strong><code>Log.d()</code> + Logcat</strong>. Es el "printf de Android": pintas un mensaje en cada callback y los ves aparecer en la pestaña <em>Logcat</em> de Android Studio, con la app real ejecutándose. El código exacto, más abajo.</li>
-<li><code>onPause</code> = "pierdo el foco" (半 visible: un diálogo encima, va a cerrarse). <code>onStop</code> = "ya no se ve nada". No son lo mismo: en un diálogo solo llega <code>onPause</code>.</li>
+<li><code>onPause</code> = "dejo de estar en primer plano" (sigo medio visible: otra Activity translúcida encima, el modo multiventana o va a cerrarse). <code>onStop</code> = "ya no se ve nada". No son lo mismo: con una Activity translúcida encima solo llega <code>onPause</code>. Ojo: un <code>AlertDialog</code> o un <code>Dialog</code> de tu propia Activity <strong>no</strong> la pausa; no se llama a ningún callback.</li>
 <li><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>onDestroy</code> <strong>no está garantizado</strong>: si el sistema mata el proceso desde <code>onStop</code>, tu app desaparece sin pasar por él. Por eso lo importante se guarda ANTES (en <code>onPause</code>/<code>onStop</code>).</span></li>
 </ul>
 <p><strong>El mapeo estados ↔ callbacks:</strong></p>
@@ -3474,7 +3478,7 @@
 <p>Para trabajar este contenido con criterio, conviene aplicar estas buenas prácticas:</p>
 <ul>
 <li><strong>Probar en varios perfiles</strong>: no basta con que funcione en tu móvil; gama baja, tablet y wearable cuentan.</li>
-<li><strong>Elegir tecnología por requisitos</strong>: rendimiento y sensores apuntan a nativo; tiempo de entrega multiplataforma apunta a Flutter/Xamarin/Ionic.</li>
+<li><strong>Elegir tecnología por requisitos</strong>: rendimiento y sensores apuntan a nativo; tiempo de entrega multiplataforma apunta a Flutter/Kotlin Multiplatform/Ionic.</li>
 <li><strong>Diseñar para el cambio de contexto</strong>: red, batería y orientación cambian sin avisar; la app debe reaccionar y conservar el estado.</li>
 <li><strong>Versionar y medir</strong>: SemVer, telemetría y rollout progresivo evitan sorpresas en las actualizaciones.</li>
 </ul>
@@ -3526,7 +3530,7 @@
 <li>un dispositivo móvil es un ordenador de bolsillo con limitaciones de hardware, pantalla y sensores que condicionan el diseño;</li>
 <li>las redes han evolucionado de la 0G analógica a la 5G/6G, multiplicando qué puede hacer una app;</li>
 <li>los SO móviles se organizan por capas (kernel, middleware, gestor de aplicaciones), con Android (kernel Linux + HAL + runtime + framework) como referencia;</li>
-<li>existen tecnologías nativas (Java/Kotlin, Swift) y multiplataforma (compiladas a nativo como Xamarin, o HTML5 como Ionic/PhoneGap), cada una con su equilibrio entre rendimiento y coste;</li>
+<li>existen tecnologías nativas (Java/Kotlin, Swift) y multiplataforma (compiladas a nativo como Flutter, Kotlin Multiplatform o .NET MAUI, o HTML5 como Ionic/Cordova), cada una con su equilibrio entre rendimiento y coste;</li>
 <li>los emuladores AVD permiten probar configuraciones, perfiles y condiciones de red sin hardware, aunque ciertos casos exigen dispositivo real;</li>
 <li>un proyecto Android tiene estructura definida (manifest, java/kotlin, res, Gradle) y componentes por capas (Activity/Fragment, ViewModel, Repository, Service), unidos por la cadena MVVM: MainActivity → ViewModel → Repository → fuente de datos;</li>
 <li>la app pasa por estados (activa, pausada, destruida) y Android te avisa con callbacks (<code>onCreate</code>, <code>onStart</code>, <code>onResume</code>, <code>onPause</code>, <code>onStop</code>, <code>onDestroy</code>) que se observan con <code>Log.d</code> + Logcat;</li>

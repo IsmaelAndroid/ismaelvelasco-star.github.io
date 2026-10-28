@@ -2367,8 +2367,8 @@
 <a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># audio: WAV a OGG (Vorbis) con calidad 5</span>
 <a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>ffmpeg<span class="w"> </span>-i<span class="w"> </span>audio.wav<span class="w"> </span>-q:a<span class="w"> </span><span class="m">5</span><span class="w"> </span>audio.ogg
 <a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="c1"># vídeo: MP4 a WebM con VP9</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>ffmpeg<span class="w"> </span>-i<span class="w"> </span>video.mp4<span class="w"> </span>-c:v<span class="w"> </span>libvpx-vp9<span class="w"> </span>-b:v<span class="w"> </span>500k<span class="w"> </span>-c:a<span class="w"> </span>libopus<span class="w"> </span>video.webm
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="c1"># vídeo: MP4 a WebM con VP9, con los ajustes rápidos que dieron el fichero de la tabla</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>ffmpeg<span class="w"> </span>-i<span class="w"> </span>video.mp4<span class="w"> </span>-c:v<span class="w"> </span>libvpx-vp9<span class="w"> </span>-deadline<span class="w"> </span>realtime<span class="w"> </span>-cpu-used<span class="w"> </span><span class="m">5</span><span class="w"> </span>-c:a<span class="w"> </span>libopus<span class="w"> </span>video.webm
 </code></pre></div>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>-q:v</code> controla la calidad en imagen y vídeo; <code>-b:a</code> fija el bitrate de audio. Sin esos parámetros, <code>ffmpeg</code> usa sus valores por defecto y el resultado puede sorprender.</span></p>
 <h2 id="8-lo-que-se-puede-usar-en-android">8. Lo que se puede usar en Android</h2>

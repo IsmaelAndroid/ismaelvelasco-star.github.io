@@ -2360,8 +2360,8 @@
 </tr>
 <tr>
 <td><code>popBackStack()</code> en la raíz</td>
-<td>no hace nada (no hay a dónde volver)</td>
-<td>comprobar <code>previousBackStackEntry</code></td>
+<td>desapila la pantalla inicial y el <code>NavHost</code> se queda en blanco</td>
+<td>comprobar antes <code>previousBackStackEntry != null</code> (o dejar que el botón Atrás cierre la app)</td>
 </tr>
 <tr>
 <td>Deep link sin <code>navDeepLink</code></td>

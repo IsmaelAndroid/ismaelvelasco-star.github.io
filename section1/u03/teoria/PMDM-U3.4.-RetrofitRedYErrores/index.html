@@ -2317,6 +2317,10 @@
 <p><img alt="Pantalla API con el mensaje ERROR: HTTP 404 y la lista anterior conservada" src="../assets/capturas-api3-error.png" /></p>
 <p><em>Figura 3. Error controlado: el servidor responde <strong>404</strong>, la app lo muestra en rojo y <strong>no pierde</strong> los datos que ya tenía. Eso es manejo de errores, no un crash.</em></p>
 <p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un error de red no es una excepción que se ignora: es un estado más de la pantalla. Se muestra, se explica y se permite reintentar.</span></p>
+<div class="admonition warning">
+<p class="admonition-title"><code>catch (e: Exception)</code> dentro de una corrutina</p>
+<p><code>catch (e: Exception)</code> también atrapa la <code>CancellationException</code> con la que se cancela la corrutina (por ejemplo, al salir de la pantalla), y la corrutina sigue como si nada. En código de producción se relanza: <code>catch (e: CancellationException) { throw e }</code> antes del <code>catch</code> general, o se capturan solo las excepciones de red (<code>IOException</code>, <code>HttpException</code>).</p>
+</div>
 <h2 id="6-los-fallos-reales-los-que-me-pasaron-a-mi">6. Los fallos reales (los que me pasaron a mí)</h2>
 <table>
 <thead>
@@ -2359,7 +2363,7 @@
 </tr>
 </tbody>
 </table>
-<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>finally {{ cargando = false }}</code> no es opcional: si la petición falla y no lo pones, la rueda de carga se queda girando para siempre y el usuario cree que la app está colgada.</span></p>
+<p><span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;"><code>finally { cargando = false }</code> no es opcional: si la petición falla y no lo pones, la rueda de carga se queda girando para siempre y el usuario cree que la app está colgada.</span></p>
 <h2 id="7-errores-tipicos-de-examen">7. Errores típicos de examen</h2>
 <table>
 <thead>

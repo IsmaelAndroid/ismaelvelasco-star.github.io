@@ -2142,6 +2142,7 @@
 <th>Sobrevive a recomponer</th>
 <th>Sobrevive a girar el móvil</th>
 <th>Sobrevive a volver del fondo</th>
+<th>Sobrevive a que el sistema mate el proceso</th>
 </tr>
 </thead>
 <tbody>
@@ -2150,24 +2151,28 @@
 <td>❌</td>
 <td>❌</td>
 <td>❌</td>
+<td>❌</td>
 </tr>
 <tr>
 <td><code>remember { mutableStateOf(...) }</code></td>
 <td>✅</td>
 <td>❌</td>
+<td>✅</td>
 <td>❌</td>
 </tr>
 <tr>
 <td><code>rememberSaveable</code></td>
 <td>✅</td>
 <td>✅</td>
-<td>✅ (solo tipos simples)</td>
+<td>✅</td>
+<td>✅ (solo tipos que caben en un Bundle)</td>
 </tr>
 <tr>
 <td><strong><code>ViewModel</code> + <code>StateFlow</code></strong></td>
 <td>✅</td>
 <td>✅</td>
-<td>✅ (hasta que el sistema mata el proceso)</td>
+<td>✅</td>
+<td>❌ (salvo con <code>SavedStateHandle</code>)</td>
 </tr>
 </tbody>
 </table>
