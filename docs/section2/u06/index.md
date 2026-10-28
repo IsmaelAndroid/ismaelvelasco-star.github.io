@@ -29,6 +29,10 @@ resultado son dos defectos reales encontrados en nuestro propio kit: el badge de
 
 - [Teoría 6.1 — Usabilidad y accesibilidad](teoria/DI-U6.1.-UsabilidadYAccesibilidad.md)
 
+## Presentación
+
+- [DI-U6.1 - Usabilidad y accesibilidad](https://revilofe.github.io/slides/section6-di/DI-U6.1.-UsabilidadYAccesibilidad.html)
+
 ## Qué aprenderás
 
 - Identificar los **estándares** que se citan en cualquier auditoría: ISO/IEC 9241 (partes 10 a 17),

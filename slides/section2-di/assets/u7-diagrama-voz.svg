@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" width="1000" height="420" role="img" aria-label="El viaje de una frase dicha en voz alta hasta la accion">
+<defs><marker id="punta" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#37474f"/></marker></defs>
+<rect width="1000" height="420" fill="#ffffff"/>
+<text x="24" y="30" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#37474f">El viaje de una frase: del microfono a la accion</text>
+<rect x="24" y="70" width="184" height="112" rx="8" fill="#e8f1f8" stroke="#1a4d7a" stroke-width="1.5"/>
+<text x="36" y="93" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#1a4d7a">1. Micrófono</text>
+<text x="36" y="114" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">ondas de sonido</text>
+<rect x="216" y="70" width="184" height="112" rx="8" fill="#e8f1f8" stroke="#1a4d7a" stroke-width="1.5"/>
+<text x="228" y="93" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#1a4d7a">2. Reconocedor</text>
+<text x="228" y="114" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">SpeechRecognizer</text>
+<text x="228" y="131" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">o RecognizerIntent</text>
+<rect x="408" y="70" width="184" height="112" rx="8" fill="#e8f5e9" stroke="#1b5e20" stroke-width="1.5"/>
+<text x="420" y="93" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#1b5e20">3. Texto</text>
+<text x="420" y="114" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">"abre el piano"</text>
+<text x="420" y="131" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">lo único que devuelve</text>
+<rect x="600" y="70" width="184" height="112" rx="8" fill="#fff4e0" stroke="#8a5a00" stroke-width="1.5"/>
+<text x="612" y="93" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#8a5a00">4. ComandoVoz</text>
+<text x="612" y="114" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">normaliza: minúsculas</text>
+<text x="612" y="131" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">sin tildes</text>
+<rect x="792" y="70" width="184" height="112" rx="8" fill="#ede7f6" stroke="#4527a0" stroke-width="1.5"/>
+<text x="804" y="93" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#4527a0">5. Acción</text>
+<text x="804" y="114" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#37474f">IrA("piano")</text>
+<line x1="208" y1="126" x2="216" y2="126" stroke="#37474f" stroke-width="1.8" marker-end="url(#punta)"/>
+<line x1="400" y1="126" x2="408" y2="126" stroke="#37474f" stroke-width="1.8" marker-end="url(#punta)"/>
+<line x1="592" y1="126" x2="600" y2="126" stroke="#37474f" stroke-width="1.8" marker-end="url(#punta)"/>
+<line x1="784" y1="126" x2="792" y2="126" stroke="#37474f" stroke-width="1.8" marker-end="url(#punta)"/>
+<rect x="24" y="232" width="952" height="74" rx="8" fill="#eceff1" stroke="#37474f" stroke-width="1.5"/>
+<text x="36" y="255" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#37474f">Por qué se separa en dos piezas</text>
+<text x="36" y="276" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">El reconocedor es del sistema y cambia (o no existe); la interpretación es nuestra y se puede probar sin micrófono.</text>
+<text x="36" y="293" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">Si el texto no se entiende, no se inventa una acción: se responde «no te he entendido».</text>
+<line x1="884" y1="182" x2="884" y2="232" stroke="#37474f" stroke-width="1.8" marker-end="url(#punta)"/>
+<text x="24" y="360" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f" font-style="italic">La prueba automatica se hace sobre el paso 4: entra texto, sale accion. Sin emulador y sin ruido.</text>
+</svg>

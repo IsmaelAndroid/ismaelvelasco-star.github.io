@@ -29,6 +29,10 @@ hace una librería de pago: lo dibuja la app con `PdfDocument`, que viene en And
 
 - [Teoría 8.1 — Confección de informes](teoria/DI-U8.1.-ConfeccionDeInformes.md)
 
+## Presentación
+
+- [DI-U8.1 - Confección de informes](https://revilofe.github.io/slides/section6-di/DI-U8.1.-ConfeccionDeInformes.html)
+
 ## Qué aprenderás
 
 - **Estructurar** un informe en siete partes: cabecera, filtros, cabecera de tabla, filas, totales,

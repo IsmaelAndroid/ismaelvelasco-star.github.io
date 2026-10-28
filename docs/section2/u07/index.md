@@ -31,6 +31,10 @@ realidad aumentada abierta con el **visor de escenas** del sistema a partir de u
 
 - [Teoría 7.1 — Interfaces naturales](teoria/DI-U7.1.-InterfacesNaturales.md)
 
+## Presentación
+
+- [DI-U7.1 - Interfaces naturales](https://revilofe.github.io/slides/section6-di/DI-U7.1.-InterfacesNaturales.html)
+
 ## Qué aprenderás
 
 - Qué es una **interfaz natural** (NUI) y por qué <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">no sustituye a los botones: los acompaña</span>.

@@ -27,6 +27,10 @@ Compose Testing.
 
 - [Teoría 5.1 — Explotación de componentes visuales](teoria/DI-U5.1.-ExplotacionDeComponentes.md)
 
+## Presentación
+
+- [DI-U5.1 - Explotación de componentes visuales](https://revilofe.github.io/slides/section6-di/DI-U5.1.-ExplotacionDeComponentes.html)
+
 ## Qué aprenderás
 
 - Desmontar un evento en sus piezas (fuente, objeto, oyente, acción) y **traducir** cada listener del

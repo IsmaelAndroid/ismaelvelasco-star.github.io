@@ -24,6 +24,10 @@ pruebas, su documentación y su paquete reutilizable.
 
 - [Teoría 4.1 — Creación de componentes visuales](teoria/DI-U4.1.-CreacionDeComponentes.md)
 
+## Presentación
+
+- [DI-U4.1 - Creación de componentes visuales](https://revilofe.github.io/slides/section6-di/DI-U4.1.-CreacionDeComponentes.html)
+
 ## Qué aprenderás
 
 - Convertir un trocito de interfaz que se repite en un **componente reutilizable** con parámetros y
