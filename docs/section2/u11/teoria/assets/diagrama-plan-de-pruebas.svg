@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="1000" height="500" role="img" aria-label="El plan de pruebas del kit: siete tipos de prueba y el criterio del RA8 que contesta cada uno">
+<defs><marker id="punta" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#37474f"/></marker></defs>
+<rect width="1000" height="500" fill="#ffffff"/>
+<text x="24" y="30" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#37474f">El plan del kit: cada tipo de prueba contesta una pregunta y cubre un criterio</text>
+<rect x="24" y="56" width="160" height="44" rx="6" fill="#e8f1f8" stroke="#1a4d7a" stroke-width="1.5"/>
+<text x="36" y="83" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1a4d7a">Unitaria</text>
+<rect x="188" y="64" width="56" height="28" rx="14" fill="#ffffff" stroke="#90a4ae" stroke-width="1"/>
+<text x="216" y="83" text-anchor="middle" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#37474f">CE b</text>
+<text x="268" y="83" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">¿el cálculo, aislado, está bien?</text>
+<rect x="24" y="112" width="200" height="44" rx="6" fill="#e8f1f8" stroke="#1a4d7a" stroke-width="1.5"/>
+<text x="36" y="139" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1a4d7a">Integración</text>
+<rect x="228" y="120" width="56" height="28" rx="14" fill="#ffffff" stroke="#90a4ae" stroke-width="1"/>
+<text x="256" y="139" text-anchor="middle" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#37474f">CE b</text>
+<text x="308" y="139" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">¿las piezas encajan donde se tocan?</text>
+<rect x="24" y="168" width="160" height="44" rx="6" fill="#e8f5e9" stroke="#1b5e20" stroke-width="1.5"/>
+<text x="36" y="195" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1b5e20">Regresión</text>
+<rect x="188" y="176" width="56" height="28" rx="14" fill="#ffffff" stroke="#90a4ae" stroke-width="1"/>
+<text x="216" y="195" text-anchor="middle" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#37474f">CE c</text>
+<text x="268" y="195" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">¿algo que ya funcionaba se ha roto?</text>
+<rect x="24" y="224" width="160" height="44" rx="6" fill="#fff4e0" stroke="#8a5a00" stroke-width="1.5"/>
+<text x="36" y="251" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#8a5a00">Volumen</text>
+<rect x="188" y="232" width="56" height="28" rx="14" fill="#ffffff" stroke="#90a4ae" stroke-width="1"/>
+<text x="216" y="251" text-anchor="middle" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#37474f">CE d</text>
+<text x="268" y="251" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">¿aguanta el lote de un año entero?</text>
+<rect x="24" y="280" width="160" height="44" rx="6" fill="#fff4e0" stroke="#8a5a00" stroke-width="1.5"/>
+<text x="36" y="307" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#8a5a00">Estrés</text>
+<rect x="188" y="288" width="56" height="28" rx="14" fill="#ffffff" stroke="#90a4ae" stroke-width="1"/>
+<text x="216" y="307" text-anchor="middle" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#37474f">CE d</text>
+<text x="268" y="307" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">¿sigue bien a la centésima repetición?</text>
+<rect x="24" y="336" width="160" height="44" rx="6" fill="#ede7f6" stroke="#4527a0" stroke-width="1.5"/>
+<text x="36" y="363" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4527a0">Seguridad</text>
+<rect x="188" y="344" width="56" height="28" rx="14" fill="#ffffff" stroke="#90a4ae" stroke-width="1"/>
+<text x="216" y="363" text-anchor="middle" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#37474f">CE e</text>
+<text x="268" y="363" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">¿se guarda o se expone lo que no debe?</text>
+<rect x="24" y="392" width="160" height="44" rx="6" fill="#ede7f6" stroke="#4527a0" stroke-width="1.5"/>
+<text x="36" y="419" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#4527a0">Recursos</text>
+<rect x="188" y="400" width="56" height="28" rx="14" fill="#ffffff" stroke="#90a4ae" stroke-width="1"/>
+<text x="216" y="419" text-anchor="middle" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#37474f">CE f</text>
+<text x="268" y="419" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#37474f">¿cuánta memoria y cuánto tiempo cuesta?</text>
+<rect x="24" y="452" width="952" height="38" rx="6" fill="#fdecea" stroke="#b71c1c" stroke-width="1.5"/>
+<text x="36" y="476" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#b71c1c">El CE g (documentar la estrategia y los resultados) no es un octavo tipo de prueba: es el informe que se genera al ejecutar las siete.</text>
+</svg>

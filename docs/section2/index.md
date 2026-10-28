@@ -29,7 +29,7 @@ Este curso el módulo se imparte íntegramente con **Kotlin y Jetpack Compose**,
 | 8 | Informes: filtros, totales, gráficos y exportación a PDF y CSV | ✅ Publicada |
 | 9 | Documentación y ayudas: ayuda contextual, esquema de datos y manual generado | ✅ Publicada |
 | 10 | Distribución y publicación: variantes, firma, APK y bundle, canales | ✅ Publicada |
-| 11+ | En construcción (tema a tema) | 🚧 |
+| 11 | Pruebas: estrategia, unitarias e integración, regresión, volumen, estrés, seguridad y recursos | ✅ Publicada |
 
 ## Presentaciones
 
