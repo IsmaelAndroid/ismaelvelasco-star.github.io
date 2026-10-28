@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="960" height="420" fill="#fafafa"/>
+  <text x="480" y="45" text-anchor="middle" font-size="25" font-weight="bold" fill="#37474F">El trío de las interfaces modernas</text>
+  <!-- POO -->
+  <rect x="60" y="90" width="260" height="220" rx="14" fill="#EDE7F6" stroke="#5E35B1" stroke-width="2"/>
+  <text x="190" y="130" text-anchor="middle" font-size="34">📦</text>
+  <text x="190" y="170" text-anchor="middle" font-size="20" font-weight="bold" fill="#5E35B1">OBJETOS</text>
+  <text x="190" y="200" text-anchor="middle" font-size="14" fill="#4a3d69">Entidades con atributos</text>
+  <text x="190" y="222" text-anchor="middle" font-size="14" fill="#4a3d69">y métodos (clases Kotlin)</text>
+  <text x="190" y="262" text-anchor="middle" font-size="15" font-weight="bold" fill="#5E35B1">Java · Kotlin · Python</text>
+  <!-- EVENTOS -->
+  <rect x="350" y="90" width="260" height="220" rx="14" fill="#FFEBEE" stroke="#C62828" stroke-width="2"/>
+  <text x="480" y="130" text-anchor="middle" font-size="34">👆</text>
+  <text x="480" y="170" text-anchor="middle" font-size="20" font-weight="bold" fill="#C62828">EVENTOS</text>
+  <text x="480" y="200" text-anchor="middle" font-size="14" fill="#6d3a3a">Acciones externas que</text>
+  <text x="480" y="222" text-anchor="middle" font-size="14" fill="#6d3a3a">disparan respuestas (onClick)</text>
+  <text x="480" y="262" text-anchor="middle" font-size="15" font-weight="bold" fill="#C62828">JavaScript</text>
+  <!-- COMPONENTES -->
+  <rect x="640" y="90" width="260" height="220" rx="14" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+  <text x="770" y="130" text-anchor="middle" font-size="34">🧩</text>
+  <text x="770" y="170" text-anchor="middle" font-size="20" font-weight="bold" fill="#2E7D32">COMPONENTES</text>
+  <text x="770" y="200" text-anchor="middle" font-size="14" fill="#3d5a3f">Piezas reutilizables:</text>
+  <text x="770" y="222" text-anchor="middle" font-size="14" fill="#3d5a3f">se definen una vez, se usan siempre</text>
+  <text x="770" y="262" text-anchor="middle" font-size="15" font-weight="bold" fill="#2E7D32">IDEs con paleta visual</text>
+  <!-- Flechas hacia el resultado -->
+  <line x1="190" y1="310" x2="400" y2="360" stroke="#5E35B1" stroke-width="3" marker-end="url(#m1)"/>
+  <line x1="480" y1="310" x2="480" y2="345" stroke="#C62828" stroke-width="3" marker-end="url(#m2)"/>
+  <line x1="770" y1="310" x2="560" y2="360" stroke="#2E7D32" stroke-width="3" marker-end="url(#m3)"/>
+  <rect x="330" y="355" width="300" height="50" rx="12" fill="#263238"/>
+  <text x="480" y="387" text-anchor="middle" font-size="19" font-weight="bold" fill="#fff">JETPACK COMPOSE 🚀</text>
+  <defs>
+    <marker id="m1" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5E35B1"/></marker>
+    <marker id="m2" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#C62828"/></marker>
+    <marker id="m3" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#2E7D32"/></marker>
+  </defs>
+</svg>
