@@ -111,7 +111,7 @@ Un **dispositivo móvil** es un aparato de pequeño tamaño, portable, con auton
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Antes de lanzar una aplicación a explotación se debe **probar en varios dispositivos reales o emuladores**.</span>
 
 !!! note "Aclaración"
-    Hoy hay más de 5 millones de aplicaciones repartidas entre los grandes repositorios (Play Store, App Store y otras). Las descargas anuales superaban los 40 billones en 2020 (15% juegos) y los 250 billones en 2024 (un 34% juegos): el mercado justifica el esfuerzo de conocerlo bien.
+    Hoy hay más de 5 millones de aplicaciones repartidas entre los grandes repositorios (Play Store, App Store y otras). Las descargas anuales rondaban los 218.000 millones en 2020 y superaron los 250.000 millones en 2024 (un 34% juegos): el mercado justifica el esfuerzo de conocerlo bien.
 
 <figure markdown="span">
   ![Tiendas de aplicaciones](assets/tiendas-apps.png)
@@ -125,14 +125,14 @@ Las redes de comunicaciones móviles han ido evolucionando con el tiempo. <span 
 | Generación | Época | Tecnología | Velocidad típica | Hitos |
 |------------|-------|------------|------------------|-------|
 | 0G | Años 30-40 | Onda de radio (PTT, IMTS) | Solo voz | Walkie talkies; difusión en la II Guerra Mundial |
-| 1G | 1977 | AMPS (EE. UU.), NMT (Escandinavia) | Solo voz, analógica | Primera red celular en Chicago; equipos grandes y pesados, baja seguridad |
+| 1G | 1979-1983 | AMPS (EE. UU.), NMT (Escandinavia) | Solo voz, analógica | Primera red celular comercial en Tokio (1979); en EE. UU., Chicago (1983); equipos grandes y pesados, baja seguridad |
 | 2G | Años 90 | GSM (Europa), IS-136 (EE. UU.) | Voz + datos digitales | <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Tarjeta SIM, SMS; tecnología digital</span> |
 | 2.5G/2.75G | Finales 90 | GPRS, EDGE | Navegación básica | Redes de respaldo aún vigentes |
 | 3G | 2001 (Japón) | UMTS, CDMA | <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Hasta 2 Mbps</span> | Convergencia voz/datos; navegación fluida; auge de BlackBerry |
 | 3.5G/3.75G | ~2005 | HSPA | Hasta 14 Mbps | Mejora de la 3G en velocidad |
 | 4G | 2010 | LTE, UMTS, WiMax | 60 Mbps bajada / 40 subida | Bandas 800/1800/2600 MHz; señal de televisión |
 | 4G+ | 2016 | LTE-A | 300 Mbps / 50 Mbps | Banda de 700 MHz |
-| 5G | 2017 (MWC Barcelona) | NR | <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">1-10 Gbps</span> | Antenas mejoradas; IoT, WSN, AR/VR comunicada |
+| 5G | 2019 (estándar en 2018) | NR | <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">1-10 Gbps</span> | Antenas mejoradas; IoT, WSN, AR/VR comunicada |
 | 6G | Investigación | Satélites | Hasta 100 Gbps | Cobertura global; frecuencias más elevadas |
 
 !!! example "Ejemplo"
@@ -156,7 +156,7 @@ Los sistemas operativos (OS) móviles, al igual que en los ordenadores personale
 
 #### Android
 
-<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Es el sistema operativo líder en el mercado. Fue lanzado por la Open Handset Alliance (OHA) en 2007, a través de una agrupación de 78 compañías lideradas por Google.</span> Sus capas, de abajo arriba:
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Es el sistema operativo líder en el mercado. Fue presentado en 2007 por la Open Handset Alliance (OHA), una agrupación fundada por 34 compañías lideradas por Google; el primer móvil Android salió en 2008.</span> Sus capas, de abajo arriba:
 
 1. **Kernel de Linux.**
 2. **Capa de abstracción de hardware (HAL).**
@@ -176,7 +176,7 @@ Fue desarrollado por Apple, se llamó originalmente iPhone OS y es un derivado d
 
 #### Otros sistemas operativos móviles
 
-- **Windows Phone.** Desarrollado por Microsoft y lanzado en 2010.
+- **Windows Phone.** Desarrollado por Microsoft y lanzado en 2010; sin soporte desde 2020.
 - **BlackBerry OS.**
 - **Symbian.**
 - **Firefox OS.** Desarrollado por Mozilla, con núcleo Linux y basado en HTML5, pensado en dispositivos de gama baja.
@@ -197,19 +197,19 @@ Supone emplear las herramientas y lenguajes propios de cada sistema operativo:
 | Plataforma | Lenguajes |
 |------------|-----------|
 | Android | Java, Kotlin |
-| iOS | Objective-C, Swift, Cocoa Touch |
-| Windows Phone | C# + XAML |
+| iOS | Objective-C, Swift (interfaz con UIKit/Cocoa Touch o SwiftUI) |
+| Windows Phone (descontinuado) | C# + XAML |
 
 #### Desarrollo multiplataforma
 
 Distinguimos dos tipos:
 
-- **Compilado a nativo.** <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Usa una plataforma intermedia, como **Xamarin**, que con un único lenguaje (C# sobre .NET) puede programar para varias plataformas. Las aplicaciones se compilan después en código nativo, lo que le da el mismo rendimiento que el desarrollo nativo.</span>
-- **Basado en HTML5.** <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Utilización de herramientas basadas en HTML5 que generan aplicaciones para todas las plataformas, como **PhoneGap/Cordova** o **Ionic**. No tienen el mismo rendimiento que las aplicaciones nativas.</span>
+- **Compilado a nativo.** <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Usa una plataforma intermedia que con un único lenguaje programa para varias plataformas: **Flutter** (Dart), **Kotlin Multiplatform**, **React Native** (JavaScript con componentes nativos) o **.NET MAUI** (C#, sucesor de Xamarin, que dejó de tener soporte en mayo de 2024). El resultado se ejecuta como código nativo, con un rendimiento cercano al del desarrollo nativo.</span>
+- **Basado en HTML5.** <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Utilización de herramientas basadas en HTML5 que generan aplicaciones para todas las plataformas, como **Apache Cordova** (PhoneGap, su versión de Adobe, cerró en 2020) o **Ionic** con Capacitor. No tienen el mismo rendimiento que las aplicaciones nativas.</span>
 
 #### Lenguajes y entornos destacados
 
-**Kotlin.** Fue desarrollado por JetBrains en 2016. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Dentro del desarrollo nativo Android está tomando gran fuerza por encima de Java, al ser señalado por Google como lenguaje principal. Corre sobre la máquina virtual de Java.</span> Sus ventajas: simplicidad, más seguro que Java, robusto y orientado a objetos, con acceso a gran número de librerías, sintaxis más limpia (necesita menos código) y coexistencia simultánea con Java.
+**Kotlin.** Lo desarrolla JetBrains (versión 1.0 en 2016). <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Google lo admite oficialmente en Android desde 2017 y desde 2019 es su lenguaje preferido («Kotlin-first»), por encima de Java. Corre sobre la máquina virtual de Java.</span> Sus ventajas: simplicidad, más seguro que Java, robusto y orientado a objetos, con acceso a gran número de librerías, sintaxis más limpia (necesita menos código) y coexistencia simultánea con Java.
 
 **Java.** Es el lenguaje nativo original para Android. Paralelo a Java es necesario conocer bien XML para el desarrollo de aplicaciones. Herramienta de desarrollo: Android Studio, un IDE basado en IntelliJ IDEA que se lanzó para reemplazar a Eclipse.
 
@@ -217,15 +217,19 @@ Distinguimos dos tipos:
 
 **Flutter.** SDK de Google para crear aplicaciones Android e iOS, para móvil, web y escritorio, desde una única base de código. Su lenguaje es <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**Dart**</span> y se caracteriza por el desarrollo rápido gracias a <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">**Hot Reload**: se pueden hacer cambios sin parar y arrancar la aplicación, reduciendo las esperas.</span>
 
-**Xamarin.** Entorno de desarrollo creado por Microsoft que permite crear aplicaciones Android e iOS en C#. Es gratuito y va integrado en Visual Studio. Pese a no desarrollar para Android en Java, permite crear una aplicación nativa que asegura una buena experiencia de usuario.
+**.NET MAUI.** Framework de Microsoft para crear aplicaciones Android, iOS y escritorio en C# desde una única base de código. Es el sucesor de **Xamarin**, que dejó de tener soporte en mayo de 2024. Es gratuito y va integrado en Visual Studio.
+
+**Kotlin Multiplatform.** Tecnología de JetBrains para compartir la lógica (y, con Compose Multiplatform, también la interfaz) entre Android, iOS, escritorio y web, escribiendo en el mismo Kotlin que usamos en este módulo.
+
+**React Native.** Framework de Meta: se programa en JavaScript o TypeScript con React y dibuja componentes nativos de cada plataforma.
 
 **NativeScript.** Entorno de desarrollo de código abierto para crear aplicaciones móviles Android e iOS. Lenguajes: Angular, Vue.js, TypeScript o JavaScript. Su principal ventaja es el rendimiento nativo: defines una vez y se adapta para ejecutarse en todas partes, adaptando la interfaz a dispositivos y pantallas concretos.
 
 !!! example "Ejemplo"
-    Para una app corporativa interna que deba salir ya para Android e iOS con un equipo pequeño, Flutter o Xamarin reducen a la mitad el esfuerzo. Para una app de realidad aumentada con máximo rendimiento gráfico, el camino razonable es nativo: Kotlin en Android, Swift en iOS.
+    Para una app corporativa interna que deba salir ya para Android e iOS con un equipo pequeño, Flutter o Kotlin Multiplatform reducen a la mitad el esfuerzo. Para una app de realidad aumentada con máximo rendimiento gráfico, el camino razonable es nativo: Kotlin en Android, Swift en iOS.
 
 !!! note "Aclaración"
-    Unity3D es un ejemplo de entorno **específico para videojuegos**, frente a entornos de carácter general como Android Studio. En este módulo nos centraremos en el entorno Android Studio + Kotlin.
+    Unity3D es un ejemplo de entorno **específico para videojuegos**, frente a entornos de carácter general como Android Studio. En este módulo las apps se programan con Android Studio + Kotlin; para los temas de juegos usaremos un motor específico, Godot.
 
 #### Instalación de Android Studio
 
@@ -382,6 +386,8 @@ flowchart LR
 data class Meteoro(val ciudad: String, val grados: Int, val icono: String)  // [M] dato puro
 
 class MeteoroRepository {                       // [M] única puerta de entrada
+    private val apiRest: MeteoroApi =           // [M] cliente HTTP (Retrofit, tema 3)
+        retrofit.create(MeteoroApi::class.java)
     suspend fun getMeteoro(c: String): Meteoro =
         apiRest.getMeteoro(c)                   // [M] hoy llama a red; mañana a caché
 }                                               // [M] y la View ni se entera del cambio
@@ -409,7 +415,7 @@ fun ClimaCard(vm: MeteoroViewModel) {           // [V] la pantalla
 
 > **Veredicto:** el **Model** es `Meteoro` + `MeteoroRepository` (sabe de JSON y de red, no sabe que existe `Text`). El **ViewModel** es `MeteoroViewModel` (guarda el `Meteoro?` y lo carga al nacer). La **View** es `ClimaCard` (no sabe que hay una API: solo ve un dato nullable y lo pinta cuando llega).
 
-#### Ejemplo 2 — El contador que sobrevive a reinicios (el Model guarda en disco)
+#### Ejemplo 2 — El contador que sobrevive al giro (y a reinicios cuando el Model guarda en disco)
 
 ```mermaid
 flowchart LR
@@ -424,7 +430,7 @@ flowchart LR
 ```kotlin
 // ── MODELO: el número vive aquí, no en la pantalla ─────────────
 object PrefsStore {                             // [M] la despensa: persistencia
-    private var guardado = 0                    // [M] en la vida real: SharedPreferences
+    private var guardado = 0                    // [M] simulado en memoria; en la vida real: DataStore
     fun leer(): Int = guardado                  // [M]
     fun escribir(n: Int) { guardado = n }       // [M]
 }
@@ -436,7 +442,7 @@ class ContadorViewModel : ViewModel() {         // [VM]
 
     fun incrementar() {                         // [VM] el camarero apunta el pedido
         _cuenta.value += 1                      // [VM] actualiza el estado → la pantalla se redibuja
-        PrefsStore.escribir(_cuenta.value)      // [VM] y avisa a la cocina: guarda en disco
+        PrefsStore.escribir(_cuenta.value)      // [VM] y avisa a la cocina: que lo guarde
     }
 }
 
@@ -451,7 +457,7 @@ fun Contador(vm: ContadorViewModel) {           // [V]
 }
 ```
 
-> **Veredicto:** el **Model** es `PrefsStore` (el número VIVE ahí; por eso sobrevive a reinicios). El **ViewModel** es `ContadorViewModel` (la única regla: +1, avisar a la View y pedir guarda). La **View** es `Contador` (no sabe si el número está en memoria, en disco o en Marte). Si mañana el contador se guarda en una API, solo tocas el Model: `vm.incrementar()` y el `Text` no cambian ni una letra.
+> **Veredicto:** el **Model** es `PrefsStore` (el número VIVE ahí, no en la pantalla; tal como está, en memoria, sobrevive al giro pero no a cerrar la app: para eso `PrefsStore` debe escribir en disco con DataStore, que se ve en el tema 3). El **ViewModel** es `ContadorViewModel` (la única regla: +1, avisar a la View y pedir guarda). La **View** es `Contador` (no sabe si el número está en memoria, en disco o en Marte). Si mañana el contador se guarda en una API, solo tocas el Model: `vm.incrementar()` y el `Text` no cambian ni una letra.
 
 #### Ejemplo 3 — La lista de la compra compartida: la cadena completa
 
@@ -593,7 +599,7 @@ El mapa completo de callbacks:
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`onResume` no significa "reanudar después de una pausa": significa **"la app está ahora interactiva"**.</span> Es el último en ejecutarse al arrancar.
 - **¿La app está corriendo/activa?** → cuando se ha ejecutado `onResume()` y aún no ha llegado `onPause()`.
 - **¿Cómo lo veo yo, el programador?** → con **`Log.d()` + Logcat**. Es el "printf de Android": pintas un mensaje en cada callback y los ves aparecer en la pestaña *Logcat* de Android Studio, con la app real ejecutándose. El código exacto, más abajo.
-- `onPause` = "pierdo el foco" (半 visible: un diálogo encima, va a cerrarse). `onStop` = "ya no se ve nada". No son lo mismo: en un diálogo solo llega `onPause`.
+- `onPause` = "dejo de estar en primer plano" (sigo medio visible: otra Activity translúcida encima, el modo multiventana o va a cerrarse). `onStop` = "ya no se ve nada". No son lo mismo: con una Activity translúcida encima solo llega `onPause`. Ojo: un `AlertDialog` o un `Dialog` de tu propia Activity **no** la pausa; no se llama a ningún callback.
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`onDestroy` **no está garantizado**: si el sistema mata el proceso desde `onStop`, tu app desaparece sin pasar por él. Por eso lo importante se guarda ANTES (en `onPause`/`onStop`).</span>
 
 **El mapeo estados ↔ callbacks:**
@@ -833,7 +839,7 @@ Así se controla un móvil entero desde el terminal: se pueden hacer capturas pa
 Para trabajar este contenido con criterio, conviene aplicar estas buenas prácticas:
 
 - **Probar en varios perfiles**: no basta con que funcione en tu móvil; gama baja, tablet y wearable cuentan.
-- **Elegir tecnología por requisitos**: rendimiento y sensores apuntan a nativo; tiempo de entrega multiplataforma apunta a Flutter/Xamarin/Ionic.
+- **Elegir tecnología por requisitos**: rendimiento y sensores apuntan a nativo; tiempo de entrega multiplataforma apunta a Flutter/Kotlin Multiplatform/Ionic.
 - **Diseñar para el cambio de contexto**: red, batería y orientación cambian sin avisar; la app debe reaccionar y conservar el estado.
 - **Versionar y medir**: SemVer, telemetría y rollout progresivo evitan sorpresas en las actualizaciones.
 
@@ -855,7 +861,7 @@ En este tema has aprendido que:
 - un dispositivo móvil es un ordenador de bolsillo con limitaciones de hardware, pantalla y sensores que condicionan el diseño;
 - las redes han evolucionado de la 0G analógica a la 5G/6G, multiplicando qué puede hacer una app;
 - los SO móviles se organizan por capas (kernel, middleware, gestor de aplicaciones), con Android (kernel Linux + HAL + runtime + framework) como referencia;
-- existen tecnologías nativas (Java/Kotlin, Swift) y multiplataforma (compiladas a nativo como Xamarin, o HTML5 como Ionic/PhoneGap), cada una con su equilibrio entre rendimiento y coste;
+- existen tecnologías nativas (Java/Kotlin, Swift) y multiplataforma (compiladas a nativo como Flutter, Kotlin Multiplatform o .NET MAUI, o HTML5 como Ionic/Cordova), cada una con su equilibrio entre rendimiento y coste;
 - los emuladores AVD permiten probar configuraciones, perfiles y condiciones de red sin hardware, aunque ciertos casos exigen dispositivo real;
 - un proyecto Android tiene estructura definida (manifest, java/kotlin, res, Gradle) y componentes por capas (Activity/Fragment, ViewModel, Repository, Service), unidos por la cadena MVVM: MainActivity → ViewModel → Repository → fuente de datos;
 - la app pasa por estados (activa, pausada, destruida) y Android te avisa con callbacks (`onCreate`, `onStart`, `onResume`, `onPause`, `onStop`, `onDestroy`) que se observan con `Log.d` + Logcat;

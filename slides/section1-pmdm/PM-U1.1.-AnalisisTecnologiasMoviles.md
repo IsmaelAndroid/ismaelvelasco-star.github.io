@@ -88,10 +88,10 @@ Note: Tipos: **smartphones** (ordenador de bolsillo con cámara, sensores y GPS)
 ### Un mercado enorme
 
 - Más de 5 millones de apps en las tiendas
-- 2020: más de 40 billones de descargas
-- 2024: más de 250 billones (34% juegos)
+- 2020: unos 218.000 millones de descargas
+- 2024: más de 250.000 millones (34% juegos)
 
-Note: El mercado justifica el módulo: más de 5 millones de apps entre Play Store y App Store, y las descargas se han multiplicado por seis en cuatro años. Ojo con billones españoles: un billón son un millón de millones.
+Note: El mercado justifica el módulo: más de 5 millones de apps entre Play Store y App Store, y las descargas siguen creciendo cada año. Ojo con los «billions» de las fuentes en inglés: son miles de millones, no billones (un billón español es un millón de millones).
 
 ---
 
@@ -124,7 +124,7 @@ Note: Las redes han evolucionado generación a generación. No hay que memorizar
 - 1G: primera red celular, analógica
 - 2G: digital, SMS y tarjeta SIM
 
-Note: La 0G eran ondas de radio como los walkie talkies de la II Guerra Mundial. La 1G (Chicago, 1977) fue la primera red celular: analógica, equipos enormes, poca seguridad. La 2G trajo lo digital: **SMS y tarjeta SIM**. Cada generación responde a una necesidad.
+Note: La 0G eran ondas de radio como los walkie talkies de la II Guerra Mundial. La 1G (Tokio, 1979; Chicago, 1983) fue la primera red celular: analógica, equipos enormes, poca seguridad. La 2G trajo lo digital: **SMS y tarjeta SIM**. Cada generación responde a una necesidad.
 
 
 ### De la 3G a la 5G
@@ -133,7 +133,7 @@ Note: La 0G eran ondas de radio como los walkie talkies de la II Guerra Mundial.
 - 4G: LTE, 60 Mbps, señal de TV
 - 5G: 1-10 Gbps, IoT y realidad virtual
 
-Note: La 3G (Japón, 2001) unificó voz y datos y permitió navegar fluido. La 4G (2010) llegó a 60 Mbps y trajo la señal de televisión al móvil. La 5G (presentada en Barcelona, 2017) multiplica por diez la velocidad y conecta IoT, wearables y realidad aumentada. La 6G, con satélites, está en investigación.
+Note: La 3G (Japón, 2001) unificó voz y datos y permitió navegar fluido. La 4G (2010) llegó a 60 Mbps y trajo la señal de televisión al móvil. La 5G (estándar en 2018, primeras redes comerciales en 2019) multiplica por diez la velocidad y conecta IoT, wearables y realidad aumentada. La 6G, con satélites, está en investigación.
 
 ![Red 5G](assets/red-5g.jpg) <!-- .element height="55%" -->
 
@@ -160,7 +160,7 @@ Note: Tres capas: el **kernel** accede al hardware con drivers y gestiona proces
 
 ![Arquitectura de Android](assets/arquitectura-android.png) <!-- .element height="65%" -->
 
-Note: Android es el líder del mercado. Lo lanzó la Open Handset Alliance en 2007: 78 compañías lideradas por Google. Su pila: kernel de **Linux**, capa de abstracción de hardware HAL, runtime donde **cada app ejecuta sus propios procesos**, bibliotecas C/C++, framework de API Java y apps del sistema.
+Note: Android es el líder del mercado. Lo presentó la Open Handset Alliance en 2007 (fundada por 34 compañías lideradas por Google) y el primer móvil salió en 2008. Su pila: kernel de **Linux**, capa de abstracción de hardware HAL, runtime donde **cada app ejecuta sus propios procesos**, bibliotecas C/C++, framework de API Java y apps del sistema.
 
 
 ### iOS y otros
@@ -195,18 +195,18 @@ Note: **Nativo** usa las herramientas propias de cada SO: máximo rendimiento y 
 
 - Android: Java y Kotlin
 - iOS: Objective-C y Swift
-- Windows Phone: C# con XAML
+- Windows Phone (descontinuado): C# con XAML
 
-Note: El mapa nativo: en Android **Java y Kotlin**; en iOS **Objective-C y Swift** con Cocoa Touch; en Windows Phone C# con XAML. Kotlin es el lenguaje que Google señala como principal para Android y el que usaremos en este módulo.
+Note: El mapa nativo: en Android **Java y Kotlin**; en iOS **Objective-C y Swift**, con los frameworks de interfaz Cocoa Touch (UIKit) o SwiftUI; Windows Phone (C# con XAML) ya no tiene soporte. Kotlin es el lenguaje preferido de Google para Android desde 2019 y el que usaremos en este módulo.
 
 
 ### Multiplataforma: dos caminos
 
-- Compilado a nativo: Xamarin, C# y .NET
-- Basado en HTML5: PhoneGap, Cordova, Ionic
+- Compilado a nativo: Flutter, Kotlin Multiplatform, React Native, .NET MAUI
+- Basado en HTML5: Cordova, Ionic
 - Flutter: Dart y Hot Reload
 
-Note: Dos familias multiplataforma: la **compilada a nativo** como Xamarin (C# sobre .NET, rendimiento nativo tras compilar) y la **basada en HTML5** como PhoneGap/Cordova o Ionic (una web empaquetada, menor rendimiento). Y **Flutter** de Google, con el lenguaje Dart y su **Hot Reload** que permite ver cambios sin reiniciar la app.
+Note: Dos familias multiplataforma: la **compilada a nativo** como Flutter, Kotlin Multiplatform, React Native o .NET MAUI (C# sobre .NET, sucesor de Xamarin, que dejó de tener soporte en mayo de 2024), con rendimiento cercano al nativo; y la **basada en HTML5** como Cordova o Ionic (una web empaquetada, menor rendimiento; PhoneGap cerró en 2020). **Flutter** de Google usa el lenguaje Dart y su **Hot Reload** permite ver cambios sin reiniciar la app.
 
 ---
 

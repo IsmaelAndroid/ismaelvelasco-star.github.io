@@ -24,7 +24,7 @@ Kotlin es el lenguaje recomendado por Google para Android. En este tema aprendes
 
 ## 0. Por qué Kotlin y no seguir en Java
 
-Kotlin es un lenguaje **de propósito general, multiplataforma, tipado estáticamente y compilado** (a bytecode JVM). Desde 2017 es el lenguaje *preferred* de Google para Android y hoy el desarrollo nativo Android se escribe en Kotlin.
+Kotlin es un lenguaje **de propósito general, multiplataforma, tipado estáticamente y compilado** (a bytecode JVM). Google lo admite oficialmente en Android desde 2017 y desde 2019 es su lenguaje preferido («Kotlin-first») y hoy el desarrollo nativo Android se escribe en Kotlin.
 
 Comparad el mismo "hola mundo" en los dos lenguajes:
 

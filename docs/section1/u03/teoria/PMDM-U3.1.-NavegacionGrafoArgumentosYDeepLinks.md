@@ -217,7 +217,7 @@ Desde Navigation 2.8 puedes declarar las rutas como **clases serializables** en 
 | Navegar sin `NavHost` montado | `IllegalStateException`: no hay grafo | el `NavHost` debe envolver a la pantalla que navega |
 | Ruta mal escrita (`detalle/abc`) | la navegación no encuentra destino | tipo del argumento + ruta exacta |
 | Leer el argumento sin `?` | `NullPointerException` al abrir por deep link | `?: valorPorDefecto` |
-| `popBackStack()` en la raíz | no hace nada (no hay a dónde volver) | comprobar `previousBackStackEntry` |
+| `popBackStack()` en la raíz | desapila la pantalla inicial y el `NavHost` se queda en blanco | comprobar antes `previousBackStackEntry != null` (o dejar que el botón Atrás cierre la app) |
 | Deep link sin `navDeepLink` | Android abre la app pero se queda en inicio | declararlo en el grafo, no solo en el Manifest |
 
 ## 8. Resumen y qué entra en la práctica

@@ -133,8 +133,8 @@ ffmpeg -i audio.wav -b:a 192k audio.mp3
 # audio: WAV a OGG (Vorbis) con calidad 5
 ffmpeg -i audio.wav -q:a 5 audio.ogg
 
-# vídeo: MP4 a WebM con VP9
-ffmpeg -i video.mp4 -c:v libvpx-vp9 -b:v 500k -c:a libopus video.webm
+# vídeo: MP4 a WebM con VP9, con los ajustes rápidos que dieron el fichero de la tabla
+ffmpeg -i video.mp4 -c:v libvpx-vp9 -deadline realtime -cpu-used 5 -c:a libopus video.webm
 ```
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`-q:v` controla la calidad en imagen y vídeo; `-b:a` fija el bitrate de audio. Sin esos parámetros, `ffmpeg` usa sus valores por defecto y el resultado puede sorprender.</span>

@@ -142,7 +142,7 @@ Con 6 contactos da igual todo. Con 6.000, una `Column` con `verticalScroll` se m
 
 Detalles de producción, no de juguete:
 
-- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`key = { it.telefono }` identifica cada fila entre recomposiciones: sin clave, al borrar una fila el sistema "descoloca" los estados internos (switches que cambian de dueño) y el scroll se vuelve loco</span>. Es el error más caro de esta pantalla.
+- <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`key = { it.telefono }` identifica cada fila entre recomposiciones: sin clave, al borrar una fila el sistema "descoloca" los estados internos (switches que cambian de dueño) y el scroll se vuelve loco</span>. Es el error más caro de esta pantalla. Ojo: la clave tiene que ser **única**; si dos contactos comparten teléfono, la app se cierra con `IllegalArgumentException`. En una app real se usa un `id` propio del contacto.
 - `contentPadding` (dentro de Lazy) ≠ `padding` (fuera): el primero deja aire **dentro del área scroll**, el segundo recorta el sitio donde puede pintar. Con `PaddingValues(12.dp)` la última tarjeta no se pega al FAB.
 - La tarjeta entera es `clickable` (abre la ficha → 2.2) **y encima** hay switches/botones: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">un hijo clicable consume el evento antes que el padre — por eso el Switch hace su `onCheckedChange` sin abrir la ficha de rebote</span>.
 
@@ -154,7 +154,7 @@ Detalles de producción, no de juguete:
 
 ![Formulario de alta con nombre tecleado, teléfono corto marcado en rojo y botón Guardar deshabilitado](assets/capturas-codigo4-formulario.png)
 
-*Figura 4. Alta con <code>adjustResize</code>: el teclado sube, el formulario se recoloca y el botón sigue alcanzable. El teléfono corto se marca en rojo y el botón, apagado.*
+*Figura 4. Alta con el teclado abierto: el teclado sube, el formulario se recoloca y el botón sigue alcanzable. El teléfono corto se marca en rojo y el botón, apagado.*
 
 === "Código 3 — El formulario de alta (función completa)"
 
@@ -199,7 +199,7 @@ Decisiones de diseño con nombre y apellidos:
 
 - <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`isError` en el campo + `enabled` en el botón es la pareja canónica de validación: el campo informa, el botón decide. Nunca un `Toast` que grita cuando alguien pulsa "Guardar" a medias</span>.
 - La validación es **de una frase** (9 dígitos): a partir de ahí, dominio (DNI, email oficial) se trata en su módulo, no aquí.
-- El `Manifest` declara `android:windowSoftInputMode="adjustResize"`: eso, y no un parche de Compose, <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">es lo que hace que el teclado no tape el botón. Es configuración de la Activity — territorio PMDM, no de DI</span>.
+- Para que el teclado no tape el botón, <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">la Activity se dibuja de borde a borde (`enableEdgeToEdge()`, obligatorio desde Android 15) y el formulario reserva el hueco del teclado con `Modifier.imePadding()`. Es una decisión de cómo se configura la ventana de la Activity — territorio PMDM, no de DI</span>. El antiguo `android:windowSoftInputMode="adjustResize"` del Manifest ya no basta con edge-to-edge.
 
 ## 4. Lo que este tema NO es de Desarrollo de Interfaces
 
@@ -230,7 +230,7 @@ Para que nadie (ni el tribunal) se confunda:
 
 > **[!] Pregunta 4** — Sin `verticalScroll` en el formulario, con teclado abierto el botón queda inalcanzable. ¿Dos arreglos y cuál es el de producción?
 >> [!answer]
->> `verticalScroll(rememberScrollState())` en la Column y `windowSoftInputMode="adjustResize"` en el Manifest (o `enableEdgeToEdge` + insets modernos). El de producción es el Manifest: lo resuelve el sistema para todas las pantallas, no parche a parche.
+>> `verticalScroll(rememberScrollState())` en la Column y `Modifier.imePadding()` con la Activity en `enableEdgeToEdge()`. El de producción es el segundo: desde Android 15 todas las apps se dibujan de borde a borde y `adjustResize` en el Manifest ya no basta.
 
 ---
 **Cumplimiento**: este apartado trabaja los criterios RA2.a (estructura de clases de la aplicación), RA2.b (clases que modelan ventanas, menús, alertas y controles) y RA2.g (pruebas de interacción usuario-aplicación en emulador) del RD 405/2023 — el resto de RA2 se cierra con la práctica del mini-proyecto y el tema 3.

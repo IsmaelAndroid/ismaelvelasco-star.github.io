@@ -90,6 +90,7 @@ Note: Que expliquen ellos lo que muestra la pantalla antes de que lo expliques t
 Note: Ejercicio de escala: 6 contactos no prueban nada. Preguntar qué pasaría con 6.000 filas en una Column con scroll hasta la respuesta: 6.000 composiciones.
 
 - key = { it.telefono } identifica cada fila entre recomposiciones: sin clave, al borrar una fila el sistema "descoloca" los estados internos (switch…
+- la clave debe ser ÚNICA: dos contactos con el mismo teléfono cierran la app; en una app real, un id propio
 - un hijo clicable consume el evento antes que el padre — por eso el Switch hace su onCheckedChange sin abrir la ficha de rebote
 
 
@@ -217,7 +218,7 @@ Note: Que expliquen ellos lo que muestra la pantalla antes de que lo expliques t
 
 ## 4. Lo que este tema NO es de Desarrollo de Interfaces
 
-Note: isError+enabled como pareja canónica. Repasar adjustResize del Manifest: es configuración de la Activity, territorio PMDM.
+Note: isError+enabled como pareja canónica. Repasar el teclado: enableEdgeToEdge() + Modifier.imePadding() (desde Android 15 adjustResize ya no basta); es configuración de la ventana de la Activity, territorio PMDM.
 
 - | Pregunta | Territorio DI | Territorio PMDM (este tema) | |---|---|---| | ¿Dónde encaja un Button en una Row? | ✔ DI | — | | ¿Qué pasa en el proceso…
 

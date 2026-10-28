@@ -127,7 +127,7 @@ Como en Compose solo escribes `onCreate` (dentro de `setContent`), para **observ
     }
     ```
 
-Practica con esto hasta que lo sientas: abre Ajustes, vuelve, gira el emulador. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`onPause` salta SIEMPRE que pierdes la interacción (diálogo, notificación desplegada); `onStop` solo si dejas de ser visible</span>. Y recuerda que `onDestroy` no es una promesa: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Android puede matar tu proceso sin avisar desde `onStop`; todo lo guardable se guarda ANTES de que te pregunten</span>.
+Practica con esto hasta que lo sientas: abre Ajustes, vuelve, gira el emulador. <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`onPause` salta cuando dejas de estar en primer plano pero sigues visible (otra Activity translúcida encima, modo multiventana); `onStop` solo si dejas de ser visible</span>. Ojo: un `AlertDialog` o un `Dialog` de tu propia Activity **no** la pausa. Y recuerda que `onDestroy` no es una promesa: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Android puede matar tu proceso sin avisar desde `onStop`; todo lo guardable se guarda ANTES de que te pregunten</span>.
 
 ## 3. Sobrevivir a la rotación: `remember` no es suficiente
 
@@ -202,7 +202,10 @@ La rotación (o que te coman la memoria) dispara **destrucción + creación comp
     }
     ```
 
-Reglas de oro del estado: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">el Bundle es para el estado de la INTERFAZ (scroll, texto a medio teclear, un contador) y tiene límite de tamaño (~512 KB en la transacción IPC); los datos de verdad van a disco o a una capa de datos (Room en el tema 3, ViewModel cuando llegue arquitectura)</span>. Si alguien te dice "lo guardo todo en el Bundle", pregúntale por una foto de 3 MB.
+Reglas de oro del estado: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">el Bundle es para el estado de la INTERFAZ (scroll, texto a medio teclear, un contador) y tiene límite de tamaño (el búfer de la transacción IPC es de 1 MB compartido por todo el proceso; Android recomienda no pasar de unos 50 KB); los datos de verdad van a disco (Room, en el tema 3)</span>. Si alguien te dice "lo guardo todo en el Bundle", pregúntale por una foto de 3 MB.
+
+!!! tip "En Compose: `rememberSaveable` y ViewModel"
+    No hace falta escribir `onSaveInstanceState` a mano para cada valor: `rememberSaveable { mutableStateOf(0) }` guarda el valor en ese mismo Bundle y lo recupera tras el giro (y tras la muerte del proceso). Para el estado de una pantalla completa se usa un **ViewModel** (tema 3), que sobrevive al giro sin pasar por el Bundle, pero **no** a que el sistema mate el proceso.
 
 ## 4. Intents: el correo postal de Android
 
@@ -368,7 +371,10 @@ Hasta aquí nosotros llamábamos. Un `<intent-filter>` es **publicarse en las p�
     }
     ```
 
-Tres verdades del filtro: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">un filtro coincide si la action, las categories y el data del intent encajan TODOS; la categoría DEFAULT es obligatoria en filtros que no sean MAIN/LAUNCHER (sin ella tu app aparece en la lista pero nadie puede lanzarla); y dos apps con el mismo filtro pelean con un chooser — por eso tu dominio (o App Links verificados, tema 4) es tu territorio</span>.
+Tres verdades del filtro: <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">un filtro coincide si la action, las categories y el data del intent encajan TODOS; la categoría DEFAULT es obligatoria en filtros que no sean MAIN/LAUNCHER (sin ella tu app aparece en la lista pero nadie puede lanzarla); y dos apps con el mismo filtro pelean con un chooser — por eso tu dominio (o App Links verificados) es tu territorio</span>.
+
+!!! warning "Enlaces `https` desde Android 12"
+    Desde Android 12, un enlace web `https://` solo abre tu app si es un **App Link verificado**: el filtro lleva `android:autoVerify="true"` y el dominio publica el fichero `/.well-known/assetlinks.json` con la huella de tu app. Si no, el enlace se abre en el navegador. Para practicar sin dominio propio, usa un esquema propio (`fumeto://ficha/nerea`), como haremos en el tema 3, o pruébalo con `adb shell am start -a android.intent.action.VIEW -d "https://fumeto.dev/ficha/nerea"`.
 
 ## 8. PendingIntent: un intent con reserva
 
@@ -410,17 +416,17 @@ A veces quien dispara el intent **no eres tú**: es el sistema, minutos después
 
 *Figura 13. El destino del PendingIntent: MainActivity con la extra escena=6. La notificación fue el mensajero; el intent lo ejecutó el sistema.*
 
-<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Desde Android 12 los PendingIntent son `FLAG_IMMUTABLE` por defecto obligatorio: sin esa flag el emisor pierde el derecho de decir quién puede modificar el intent, y un receptor malicioso podría reescribirlo</span>. Y desde Android 13, notificar exige el permiso runtime `POST_NOTIFICATIONS` — lo pediremos de verdad cuando montemos notificaciones de verdad (práctica 2.3).
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Desde Android 12 es obligatorio declarar la mutabilidad de cada PendingIntent (`FLAG_IMMUTABLE` o `FLAG_MUTABLE`; si no, se lanza una excepción), y la opción segura por defecto es `FLAG_IMMUTABLE`: con ella nadie que reciba el PendingIntent puede reescribir el intent</span>. Y desde Android 13, notificar exige el permiso runtime `POST_NOTIFICATIONS` — lo pediremos de verdad cuando montemos notificaciones de verdad (práctica 2.3).
 
 ## 9. Autoevaluación
 
-> **[!] Pregunta 1** — Ordena las estaciones que se saltan al abrir un diálogo transparente encima de tu Activity.
+> **[!] Pregunta 1** — Ordena las estaciones que se saltan al abrir otra Activity translúcida (con tema de diálogo) encima de la tuya. ¿Y si lo que abres es un `AlertDialog` de tu propia Activity?
 >> [!answer]
->> Solo `onPause` (sigues visible → no hay `onStop`). Al cerrarse el diálogo: directo `onResume`.
+>> Con la Activity translúcida: solo `onPause` (sigues visible → no hay `onStop`); al cerrarla, directo `onResume`. Con un `AlertDialog` propio: ninguno, porque tu Activity sigue en primer plano.
 
 > **[!] Pregunta 2** — Rotas con 400 KB de texto en el Bundle y una foto de 4 MB en otra extra. ¿Qué revienta y por qué?
 >> [!answer]
->> La foto: el Bundle viaja por una transacción IPC (~512 KB de tope) → `TransactionTooLargeException` (o la app muere). El texto de 400 KB pasa justito: el Bundle es para estado de UI, no para datos.
+>> La foto: el Bundle viaja por una transacción IPC (búfer de 1 MB compartido por todo el proceso) → `TransactionTooLargeException` (o la app muere). Y los 400 KB de texto tampoco son buena idea: Android recomienda no pasar de unos 50 KB. El Bundle es para estado de UI, no para datos.
 
 > **[!] Pregunta 3** — ¿Qué dos cosas le faltan a este filtro para que tu app aparezca como opción del navegador? `<intent-filter><action android:name="android.intent.action.VIEW"/><data android:scheme="https"/></intent-filter>`
 >> [!answer]

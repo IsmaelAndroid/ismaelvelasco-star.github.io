@@ -79,7 +79,7 @@ Note: La arquitectura es la misma; cambian los nodos y aparece la cámara en pro
 | Cuerpo físico | `RigidBody2D` | `RigidBody3D` |
 | Lo que se ve | `Sprite2D` / `Polygon2D` | `MeshInstance3D` |
 | Cámara | `Camera2D` | `Camera3D` |
-| Luz | (no hay) | `DirectionalLight3D`, `OmniLight3D` |
+| Luz | opcional (`PointLight2D`) | `DirectionalLight3D`, `OmniLight3D` |
 
 - En 3D aparece lo que en 2D no existe: **materiales, luces y sombras**
 
@@ -183,7 +183,7 @@ Note: Ocho pasos en orden. El error típico es saltarse el paso 2 (importar) y l
 
 ## 4.4 · Leer un error de verdad
 
-Note: Un error se lee de abajo arriba: la última línea dice qué pasó y la ruta dice dónde. El número de línea es la pista más valiosa. Se practica con errores provocados a propósito.
+Note: Un error se lee entero, buscando el primero: los de debajo suelen ser consecuencias. Aquí la causa es que sonido.wav no se puede cargar; por eso la escena falla en su línea 77. El número de línea es la pista más valiosa. Se practica con errores provocados a propósito.
 
 ```text
 ERROR: No loader found for resource: res://sonido.wav (expected type: AudioStream)
@@ -191,7 +191,7 @@ ERROR: No loader found for resource: res://sonido.wav (expected type: AudioStrea
 ERROR: res://juego2d.tscn:77 - Parse Error: [ext_resource] referenced non-existent resource
 ```
 
-- Se lee **de abajo arriba**: el último error suele ser la causa
+- El **primer** error suele ser la causa (sonido.wav no carga); los siguientes, sus consecuencias
 - `res://juego2d.tscn:77` = fichero y **línea** exacta
 - "non-existent resource" = el recurso no está importado o la ruta está mal
 

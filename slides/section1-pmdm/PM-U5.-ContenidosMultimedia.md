@@ -83,8 +83,8 @@ Note: ffprobe dice qué hay dentro; ffmpeg convierte. Son las dos herramientas d
 # ver qué hay dentro de un fichero (contenedor, códecs, tamaño)
 ffprobe -v error -show_entries stream=codec_name,width,height -of default video.mp4
 
-# convertir a WebM con VP9 y Opus
-ffmpeg -i video.mp4 -c:v libvpx-vp9 -c:a libopus video.webm
+# convertir a WebM con VP9 y Opus (ajustes rápidos, como en la tabla)
+ffmpeg -i video.mp4 -c:v libvpx-vp9 -deadline realtime -cpu-used 5 -c:a libopus video.webm
 
 # recortar los primeros 0,15 s de un audio
 ffmpeg -i audio.wav -t 0.15 sonido.wav

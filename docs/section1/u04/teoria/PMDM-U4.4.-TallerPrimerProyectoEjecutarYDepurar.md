@@ -26,9 +26,9 @@ weight: 4
 ## 2. Los ocho pasos
 
 1. **Descarga** Godot 4.7.2 y descomprime el `.zip` (no hay instalador).
-2. Abre el ejecutable y pulsa **Importar**.
-3. Crea una carpeta nueva con el nombre de tu proyecto y entra en ella.
-4. Elige **Crear carpeta** y ponle nombre; el motor generará `project.godot`.
+2. Abre el ejecutable y, en el gestor de proyectos, pulsa **Crear** (nuevo proyecto). **Importar** es solo para abrir un proyecto que ya existe, como el `IsmaelArcade` del aula.
+3. Ponle nombre al proyecto y elige una carpeta vacía (o pulsa **Crear carpeta**).
+4. Elige el renderizador **Compatibilidad** y pulsa **Crear y editar**; el motor generará `project.godot`.
 5. En el panel **Escena**, botón **+** → busca `Node2D` → **Crear**.
 6. Añade los hijos con el botón **+** sobre el nodo raíz: `ColorRect` (fondo), `CharacterBody2D` (jugador), `Camera2D`, `CanvasLayer` con `Label` (HUD).
 7. Selecciona el nodo del jugador y pulsa el icono de **script** → crea `jugador.gd`.

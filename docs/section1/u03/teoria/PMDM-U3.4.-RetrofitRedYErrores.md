@@ -163,6 +163,9 @@ Una pantalla que llama a un servidor tiene **tres estados**: cargando, error y d
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">Un error de red no es una excepción que se ignora: es un estado más de la pantalla. Se muestra, se explica y se permite reintentar.</span>
 
+!!! warning "`catch (e: Exception)` dentro de una corrutina"
+    `catch (e: Exception)` también atrapa la `CancellationException` con la que se cancela la corrutina (por ejemplo, al salir de la pantalla), y la corrutina sigue como si nada. En código de producción se relanza: `catch (e: CancellationException) { throw e }` antes del `catch` general, o se capturan solo las excepciones de red (`IOException`, `HttpException`).
+
 ## 6. Los fallos reales (los que me pasaron a mí)
 
 | Síntoma | Causa | Solución |
@@ -174,7 +177,7 @@ Una pantalla que llama a un servidor tiene **tres estados**: cargando, error y d
 | `SocketTimeoutException` | el servidor no responde | timeouts y reintento |
 | La app se cierra al pedir | excepción no capturada | `try/catch/finally` alrededor de la llamada |
 
-<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`finally {{ cargando = false }}` no es opcional: si la petición falla y no lo pones, la rueda de carga se queda girando para siempre y el usuario cree que la app está colgada.</span>
+<span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`finally { cargando = false }` no es opcional: si la petición falla y no lo pones, la rueda de carga se queda girando para siempre y el usuario cree que la app está colgada.</span>
 
 ## 7. Errores típicos de examen
 

@@ -21,12 +21,12 @@ Seguimos con **IsmaelAgenda**: la pantalla «nueva ficha» que añade contactos 
 
 ## 1. El problema: el estado dentro de la pantalla se muere
 
-| Dónde guardas el estado | Sobrevive a recomponer | Sobrevive a girar el móvil | Sobrevive a volver del fondo |
-|---|---|---|---|
-| Variable normal de la función | ❌ | ❌ | ❌ |
-| `remember { mutableStateOf(...) }` | ✅ | ❌ | ❌ |
-| `rememberSaveable` | ✅ | ✅ | ✅ (solo tipos simples) |
-| **`ViewModel` + `StateFlow`** | ✅ | ✅ | ✅ (hasta que el sistema mata el proceso) |
+| Dónde guardas el estado | Sobrevive a recomponer | Sobrevive a girar el móvil | Sobrevive a volver del fondo | Sobrevive a que el sistema mate el proceso |
+|---|---|---|---|---|
+| Variable normal de la función | ❌ | ❌ | ❌ | ❌ |
+| `remember { mutableStateOf(...) }` | ✅ | ❌ | ✅ | ❌ |
+| `rememberSaveable` | ✅ | ✅ | ✅ | ✅ (solo tipos que caben en un Bundle) |
+| **`ViewModel` + `StateFlow`** | ✅ | ✅ | ✅ | ❌ (salvo con `SavedStateHandle`) |
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">`remember` sobrevive a una recomposición, NO a un cambio de configuración: al girar el móvil la Activity se destruye y se vuelve a crear. El ViewModel se conserva entre esas dos.</span>
 

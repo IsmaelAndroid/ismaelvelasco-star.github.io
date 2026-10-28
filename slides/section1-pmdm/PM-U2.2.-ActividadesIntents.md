@@ -59,7 +59,7 @@ Note: Aviso de la primera línea: exported=true/false es seguridad, no decoraci�
 Note: La pregunta fija del examen. Que un alumno pase a la pizarra las siete estaciones; el resto corrige. Hacer hincapié en que onDestroy no está garantizado.
 
 - y pregunta fija de examen — es:
-- onPause salta SIEMPRE que pierdes la interacción (diálogo, notificación desplegada); onStop solo si dejas de ser visible
+- onPause salta cuando dejas el primer plano pero sigues visible (Activity translúcida encima, multiventana); onStop solo si dejas de ser visible. Un AlertDialog propio NO pausa
 - Android puede matar tu proceso sin avisar desde onStop; todo lo guardable se guarda ANTES de que te pregunten
 
 
@@ -111,9 +111,10 @@ Note: Repásalo con los alumnos: que expliquen ellos lo que muestra la pantalla 
 
 ## 3. Sobrevivir a la rotación: `remember` no es suficiente
 
-Note: La sorpresa de la clase: girar y ver que remember NO salva la rotación. Pedir hipótesis ANTES de girar. La cifra del tope del Bundle (~512 KB) se queda grabada con el ejemplo de la foto de 3 MB.
+Note: La sorpresa de la clase: girar y ver que remember NO salva la rotación. Pedir hipótesis ANTES de girar. El tope del Bundle (1 MB compartido; recomendado < 50 KB) se queda grabado con el ejemplo de la foto de 3 MB. En Compose la solución directa es rememberSaveable (usa ese Bundle) o un ViewModel (tema 3).
 
-- el Bundle es para el estado de la INTERFAZ (scroll, texto a medio teclear, un contador) y tiene límite de tamaño (~512 KB en la transacción IPC); l…
+- el Bundle es para el estado de la INTERFAZ (scroll, texto a medio teclear, un contador) y tiene límite (1 MB compartido; recomendado < 50 KB); los datos van a disco
+- en Compose: rememberSaveable guarda en el Bundle sin escribir onSaveInstanceState; el ViewModel sobrevive al giro, pero no a que maten el proceso
 
 
 ### Código 3 - Dos contadores, el mismo destino (escena `--ei escena 3`)
@@ -135,7 +136,7 @@ Note: La sorpresa de la clase: girar y ver que remember NO salva la rotación. P
 ```
 
 
-Note: La sorpresa de la clase: girar y ver que remember NO salva la rotación. Pedir hipótesis ANTES de girar. La cifra del tope del Bundle (~512 KB) se queda grabada con el ejemplo de la foto de 3 MB.
+Note: La sorpresa de la clase: girar y ver que remember NO salva la rotación. Pedir hipótesis ANTES de girar. El tope del Bundle (1 MB compartido; recomendado < 50 KB) se queda grabado con el ejemplo de la foto de 3 MB.
 
 ### Código 4 - El Bundle que sube al ático (Activity dedicada, escena `--ei escena 4`)
 
@@ -343,6 +344,7 @@ Note: Repásalo con los alumnos: que expliquen ellos lo que muestra la pantalla 
 Note: El filtro como páginas amarillas: dos apps con el mismo dominio pelean en chooser. Mencionar que el QR del bar dispara exactamente este mecanismo.
 
 - un filtro coincide si la action, las categories y el data del intent encajan TODOS; la categoría DEFAULT es obligatoria en filtros que no sean MAIN…
+- desde Android 12 un enlace https solo abre la app si es App Link verificado (autoVerify + assetlinks.json); si no, se abre el navegador. Sin dominio: esquema propio o adb
 
 
 ### Código 9 - Recibir una URL y interpretarla
@@ -382,7 +384,7 @@ Note: El filtro como páginas amarillas: dos apps con el mismo dominio pelean en
 
 Note: PendingIntent = "testigo en una carrera de relevos". La flag IMMUTABLE se justifica con un ejemplo: un receptor que reescriba el intent de otro.
 
-- Desde Android 12 los PendingIntent son FLAG_IMMUTABLE por defecto obligatorio: sin esa flag el emisor pierde el derecho de decir quién puede modifi…
+- Desde Android 12 hay que declarar FLAG_IMMUTABLE o FLAG_MUTABLE en cada PendingIntent; FLAG_IMMUTABLE es la opción segura: nadie puede reescribir el intent
 
 
 ### Código 10 - Notificación con testigo (escena `--ei escena 5`)
@@ -436,6 +438,6 @@ Note: Repásalo con los alumnos: que expliquen ellos lo que muestra la pantalla 
 
 Note: Cierre: que cada alumno escriba en 3 líneas qué haría Pause y qué Stop al abrir WhatsApp un vídeo de YouTube. Recoger y corregir dos en voz alta.
 
-- > [!] Pregunta 1 — Ordena las estaciones que se saltan al abrir un diálogo transparente encima de tu Activity. >> [!answer] >> Solo onPause (sigues…
-- > [!] Pregunta 2 — Rotas con 400 KB de texto en el Bundle y una foto de 4 MB en otra extra. ¿Qué revienta y por qué? >> [!answer] >> La foto: el…
+- > [!] Pregunta 1 — ¿Qué callbacks saltan al abrir una Activity translúcida encima de la tuya? ¿Y con un AlertDialog propio? >> [!answer] >> Solo onPause; con el AlertDialog, ninguno
+- > [!] Pregunta 2 — Rotas con 400 KB de texto en el Bundle y una foto de 4 MB en otra extra. ¿Qué revienta y por qué? >> [!answer] >> La foto (1 MB de búfer compartido); y 400 KB ya es demasiado (recomendado < 50 KB)
 - > [!] Pregunta 3 — ¿Qué dos cosas le faltan a este filtro para que tu app aparezca como opción del navegador? >> [!answer] >> Las categorías DEFAULT…

@@ -80,7 +80,7 @@ La arquitectura es la misma (bucle + escena + nodos). Lo que cambia es el **tipo
 | Posición | `Vector2(x, y)` | `Vector3(x, y, z)` |
 | Lo que se dibuja | `Sprite2D`, `ColorRect`, `Polygon2D` | `MeshInstance3D` con una malla |
 | Cámara | `Camera2D` | `Camera3D` |
-| Luz | no hay luces: todo es color plano | `DirectionalLight3D`, `OmniLight3D` |
+| Luz | opcional: sin luces todo es color plano; existen `PointLight2D` y `DirectionalLight2D` | `DirectionalLight3D`, `OmniLight3D` |
 | Colisión | `CollisionShape2D` | `CollisionShape3D` |
 
 <span style="background-color:#a5d6a7;padding:0 3px;border-radius:3px;">En 2D la profundidad se finge con el orden de dibujo (lo último se pinta encima). En 3D la profundidad es real: la cámara y la luz deciden qué se ve y qué queda detrás.</span>

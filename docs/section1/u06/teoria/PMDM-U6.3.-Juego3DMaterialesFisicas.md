@@ -182,7 +182,7 @@ func _ready() -> void:
 
 | Prueba | Cómo | Resultado esperado |
 |---|---|---|
-| Caída | arrancar la escena | la caja baja de 3,2 m a ~0,5 m |
+| Caída | arrancar la escena | la caja baja de 3,2 m a ~0,7 m (0,69 m medido: su centro queda medio metro por encima del suelo) |
 | Reposo | esperar 2 s | la caja queda quieta sobre el suelo |
 | Cámara | mirar la escena | se ve la caja y el suelo, sin atravesarlos |
 | Luz | desactivar la luz | todo negro (confirma que la luz ilumina) |

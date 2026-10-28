@@ -22,7 +22,7 @@ La escena 9 de `IsmaelAgenda` reproduce un vídeo, reproduce un MP3 sin imagen y
 | | `MediaPlayer` (antiguo) | `ExoPlayer` (Media3) |
 |---|---|---|
 | Formatos | los del sistema | muchos más, extensible |
-| Estados | pocos y rígidos | `idle`, `buffering`, `ready`, `ended` |
+| Estados | muchos y rígidos (idle, initialized, prepared, started, paused, stopped, completed, error, end): llamar a un método en el estado equivocado da error | solo cuatro: `idle`, `buffering`, `ready`, `ended` |
 | Errores | un `what/extra` numérico | `PlaybackException` con código y mensaje |
 | Listas de reproducción | no | sí |
 | Uso hoy | legacy | **recomendado** |
@@ -59,11 +59,17 @@ p.addListener(object : Player.Listener {
 ## 3. Ciclo de vida: crear y liberar
 
 ```kotlin
+var reproductor by remember { mutableStateOf<ExoPlayer?>(null) }  // lo usan los botones
+
 DisposableEffect(Unit) {
     val p = ExoPlayer.Builder(contexto).build()                 // se crea
     p.setMediaItem(MediaItem.fromUri("asset:///video_demo.mp4")) // fuente dentro de assets
     p.prepare()                                                 // empieza a preparar
-    onDispose { p.release() }                                 // se libera al salir
+    reproductor = p                                             // ya lo pueden usar los botones
+    onDispose {
+        p.release()                                             // se libera al salir
+        reproductor = null
+    }
 }
 ```
 
