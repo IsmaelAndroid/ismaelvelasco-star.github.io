@@ -28,7 +28,8 @@ Este curso el módulo se imparte íntegramente con **Kotlin y Jetpack Compose**,
 | 7 | Interfaces naturales (voz, sensores, ML Kit y realidad aumentada) | ✅ Publicada |
 | 8 | Informes: filtros, totales, gráficos y exportación a PDF y CSV | ✅ Publicada |
 | 9 | Documentación y ayudas: ayuda contextual, esquema de datos y manual generado | ✅ Publicada |
-| 10+ | En construcción (tema a tema) | 🚧 |
+| 10 | Distribución y publicación: variantes, firma, APK y bundle, canales | ✅ Publicada |
+| 11+ | En construcción (tema a tema) | 🚧 |
 
 ## Presentaciones
 
