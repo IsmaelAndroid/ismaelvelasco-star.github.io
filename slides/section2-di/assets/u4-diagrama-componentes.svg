@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" font-family="Segoe UI, Arial, sans-serif" font-size="15">
+  <rect width="900" height="430" fill="#ffffff"/>
+  <text x="450" y="30" text-anchor="middle" font-size="19" font-weight="bold" fill="#1a237e">Un componente, tres pantallas</text>
+
+  <!-- Modulo :ui -->
+  <rect x="330" y="60" width="240" height="120" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+  <text x="450" y="86" text-anchor="middle" font-weight="bold" fill="#1b5e20">Modulo :ui  (kit)</text>
+  <text x="450" y="112" text-anchor="middle" fill="#1b5e20">BadgeEstado  ·  SelectorMes</text>
+  <text x="450" y="136" text-anchor="middle" fill="#1b5e20">LienzoFiguras  ·  Estado</text>
+  <text x="450" y="162" text-anchor="middle" font-size="13" fill="#1b5e20">se compila una sola vez</text>
+
+  <!-- Flechas -->
+  <path d="M330 120 C240 120 220 240 190 240" fill="none" stroke="#9e9e9e" stroke-width="2" marker-end="url(#f)"/>
+  <path d="M450 180 C450 210 450 220 450 245" fill="none" stroke="#9e9e9e" stroke-width="2" marker-end="url(#f)"/>
+  <path d="M570 120 C660 120 680 240 710 240" fill="none" stroke="#9e9e9e" stroke-width="2" marker-end="url(#f)"/>
+  <defs><marker id="f" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+    <path d="M0,0 L9,4.5 L0,9 z" fill="#9e9e9e"/></marker></defs>
+
+  <!-- Pantallas -->
+  <g>
+    <rect x="60" y="245" width="260" height="150" rx="10" fill="#f5f5f5" stroke="#bdbdbd"/>
+    <text x="190" y="272" text-anchor="middle" font-weight="bold" fill="#37474f">Alta de alumno</text>
+    <rect x="90" y="290" width="120" height="26" rx="13" fill="#c8e6c9"/><circle cx="106" cy="303" r="5" fill="#1b5e20"/>
+    <text x="120" y="308" fill="#1b5e20" font-size="13">Completado</text>
+    <text x="190" y="352" text-anchor="middle" font-size="12" fill="#757575">BadgeEstado(Estado.OK)</text>
+    <text x="190" y="374" text-anchor="middle" font-size="12" fill="#757575">mismo codigo, otra pantalla</text>
+  </g>
+  <g>
+    <rect x="340" y="245" width="220" height="150" rx="10" fill="#f5f5f5" stroke="#bdbdbd"/>
+    <text x="450" y="272" text-anchor="middle" font-weight="bold" fill="#37474f">Recarga de abono</text>
+    <rect x="370" y="290" width="160" height="26" rx="13" fill="#ffe0b2"/><circle cx="386" cy="303" r="5" fill="#b26a00"/>
+    <text x="400" y="308" fill="#b26a00" font-size="13">Falta el mes</text>
+    <text x="450" y="352" text-anchor="middle" font-size="12" fill="#757575">SelectorMes + BadgeEstado</text>
+    <text x="450" y="374" text-anchor="middle" font-size="12" fill="#757575">evento onSeleccion</text>
+  </g>
+  <g>
+    <rect x="580" y="245" width="260" height="150" rx="10" fill="#f5f5f5" stroke="#bdbdbd"/>
+    <text x="710" y="272" text-anchor="middle" font-weight="bold" fill="#37474f">Otro proyecto</text>
+    <rect x="610" y="290" width="130" height="26" rx="13" fill="#ffcdd2"/><text x="626" y="308" fill="#b00020" font-size="13">Fallido</text>
+    <text x="710" y="352" text-anchor="middle" font-size="12" fill="#757575">implementation("com.example:uikit:1.0.0")</text>
+    <text x="710" y="374" text-anchor="middle" font-size="12" fill="#757575">publicado en Maven</text>
+  </g>
+</svg>
